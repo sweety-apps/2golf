@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>01B88E3A-E8AF-4302-B902-2CE5F23D237C</string>
+	<key>IDESourceControlProjectName</key>
+	<string>2golf</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>554299EA-252E-47EF-A9F5-28D635A11A14</key>
+		<string>https://github.com/sweety-apps/2golf.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>iOS/2golf.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>554299EA-252E-47EF-A9F5-28D635A11A14</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/sweety-apps/2golf.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>554299EA-252E-47EF-A9F5-28D635A11A14</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>554299EA-252E-47EF-A9F5-28D635A11A14</string>
+			<key>IDESourceControlWCCName</key>
+			<string>2golf</string>
+		</dict>
+	</array>
+</dict>
+</plist>
