@@ -638,6 +638,7 @@
 		F3E4608218DF395400C8E952 /* titlebarbg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3E4606E18DF395400C8E952 /* titlebarbg@2x.png */; };
 		F3E4608318DF395400C8E952 /* titleicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3E4606F18DF395400C8E952 /* titleicon@2x.png */; };
 		F3E4608518DF4A0500C8E952 /* YudingbaoMainCell_iPhone.xml in Resources */ = {isa = PBXBuildFile; fileRef = F3E4608418DF4A0500C8E952 /* YudingbaoMainCell_iPhone.xml */; };
+		F3E460B418E185DA00C8E952 /* titlebarbg_ios5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3E460B318E185DA00C8E952 /* titlebarbg_ios5@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1660,6 +1661,7 @@
 		F3E4606E18DF395400C8E952 /* titlebarbg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "titlebarbg@2x.png"; sourceTree = "<group>"; };
 		F3E4606F18DF395400C8E952 /* titleicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "titleicon@2x.png"; sourceTree = "<group>"; };
 		F3E4608418DF4A0500C8E952 /* YudingbaoMainCell_iPhone.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = YudingbaoMainCell_iPhone.xml; sourceTree = "<group>"; };
+		F3E460B318E185DA00C8E952 /* titlebarbg_ios5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "titlebarbg_ios5@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -3377,6 +3379,7 @@
 		F3E4605B18DF395400C8E952 /* 2golf */ = {
 			isa = PBXGroup;
 			children = (
+				F3E460B318E185DA00C8E952 /* titlebarbg_ios5@2x.png */,
 				F3E4605C18DF395400C8E952 /* coursefragmentcustomizationbkg@2x.png */,
 				F3E4605D18DF395400C8E952 /* coursefragmentcustomizationicon@2x.png */,
 				F3E4605E18DF395400C8E952 /* coursefragmentfavorablebkg@2x.png */,
@@ -3649,6 +3652,7 @@
 				E909CC07182D0D650095B262 /* CartGoodCell_iPhone.xml in Resources */,
 				CB37763D17C5FF6F00DF5F21 /* shopping-cart-btn-with-icon@2x.png in Resources */,
 				CB37763E17C5FF6F00DF5F21 /* shopping-cart-edit-choose-min-btn@2x.png in Resources */,
+				F3E460B418E185DA00C8E952 /* titlebarbg_ios5@2x.png in Resources */,
 				E909CC43182D0D650095B262 /* OrderCellGoods_iPhone.xml in Resources */,
 				CB37763F17C5FF6F00DF5F21 /* shopping-cart-edit-choose-num-bg@2x.png in Resources */,
 				CB37764017C5FF6F00DF5F21 /* shopping-cart-edit-choose-sum-btn@2x.png in Resources */,

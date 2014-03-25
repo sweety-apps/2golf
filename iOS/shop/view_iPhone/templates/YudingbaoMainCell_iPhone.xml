@@ -7,28 +7,28 @@
             <image id="icon-out-1" class="align-to-bottom" />
             <image id="icon-in-1" class="align-to-bottom-icon" />
             <label id="" class="align-to-bottom-label">球场搜索</label>
-            <button id="icon-1" class="align-to-bottom" />
+            <button id="icon-1" class="align-to-bottom-icon" />
         </linear>
         
         <linear orientation="h" class="right-up-wrapper">
             <image id="icon-out-2" class="align-to-bottom" />
             <image id="icon-in-2" class="align-to-bottom-icon" />
             <label id="" class="align-to-bottom-label">球场特惠</label>
-            <button id="icon-2" class="align-to-bottom" />
+            <button id="icon-2" class="align-to-bottom-icon" />
         </linear>
         
         <linear orientation="h" class="left-down-wrapper">
             <image id="icon-out-3" class="align-to-top" />
             <image id="icon-in-3" class="align-to-top-icon" />
             <label id="" class="align-to-top-label">热销推荐</label>
-            <button id="icon-3" class="align-to-bottom" />
+            <button id="icon-3" class="align-to-top-icon" />
         </linear>
         
         <linear orientation="h" class="right-down-wrapper">
             <image id="icon-out-4" class="align-to-top" />
             <image id="icon-in-4" class="align-to-top-icon" />
             <label id="" class="align-to-top-label">私人订制</label>
-            <button id="icon-4" class="align-to-bottom" />
+            <button id="icon-4" class="align-to-top-icon" />
         </linear>
 		
 	</linear>

@@ -107,11 +107,11 @@ ON_SIGNAL2( BeeUIBoard, signal )
 		
 		if ( IOS7_OR_LATER )
 		{
-			[BeeUINavigationBar setBackgroundImage:[[UIImage imageNamed:@"titlebarbg.png"] stretchableImageWithLeftCapWidth:2 topCapHeight:0]];
+			[BeeUINavigationBar setBackgroundImage:[UIImage imageNamed:@"titlebarbg.png"]];
 		}
 		else
 		{
-			[BeeUINavigationBar setBackgroundImage:[[UIImage imageNamed:@"titlebarbg.png"] stretchableImageWithLeftCapWidth:0 topCapHeight:1]];
+			[BeeUINavigationBar setBackgroundImage:[UIImage imageNamed:@"titlebarbg_ios5.png"]];
 		}
 
         self.view.backgroundColor = [UIColor whiteColor];
