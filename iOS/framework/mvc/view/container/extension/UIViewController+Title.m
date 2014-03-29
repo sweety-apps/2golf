@@ -81,7 +81,7 @@
 
 - (void)setTitleViewWithIcon:(UIImage *)image andTitleString:(NSString *)text
 {
-    UIFont* font = [UIFont systemFontOfSize:17.0f];
+    UIFont* font = [UIFont systemFontOfSize:15.0f];
     CGSize textSize = [text sizeWithFont:font];
     CGSize imgSize = [image size];
     CGRect rect = CGRectMake(0, 0, textSize.width+imgSize.width, MAX(textSize.height, imgSize.height));
@@ -91,16 +91,17 @@
     CGRect rectImg = rect;
     UIImageView * imageView = [[[UIImageView alloc] initWithImage:image] autorelease];
     [containerView addSubview:imageView];
-    rectImg.origin = CGPointMake(0, (rect.size.height-imgSize.height)*0.5);
+    rectImg.origin = CGPointMake(0, (rect.size.height-imgSize.height)*0.5 + 4);
     rectImg.size = imgSize;
     imageView.frame = rectImg;
     
     CGRect rectLabel = rect;
     UILabel* label = [[[UILabel alloc] initWithFrame:rectLabel] autorelease];
     [containerView addSubview:label];
-    rectLabel.origin = CGPointMake(CGRectGetMaxX(rectImg), (rect.size.height-textSize.height)*0.5);
+    rectLabel.origin = CGPointMake(CGRectGetMaxX(rectImg), (rect.size.height-textSize.height)*0.5 + 4);
     rectLabel.size = textSize;
     label.frame = rectLabel;
+    label.font = font;
     label.text = text;
     label.textColor = [UIColor whiteColor];
     

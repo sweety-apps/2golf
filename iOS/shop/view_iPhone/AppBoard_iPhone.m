@@ -107,7 +107,8 @@ ON_SIGNAL2( BeeUIBoard, signal )
 		
 		if ( IOS7_OR_LATER )
 		{
-			[BeeUINavigationBar setBackgroundImage:[UIImage imageNamed:@"titlebarbg.png"]];
+			//[BeeUINavigationBar setBackgroundImage:[UIImage imageNamed:@"trans_btn.png"]];
+            [BeeUINavigationBar setBackgroundColor:[UIColor clearColor]];
 		}
 		else
 		{

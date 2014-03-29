@@ -36,6 +36,8 @@
 #import "CommonFootLoader.h"
 #import "CommonPullLoader.h"
 
+#import "SouSuoQiuChangBoard_iPhone.h"
+
 #pragma mark -
 
 @interface BannerPhotoCell_iPhone()
@@ -111,7 +113,7 @@ SUPPORT_RESOURCE_LOADING( YES )
     [self addSubview:self.scroll];
 	
     self.shadow = [[[UIView alloc] init] autorelease];
-    self.shadow.backgroundColor = RGBA(0, 0, 0, 0.2);
+    self.shadow.backgroundColor = RGBA(0, 0, 0, 0.3);
     [self addSubview:self.shadow];
     
 	self.pageControl = [[[BeeUIPageControl alloc] init] autorelease];
@@ -571,19 +573,22 @@ ON_SIGNAL2( BeeUIButton, signal )
     if ( [signal isSentFrom:$(@"#icon-1").view] )
     {
         //球场搜索
-        
+        [self sendUISignal:@"GO_QIUCHANGSOUSUO"];
     }
     if ( [signal isSentFrom:$(@"#icon-2").view] )
     {
         //球场特惠
+        [self sendUISignal:@"GO_QIUCHANGTEHUI"];
     }
     if ( [signal isSentFrom:$(@"#icon-3").view] )
     {
         //热销推荐
+        [self sendUISignal:@"GO_TEHUITUIJIAN"];
     }
     if ( [signal isSentFrom:$(@"#icon-4").view] )
     {
         //私人订制
+        [self sendUISignal:@"GO_SIRENDINGZHI"];
     }
 }
 
@@ -634,6 +639,10 @@ DEF_SIGNAL(DAIL_PHONE_NAV_BTN);
 	[super unload];
 }
 
+static UIImageView* gBarBGView = nil;
+static BeeUIButton* gPhoneBtn = nil;
+static BOOL gIsFirstCreate = NO;
+
 #pragma mark -
 
 ON_SIGNAL2( BeeUIBoard, signal )
@@ -646,19 +655,43 @@ ON_SIGNAL2( BeeUIBoard, signal )
 		[self setTitleString:__TEXT(@"ecmobile")];
         [self setTitleViewWithIcon:__IMAGE(@"titleicon") andTitleString:__TEXT(@"ecmobile")];
 
+        UIView* phoneBtnContainerView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)] autorelease];
+        phoneBtnContainerView.backgroundColor = [UIColor clearColor];
         BeeUIButton* phoneBtn = [BeeUIButton buttonWithType:UIButtonTypeCustom];
         phoneBtn.image = __IMAGE(@"telephoneicon");
+        gPhoneBtn = phoneBtn;
         [phoneBtn addSignal:self.DAIL_PHONE_NAV_BTN forControlEvents:UIControlEventTouchUpInside];
-
+        CGRect rect = phoneBtn.frame;
+        rect.size.height+=6;
+        phoneBtnContainerView.frame = rect;
+        rect = phoneBtn.frame;
+        rect.origin.y+=6;
+        phoneBtn.frame = rect;
+        //[phoneBtnContainerView addSubview:phoneBtn];
+        
         [self showBarButton:BeeUINavigationBar.RIGHT custom:phoneBtn];
         //[self showBarButton:BeeUINavigationBar.RIGHT custom:[IndexNotifiBarItem_iPhone cell]];
         $(self.rightBarButton).FIND(@"#badge-bg, #badge-count").HIDE();
         
+        gIsFirstCreate = YES;
+        
 		_scroll = [[BeeUIScrollView alloc] init];
 		_scroll.dataSource = self;
 		_scroll.vertical = YES;
-		[_scroll showHeaderLoader:YES animated:NO];
+        _scroll.bounces = NO;
+		//[_scroll showHeaderLoader:YES animated:NO];
 		[self.view addSubview:_scroll];
+        
+        //NavigationBar背景太短
+        UIImageView* barBGView = [[[UIImageView alloc] initWithImage:__IMAGE(@"titlebarbg")] autorelease];
+        rect = barBGView.frame;
+        rect.origin.y = 0;
+        barBGView.frame = rect;
+        gBarBGView=barBGView;
+        UINavigationBar* bar = self.navigationController.navigationBar;
+        bar.clipsToBounds = NO;
+        [[bar subviews][0] insertSubview:barBGView atIndex:2];
+        //[bar setFrame:CGRectMake(0, 20, 320, 50)];
     }
     else if ( [signal is:BeeUIBoard.DELETE_VIEWS] )
     {
@@ -667,7 +700,10 @@ ON_SIGNAL2( BeeUIBoard, signal )
     else if ( [signal is:BeeUIBoard.LAYOUT_VIEWS] )
     {
         [_scroll setBaseInsets:UIEdgeInsetsMake(0, 0, [AppBoard_iPhone sharedInstance].tabbar.height, 0)];
-		_scroll.frame = self.viewBound;
+		CGRect rect = self.viewBound;
+        rect.origin.y+=6;
+        rect.size.height-=6;
+        _scroll.frame =rect;
     }
     else if ( [signal is:BeeUIBoard.LOAD_DATAS] )
     {
@@ -705,6 +741,8 @@ ON_SIGNAL2( BeeUIBoard, signal )
 //		}
         
         [_scroll reloadData];
+        
+        
         
     }
     else if ( [signal is:BeeUIBoard.WILL_DISAPPEAR] )
@@ -876,6 +914,23 @@ ON_SIGNAL( signal )
         [alert showInViewController:self];
         
     }
+    if ( [signal is:@"GO_QIUCHANGSOUSUO"] )
+    {
+        [self.stack pushBoard:[SouSuoQiuChangBoard_iPhone board] animated:YES];
+    }
+    if ( [signal is:@"GO_QIUCHANGTEHUI"] )
+    {
+        
+    }
+    if ( [signal is:@"GO_TEHUITUIJIAN"] )
+    {
+        
+    }
+    if ( [signal is:@"GO_SIRENDINGZHI"] )
+    {
+        
+    }
+    
 }
 
 ON_SIGNAL2( BeeUIAlertView, signal)
