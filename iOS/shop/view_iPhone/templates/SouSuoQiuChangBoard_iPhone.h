@@ -21,4 +21,16 @@
 #pragma mark -
 
 @interface SouSuoQiuChangBoard_iPhone : BaseBoard_iPhone
+
+@property (nonatomic,retain) IBOutlet UILabel* lblLocal;
+@property (nonatomic,retain) IBOutlet UILabel* lblKeywords;
+@property (nonatomic,retain) IBOutlet UILabel* lblDate;
+@property (nonatomic,retain) IBOutlet UILabel* lblTime;
+
+- (IBAction)onPressedLocal:(id)sender;
+- (IBAction)onPressedDate:(id)sender;
+- (IBAction)onPressedTime:(id)sender;
+- (IBAction)onPressedKeywords:(id)sender;
+- (IBAction)onPressedSearch:(id)sender;
+
 @end

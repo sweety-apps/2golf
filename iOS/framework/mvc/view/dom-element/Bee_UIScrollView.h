@@ -154,6 +154,7 @@ AS_SIGNAL( FOOTER_REFRESH )	// 上拉刷新
 - (void)scrollToPrevPage:(BOOL)animated;
 - (void)scrollToNextPage:(BOOL)animated;
 - (void)scrollToIndex:(NSUInteger)index animated:(BOOL)animated;
+- (void)scrollToIndex:(NSUInteger)index headMatch:(BOOL)headMatch animated:(BOOL)animated;
 - (void)scrollToView:(UIView *)view animated:(BOOL)animated;
 
 - (void)recalcFrames;

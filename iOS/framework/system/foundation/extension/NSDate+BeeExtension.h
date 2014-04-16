@@ -52,6 +52,8 @@
 @property (nonatomic, readonly) NSInteger	second;
 @property (nonatomic, readonly) NSInteger	weekday;
 
+- (NSString*)weekdayChinese;
+
 - (NSString *)stringWithDateFormat:(NSString *)format;
 - (NSString *)timeAgo;
 - (NSString *)timeLeft;

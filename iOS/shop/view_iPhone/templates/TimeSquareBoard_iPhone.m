@@ -20,7 +20,7 @@
 
 #pragma mark -
 
-@interface TimeSquareBoard_iPhone()
+@interface TimeSquareBoard_iPhone() <TSQCalendarViewDelegate>
 {
 	TSQTAViewController* _ctrl;
 }
@@ -53,7 +53,10 @@ ON_SIGNAL2( BeeUIBoard, signal )
         _ctrl = [[TSQTAViewController alloc] init];
         _ctrl.calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
         _ctrl.calendar.locale = [NSLocale currentLocale];
+        
         [self.view addSubview:_ctrl.view];
+        
+        _ctrl.tsqView.delegate = self;
     }
     else if ( [signal is:BeeUIBoard.DELETE_VIEWS] )
     {
@@ -75,6 +78,10 @@ ON_SIGNAL2( BeeUIBoard, signal )
     else if ( [signal is:BeeUIBoard.DID_APPEAR] )
     {
         [_ctrl viewDidAppear:YES];
+        CGRect rect = self.viewBound;
+        rect.origin.y+=6;
+        rect.size.height-=6;
+        _ctrl.view.frame =rect;
     }
     else if ( [signal is:BeeUIBoard.WILL_DISAPPEAR] )
     {
@@ -97,6 +104,18 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
 	else if ( [signal is:BeeUINavigationBar.RIGHT_TOUCHED] )
 	{
 	}
+}
+
+#pragma mark - <TSQCalendarViewDelegate>
+- (BOOL)calendarView:(TSQCalendarView *)calendarView shouldSelectDate:(NSDate *)date
+{
+    return YES;
+}
+
+- (void)calendarView:(TSQCalendarView *)calendarView didSelectDate:(NSDate *)date
+{
+    [[NSUserDefaults standardUserDefaults] setObject:date forKey:@"search_date"];
+    [self.stack popBoardAnimated:YES];
 }
 
 @end

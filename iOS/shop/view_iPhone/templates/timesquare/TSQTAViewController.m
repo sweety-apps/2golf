@@ -42,10 +42,12 @@
     
     CGRect rect = [[UIApplication sharedApplication] keyWindow].frame;
     rect.origin = CGPointZero;
-    rect.size.height -= 66;
+    rect.size.height -= 50;
     calendarView.frame = rect;
 
     self.view = calendarView;
+    
+    self.tsqView = calendarView;
 }
 
 - (void)setCalendar:(NSCalendar *)calendar;

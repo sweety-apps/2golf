@@ -483,11 +483,12 @@ SUPPORT_RESOURCE_LOADING( YES )
 - (void)touchDown1:(id)sender
 {
     BeeUIQuery* query = $(@"#icon-out-1");
-    query.ANIMATE(^(){
+    query.DURATION(0.05f).ANIMATE(^(){
         query
-        .SCALE(1.1f,1.1f)
-        .LEFT(query.view.left-5.f)
-        .TOP(query.view.top-5.f);
+        .SCALE(0.94f,0.94f)
+        .LEFT(query.view.left+3.f)
+        .TOP(query.view.top+3.f)
+        ;
     });
 }
 
@@ -497,19 +498,19 @@ SUPPORT_RESOURCE_LOADING( YES )
     query.ANIMATE(^(){
         query
         .SCALE(1.0f,1.0f)
-        .LEFT(query.view.left+5.f)
-        .TOP(query.view.top+5.f);
+        .LEFT(query.view.left-3.f)
+        .TOP(query.view.top-3.f);
     });
 }
 
 - (void)touchDown2:(id)sender
 {
     BeeUIQuery* query = $(@"#icon-out-2");
-    query.ANIMATE(^(){
+    query.DURATION(0.05f).ANIMATE(^(){
         query
-        .SCALE(1.1f,1.1f)
-        .LEFT(query.view.left+5.f)
-        .TOP(query.view.top-5.f);
+        .SCALE(0.94f,0.94f)
+        .LEFT(query.view.left-3.f)
+        .TOP(query.view.top+3.f);
     });
 }
 
@@ -519,19 +520,19 @@ SUPPORT_RESOURCE_LOADING( YES )
     query.ANIMATE(^(){
         query
         .SCALE(1.0f,1.0f)
-        .LEFT(query.view.left-5.f)
-        .TOP(query.view.top+5.f);
+        .LEFT(query.view.left+3.f)
+        .TOP(query.view.top-3.f);
     });
 }
 
 - (void)touchDown3:(id)sender
 {
     BeeUIQuery* query = $(@"#icon-out-3");
-    query.ANIMATE(^(){
+    query.DURATION(0.05f).ANIMATE(^(){
         query
-        .SCALE(1.1f,1.1f)
-        .LEFT(query.view.left-5.f)
-        .TOP(query.view.top+5.f);
+        .SCALE(0.94f,0.94f)
+        .LEFT(query.view.left+3.f)
+        .TOP(query.view.top-3.f);
     });
 }
 
@@ -541,19 +542,19 @@ SUPPORT_RESOURCE_LOADING( YES )
     query.ANIMATE(^(){
         query
         .SCALE(1.0f,1.0f)
-        .LEFT(query.view.left+5.f)
-        .TOP(query.view.top-5.f);
+        .LEFT(query.view.left-3.f)
+        .TOP(query.view.top+3.f);
     });
 }
 
 - (void)touchDown4:(id)sender
 {
     BeeUIQuery* query = $(@"#icon-out-4");
-    query.ANIMATE(^(){
+    query.DURATION(0.05f).ANIMATE(^(){
         query
-        .SCALE(1.1f,1.1f)
-        .LEFT(query.view.left+5.f)
-        .TOP(query.view.top+5.f);
+        .SCALE(0.94f,0.94f)
+        .LEFT(query.view.left-3.f)
+        .TOP(query.view.top-3.f);
     });
 }
 
@@ -563,8 +564,8 @@ SUPPORT_RESOURCE_LOADING( YES )
     query.ANIMATE(^(){
         query
         .SCALE(1.0f,1.0f)
-        .LEFT(query.view.left-5.f)
-        .TOP(query.view.top-5.f);
+        .LEFT(query.view.left+3.f)
+        .TOP(query.view.top+3.f);
     });
 }
 
@@ -916,7 +917,7 @@ ON_SIGNAL( signal )
     }
     if ( [signal is:@"GO_QIUCHANGSOUSUO"] )
     {
-        [self.stack pushBoard:[SouSuoQiuChangBoard_iPhone board] animated:YES];
+        [self.stack pushBoard:[SouSuoQiuChangBoard_iPhone boardWithNibName:@"SouSuoQiuChangViewController"] animated:YES];
     }
     if ( [signal is:@"GO_QIUCHANGTEHUI"] )
     {

@@ -1000,6 +1000,87 @@ DEF_SIGNAL( FOOTER_REFRESH )
 	[self setContentOffset:offset animated:animated];
 }
 
+- (void)scrollToIndex:(NSUInteger)index headMatch:(BOOL)headMatch animated:(BOOL)animated
+{
+	if ( 0 == _total || index >= _total )
+		return;
+    
+	if ( self.DIRECTION_VERTICAL == _direction )
+	{
+		if ( self.contentSize.height <= self.bounds.size.height )
+		{
+			return;
+		}
+	}
+	else if ( self.DIRECTION_HORIZONTAL == _direction )
+	{
+		if ( self.contentSize.width <= self.bounds.size.width )
+		{
+			return;
+		}
+	}
+    
+	CGRect frame = ((BeeUIScrollItem *)[_items objectAtIndex:index]).rect;
+	if ( CGRectEqualToRect(frame, CGRectZero) )
+	{
+		return;
+	}
+    
+	CGFloat	margin = 0.0f;
+	CGPoint	offset = CGPointZero;
+    
+	if ( self.DIRECTION_VERTICAL == _direction )
+	{
+		margin = (self.bounds.size.height - frame.size.height) / 2.0f;
+		
+		offset.x = self.contentOffset.x;
+        
+        if (headMatch)
+        {
+            offset.y = frame.origin.y;
+        }
+        else
+        {
+            offset.y = frame.origin.y - margin;
+        }
+		
+		if ( offset.y < 0.0f )
+		{
+			offset.y = 0.0f;
+		}
+		else if ( offset.y + self.bounds.size.height > self.contentSize.height )
+		{
+			offset.y = self.contentSize.height - self.bounds.size.height;
+		}
+	}
+	else if ( self.DIRECTION_HORIZONTAL == _direction )
+	{
+		margin = (self.bounds.size.width - frame.size.width) / 2.0f;
+        
+        if (headMatch)
+        {
+            offset.x = frame.origin.x;
+        }
+        else
+        {
+            offset.x = frame.origin.x - margin;
+        }
+        
+		offset.y = self.contentOffset.y;
+		
+		if ( offset.x < 0.0f )
+		{
+			offset.x = 0.0f;
+		}
+		else if ( offset.x + self.bounds.size.width > self.contentSize.width )
+		{
+			offset.x = self.contentSize.width - self.bounds.size.width;
+		}
+	}
+    
+	[self setContentOffset:offset animated:animated];
+}
+
 - (void)scrollToView:(UIView *)view animated:(BOOL)animated
 {
 	for ( BeeUIScrollItem * item in _items )

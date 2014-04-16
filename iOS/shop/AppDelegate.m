@@ -28,12 +28,32 @@
 #import "AppBoard_iPad.h"
 #import "AppBoard_iPhone.h"
 
+#import "BMapKit.h"
+
 #import "model.h"
+
+#pragma mark -
+
+@interface AppDelegate () <BMKGeneralDelegate>
+
+@end
+
+#pragma mark -
+
+static BMKMapManager* _mapManager = nil;
 
 @implementation AppDelegate
 
 - (void)load
 {
+    // 要使用百度地图，请先启动BaiduMapManager
+	_mapManager = [[[BMKMapManager alloc] init] retain];
+	BOOL ret = [_mapManager start:@"1WYKjnr3bCwVPQbpTr1tGuXU" generalDelegate:self];
+    if (!ret) {
+		NSLog(@"manager start failed!");
+	}
+    [_mapManager release];
+    
 	if ( [BeeSystemInfo isDevicePad] )
 	{
 		self.window.rootViewController = [AppBoard_iPhone sharedInstance];
@@ -47,6 +67,29 @@
 
 - (void)unload
 {
+}
+
+#pragma mark - <BMKGeneralDelegate>
+
+- (void)onGetNetworkState:(int)iError
+{
+    if (0 == iError) {
+        NSLog(@"联网成功");
+    }
+    else{
+        NSLog(@"onGetNetworkState %d",iError);
+    }
+    
+}
+
+- (void)onGetPermissionState:(int)iError
+{
+    if (0 == iError) {
+        NSLog(@"授权成功");
+    }
+    else {
+        NSLog(@"onGetPermissionState %d",iError);
+    }
 }
 
 @end

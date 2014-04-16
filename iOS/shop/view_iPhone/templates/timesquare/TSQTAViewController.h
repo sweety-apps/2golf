@@ -8,9 +8,11 @@
 //  which Square, Inc. licenses this file to you.
 
 #import <UIKit/UIKit.h>
+#import "TSQCalendarView.h"
 
 @interface TSQTAViewController : UIViewController
 
 @property (nonatomic, strong) NSCalendar *calendar;
+@property (nonatomic, strong) TSQCalendarView* tsqView;
 
 @end

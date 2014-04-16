@@ -92,6 +92,13 @@
 										   fromDate:self].weekday;
 }
 
+- (NSString*)weekdayChinese
+{
+    NSArray* strArr = @[@"",@"星期天",@"星期一",@"星期二",@"星期三",@"星期四",@"星期五",@"星期六"];
+    NSInteger n = [self weekday];
+	return strArr[n];
+}
+
 - (NSString *)stringWithDateFormat:(NSString *)format
 {
 #if 0

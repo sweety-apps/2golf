@@ -8,6 +8,7 @@
 
 #import "SouSuoQiuChangViewController.h"
 #import "TimeSquareBoard_iPhone.h"
+#import "CitySelectBoard_iPhone.h"
 
 @interface SouSuoQiuChangViewController ()
 
@@ -46,7 +47,7 @@
 
 - (IBAction)onPressedLocal:(id)sender
 {
-    
+    [self.uiStack pushBoard:[CitySelectBoard_iPhone boardWithNibName:@"CitySelectBoard_iPhone"] animated:YES];
 }
 
 - (IBAction)onPressedDate:(id)sender

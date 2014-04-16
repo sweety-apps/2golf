@@ -42,6 +42,7 @@
 #import "AddAddressBoard_iPhone.h"
 #import "AddressListBoard_iPhone.h"
 #import "CheckoutBoard_iPhone.h"
+#import "CommonUtility.h"
 
 #pragma mark -
 
@@ -139,6 +140,8 @@ ON_SIGNAL2( BeeUIBoard, signal )
 //		[self observeNotification:BeeNetworkReachability.WIFI_REACHABLE];
 //		[self observeNotification:BeeNetworkReachability.WLAN_REACHABLE];
 //		[self observeNotification:BeeNetworkReachability.UNREACHABLE];
+        
+        [CommonUtility refreshLocalPositionWithCallBack:nil];
 
         _tabbarOriginY = self.viewBound.size.height - TAB_HEIGHT + 1;
 	}

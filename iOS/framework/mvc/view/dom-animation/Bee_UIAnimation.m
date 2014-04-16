@@ -42,7 +42,7 @@
 #pragma mark -
 
 #undef	DEFAULT_DURATION
-#define DEFAULT_DURATION	(0.25f)
+#define DEFAULT_DURATION	(0.15f)
 
 #pragma mark -
 
