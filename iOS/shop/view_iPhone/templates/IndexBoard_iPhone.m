@@ -653,8 +653,8 @@ ON_SIGNAL2( BeeUIBoard, signal )
     if ( [signal is:BeeUIBoard.CREATE_VIEWS] )
     {
         [self showNavigationBarAnimated:NO];
-		[self setTitleString:__TEXT(@"ecmobile")];
-        [self setTitleViewWithIcon:__IMAGE(@"titleicon") andTitleString:__TEXT(@"ecmobile")];
+		[self setTitleString:@"爱高"];
+        [self setTitleViewWithIcon:__IMAGE(@"titleicon") andTitleString:@"爱高"];
 
         UIView* phoneBtnContainerView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)] autorelease];
         phoneBtnContainerView.backgroundColor = [UIColor clearColor];
@@ -910,7 +910,7 @@ ON_SIGNAL( signal )
         BeeUIAlertView * alert = [BeeUIAlertView spawn];
         //			alert.title = @"提交订单成功";
         alert.message = @"拨打电话?";
-        [alert addCancelTitle:__TEXT(@"button_no")];
+        [alert addCancelTitle:@"取消"];
         [alert addButtonTitle:@"拨打" signal:self.DAIL_PHONE_OK];
         [alert showInViewController:self];
         

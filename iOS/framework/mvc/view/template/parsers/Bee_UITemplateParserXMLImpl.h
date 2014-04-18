@@ -37,9 +37,9 @@
 
 @interface BeeUITemplateParserXMLImpl : NSObject
 
-@property (nonatomic, assign) CXMLDocument *	document;
-@property (nonatomic, assign) NSString *		packagePath;
-@property (nonatomic, assign) NSDictionary *	classMapping;
+@property (nonatomic, retain) CXMLDocument *	document;
+@property (nonatomic, retain) NSString *		packagePath;
+@property (nonatomic, retain) NSDictionary *	classMapping;
 
 + (BeeUITemplateParserXMLImpl *)impl;
 + (BeeUITemplateParserXMLImpl *)impl:(NSUInteger)version;

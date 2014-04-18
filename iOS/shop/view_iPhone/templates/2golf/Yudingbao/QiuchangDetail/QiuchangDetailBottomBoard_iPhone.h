@@ -8,7 +8,7 @@
 //	Powered by BeeFramework
 //
 //
-//  QuichangDetailBoard_iPhone.h
+//  QiuchangDetailBottomBoard_iPhone.h
 //  2golf
 //
 //  Created by Lee Justin on 14-4-17.
@@ -19,5 +19,15 @@
 
 #pragma mark -
 
-@interface QuichangDetailBoard_iPhone : BeeUIBoard
+@interface QiuchangDetailBottomCell_iPhone : BeeUICell
+AS_SIGNAL(DAIL_PHONE_OK)
+@end
+
+#pragma mark -
+
+@interface QiuchangDetailBottomBoard_iPhone : BeeUIBoard
+
+@property (nonatomic,retain) IBOutlet UIButton* phoneBtn;
+@property (nonatomic,retain) IBOutlet UIButton* mylistBtn;
+
 @end

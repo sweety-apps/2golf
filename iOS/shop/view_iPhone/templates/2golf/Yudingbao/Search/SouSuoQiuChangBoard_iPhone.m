@@ -22,12 +22,14 @@
 #import "SearchKeywordsListBoard_iPhone.h"
 #import "QiuchangResultListBoard_iPhone.h"
 #import "CommonUtility.h"
+#import "SouSuoQiuchangBottomViewController.h"
 
 #pragma mark -
 
 @interface SouSuoQiuChangBoard_iPhone() <UIPickerViewDelegate,UIPickerViewDataSource>
 {
     SouSuoQiuChangViewController* _ctrl;
+    SouSuoQiuchangBottomViewController* _bottomCtrl;
 }
 @end
 
@@ -43,6 +45,8 @@
 
 - (void)unload
 {
+    [_ctrl release];
+    [_bottomCtrl release];
 	[super unload];
 }
 
@@ -58,6 +62,14 @@ ON_SIGNAL2( BeeUIBoard, signal )
         [self setTitleViewWithIcon:__IMAGE(@"titleicon") andTitleString:@"球场搜索"];
         [self showBarButton:BeeUINavigationBar.LEFT image:[UIImage imageNamed:@"nav-back.png"]];
         [CommonUtility refreshLocalPositionWithCallBack:nil];
+        
+        _bottomCtrl = [[SouSuoQiuchangBottomViewController alloc] initWithNibName:@"SouSuoQiuchangBottomViewController" bundle:nil];
+        
+        CGRect rect = _bottomCtrl.view.frame;
+        CGFloat y = self.bounds.size.height - 66-6 - rect.size.height;
+        rect.origin.y = y;
+        _bottomCtrl.view.frame = rect;
+        [self.view addSubview:_bottomCtrl.view];
     }
     else if ( [signal is:BeeUIBoard.DELETE_VIEWS] )
     {

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ui namespace="QiuchangBannerPhotoCell_iPhone">
+    
+	<image id="slide-image"/>
+    <style>
+        #slide-image {
+        width: 100%;
+        height: 100%;
+        image-mode: fill;
+        image-src:url(placeholder-image.png);
+        }
+    </style>
+</ui>
