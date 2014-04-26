@@ -8,10 +8,10 @@
 //	Powered by BeeFramework
 //
 //
-//  QiuchangOrderEditBoard_iPhone.h
+//  SirendingzhiListBoard_iPhone.h
 //  2golf
 //
-//  Created by Lee Justin on 14-4-18.
+//  Created by Lee Justin on 14-4-27.
 //  Copyright (c) 2014年 geek-zoo studio. All rights reserved.
 //
 
@@ -19,8 +19,8 @@
 
 #pragma mark -
 
-@interface QiuchangOrderEditBoard_iPhone : BeeUIBoard
+@interface SirendingzhiListBoard_iPhone : BeeUIBoard
 
-- (void)setUpData:(NSDictionary *)dataDict;
+AS_SIGNAL(OTHER_TRIP_RIGHT_NAV_BTN)
 
 @end

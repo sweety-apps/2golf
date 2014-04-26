@@ -204,7 +204,7 @@ DEF_NOTIFICATION( CHANGED )
 
 	if ( NO == succeed )
 	{
-		succeed = [self setCurrentLanguageName:@"en-us"];
+		succeed = [self setCurrentLanguageName:@"zh-Hans"];
 		if ( NO == succeed )
 		{
 			succeed = [self setCurrentLanguageName:@"default"];

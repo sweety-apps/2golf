@@ -19,7 +19,19 @@
 
 #pragma mark -
 
+@class QiuchangDetailPriceContentCell_iPhone;
+
+@protocol QiuchangDetailPriceContentCell_iPhoneDelegate <NSObject>
+
+- (void)onPressedPriceButton:(QiuchangDetailPriceContentCell_iPhone*)cell;
+
+@end
+
+#pragma mark -
+
 @interface QiuchangDetailPriceContentCell_iPhone : BeeUICell
+
+@property (nonatomic,assign) id<QiuchangDetailPriceContentCell_iPhoneDelegate> delegate;
 
 @end
 

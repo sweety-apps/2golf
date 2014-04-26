@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="QiuchangOrderEditCellViewController">
             <connections>
+                <outlet property="baseView" destination="EzI-i9-v50" id="dwm-Lv-tax"/>
                 <outlet property="cellBg" destination="JSM-us-Fqh" id="nDg-7I-scM"/>
                 <outlet property="cellTitle" destination="Npo-eg-6G3" id="hfh-RD-MnM"/>
                 <outlet property="confirmBtn" destination="E5Q-bt-kbZ" id="rZJ-yd-Off"/>
@@ -96,11 +97,11 @@
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="用于接收通知短信" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zml-Qf-9qY">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="用于接收通知短信" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zml-Qf-9qY" customClass="BeeUITextField">
                             <rect key="frame" x="0.0" y="0.0" width="273" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                            <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="done"/>
+                            <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                         </textField>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

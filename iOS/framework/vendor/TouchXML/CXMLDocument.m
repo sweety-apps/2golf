@@ -198,7 +198,7 @@
     [thePool release];
     //
     xmlUnlinkNode(_node);
-    xmlFreeDoc((xmlDocPtr)_node);
+    //xmlFreeDoc((xmlDocPtr)_node);
     _node = NULL;
     [super dealloc];
 }

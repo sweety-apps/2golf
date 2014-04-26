@@ -8,7 +8,7 @@
 //	Powered by BeeFramework
 //
 //
-//  QiuchangOrderEditBoard_iPhone.h
+//  QiuchangOrderResultBoard_iPhone.h
 //  2golf
 //
 //  Created by Lee Justin on 14-4-18.
@@ -19,8 +19,8 @@
 
 #pragma mark -
 
-@interface QiuchangOrderEditBoard_iPhone : BeeUIBoard
+@interface QiuchangOrderResultBoard_iPhone : BeeUIBoard
 
-- (void)setUpData:(NSDictionary *)dataDict;
+- (IBAction)pressedBackToHome:(id)sender;
 
 @end

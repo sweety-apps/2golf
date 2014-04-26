@@ -16,6 +16,7 @@
 //
 
 #import "QiuchangDetailBottomBoard_iPhone.h"
+#import "MyOrderListBoard_iPhone.h"
 
 #pragma mark -
 
@@ -78,7 +79,9 @@ DEF_SIGNAL(DAIL_PHONE_OK)
 
 - (void)_pressedMyOrderListBtn:(UIButton*)btn
 {
+    MyOrderListBoard_iPhone* board = [MyOrderListBoard_iPhone boardWithNibName:@"MyOrderListBoard_iPhone"];
     
+    [[[self superview] superview].board.stack pushBoard:board animated:YES];
 }
 
 ON_SIGNAL2( BeeUIAlertView, signal)

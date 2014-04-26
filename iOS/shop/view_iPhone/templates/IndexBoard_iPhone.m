@@ -37,6 +37,8 @@
 #import "CommonPullLoader.h"
 
 #import "SouSuoQiuChangBoard_iPhone.h"
+#import "QiuchangTehuiListBoard_iPhone.h"
+#import "SirendingzhiListBoard_iPhone.h"
 
 #pragma mark -
 
@@ -921,15 +923,15 @@ ON_SIGNAL( signal )
     }
     if ( [signal is:@"GO_QIUCHANGTEHUI"] )
     {
-        
+        [self.stack pushBoard:[QiuchangTehuiListBoard_iPhone boardWithNibName:@"QiuchangTehuiListBoard_iPhone"] animated:YES];
     }
     if ( [signal is:@"GO_TEHUITUIJIAN"] )
     {
-        
+        //[self.stack pushBoard:[QiuchangTehuiListBoard_iPhone boardWithNibName:@"QiuchangTehuiListBoard_iPhone"] animated:YES];
     }
     if ( [signal is:@"GO_SIRENDINGZHI"] )
     {
-        
+        [self.stack pushBoard:[SirendingzhiListBoard_iPhone boardWithNibName:@"SirendingzhiListBoard_iPhone"] animated:YES];
     }
     
 }

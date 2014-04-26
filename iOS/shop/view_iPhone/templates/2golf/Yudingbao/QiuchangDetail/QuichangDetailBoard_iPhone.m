@@ -19,6 +19,7 @@
 #import "AppBoard_iPhone.h"
 #import "Placeholder.h"
 #import "ServerConfig.h"
+#import "QiuchangOrderEditBoard_iPhone.h"
 
 #pragma mark -
 
@@ -237,7 +238,7 @@ ON_SIGNAL2( BeeUIScrollView , signal)
 
 #pragma mark -
 
-@interface QuichangDetailBoard_iPhone()
+@interface QuichangDetailBoard_iPhone() <QiuchangDetailPriceContentCell_iPhoneDelegate>
 {
 	BeeUIScrollView *	_scroll;
 }
@@ -258,7 +259,6 @@ DEF_SIGNAL(DAIL_RIGHT_NAV_BTN);
 
 - (void)unload
 {
-    [_scroll release];
     self.cellArray = nil;
     self.dataDict = nil;
 	[super unload];
@@ -426,6 +426,7 @@ ON_SIGNAL( signal )
         {
             cell = [[QiuchangDetailPriceContentCell_iPhone alloc] initWithFrame:CGRectZero];
             cell.data = price;
+            ((QiuchangDetailPriceContentCell_iPhone*)cell).delegate = self;
             [self.cellArray addObject:cell];
         }
     }
@@ -441,6 +442,7 @@ ON_SIGNAL( signal )
         {
             cell = [[QiuchangDetailPriceContentCell_iPhone alloc] initWithFrame:CGRectZero];
             cell.data = price;
+            ((QiuchangDetailPriceContentCell_iPhone*)cell).delegate = self;
             [self.cellArray addObject:cell];
         }
     }
@@ -513,6 +515,14 @@ ON_SIGNAL( signal )
             }
         }
     }
+}
+
+#pragma mark <QiuchangDetailPriceContentCell_iPhoneDelegate>
+
+- (void)onPressedPriceButton:(QiuchangDetailPriceContentCell_iPhone*)cell
+{
+    QiuchangOrderEditBoard_iPhone* board = [QiuchangOrderEditBoard_iPhone boardWithNibName:@"QiuchangOrderEditBoard_iPhone"];
+    [self.stack pushBoard:board animated:YES];
 }
 
 @end

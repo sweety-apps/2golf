@@ -8,24 +8,77 @@
 //	Powered by BeeFramework
 //
 //
-//  QiuchangOrderEditBoard_iPhone.m
+//  SirendingzhiListCellBoard_iPhone.m
 //  2golf
 //
-//  Created by Lee Justin on 14-4-18.
+//  Created by Lee Justin on 14-4-27.
 //  Copyright (c) 2014年 geek-zoo studio. All rights reserved.
 //
 
-#import "QiuchangOrderEditBoard_iPhone.h"
+#import "SirendingzhiListCellBoard_iPhone.h"
 
 #pragma mark -
 
-@interface QiuchangOrderEditBoard_iPhone()
+@interface SirendingzhiListCell_iPhone ()
+
+@property (nonatomic,retain) SirendingzhiListCellBoard_iPhone* ctrl;
+
+@end
+
+#pragma mark -
+
+@implementation SirendingzhiListCell_iPhone
+
+DEF_SIGNAL( TOUCHED )
+
+- (void)load
+{
+    [super load];
+    
+    self.tappable = YES;
+	self.tapSignal = self.TOUCHED;
+    
+    self.ctrl = [SirendingzhiListCellBoard_iPhone boardWithNibName:@"SirendingzhiListCellBoard_iPhone"];
+    self.frame = self.ctrl.view.frame;
+    self.backgroundColor = [UIColor clearColor];
+    [self addSubview:self.ctrl.view];
+}
+
+- (void)unload
+{
+    self.ctrl = nil;
+    
+	[super unload];
+}
+
+- (void)layoutDidFinish
+{
+    
+}
+
+- (void)dataDidChanged
+{
+    if (self.data)
+    {
+        NSDictionary* dict = self.data;
+        self.ctrl.titleLbl.text = dict[@"name"];
+        [self.ctrl.imgView setUrl:(dict[@"img"])[@"url"]];
+        self.ctrl.desLbl.text = dict[@"description"];
+        self.ctrl.priceLbl.text = [NSString stringWithFormat:@"￥%@",dict[@"price"]];
+    }
+}
+
+@end
+
+#pragma mark -
+
+@interface SirendingzhiListCellBoard_iPhone()
 {
 	//<#@private var#>
 }
 @end
 
-@implementation QiuchangOrderEditBoard_iPhone
+@implementation SirendingzhiListCellBoard_iPhone
 
 - (void)load
 {
