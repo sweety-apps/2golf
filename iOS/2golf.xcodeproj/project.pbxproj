@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4FB952E6190122D300EE0CF7 /* libXG-SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FB952E3190122D300EE0CF7 /* libXG-SDK.a */; };
+		4FB952E7190122D300EE0CF7 /* ReleaseNotes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4FB952E4190122D300EE0CF7 /* ReleaseNotes.txt */; };
+		4FB952E91901232900EE0CF7 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FB952E81901232900EE0CF7 /* CoreTelephony.framework */; };
 		6302390C177C1676004C052D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 630236B1177C1675004C052D /* AppDelegate.m */; };
 		6302390F177C1676004C052D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 630236B7177C1675004C052D /* Default-568h@2x.png */; };
 		63023910177C1676004C052D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 630236B8177C1675004C052D /* Default.png */; };
@@ -758,6 +761,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4FB952E3190122D300EE0CF7 /* libXG-SDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libXG-SDK.a"; sourceTree = "<group>"; };
+		4FB952E4190122D300EE0CF7 /* ReleaseNotes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReleaseNotes.txt; sourceTree = "<group>"; };
+		4FB952E5190122D300EE0CF7 /* XGPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGPush.h; sourceTree = "<group>"; };
+		4FB952E81901232900EE0CF7 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		630236B0177C1675004C052D /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		630236B1177C1675004C052D /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		630236B7177C1675004C052D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -1981,6 +1988,7 @@
 			files = (
 				F3B53978190138CC004E72D4 /* libz.dylib in Frameworks */,
 				F3B5397719013899004E72D4 /* libsqlite3.dylib in Frameworks */,
+				4FB952E91901232900EE0CF7 /* CoreTelephony.framework in Frameworks */,
 				F3B538BC18FEA6C8004E72D4 /* OpenGLES.framework in Frameworks */,
 				F3B5377918FE73EF004E72D4 /* CoreLocation.framework in Frameworks */,
 				F3B538BA18FEA69C004E72D4 /* libbaidumapapi.a in Frameworks */,
@@ -1993,6 +2001,7 @@
 				6324A41F1754FC7700372FD7 /* Foundation.framework in Frameworks */,
 				6324A4201754FC7700372FD7 /* MobileCoreServices.framework in Frameworks */,
 				6324A4211754FC7700372FD7 /* QuartzCore.framework in Frameworks */,
+				4FB952E6190122D300EE0CF7 /* libXG-SDK.a in Frameworks */,
 				6324A4221754FC7700372FD7 /* Security.framework in Frameworks */,
 				6324A4231754FC7700372FD7 /* SystemConfiguration.framework in Frameworks */,
 				6324A4241754FC7700372FD7 /* UIKit.framework in Frameworks */,
@@ -2003,6 +2012,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4FB952E2190122D300EE0CF7 /* xg */ = {
+			isa = PBXGroup;
+			children = (
+				4FB952E3190122D300EE0CF7 /* libXG-SDK.a */,
+				4FB952E4190122D300EE0CF7 /* ReleaseNotes.txt */,
+				4FB952E5190122D300EE0CF7 /* XGPush.h */,
+			);
+			path = xg;
+			sourceTree = "<group>";
+		};
 		630236AF177C1675004C052D /* shop */ = {
 			isa = PBXGroup;
 			children = (
@@ -2141,6 +2160,7 @@
 		63249C9D1754E07900372FD7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4FB952E81901232900EE0CF7 /* CoreTelephony.framework */,
 				F3B538BB18FEA6C8004E72D4 /* OpenGLES.framework */,
 				F3B5377818FE73EF004E72D4 /* CoreLocation.framework */,
 				6324A4091754FC7700372FD7 /* libz.dylib */,
@@ -3806,6 +3826,7 @@
 		F3B5377F18FE9629004E72D4 /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				4FB952E2190122D300EE0CF7 /* xg */,
 				F3B538BD18FEB195004E72D4 /* mapapi.bundle */,
 				F3B538B918FEA69C004E72D4 /* libbaidumapapi.a */,
 				F3B5388F18FEA694004E72D4 /* inc */,
@@ -4259,6 +4280,7 @@
 				F3B539521900C0E9004E72D4 /* SouSuoQiuChangViewController.xib in Resources */,
 				CB3775F517C5FF6F00DF5F21 /* item-graph-header-view-icon@2x.png in Resources */,
 				CB3775F617C5FF6F00DF5F21 /* item-grid-body-free-shipping-bg@2x.png in Resources */,
+				4FB952E7190122D300EE0CF7 /* ReleaseNotes.txt in Resources */,
 				F3B5391218FFF3DB004E72D4 /* coursesearchicontime@2x.png in Resources */,
 				CB3775F717C5FF6F00DF5F21 /* item-grid-body-free-shipping-btn@2x.png in Resources */,
 				F3B538BE18FEB195004E72D4 /* mapapi.bundle in Resources */,
@@ -4992,6 +5014,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/libs/Release$(EFFECTIVE_PLATFORM_NAME)",
 					"$(PROJECT_DIR)/libs/Release-iphoneos",
+					"/Users/rolandxu/Downloads/Xg-Push-SDK-iOS-1.0.3/sdk",
+					"$(PROJECT_DIR)/libs/xg",
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = 2golf;
@@ -5024,6 +5048,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/libs/Release$(EFFECTIVE_PLATFORM_NAME)",
 					"$(PROJECT_DIR)/libs/Release-iphoneos",
+					"/Users/rolandxu/Downloads/Xg-Push-SDK-iOS-1.0.3/sdk",
+					"$(PROJECT_DIR)/libs/xg",
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = 2golf;
@@ -5084,6 +5110,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/libs/Release$(EFFECTIVE_PLATFORM_NAME)",
 					"$(PROJECT_DIR)/libs/Release-iphoneos",
+					"/Users/rolandxu/Downloads/Xg-Push-SDK-iOS-1.0.3/sdk",
+					"$(PROJECT_DIR)/libs/xg",
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = 2golf;

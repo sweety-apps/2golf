@@ -27,6 +27,7 @@
 #import "AppDelegate.h"
 #import "AppBoard_iPad.h"
 #import "AppBoard_iPhone.h"
+#import "XGPush.h"
 
 #import "BMapKit.h"
 
@@ -44,16 +45,27 @@ static BMKMapManager* _mapManager = nil;
 
 @implementation AppDelegate
 
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    [super application:application didFinishLaunchingWithOptions:launchOptions];
+    [self registerNofitication];
+    [XGPush startApp:2200018157 appKey:@"I3VS41E2R8EI"];
+	[XGPush handleLaunching: launchOptions];
+    return YES;
+}
+
+
 - (void)load
 {
     // 要使用百度地图，请先启动BaiduMapManager
+    /*
 	_mapManager = [[[BMKMapManager alloc] init] retain];
 	BOOL ret = [_mapManager start:@"1WYKjnr3bCwVPQbpTr1tGuXU" generalDelegate:self];
     if (!ret) {
 		NSLog(@"manager start failed!");
 	}
     [_mapManager release];
-    
+    */
 	if ( [BeeSystemInfo isDevicePad] )
 	{
 		self.window.rootViewController = [AppBoard_iPhone sharedInstance];
@@ -91,5 +103,24 @@ static BMKMapManager* _mapManager = nil;
         NSLog(@"onGetPermissionState %d",iError);
     }
 }
+
+- (void) registerNofitication {
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
+}
+
+-(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    //注册设备
+    NSString * deviceTokenStr = [XGPush registerDevice: deviceToken];
+    
+    //打印获取的deviceToken的字符串
+    NSLog(@"deviceTokenStr is %@",deviceTokenStr);
+}
+
+- (void)application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary*)userInfo
+{
+    [XGPush handleReceiveNotification:userInfo];
+}
+
 
 @end
