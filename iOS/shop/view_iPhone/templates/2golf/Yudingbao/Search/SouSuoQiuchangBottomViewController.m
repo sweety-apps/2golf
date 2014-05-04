@@ -76,7 +76,7 @@
     NSInteger index = btn.tag;
     
     QuichangDetailBoard_iPhone* board = [QuichangDetailBoard_iPhone boardWithNibName:@"QuichangDetailBoard_iPhone"];
-    [[self.view superview].stack pushBoard:board animated:YES];
+    [[[[self.view superview] superview] superview].stack pushBoard:board animated:YES];
 }
 
 @end

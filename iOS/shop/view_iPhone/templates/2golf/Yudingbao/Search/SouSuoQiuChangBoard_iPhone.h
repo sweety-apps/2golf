@@ -26,6 +26,8 @@
 @property (nonatomic,retain) IBOutlet UILabel* lblKeywords;
 @property (nonatomic,retain) IBOutlet UILabel* lblDate;
 @property (nonatomic,retain) IBOutlet UILabel* lblTime;
+@property (nonatomic,retain) IBOutlet UIScrollView* scrollView;
+@property (nonatomic,retain) IBOutlet UIView* scrollContentView;
 
 - (IBAction)onPressedLocal:(id)sender;
 - (IBAction)onPressedDate:(id)sender;

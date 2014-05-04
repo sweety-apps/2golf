@@ -26,7 +26,7 @@
 
 #pragma mark -
 
-@interface SouSuoQiuChangBoard_iPhone() <UIPickerViewDelegate,UIPickerViewDataSource>
+@interface SouSuoQiuChangBoard_iPhone() <UIPickerViewDelegate,UIPickerViewDataSource,UIScrollViewDelegate>
 {
     SouSuoQiuChangViewController* _ctrl;
     SouSuoQiuchangBottomViewController* _bottomCtrl;
@@ -66,10 +66,10 @@ ON_SIGNAL2( BeeUIBoard, signal )
         _bottomCtrl = [[SouSuoQiuchangBottomViewController alloc] initWithNibName:@"SouSuoQiuchangBottomViewController" bundle:nil];
         
         CGRect rect = _bottomCtrl.view.frame;
-        CGFloat y = self.bounds.size.height - 66-6 - rect.size.height;
+        CGFloat y = self.scrollContentView.frame.size.height - 66-6 - rect.size.height;
         rect.origin.y = y;
         _bottomCtrl.view.frame = rect;
-        [self.view addSubview:_bottomCtrl.view];
+        [self.scrollContentView addSubview:_bottomCtrl.view];
     }
     else if ( [signal is:BeeUIBoard.DELETE_VIEWS] )
     {
@@ -89,6 +89,16 @@ ON_SIGNAL2( BeeUIBoard, signal )
     }
     else if ( [signal is:BeeUIBoard.DID_APPEAR] )
     {
+        if (self.view.frame.size.height <= 480)
+        {
+            self.scrollView.frame = CGRectMake(0, 6, 320, 480);
+            self.scrollView.contentSize = CGSizeMake(320, 568);
+        }
+        else
+        {
+            self.scrollView.frame = CGRectMake(0, 6, 320, 568);
+            self.scrollView.contentSize = CGSizeMake(320, 568);
+        }
     }
     else if ( [signal is:BeeUIBoard.WILL_DISAPPEAR] )
     {
