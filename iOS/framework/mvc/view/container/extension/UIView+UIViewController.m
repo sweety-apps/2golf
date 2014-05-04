@@ -80,6 +80,22 @@
 	return nil;
 }
 
+- (BeeUIBoard *)recursiveFindUIBoard
+{
+    UIView * topView = self;
+    
+    while ( topView )
+    {
+        if ([topView board])
+        {
+            return [topView board];
+        }
+        topView = topView.superview;
+    }
+    
+    return nil;
+}
+
 - (UIViewController *)viewController
 {
 	UIView * view = self;

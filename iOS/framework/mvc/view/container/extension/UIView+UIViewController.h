@@ -43,6 +43,8 @@
 @property (nonatomic, retain) BeeUIBoard *			board;
 @property (nonatomic, retain) UIViewController *	viewController;
 
+- (BeeUIBoard *)recursiveFindUIBoard;
+
 @end
 
 #endif	// #if (TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR)

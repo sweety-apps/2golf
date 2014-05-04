@@ -58,14 +58,14 @@ static BMKMapManager* _mapManager = nil;
 - (void)load
 {
     // 要使用百度地图，请先启动BaiduMapManager
-    /*
+    
 	_mapManager = [[[BMKMapManager alloc] init] retain];
 	BOOL ret = [_mapManager start:@"1WYKjnr3bCwVPQbpTr1tGuXU" generalDelegate:self];
     if (!ret) {
 		NSLog(@"manager start failed!");
 	}
     [_mapManager release];
-    */
+    
 	if ( [BeeSystemInfo isDevicePad] )
 	{
 		self.window.rootViewController = [AppBoard_iPhone sharedInstance];

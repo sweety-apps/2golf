@@ -20,6 +20,9 @@
 #import "Placeholder.h"
 #import "ServerConfig.h"
 #import "QiuchangOrderEditBoard_iPhone.h"
+#import "QiuchangVipVerifyBoard_iPhone.h"
+#import "PhotoSlideViewBoard_iPhone.h"
+#import "QiuchangDetailDescriptionBoard_iPhone.h"
 
 #pragma mark -
 
@@ -211,7 +214,15 @@ ON_SIGNAL2( BeeUIScrollView , signal)
 
 - (void)_pressedDetail:(UIButton*)btn
 {
+    //QiuchangDetailDescriptionBoard_iPhone* board = [QiuchangDetailDescriptionBoard_iPhone boardWithNibName:@"QiuchangDetailDescriptionBoard_iPhone"];
+    QiuchangDetailDescriptionBoard_iPhone* board = [QiuchangDetailDescriptionBoard_iPhone board];
+    [[self recursiveFindUIBoard].stack pushBoard:board animated:YES];
+    [board setDataDictionary:self.data];
     
+    /*
+    QiuchangVipVerifyBoard_iPhone* newBoard = [QiuchangVipVerifyBoard_iPhone boardWithNibName:@"QiuchangVipVerifyBoard_iPhone"];
+    [[self recursiveFindUIBoard].stack pushBoard:newBoard animated:YES];
+     */
 }
 
 #pragma mark -
@@ -238,7 +249,7 @@ ON_SIGNAL2( BeeUIScrollView , signal)
 
 #pragma mark -
 
-@interface QuichangDetailBoard_iPhone() <QiuchangDetailPriceContentCell_iPhoneDelegate>
+@interface QuichangDetailBoard_iPhone() <QiuchangDetailPriceContentCell_iPhoneDelegate,QiuchangDetailCollectCellBoard_iPhoneDelegate>
 {
 	BeeUIScrollView *	_scroll;
 }
@@ -247,6 +258,8 @@ ON_SIGNAL2( BeeUIScrollView , signal)
 @property (nonatomic,retain) NSMutableDictionary* dataDict;
 
 @end
+
+#pragma mark -
 
 @implementation QuichangDetailBoard_iPhone
 
@@ -370,6 +383,14 @@ ON_SIGNAL( signal )
     }
 }
 
+ON_SIGNAL2( QiuchangBannerPhotoCell_iPhone, signal )
+{
+    PhotoSlideViewBoard_iPhone * board = [PhotoSlideViewBoard_iPhone board];
+    board.pictures = self.dataDict[@"img"];
+	//board.pageIndex = [self.goodsModel.goods.pictures indexOfObject:photo];
+    [self.stack pushBoard:board animated:YES];
+}
+
 #pragma mark -
 
 - (NSInteger)numberOfViewsInScrollView:(BeeUIScrollView *)scrollView
@@ -452,6 +473,7 @@ ON_SIGNAL( signal )
     //收藏和会员验证
     cell = [[QiuchangDetailCollectCell_iPhone alloc] initWithFrame:CGRectZero];
     cell.data = self.dataDict;
+    ((QiuchangDetailCollectCell_iPhone*)cell).ctrl.delegate = self;
     [self.cellArray addObject:cell];
     
     //底
@@ -523,6 +545,28 @@ ON_SIGNAL( signal )
 {
     QiuchangOrderEditBoard_iPhone* board = [QiuchangOrderEditBoard_iPhone boardWithNibName:@"QiuchangOrderEditBoard_iPhone"];
     [self.stack pushBoard:board animated:YES];
+}
+
+#pragma mark <QiuchangDetailCollectCellBoard_iPhoneDelegate>
+
+- (void)onPressedCollect:(QiuchangDetailCollectCellBoard_iPhone*)board
+{
+    if ([board.collectLabel.text isEqualToString:@"收藏"])
+    {
+        [self presentMessageTips:@"已收藏球场"];
+        board.collectLabel.text = @"已收藏";
+    }
+    else
+    {
+        [self presentMessageTips:@"取消收藏球场"];
+        board.collectLabel.text = @"收藏";
+    }
+}
+
+- (void)onPressedMemberVerify:(QiuchangDetailCollectCellBoard_iPhone*)board
+{
+    QiuchangVipVerifyBoard_iPhone* newBoard = [QiuchangVipVerifyBoard_iPhone boardWithNibName:@"QiuchangVipVerifyBoard_iPhone"];
+    [self.stack pushBoard:newBoard animated:YES];
 }
 
 @end

@@ -16,12 +16,11 @@
 //
 
 #import "QiuchangDetailCollectCellBoard_iPhone.h"
+#import "QiuchangVipVerifyBoard_iPhone.h"
 
 #pragma mark -
 
 @interface QiuchangDetailCollectCell_iPhone ()
-
-@property (nonatomic,retain) QiuchangDetailCollectCellBoard_iPhone* ctrl;
 
 @end
 
@@ -132,6 +131,24 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
 	else if ( [signal is:BeeUINavigationBar.RIGHT_TOUCHED] )
 	{
 	}
+}
+
+#pragma mark -
+
+- (IBAction)pressedCollect:(id)sender
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(onPressedCollect:)])
+    {
+        [self.delegate onPressedCollect:self];
+    }
+}
+
+- (IBAction)pressedVerify:(id)sender
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(onPressedMemberVerify:)])
+    {
+        [self.delegate onPressedMemberVerify:self];
+    }
 }
 
 @end
