@@ -20,6 +20,7 @@
 #import "ServerConfig.h"
 #import "QuichangDetailBoard_iPhone.h"
 #import "SirendingzhiListCellBoard_iPhone.h"
+#import "OtherTripBoard_iPhone.h"
 
 #pragma mark -
 
@@ -148,6 +149,8 @@ ON_SIGNAL( signal )
     if ( [signal is:self.OTHER_TRIP_RIGHT_NAV_BTN] )
     {
         //其他行程填表
+        OtherTripBoard_iPhone* board = [OtherTripBoard_iPhone boardWithNibName:@"OtherTripBoard_iPhone"];
+        [self.stack pushBoard:board animated:YES];
     }
 }
 

@@ -637,6 +637,10 @@
 		F39B60FF1916499100C89F6A /* PhotoSlideViewBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = F39B60FE1916499000C89F6A /* PhotoSlideViewBoard_iPhone.m */; };
 		F39B61021916797600C89F6A /* QiuchangDetailDescriptionBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = F39B61011916797600C89F6A /* QiuchangDetailDescriptionBoard_iPhone.m */; };
 		F39B610419168C9F00C89F6A /* QiuchangDetailDescriptionCell_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = F39B610319168C9F00C89F6A /* QiuchangDetailDescriptionCell_iPhone.xib */; };
+		F39B6148191BDAE500C89F6A /* OtherTripBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = F39B6147191BDAE500C89F6A /* OtherTripBoard_iPhone.m */; };
+		F39B614A191BDAF500C89F6A /* OtherTripBoard_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = F39B6149191BDAF500C89F6A /* OtherTripBoard_iPhone.xib */; };
+		F39B614D191BDD0A00C89F6A /* CommonFillTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = F39B614C191BDD0A00C89F6A /* CommonFillTableCellView.m */; };
+		F39B614F191BF1C700C89F6A /* send_other_trip_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F39B614E191BF1C700C89F6A /* send_other_trip_btn@2x.png */; };
 		F3B5375418FE29FC004E72D4 /* courselisticonguan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3B5373F18FE29FC004E72D4 /* courselisticonguan@2x.png */; };
 		F3B5375518FE29FC004E72D4 /* courselisticonhui@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3B5374018FE29FC004E72D4 /* courselisticonhui@2x.png */; };
 		F3B5375618FE29FC004E72D4 /* courselisticonlist@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3B5374118FE29FC004E72D4 /* courselisticonlist@2x.png */; };
@@ -1804,6 +1808,12 @@
 		F39B61001916797600C89F6A /* QiuchangDetailDescriptionBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuchangDetailDescriptionBoard_iPhone.h; sourceTree = "<group>"; };
 		F39B61011916797600C89F6A /* QiuchangDetailDescriptionBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiuchangDetailDescriptionBoard_iPhone.m; sourceTree = "<group>"; };
 		F39B610319168C9F00C89F6A /* QiuchangDetailDescriptionCell_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QiuchangDetailDescriptionCell_iPhone.xib; sourceTree = "<group>"; };
+		F39B6146191BDAE500C89F6A /* OtherTripBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherTripBoard_iPhone.h; sourceTree = "<group>"; };
+		F39B6147191BDAE500C89F6A /* OtherTripBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherTripBoard_iPhone.m; sourceTree = "<group>"; };
+		F39B6149191BDAF500C89F6A /* OtherTripBoard_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OtherTripBoard_iPhone.xib; sourceTree = "<group>"; };
+		F39B614B191BDD0A00C89F6A /* CommonFillTableCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonFillTableCellView.h; sourceTree = "<group>"; };
+		F39B614C191BDD0A00C89F6A /* CommonFillTableCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonFillTableCellView.m; sourceTree = "<group>"; };
+		F39B614E191BF1C700C89F6A /* send_other_trip_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "send_other_trip_btn@2x.png"; sourceTree = "<group>"; };
 		F3B5373F18FE29FC004E72D4 /* courselisticonguan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "courselisticonguan@2x.png"; sourceTree = "<group>"; };
 		F3B5374018FE29FC004E72D4 /* courselisticonhui@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "courselisticonhui@2x.png"; sourceTree = "<group>"; };
 		F3B5374118FE29FC004E72D4 /* courselisticonlist@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "courselisticonlist@2x.png"; sourceTree = "<group>"; };
@@ -4118,6 +4128,7 @@
 		F3FBB2D5190B7BA6000E9F3F /* sirendingzhi */ = {
 			isa = PBXGroup;
 			children = (
+				F39B614E191BF1C700C89F6A /* send_other_trip_btn@2x.png */,
 				F369682C190C3C420020E991 /* sirendingzhi_cell@2x.png */,
 			);
 			path = sirendingzhi;
@@ -4148,6 +4159,11 @@
 				F3696827190C37F80020E991 /* SirendingzhiListCellBoard_iPhone.h */,
 				F3696828190C37F80020E991 /* SirendingzhiListCellBoard_iPhone.m */,
 				F369682A190C380A0020E991 /* SirendingzhiListCellBoard_iPhone.xib */,
+				F39B6146191BDAE500C89F6A /* OtherTripBoard_iPhone.h */,
+				F39B6147191BDAE500C89F6A /* OtherTripBoard_iPhone.m */,
+				F39B6149191BDAF500C89F6A /* OtherTripBoard_iPhone.xib */,
+				F39B614B191BDD0A00C89F6A /* CommonFillTableCellView.h */,
+				F39B614C191BDD0A00C89F6A /* CommonFillTableCellView.m */,
 			);
 			path = Sirendingzhi;
 			sourceTree = "<group>";
@@ -4283,6 +4299,7 @@
 				CB3775DB17C5FF6F00DF5F21 /* cell-bg-footer@2x.png in Resources */,
 				CB3775DC17C5FF6F00DF5F21 /* cell-bg-header-small@2x.png in Resources */,
 				CB3775DD17C5FF6F00DF5F21 /* cell-bg-header@2x.png in Resources */,
+				F39B614A191BDAF500C89F6A /* OtherTripBoard_iPhone.xib in Resources */,
 				F39B60F91916305300C89F6A /* huiyuanverify@2x.png in Resources */,
 				F3B538DC18FFCD4E004E72D4 /* coursedetailbooking@2x.png in Resources */,
 				F37AA80218E63B45004BE9B2 /* CalendarTodaysDate@2x.png in Resources */,
@@ -4366,6 +4383,7 @@
 				CB37760E17C5FF6F00DF5F21 /* item-info-collection-btn@2x.png in Resources */,
 				F3B5396719011CFE004E72D4 /* order_qiuchang_cell@2x.png in Resources */,
 				F3E4608018DF395400C8E952 /* tabyongpinn@2x.png in Resources */,
+				F39B614F191BF1C700C89F6A /* send_other_trip_btn@2x.png in Resources */,
 				CB37760F17C5FF6F00DF5F21 /* item-info-disabled-btn@2x.png in Resources */,
 				F3B5394A1900C0E9004E72D4 /* QiuchangResultListBoard_iPhone.xib in Resources */,
 				E909CC4C182D0D650095B262 /* RecommendGoodsCell_iPhone.xml in Resources */,
@@ -4728,6 +4746,7 @@
 				E970D6B8182CE4E200146363 /* UICheck+BeeUIStyle.m in Sources */,
 				63023922177C1676004C052D /* OrderModel.m in Sources */,
 				E970D718182CE4E200146363 /* UITextField+BeeUILayout.m in Sources */,
+				F39B6148191BDAE500C89F6A /* OtherTripBoard_iPhone.m in Sources */,
 				E970D79B182CE4E200146363 /* Reachability.m in Sources */,
 				E970D6C9182CE4E200146363 /* UIImageView+UIDataBinding.m in Sources */,
 				E970D6BF182CE4E200146363 /* UIViewController+BeeUIStyle.m in Sources */,
@@ -4858,6 +4877,7 @@
 				E970D77E182CE4E200146363 /* Bee_HTTPConnection2.m in Sources */,
 				E970D68F182CE4E200146363 /* BeeMessage+BackwardCompatible.mm in Sources */,
 				E970D710182CE4E200146363 /* Bee_UILayoutBuilder_v1.m in Sources */,
+				F39B614D191BDD0A00C89F6A /* CommonFillTableCellView.m in Sources */,
 				E970D770182CE4E200146363 /* NSObject+BeeTimer.mm in Sources */,
 				E970D71A182CE4E200146363 /* UIView+BeeUILayout.m in Sources */,
 				E970D6A9182CE4E200146363 /* UIView+UINavigationController.m in Sources */,
