@@ -19,7 +19,20 @@
 
 #pragma mark -
 
+@class QiuchangDetailInfoCell_iPhone;
+
+@protocol QiuchangDetailInfoCell_iPhoneDelegate <NSObject>
+
+- (void)qiuchangDetailInfoCell:(QiuchangDetailInfoCell_iPhone*)cell
+             shouldRefreshData:(long)timestamp;
+
+@end
+
+#pragma mark -
+
 @interface QiuchangDetailInfoCell_iPhone : BeeUICell
+
+@property (nonatomic,assign) id<QiuchangDetailInfoCell_iPhoneDelegate> delegate;
 
 @end
 

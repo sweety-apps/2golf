@@ -215,7 +215,7 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
         if ([view isKindOfClass:[SearchKeywordsCellContainer class]])
         {
             SearchKeywordsCellContainer* container = (SearchKeywordsCellContainer*)view;
-            if ([self.keyWordsArray count] == 0)
+            if ([self.keyWordsArray count] == 1)
             {
                 [container.cell setBeContentS];
             }
@@ -265,7 +265,7 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
 
 - (void)fetchData
 {
-    self.HTTP_GET([[ServerConfig sharedInstance].url stringByAppendingString:@"coursekeyword"]).TIMEOUT(30);
+    self.HTTP_POST([[ServerConfig sharedInstance].url stringByAppendingString:@"coursekeyword"]).PARAM(@"keyword",self.textField.text).TIMEOUT(30);
 }
 
 - (NSDictionary*) commonCheckRequest:(BeeHTTPRequest *)req
@@ -305,7 +305,9 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
             }
             else
             {
-                [self presentFailureTips:__TEXT(@"error_network")];
+                //[self presentFailureTips:__TEXT(@"error_network")];
+                self.keyWordsArray = [NSMutableArray array];
+                [self.tableView reloadData];
             }
         }
         

@@ -27,4 +27,8 @@
 #import "Bee.h"
 
 @interface AppDelegate : BeeUIApplication
+
+- (double)getCurrentLatitude;
+- (double)getCurrentLongitude;
+
 @end

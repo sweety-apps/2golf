@@ -329,22 +329,18 @@ ON_SIGNAL2( QiuchangDetailDescriptionCell_iPhone, signal )
     }
     [self.cellArray removeAllObjects];
     
-    NSString* desStr = @"";
-    
-    for (NSDictionary* d in self.dataDict[@"properties"])
-    {
-        desStr = [desStr stringByAppendingString:d[@"name"]];
-        desStr = [desStr stringByAppendingString:@" : "];
-        desStr = [desStr stringByAppendingString:d[@"value"]];
-        desStr = [desStr stringByAppendingString:@"\n"];
-    }
-    
     QiuchangDetailDescriptionCell_iPhone * cell = nil;
     
     cell = [QiuchangDetailDescriptionCell_iPhone cell];
     cell.data = @{@"title":@"球场简介",
-                      @"contentText":self.dataDict[@"description"],
-                      @"image":@[@"",@"",@""]};
+                  @"contentText":self.dataDict[@"brief"],
+                  @"image":@[@"",@"",@""]};
+    [self.cellArray addObject:cell];
+    
+    cell = [QiuchangDetailDescriptionCell_iPhone cell];
+    cell.data = @{@"title":@"球场电话",
+                  @"contentText":self.dataDict[@"tel"],
+                  @"image":@[@"",@"",@""]};
     [self.cellArray addObject:cell];
     
     cell = [QiuchangDetailDescriptionCell_iPhone cell];
@@ -386,16 +382,27 @@ ON_SIGNAL2( QiuchangDetailDescriptionCell_iPhone, signal )
     }
     imgArr[2] = url;
     
-    
     cell = [QiuchangDetailDescriptionCell_iPhone cell];
     cell.data = @{@"title":@"球道详情",
-                  @"contentText":self.dataDict[@"facilities"],
+                  @"contentText":@"",
                   @"image":imgArr};
     [self.cellArray addObject:cell];
     
     cell = [QiuchangDetailDescriptionCell_iPhone cell];
-    cell.data = @{@"title":@"球场说明",
-                  @"contentText":desStr,
+    cell.data = @{@"title":@"地址",
+                  @"contentText":self.dataDict[@"address"],
+                  @"image":@[@"",@"",@""]};
+    [self.cellArray addObject:cell];
+    
+    cell = [QiuchangDetailDescriptionCell_iPhone cell];
+    cell.data = @{@"title":@"交通方式",
+                  @"contentText":self.dataDict[@"traffic"],
+                  @"image":@[@"",@"",@""]};
+    [self.cellArray addObject:cell];
+    
+    cell = [QiuchangDetailDescriptionCell_iPhone cell];
+    cell.data = @{@"title":@"球场描述",
+                  @"contentText":self.dataDict[@"description"],
                   @"image":@[@"",@"",@""]};
     [self.cellArray addObject:cell];
     

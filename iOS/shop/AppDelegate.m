@@ -24,10 +24,12 @@
  *  Mail:       info@geek-zoo.com
  */
 
+#import <CoreLocation/CoreLocation.h>
 #import "AppDelegate.h"
 #import "AppBoard_iPad.h"
 #import "AppBoard_iPhone.h"
 #import "XGPush.h"
+
 
 #import "BMapKit.h"
 
@@ -35,7 +37,12 @@
 
 #pragma mark -
 
-@interface AppDelegate () <BMKGeneralDelegate>
+@interface AppDelegate () <BMKGeneralDelegate,CLLocationManagerDelegate>
+{
+    double _latitude;
+    double _longitude;
+    CLLocationManager* _locManager;
+}
 
 @end
 
@@ -75,6 +82,9 @@ static BMKMapManager* _mapManager = nil;
 		self.window.rootViewController = [AppBoard_iPhone sharedInstance];
 //		self.window.rootViewController = [TestBoard_iPhone sharedInstance];
 	}
+    
+    _latitude = 114.06667f;
+    _longitude = 22.61667f;
 }
 
 - (void)unload
@@ -97,6 +107,12 @@ static BMKMapManager* _mapManager = nil;
 - (void)onGetPermissionState:(int)iError
 {
     if (0 == iError) {
+        _locManager = [[CLLocationManager alloc] init];
+        _locManager.delegate = self;
+        _locManager.desiredAccuracy = kCLLocationAccuracyBest;
+        [_locManager startUpdatingLocation];
+        _locManager.distanceFilter = 1000.0f;
+        
         NSLog(@"授权成功");
     }
     else {
@@ -120,6 +136,31 @@ static BMKMapManager* _mapManager = nil;
 - (void)application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary*)userInfo
 {
     [XGPush handleReceiveNotification:userInfo];
+}
+
+- (double)getCurrentLatitude
+{
+    return _latitude;
+}
+
+- (double)getCurrentLongitude
+{
+    return _longitude;
+}
+
+#pragma mark <CLLocationManagerDelegate>
+
+- (void)locationManager:(CLLocationManager *)manager
+	 didUpdateLocations:(NSArray *)locations
+{
+    _latitude = _locManager.location.coordinate.latitude;
+    _longitude = _locManager.location.coordinate.longitude;
+}
+
+- (void)locationManager:(CLLocationManager *)manager
+       didFailWithError:(NSError *)error
+{
+    NSLog(@"%@",error);
 }
 
 

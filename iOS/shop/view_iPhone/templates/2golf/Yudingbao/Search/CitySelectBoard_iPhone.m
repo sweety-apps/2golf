@@ -207,7 +207,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
 
 - (void)fetchData
 {
-    self.HTTP_GET([[ServerConfig sharedInstance].url stringByAppendingString:@"province"]).TIMEOUT(30);
+    self.HTTP_POST([[ServerConfig sharedInstance].url stringByAppendingString:@"province"]).TIMEOUT(30);
 }
 
 - (void)handleDatas
@@ -446,7 +446,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
             if ([(dict[@"status"])[@"succeed"] intValue] == 1)
             {
                 self.provinceDataDict = dict;
-                self.HTTP_GET([[ServerConfig sharedInstance].url stringByAppendingString:@"city"]).TIMEOUT(30);
+                self.HTTP_POST([[ServerConfig sharedInstance].url stringByAppendingString:@"city"]).TIMEOUT(30);
             }
             else
             {

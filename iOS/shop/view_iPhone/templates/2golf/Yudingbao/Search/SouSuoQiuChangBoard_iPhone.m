@@ -23,6 +23,7 @@
 #import "QiuchangResultListBoard_iPhone.h"
 #import "CommonUtility.h"
 #import "SouSuoQiuchangBottomViewController.h"
+#import "AppDelegate.h"
 
 #pragma mark -
 
@@ -157,6 +158,25 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
 {
     NSString* str = nil;
     //地区
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"search_local"] == nil)
+    {
+        NSDictionary* loc = @{
+                              @"is_header":@NO,
+                              @"is_city":@NO,
+                              @"city_id":@-1,
+                              @"province_id":@"current",
+                              @"name":@"当前位置",
+                              @"first_letter":@"",
+                              @"pinyin":@"",
+                              @"simple_pin":@"",
+                              @"latitude":[NSNumber numberWithDouble:[((AppDelegate*)[UIApplication sharedApplication].delegate) getCurrentLatitude]],
+                              @"longitude":[NSNumber numberWithDouble:[((AppDelegate*)[UIApplication sharedApplication].delegate) getCurrentLongitude]],
+                              @"course_sum":@0,
+                              @"city_expand":@[],
+                              @"hasExpand":@NO
+                              };
+        [[NSUserDefaults standardUserDefaults] setObject:loc forKey:@"search_local"];
+    }
     str = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_local"][@"name"];
     if ([str length] == 0)
     {
@@ -175,6 +195,7 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
     if (date == nil)
     {
         date = [NSDate date];
+        [[NSUserDefaults standardUserDefaults] setObject:date forKey:@"search_date"];
     }
     str = [NSString stringWithFormat:@"%d年%d月%d日\n%@",[date year],[date month],[date day],[date weekdayChinese]];
     if ([str length] == 0)
@@ -187,6 +208,7 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
     if (date == nil)
     {
         date = [NSDate date];
+        [[NSUserDefaults standardUserDefaults] setObject:date forKey:@"search_time"];
     }
     str = [NSString stringWithFormat:@"%02d:%02d",[date hour],[date minute]];
     if ([str length] == 0)

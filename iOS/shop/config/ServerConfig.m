@@ -33,6 +33,7 @@
 DEF_SINGLETON( ServerConfig )
 
 @synthesize url = _url;
+@synthesize baseUrl = _baseUrl;
 
 - (id)init
 {
@@ -42,6 +43,7 @@ DEF_SINGLETON( ServerConfig )
 		//self.url = @"http://shop.ecmobile.me/ecmobile/?url=";
         //self.url = @"http://localhost/~leejustin/ecshop/upload/ECMobile/?url=";
         self.url = @"http://115.29.144.237/ECMobile/?url=";
+        self.baseUrl = @"http://115.29.144.237";
 	}
 	return self;
 }
@@ -49,6 +51,7 @@ DEF_SINGLETON( ServerConfig )
 - (void)dealloc
 {
 	self.url = nil;
+    self.baseUrl = nil;
 
 	[super dealloc];
 }

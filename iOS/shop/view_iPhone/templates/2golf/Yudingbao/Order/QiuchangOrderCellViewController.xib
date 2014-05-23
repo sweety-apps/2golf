@@ -11,7 +11,9 @@
                 <outlet property="btn2" destination="aW4-KJ-3kA" id="NyF-n8-N8p"/>
                 <outlet property="btn3" destination="dUG-1c-M6Z" id="Zx4-t8-Twp"/>
                 <outlet property="btn4" destination="y1q-Ox-skd" id="pX1-D9-mwd"/>
+                <outlet property="courseNameLbl" destination="q4w-J9-xIU" id="sdj-eP-ChY"/>
                 <outlet property="descriptionTimeLbl" destination="Mnd-hJ-M5M" id="tp5-we-EDX"/>
+                <outlet property="orderIdLbl" destination="UQI-6j-eif" id="r9E-vi-Rze"/>
                 <outlet property="orderTimeLbl" destination="oor-28-InX" id="Hi2-nr-g5A"/>
                 <outlet property="peopleTimeLbl" destination="BXi-RR-6UG" id="i1S-8c-Hec"/>
                 <outlet property="playTimeLbl" destination="u84-Un-Be7" id="BRM-Ma-xw2"/>

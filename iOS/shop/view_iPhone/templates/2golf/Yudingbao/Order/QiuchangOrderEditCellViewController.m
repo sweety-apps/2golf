@@ -18,6 +18,8 @@
 
 @implementation QiuchangOrderEditCell_iPhone
 
+DEF_SIGNAL( TOUCHED )
+
 - (void)load
 {
     [super load];

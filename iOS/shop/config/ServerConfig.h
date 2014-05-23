@@ -30,6 +30,7 @@
 
 AS_SINGLETON( ServerConfig )
 
+@property (nonatomic, retain) NSString * baseUrl;
 @property (nonatomic, retain) NSString * url;
 
 @end

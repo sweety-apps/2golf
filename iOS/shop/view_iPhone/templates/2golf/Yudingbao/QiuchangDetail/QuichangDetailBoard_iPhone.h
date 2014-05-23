@@ -44,6 +44,8 @@ AS_SIGNAL( TOUCHED )
 
 @interface QuichangDetailBoard_iPhone : BeeUIBoard
 
+- (void) setCourseId:(NSString*)courseId;
+
 AS_SIGNAL(DAIL_RIGHT_NAV_BTN);
 
 @end

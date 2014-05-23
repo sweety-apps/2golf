@@ -200,6 +200,7 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
 {
     NSInteger index = btn.tag;
     QuichangDetailBoard_iPhone* board = [QuichangDetailBoard_iPhone boardWithNibName:@"QuichangDetailBoard_iPhone"];
+    [board setCourseId:self.dataArray[index][@"course_id"]];
     [self.stack pushBoard:board animated:YES];
 }
 
@@ -227,34 +228,44 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
     newAnnotation.backgroundColor = RGBA(0, 0, 0, 0.0f);
     //newAnnotation.userInteractionEnabled = YES;
     
-    UIView* bgView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 90, 24)] autorelease];
+    NSInteger index = [[annotation title] integerValue];
+    NSString* text = @"";
+    
+    if (index != NSNotFound)
+    {
+        text = (self.dataArray[index])[@"shortname"];
+    }
+    
+    CGRect rect;
+    
+    rect = CGRectMake(0, 0, 90, 24);
+    rect.size.width = [text sizeWithFont:[UIFont  systemFontOfSize:20.f]].width + 33;
+    UIView* bgView = [[[UIView alloc] initWithFrame:rect] autorelease];
     bgView.backgroundColor = RGBA(0, 0, 0, 0.4f);
     bgView.userInteractionEnabled = YES;
     [newAnnotation addSubview:bgView];
     
-    UILabel* label = [[[UILabel alloc] initWithFrame:CGRectMake(27, 0, 90-27, 24)] autorelease];
+    rect = CGRectMake(27, 0, 90-27, 24);
+    rect.size.width = [text sizeWithFont:[UIFont  systemFontOfSize:20.f]].width + 5;
+    UILabel* label = [[[UILabel alloc] initWithFrame:rect] autorelease];
     label.font = [UIFont systemFontOfSize:20.f];
     label.textColor = [UIColor whiteColor];
     label.textAlignment = NSTextAlignmentCenter;
+    label.text = text;
     [newAnnotation addSubview:label];
     
     UIImageView* iconFlag = [[[UIImageView alloc] initWithImage:__IMAGE(@"select_text_poi")] autorelease];
     iconFlag.frame = CGRectMake(2, 2, iconFlag.frame.size.width, iconFlag.frame.size.height);
     [newAnnotation addSubview:iconFlag];
     
+    rect = bgView.frame;
+    rect.origin = CGPointZero;
     UIButton* btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    btn.frame = CGRectMake(0, 0, 90, 24);
+    btn.frame = rect;
     btn.backgroundColor = [UIColor clearColor];
     [btn addTarget:self action:@selector(_onPressedFlag:) forControlEvents:UIControlEventTouchUpInside];
+    btn.tag = index;
     [newAnnotation addSubview:btn];
-    
-    NSInteger index = [[annotation title] integerValue];
-    
-    if (index != NSNotFound)
-    {
-        btn.tag = index;
-        label.text = (self.dataArray[index])[@"shortname"];
-    }
     
     return newAnnotation;
     

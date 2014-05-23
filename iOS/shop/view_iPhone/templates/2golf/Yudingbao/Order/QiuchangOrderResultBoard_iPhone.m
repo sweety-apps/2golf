@@ -102,4 +102,11 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
     [self.stack popToRootViewControllerAnimated:YES];
 }
 
+#pragma mark -
+
+-(void)setDataDict:(NSDictionary *)dataDict
+{
+    _cell.data = dataDict;
+}
+
 @end

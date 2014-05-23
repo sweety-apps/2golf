@@ -18,6 +18,7 @@
 #import "QiuchangDetailInfoCellBoard_iPhone.h"
 #import "QiuchangResultMapBoard_iPhone.h"
 #import "TimeSquareBoard_iPhone.h"
+#import "CommonUtility.h"
 
 #pragma mark -
 
@@ -139,8 +140,6 @@
     [cancelBtn addTarget:self action:@selector(_onCancelTimeSelect) forControlEvents:UIControlEventTouchUpInside];
     [pickerBg addSubview:cancelBtn];
     
-    
-    
     [pickerBg addSubview:picker];
 }
 
@@ -172,6 +171,10 @@
     [[NSUserDefaults standardUserDefaults] setObject:date forKey:@"search_time"];
     [[pickerView superview] removeFromSuperview];
     [self dataDidChanged];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(qiuchangDetailInfoCell:shouldRefreshData:)])
+    {
+        [self.delegate qiuchangDetailInfoCell:self shouldRefreshData:[CommonUtility getSearchTimeStamp]];
+    }
 }
 
 @end

@@ -19,5 +19,7 @@
 + (double)currentPositionY;
 + (double)currentPositionLatitude;
 + (double)currentPositionLongitude;
++ (long) getSearchTimeStamp;
++ (BOOL) checkLoginAndPresentLoginView;
 
 @end

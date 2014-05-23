@@ -18,6 +18,8 @@
 @property (nonatomic,retain) IBOutlet UIButton* btn3;
 @property (nonatomic,retain) IBOutlet UIButton* btn4;
 
+@property (nonatomic,retain) IBOutlet UILabel* courseNameLbl;
+@property (nonatomic,retain) IBOutlet UILabel* orderIdLbl;
 @property (nonatomic,retain) IBOutlet UILabel* orderTimeLbl;
 @property (nonatomic,retain) IBOutlet UILabel* playTimeLbl;
 @property (nonatomic,retain) IBOutlet UILabel* peopleTimeLbl;

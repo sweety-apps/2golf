@@ -6,8 +6,10 @@
 //  Copyright (c) 2014年 geek-zoo studio. All rights reserved.
 //
 
-#import "CommonUtility.h"
 #import <CoreLocation/CoreLocation.h>
+#import "CommonUtility.h"
+#import "UserModel.h"
+#import "AppBoard_iPhone.h"
 
 #pragma mark -
 
@@ -144,6 +146,42 @@ DEF_SINGLETON( SharedLocaleDelegate )
 + (double)currentPositionLongitude
 {
     return [SharedLocaleDelegate sharedInstance].locLongitude;
+}
+
++ (long) getSearchTimeStamp
+{
+    NSDate* searchDate = nil;
+    //日期
+    NSDate* date = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_date"];
+    if (date == nil)
+    {
+        date = [NSDate date];
+    }
+    
+    int days = [date timeIntervalSince1970] / (3600 * 24);
+    
+    //时间
+    date = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_time"];
+    if (date == nil)
+    {
+        date = [NSDate date];
+    }
+    
+    int time = ((int)[date timeIntervalSince1970]) % (3600 * 24);
+    
+    searchDate = [NSDate dateWithTimeIntervalSince1970:(days * 3600 * 24)+time];
+    
+    return [searchDate timeIntervalSince1970];
+}
+
++ (BOOL) checkLoginAndPresentLoginView
+{
+    if ([UserModel online])
+    {
+        return YES;
+    }
+    [[AppBoard_iPhone sharedInstance] showLogin];
+    return NO;
 }
 
 @end

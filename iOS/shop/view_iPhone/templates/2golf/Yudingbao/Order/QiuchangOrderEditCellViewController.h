@@ -53,6 +53,8 @@
 
 @interface QiuchangOrderEditCell_iPhone : BeeUICell
 
+AS_SIGNAL( TOUCHED )
+
 @property (nonatomic,assign) id<QiuchangOrderEditCell_iPhoneDelegate> delegate;
 @property (nonatomic,retain) QiuchangOrderEditCellViewController* ctrl;
 

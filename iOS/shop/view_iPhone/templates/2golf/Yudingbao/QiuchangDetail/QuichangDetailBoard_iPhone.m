@@ -23,6 +23,7 @@
 #import "QiuchangVipVerifyBoard_iPhone.h"
 #import "PhotoSlideViewBoard_iPhone.h"
 #import "QiuchangDetailDescriptionBoard_iPhone.h"
+#import "CommonUtility.h"
 
 #pragma mark -
 
@@ -249,9 +250,11 @@ ON_SIGNAL2( BeeUIScrollView , signal)
 
 #pragma mark -
 
-@interface QuichangDetailBoard_iPhone() <QiuchangDetailPriceContentCell_iPhoneDelegate,QiuchangDetailCollectCellBoard_iPhoneDelegate>
+@interface QuichangDetailBoard_iPhone() <QiuchangDetailPriceContentCell_iPhoneDelegate,QiuchangDetailCollectCellBoard_iPhoneDelegate,
+    QiuchangDetailInfoCell_iPhoneDelegate>
 {
 	BeeUIScrollView *	_scroll;
+    NSString* _courseId;
 }
 
 @property (nonatomic,retain) NSMutableArray* cellArray;
@@ -274,7 +277,15 @@ DEF_SIGNAL(DAIL_RIGHT_NAV_BTN);
 {
     self.cellArray = nil;
     self.dataDict = nil;
+    [_courseId release];
 	[super unload];
+}
+
+- (void) setCourseId:(NSString*)courseId
+{
+    [courseId retain];
+    [_courseId release];
+    _courseId = courseId;
 }
 
 #pragma mark Signal
@@ -433,6 +444,7 @@ ON_SIGNAL2( QiuchangBannerPhotoCell_iPhone, signal )
     
     //头
     cell = [[QiuchangDetailInfoCell_iPhone alloc] initWithFrame:CGRectZero];
+    ((QiuchangDetailInfoCell_iPhone*)cell).delegate = self;
     cell.data = self.dataDict;
     [self.cellArray addObject:cell];
     
@@ -490,7 +502,8 @@ ON_SIGNAL2( QiuchangBannerPhotoCell_iPhone, signal )
 
 - (void)fetchData
 {
-    self.HTTP_GET([[ServerConfig sharedInstance].url stringByAppendingString:@"coursedetail"]).TIMEOUT(30);
+    NSString* ts = [NSString stringWithFormat:@"%ld",[CommonUtility getSearchTimeStamp]];
+    self.HTTP_POST([[ServerConfig sharedInstance].url stringByAppendingString:@"coursedetail"]).PARAM(@"courseid",_courseId).PARAM(@"timestamp",ts).TIMEOUT(30);
 }
 
 - (NSDictionary*) commonCheckRequest:(BeeHTTPRequest *)req
@@ -545,6 +558,8 @@ ON_SIGNAL2( QiuchangBannerPhotoCell_iPhone, signal )
 {
     QiuchangOrderEditBoard_iPhone* board = [QiuchangOrderEditBoard_iPhone boardWithNibName:@"QiuchangOrderEditBoard_iPhone"];
     [self.stack pushBoard:board animated:YES];
+    [board setUpCourseData:self.dataDict];
+    [board setUpPriceData:cell.data];
 }
 
 #pragma mark <QiuchangDetailCollectCellBoard_iPhoneDelegate>
@@ -567,6 +582,14 @@ ON_SIGNAL2( QiuchangBannerPhotoCell_iPhone, signal )
 {
     QiuchangVipVerifyBoard_iPhone* newBoard = [QiuchangVipVerifyBoard_iPhone boardWithNibName:@"QiuchangVipVerifyBoard_iPhone"];
     [self.stack pushBoard:newBoard animated:YES];
+}
+
+#pragma mark <QiuchangDetailInfoCell_iPhoneDelegate>
+
+- (void)qiuchangDetailInfoCell:(QiuchangDetailInfoCell_iPhone*)cell
+             shouldRefreshData:(long)timestamp
+{
+    [self fetchData];
 }
 
 @end

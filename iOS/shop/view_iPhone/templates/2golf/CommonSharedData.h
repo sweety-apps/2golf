@@ -12,4 +12,8 @@
 
 AS_SINGLETON( CommonSharedData )
 
+- (NSArray*)getContactListNames;
+- (void)setContactListNames:(NSArray*)names;
+- (NSString*)getContactListNamesString;
+
 @end

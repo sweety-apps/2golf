@@ -21,6 +21,7 @@
 
 @interface QiuchangOrderResultBoard_iPhone : BeeUIBoard
 
+@property (nonatomic,retain) NSDictionary* dataDict;
 - (IBAction)pressedBackToHome:(id)sender;
 
 @end

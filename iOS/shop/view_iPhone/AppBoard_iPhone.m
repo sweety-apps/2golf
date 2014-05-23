@@ -41,6 +41,7 @@
 #import "OrdersBoard_iPhone.h"
 #import "AddAddressBoard_iPhone.h"
 #import "AddressListBoard_iPhone.h"
+#import "YongpinbaoMainBoard_iPhone.h"
 #import "CheckoutBoard_iPhone.h"
 #import "CommonUtility.h"
 
@@ -119,7 +120,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
         self.view.backgroundColor = [UIColor whiteColor];
 
 		[[BeeUIRouter sharedInstance] map:self.TAB_HOME toClass:[IndexBoard_iPhone class]];
-		[[BeeUIRouter sharedInstance] map:self.TAB_SEARCH toClass:[SearchBoard_iPhone class]];
+		[[BeeUIRouter sharedInstance] map:self.TAB_SEARCH toClass:[YongpinbaoMainBoard_iPhone class]];
 		[[BeeUIRouter sharedInstance] map:self.TAB_CART toClass:[CartBoard_iPhone class]];
 		[[BeeUIRouter sharedInstance] map:self.TAB_USER toClass:[ProfileBoard_iPhone class]];
         [self.view addSubview:[BeeUIRouter sharedInstance].view];

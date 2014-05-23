@@ -54,6 +54,61 @@
     if (self.data)
     {
         NSDictionary* dict = self.data;
+        self.ctrl.courseNameLbl.text = dict[@"coursename"];
+        self.ctrl.orderIdLbl.text = dict[@"order_sn"];
+        self.ctrl.orderTimeLbl.text = dict[@"createtime"];
+        self.ctrl.playTimeLbl.text = dict[@"playtime"];
+        self.ctrl.peopleTimeLbl.text = dict[@"players"];
+        self.ctrl.descriptionTimeLbl.text = dict[@"cancel_desc"];
+        self.ctrl.priceTimeLbl.text = dict[@"price"];
+        int status = [dict[@"status"] integerValue];
+        switch (status)
+        {
+            case 0:
+            {
+                self.ctrl.stateTimeLbl.text = @"待确认";
+            }
+                break;
+            case 1:
+            {
+                self.ctrl.stateTimeLbl.text = @"待付款";
+            }
+                break;
+            case 2:
+            {
+                self.ctrl.stateTimeLbl.text = @"完成预定";
+            }
+                break;
+            case 3:
+            {
+                self.ctrl.stateTimeLbl.text = @"完成消费";
+            }
+                break;
+            case 4:
+            {
+                self.ctrl.stateTimeLbl.text = @"撤销申请";
+            }
+                break;
+            case 5:
+            {
+                self.ctrl.stateTimeLbl.text = @"已撤销";
+            }
+                break;
+            case 6:
+            {
+                self.ctrl.stateTimeLbl.text = @"已取消";
+            }
+                break;
+            case 7:
+            {
+                self.ctrl.stateTimeLbl.text = @"未到场";
+            }
+                break;
+                
+            default:
+                break;
+        }
+        
     }
 }
 

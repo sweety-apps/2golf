@@ -21,6 +21,7 @@
 
 @interface QiuchangOrderEditBoard_iPhone : BeeUIBoard
 
-- (void)setUpData:(NSDictionary *)dataDict;
+- (void)setUpCourseData:(NSDictionary*)courseDict;
+- (void)setUpPriceData:(NSDictionary *)priceDict;
 
 @end

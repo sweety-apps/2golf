@@ -22,6 +22,7 @@
 #import "CommonUtility.h"
 #import "QiuchangResultMapBoard_iPhone.h"
 #import "QuichangDetailBoard_iPhone.h"
+#import "CommonUtility.h"
 
 #pragma mark -
 
@@ -215,7 +216,14 @@ ON_SIGNAL2( BeeUIBoard, signal )
 
 - (void)fetchData
 {
-    self.HTTP_GET([[ServerConfig sharedInstance].url stringByAppendingString:@"searcharound"]).TIMEOUT(30);
+    NSDictionary* dic = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_local"];
+    self.HTTP_POST([[ServerConfig sharedInstance].url stringByAppendingString:@"searcharound"])
+    .PARAM(@"longitude",dic[@"longitude"])
+    .PARAM(@"latitude",dic[@"latitude"])
+    .PARAM(@"scope",@"50")
+    .PARAM(@"timestamp", [NSString stringWithFormat:@"%ld",[CommonUtility getSearchTimeStamp]])
+    .TIMEOUT(30);
+    
 }
 
 - (NSDictionary*) commonCheckRequest:(BeeHTTPRequest *)req
@@ -252,7 +260,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
             //正确逻辑
             if ([(dict[@"status"])[@"succeed"] intValue] == 1)
             {
-                self.dataArray = [NSMutableArray arrayWithArray:(dict[@"data"])[@"course"]];
+                self.dataArray = [NSMutableArray arrayWithArray:dict[@"data"][@"course"]];
                 self.distanceArray = [NSMutableArray array];
                 for (int i = 0; i < [dataArray count]; ++i)
                 {
@@ -321,7 +329,33 @@ ON_SIGNAL( signal )
     cell.ctrl.distanceLabel.text = [NSString stringWithFormat:@"距离：%.3f公里",[((NSNumber*)(self.distanceArray[index])) doubleValue]/1000.f];
     cell.ctrl.descriptionLabel.text = (self.dataArray[index])[@"slogan"];
     cell.ctrl.valueLabel.text = [NSString stringWithFormat:@"￥%@",(self.dataArray[index])[@"cheapestprice"]];
-    [cell.ctrl.iconImageView GET:((self.dataArray[index])[@"img"])[@"small"] useCache:YES];
+    if ([((self.dataArray[index])[@"img"])[@"small"] count] > 0)
+    {
+        [cell.ctrl.iconImageView GET:((self.dataArray[index])[@"img"])[@"small"] useCache:YES];
+    }
+    else
+    {
+        [cell.ctrl.iconImageView setImage:__IMAGE(@"icon")];
+    }
+    
+    if (self.dataArray[index][@"ispreferential"] && [self.dataArray[index][@"ispreferential"] boolValue])
+    {
+        cell.ctrl.huiIcon.hidden = NO;
+    }
+    else
+    {
+        cell.ctrl.huiIcon.hidden = YES;
+    }
+    
+    if (self.dataArray[index][@"isspotpayment"] && [self.dataArray[index][@"isspotpayment"] boolValue])
+    {
+        cell.ctrl.guanIcon.hidden = NO;
+    }
+    else
+    {
+        cell.ctrl.guanIcon.hidden = YES;
+    }
+    
     cell.ctrl.btn.tag = index;
     [cell.ctrl.btn addTarget:self action:@selector(_onTouchedCell:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -340,6 +374,7 @@ ON_SIGNAL( signal )
     NSInteger index = btn.tag;
     
     QuichangDetailBoard_iPhone* board = [QuichangDetailBoard_iPhone boardWithNibName:@"QuichangDetailBoard_iPhone"];
+    [board setCourseId:self.dataArray[index][@"course_id"]];
     [self.stack pushBoard:board animated:YES];
     
 }

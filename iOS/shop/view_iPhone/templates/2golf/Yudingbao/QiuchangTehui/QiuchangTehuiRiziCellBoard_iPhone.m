@@ -65,7 +65,15 @@ DEF_SIGNAL( TOUCHED )
         self.ctrl.titleLbl.text = dict[@"shortcoursename"];
         self.ctrl.oldPriceLbl.text = [NSString stringWithFormat:@"原价￥%@",dict[@"originalprice"]];
         self.ctrl.newPriceLbl.text = [NSString stringWithFormat:@"￥%@",dict[@"price"]];
-        self.ctrl.desLbl.text = dict[@"dayname"];
+        
+        if (dict[@"dayname"] == [NSNull null])
+        {
+            self.ctrl.desLbl.text = @"普通特惠";
+        }
+        else
+        {
+            self.ctrl.desLbl.text = dict[@"dayname"];
+        }
         
         self.ctrl.xianImg.hidden = YES;
         if ([dict[@"payway"] intValue] == 1)

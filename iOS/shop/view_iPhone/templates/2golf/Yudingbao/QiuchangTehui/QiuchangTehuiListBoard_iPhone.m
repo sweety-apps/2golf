@@ -22,6 +22,8 @@
 #import "ServerConfig.h"
 #import "QuichangDetailBoard_iPhone.h"
 #import "CitySelectBoard_iPhone.h"
+#import "AppDelegate.h"
+#import "CommonUtility.h"
 
 #pragma mark -
 
@@ -124,6 +126,25 @@ ON_SIGNAL2( BeeUIBoard, signal )
         
         NSString* str = nil;
         //地区
+        if ([[NSUserDefaults standardUserDefaults] objectForKey:@"search_local"] == nil)
+        {
+            NSDictionary* loc = @{
+              @"is_header":@NO,
+              @"is_city":@NO,
+              @"city_id":@-1,
+              @"province_id":@"current",
+              @"name":@"当前位置",
+              @"first_letter":@"",
+              @"pinyin":@"",
+              @"simple_pin":@"",
+              @"latitude":[NSNumber numberWithDouble:[((AppDelegate*)[UIApplication sharedApplication].delegate) getCurrentLatitude]],
+              @"longitude":[NSNumber numberWithDouble:[((AppDelegate*)[UIApplication sharedApplication].delegate) getCurrentLongitude]],
+              @"course_sum":@0,
+              @"city_expand":@[],
+              @"hasExpand":@NO
+              };
+            [[NSUserDefaults standardUserDefaults] setObject:loc forKey:@"search_local"];
+        }
         str = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_local"][@"name"];
         if ([str length] == 0 || [str isEqualToString:@"当前位置"])
         {
@@ -173,13 +194,17 @@ ON_SIGNAL( signal )
 
 ON_SIGNAL2( QiuchangTehuiRiziCell_iPhone, signal )
 {
+    int index = ((BeeUICell*)signal.source).tag;
     QuichangDetailBoard_iPhone* board = [QuichangDetailBoard_iPhone boardWithNibName:@"QuichangDetailBoard_iPhone"];
+    [board setCourseId:self.dataDict[@"specialday"][index][@"courseid"]];
     [self.stack pushBoard:board animated:YES];
 }
 
 ON_SIGNAL2( QiuchangTehuiShiduanCell_iPhone, signal )
 {
+    int index = ((BeeUICell*)signal.source).tag;
     QuichangDetailBoard_iPhone* board = [QuichangDetailBoard_iPhone boardWithNibName:@"QuichangDetailBoard_iPhone"];
+    [board setCourseId:self.dataDict[@"teetime"][index][@"courseid"]];
     [self.stack pushBoard:board animated:YES];
 }
 
@@ -218,6 +243,7 @@ ON_SIGNAL2( QiuchangTehuiShiduanCell_iPhone, signal )
         cell = [scrollView dequeueWithContentClass:[QiuchangTehuiRiziCell_iPhone class]];
         cell.data = (self.dataDict[@"specialday"])[index];
     }
+    cell.tag = index;
     
     return cell;
 }
@@ -241,11 +267,23 @@ ON_SIGNAL2( QiuchangTehuiShiduanCell_iPhone, signal )
 {
     if (self.shiduanBtn.selected)
     {
-        self.HTTP_GET([[ServerConfig sharedInstance].url stringByAppendingString:@"searchteetime"]).TIMEOUT(30);
+        NSDictionary* dic = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_local"];
+        self.HTTP_POST([[ServerConfig sharedInstance].url stringByAppendingString:@"searchteetime"])
+        .PARAM(@"longitude",dic[@"longitude"])
+        .PARAM(@"latitude",dic[@"latitude"])
+        .PARAM(@"scope",@"50")
+        .PARAM(@"timestamp", [NSString stringWithFormat:@"%ld",[CommonUtility getSearchTimeStamp]])
+        .TIMEOUT(30);
     }
     else
     {
-        self.HTTP_GET([[ServerConfig sharedInstance].url stringByAppendingString:@"searchspecialday"]).TIMEOUT(30);
+        NSDictionary* dic = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_local"];
+        self.HTTP_POST([[ServerConfig sharedInstance].url stringByAppendingString:@"searchspecialday"])
+        .PARAM(@"longitude",dic[@"longitude"])
+        .PARAM(@"latitude",dic[@"latitude"])
+        .PARAM(@"scope",@"50")
+        .PARAM(@"timestamp", [NSString stringWithFormat:@"%ld",[CommonUtility getSearchTimeStamp]])
+        .TIMEOUT(30);
     }
     
 }

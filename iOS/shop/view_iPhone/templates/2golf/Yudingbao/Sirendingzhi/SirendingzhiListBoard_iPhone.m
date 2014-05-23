@@ -21,6 +21,7 @@
 #import "QuichangDetailBoard_iPhone.h"
 #import "SirendingzhiListCellBoard_iPhone.h"
 #import "OtherTripBoard_iPhone.h"
+#import "SirendingzhiDetailBoard_iPhone.h"
 
 #pragma mark -
 
@@ -156,7 +157,9 @@ ON_SIGNAL( signal )
 
 ON_SIGNAL2( SirendingzhiListCell_iPhone, signal )
 {
-    QuichangDetailBoard_iPhone* board = [QuichangDetailBoard_iPhone boardWithNibName:@"QuichangDetailBoard_iPhone"];
+    int index = ((BeeUICell*)signal.source).tag;
+    SirendingzhiDetailBoard_iPhone* board = [SirendingzhiDetailBoard_iPhone boardWithNibName:@"SirendingzhiDetailBoard_iPhone"];
+    [board setCustomId:self.dataDict[@"privatecustom"][index][@"id"]];
     [self.stack pushBoard:board animated:YES];
 }
 
@@ -180,6 +183,7 @@ ON_SIGNAL2( SirendingzhiListCell_iPhone, signal )
     
     cell = [scrollView dequeueWithContentClass:[SirendingzhiListCell_iPhone class]];
     cell.data = (self.dataDict[@"privatecustom"])[index];
+    cell.tag = index;
     
     return cell;
 }
@@ -201,7 +205,12 @@ ON_SIGNAL2( SirendingzhiListCell_iPhone, signal )
 
 - (void)fetchData
 {
-    self.HTTP_GET([[ServerConfig sharedInstance].url stringByAppendingString:@"privatecustomlist"]).TIMEOUT(30);
+    NSDictionary* dic = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_local"];
+    self.HTTP_POST([[ServerConfig sharedInstance].url stringByAppendingString:@"privatecustomlist"])
+    .PARAM(@"longitude",dic[@"longitude"])
+    .PARAM(@"latitude",dic[@"latitude"])
+    .PARAM(@"scope",@"50")
+    .TIMEOUT(30);
 }
 
 - (NSDictionary*) commonCheckRequest:(BeeHTTPRequest *)req
