@@ -117,7 +117,7 @@ SUPPORT_RESOURCE_LOADING( YES )
     
     self.leftLabel  = [[[UILabel alloc]initWithFrame:CGRectMake(22, 0, 200, 20)] autorelease];
     self.leftLabel.backgroundColor = [UIColor clearColor];
-    self.leftLabel.font = [UIFont systemFontOfSize:13];
+    self.leftLabel.font = [UIFont systemFontOfSize:14];
     self.leftLabel.textColor = [UIColor whiteColor];
     self.leftLabel.textAlignment = NSTextAlignmentLeft;
     self.leftLabel.text = @"";
@@ -125,7 +125,7 @@ SUPPORT_RESOURCE_LOADING( YES )
     
     self.rightLabel  = [[[UILabel alloc]initWithFrame:CGRectMake(256, 0, 100, 20)] autorelease];
     self.rightLabel.backgroundColor = [UIColor clearColor];
-    self.rightLabel.font = [UIFont systemFontOfSize:13];
+    self.rightLabel.font = [UIFont systemFontOfSize:14];
     self.rightLabel.textColor = [UIColor whiteColor];
     self.rightLabel.textAlignment = NSTextAlignmentLeft;
     self.rightLabel.text = @"详情";
@@ -312,7 +312,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
         leftBtn.backgroundColor = [UIColor clearColor];
         gLeftBtn = leftBtn;
         [leftBtn addSignal:self.DAIL_RIGHT_NAV_BTN forControlEvents:UIControlEventTouchUpInside];
-        leftBtn.frame = CGRectMake(-10, 0, 56, 38);
+        leftBtn.frame = CGRectMake(0, 0, 56, 38);
         [leftBtnContainerView addSubview:leftBtn];
         [self showBarButton:BeeUINavigationBar.LEFT custom:leftBtnContainerView];
         //leftBtnContainerView.left = -10;
@@ -329,7 +329,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
         rightBtn.backgroundColor = [UIColor clearColor];
         gRightBtn = rightBtn;
         [rightBtn addSignal:self.DAIL_LEFT_NAV_BTN forControlEvents:UIControlEventTouchUpInside];
-        rightBtn.frame = CGRectMake(-18, 0, 56, 38);
+        rightBtn.frame = CGRectMake(-8, 0, 56, 38);
         [rightBtnContainerView addSubview:rightBtn];
         [self showBarButton:BeeUINavigationBar.RIGHT custom:rightBtnContainerView];
         //rightBtnContainerView.left = -15;

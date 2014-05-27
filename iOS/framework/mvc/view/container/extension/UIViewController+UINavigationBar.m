@@ -286,11 +286,11 @@
 
 			if ( IOS7_OR_LATER )
 			{
-				buttonFrame = CGRectMake(0, 0, buttonSize.width, fminf(barSize.height, buttonSize.height));
+				buttonFrame = CGRectMake(0, 0, buttonSize.width+50, fminf(barSize.height, buttonSize.height));
 			}
 			else
 			{
-				buttonFrame = CGRectMake(0, 0, buttonSize.width, fminf(barSize.height, buttonSize.height));
+				buttonFrame = CGRectMake(0, 0, buttonSize.width+50, fminf(barSize.height, buttonSize.height));
 			}
 
 			if ( buttonFrame.size.width <= BUTTON_MIN_WIDTH )

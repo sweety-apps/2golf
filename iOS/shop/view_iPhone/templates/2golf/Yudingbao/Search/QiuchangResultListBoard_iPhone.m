@@ -147,11 +147,11 @@ ON_SIGNAL2( BeeUIBoard, signal )
         UIView* rightBtnContainerView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 40)] autorelease];
         
         UIImageView* rightIcon = [[[UIImageView alloc] initWithImage:__IMAGE(@"courselisticonmap")] autorelease];
-        rightIcon.frame = CGRectMake(-23, 13, 17, 17);
+        rightIcon.frame = CGRectMake(0, 13, 17, 17);
         rightIcon.contentMode = UIViewContentModeTopLeft;
         [rightBtnContainerView addSubview:rightIcon];
         
-        UILabel* rightLabel = [[[UILabel alloc] initWithFrame:CGRectMake(17-23,13, 50-17, 17)] autorelease];
+        UILabel* rightLabel = [[[UILabel alloc] initWithFrame:CGRectMake(17,13, 50-17, 17)] autorelease];
         rightLabel.textAlignment = NSTextAlignmentLeft;
         rightLabel.backgroundColor = [UIColor clearColor];
         rightLabel.textColor = [UIColor whiteColor];
@@ -164,7 +164,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
         rightBtn.backgroundColor = [UIColor clearColor];
         gRightBtn = rightBtn;
         [rightBtn addSignal:self.DAIL_RIGHT_NAV_BTN forControlEvents:UIControlEventTouchUpInside];
-        rightBtn.frame = CGRectMake(-23, 0, 50, 40);
+        rightBtn.frame = CGRectMake(0, 0, 50, 40);
         [rightBtnContainerView addSubview:rightBtn];
         [self showBarButton:BeeUINavigationBar.RIGHT custom:rightBtnContainerView];
         

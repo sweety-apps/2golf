@@ -58,7 +58,7 @@ DEF_SIGNAL( TOUCHED )
     self.titleLabel.text = @"";
     self.titleLabel.textAlignment = NSTextAlignmentLeft;
 	self.titleLabel.contentMode = UIViewContentModeScaleAspectFill;
-    self.titleLabel.font = [UIFont systemFontOfSize:14.0f];
+    self.titleLabel.font = [UIFont systemFontOfSize:16.0f];
     self.titleLabel.textColor = RGBA(0, 104, 56, 1.0);
 	self.titleLabel.frame = CGRectMake(40, 20, 240, 16);
 	[self addSubview:self.titleLabel];
@@ -67,7 +67,7 @@ DEF_SIGNAL( TOUCHED )
     self.contentLabel.textAlignment = NSTextAlignmentLeft;
     self.contentLabel.text = @"";
 	self.contentLabel.contentMode = UIViewContentModeScaleAspectFill;
-	self.contentLabel.font = [UIFont systemFontOfSize:10.0f];
+	self.contentLabel.font = [UIFont systemFontOfSize:14.0f];
     self.contentLabel.textColor = [UIColor blackColor];
 	self.contentLabel.frame = CGRectMake(40, 20, 240, 16);
     self.contentLabel.numberOfLines = 0;

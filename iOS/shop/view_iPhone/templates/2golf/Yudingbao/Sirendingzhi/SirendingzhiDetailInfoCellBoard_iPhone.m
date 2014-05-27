@@ -51,13 +51,13 @@ SUPPORT_AUTOMATIC_LAYOUT( NO );
     self.titleLabel = [[[UILabel alloc] initWithFrame:CGRectMake(20, 6, 120, 20)] autorelease];
     self.titleLabel.backgroundColor = [UIColor clearColor];
     self.titleLabel.textColor = [UIColor whiteColor];
-    self.titleLabel.font = [UIFont systemFontOfSize:13.f];
+    self.titleLabel.font = [UIFont systemFontOfSize:14.f];
     [self addSubview:self.titleLabel];
     
     self.contentLabel = [[[UILabel alloc] initWithFrame:CGRectMake(20, 30, 280, 20)] autorelease];
     self.contentLabel.backgroundColor = [UIColor clearColor];
     self.contentLabel.textColor = [UIColor blackColor];
-    self.contentLabel.font = [UIFont systemFontOfSize:13.f];
+    self.contentLabel.font = [UIFont systemFontOfSize:14.f];
     [self addSubview:self.contentLabel];
     
     self.bottomLine = [[UIView alloc] initWithFrame:CGRectMake(0, 5, 320, 1)];

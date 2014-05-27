@@ -72,11 +72,11 @@ ON_SIGNAL2( BeeUIBoard, signal )
         CGRect rect;
         UIView* rightBtnContainerView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 40)] autorelease];
         
-        UILabel* rightLabel = [[[UILabel alloc] initWithFrame:CGRectMake(-60,13, 100, 17)] autorelease];
+        UILabel* rightLabel = [[[UILabel alloc] initWithFrame:CGRectMake(-50,13, 100, 17)] autorelease];
         rightLabel.textAlignment = NSTextAlignmentRight;
         rightLabel.backgroundColor = [UIColor clearColor];
         rightLabel.textColor = [UIColor whiteColor];
-        rightLabel.font = [UIFont systemFontOfSize:13];
+        rightLabel.font = [UIFont systemFontOfSize:14];
         rightLabel.text = @"";
         gRightLabel = rightLabel;
         [rightBtnContainerView addSubview:rightLabel];
@@ -86,7 +86,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
         rightBtn.backgroundColor = [UIColor clearColor];
         gRightBtn = rightBtn;
         [rightBtn addSignal:self.LOCAL_RIGHT_NAV_BTN forControlEvents:UIControlEventTouchUpInside];
-        rightBtn.frame = CGRectMake(-23, 0, 50, 40);
+        rightBtn.frame = CGRectMake(0, 0, 50, 40);
         [rightBtnContainerView addSubview:rightBtn];
         [self showBarButton:BeeUINavigationBar.RIGHT custom:rightBtnContainerView];
         

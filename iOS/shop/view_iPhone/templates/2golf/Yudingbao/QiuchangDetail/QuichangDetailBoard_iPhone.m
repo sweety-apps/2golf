@@ -110,22 +110,22 @@ SUPPORT_RESOURCE_LOADING( YES )
     
     self.leftLabel  = [[[UILabel alloc]initWithFrame:CGRectMake(22, 0, 200, 20)] autorelease];
     self.leftLabel.backgroundColor = [UIColor clearColor];
-    self.leftLabel.font = [UIFont systemFontOfSize:13];
+    self.leftLabel.font = [UIFont systemFontOfSize:14];
     self.leftLabel.textColor = [UIColor whiteColor];
     self.leftLabel.textAlignment = NSTextAlignmentLeft;
     self.leftLabel.text = @"";
     [self.shadow addSubview:self.leftLabel];
     
-    self.rightLabel  = [[[UILabel alloc]initWithFrame:CGRectMake(256, 0, 100, 20)] autorelease];
+    self.rightLabel  = [[[UILabel alloc]initWithFrame:CGRectMake(256, 0, 100, 30)] autorelease];
     self.rightLabel.backgroundColor = [UIColor clearColor];
-    self.rightLabel.font = [UIFont systemFontOfSize:13];
+    self.rightLabel.font = [UIFont systemFontOfSize:14];
     self.rightLabel.textColor = [UIColor whiteColor];
     self.rightLabel.textAlignment = NSTextAlignmentLeft;
     self.rightLabel.text = @"详情";
     [self.shadow addSubview:self.rightLabel];
     
     self.arrowImg = [[[UIImageView alloc] initWithImage:__IMAGE(@"expand_left_white")] autorelease];
-    self.arrowImg.frame = CGRectMake(287, 2, self.arrowImg.frame.size.width, self.arrowImg.frame.size.height);
+    self.arrowImg.frame = CGRectMake(287, 8, self.arrowImg.frame.size.width, self.arrowImg.frame.size.height);
     [self.shadow addSubview:self.arrowImg];
     
     self.detailBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -168,7 +168,7 @@ SUPPORT_RESOURCE_LOADING( YES )
     self.scroll.frame = self.bounds;
 	[_scroll reloadData];
     
-    CGRect shadowFrame = CGRectMake(0, self.scroll.height - 20, 320, 20);
+    CGRect shadowFrame = CGRectMake(0, self.scroll.height - 30, 320, 30);
     self.shadow.frame = shadowFrame;
 	
 	CGRect controlFrame;
@@ -307,11 +307,11 @@ ON_SIGNAL2( BeeUIBoard, signal )
         UIView* rightBtnContainerView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 40)] autorelease];
         
         UIImageView* rightIcon = [[[UIImageView alloc] initWithImage:__IMAGE(@"weathericon")] autorelease];
-        rightIcon.frame = CGRectMake(-23, 13, 17, 17);
+        rightIcon.frame = CGRectMake(0, 13, 17, 17);
         rightIcon.contentMode = UIViewContentModeTopLeft;
         [rightBtnContainerView addSubview:rightIcon];
         
-        UILabel* rightLabel = [[[UILabel alloc] initWithFrame:CGRectMake(17-23,13, 50-17, 17)] autorelease];
+        UILabel* rightLabel = [[[UILabel alloc] initWithFrame:CGRectMake(17,13, 50-17, 17)] autorelease];
         rightLabel.textAlignment = NSTextAlignmentLeft;
         rightLabel.backgroundColor = [UIColor clearColor];
         rightLabel.textColor = [UIColor whiteColor];
@@ -324,7 +324,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
         rightBtn.backgroundColor = [UIColor clearColor];
         gRightBtn = rightBtn;
         [rightBtn addSignal:self.DAIL_RIGHT_NAV_BTN forControlEvents:UIControlEventTouchUpInside];
-        rightBtn.frame = CGRectMake(-23, 0, 50, 40);
+        rightBtn.frame = CGRectMake(0, 0, 50, 40);
         [rightBtnContainerView addSubview:rightBtn];
         [self showBarButton:BeeUINavigationBar.RIGHT custom:rightBtnContainerView];
         
@@ -438,7 +438,7 @@ ON_SIGNAL2( QiuchangBannerPhotoCell_iPhone, signal )
     [self.cellArray removeAllObjects];
     
     //banner
-    BeeUICell * cell = [[[QiuchangBannerCell_iPhone alloc] initWithFrame:CGRectMake(0, 0, 320, 86)] autorelease];
+    BeeUICell * cell = [[[QiuchangBannerCell_iPhone alloc] initWithFrame:CGRectMake(0, 0, 320, 106)] autorelease];
     cell.data = self.dataDict;
     [self.cellArray addObject:cell];
     

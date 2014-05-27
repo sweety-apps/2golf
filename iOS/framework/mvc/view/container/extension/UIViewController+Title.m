@@ -81,7 +81,7 @@
 
 - (void)setTitleViewWithIcon:(UIImage *)image andTitleString:(NSString *)text
 {
-    UIFont* font = [UIFont systemFontOfSize:15.0f];
+    UIFont* font = [UIFont systemFontOfSize:18.0f];
     CGSize textSize = [text sizeWithFont:font constrainedToSize:CGSizeMake(120, 999999)];
     CGSize imgSize = [image size];
     CGRect rect = CGRectMake(0, 0, textSize.width+imgSize.width, MAX(textSize.height, imgSize.height));
