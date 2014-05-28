@@ -329,7 +329,7 @@ ON_SIGNAL( signal )
     cell.ctrl.distanceLabel.text = [NSString stringWithFormat:@"距离：%.3f公里",[((NSNumber*)(self.distanceArray[index])) doubleValue]/1000.f];
     cell.ctrl.descriptionLabel.text = (self.dataArray[index])[@"slogan"];
     cell.ctrl.valueLabel.text = [NSString stringWithFormat:@"￥%@",(self.dataArray[index])[@"cheapestprice"]];
-    if ([((self.dataArray[index])[@"img"])[@"small"] count] > 0)
+    if ([((self.dataArray[index])[@"img"])[@"small"] length]>0)
     {
         [cell.ctrl.iconImageView GET:((self.dataArray[index])[@"img"])[@"small"] useCache:YES];
     }

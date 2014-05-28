@@ -29,6 +29,7 @@
 #import "SearchBoard_iPhone.h"
 #import "CartBoard_iPhone.h"
 #import "ProfileBoard_iPhone.h"
+#import "AifenxiangListBoard_iPhone.h"
 
 //#import "SettingBoard_iPhone.h"
 #import "GoodsListBoard_iPhone.h"
@@ -121,7 +122,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
 
 		[[BeeUIRouter sharedInstance] map:self.TAB_HOME toClass:[IndexBoard_iPhone class]];
 		[[BeeUIRouter sharedInstance] map:self.TAB_SEARCH toClass:[YongpinbaoMainBoard_iPhone class]];
-		[[BeeUIRouter sharedInstance] map:self.TAB_CART toClass:[CartBoard_iPhone class]];
+		[[BeeUIRouter sharedInstance] map:self.TAB_CART toClass:[AifenxiangListBoard_iPhone class]];
 		[[BeeUIRouter sharedInstance] map:self.TAB_USER toClass:[ProfileBoard_iPhone class]];
         [self.view addSubview:[BeeUIRouter sharedInstance].view];
 		

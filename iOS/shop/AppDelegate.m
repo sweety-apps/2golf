@@ -30,6 +30,9 @@
 #import "AppBoard_iPhone.h"
 #import "XGPush.h"
 
+#import <ShareSDK/ShareSDK.h>
+#import "WXApi.h"
+#import "WeiboApi.h"
 
 #import "BMapKit.h"
 
@@ -58,6 +61,26 @@ static BMKMapManager* _mapManager = nil;
     [self registerNofitication];
     [XGPush startApp:2200018157 appKey:@"I3VS41E2R8EI"];
 	[XGPush handleLaunching: launchOptions];
+    
+    
+    /**
+     注册SDK应用，此应用请到http://www.sharesdk.cn中进行注册申请。
+     此方法必须在启动时调用，否则会限制SDK的使用。
+     **/
+    [ShareSDK registerApp:@"iosv1101"];
+    
+    //如果使用服务中配置的app信息，请把初始化代码改为下面的初始化方法。
+    //    [ShareSDK registerApp:@"iosv1101" useAppTrusteeship:YES];
+    [self initializePlat];
+    
+    //横屏设置
+    //    [ShareSDK setInterfaceOrientationMask:UIInterfaceOrientationMaskLandscape];
+    
+    //监听用户信息变更
+    [ShareSDK addNotificationWithName:SSN_USER_INFO_UPDATE
+                               target:self
+                               action:@selector(userInfoUpdateHandler:)];
+    
     return YES;
 }
 
@@ -161,6 +184,134 @@ static BMKMapManager* _mapManager = nil;
        didFailWithError:(NSError *)error
 {
     NSLog(@"%@",error);
+}
+
+#pragma mark ShareSDK 相关
+
+- (void)initializePlat
+{
+    /**
+     连接新浪微博开放平台应用以使用相关功能，此应用需要引用SinaWeiboConnection.framework
+     http://open.weibo.com上注册新浪微博开放平台应用，并将相关信息填写到以下字段
+     **/
+    [ShareSDK connectSinaWeiboWithAppKey:@"568898243"
+                               appSecret:@"38a4f8204cc784f81f9f0daaf31e02e3"
+                             redirectUri:@"http://www.sharesdk.cn"];
+    
+    /**
+     连接腾讯微博开放平台应用以使用相关功能，此应用需要引用TencentWeiboConnection.framework
+     http://dev.t.qq.com上注册腾讯微博开放平台应用，并将相关信息填写到以下字段
+     
+     如果需要实现SSO，需要导入libWeiboSDK.a，并引入WBApi.h，将WBApi类型传入接口
+     **/
+    [ShareSDK connectTencentWeiboWithAppKey:@"801307650"
+                                  appSecret:@"ae36f4ee3946e1cbb98d6965b0b2ff5c"
+                                redirectUri:@"http://www.sharesdk.cn"
+                                   wbApiCls:[WeiboApi class]];
+    
+    //连接短信分享
+    [ShareSDK connectSMS];
+    
+    /**
+     连接微信应用以使用相关功能，此应用需要引用WeChatConnection.framework和微信官方SDK
+     http://open.weixin.qq.com上注册应用，并将相关信息填写以下字段
+     **/
+    [ShareSDK connectWeChatWithAppId:@"wx4868b35061f87885" wechatCls:[WXApi class]];
+    
+}
+
+/**
+ *	@brief	托管模式下的初始化平台
+ */
+- (void)initializePlatForTrusteeship
+{
+    //导入腾讯微博需要的外部库类型，如果不需要腾讯微博SSO可以不调用此方法
+    [ShareSDK importTencentWeiboClass:[WeiboApi class]];
+    
+    //导入微信需要的外部库类型，如果不需要微信分享可以不调用此方法
+    [ShareSDK importWeChatClass:[WXApi class]];
+}
+
+- (BOOL)application:(UIApplication *)application
+      handleOpenURL:(NSURL *)url
+{
+    return [ShareSDK handleOpenURL:url
+                        wxDelegate:self];
+}
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation
+{
+    return [ShareSDK handleOpenURL:url
+                 sourceApplication:sourceApplication
+                        annotation:annotation
+                        wxDelegate:self];
+}
+
+- (void)userInfoUpdateHandler:(NSNotification *)notif
+{
+    NSMutableArray *authList = [NSMutableArray arrayWithContentsOfFile:[NSString stringWithFormat:@"%@/authListCache.plist",NSTemporaryDirectory()]];
+    if (authList == nil)
+    {
+        authList = [NSMutableArray array];
+    }
+    
+    NSString *platName = nil;
+    NSInteger plat = [[[notif userInfo] objectForKey:SSK_PLAT] integerValue];
+    switch (plat)
+    {
+        case ShareTypeSinaWeibo:
+            platName = NSLocalizedString(@"TEXT_SINA_WEIBO", @"新浪微博");
+            break;
+       case ShareTypeTencentWeibo:
+            platName = NSLocalizedString(@"TEXT_TENCENT_WEIBO", @"腾讯微博");
+            break;
+        default:
+            platName = NSLocalizedString(@"TEXT_UNKNOWN", @"未知");
+    }
+    
+    id<ISSPlatformUser> userInfo = [[notif userInfo] objectForKey:SSK_USER_INFO];
+    BOOL hasExists = NO;
+    for (int i = 0; i < [authList count]; i++)
+    {
+        NSMutableDictionary *item = [authList objectAtIndex:i];
+        ShareType type = (ShareType)[[item objectForKey:@"type"] integerValue];
+        if (type == plat)
+        {
+            [item setObject:[userInfo nickname] forKey:@"username"];
+            hasExists = YES;
+            break;
+        }
+    }
+    
+    if (!hasExists)
+    {
+        NSDictionary *newItem = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                 platName,
+                                 @"title",
+                                 [NSNumber numberWithInteger:plat],
+                                 @"type",
+                                 [userInfo nickname],
+                                 @"username",
+                                 nil];
+        [authList addObject:newItem];
+    }
+    
+    [authList writeToFile:[NSString stringWithFormat:@"%@/authListCache.plist",NSTemporaryDirectory()] atomically:YES];
+}
+
+#pragma mark - WXApiDelegate
+
+-(void) onReq:(BaseReq*)req
+{
+    
+}
+
+-(void) onResp:(BaseResp*)resp
+{
+    
 }
 
 
