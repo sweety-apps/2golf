@@ -940,7 +940,7 @@ ON_SIGNAL2( BeeUIAlertView, signal)
 {
     if ([signal is:self.DAIL_PHONE_OK])
     {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://10010"]];//打电话
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://4008229222"]];//打电话
     }
 }
 

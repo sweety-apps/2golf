@@ -29,4 +29,7 @@
 
 @interface SigninBoard_iPhone : BaseBoard_iPhone
 AS_SINGLETON( SigninBoard_iPhone )
+
+AS_SIGNAL(DAIL_RIGHT_NAV_BTN)
+
 @end

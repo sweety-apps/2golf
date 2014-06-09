@@ -31,11 +31,17 @@
 #pragma mark -
 
 @interface SignupBoard_iPhone()
+
+@property (nonatomic,retain) NSMutableArray* datas;
+@property (nonatomic,retain) NSMutableArray* inputs;
+
 @end
 
 #pragma mark -
 
 @implementation SignupBoard_iPhone
+
+DEF_SIGNAL(DAIL_RIGHT_NAV_BTN);
 
 SUPPORT_RESOURCE_LOADING( YES )
 
@@ -60,6 +66,8 @@ SUPPORT_RESOURCE_LOADING( YES )
 
 #pragma mark -
 
+static BeeUIButton* gRightBtn = nil;
+
 ON_SIGNAL2( BeeUIBoard, signal )
 {
 	[super handleUISignal_BeeUIBoard:signal];
@@ -69,7 +77,22 @@ ON_SIGNAL2( BeeUIBoard, signal )
 		self.titleString = __TEXT(@"member_signup");
         [self showNavigationBarAnimated:NO];
         [self showBarButton:BeeUINavigationBar.LEFT image:[UIImage imageNamed:@"nav-back.png"]];
-        [self showBarButton:BeeUINavigationBar.RIGHT title:__TEXT(@"register_regist") image:[UIImage imageNamed:@"nav-right.png"]];
+        
+        //右上角购物车按钮
+        UIView* rightBtnContainerView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 40)] autorelease];
+        
+        rightBtnContainerView.backgroundColor = [UIColor clearColor];
+        BeeUIButton* rightBtn = [BeeUIButton buttonWithType:UIButtonTypeCustom];
+        UIImage* image = __IMAGE(@"goodsmyorderbtn");
+        [rightBtn setBackgroundImage:image forState:UIControlStateNormal];
+        [rightBtn setTitleColor:[UIColor whiteColor]];
+        [rightBtn setTitle:__TEXT(@"register_regist") forState:UIControlStateNormal];
+        rightBtn.backgroundColor = [UIColor clearColor];
+        gRightBtn = rightBtn;
+        [rightBtn addSignal:self.DAIL_RIGHT_NAV_BTN forControlEvents:UIControlEventTouchUpInside];
+        rightBtn.frame = CGRectMake(-8, 0, 56, 38);
+        [rightBtnContainerView addSubview:rightBtn];
+        [self showBarButton:BeeUINavigationBar.RIGHT custom:rightBtnContainerView];
         
         [self observeNotification:BeeUIKeyboard.HIDDEN];
         [self observeNotification:BeeUIKeyboard.SHOWN];
@@ -97,6 +120,14 @@ ON_SIGNAL2( BeeUIBoard, signal )
     }
 }
 
+ON_SIGNAL( signal )
+{
+    if ( [signal is:self.DAIL_RIGHT_NAV_BTN] )
+    {
+        [self doRegister];
+    }
+}
+
 ON_SIGNAL2( BeeUINavigationBar, signal )
 {
 	[super handleUISignal:signal];
@@ -107,7 +138,7 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
 	}
 	else if ( [signal is:BeeUINavigationBar.RIGHT_TOUCHED] )
 	{
-		[self doRegister];
+		
 	}
 }
 
@@ -144,7 +175,7 @@ ON_SIGNAL2( BeeUITextField, signal )
         
         if ( index > 4 )
         {
-            [self.table setContentOffset:CGPointMake(0, (index-3) * 45) animated:YES];
+            //[self.table setContentOffset:CGPointMake(0, (index-3) * 45) animated:YES];
         }
     }
 }
@@ -167,7 +198,7 @@ ON_SIGNAL3( SignupBoard_iPhone, signin, signal )
     CGFloat offsetHeight = [BeeSystemInfo isPhoneRetina4] ? 0 : 0;
     
     [UIView animateWithDuration:0.35f animations:^{
-        [self.table setContentInset:UIEdgeInsetsMake(0, 0, keyboardHeight - offsetHeight, 0)];
+        //[self.table setContentInset:UIEdgeInsetsMake(0, 0, keyboardHeight - offsetHeight, 0)];
     }];
 }
 
@@ -180,7 +211,7 @@ ON_SIGNAL3( SignupBoard_iPhone, signin, signal )
     CGFloat offsetHeight = [BeeSystemInfo isPhoneRetina4] ? 0 : 0;
     
     [UIView animateWithDuration:0.35f animations:^{
-        [self.table setContentInset:UIEdgeInsetsMake(0, 0, keyboardHeight - offsetHeight, 0)];
+        //[self.table setContentInset:UIEdgeInsetsMake(0, 0, keyboardHeight - offsetHeight, 0)];
     }];
 }
 
@@ -189,7 +220,7 @@ ON_SIGNAL3( SignupBoard_iPhone, signin, signal )
     [super handleNotification:notification];
     
     [UIView animateWithDuration:0.35f animations:^{
-        [self.table setContentInset:UIEdgeInsetsZero];
+        //[self.table setContentInset:UIEdgeInsetsZero];
     }];
 }
 
@@ -280,43 +311,15 @@ ON_SIGNAL3( SignupBoard_iPhone, signin, signal )
   	NSString * password = nil;
   	NSString * password2 = nil;
     
-    NSArray * cells = self.table.visibleCells;
-    
     NSMutableArray * fields = [NSMutableArray array];
 
-    for ( FormInputCell * cell in cells )
+    userName = $(@"username").text;
+    password = $(@"password").text;
+    password2 = $(@"password2").text;
+    
+    if ([userName length] > 0)
     {
-        if ( [cell.tagString isEqualToString:@"username"] )
-        {
-            userName = cell.input.text.trim;
-        }
-        else if( [cell.tagString isEqualToString:@"email"] )
-        {
-            email = cell.input.text.trim;
-        }
-        else if( [cell.tagString isEqualToString:@"password"] )
-        {
-            password = cell.input.text;
-        }
-        else if( [cell.tagString isEqualToString:@"password2"] )
-        {
-            password2 = cell.input.text;
-        }
-        else
-        {
-            SIGNUP_FIELD * field = (SIGNUP_FIELD *)cell.data;
-
-            if ( field.need.boolValue && cell.input.text.length == 0 )
-            {
-                [self presentMessageTips:[NSString stringWithFormat:@"%@%@", __TEXT(@"please_input"), field.name]];
-                return;
-            }
-            
-            SIGNUP_FIELD_VALUE * fieldValue = [[[SIGNUP_FIELD_VALUE alloc] init] autorelease];
-            fieldValue.id = field.id;
-            fieldValue.value = cell.input.text;
-            [fields addObject:fieldValue];
-        }
+        email = [NSString stringWithFormat:@"%@@2golf.com",userName];
     }
 	
 	if ( 0 == userName.length || NO == [userName isChineseUserName] )

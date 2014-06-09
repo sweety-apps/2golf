@@ -32,13 +32,15 @@
     <linear orientation="v" class="list-wrapper-group">
         <linear orientation="h" class="list-item-header">
             <image class="list-item-header-bg"/>
-            <input id="username" class="input" placeholder="@{login_username}"></input>
+            <input id="username" class="input_phone" placeholder="@{login_username}"></input>
         </linear>
         
+        <!--
         <linear orientation="h" class="list-item-header">
             <image class="list-item-body-bg"/>
             <input id="email" class="input" placeholder="@{register_email}"></input>
         </linear>
+         -->
         
         <linear orientation="h" class="list-item-header">
             <image class="list-item-body-bg"/>
@@ -59,6 +61,19 @@
         
         #password2 {
 			input-secure: yes;
+        }
+        
+        .input_phone {
+        margin-left: 10px;
+        height: 25px;
+        width: 285px;
+        line-height: 25px;
+        font: 20px;
+        input-clear: editing;
+		input-capitalization: none;
+		input-return-key: next;
+		input-keyboard: phone;
+		input-correction: false;
         }
         
         .input {

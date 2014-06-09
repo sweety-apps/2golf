@@ -42,17 +42,55 @@
 
 @implementation ProfileCell_iPhone
 
-SUPPORT_RESOURCE_LOADING( YES )
+SUPPORT_RESOURCE_LOADING(YES);
 
 - (void)load
 {
     [super load];
+    [self checkXMLAndLayout];
+}
+
+- (void)checkXMLAndLayout
+{
+    BOOL needRelayout = NO;
+    NSString* xmlName = nil;
+    
+    if ([UserModel online])
+    {
+        if (self.layout && [self.layout.name isEqualToString:@"ProfileCell_iPhone_Login"]) {
+            needRelayout = NO;
+        }
+        else
+        {
+            needRelayout = YES;
+            xmlName = @"ProfileCell_iPhone_Login.xml";
+        }
+    }
+    else
+    {
+        if (self.layout && [self.layout.name isEqualToString:@"ProfileCell_iPhone_Unlogin"]) {
+            needRelayout = NO;
+        }
+        else
+        {
+            needRelayout = YES;
+            xmlName = @"ProfileCell_iPhone_Unlogin.xml";
+        }
+    }
+    
+    if (needRelayout)
+    {
+        self.FROM_RESOURCE(xmlName);
+        //self.layout.name = xmlName;
+    }
 }
 
 - (void)dataDidChanged
 {
     if ( self.data )
     {
+        [self checkXMLAndLayout];
+        
         UserModel * userModel = self.data;
         
 		if ( [UserModel online] )
@@ -142,11 +180,11 @@ SUPPORT_RESOURCE_LOADING( YES )
             }
             else
             {
-                $(@"#header-level-icon").SHOW();
+                $(@"#header-level-icon").HIDE();
                 $(@"#header-level-icon").DATA( @"profile-vip-icon.png" );
             }
                 
-            $(@"#header-level-name").SHOW();
+            $(@"#header-level-name").HIDE();
             $(@"#header-level-name").DATA( userModel.user.rank_name );
 		}
 		else
@@ -159,9 +197,26 @@ SUPPORT_RESOURCE_LOADING( YES )
 			$(@"#signin").SHOW();
             $(@"#header-level-icon").HIDE();
             $(@"#header-level-name").HIDE();
+            
 		}
     }
 }
+
+@end
+
+@interface ProfileCell_iPhone_Login : ProfileCell_iPhone
+
+@end
+
+@implementation ProfileCell_iPhone_Login
+
+@end
+
+@interface ProfileCell_iPhone_Unlogin : ProfileCell_iPhone
+
+@end
+
+@implementation ProfileCell_iPhone_Unlogin
 
 @end
 
@@ -181,6 +236,9 @@ SUPPORT_RESOURCE_LOADING( YES )
 DEF_SIGNAL( PHOTO_FROM_CAMERA )
 DEF_SIGNAL( PHOTO_FROM_LIBRARY )
 DEF_SIGNAL( PHOTO_REMOVE )
+
+DEF_SIGNAL(DAIL_PHONE_OK);
+DEF_SIGNAL(DAIL_PHONE_NAV_BTN);
 
 - (void)load
 {
@@ -204,23 +262,38 @@ DEF_SIGNAL( PHOTO_REMOVE )
 
 #pragma mark -
 
+static UIImageView* gBarBGView = nil;
+static BeeUIButton* gPhoneBtn = nil;
+
 ON_SIGNAL2( BeeUIBoard, signal )
 {
 	[super handleUISignal_BeeUIBoard:signal];
 	
 	if ( [signal is:BeeUIBoard.CREATE_VIEWS] )
 	{
-        self.titleString = __TEXT(@"profile_personal");
+        [self showNavigationBarAnimated:NO];
+		[self setTitleString:@"爱高"];
+        [self setTitleViewWithIcon:__IMAGE(@"titleicon") andTitleString:@"我的爱高"];
+        
+        UIView* phoneBtnContainerView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)] autorelease];
+        phoneBtnContainerView.backgroundColor = [UIColor clearColor];
+        BeeUIButton* phoneBtn = [BeeUIButton buttonWithType:UIButtonTypeCustom];
+        phoneBtn.image = __IMAGE(@"telephoneicon");
+        gPhoneBtn = phoneBtn;
+        [phoneBtn addSignal:self.DAIL_PHONE_NAV_BTN forControlEvents:UIControlEventTouchUpInside];
+        CGRect rect = phoneBtn.frame;
+        rect.size.height+=6;
+        phoneBtnContainerView.frame = rect;
+        rect = phoneBtn.frame;
+        rect.origin.y+=6;
+        phoneBtn.frame = rect;
+        //[phoneBtnContainerView addSubview:phoneBtn];
+        
+        [self showBarButton:BeeUINavigationBar.RIGHT custom:phoneBtn];
         
 		_scroll = [[BeeUIScrollView alloc] init];
 		_scroll.dataSource = self;
 		[self.view addSubview:_scroll];
-        
-        [self showNavigationBarAnimated:NO];
-        
-        [self showBarButton:BeeUINavigationBar.RIGHT
-                      image:[UIImage imageNamed:@"nav-right.png"]
-					  image:[UIImage imageNamed:@"profile-refresh-site-icon.png"]];
         
         _profile = [[ProfileCell_iPhone alloc] initWithFrame:CGRectZero];
         [_scroll showHeaderLoader:YES animated:YES];
@@ -229,6 +302,17 @@ ON_SIGNAL2( BeeUIBoard, signal )
 		[self observeNotification:UserModel.LOGOUT];
 		[self observeNotification:UserModel.KICKOUT];
 		[self observeNotification:UserModel.UPDATED];
+        
+        //NavigationBar背景太短
+        UIImageView* barBGView = [[[UIImageView alloc] initWithImage:__IMAGE(@"titlebarbg")] autorelease];
+        rect = barBGView.frame;
+        rect.origin.y = 0;
+        barBGView.frame = rect;
+        gBarBGView=barBGView;
+        UINavigationBar* bar = self.navigationController.navigationBar;
+        bar.clipsToBounds = NO;
+        [[bar subviews][0] insertSubview:barBGView atIndex:2];
+        //[bar setFrame:CGRectMake(0, 20, 320, 50)];
 	}
 	else if ( [signal is:BeeUIBoard.DELETE_VIEWS] )
 	{
@@ -356,6 +440,24 @@ ON_SIGNAL2( ProfileBoard_iPhone, signal )
         
 		[self dismissModalViewControllerAnimated:YES];
 	}
+    else if ( [signal is:self.DAIL_PHONE_NAV_BTN] )
+    {
+        BeeUIAlertView * alert = [BeeUIAlertView spawn];
+        //			alert.title = @"提交订单成功";
+        alert.message = @"拨打电话?";
+        [alert addCancelTitle:@"取消"];
+        [alert addButtonTitle:@"拨打" signal:self.DAIL_PHONE_OK];
+        [alert showInViewController:self];
+        
+    }
+}
+
+ON_SIGNAL2( BeeUIAlertView, signal)
+{
+    if ([signal is:self.DAIL_PHONE_OK])
+    {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://4008229222"]];//打电话
+    }
 }
 
 ON_SIGNAL3( ProfileCell_iPhone, signin, signal )
@@ -465,6 +567,21 @@ ON_SIGNAL3( ProfileCell_iPhone, order_finished, signal )
     }
 }
 
+
+ON_SIGNAL3( ProfileCell_iPhone, logout, signal )
+{
+    if ( [signal is:BeeUIButton.TOUCH_UP_INSIDE] )
+    {
+		if ( NO == [UserModel online] )
+		{
+			[self updateState];
+			return;
+		}
+        
+        [self signout];
+    }
+}
+
 ON_SIGNAL3( ProfileCell_iPhone, carema, signal )
 {
     if ( [signal is:BeeUIButton.TOUCH_UP_INSIDE] )
@@ -536,6 +653,15 @@ ON_NOTIFICATION3( UserModel, KICKOUT, notification )
 
 ON_NOTIFICATION3( UserModel, UPDATED, notification )
 {
+}
+
+ON_SIGNAL2( signout_yes, signal )
+{
+	[super handleUISignal:signal];
+    
+    [[UserModel sharedInstance] signout];
+    
+    [self updateState];
 }
 
 - (void)updateState
@@ -683,6 +809,16 @@ ON_NOTIFICATION3( UserModel, UPDATED, notification )
 	}
     
     [self dismissModalViewControllerAnimated:YES];
+}
+
+#pragma mark -
+
+- (void)signout
+{
+	BeeUIActionSheet * sheet = [BeeUIActionSheet spawn];
+	[sheet addButtonTitle:__TEXT(@"signout") signal:@"signout_yes"];
+	[sheet addCancelTitle:__TEXT(@"cancel")];
+	[sheet showInViewController:self];
 }
 
 @end

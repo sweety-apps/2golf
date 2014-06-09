@@ -289,7 +289,6 @@
 		E909CC47182D0D650095B262 /* PayBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = E909CBD5182D0D650095B262 /* PayBoard_iPhone.m */; };
 		E909CC48182D0D650095B262 /* PaymentBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = E909CBD7182D0D650095B262 /* PaymentBoard_iPhone.m */; };
 		E909CC49182D0D650095B262 /* ProfileBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = E909CBD9182D0D650095B262 /* ProfileBoard_iPhone.m */; };
-		E909CC4A182D0D650095B262 /* ProfileCell_iPhone.xml in Resources */ = {isa = PBXBuildFile; fileRef = E909CBDA182D0D650095B262 /* ProfileCell_iPhone.xml */; };
 		E909CC4B182D0D650095B262 /* RecommendCell_iPhone.xml in Resources */ = {isa = PBXBuildFile; fileRef = E909CBDB182D0D650095B262 /* RecommendCell_iPhone.xml */; };
 		E909CC4C182D0D650095B262 /* RecommendGoodsCell_iPhone.xml in Resources */ = {isa = PBXBuildFile; fileRef = E909CBDC182D0D650095B262 /* RecommendGoodsCell_iPhone.xml */; };
 		E909CC4D182D0D650095B262 /* RegionPickBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = E909CBDE182D0D650095B262 /* RegionPickBoard_iPhone.m */; };
@@ -856,6 +855,10 @@
 		F3F0EF801935AFB6004613DA /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = F3F0EF781935AFB6004613DA /* ioapi.c */; };
 		F3F0EF811935AFB6004613DA /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = F3F0EF7A1935AFB6004613DA /* mztools.c */; };
 		F3F0EF821935AFB6004613DA /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = F3F0EF7C1935AFB6004613DA /* unzip.c */; };
+		F3F0EFC219386828004613DA /* profile_img_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3F0EFC119386827004613DA /* profile_img_bg@2x.png */; };
+		F3F0EFC51938827A004613DA /* ProfileCell_iPhone_Login.xml in Resources */ = {isa = PBXBuildFile; fileRef = F3F0EFC31938827A004613DA /* ProfileCell_iPhone_Login.xml */; };
+		F3F0EFC61938827A004613DA /* ProfileCell_iPhone_Unlogin.xml in Resources */ = {isa = PBXBuildFile; fileRef = F3F0EFC41938827A004613DA /* ProfileCell_iPhone_Unlogin.xml */; };
+		F3F0EFC819388D77004613DA /* qrcode@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3F0EFC719388D77004613DA /* qrcode@2x.png */; };
 		F3FBB2C61908F045000E9F3F /* zh-Hans.xml in Resources */ = {isa = PBXBuildFile; fileRef = CB37757317C5FF6F00DF5F21 /* zh-Hans.xml */; };
 		F3FBB2D8190B7F31000E9F3F /* privilegetophighlight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3FBB2D6190B7F31000E9F3F /* privilegetophighlight@2x.png */; };
 		F3FBB2D9190B7F31000E9F3F /* privilegetopnormal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3FBB2D7190B7F31000E9F3F /* privilegetopnormal@2x.png */; };
@@ -1223,9 +1226,8 @@
 		E909CBD5182D0D650095B262 /* PayBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayBoard_iPhone.m; sourceTree = "<group>"; };
 		E909CBD6182D0D650095B262 /* PaymentBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentBoard_iPhone.h; sourceTree = "<group>"; };
 		E909CBD7182D0D650095B262 /* PaymentBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentBoard_iPhone.m; sourceTree = "<group>"; };
-		E909CBD8182D0D650095B262 /* ProfileBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileBoard_iPhone.h; sourceTree = "<group>"; };
-		E909CBD9182D0D650095B262 /* ProfileBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileBoard_iPhone.m; sourceTree = "<group>"; };
-		E909CBDA182D0D650095B262 /* ProfileCell_iPhone.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ProfileCell_iPhone.xml; sourceTree = "<group>"; };
+		E909CBD8182D0D650095B262 /* ProfileBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfileBoard_iPhone.h; path = ../../ProfileBoard_iPhone.h; sourceTree = "<group>"; };
+		E909CBD9182D0D650095B262 /* ProfileBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfileBoard_iPhone.m; path = ../../ProfileBoard_iPhone.m; sourceTree = "<group>"; };
 		E909CBDB182D0D650095B262 /* RecommendCell_iPhone.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = RecommendCell_iPhone.xml; sourceTree = "<group>"; };
 		E909CBDC182D0D650095B262 /* RecommendGoodsCell_iPhone.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = RecommendGoodsCell_iPhone.xml; sourceTree = "<group>"; };
 		E909CBDD182D0D650095B262 /* RegionPickBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegionPickBoard_iPhone.h; sourceTree = "<group>"; };
@@ -1244,12 +1246,12 @@
 		E909CBEA182D0D650095B262 /* ShippedCellFooter_iPhone.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ShippedCellFooter_iPhone.xml; sourceTree = "<group>"; };
 		E909CBEB182D0D650095B262 /* ShippingBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShippingBoard_iPhone.h; sourceTree = "<group>"; };
 		E909CBEC182D0D650095B262 /* ShippingBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShippingBoard_iPhone.m; sourceTree = "<group>"; };
-		E909CBED182D0D650095B262 /* SigninBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SigninBoard_iPhone.h; sourceTree = "<group>"; };
-		E909CBEE182D0D650095B262 /* SigninBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SigninBoard_iPhone.m; sourceTree = "<group>"; };
-		E909CBEF182D0D650095B262 /* SigninBoard_iPhone.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SigninBoard_iPhone.xml; sourceTree = "<group>"; };
-		E909CBF0182D0D650095B262 /* SignupBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupBoard_iPhone.h; sourceTree = "<group>"; };
-		E909CBF1182D0D650095B262 /* SignupBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupBoard_iPhone.m; sourceTree = "<group>"; };
-		E909CBF2182D0D650095B262 /* SignupBoard_iPhone.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SignupBoard_iPhone.xml; sourceTree = "<group>"; };
+		E909CBED182D0D650095B262 /* SigninBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SigninBoard_iPhone.h; path = ../../SigninBoard_iPhone.h; sourceTree = "<group>"; };
+		E909CBEE182D0D650095B262 /* SigninBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SigninBoard_iPhone.m; path = ../../SigninBoard_iPhone.m; sourceTree = "<group>"; };
+		E909CBEF182D0D650095B262 /* SigninBoard_iPhone.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = SigninBoard_iPhone.xml; path = ../../SigninBoard_iPhone.xml; sourceTree = "<group>"; };
+		E909CBF0182D0D650095B262 /* SignupBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SignupBoard_iPhone.h; path = ../../SignupBoard_iPhone.h; sourceTree = "<group>"; };
+		E909CBF1182D0D650095B262 /* SignupBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SignupBoard_iPhone.m; path = ../../SignupBoard_iPhone.m; sourceTree = "<group>"; };
+		E909CBF2182D0D650095B262 /* SignupBoard_iPhone.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = SignupBoard_iPhone.xml; path = ../../SignupBoard_iPhone.xml; sourceTree = "<group>"; };
 		E909CBF3182D0D650095B262 /* SlideBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideBoard_iPhone.h; sourceTree = "<group>"; };
 		E909CBF4182D0D650095B262 /* SlideBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideBoard_iPhone.m; sourceTree = "<group>"; };
 		E9695E16177CA46A00095DE5 /* ExpressModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpressModel.h; sourceTree = "<group>"; };
@@ -2208,6 +2210,10 @@
 		F3F0EF7C1935AFB6004613DA /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
 		F3F0EF7D1935AFB6004613DA /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
 		F3F0EF7F1935AFB6004613DA /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
+		F3F0EFC119386827004613DA /* profile_img_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile_img_bg@2x.png"; sourceTree = "<group>"; };
+		F3F0EFC31938827A004613DA /* ProfileCell_iPhone_Login.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = ProfileCell_iPhone_Login.xml; path = shop/view_iPhone/templates/ProfileCell_iPhone_Login.xml; sourceTree = SOURCE_ROOT; };
+		F3F0EFC41938827A004613DA /* ProfileCell_iPhone_Unlogin.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = ProfileCell_iPhone_Unlogin.xml; path = shop/view_iPhone/templates/ProfileCell_iPhone_Unlogin.xml; sourceTree = SOURCE_ROOT; };
+		F3F0EFC719388D77004613DA /* qrcode@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qrcode@2x.png"; sourceTree = "<group>"; };
 		F3FBB2D6190B7F31000E9F3F /* privilegetophighlight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "privilegetophighlight@2x.png"; sourceTree = "<group>"; };
 		F3FBB2D7190B7F31000E9F3F /* privilegetopnormal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "privilegetopnormal@2x.png"; sourceTree = "<group>"; };
 		F3FBB2DC190B7FFF000E9F3F /* QiuchangTehuiListBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuchangTehuiListBoard_iPhone.h; sourceTree = "<group>"; };
@@ -2505,6 +2511,7 @@
 			isa = PBXGroup;
 			children = (
 				F3E4605B18DF395400C8E952 /* 2golf */,
+				F3F0EFC119386827004613DA /* profile_img_bg@2x.png */,
 				F3C5CD1418F3ADFC00C8DF06 /* normallist_content_bg_h@2x.png */,
 				F3C5CD1518F3ADFC00C8DF06 /* normallist_content_bg_m@2x.png */,
 				F3C5CD1618F3ADFC00C8DF06 /* normallist_content_bg_s@2x.png */,
@@ -2801,9 +2808,6 @@
 				E909CBD5182D0D650095B262 /* PayBoard_iPhone.m */,
 				E909CBD6182D0D650095B262 /* PaymentBoard_iPhone.h */,
 				E909CBD7182D0D650095B262 /* PaymentBoard_iPhone.m */,
-				E909CBD8182D0D650095B262 /* ProfileBoard_iPhone.h */,
-				E909CBD9182D0D650095B262 /* ProfileBoard_iPhone.m */,
-				E909CBDA182D0D650095B262 /* ProfileCell_iPhone.xml */,
 				E909CBDB182D0D650095B262 /* RecommendCell_iPhone.xml */,
 				E909CBDC182D0D650095B262 /* RecommendGoodsCell_iPhone.xml */,
 				E909CBDD182D0D650095B262 /* RegionPickBoard_iPhone.h */,
@@ -2822,12 +2826,6 @@
 				E909CBEA182D0D650095B262 /* ShippedCellFooter_iPhone.xml */,
 				E909CBEB182D0D650095B262 /* ShippingBoard_iPhone.h */,
 				E909CBEC182D0D650095B262 /* ShippingBoard_iPhone.m */,
-				E909CBED182D0D650095B262 /* SigninBoard_iPhone.h */,
-				E909CBEE182D0D650095B262 /* SigninBoard_iPhone.m */,
-				E909CBEF182D0D650095B262 /* SigninBoard_iPhone.xml */,
-				E909CBF0182D0D650095B262 /* SignupBoard_iPhone.h */,
-				E909CBF1182D0D650095B262 /* SignupBoard_iPhone.m */,
-				E909CBF2182D0D650095B262 /* SignupBoard_iPhone.xml */,
 				E909CBF3182D0D650095B262 /* SlideBoard_iPhone.h */,
 				E909CBF4182D0D650095B262 /* SlideBoard_iPhone.m */,
 				F3E4608418DF4A0500C8E952 /* YudingbaoMainCell_iPhone.xml */,
@@ -4129,6 +4127,16 @@
 		F3B5372318FE2588004E72D4 /* MyAigao */ = {
 			isa = PBXGroup;
 			children = (
+				F3F0EFC31938827A004613DA /* ProfileCell_iPhone_Login.xml */,
+				F3F0EFC41938827A004613DA /* ProfileCell_iPhone_Unlogin.xml */,
+				E909CBD8182D0D650095B262 /* ProfileBoard_iPhone.h */,
+				E909CBD9182D0D650095B262 /* ProfileBoard_iPhone.m */,
+				E909CBED182D0D650095B262 /* SigninBoard_iPhone.h */,
+				E909CBEE182D0D650095B262 /* SigninBoard_iPhone.m */,
+				E909CBEF182D0D650095B262 /* SigninBoard_iPhone.xml */,
+				E909CBF0182D0D650095B262 /* SignupBoard_iPhone.h */,
+				E909CBF1182D0D650095B262 /* SignupBoard_iPhone.m */,
+				E909CBF2182D0D650095B262 /* SignupBoard_iPhone.xml */,
 			);
 			path = MyAigao;
 			sourceTree = "<group>";
@@ -4381,6 +4389,7 @@
 		F3E4605B18DF395400C8E952 /* 2golf */ = {
 			isa = PBXGroup;
 			children = (
+				F3F0EFC719388D77004613DA /* qrcode@2x.png */,
 				F319AE17192ED1C500D64FA2 /* aifenxiang */,
 				F319AE18192ED1C500D64FA2 /* yongpinbao */,
 				F3FBB2D4190B7BA6000E9F3F /* qiuchangtehui */,
@@ -4788,6 +4797,8 @@
 				F3B5376118FE29FC004E72D4 /* qcss_time@2x.png in Resources */,
 				63023910177C1676004C052D /* Default.png in Resources */,
 				63023911177C1676004C052D /* Default@2x.png in Resources */,
+				F3F0EFC51938827A004613DA /* ProfileCell_iPhone_Login.xml in Resources */,
+				F3F0EFC61938827A004613DA /* ProfileCell_iPhone_Unlogin.xml in Resources */,
 				63023912177C1676004C052D /* InfoPlist.strings in Resources */,
 				CB60E56A179E2B100094F91C /* icon.png in Resources */,
 				CB60E56C179E2B360094F91C /* icon@2x.png in Resources */,
@@ -4827,6 +4838,7 @@
 				CB3775D117C5FF6F00DF5F21 /* browser-baritem-stop@2x.png in Resources */,
 				F3E4607B18DF395400C8E952 /* tabmyaigolfa@2x.png in Resources */,
 				E909CC42182D0D650095B262 /* OrderCellFooter_iPhone.xml in Resources */,
+				F3F0EFC819388D77004613DA /* qrcode@2x.png in Resources */,
 				F3F0EEB819351884004613DA /* AifenxiangMenuTab.xib in Resources */,
 				CB3775D217C5FF6F00DF5F21 /* button-blue@2x.png in Resources */,
 				F3E4608118DF395400C8E952 /* telephoneicon@2x.png in Resources */,
@@ -4855,7 +4867,6 @@
 				E909CC0E182D0D650095B262 /* CheckoutOrderCellGoods_iPhone.xml in Resources */,
 				CB3775D817C5FF6F00DF5F21 /* cell-bg-content-small@2x.png in Resources */,
 				CB3775D917C5FF6F00DF5F21 /* cell-bg-content@2x.png in Resources */,
-				E909CC4A182D0D650095B262 /* ProfileCell_iPhone.xml in Resources */,
 				E909CC21182D0D650095B262 /* EditAddressCell_iPhone.xml in Resources */,
 				E909CC37182D0D650095B262 /* HelpCell_iPhone.xml in Resources */,
 				F3F0EEBF19351C3C004613DA /* aifenxiangmenubtnn@2x.png in Resources */,
@@ -5020,6 +5031,7 @@
 				F3F0EF5B19358216004613DA /* ShareSDKiPhoneSimpleShareViewUI.bundle in Resources */,
 				CB37762F17C5FF6F00DF5F21 /* searcher-new-voice-btn@2x.png in Resources */,
 				F3B539421900C0E9004E72D4 /* CitySelectBoard_iPhone.xib in Resources */,
+				F3F0EFC219386828004613DA /* profile_img_bg@2x.png in Resources */,
 				CB37763017C5FF6F00DF5F21 /* searcher-new-voice-cont-bg@2x.png in Resources */,
 				CB37763117C5FF6F00DF5F21 /* searcher-new-voice-cont-voice-icon@2x.png in Resources */,
 				E909CC3B182D0D650095B262 /* IndexNotifiCell_iPhone.xml in Resources */,

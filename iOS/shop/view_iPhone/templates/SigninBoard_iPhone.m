@@ -41,6 +41,8 @@
 
 @implementation SigninBoard_iPhone
 
+DEF_SIGNAL(DAIL_RIGHT_NAV_BTN);
+
 SUPPORT_RESOURCE_LOADING( YES )
 SUPPORT_AUTOMATIC_LAYOUT( YES )
 
@@ -58,19 +60,55 @@ DEF_SINGLETON( SigninBoard_iPhone )
 
 #pragma mark -
 
+static UIImageView* gBarBGView = nil;
+static BeeUIButton* gRightBtn = nil;
+static BeeUIButton* gLeftBtn = nil;
+
 ON_SIGNAL2( BeeUIBoard, signal )
 {
 	[super handleUISignal_BeeUIBoard:signal];
 	
 	if ( [signal is:BeeUIBoard.CREATE_VIEWS] )
 	{
-        self.titleString = __TEXT(@"member_signin");
-//		[self showBarButton:BeeUINavigationBar.LEFT image:[UIImage imageNamed:@"nav-back.png"]];
-        [self showBarButton:BeeUINavigationBar.LEFT title:__TEXT(@"cancel") image:[[UIImage imageNamed:@"nav-right.png"] stretched]];
-        [self showBarButton:BeeUINavigationBar.RIGHT title:__TEXT(@"login_login") image:[[UIImage imageNamed:@"nav-right.png"] stretched]];
+        [self showNavigationBarAnimated:NO];
+		[self setTitleString:@"爱高"];
+        [self setTitleViewWithIcon:__IMAGE(@"titleicon") andTitleString:__TEXT(@"member_signin")];
+        
+        [self showBarButton:BeeUINavigationBar.LEFT image:[UIImage imageNamed:@"nav-back.png"]];
+        
+        CGRect rect;
+        
+        //右上角购物车按钮
+        UIView* rightBtnContainerView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 40)] autorelease];
+        
+        rightBtnContainerView.backgroundColor = [UIColor clearColor];
+        BeeUIButton* rightBtn = [BeeUIButton buttonWithType:UIButtonTypeCustom];
+        UIImage* image = __IMAGE(@"goodsmyorderbtn");
+        [rightBtn setBackgroundImage:image forState:UIControlStateNormal];
+        [rightBtn setTitleColor:[UIColor whiteColor]];
+        [rightBtn setTitle:__TEXT(@"login_login") forState:UIControlStateNormal];
+        rightBtn.backgroundColor = [UIColor clearColor];
+        gRightBtn = rightBtn;
+        [rightBtn addSignal:self.DAIL_RIGHT_NAV_BTN forControlEvents:UIControlEventTouchUpInside];
+        rightBtn.frame = CGRectMake(-8, 0, 56, 38);
+        [rightBtnContainerView addSubview:rightBtn];
+        [self showBarButton:BeeUINavigationBar.RIGHT custom:rightBtnContainerView];
+        //rightBtnContainerView.left = -15;
+        
+        //NavigationBar背景太短
+        UIImageView* barBGView = [[[UIImageView alloc] initWithImage:__IMAGE(@"titlebarbg")] autorelease];
+        rect = barBGView.frame;
+        rect.origin.y = 0;
+        barBGView.frame = rect;
+        gBarBGView=barBGView;
+        UINavigationBar* bar = self.navigationController.navigationBar;
+        bar.clipsToBounds = NO;
+        [[bar subviews][0] insertSubview:barBGView atIndex:2];
+        [gBarBGView retain];
 	}
 	else if ( [signal is:BeeUIBoard.DELETE_VIEWS] )
 	{
+        [gBarBGView release];
 	}
 	else if ( [signal is:BeeUIBoard.LAYOUT_VIEWS] )
 	{
@@ -84,6 +122,10 @@ ON_SIGNAL2( BeeUIBoard, signal )
     else if ( [signal is:BeeUIBoard.WILL_APPEAR] )
     {
         [self showNavigationBarAnimated:NO];
+        UINavigationBar* bar = self.navigationController.navigationBar;
+        bar.clipsToBounds = NO;
+        [[bar subviews][0] insertSubview:gBarBGView atIndex:2];
+        
     }
     else if ( [signal is:BeeUIBoard.WILL_DISAPPEAR] )
     {
@@ -100,8 +142,16 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
 	}
 	else if ( [signal is:BeeUINavigationBar.RIGHT_TOUCHED] )
 	{
-		[self doLogin];
+		
 	}
+}
+
+ON_SIGNAL( signal )
+{
+    if ( [signal is:self.DAIL_RIGHT_NAV_BTN] )
+    {
+        [self doLogin];
+    }
 }
 
 ON_SIGNAL2( BeeUITextField, signal )

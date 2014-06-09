@@ -40,6 +40,9 @@ AS_SIGNAL( PHOTO_FROM_CAMERA )
 AS_SIGNAL( PHOTO_FROM_LIBRARY )
 AS_SIGNAL( PHOTO_REMOVE )
 
+AS_SIGNAL(DAIL_PHONE_OK);
+AS_SIGNAL(DAIL_PHONE_NAV_BTN);
+
 @property (nonatomic, retain) HelpModel * helpModel;
 
 @end

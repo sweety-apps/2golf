@@ -54,75 +54,111 @@
         
         <linear orientation="v" class="scroll-wrapper">
                         
-            <linear orientation="h" class="bar-wrapper">
-                <image class="list-large-bg"/>
-                <linear orientation="v" class="bar-item">
-                    <image class="bar-item-icon payment"/>
-                    <label class="bar-item-info" id="await_pay_label">@{profile_obligation}</label>
-                    <linear orientation="v" class="badge-wrapper">
-                        <image id="await_pay-bg" class="badge-wrapper-bg"/>
-                        <label id="await_pay" class="bar-item-badge"></label>
-                    </linear>
-                    <button id="order_await_pay" class="fill"/>
-                </linear>
-                
-                <linear orientation="v" class="bar-item">
-                    <image class="bar-item-icon ship" />
-                    <label class="bar-item-info" id="await_ship_label">@{profile_readyforshipment}</label>
-                    <linear orientation="v" class="badge-wrapper">
-                        <image id="await_ship-bg" class="badge-wrapper-bg"/>
-                        <label id="await_ship" class="bar-item-badge"></label>
-                    </linear>
-                    <button id="order_await_ship" class="fill"/>
-                </linear>
-                
-                <linear orientation="v" class="bar-item">
-                    <image class="bar-item-icon receipt"/>
-                    <label class="bar-item-info" id="shipped_label">@{profile_forthegoods}</label>
-                    <linear orientation="v" class="badge-wrapper">
-                        <image id="shipped-bg" class="badge-wrapper-bg"/>
-                        <label id="shipped" class="bar-item-badge"></label>
-                    </linear>
-                    <button id="order_shipped" class="fill"/>
-                </linear>
-                
-                <linear orientation="v" class="bar-item">
-                    <image class="bar-item-icon history"/>
-                    <label class="bar-item-info" id="finished_label">@{profile_history}</label>
-                    <linear orientation="v" class="badge-wrapper">
-                        <image id="finished-bg" class="badge-wrapper-bg"/>
-                        <label id="finished" class="bar-item-badge"></label>
-                    </linear>
-                    <button id="order_finished" class="fill"/>
-                </linear>
-            </linear>
+                        <linear orientation="h" class="bar-wrapper">
+                            <image class="list-large-bg"/>
+                            <linear orientation="v" class="bar-item">
+                                <image class="bar-item-icon payment"/>
+                                <label class="bar-item-info" id="await_pay_label">@{profile_obligation}</label>
+                                <linear orientation="v" class="badge-wrapper">
+                                    <image id="await_pay-bg" class="badge-wrapper-bg"/>
+                                    <label id="await_pay" class="bar-item-badge"></label>
+                                </linear>
+                                <button id="order_await_pay" class="fill"/>
+                            </linear>
+                            
+                            <linear orientation="v" class="bar-item">
+                                <image class="bar-item-icon ship" />
+                                <label class="bar-item-info" id="await_ship_label">@{profile_readyforshipment}</label>
+                                <linear orientation="v" class="badge-wrapper">
+                                    <image id="await_ship-bg" class="badge-wrapper-bg"/>
+                                    <label id="await_ship" class="bar-item-badge"></label>
+                                </linear>
+                                <button id="order_await_ship" class="fill"/>
+                            </linear>
+                            
+                            <linear orientation="v" class="bar-item">
+                                <image class="bar-item-icon receipt"/>
+                                <label class="bar-item-info" id="shipped_label">@{profile_forthegoods}</label>
+                                <linear orientation="v" class="badge-wrapper">
+                                    <image id="shipped-bg" class="badge-wrapper-bg"/>
+                                    <label id="shipped" class="bar-item-badge"></label>
+                                </linear>
+                                <button id="order_shipped" class="fill"/>
+                            </linear>
+                            
+                            <linear orientation="v" class="bar-item">
+                                <image class="bar-item-icon history"/>
+                                <label class="bar-item-info" id="finished_label">@{profile_history}</label>
+                                <linear orientation="v" class="badge-wrapper">
+                                    <image id="finished-bg" class="badge-wrapper-bg"/>
+                                    <label id="finished" class="bar-item-badge"></label>
+                                </linear>
+                                <button id="order_finished" class="fill"/>
+                            </linear>
+                        </linear>
             
             <linear orientation="v" class="list-wrapper">
                 
-                <linear orientation="h" class="list-item">
+                <linear id="collection_list_item" orientation="h" class="list-item">
                     <image class="list-bg"/>
-                    <label class="list-title">@{collect_myfavorite}</label>
+                    <label class="list-title">我的收藏</label>
                     <label id="fav-count" class="list-subtitle">0</label>
                     <image class="list-indictor"/>
                     <button id="collection" class="fill"/>
                 </linear>
                 
-                <!--linear orientation="h" class="list-item">
+                <linear id="notification_list_item" orientation="h" class="list-item">
                     <image class="list-bg"/>
-                    <label class="list-title">@{profile_message}</label>
-                    <label class="list-subtitle">0</label>
+                    <label class="list-title">消息列表</label>
+                    <label class="list-subtitle"></label>
                     <image class="list-indictor"/>
                     <button id="notification" class="fill"/>
-                </linear-->
+                </linear>
                 
-                <linear orientation="h" class="list-item">
+                <linear id="change_password_list_item" orientation="h" class="list-item">
+                    <image class="list-bg"/>
+                    <label class="list-title">修改密码</label>
+                    <label class="list-subtitle"></label>
+                    <image class="list-indictor"/>
+                    <button id="change_password" class="fill"/>
+                </linear>
+                
+                <linear id="manage_list_item" orientation="h" class="list-item">
                     <image class="list-bg"/>
                     <label class="list-title">@{manage_address}</label>
                     <label class="list-subtitle"></label>
                     <image class="list-indictor"/>
                     <button id="manage" class="fill"/>
                 </linear>
+                
+                <linear id="help_list_item" orientation="h" class="list-item">
+                    <image class="list-bg"/>
+                    <label class="list-title">帮助</label>
+                    <label class="list-subtitle"></label>
+                    <image class="list-indictor"/>
+                    <button id="help" class="fill"/>
+                </linear>
+                
+                <linear id="new_version_list_item" orientation="h" class="list-item">
+                    <image class="list-bg"/>
+                    <label class="list-title">有新版本</label>
+                    <label class="list-subtitle"></label>
+                    <button id="new_version" class="fill"/>
+                </linear>
+                
+                <linear id="logout_list_item" orientation="h" class="list-item">
+                    <image class="list-bg"/>
+                    <label class="list-title">退出当前账户</label>
+                    <label class="list-subtitle"></label>
+                    <button id="logout" class="fill"/>
+                </linear>
+                
+                <linear orientation="h" class="list-item-qrcode">
+                    <image class="list-qrcode"/>
+                </linear>
+                
             </linear>
+            
         </linear>
     </linear>
     
@@ -152,6 +188,16 @@
             height: auto;
         }
         
+        .unlogin {
+            align: center;
+            height: auto;
+        }
+        
+        .login {
+            align: center;
+            height: auto;
+        }
+        
         .list-item {
             margin-top: 10px;
             width: 300px;
@@ -177,6 +223,23 @@
             width: 100px;
             text-align: right;
             height: 20px;
+        }
+        
+        
+        .list-item-qrcode {
+        margin-top: 10px;
+        width: 135px;
+        height: 135px;
+        v-align: center;
+        }
+        
+        .list-qrcode {
+        width: 135px;
+        height: 135px;
+        position: absolute !important;
+        image: url(qrcode.png) !important;
+        image-insets: 10;
+        image-mode: fit;
         }
         
         .list-indictor {
@@ -331,7 +394,7 @@
         .header-name {
             font-size: 13px;
 			font-weight: bold;
-            color: #fff;
+            color: #ffffffff;
             width: auto;
             height: 20px;
             text-align: center;
@@ -387,7 +450,7 @@
             top: 0;
             left: 0;
             background-color: #eee;
-            image-src:url(profile_img_bg.jpg);
+            image-src:url(profile_img_bg.png);
         }
         
         .container {

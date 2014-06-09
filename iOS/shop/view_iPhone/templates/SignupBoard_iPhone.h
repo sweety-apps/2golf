@@ -28,5 +28,8 @@
 #import "BaseBoard_iPhone.h"
 #import "FormView.h"
 
-@interface SignupBoard_iPhone : FormViewBoard
+@interface SignupBoard_iPhone : BaseBoard_iPhone
+
+AS_SIGNAL(DAIL_RIGHT_NAV_BTN);
+
 @end

@@ -33,7 +33,7 @@
 		<linear orientation="h" class="list-item-header">
 			<image class="list-item-header-bg"/>
 			<image class="input-icon-user" />
-			<input id="username" class="input" placeholder="@{login_username}"></input>
+			<input id="username" class="input_phone" placeholder="@{login_username}"></input>
 		</linear>
 		<linear orientation="h" class="list-item-footer">
 			<image class="list-item-footer-bg"/>
@@ -89,6 +89,18 @@
 			width: 40%;
 			background-color: #666;
 		}
+        
+        .input_phone {
+            height: 25px;
+            width: 255px;
+            line-height: 25px;
+            font: 16px;
+            input-clear: editing;
+            input-capitalization: none;
+            input-return-key: next;
+            input-correction: false;
+            input-keyboard: phone;
+        }
         
         .input {
 			height: 25px;
@@ -178,6 +190,17 @@
         background-mode: stretch;
         background-insets: 10px;
         background-image: url(cell-bg-single.png);
+        }
+        
+        .list-item-content-bg {
+        width: 100%;
+        height: 100%;
+        position: absolute !important;
+        top: 0;
+        left: 0;
+        background-mode: stretch;
+        background-insets: 10px;
+        background-image: url(cell-bg-content.png);
         }
         
     </style>
