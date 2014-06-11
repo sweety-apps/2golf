@@ -17,7 +17,7 @@
 
 #import "SirendingzhiDetailHeaderCellBoard_iPhone.h"
 #import "TimeSquareBoard_iPhone.h"
-#import "QiuchangOrderEditBoard_iPhone.h"
+#import "TaocanOrderEditBoard_iPhone.h"
 #import "QuichangDetailBoard_iPhone.h"
 
 #pragma mark -
@@ -63,7 +63,14 @@
         [self.ctrl resetDate];
         
         self.ctrl.leftLabel2.text = [NSString stringWithFormat:@"服务商：%@",dict[@"distributorname"]];
-        self.ctrl.leftLabel3.text = [NSString stringWithFormat:@"套餐价：%@",dict[@"normalprice"]];
+        NSString* price = dict[@"price"];
+        if (price == nil)
+        {
+            price = dict[@"normalprice"];
+        }
+        
+        self.ctrl.leftLabel3.text = [NSString stringWithFormat:@"套餐价：￥%@",price];
+        
         
         self.ctrl.leftLabel4.text = dict[@"coursename"][0];
         self.ctrl.leftLabel5.text = @"往返航班及机票参考价";
@@ -211,7 +218,8 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
 
 - (IBAction)onPressedYudingBtn:(id)sender
 {
-    QiuchangOrderEditBoard_iPhone* board = [QiuchangOrderEditBoard_iPhone boardWithNibName:@"QiuchangOrderEditBoard_iPhone"];
+    TaocanOrderEditBoard_iPhone* board = [TaocanOrderEditBoard_iPhone boardWithNibName:@"TaocanOrderEditBoard_iPhone"];
+    board.dataDict = self.dataDict;
     [[[self.view superview] recursiveFindUIBoard].stack pushBoard:board animated:YES];
 }
 

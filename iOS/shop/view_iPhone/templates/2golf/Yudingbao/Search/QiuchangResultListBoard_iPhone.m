@@ -217,7 +217,13 @@ ON_SIGNAL2( BeeUIBoard, signal )
 - (void)fetchData
 {
     NSDictionary* dic = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_local"];
+    NSString* keywords = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_keywords"];
+    if ([keywords isEqualToString:@"请输入关键字"])
+    {
+        keywords = @"";
+    }
     self.HTTP_POST([[ServerConfig sharedInstance].url stringByAppendingString:@"searcharound"])
+    .PARAM(@"coursename",keywords)
     .PARAM(@"longitude",dic[@"longitude"])
     .PARAM(@"latitude",dic[@"latitude"])
     .PARAM(@"scope",@"50")

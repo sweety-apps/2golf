@@ -195,6 +195,40 @@ DEF_SIGNAL( TOUCHED )
     ctrl.cellBg.image = [__IMAGE(@"normallist_content_bg_h") stretchableImageWithLeftCapWidth:25.f topCapHeight:10.f];
 }
 
+- (void)setContactM
+{
+    QiuchangOrderEditCellViewController* ctrl = self.ctrl;
+    
+    CGFloat moveDown = 0;
+    CGRect rect = CGRectMake(0, 0, 320, 40);
+    rect.origin = CGPointZero;
+    rect.size.height += moveDown;
+    ctrl.view.frame = rect;
+    self.frame = rect;
+    
+    rect.size.height -= moveDown;
+    rect.origin.y +=moveDown;
+    //ctrl.baseView.frame = rect;
+    ctrl.view.frame = rect;
+    
+    ctrl.cellTitle.hidden = NO;
+    ctrl.normalRightTitle.hidden = YES;
+    
+    ctrl.contactArrow.hidden = NO;
+    ctrl.contactBtn.hidden = NO;
+    ctrl.contactRightTitle.hidden = NO;
+    
+    ctrl.numIncreaseBtn.hidden = YES;
+    ctrl.numDecreaseBtn.hidden = YES;
+    ctrl.numLabel.hidden = YES;
+    
+    ctrl.phoneTextField.hidden = YES;
+    
+    ctrl.confirmBtn.hidden = YES;
+    
+    ctrl.cellBg.image = [__IMAGE(@"normallist_content_bg_m") stretchableImageWithLeftCapWidth:25.f topCapHeight:10.f];
+}
+
 - (void)setPhoneNum
 {
     QiuchangOrderEditCellViewController* ctrl = self.ctrl;
@@ -261,6 +295,40 @@ DEF_SIGNAL( TOUCHED )
     ctrl.confirmBtn.hidden = YES;
     
     ctrl.cellBg.image = [__IMAGE(@"normallist_content_bg_t") stretchableImageWithLeftCapWidth:25.f topCapHeight:10.f];
+}
+
+- (void)setPeopleNumM
+{
+    QiuchangOrderEditCellViewController* ctrl = self.ctrl;
+    
+    CGFloat moveDown = 0;
+    CGRect rect = CGRectMake(0, 0, 320, 40);
+    rect.origin = CGPointZero;
+    rect.size.height += moveDown;
+    ctrl.view.frame = rect;
+    self.frame = rect;
+    
+    rect.size.height -= moveDown;
+    rect.origin.y +=moveDown;
+    //ctrl.baseView.frame = rect;
+    ctrl.view.frame = rect;
+    
+    ctrl.cellTitle.hidden = NO;
+    ctrl.normalRightTitle.hidden = YES;
+    
+    ctrl.contactArrow.hidden = YES;
+    ctrl.contactBtn.hidden = YES;
+    ctrl.contactRightTitle.hidden = YES;
+    
+    ctrl.numIncreaseBtn.hidden = NO;
+    ctrl.numDecreaseBtn.hidden = NO;
+    ctrl.numLabel.hidden = NO;
+    
+    ctrl.phoneTextField.hidden = YES;
+    
+    ctrl.confirmBtn.hidden = YES;
+    
+    ctrl.cellBg.image = [__IMAGE(@"normallist_content_bg_m") stretchableImageWithLeftCapWidth:25.f topCapHeight:10.f];
 }
 
 - (void)setConfirm

@@ -21,7 +21,10 @@
 
 @interface OtherTripBoard_iPhone()
 {
-	//<#@private var#>
+    
+    int i_offset;    //偏移量
+    int i_textFieldY;          //textField 的y 值
+    int i_textFieldHeight;    //textField的高度
 }
 @end
 
@@ -48,9 +51,17 @@ ON_SIGNAL2( BeeUIBoard, signal )
         [self showNavigationBarAnimated:NO];
         [self setTitleViewWithIcon:__IMAGE(@"titleicon") andTitleString:@"私人订制"];
         [self showBarButton:BeeUINavigationBar.LEFT image:[UIImage imageNamed:@"nav-back.png"]];
+        
+        i_offset = 0;    //默认偏移量为0
+        i_textFieldY = 0;
+        i_textFieldHeight = 0;
+        
+        //注册键盘监听消息
+        [self registerKeyBoardNotification];
     }
     else if ( [signal is:BeeUIBoard.DELETE_VIEWS] )
     {
+        [[NSNotificationCenter defaultCenter] removeObserver:self];
     }
     else if ( [signal is:BeeUIBoard.LAYOUT_VIEWS] )
     {
@@ -66,6 +77,21 @@ ON_SIGNAL2( BeeUIBoard, signal )
     }
     else if ( [signal is:BeeUIBoard.DID_APPEAR] )
     {
+        self.customerName.delegate = self;
+        self.personNum.delegate = self;
+        self.destination.delegate = self;
+        self.goDate.delegate = self;
+        self.backDate.delegate = self;
+        self.hotelStars.delegate = self;
+        self.hotelRoomModel.delegate = self;
+        self.hotelRoomNum.delegate = self;
+        self.qiuchangName.delegate = self;
+        self.otherNeeds.delegate = self;
+        self.email.delegate = self;
+        self.phoneNum.delegate = self;
+        
+        self.scrollView.scrollEnabled = YES;
+        self.scrollView.contentSize = CGSizeMake(320, 800);
     }
     else if ( [signal is:BeeUIBoard.WILL_DISAPPEAR] )
     {
@@ -92,8 +118,129 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
 
 - (IBAction)onPressedSend:(id)sender
 {
+    NSArray* textFeilds = @[
+                            self.customerName,
+                            self.personNum,
+                            self.destination,
+                            self.goDate,
+                            self.backDate,
+                            self.hotelStars,
+                            self.hotelRoomModel,
+                            self.hotelRoomNum,
+                            self.qiuchangName,
+                            self.otherNeeds,
+                            self.email,
+                            self.phoneNum
+                            ];
+    
+    for (UITextField* tf in textFeilds)
+    {
+        if ([tf.text length] == 0)
+        {
+            [self presentFailureTips:@"请完整填写后再提交"];
+            return;
+        }
+    }
+    
     [[BeeUITipsCenter sharedInstance] presentMessageTips:@"行程表格已提交" inView:[[UIApplication sharedApplication] keyWindow]];
     [self.stack popBoardAnimated:YES];
+}
+
+#pragma mark- 键盘通知事件 ［核心代码］
+
+
+//注册键盘监听消息
+-(void)registerKeyBoardNotification
+{
+    return;
+    //增加监听，当键盘出现或改变时收出消息    ［核心代码］
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    
+    //增加监听，当键退出时收出消息
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+    // 键盘高度变化通知，ios5.0新增的
+#ifdef __IPHONE_5_0
+    float version = [[[UIDevice currentDevice] systemVersion] floatValue];
+    if (version >= 5.0) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillChangeFrameNotification object:nil];
+    }
+#endif
+}
+
+
+//当键盘出现或改变时调用
+- (void)keyboardWillShow:(NSNotification *)aNotification
+{
+    //获取键盘的高度
+    //NSDictionary *userInfo = [aNotification userInfo];
+    //NSValue *aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
+    CGRect keyboardRect = CGRectMake(0, 0, 320, 246);
+    int keyboardHeight = keyboardRect.size.height;
+    
+    //计算偏移量
+    i_offset = i_textFieldY - 40;//keyboardHeight - (self.view.frame.size.height-(i_textFieldY+i_textFieldHeight));
+    
+    //进行偏移
+    NSTimeInterval animationDuration = 0.30f;
+    [UIView beginAnimations:@"ResizeForKeyBoard" context:nil];
+    [UIView setAnimationDuration:animationDuration];
+    float width = self.view.frame.size.width;
+    float height = self.view.frame.size.height;
+    if(i_offset > 0)
+    {
+        CGRect rect = CGRectMake(0.0f,i_offset,width,height); //把整个view 往上提，肯定要用负数 y
+        [self.scrollView setContentOffset:rect.origin animated:YES];;
+    }
+    
+    [UIView commitAnimations];
+}
+
+//当键退出时调用
+- (void)keyboardWillHide:(NSNotification *)aNotification
+{
+    if(NO && i_offset > 0)
+    {
+        //恢复到偏移前的正常量
+        NSTimeInterval animationDuration = 0.30f;
+        [UIView beginAnimations:@"ResizeForKeyBoard" context:nil];
+        [UIView setAnimationDuration:animationDuration];
+        float width = self.view.frame.size.width;
+        float height = self.view.frame.size.height;
+        CGRect rect = CGRectMake(0.0f,20,width,height); //把整个view 往上提，肯定要用负数 y   注意self.view 的y 是从20开始的，即StautsBarHeight
+        self.view.frame = rect;
+        
+        [UIView commitAnimations];
+    }
+    
+    i_offset = 0;
+}
+
+#pragma mark <UITextFieldDelegate>
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    i_textFieldY = [textField convertRect:textField.frame toView:self.scrollContentView].origin.y;
+    i_textFieldHeight = textField.size.height;
+    //[self keyboardWillHide:nil];
+    [self keyboardWillShow:nil];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    [self keyboardWillHide:nil];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    
+    return YES;
 }
 
 @end

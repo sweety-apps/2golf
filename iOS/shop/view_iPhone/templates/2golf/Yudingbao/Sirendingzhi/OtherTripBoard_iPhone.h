@@ -19,7 +19,7 @@
 
 #pragma mark -
 
-@interface OtherTripBoard_iPhone : BeeUIBoard
+@interface OtherTripBoard_iPhone : BeeUIBoard <UITextFieldDelegate>
 
 @property (nonatomic,retain) IBOutlet UITextField* customerName;
 @property (nonatomic,retain) IBOutlet UITextField* personNum;
@@ -34,6 +34,10 @@
 @property (nonatomic,retain) IBOutlet UITextField* email;
 @property (nonatomic,retain) IBOutlet UITextField* phoneNum;
 @property (nonatomic,retain) IBOutlet UISwitch* needCar;
+
+@property (nonatomic,retain) IBOutlet UIView* scrollContentView;
+
+@property (nonatomic,retain) IBOutlet UIScrollView* scrollView;
 
 - (IBAction)onPressedSend:(id)sender;
 

@@ -8,6 +8,26 @@
 
 #import "Bee.h"
 
+typedef enum : NSUInteger {
+    EOrderCellTypeCourse,
+    EOrderCellTypeTaocan
+} EOrderCellType;
+
+@class QiuchangOrderCell_iPhone;
+
+@protocol QiuchangOrderCell_iPhoneDelegate <NSObject>
+
+- (void)QiuchangOrderCell_iPhone:(QiuchangOrderCell_iPhone*)cell
+                 onPressedCancel:(NSDictionary*)data;
+- (void)QiuchangOrderCell_iPhone:(QiuchangOrderCell_iPhone*)cell
+                 onPressedShare:(NSDictionary*)data;
+- (void)QiuchangOrderCell_iPhone:(QiuchangOrderCell_iPhone*)cell
+                 onPressedPay:(NSDictionary*)data;
+- (void)QiuchangOrderCell_iPhone:(QiuchangOrderCell_iPhone*)cell
+                    onPressedQiuchang:(NSDictionary*)data;
+
+@end
+
 
 #pragma mark -
 
@@ -27,6 +47,9 @@
 @property (nonatomic,retain) IBOutlet UILabel* priceTimeLbl;
 @property (nonatomic,retain) IBOutlet UILabel* stateTimeLbl;
 
+@property (nonatomic,retain) IBOutlet UILabel* playTimeTitleLbl;
+@property (nonatomic,retain) IBOutlet UILabel* peopleTimeTitleLbl;
+
 @end
 
 
@@ -34,6 +57,12 @@
 
 @interface QiuchangOrderCell_iPhone : BeeUICell
 
++ (CGSize)getCellSize;
+
 @property (nonatomic,retain) QiuchangOrderCellViewController* ctrl;
+@property (nonatomic,assign) id<QiuchangOrderCell_iPhoneDelegate> delegate;
+@property (nonatomic,assign) EOrderCellType orderCellType;
+
+- (void)shareOrder:(NSDictionary*)dict;
 
 @end

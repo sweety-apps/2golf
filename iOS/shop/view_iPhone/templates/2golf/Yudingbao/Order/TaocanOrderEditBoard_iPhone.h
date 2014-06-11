@@ -8,10 +8,10 @@
 //	Powered by BeeFramework
 //
 //
-//  QiuchangOrderResultBoard_iPhone.h
+//  TaocanOrderEditBoard_iPhone.h
 //  2golf
 //
-//  Created by Lee Justin on 14-4-18.
+//  Created by Lee Justin on 14-6-9.
 //  Copyright (c) 2014年 geek-zoo studio. All rights reserved.
 //
 
@@ -19,9 +19,8 @@
 
 #pragma mark -
 
-@interface QiuchangOrderResultBoard_iPhone : BeeUIBoard
+@interface TaocanOrderEditBoard_iPhone : BeeUIBoard
 
-@property (nonatomic,retain) NSMutableDictionary* dataDict;
-- (IBAction)pressedBackToHome:(id)sender;
+@property (nonatomic,retain) NSDictionary* dataDict;
 
 @end

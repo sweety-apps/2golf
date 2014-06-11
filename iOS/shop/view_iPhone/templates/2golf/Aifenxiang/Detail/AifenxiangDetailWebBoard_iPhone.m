@@ -300,10 +300,26 @@ ON_SIGNAL2( BeeUIWebView, signal )
 {
     NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"" ofType:@"jpg"];
     
-    NSString* title = self.summaryDataDict[@"title"];
-    NSString* url = [[ServerConfig sharedInstance].baseUrl stringByAppendingFormat:@"/article.php?id=%@",self.detailID];
-    NSString* summary = self.summaryDataDict[@"summary"];
-    NSString* imageUrl = self.summaryDataDict[@"imgurl"];
+    NSString* title = nil;
+    NSString* url = nil;
+    NSString* summary = nil;
+    NSString* imageUrl = nil;
+    
+    if (self.summaryDataDict)
+    {
+        title = self.summaryDataDict[@"title"];
+        url = [[ServerConfig sharedInstance].baseUrl stringByAppendingFormat:@"/article.php?id=%@",self.detailID];
+        summary = self.summaryDataDict[@"summary"];
+        imageUrl = self.summaryDataDict[@"imgurl"];
+    }
+    else
+    {
+        title = self.title;
+        url = [[ServerConfig sharedInstance].baseUrl stringByAppendingFormat:@"/article.php?id=%@",self.detailID];
+        summary = @"";
+        imageUrl = [[NSURL URLWithString:self.summaryDataDict[@"imgurl"]] absoluteString];
+    }
+    
     
     if ([summary length] == 0)
     {

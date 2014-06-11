@@ -39,6 +39,12 @@
 #import "SouSuoQiuChangBoard_iPhone.h"
 #import "QiuchangTehuiListBoard_iPhone.h"
 #import "SirendingzhiListBoard_iPhone.h"
+#import "QuichangDetailBoard_iPhone.h"
+#import "SirendingzhiDetailBoard_iPhone.h"
+#import "GoodsDetailBoard_iPhone.h"
+#import "AifenxiangDetailWebBoard_iPhone.h"
+
+#import "ServerConfig.h"
 
 #pragma mark -
 
@@ -82,10 +88,10 @@ DEF_SIGNAL( TOUCHED )
 
 - (void)dataDidChanged
 {
-	BANNER * banner = self.data;
+	NSDictionary * banner = self.data;
 	if ( banner )
 	{
-		_image.url = banner.photo.largeURL;
+		_image.url = banner[@"photo"][@"url"];
 	}
 }
 
@@ -191,7 +197,7 @@ ON_SIGNAL2( BeeUIScrollView , signal)
 
 - (UIView *)scrollView:(BeeUIScrollView *)scrollView viewForIndex:(NSInteger)index scale:(CGFloat)scale
 {
-	BANNER * banner = [(NSArray *)self.data safeObjectAtIndex:index];
+	NSDictionary* banner = [(NSArray *)self.data safeObjectAtIndex:index];
 	if ( banner )
 	{
 		BannerPhotoCell_iPhone * cell = [scrollView dequeueWithContentClass:[BannerPhotoCell_iPhone class]];
@@ -603,6 +609,9 @@ ON_SIGNAL2( BeeUIButton, signal )
 {
 	BeeUIScrollView *	_scroll;
 }
+
+@property (nonatomic,retain) NSArray* bannerDataArray;
+
 @end
 
 #pragma mark -
@@ -710,6 +719,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
     }
     else if ( [signal is:BeeUIBoard.LOAD_DATAS] )
     {
+        [self fetchBanner];
         [self.model1 loadCache];
 		[self.model2 loadCache];
 //		[self.model3 loadCache];
@@ -795,7 +805,7 @@ ON_SIGNAL2( BannerPhotoCell_iPhone, signal )
 {	
 	[super handleUISignal:signal];
 	
-    BANNER * banner = signal.sourceCell.data;
+    NSDictionary * banner = signal.sourceCell.data;
 
     // TODO: for test to be removed
 //    banner.action = BANNER_ACTION_GOODS;
@@ -809,34 +819,39 @@ ON_SIGNAL2( BannerPhotoCell_iPhone, signal )
     
 	if ( banner )
 	{
-        if ( [banner.action isEqualToString:BANNER_ACTION_GOODS] )
+        if ( [banner[@"type"] intValue] == 0 )
         {
+            //球场
+            QuichangDetailBoard_iPhone * board = [QuichangDetailBoard_iPhone boardWithNibName:@"QuichangDetailBoard_iPhone"];
+            [board setCourseId:banner[@"id"]];
+            [self.stack pushBoard:board animated:YES];
+        }
+        else if ( [banner[@"type"] intValue] == 1 )
+        {
+            //商品
             GoodsDetailBoard_iPhone * board = [GoodsDetailBoard_iPhone board];
-            board.goodsModel.goods_id = banner.action_id;
+            board.goodsModel.goods_id = banner[@"id"];
             [self.stack pushBoard:board animated:YES];
         }
-        else if ( [banner.action isEqualToString:BANNER_ACTION_BRAND] )
+        else if ( [banner[@"type"] intValue] == 2 )
         {
-            GoodsListBoard_iPhone * board = [GoodsListBoard_iPhone board];
-            board.model1.filter.brand_id = banner.action_id;
-            board.model2.filter.brand_id = banner.action_id;
-            board.model3.filter.brand_id = banner.action_id;
+            //套餐
+            SirendingzhiDetailBoard_iPhone* board = [SirendingzhiDetailBoard_iPhone boardWithNibName:@"SirendingzhiDetailBoard_iPhone"];
+            [board setCustomId:banner[@"id"]];
             [self.stack pushBoard:board animated:YES];
         }
-        else if ( [banner.action isEqualToString:BANNER_ACTION_CATEGORY] )
+        else if ( [banner[@"type"] intValue] == 3 )
         {
-            GoodsListBoard_iPhone * board = [GoodsListBoard_iPhone board];
-			board.category = banner.description;
-            board.model1.filter.category_id = banner.action_id;
-            board.model2.filter.category_id = banner.action_id;
-            board.model3.filter.category_id = banner.action_id;
+            //爱分享
+            AifenxiangDetailWebBoard_iPhone* board = [AifenxiangDetailWebBoard_iPhone boardWithNibName:@"AifenxiangDetailWebBoard_iPhone"];
+            [board setShareDetailID:banner[@"id"]];
             [self.stack pushBoard:board animated:YES];
         }
         else
         {
             WebViewBoard_iPhone * board = [[[WebViewBoard_iPhone alloc] init] autorelease];
             board.defaultTitle = banner.description.length ? banner.description : __TEXT(@"new_activity");
-            board.urlString = banner.url;
+            board.urlString = banner[@"url"];
             [self.stack pushBoard:board animated:YES];
         }
 	}
@@ -927,7 +942,11 @@ ON_SIGNAL( signal )
     }
     if ( [signal is:@"GO_TEHUITUIJIAN"] )
     {
-        //[self.stack pushBoard:[QiuchangTehuiListBoard_iPhone boardWithNibName:@"QiuchangTehuiListBoard_iPhone"] animated:YES];
+        GoodsListBoard_iPhone * board = [GoodsListBoard_iPhone board];
+        //board.model1.filter.brand_id = goods.id;
+        //board.model2.filter.brand_id = goods.id;
+        //board.model3.filter.brand_id = goods.id;
+        [self.stack pushBoard:board animated:YES];
     }
     if ( [signal is:@"GO_SIRENDINGZHI"] )
     {
@@ -950,6 +969,7 @@ ON_SIGNAL2( BeeUIAlertView, signal)
 {
 	if ( [msg is:API.home_data] )
 	{
+        /*
 		if ( msg.sending )
 		{
 			if ( NO == self.model1.loaded )
@@ -976,6 +996,7 @@ ON_SIGNAL2( BeeUIAlertView, signal)
 		{
 			[ErrorMsg presentErrorMsg:msg inBoard:self];
 		}
+         */
 	}
 	else if ( [msg is:API.home_category] )
 	{
@@ -1022,7 +1043,7 @@ ON_SIGNAL2( BeeUIAlertView, signal)
 	if ( index == 0 )
 	{		
 		BeeUICell * cell = [scrollView dequeueWithContentClass:[BannerCell_iPhone class]];
-        cell.data = self.model1.banners;
+        cell.data = self.bannerDataArray;
 		return cell;
 	}
 
@@ -1049,6 +1070,59 @@ ON_SIGNAL2( BeeUIAlertView, signal)
 	}
 	
     return CGSizeZero;
+}
+
+#pragma mark - Network
+
+- (void)fetchBanner
+{
+    self.HTTP_POST([[ServerConfig sharedInstance].url stringByAppendingString:@"hotcourse&type=wap"])
+    .TIMEOUT(30);
+}
+
+- (NSDictionary*) commonCheckRequest:(BeeHTTPRequest *)req
+{
+    if ( req.sending) {
+    } else if ( req.recving ) {
+    } else if ( req.failed ) {
+        [self dismissTips];
+        [self presentFailureTips:__TEXT(@"error_network")];
+    } else if ( req.succeed ) {
+        [self dismissTips];
+        // 判断返回数据是
+        NSError* error;
+        NSDictionary* dict = [NSJSONSerialization JSONObjectWithData:req.responseData options:NSJSONReadingMutableLeaves error:&error];
+        if ( dict == nil || [dict count] == 0 ) {
+            [self presentFailureTips:__TEXT(@"error_network")];
+        } else {
+            return dict;
+        }
+    }
+    return nil;
+}
+
+- (void) handleRequest:(BeeHTTPRequest *)req
+{
+    NSDictionary* dict = [self commonCheckRequest:req];
+    if (dict)
+    {
+        if ([[req.url absoluteString] rangeOfString:@"hotcourse&type=wap"].length > 0)
+        {
+            //正确逻辑
+            if ([(dict[@"status"])[@"succeed"] intValue] == 1)
+            {
+                //banner数据
+                self.bannerDataArray = dict[@"data"][@"player"];
+                [_scroll setHeaderLoading:NO];
+                [self dismissTips];
+                [_scroll asyncReloadData];
+            }
+            else
+            {
+                [self presentFailureTips:__TEXT(@"error_network")];
+            }
+        }
+    }
 }
 
 @end

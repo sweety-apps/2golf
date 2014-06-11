@@ -24,6 +24,8 @@
 #import "CommonUtility.h"
 #import "SouSuoQiuchangBottomViewController.h"
 #import "AppDelegate.h"
+#import "UserModel.h"
+#import "ServerConfig.h"
 
 #pragma mark -
 
@@ -32,6 +34,10 @@
     SouSuoQiuChangViewController* _ctrl;
     SouSuoQiuchangBottomViewController* _bottomCtrl;
 }
+
+@property (nonatomic,retain) NSMutableDictionary* dataDict;
+@property (nonatomic,retain) NSMutableArray* courseArray;
+
 @end
 
 @implementation SouSuoQiuChangBoard_iPhone
@@ -87,6 +93,12 @@ ON_SIGNAL2( BeeUIBoard, signal )
     else if ( [signal is:BeeUIBoard.WILL_APPEAR] )
     {
         [self _refreshSelections];
+        [self resetCells];
+        if ([UserModel online])
+        {
+            [self fetchData];
+        }
+        
     }
     else if ( [signal is:BeeUIBoard.DID_APPEAR] )
     {
@@ -100,6 +112,14 @@ ON_SIGNAL2( BeeUIBoard, signal )
             self.scrollView.frame = CGRectMake(0, 6, 320, 568);
             self.scrollView.contentSize = CGSizeMake(320, 568);
         }
+        
+        //self.scrollContentView.hidden = YES;
+        //self.scrollView.backgroundColor = [UIColor redColor];
+        CGRect rect = self.scrollView.frame;
+        rect.size = self.viewBound.size;
+        self.scrollView.frame = rect;
+        self.scrollView.contentSize = CGSizeMake(320, 528);
+        self.scrollView.scrollEnabled = YES;
     }
     else if ( [signal is:BeeUIBoard.WILL_DISAPPEAR] )
     {
@@ -276,6 +296,85 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
 - (IBAction)onPressedSearch:(id)sender
 {
     [self.stack pushBoard:[QiuchangResultListBoard_iPhone boardWithNibName:@"QiuchangResultListBoard_iPhone"] animated:YES];
+}
+
+
+#pragma mark -
+
+- (void)resetCells
+{
+    [self devideDatas];
+    [_bottomCtrl setDataArray:self.courseArray];
+}
+
+- (void)devideDatas
+{
+    self.courseArray = [NSMutableArray array];
+    for (NSDictionary* dict in self.dataDict[@"order"])
+    {
+        if ([dict[@"type"] intValue] == 1)
+        {
+            [self.courseArray addObject:dict];
+        }
+    }
+}
+
+#pragma mark - Network
+
+
+- (void)fetchData
+{
+    NSDictionary* paramDict = @{
+                                @"session":[UserModel sharedInstance].session.objectToDictionary
+                                };
+    //[self presentLoadingTips:@"正在加载"];
+    self.HTTP_POST([[ServerConfig sharedInstance].url stringByAppendingString:@"courseorder/list"])
+    .PARAM(@"json",[paramDict JSONString])
+    .TIMEOUT(30);
+}
+
+- (NSDictionary*) commonCheckRequest:(BeeHTTPRequest *)req
+{
+    if ( req.sending) {
+    } else if ( req.recving ) {
+    } else if ( req.failed ) {
+        [self dismissTips];
+        [self presentFailureTips:__TEXT(@"error_network")];
+    } else if ( req.succeed ) {
+        [self dismissTips];
+        // 判断返回数据是
+        NSError* error;
+        NSDictionary* dict = [NSJSONSerialization JSONObjectWithData:req.responseData options:NSJSONReadingMutableLeaves error:&error];
+        if ( dict == nil || [dict count] == 0 ) {
+            [self presentFailureTips:__TEXT(@"error_network")];
+        } else {
+            return dict;
+        }
+    }
+    return nil;
+}
+
+- (void) handleRequest:(BeeHTTPRequest *)req
+{
+    NSDictionary* dict = [self commonCheckRequest:req];
+    if (dict)
+    {
+        //球场详情
+        if ([[req.url absoluteString] rangeOfString:@"courseorder/list"].length > 0)
+        {
+            //正确逻辑
+            if ([(dict[@"status"])[@"succeed"] intValue] == 1)
+            {
+                //拉订单
+                self.dataDict = [NSMutableDictionary dictionaryWithDictionary:(dict[@"data"])];
+                [self resetCells];
+            }
+            else
+            {
+                [self presentFailureTips:__TEXT(@"error_network")];
+            }
+        }
+    }
 }
 
 @end

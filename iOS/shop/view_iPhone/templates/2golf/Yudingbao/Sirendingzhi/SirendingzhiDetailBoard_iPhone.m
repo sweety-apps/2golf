@@ -348,7 +348,7 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
 ON_SIGNAL2( SirendingzhiDetailBannerPhotoCell_iPhone, signal )
 {
     PhotoSlideViewBoard_iPhone * board = [PhotoSlideViewBoard_iPhone board];
-    board.pictures = self.dataDict[@"img"];
+    board.pictures = @[self.dataDict[@"img"]];
 	//board.pageIndex = [self.goodsModel.goods.pictures indexOfObject:photo];
     [self.stack pushBoard:board animated:YES];
 }

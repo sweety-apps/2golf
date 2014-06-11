@@ -19,5 +19,7 @@
 @property (nonatomic,retain) IBOutlet UIImageView* guanIcon;
 @property (nonatomic,retain) IBOutlet UIButton* btn;
 
+- (void) setNoIcon;
+
 
 @end

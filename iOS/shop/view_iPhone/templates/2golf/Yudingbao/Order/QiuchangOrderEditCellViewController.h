@@ -63,8 +63,10 @@ AS_SIGNAL( TOUCHED )
 - (void)setNormalB;
 
 - (void)setContact;
+- (void)setContactM;
 - (void)setPhoneNum;
 - (void)setPeopleNum;
+- (void)setPeopleNumM;
 - (void)setConfirm;
 
 - (void)setLeftText:(NSString*)text;

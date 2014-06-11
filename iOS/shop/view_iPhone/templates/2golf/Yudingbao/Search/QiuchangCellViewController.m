@@ -35,4 +35,23 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void) setNoIcon
+{
+    CGRect rect;
+    
+    self.iconImageView.hidden = YES;
+    
+    rect = self.nameLabel.frame;
+    rect.origin.x = 10;
+    self.nameLabel.frame = rect;
+    
+    rect = self.distanceLabel.frame;
+    rect.origin.x = 10;
+    self.distanceLabel.frame = rect;
+    
+    rect = self.descriptionLabel.frame;
+    rect.origin.x = 10;
+    self.descriptionLabel.frame = rect;
+}
+
 @end

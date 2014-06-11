@@ -121,9 +121,16 @@ ON_SIGNAL2( BeeUIBoard, signal )
         [self showNavigationBarAnimated:NO];
         [self setTitleViewWithIcon:__IMAGE(@"titleicon") andTitleString:@"球场搜索"];
         [self showBarButton:BeeUINavigationBar.LEFT image:[UIImage imageNamed:@"nav-back.png"]];
+        
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(textFieldChanged:)
+                                                     name:UITextFieldTextDidChangeNotification
+                                                   object:self.textField];
     }
     else if ( [signal is:BeeUIBoard.DELETE_VIEWS] )
     {
+        [[NSNotificationCenter defaultCenter] removeObserver:self];
     }
     else if ( [signal is:BeeUIBoard.LAYOUT_VIEWS] )
     {
@@ -184,6 +191,7 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
     [self.stack popBoardAnimated:YES];
 }
 
+
 #pragma mark - <UITableViewDelegate>
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -240,11 +248,18 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
     return cell;
 }
 
-#pragma mark - <UITextFieldDelegate>
-
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+#pragma mark -
+- (void)textFieldChanged:(UITextField *)textField
 {
     [self fetchData];
+}
+
+#pragma mark - <UITextFieldDelegate>
+
+/*
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    [self performSelector:@selector(fetchData) withObject:nil afterDelay:0.05];
     return YES;
 }
 
@@ -255,9 +270,17 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
     return YES;
 }
 
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    [self performSelector:@selector(fetchData) withObject:nil afterDelay:0.05];
+}
+ */
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    [self onPressedSearch:nil];
+    //[self onPressedSearch:nil];
+    [self performSelector:@selector(fetchData) withObject:nil afterDelay:0.05];
+    [self.textField resignFirstResponder];
     return YES;
 }
 
@@ -265,6 +288,7 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
 
 - (void)fetchData
 {
+    NSLog(@"[KEY WORDS =\n \'%@\']",self.textField.text);
     self.HTTP_POST([[ServerConfig sharedInstance].url stringByAppendingString:@"coursekeyword"]).PARAM(@"keyword",self.textField.text).TIMEOUT(30);
 }
 

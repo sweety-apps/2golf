@@ -8,14 +8,14 @@
 //	Powered by BeeFramework
 //
 //
-//  QiuchangOrderEditBoard_iPhone.m
+//  TaocanOrderEditBoard_iPhone.m
 //  2golf
 //
-//  Created by Lee Justin on 14-4-18.
+//  Created by Lee Justin on 14-6-9.
 //  Copyright (c) 2014年 geek-zoo studio. All rights reserved.
 //
 
-#import "QiuchangOrderEditBoard_iPhone.h"
+#import "TaocanOrderEditBoard_iPhone.h"
 #import "QiuchangOrderEditCellViewController.h"
 #import "AppBoard_iPhone.h"
 #import "ServerConfig.h"
@@ -25,17 +25,18 @@
 #import "CommonUtility.h"
 #import "UserModel.h"
 
+#define kCellTagUserDescription (5)
+
 #pragma mark -
 
-@interface QiuchangOrderEditBoard_iPhone() <QiuchangOrderEditCell_iPhoneDelegate,UITextFieldDelegate>
+@interface TaocanOrderEditBoard_iPhone() <QiuchangOrderEditCell_iPhoneDelegate,UITextFieldDelegate>
 {
 	BeeUIScrollView *	_scroll;
 }
-
 @property (nonatomic,retain) NSMutableArray* cellArray;
-@property (nonatomic,retain) NSMutableDictionary* courseDict;
-@property (nonatomic,retain) NSMutableDictionary* priceDict;
 @property (nonatomic,retain) UITextField* phoneTextField;
+@property (nonatomic,retain) UITextField* descriptionTextField;
+@property (nonatomic,retain) NSString* description;
 
 @property (nonatomic,assign) NSInteger numPeople;
 @property (nonatomic,assign) NSInteger price1;
@@ -45,12 +46,13 @@
 
 @end
 
-@implementation QiuchangOrderEditBoard_iPhone
+@implementation TaocanOrderEditBoard_iPhone
 
 - (void)load
 {
 	[super load];
     
+    self.description = nil;
     self.numPeople = 1;
     self.price1 = 200;
     self.price2 = 1020;
@@ -59,8 +61,6 @@
 
 - (void)unload
 {
-    self.courseDict = nil;
-    self.priceDict = nil;
 	[super unload];
 }
 
@@ -69,7 +69,7 @@
 ON_SIGNAL2( BeeUIBoard, signal )
 {
     [super handleUISignal:signal];
-
+    
     if ( [signal is:BeeUIBoard.CREATE_VIEWS] )
     {
         [self showNavigationBarAnimated:NO];
@@ -149,23 +149,11 @@ ON_SIGNAL2( BeeUIScrollView, signal )
 	}
 }
 
-- (void)setUpCourseData:(NSDictionary*)courseDict
-{
-    self.courseDict = [NSMutableDictionary dictionaryWithDictionary:courseDict];
-    [self resetData];
-}
-
-- (void)setUpPriceData:(NSDictionary *)priceDict
-{
-    self.priceDict = [NSMutableDictionary dictionaryWithDictionary:priceDict];
-    [self resetData];
-}
-
 #pragma mark -
 
 - (void)resetData
 {
-    if (self.priceDict==nil || self.courseDict == nil)
+    if (self.dataDict==nil)
     {
         return;
     }
@@ -176,23 +164,6 @@ ON_SIGNAL2( BeeUIScrollView, signal )
     int pcount = 0;
     
     QiuchangOrderEditCell_iPhone* cell = nil;
-    
-    self.priceAll = [self.priceDict[@"price"] intValue]*self.numPeople;
-    
-    // 1
-    cell = [QiuchangOrderEditCell_iPhone cell];
-    [cell setNormalH];
-    [cell setLeftText:@"服务商"];
-    [cell setRightText:self.priceDict[@"distributorname"] color:[UIColor blackColor]];
-    cell.delegate = self;
-    [self.cellArray addObject:cell];
-    
-    cell = [QiuchangOrderEditCell_iPhone cell];
-    [cell setNormalM];
-    [cell setLeftText:@"球场"];
-    [cell setRightText:self.courseDict[@"coursename"] color:[UIColor blackColor]];
-    cell.delegate = self;
-    [self.cellArray addObject:cell];
     
     //日期
     NSDate* date = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_date"];
@@ -207,28 +178,8 @@ ON_SIGNAL2( BeeUIScrollView, signal )
     }
     
     cell = [QiuchangOrderEditCell_iPhone cell];
-    [cell setNormalM];
+    [cell setNormalH];
     [cell setLeftText:@"日期"];
-    [cell setRightText:str color:[UIColor blackColor]];
-    cell.delegate = self;
-    [self.cellArray addObject:cell];
-    
-    
-    //时间
-    date = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_time"];
-    if (date == nil)
-    {
-        date = [NSDate date];
-    }
-    str = [NSString stringWithFormat:@"%02d:%02d",[date hour],[date minute]];
-    if ([str length] == 0)
-    {
-        str = @"08:30";
-    }
-    
-    cell = [QiuchangOrderEditCell_iPhone cell];
-    [cell setNormalB];
-    [cell setLeftText:@"时间"];
     [cell setRightText:str color:[UIColor blackColor]];
     cell.delegate = self;
     [self.cellArray addObject:cell];
@@ -236,13 +187,14 @@ ON_SIGNAL2( BeeUIScrollView, signal )
     //2
     str = [[CommonSharedData sharedInstance] getContactListNamesString];
     cell = [QiuchangOrderEditCell_iPhone cell];
-    [cell setContact];
+    [cell setContactM];
     [cell setLeftText:@"姓名"];
     [cell setRightText:str color:[UIColor blackColor]];
     cell.ctrl.contactBtn.hidden = NO;
     cell.delegate = self;
     [self.cellArray addObject:cell];
     
+    //3
     cell = [QiuchangOrderEditCell_iPhone cell];
     [cell setPhoneNum];
     self.phoneTextField = cell.ctrl.phoneTextField;
@@ -253,87 +205,33 @@ ON_SIGNAL2( BeeUIScrollView, signal )
     cell.delegate = self;
     [self.cellArray addObject:cell];
     
+    //4
     str = [NSString stringWithFormat:@"%d",self.numPeople];
     cell = [QiuchangOrderEditCell_iPhone cell];
-    [cell setPeopleNum];
+    [cell setPeopleNumM];
     [cell setLeftText:@"打球人数"];
     [cell setRightText:str color:[UIColor blackColor]];
     cell.delegate = self;
     [self.cellArray addObject:cell];
     
-    //3
-    if (self.priceDict[@"deposit"] == [NSNull null])
-    {
-        str = @"0";
-    }
-    else
-    {
-        str = [NSString stringWithFormat:@"￥%d",[self.priceDict[@"deposit"] intValue] *self.numPeople];
-    }
-    cell = [QiuchangOrderEditCell_iPhone cell];
-    [cell setNormalH];
-    [cell setLeftText:@"押金"];
-    [cell setRightText:str color:[UIColor redColor]];
-    cell.delegate = self;
-    [self.cellArray addObject:cell];
-    
-    str = @"";
-    NSDictionary* pdict = @{
-                            @"green":@"果岭",
-                            @"cabinet":@"衣柜",
-                            @"insurance":@"保险",
-                            @"car":@"球车",
-                            @"meal":@"午餐",
-                            @"tips":@"小费",
-                            @"caddie":@"球童",
-                            };
-    pcount = 0;
-    for (NSString* key in pdict)
-    {
-        if ([self.priceDict[key] boolValue])
-        {
-            if (pcount > 0)
-            {
-                str = [str stringByAppendingString:@","];
-            }
-            str = [str stringByAppendingString:pdict[key]];
-            pcount++;
-        }
-    }
-    cell = [QiuchangOrderEditCell_iPhone cell];
-    [cell setNormalM];
-    [cell setLeftText:@"费用包含"];
-    [cell setRightText:str color:[UIColor blackColor]];
-    cell.delegate = self;
-    [self.cellArray addObject:cell];
-    
-    self.priceAll = [self.priceDict[@"price"] intValue]*self.numPeople;
-    str = [NSString stringWithFormat:@"￥%d",self.priceAll];
-    cell = [QiuchangOrderEditCell_iPhone cell];
-    [cell setNormalM];
-    [cell setLeftText:@"订单总价"];
-    [cell setRightText:str color:[UIColor redColor]];
-    cell.delegate = self;
-    [self.cellArray addObject:cell];
-    
-    cell = [QiuchangOrderEditCell_iPhone cell];
-    [cell setNormalM];
-    [cell setLeftText:@"说明"];
-    [cell setRightText:self.priceDict[@"description"] color:[UIColor blackColor]];
-    cell.delegate = self;
-    [self.cellArray addObject:cell];
-    
+    //5
     cell = [QiuchangOrderEditCell_iPhone cell];
     [cell setNormalM];
     [cell setLeftText:@"退订说明"];
-    [cell setRightText:self.priceDict[@"cancel_desc"] color:[UIColor blackColor]];
+    cell.ctrl.normalRightTitle.hidden = YES;
+    cell.ctrl.phoneTextField.hidden = NO;
+    cell.ctrl.phoneTextField.keyboardType = UIKeyboardTypeDefault;
+    cell.ctrl.phoneTextField.placeholder = @"请输入备注说明";
+    self.descriptionTextField = cell.ctrl.phoneTextField;
+    self.descriptionTextField.text = self.description;
+    cell.tag = kCellTagUserDescription;
     cell.delegate = self;
     [self.cellArray addObject:cell];
     
     cell = [QiuchangOrderEditCell_iPhone cell];
     [cell setConfirm];
-    [cell setLeftText:@"打球人数"];
-    [cell setRightText:self.priceDict[@""] color:[UIColor blackColor]];
+    [cell setLeftText:@""];
+    [cell setRightText:@"" color:[UIColor blackColor]];
     cell.delegate = self;
     [self.cellArray addObject:cell];
     
@@ -385,13 +283,12 @@ ON_SIGNAL2( BeeUIScrollView, signal )
 }
 
 
-
-
 - (void)onPressedIncreasePeople:(QiuchangOrderEditCell_iPhone*)cell
 {
     NSInteger num = self.numPeople;
     num++;
     self.numPeople = num;
+    self.description = self.descriptionTextField.text;
     [self resetData];
 }
 
@@ -404,6 +301,7 @@ ON_SIGNAL2( BeeUIScrollView, signal )
     }
     num--;
     self.numPeople = num;
+    self.description = self.descriptionTextField.text;
     [self resetData];
 }
 
@@ -425,9 +323,9 @@ ON_SIGNAL2( BeeUIScrollView, signal )
                                 @"contacts":[[CommonSharedData sharedInstance] getContactListNamesString],
                                 @"tel":self.phoneTextField.text,
                                 @"price":[NSString stringWithFormat:@"%d",self.priceAll],
-                                @"id":self.courseDict[@"course_id"],
-                                @"type":@"1",
-                                @"agentid":self.priceDict[@"distributorid"],
+                                @"id":self.dataDict[@"id"],
+                                @"type":@"2",
+                                @"agentid":self.dataDict[@"distributorid"],
                                 @"timestamp":[NSString stringWithFormat:@"%ld",[CommonUtility getSearchTimeStamp]]
                                 };
     self.HTTP_POST([[ServerConfig sharedInstance].url stringByAppendingString:@"courseorder/generate"])

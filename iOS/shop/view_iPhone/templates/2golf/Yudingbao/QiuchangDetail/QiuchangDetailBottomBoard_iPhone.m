@@ -17,6 +17,7 @@
 
 #import "QiuchangDetailBottomBoard_iPhone.h"
 #import "MyOrderListBoard_iPhone.h"
+#import "CommonUtility.h"
 
 #pragma mark -
 
@@ -79,6 +80,11 @@ DEF_SIGNAL(DAIL_PHONE_OK)
 
 - (void)_pressedMyOrderListBtn:(UIButton*)btn
 {
+    if (![CommonUtility checkLoginAndPresentLoginView])
+    {
+        return;
+    }
+    
     MyOrderListBoard_iPhone* board = [MyOrderListBoard_iPhone boardWithNibName:@"MyOrderListBoard_iPhone"];
     
     [[[self superview] superview].board.stack pushBoard:board animated:YES];

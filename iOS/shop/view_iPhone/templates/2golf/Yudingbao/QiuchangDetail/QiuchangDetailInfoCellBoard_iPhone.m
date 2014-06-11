@@ -19,6 +19,8 @@
 #import "QiuchangResultMapBoard_iPhone.h"
 #import "TimeSquareBoard_iPhone.h"
 #import "CommonUtility.h"
+#import "BMKNavigation.h"
+#import "AppDelegate.h"
 
 #pragma mark -
 
@@ -102,7 +104,8 @@
 
 - (void)_pressedBtn1:(UIButton*)btn
 {
-    [[[self superview] superview].board.stack pushBoard:[QiuchangResultMapBoard_iPhone board] animated:YES];
+    [self webNavi];
+    //[[[self superview] superview].board.stack pushBoard:[QiuchangResultMapBoard_iPhone board] animated:YES];
 }
 
 - (void)_pressedBtn2:(UIButton*)btn
@@ -141,6 +144,46 @@
     [pickerBg addSubview:cancelBtn];
     
     [pickerBg addSubview:picker];
+}
+
+- (void)webNavi
+{
+    NSDictionary* dict = self.data;
+    //初始化调启导航时的参数管理类
+    BMKNaviPara* para = [[BMKNaviPara alloc]init];
+    //指定导航类型
+    para.naviType = NAVI_TYPE_WEB;
+    
+    //初始化起点节点
+    BMKPlanNode* start = [[[BMKPlanNode alloc]init] autorelease];
+    //指定起点经纬度
+    CLLocationCoordinate2D coor1;
+    AppDelegate* del = ((AppDelegate*)[UIApplication sharedApplication].delegate);
+    coor1.latitude = [del getCurrentLatitude] ;
+	coor1.longitude = [del getCurrentLongitude];
+    start.pt = coor1;
+    //指定起点名称
+    
+    start.name = @"当前位置";
+    //指定起点
+    para.startPoint = start;
+    
+    
+    //初始化终点节点
+    BMKPlanNode* end = [[[BMKPlanNode alloc]init] autorelease];
+    CLLocationCoordinate2D coor2;
+	coor2.latitude = [dict[@"latitude"] floatValue];
+	coor2.longitude = [dict[@"longitude"] floatValue];
+	end.pt = coor2;
+    para.endPoint = end;
+    //指定终点名称
+    end.name = dict[@"coursename"];
+    //指定调启导航的app名称
+    para.appName = [NSString stringWithFormat:@"%@", @"testAppName"];
+    //调启web导航
+    [BMKNavigation openBaiduMapNavigation:para];
+    [para release];
+
 }
 
 #pragma mark - <UIPickerViewDataSource>

@@ -24,6 +24,7 @@
 #import "PhotoSlideViewBoard_iPhone.h"
 #import "QiuchangDetailDescriptionBoard_iPhone.h"
 #import "CommonUtility.h"
+#import "WeatherViewBoard_iPhone.h"
 
 #pragma mark -
 
@@ -105,10 +106,10 @@ SUPPORT_RESOURCE_LOADING( YES )
     [self addSubview:self.scroll];
 	
     self.shadow = [[[UIView alloc] init] autorelease];
-    self.shadow.backgroundColor = RGBA(0, 180, 0, 0.3);
+    self.shadow.backgroundColor = RGBA(0, 0, 0, 0.3);;//RGBA(0, 180, 0, 0.3);
     [self addSubview:self.shadow];
     
-    self.leftLabel  = [[[UILabel alloc]initWithFrame:CGRectMake(22, 0, 200, 20)] autorelease];
+    self.leftLabel  = [[[UILabel alloc]initWithFrame:CGRectMake(22, 0, 200, 30)] autorelease];
     self.leftLabel.backgroundColor = [UIColor clearColor];
     self.leftLabel.font = [UIFont systemFontOfSize:14];
     self.leftLabel.textColor = [UIColor whiteColor];
@@ -259,6 +260,9 @@ ON_SIGNAL2( BeeUIScrollView , signal)
 
 @property (nonatomic,retain) NSMutableArray* cellArray;
 @property (nonatomic,retain) NSMutableDictionary* dataDict;
+@property (nonatomic,retain) NSMutableDictionary* weatherDataDict;
+
+@property (nonatomic,retain) WeatherViewBoard_iPhone* weatherBoard;
 
 @end
 
@@ -299,7 +303,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
     if ( [signal is:BeeUIBoard.CREATE_VIEWS] )
     {
         [self showNavigationBarAnimated:NO];
-        [self setTitleViewWithIcon:__IMAGE(@"titleicon") andTitleString:@"深圳XXX球场"];
+        [self setTitleViewWithIcon:__IMAGE(@"titleicon") andTitleString:@"正在加载"];
         [self showBarButton:BeeUINavigationBar.LEFT image:[UIImage imageNamed:@"nav-back.png"]];
         
         //右上角地图按钮
@@ -391,6 +395,7 @@ ON_SIGNAL( signal )
     if ( [signal is:self.DAIL_RIGHT_NAV_BTN] )
     {
         //打开天气
+        [self showWetherView];
     }
 }
 
@@ -497,6 +502,16 @@ ON_SIGNAL2( QiuchangBannerPhotoCell_iPhone, signal )
     [self setTitleViewWithIcon:__IMAGE(@"titleicon") andTitleString:self.dataDict[@"coursename"]];
 }
 
+- (void)showWetherView
+{
+    if (self.weatherDataDict)
+    {
+        self.weatherBoard = [WeatherViewBoard_iPhone boardWithNibName:@"WeatherViewBoard_iPhone"];
+        [self.view addSubview:self.weatherBoard.view];
+        [self.weatherBoard showViewWithDataDict:self.weatherDataDict];
+    }
+}
+
 #pragma mark - Network
 
 
@@ -504,6 +519,11 @@ ON_SIGNAL2( QiuchangBannerPhotoCell_iPhone, signal )
 {
     NSString* ts = [NSString stringWithFormat:@"%ld",[CommonUtility getSearchTimeStamp]];
     self.HTTP_POST([[ServerConfig sharedInstance].url stringByAppendingString:@"coursedetail"]).PARAM(@"courseid",_courseId).PARAM(@"timestamp",ts).TIMEOUT(30);
+}
+
+- (void)fetchWeather
+{
+    self.HTTP_POST([[ServerConfig sharedInstance].url stringByAppendingString:@"weather"]).PARAM(@"city",self.dataDict[@"cityname"]).TIMEOUT(30);
 }
 
 - (NSDictionary*) commonCheckRequest:(BeeHTTPRequest *)req
@@ -516,7 +536,6 @@ ON_SIGNAL2( QiuchangBannerPhotoCell_iPhone, signal )
         [self presentFailureTips:__TEXT(@"error_network")];
     } else if ( req.succeed ) {
         [_scroll setHeaderLoading:NO];
-        [self dismissTips];
         // 判断返回数据是
         NSError* error;
         NSDictionary* dict = [NSJSONSerialization JSONObjectWithData:req.responseData options:NSJSONReadingMutableLeaves error:&error];
@@ -541,11 +560,27 @@ ON_SIGNAL2( QiuchangBannerPhotoCell_iPhone, signal )
             if ([(dict[@"status"])[@"succeed"] intValue] == 1)
             {
                 self.dataDict = [NSMutableDictionary dictionaryWithDictionary:(dict[@"data"])];
+                [self fetchWeather];
+            }
+            else
+            {
+                [self presentFailureTips:__TEXT(@"error_network")];
+            }
+        }
+        //天气数据
+        else if ([[req.url absoluteString] rangeOfString:@"weather"].length > 0)
+        {
+            //正确逻辑
+            if ([(dict[@"status"])[@"succeed"] intValue] == 1)
+            {
+                [self dismissTips];
+                self.weatherDataDict = [NSMutableDictionary dictionaryWithDictionary:(dict[@"data"][@"results"][0])];
                 [self resetCells];
                 [_scroll reloadData];
             }
             else
             {
+                [self dismissTips];
                 [self presentFailureTips:__TEXT(@"error_network")];
             }
         }

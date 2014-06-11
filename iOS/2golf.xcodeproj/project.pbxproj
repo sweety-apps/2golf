@@ -611,6 +611,12 @@
 		E9DB7F2B17DECF37003AB6E1 /* shopping-checkout-required-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9DB7F2617DECF37003AB6E1 /* shopping-checkout-required-bg@2x.png */; };
 		E9DB7F2C17DECF37003AB6E1 /* shopping-coupon-cur-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9DB7F2717DECF37003AB6E1 /* shopping-coupon-cur-icon@2x.png */; };
 		E9E2745317815D36007245BD /* CurrentAddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E2745217815D35007245BD /* CurrentAddressModel.m */; };
+		F31007BE1945E74C002DF54F /* MyOrderListTopSwitchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F31007BC1945E74C002DF54F /* MyOrderListTopSwitchViewController.m */; };
+		F31007BF1945E74C002DF54F /* MyOrderListTopSwitchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F31007BD1945E74C002DF54F /* MyOrderListTopSwitchViewController.xib */; };
+		F31007C21946051D002DF54F /* TaocanOrderEditBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = F31007C11946051D002DF54F /* TaocanOrderEditBoard_iPhone.m */; };
+		F31007C41946052C002DF54F /* TaocanOrderEditBoard_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = F31007C31946052C002DF54F /* TaocanOrderEditBoard_iPhone.xib */; };
+		F31007D21946C07D002DF54F /* WeatherViewBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = F31007D11946C07D002DF54F /* WeatherViewBoard_iPhone.m */; };
+		F31007D41946C095002DF54F /* WeatherViewBoard_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = F31007D31946C095002DF54F /* WeatherViewBoard_iPhone.xib */; };
 		F319AC5F191E2C3E00D64FA2 /* SirendingzhiDetailBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = F319AC5E191E2C3E00D64FA2 /* SirendingzhiDetailBoard_iPhone.m */; };
 		F319AC61191E2C5200D64FA2 /* SirendingzhiDetailBoard_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = F319AC60191E2C5200D64FA2 /* SirendingzhiDetailBoard_iPhone.xib */; };
 		F319AC65191E4C1D00D64FA2 /* SirendingzhiDetailInfoCellBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = F319AC64191E4C1D00D64FA2 /* SirendingzhiDetailInfoCellBoard_iPhone.m */; };
@@ -1863,6 +1869,15 @@
 		E9DB7F2717DECF37003AB6E1 /* shopping-coupon-cur-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shopping-coupon-cur-icon@2x.png"; sourceTree = "<group>"; };
 		E9E2745117815D34007245BD /* CurrentAddressModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentAddressModel.h; sourceTree = "<group>"; };
 		E9E2745217815D35007245BD /* CurrentAddressModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentAddressModel.m; sourceTree = "<group>"; };
+		F31007BB1945E74C002DF54F /* MyOrderListTopSwitchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrderListTopSwitchViewController.h; sourceTree = "<group>"; };
+		F31007BC1945E74C002DF54F /* MyOrderListTopSwitchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrderListTopSwitchViewController.m; sourceTree = "<group>"; };
+		F31007BD1945E74C002DF54F /* MyOrderListTopSwitchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyOrderListTopSwitchViewController.xib; sourceTree = "<group>"; };
+		F31007C01946051D002DF54F /* TaocanOrderEditBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaocanOrderEditBoard_iPhone.h; sourceTree = "<group>"; };
+		F31007C11946051D002DF54F /* TaocanOrderEditBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaocanOrderEditBoard_iPhone.m; sourceTree = "<group>"; };
+		F31007C31946052C002DF54F /* TaocanOrderEditBoard_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaocanOrderEditBoard_iPhone.xib; sourceTree = "<group>"; };
+		F31007D01946C07D002DF54F /* WeatherViewBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherViewBoard_iPhone.h; sourceTree = "<group>"; };
+		F31007D11946C07D002DF54F /* WeatherViewBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherViewBoard_iPhone.m; sourceTree = "<group>"; };
+		F31007D31946C095002DF54F /* WeatherViewBoard_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeatherViewBoard_iPhone.xib; sourceTree = "<group>"; };
 		F319AC5D191E2C3E00D64FA2 /* SirendingzhiDetailBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SirendingzhiDetailBoard_iPhone.h; sourceTree = "<group>"; };
 		F319AC5E191E2C3E00D64FA2 /* SirendingzhiDetailBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SirendingzhiDetailBoard_iPhone.m; sourceTree = "<group>"; };
 		F319AC60191E2C5200D64FA2 /* SirendingzhiDetailBoard_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SirendingzhiDetailBoard_iPhone.xib; sourceTree = "<group>"; };
@@ -4111,6 +4126,9 @@
 				F319AE09192D9FC400D64FA2 /* ContactListCellBoard_iPhone.h */,
 				F319AE0A192D9FC400D64FA2 /* ContactListCellBoard_iPhone.m */,
 				F319AE0E192DA00000D64FA2 /* ContactListCellBoard_iPhone.xib */,
+				F31007D01946C07D002DF54F /* WeatherViewBoard_iPhone.h */,
+				F31007D11946C07D002DF54F /* WeatherViewBoard_iPhone.m */,
+				F31007D31946C095002DF54F /* WeatherViewBoard_iPhone.xib */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -4303,6 +4321,9 @@
 				F3B5396819012269004E72D4 /* QiuchangOrderResultBoard_iPhone.h */,
 				F3B5396919012269004E72D4 /* QiuchangOrderResultBoard_iPhone.m */,
 				F3B5396B19012289004E72D4 /* QiuchangOrderResultBoard_iPhone.xib */,
+				F31007C01946051D002DF54F /* TaocanOrderEditBoard_iPhone.h */,
+				F31007C11946051D002DF54F /* TaocanOrderEditBoard_iPhone.m */,
+				F31007C31946052C002DF54F /* TaocanOrderEditBoard_iPhone.xib */,
 			);
 			path = Order;
 			sourceTree = "<group>";
@@ -4357,6 +4378,9 @@
 				F3B5396E190122CC004E72D4 /* MyOrderListBoard_iPhone.h */,
 				F3B5396F190122CC004E72D4 /* MyOrderListBoard_iPhone.m */,
 				F3B53971190122E0004E72D4 /* MyOrderListBoard_iPhone.xib */,
+				F31007BB1945E74C002DF54F /* MyOrderListTopSwitchViewController.h */,
+				F31007BC1945E74C002DF54F /* MyOrderListTopSwitchViewController.m */,
+				F31007BD1945E74C002DF54F /* MyOrderListTopSwitchViewController.xib */,
 			);
 			path = MyOrderList;
 			sourceTree = "<group>";
@@ -4812,6 +4836,7 @@
 				F319AE26192ED2AC00D64FA2 /* YongpinbaoMainBoard_iPhone.xib in Resources */,
 				CB3775C717C5FF6F00DF5F21 /* accsessory-arrow-up@2x.png in Resources */,
 				CB3775C817C5FF6F00DF5F21 /* accsessory-check@2x.png in Resources */,
+				F31007C41946052C002DF54F /* TaocanOrderEditBoard_iPhone.xib in Resources */,
 				CB3775C917C5FF6F00DF5F21 /* address-edit-default-btn-yellow@2x.png in Resources */,
 				F319AC6C191E4EA900D64FA2 /* SirendingzhiDetailHeaderCellBoard_iPhone.xib in Resources */,
 				F3F0EF4019358214004613DA /* ShareSDKLocalizable.strings in Resources */,
@@ -4921,6 +4946,7 @@
 				CB3775F917C5FF6F00DF5F21 /* item-grid-filter-bg-line@2x.png in Resources */,
 				CB3775FA17C5FF6F00DF5F21 /* item-grid-filter-bg@2x.png in Resources */,
 				F319AE1C192ED1C500D64FA2 /* goodsfragmentslogan@2x.png in Resources */,
+				F31007BF1945E74C002DF54F /* MyOrderListTopSwitchViewController.xib in Resources */,
 				F3F0EF4919358215004613DA /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				E909CC27182D0D650095B262 /* GoodsDetailCell_iPhone.xml in Resources */,
 				F3FBB2D8190B7F31000E9F3F /* privilegetophighlight@2x.png in Resources */,
@@ -5122,6 +5148,7 @@
 				CB37765217C5FF6F00DF5F21 /* trade-info-stream-body-bg-03@2x.png in Resources */,
 				E909CC14182D0D650095B262 /* CommonFootLoader.xml in Resources */,
 				CB37765317C5FF6F00DF5F21 /* trade-info-stream-cont-bg@2x.png in Resources */,
+				F31007D41946C095002DF54F /* WeatherViewBoard_iPhone.xib in Resources */,
 				CB37765417C5FF6F00DF5F21 /* trade-info-stream-cont-dotted-line@2x.png in Resources */,
 				CB37765517C5FF6F00DF5F21 /* trade-info-stream-express-delivery-logo@2x.png in Resources */,
 				E909CC35182D0D650095B262 /* HelpCell2_iPhone.xml in Resources */,
@@ -5228,6 +5255,7 @@
 				F37AA81518E63BE7004BE9B2 /* TSQCalendarCell.m in Sources */,
 				E970D6C2182CE4E200146363 /* Bee_UIAnimationBounce.m in Sources */,
 				E970D687182CE4E200146363 /* Bee_Version.mm in Sources */,
+				F31007C21946051D002DF54F /* TaocanOrderEditBoard_iPhone.m in Sources */,
 				63023918177C1676004C052D /* BaseModel.m in Sources */,
 				E909CC13182D0D650095B262 /* CommonFootLoader.m in Sources */,
 				63023919177C1676004C052D /* CartModel.m in Sources */,
@@ -5315,6 +5343,7 @@
 				F3F0EEB019351659004613DA /* AifenxiangListBoard_iPhone.m in Sources */,
 				E970D721182CE4E200146363 /* BeeUIQuery+Events.m in Sources */,
 				E970D732182CE4E200146363 /* Bee_UITemplatePackage.m in Sources */,
+				F31007D21946C07D002DF54F /* WeatherViewBoard_iPhone.m in Sources */,
 				E970D6BB182CE4E200146363 /* UIScrollView+BeeUIStyle.m in Sources */,
 				E970D70C182CE4E200146363 /* UIView+BeeUISignal.m in Sources */,
 				E970D6AC182CE4E200146363 /* UIViewController+Metrics.m in Sources */,
@@ -5493,6 +5522,7 @@
 				E909CC36182D0D650095B262 /* HelpCell_iPhone.m in Sources */,
 				E970D75C182CE4E200146363 /* Bee_Log.mm in Sources */,
 				E970D6BE182CE4E200146363 /* UIView+BeeUIStyle.m in Sources */,
+				F31007BE1945E74C002DF54F /* MyOrderListTopSwitchViewController.m in Sources */,
 				E970D6E1182CE4E200146363 /* Bee_UIPickerView.m in Sources */,
 				E970D6AD182CE4E200146363 /* UIViewController+Title.m in Sources */,
 				E909CC2B182D0D650095B262 /* GoodsListBoard_iPhone.m in Sources */,

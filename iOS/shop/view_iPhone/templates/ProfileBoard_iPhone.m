@@ -37,6 +37,7 @@
 #import "HelpCell_iPhone.h"
 #import "HelpBoard_iPhone.h"
 #import "Placeholder.h"
+#import "MyOrderListBoard_iPhone.h"
 
 #pragma mark -
 
@@ -101,14 +102,32 @@ SUPPORT_RESOURCE_LOADING(YES);
 		{
 			$(@"#name").TEXT(__TEXT(@"click_to_login"));
 		}
-
-		if ( 0 == userModel.user.collection_num.intValue )
+        
+        NSInteger order_num = 0;
+        
+        if (userModel.user.order_num &&
+            [userModel.user.order_num[@"combo_order"] isKindOfClass:[NSString class]] &&
+            [userModel.user.order_num[@"course_order"] isKindOfClass:[NSString class]])
+        {
+            order_num = [userModel.user.order_num[@"combo_order"] intValue] + [userModel.user.order_num[@"course_order"] intValue];
+        }
+        
+        if ( 0 == order_num )
 		{
-			$(@"#fav-count").TEXT( __TEXT(@"no_product") );
+			$(@"#order-count").TEXT( @"无" );
 		}
 		else
 		{
-			$(@"#fav-count").TEXT( [NSString stringWithFormat:@"%@%@", userModel.user.collection_num, __TEXT(@"no_of_items")] );
+			$(@"#order-count").TEXT( [NSString stringWithFormat:@"%d%@", order_num, @""] );
+		}
+
+		if ( 0 == userModel.user.collection_num.intValue )
+		{
+			$(@"#fav-count").TEXT( @"无" );
+		}
+		else
+		{
+			$(@"#fav-count").TEXT( [NSString stringWithFormat:@"%@%@", userModel.user.collection_num, @""] );
 		}
 		      
 		NSNumber * num1 = [[userModel.user.order_num objectAtPath:@"await_pay"] asNSNumber];
@@ -564,6 +583,22 @@ ON_SIGNAL3( ProfileCell_iPhone, order_finished, signal )
 		}
 
         [self.stack pushBoard:[FinishedBoard_iPhone board] animated:YES];
+    }
+}
+
+
+ON_SIGNAL3( ProfileCell_iPhone, orders_list, signal )
+{
+    if ( [signal is:BeeUIButton.TOUCH_UP_INSIDE] )
+    {
+		if ( NO == [UserModel online] )
+		{
+			[[AppBoard_iPhone sharedInstance] showLogin];
+			return;
+		}
+        
+        MyOrderListBoard_iPhone* board = [MyOrderListBoard_iPhone boardWithNibName:@"MyOrderListBoard_iPhone"];
+        [self.stack pushBoard:board animated:YES];
     }
 }
 

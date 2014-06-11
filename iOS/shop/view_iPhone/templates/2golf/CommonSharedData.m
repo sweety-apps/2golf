@@ -47,4 +47,18 @@ DEF_SINGLETON( CommonSharedData )
     return str;
 }
 
+- (void)setContactPhoneNum:(NSString*)phone
+{
+    if (phone)
+    {
+        [[NSUserDefaults standardUserDefaults] setObject:phone forKey:@"contact_phone_num"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+}
+
+- (NSString*)getContactPhoneNum
+{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:@"contact_phone_num"];
+}
+
 @end
