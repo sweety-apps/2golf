@@ -114,7 +114,14 @@ ON_SIGNAL2( BeeUIBoard, signal )
         //NavigationBar背景太短
         UIImageView* barBGView = [[[UIImageView alloc] initWithImage:__IMAGE(@"titlebarbg")] autorelease];
         rect = barBGView.frame;
-        rect.origin.y = 0;
+        if (IOS7_OR_LATER)
+        {
+            rect.origin.y = 0;
+        }
+        else
+        {
+            rect.origin.y = -20;
+        }
         barBGView.frame = rect;
         gBarBGView=barBGView;
         UINavigationBar* bar = self.navigationController.navigationBar;
@@ -135,16 +142,17 @@ ON_SIGNAL2( BeeUIBoard, signal )
     }
     else if ( [signal is:BeeUIBoard.WILL_APPEAR] )
     {
-        [self fetchData];
-    }
-    else if ( [signal is:BeeUIBoard.DID_APPEAR] )
-    {
         CGRect rect = self.view.frame;
         rect.origin.y=0;
         rect.size.height-=6+64;
         self.webView.frame = rect;
         self.webView.scrollView.frame = rect;
         //self.webView.bounds = rect;
+        [self fetchData];
+    }
+    else if ( [signal is:BeeUIBoard.DID_APPEAR] )
+    {
+        
     }
     else if ( [signal is:BeeUIBoard.WILL_DISAPPEAR] )
     {

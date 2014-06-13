@@ -82,8 +82,8 @@ ON_SIGNAL2( BeeUIBoard, signal )
         CGRect rect;
         
         rect = self.viewBound;
-        rect.origin.y+=6+self.menuScroll.frame.size.height;
-        rect.size.height-=6+self.menuScroll.frame.size.height;
+        rect.origin.y+=6+35;
+        rect.size.height-=6+35;
         _scroll = [[BeeUIScrollView alloc] initWithFrame:rect];
 		_scroll.dataSource = self;
 		_scroll.vertical = YES;
@@ -91,17 +91,29 @@ ON_SIGNAL2( BeeUIBoard, signal )
         //_scroll.bounces = NO;
 		[_scroll showHeaderLoader:NO animated:NO];
 		[self.view insertSubview:_scroll belowSubview:self.menuScroll];
-        _scroll.clipsToBounds = NO;
+        _scroll.clipsToBounds = YES;
         
         //NavigationBar背景太短
         UIImageView* barBGView = [[[UIImageView alloc] initWithImage:__IMAGE(@"titlebarbg")] autorelease];
         rect = barBGView.frame;
-        rect.origin.y = 0;
+        if (IOS7_OR_LATER)
+        {
+            rect.origin.y = 0;
+        }
+        else
+        {
+            rect.origin.y = -20;
+        }
         barBGView.frame = rect;
         gBarBGView=barBGView;
         UINavigationBar* bar = self.navigationController.navigationBar;
         bar.clipsToBounds = NO;
+        gBarBGView.clipsToBounds = NO;
+        ((UIView*)[bar subviews][0]).clipsToBounds = NO;
         [[bar subviews][0] insertSubview:barBGView atIndex:2];
+        self.menuScroll.clipsToBounds = NO;
+        self.menuScroll.showsHorizontalScrollIndicator = NO;
+        self.menuScroll.showsVerticalScrollIndicator = NO;
     }
     else if ( [signal is:BeeUIBoard.DELETE_VIEWS] )
     {
@@ -121,9 +133,17 @@ ON_SIGNAL2( BeeUIBoard, signal )
         
         [_scroll setBaseInsets:UIEdgeInsetsMake(0, 0, [AppBoard_iPhone sharedInstance].tabbar.height, 0)];
 		CGRect rect = self.viewBound;
-        rect.origin.y+=6+self.menuScroll.frame.size.height;
-        rect.size.height-=6+self.menuScroll.frame.size.height;
+        rect.origin.y+=6+35;
+        rect.size.height-=6+35;
         _scroll.frame =rect;
+     
+        if (IOS7_OR_EARLIER)
+        {
+            CGRect rect = self.menuScroll.frame;
+            rect.size.height = 70;
+            self.menuScroll.frame = rect;
+            self.menuScroll.bounds = rect;
+        }
         
         if (!_fetchedTabs)
         {
@@ -212,7 +232,7 @@ ON_SIGNAL2( AifenxiangListCell_iPhone, signal )
 
 - (CGSize)scrollView:(BeeUIScrollView *)scrollView sizeForIndex:(NSInteger)index
 {
-	return CGSizeMake(320, 202);
+	return CGSizeMake(320, 235);
 }
 
 #pragma mark -

@@ -97,6 +97,7 @@
     
     CGRect rectLabel = rect;
     UILabel* label = [[[UILabel alloc] initWithFrame:rectLabel] autorelease];
+    label.backgroundColor = [UIColor clearColor];
     [containerView addSubview:label];
     label.numberOfLines = 3;
     rectLabel.origin = CGPointMake(CGRectGetMaxX(rectImg), (rect.size.height-textSize.height)*0.5 + 4);

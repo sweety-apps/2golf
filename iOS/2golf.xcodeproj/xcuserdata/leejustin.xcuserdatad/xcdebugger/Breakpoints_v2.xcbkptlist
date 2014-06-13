@@ -176,11 +176,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "shop/view_iPhone/templates/IndexBoard_iPhone.m"
-            timestampString = "424151224.897791"
+            timestampString = "424346018.787505"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "808"
-            endingLineNumber = "808"
+            startingLineNumber = "815"
+            endingLineNumber = "815"
             landmarkName = "ON_SIGNAL2()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1128,11 +1128,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "shop/view_iPhone/templates/2golf/Aifenxiang/List/AifenxiangListBoard_iPhone.m"
-            timestampString = "422952325.174208"
+            timestampString = "424349070.247132"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "299"
-            endingLineNumber = "299"
+            startingLineNumber = "319"
+            endingLineNumber = "319"
             landmarkName = "-handleRequest:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1144,11 +1144,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "shop/view_iPhone/templates/2golf/Aifenxiang/List/AifenxiangListBoard_iPhone.m"
-            timestampString = "422952325.174208"
+            timestampString = "424349070.247132"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "264"
-            endingLineNumber = "264"
+            startingLineNumber = "284"
+            endingLineNumber = "284"
             landmarkName = "-fetchList"
             landmarkType = "5">
          </BreakpointContent>
@@ -1160,11 +1160,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "shop/view_iPhone/templates/2golf/Aifenxiang/List/AifenxiangListBoard_iPhone.m"
-            timestampString = "422952325.174208"
+            timestampString = "424349070.247132"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "318"
-            endingLineNumber = "318"
+            startingLineNumber = "338"
+            endingLineNumber = "338"
             landmarkName = "-handleRequest:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1176,11 +1176,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "shop/view_iPhone/templates/2golf/Aifenxiang/Detail/AifenxiangDetailWebBoard_iPhone.m"
-            timestampString = "422965305.634234"
+            timestampString = "424349036.38202"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "187"
-            endingLineNumber = "187"
+            startingLineNumber = "195"
+            endingLineNumber = "195"
             landmarkName = "ON_SIGNAL2()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1352,11 +1352,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "shop/view_iPhone/templates/IndexBoard_iPhone.m"
-            timestampString = "424151590.847142"
+            timestampString = "424346018.787505"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1115"
-            endingLineNumber = "1115"
+            startingLineNumber = "1122"
+            endingLineNumber = "1122"
             landmarkName = "-handleRequest:"
             landmarkType = "5">
          </BreakpointContent>

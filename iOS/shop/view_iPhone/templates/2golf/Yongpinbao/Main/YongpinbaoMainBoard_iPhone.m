@@ -349,7 +349,14 @@ ON_SIGNAL2( BeeUIBoard, signal )
         //NavigationBar背景太短
         UIImageView* barBGView = [[[UIImageView alloc] initWithImage:__IMAGE(@"titlebarbg")] autorelease];
         rect = barBGView.frame;
-        rect.origin.y = 0;
+        if (IOS7_OR_LATER)
+        {
+            rect.origin.y = 0;
+        }
+        else
+        {
+            rect.origin.y = -20;
+        }
         barBGView.frame = rect;
         gBarBGView=barBGView;
         UINavigationBar* bar = self.navigationController.navigationBar;

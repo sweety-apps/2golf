@@ -94,6 +94,18 @@ ON_SIGNAL2( BeeUIBoard, signal )
     {
         [self _refreshSelections];
         [self resetCells];
+        
+        if ([UIApplication sharedApplication].keyWindow.frame.size.height <= 480)
+        {
+            self.scrollView.frame = CGRectMake(0, 6, 320, 480);
+            self.scrollView.contentSize = CGSizeMake(320, 568);
+        }
+        else
+        {
+            self.scrollView.frame = CGRectMake(0, 6, 320, 568);
+            self.scrollView.contentSize = CGSizeMake(320, 568);
+        }
+        
         if ([UserModel online])
         {
             [self fetchData];
@@ -102,14 +114,14 @@ ON_SIGNAL2( BeeUIBoard, signal )
     }
     else if ( [signal is:BeeUIBoard.DID_APPEAR] )
     {
-        if (self.view.frame.size.height <= 480)
+        if ([UIApplication sharedApplication].keyWindow.frame.size.height <= 480)
         {
-            self.scrollView.frame = CGRectMake(0, 6, 320, 480);
+            //self.scrollView.frame = CGRectMake(0, 6, 320, 480);
             self.scrollView.contentSize = CGSizeMake(320, 568);
         }
         else
         {
-            self.scrollView.frame = CGRectMake(0, 6, 320, 568);
+            //self.scrollView.frame = CGRectMake(0, 6, 320, 568);
             self.scrollView.contentSize = CGSizeMake(320, 568);
         }
         
