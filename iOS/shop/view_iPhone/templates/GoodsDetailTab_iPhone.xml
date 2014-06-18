@@ -67,7 +67,7 @@
         .button {
             font: 11px bold;
             text-align: center;
-            color: #fff;
+            color: #ffffff;
             width: 86px;
             height: 28px;
             line-height: 28px;

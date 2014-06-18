@@ -87,7 +87,7 @@
         .filter-item {
 			height: 45px;
 			width: 105px;
-			color: #fff;
+			color: #ffffff;
         }
         
         .filter-seprator {
@@ -99,7 +99,7 @@
         .filter-title {
 			width: 65px;
 			height: 100%;
-			color: #999;
+			color: #999999;
 			font-size: 12px;
 			font-weight: bold;
 			text-align: right;
@@ -108,7 +108,7 @@
         .filter-title-selected {
 			width: 65px;
 			height: 100%;
-			color: #fff;
+			color: #ffffff;
 			font-size: 12px;
 			font-weight: bold;
 			text-align: right;

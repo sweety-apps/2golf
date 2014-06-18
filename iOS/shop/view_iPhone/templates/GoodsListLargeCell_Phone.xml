@@ -72,7 +72,7 @@
         .goods-info-large {
 			width: 290px;
 			height: 20px;
-			color: #999;
+			color: #999999;
 			text-align: left;
 			v-align: center;
 			margin-left: 14px;
@@ -127,7 +127,7 @@
         .goods-subprice-label {
             width: auto;
             height: 20px;
-            color: #999;
+            color: #999999;
             text-align: left;
             font-size: 12px;
         }

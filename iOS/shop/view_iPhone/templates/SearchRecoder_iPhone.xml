@@ -76,7 +76,7 @@
             margin-top: 20px;
             button-title: 取消;
             font: 14px, bold;
-            color: #fff;
+            color: #ffffff;
         }
         
         .voice-search-wrapper-bg {
@@ -95,7 +95,7 @@
             background-image: url(searcher-new-cont-btn-red.png);
             text-align: center;
             font-size: 15px;
-            color: #fff;
+            color: #ffffff;
             line-height: 33px;
         }
         

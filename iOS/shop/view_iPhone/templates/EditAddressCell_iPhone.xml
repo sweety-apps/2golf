@@ -81,7 +81,7 @@
             font-size: 16px;
 			font-weight: bold;
             text-align: center;
-            color: #fff;
+            color: #ffffff;
             width: 123px;
             height: 40px;
             line-height: 28px;
@@ -120,7 +120,7 @@
         }
         
         .button-label {
-            color: #fff;
+            color: #ffffff;
             font-size: 16px;
 			font-weight: bold;
             height: 40px;

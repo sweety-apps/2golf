@@ -21,6 +21,7 @@
 #import <ShareSDK/ShareSDK.h>
 #import "WXApi.h"
 #import "WeiboApi.h"
+#import "PayBoard_iPhone.h"
 
 #pragma mark -
 
@@ -306,6 +307,15 @@ ON_SIGNAL2( BeeUIWebView, signal )
  */
 - (void)shareAllButtonClickHandler:(UIButton *)sender
 {
+    /*
+    PayBoard_iPhone * board = [PayBoard_iPhone board];
+    board.title = __TEXT(@"pay");
+    board.isFromCheckoutBoard = YES;
+    board.orderID = @12345;
+    [self.stack pushBoard:board animated:YES];
+    return;
+    */
+    
     NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"" ofType:@"jpg"];
     
     NSString* title = nil;

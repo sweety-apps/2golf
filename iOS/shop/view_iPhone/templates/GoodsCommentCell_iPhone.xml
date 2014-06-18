@@ -74,7 +74,7 @@
         
         #comment-date {
             font: 13px;
-            color: #999;
+            color: #999999;
             width: 50px;
             height: 20px;
             text-align: right;
@@ -90,7 +90,7 @@
             width: 280px;
             line-num: 0;
             height: auto;
-            color: #999;
+            color: #999999;
         }
         
     </style>

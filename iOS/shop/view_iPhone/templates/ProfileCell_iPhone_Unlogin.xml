@@ -319,7 +319,7 @@
             border-radius: 32px;
             image-mode: fill;
 			image-style: round;
-            border: 5px solid #fff;
+            border: 5px solid #ffffff;
         }
 
         .header-level-box {
@@ -376,7 +376,7 @@
             position: absolute !important;
             top: 0;
             left: 0;
-            background-color: #999;
+            background-color: #999999;
             background-mode: stretch;
             background-insets: 10px;
             background-image: url(body-bg.png);
@@ -410,7 +410,7 @@
             position: absolute !important;
             top: 0;
             left: 0;
-            background-color: #eee;
+            background-color: #eeeeee;
             image-src:url(profile_img_bg.png);
         }
         

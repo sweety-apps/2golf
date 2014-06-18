@@ -19,6 +19,7 @@
 #import "TimeSquareBoard_iPhone.h"
 #import "TaocanOrderEditBoard_iPhone.h"
 #import "QuichangDetailBoard_iPhone.h"
+#import "FlightViewBoard_iPhone.h"
 
 #pragma mark -
 
@@ -210,9 +211,7 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
 
 - (IBAction)onPressedBgBtn5:(id)sender
 {
-    QuichangDetailBoard_iPhone* board = [QuichangDetailBoard_iPhone boardWithNibName:@"QuichangDetailBoard_iPhone"];
-    [board setCourseId:self.dataDict[@"courseid"][0]];
-    [[[self.view superview] recursiveFindUIBoard].stack pushBoard:board animated:YES];
+    
 }
 
 

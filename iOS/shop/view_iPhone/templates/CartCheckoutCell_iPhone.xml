@@ -115,7 +115,7 @@
         .button-label {
             margin-top: 10px;
 			padding-left: 36px;
-            color: #fff;
+            color: #ffffff;
             font: 14px bold;
 			text-align: center;
             height: 20px;

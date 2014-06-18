@@ -109,7 +109,7 @@
         }
         
         .button-label {
-            color: #fff;
+            color: #ffffff;
             font: 18px bold;
             height: 40px;
             width: auto;

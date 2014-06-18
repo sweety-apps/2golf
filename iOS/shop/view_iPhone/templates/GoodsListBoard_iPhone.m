@@ -68,9 +68,9 @@ SUPPORT_RESOURCE_LOADING( YES )
 
 - (void)selectTab1
 {
-	$(@"#item-popular").CSS( @"color: #fff" );
-	$(@"#item-cheap").CSS( @"color: #999" );
-	$(@"#item-expensive").CSS( @"color: #999" );
+	$(@"#item-popular").CSS( @"color: #ffffff" );
+	$(@"#item-cheap").CSS( @"color: #999999" );
+	$(@"#item-expensive").CSS( @"color: #999999" );
     
     $(@"item-popular-arrow").CSS( @"image-src: url(item-grid-filter-down-active-arrow.png)" );
     $(@"item-cheap-arrow").CSS( @"image-src: url(item-grid-filter-down-arrow.png)" );
@@ -83,9 +83,9 @@ SUPPORT_RESOURCE_LOADING( YES )
 
 - (void)selectTab2
 {
-	$(@"#item-popular").CSS( @"color: #999" );
-	$(@"#item-cheap").CSS( @"color: #fff" );
-	$(@"#item-expensive").CSS( @"color: #999" );
+	$(@"#item-popular").CSS( @"color: #999999" );
+	$(@"#item-cheap").CSS( @"color: #ffffff" );
+	$(@"#item-expensive").CSS( @"color: #999999" );
     
     $(@"item-popular-arrow").CSS( @"image-src: url(item-grid-filter-down-arrow.png)" );
     $(@"item-cheap-arrow").CSS( @"image-src: url(item-grid-filter-down-active-arrow.png)" );
@@ -98,9 +98,9 @@ SUPPORT_RESOURCE_LOADING( YES )
 
 - (void)selectTab3
 {
-	$(@"#item-popular").CSS( @"color: #999" );
-	$(@"#item-cheap").CSS( @"color: #999" );
-	$(@"#item-expensive").CSS( @"color: #fff" );
+	$(@"#item-popular").CSS( @"color: #999999" );
+	$(@"#item-cheap").CSS( @"color: #999999" );
+	$(@"#item-expensive").CSS( @"color: #ffffff" );
     
     $(@"item-popular-arrow").CSS( @"image-src: url(item-grid-filter-down-arrow.png)" );
     $(@"item-cheap-arrow").CSS( @"image-src: url(item-grid-filter-down-arrow.png)" );

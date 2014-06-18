@@ -22,6 +22,7 @@
 #import "SirendingzhiDetailHeaderCellBoard_iPhone.h"
 #import "SirendingzhiDetailInfoCellBoard_iPhone.h"
 #import "ServerConfig.h"
+#import "FlightViewBoard_iPhone.h"
 
 #pragma mark -
 
@@ -399,6 +400,7 @@ ON_SIGNAL2( SirendingzhiDetailBannerPhotoCell_iPhone, signal )
     {
         SirendingzhiDetailHeaderCell_iPhone* cell = [[SirendingzhiDetailHeaderCell_iPhone alloc] initWithFrame:CGRectZero];
         cell.data = self.dataDict;
+        [cell.ctrl.bgBtn5 addTarget:self action:@selector(onShowFlight) forControlEvents:UIControlEventTouchUpInside];
         [self.cellArray addObject:cell];
     }
     
@@ -489,6 +491,25 @@ ON_SIGNAL2( SirendingzhiDetailBannerPhotoCell_iPhone, signal )
 - (void) setCustomId:(NSString*)customId
 {
     self.custom_Id = customId;
+}
+
+- (void) onShowFlight
+{
+    if (self.dataDict)
+    {
+        for (UIViewController* ctrl in [self childViewControllers])
+        {
+            if ([ctrl isKindOfClass:[FlightViewBoard_iPhone class]])
+            {
+                [ctrl removeFromParentViewController];
+            }
+        }
+        NSArray* flightArr = self.dataDict[@"flightinfo"];
+        FlightViewBoard_iPhone* board = [FlightViewBoard_iPhone boardWithNibName:@"FlightViewBoard_iPhone"];
+        [self addChildViewController:board];
+        [self.view addSubview:board.view];
+        [board showViewWithDataArray:flightArr];
+    }
 }
 
 @end

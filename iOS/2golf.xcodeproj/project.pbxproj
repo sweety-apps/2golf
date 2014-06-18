@@ -617,6 +617,9 @@
 		F31007C41946052C002DF54F /* TaocanOrderEditBoard_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = F31007C31946052C002DF54F /* TaocanOrderEditBoard_iPhone.xib */; };
 		F31007D21946C07D002DF54F /* WeatherViewBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = F31007D11946C07D002DF54F /* WeatherViewBoard_iPhone.m */; };
 		F31007D41946C095002DF54F /* WeatherViewBoard_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = F31007D31946C095002DF54F /* WeatherViewBoard_iPhone.xib */; };
+		F31491A01951E3CB0077385C /* FlightViewBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = F314919F1951E3CB0077385C /* FlightViewBoard_iPhone.m */; };
+		F31491A21951E3DA0077385C /* FlightViewBoard_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = F31491A11951E3DA0077385C /* FlightViewBoard_iPhone.xib */; };
+		F31491B01951E66C0077385C /* NALLabelsMatrix.m in Sources */ = {isa = PBXBuildFile; fileRef = F31491AF1951E66C0077385C /* NALLabelsMatrix.m */; };
 		F319AC5F191E2C3E00D64FA2 /* SirendingzhiDetailBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = F319AC5E191E2C3E00D64FA2 /* SirendingzhiDetailBoard_iPhone.m */; };
 		F319AC61191E2C5200D64FA2 /* SirendingzhiDetailBoard_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = F319AC60191E2C5200D64FA2 /* SirendingzhiDetailBoard_iPhone.xib */; };
 		F319AC65191E4C1D00D64FA2 /* SirendingzhiDetailInfoCellBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = F319AC64191E4C1D00D64FA2 /* SirendingzhiDetailInfoCellBoard_iPhone.m */; };
@@ -1878,6 +1881,11 @@
 		F31007D01946C07D002DF54F /* WeatherViewBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherViewBoard_iPhone.h; sourceTree = "<group>"; };
 		F31007D11946C07D002DF54F /* WeatherViewBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherViewBoard_iPhone.m; sourceTree = "<group>"; };
 		F31007D31946C095002DF54F /* WeatherViewBoard_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeatherViewBoard_iPhone.xib; sourceTree = "<group>"; };
+		F314919E1951E3CB0077385C /* FlightViewBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlightViewBoard_iPhone.h; sourceTree = "<group>"; };
+		F314919F1951E3CB0077385C /* FlightViewBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlightViewBoard_iPhone.m; sourceTree = "<group>"; };
+		F31491A11951E3DA0077385C /* FlightViewBoard_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FlightViewBoard_iPhone.xib; sourceTree = "<group>"; };
+		F31491AE1951E66C0077385C /* NALLabelsMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NALLabelsMatrix.h; sourceTree = "<group>"; };
+		F31491AF1951E66C0077385C /* NALLabelsMatrix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NALLabelsMatrix.m; sourceTree = "<group>"; };
 		F319AC5D191E2C3E00D64FA2 /* SirendingzhiDetailBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SirendingzhiDetailBoard_iPhone.h; sourceTree = "<group>"; };
 		F319AC5E191E2C3E00D64FA2 /* SirendingzhiDetailBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SirendingzhiDetailBoard_iPhone.m; sourceTree = "<group>"; };
 		F319AC60191E2C5200D64FA2 /* SirendingzhiDetailBoard_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SirendingzhiDetailBoard_iPhone.xib; sourceTree = "<group>"; };
@@ -4026,6 +4034,15 @@
 			path = ZipArchive;
 			sourceTree = "<group>";
 		};
+		F31491AD1951E66C0077385C /* NALLabelsMatrix */ = {
+			isa = PBXGroup;
+			children = (
+				F31491AE1951E66C0077385C /* NALLabelsMatrix.h */,
+				F31491AF1951E66C0077385C /* NALLabelsMatrix.m */,
+			);
+			path = NALLabelsMatrix;
+			sourceTree = "<group>";
+		};
 		F319AE17192ED1C500D64FA2 /* aifenxiang */ = {
 			isa = PBXGroup;
 			children = (
@@ -4117,6 +4134,7 @@
 		F39B60FC1916496700C89F6A /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				F31491AD1951E66C0077385C /* NALLabelsMatrix */,
 				F3F0EEB3193517DF004613DA /* Nib */,
 				F39B60FD1916499000C89F6A /* PhotoSlideViewBoard_iPhone.h */,
 				F39B60FE1916499000C89F6A /* PhotoSlideViewBoard_iPhone.m */,
@@ -4129,6 +4147,9 @@
 				F31007D01946C07D002DF54F /* WeatherViewBoard_iPhone.h */,
 				F31007D11946C07D002DF54F /* WeatherViewBoard_iPhone.m */,
 				F31007D31946C095002DF54F /* WeatherViewBoard_iPhone.xib */,
+				F314919E1951E3CB0077385C /* FlightViewBoard_iPhone.h */,
+				F314919F1951E3CB0077385C /* FlightViewBoard_iPhone.m */,
+				F31491A11951E3DA0077385C /* FlightViewBoard_iPhone.xib */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -5132,6 +5153,7 @@
 				F3E4607E18DF395400C8E952 /* tabsharen@2x.png in Resources */,
 				F3B5396C19012289004E72D4 /* QiuchangOrderResultBoard_iPhone.xib in Resources */,
 				F3B5375818FE29FC004E72D4 /* privilegelisticonhui@2x.png in Resources */,
+				F31491A21951E3DA0077385C /* FlightViewBoard_iPhone.xib in Resources */,
 				CB37764B17C5FF6F00DF5F21 /* shopping_cart_act_logo.png in Resources */,
 				F3F0EF4119358214004613DA /* Resource.bundle in Resources */,
 				CB37764C17C5FF6F00DF5F21 /* trade-info-cont-bg1@2x.png in Resources */,
@@ -5533,6 +5555,7 @@
 				F3F0EEBB19351AED004613DA /* AifenxiangMenuTab.m in Sources */,
 				F3696824190C37C40020E991 /* SirendingzhiListBoard_iPhone.m in Sources */,
 				E970D780182CE4E200146363 /* Bee_HTTPRequest2.m in Sources */,
+				F31491B01951E66C0077385C /* NALLabelsMatrix.m in Sources */,
 				E970D68B182CE4E200146363 /* Bee_Message.mm in Sources */,
 				E909CC4E182D0D650095B262 /* SearchBoard_iPhone.m in Sources */,
 				E970D722182CE4E200146363 /* BeeUIQuery+Manipulation.m in Sources */,
@@ -5557,6 +5580,7 @@
 				E970D695182CE4E200146363 /* Bee_Model.mm in Sources */,
 				E970D729182CE4E200146363 /* Bee_UITransitionCube.m in Sources */,
 				E970D734182CE4E200146363 /* Bee_UITemplateCompiler.m in Sources */,
+				F31491A01951E3CB0077385C /* FlightViewBoard_iPhone.m in Sources */,
 				E9E2745317815D36007245BD /* CurrentAddressModel.m in Sources */,
 				E909CC3F182D0D650095B262 /* NotificationBoard_iPhone.m in Sources */,
 				E970D740182CE4E200146363 /* Bee_UITemplateParserXMLImpl.m in Sources */,

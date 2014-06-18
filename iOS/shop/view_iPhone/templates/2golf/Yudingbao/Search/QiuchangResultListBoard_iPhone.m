@@ -214,6 +214,83 @@ ON_SIGNAL2( BeeUIBoard, signal )
     }
 }
 
+- (void)reorderDataByPrice
+{
+    NSMutableArray* arr = self.dataArray;
+    NSMutableArray* arr_dis = self.distanceArray;
+    for (int i = 0; i < arr.count; ++i)
+    {
+        int cost_i = [arr[i][@"cheapestprice"] integerValue];
+        for (int j = i + 1; j < arr.count; ++j)
+        {
+            int cost_j = [arr[j][@"cheapestprice"] integerValue];
+            if (cost_i > cost_j)
+            {
+                id t = arr[j];
+                arr[j] = arr[i];
+                arr[i] = t;
+                
+                t = arr_dis[j];
+                arr_dis[j] = arr_dis[i];
+                arr_dis[i] = t;
+
+                cost_i = cost_j;
+            }
+        }
+    }
+}
+
+- (void)reorderDataByDistance
+{
+    NSMutableArray* arr = self.dataArray;
+    NSMutableArray* arr_dis = self.distanceArray;
+    for (int i = 0; i < arr_dis.count; ++i)
+    {
+        int dis_i = [arr_dis[i] integerValue];
+        for (int j = i + 1; j < arr_dis.count; ++j)
+        {
+            int dis_j = [arr_dis[j] integerValue];
+            if (dis_i > dis_j)
+            {
+                id t = arr[j];
+                arr[j] = arr[i];
+                arr[i] = t;
+                
+                t = arr_dis[j];
+                arr_dis[j] = arr_dis[i];
+                arr_dis[i] = t;
+                
+                dis_i = dis_j;
+            }
+        }
+    }
+}
+
+- (void)reorderDataByHot
+{
+    //nothing
+}
+
+- (void)reorderDatas
+{
+    if (self.btn1.selected)
+    {
+        [self reorderDataByPrice];
+    }
+    else if (self.btn2.selected)
+    {
+        [self reorderDataByHot];
+    }
+    else if (self.btn3.selected)
+    {
+        [self reorderDataByDistance];
+    }
+    else
+    {
+        
+    }
+}
+
 - (void)fetchData
 {
     NSDictionary* dic = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_local"];
@@ -276,6 +353,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
                     [CommonUtility metersOfDistanceBetween:[CommonUtility currentPositionX] _y1:[CommonUtility currentPositionY] _x2:locX _y2:locY];
                     [self.distanceArray addObject:[NSNumber numberWithDouble:dis]];
                 }
+                [self reorderDatas];
                 [_scroll reloadData];
             }
             else
