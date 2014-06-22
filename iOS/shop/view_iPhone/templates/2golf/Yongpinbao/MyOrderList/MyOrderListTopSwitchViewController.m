@@ -40,14 +40,14 @@
 
 - (void) selectButtonCourse
 {
-    self.buttonCourse.backgroundColor = self.oldColor;
-    self.buttonTaocan.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+    self.buttonCourse.selected = YES;
+    self.buttonTaocan.selected = NO;
 }
 
 - (void) selectButtonTaocan
 {
-    self.buttonCourse.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
-    self.buttonTaocan.backgroundColor = self.oldColor;
+    self.buttonCourse.selected = NO;
+    self.buttonTaocan.selected = YES;
 }
 
 @end

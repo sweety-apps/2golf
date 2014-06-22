@@ -37,11 +37,11 @@
 @property (nonatomic,retain) NSMutableDictionary* priceDict;
 @property (nonatomic,retain) UITextField* phoneTextField;
 
-@property (nonatomic,assign) NSInteger numPeople;
-@property (nonatomic,assign) NSInteger price1;
-@property (nonatomic,assign) NSInteger price2;
-@property (nonatomic,assign) NSInteger price3;
-@property (nonatomic,assign) NSInteger priceAll;
+@property (nonatomic,assign) double numPeople;
+@property (nonatomic,assign) double price1;
+@property (nonatomic,assign) double price2;
+@property (nonatomic,assign) double price3;
+@property (nonatomic,assign) double priceAll;
 
 @end
 
@@ -177,7 +177,7 @@ ON_SIGNAL2( BeeUIScrollView, signal )
     
     QiuchangOrderEditCell_iPhone* cell = nil;
     
-    self.priceAll = [self.priceDict[@"price"] intValue]*self.numPeople;
+    self.priceAll = [self.priceDict[@"price"] doubleValue]*self.numPeople;
     
     // 1
     cell = [QiuchangOrderEditCell_iPhone cell];
@@ -253,7 +253,7 @@ ON_SIGNAL2( BeeUIScrollView, signal )
     cell.delegate = self;
     [self.cellArray addObject:cell];
     
-    str = [NSString stringWithFormat:@"%d",self.numPeople];
+    str = [NSString stringWithFormat:@"%d",(int)self.numPeople];
     cell = [QiuchangOrderEditCell_iPhone cell];
     [cell setPeopleNum];
     [cell setLeftText:@"打球人数"];
@@ -268,7 +268,8 @@ ON_SIGNAL2( BeeUIScrollView, signal )
     }
     else
     {
-        str = [NSString stringWithFormat:@"￥%d",[self.priceDict[@"deposit"] intValue] *self.numPeople];
+        double val = [((NSNumber*)self.priceDict[@"deposit"]) doubleValue] *self.numPeople;
+        str = [NSString stringWithFormat:@"￥%@",[NSNumber numberWithDouble:val]];
     }
     cell = [QiuchangOrderEditCell_iPhone cell];
     [cell setNormalH];
@@ -307,8 +308,8 @@ ON_SIGNAL2( BeeUIScrollView, signal )
     cell.delegate = self;
     [self.cellArray addObject:cell];
     
-    self.priceAll = [self.priceDict[@"price"] intValue]*self.numPeople;
-    str = [NSString stringWithFormat:@"￥%d",self.priceAll];
+    self.priceAll = [self.priceDict[@"price"] doubleValue]*self.numPeople;
+    str = [NSString stringWithFormat:@"￥%@",[NSNumber numberWithDouble:self.priceAll]];
     cell = [QiuchangOrderEditCell_iPhone cell];
     [cell setNormalM];
     [cell setLeftText:@"订单总价"];
@@ -421,10 +422,10 @@ ON_SIGNAL2( BeeUIScrollView, signal )
     [self presentProgressTips:@"正在生成订单"];
     NSDictionary* paramDict = @{
                                 @"session":[UserModel sharedInstance].session.objectToDictionary,
-                                @"players":[NSString stringWithFormat:@"%d",self.numPeople],
+                                @"players":[NSString stringWithFormat:@"%d",(int)self.numPeople],
                                 @"contacts":[[CommonSharedData sharedInstance] getContactListNamesString],
                                 @"tel":self.phoneTextField.text,
-                                @"price":[NSString stringWithFormat:@"%d",self.priceAll],
+                                @"price":[NSString stringWithFormat:@"%@",[NSNumber numberWithDouble:self.priceAll]],
                                 @"id":self.courseDict[@"course_id"],
                                 @"type":@"1",
                                 @"agentid":self.priceDict[@"distributorid"],

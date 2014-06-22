@@ -75,6 +75,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
         CGRect rect = _cell.frame;
         rect.origin.y = 6;
         _cell.frame = rect;
+        [self.backToHomeButton setBackgroundImage:[__IMAGE(@"searcher_new_btn_green") stretched] forState:UIControlStateNormal];
     }
     else if ( [signal is:BeeUIBoard.DID_APPEAR] )
     {
@@ -263,4 +264,8 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
     
 }
 
+- (void)dealloc {
+    [_backToHomeButton release];
+    [super dealloc];
+}
 @end

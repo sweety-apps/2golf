@@ -59,8 +59,8 @@
 
 - (void)_setupSelfCourseDict:(NSDictionary*)dict
 {
-    self.ctrl.playTimeTitleLbl.text = @"打球时间";
-    self.ctrl.peopleTimeTitleLbl.text = @"打球人员";
+    self.ctrl.playTimeTitleLbl.text = @"打球";
+    self.ctrl.peopleTimeTitleLbl.text = @"人员";
     
     self.ctrl.courseNameLbl.text = dict[@"coursename"];
     self.ctrl.orderIdLbl.text = dict[@"order_sn"];
@@ -73,6 +73,14 @@
     else if([playTime isKindOfClass:[NSNumber class]])
     {
         self.ctrl.playTimeLbl.text = [((NSNumber*)playTime) stringValue];
+    }
+    if ([self.ctrl.orderTimeLbl.text length] > 0)
+    {
+        self.ctrl.orderTimeLbl.text = [self tsStringToDateString:self.ctrl.orderTimeLbl.text];
+    }
+    if (self.ctrl.playTimeLbl.text)
+    {
+        self.ctrl.playTimeLbl.text = [self tsStringToDateString:self.ctrl.playTimeLbl.text];
     }
     self.ctrl.peopleTimeLbl.text = dict[@"players"];
     self.ctrl.descriptionTimeLbl.text = dict[@"cancel_desc"];
@@ -96,16 +104,30 @@
     else
     {
         self.ctrl.priceTimeLbl.text = @"获取数据失败";
+    }
+    
+    if (![@"获取数据失败" isEqualToString:self.ctrl.priceTimeLbl.text])
+    {
+        self.ctrl.priceTimeLbl.text = [@"￥" stringByAppendingString:self.ctrl.priceTimeLbl.text];
     }
     
     int status = [dict[@"status"] integerValue];
     [self _setupButtonsWithState:status];
 }
 
+- (NSString*)tsStringToDateString:(NSString*)tsStr
+{
+    NSTimeInterval iterval = [tsStr doubleValue];
+    NSDate* date = [NSDate dateWithTimeIntervalSince1970:iterval];
+    
+    NSString* ret = [NSString stringWithFormat:@"%04d/%02d/%02d %02d:%02d\n%@",[date year],[date month],[date day],[date hour],[date minute],[date weekdayChinese]];
+    return ret;
+}
+
 - (void)_setupSelfTaocanDict:(NSDictionary*)dict
 {
-    self.ctrl.playTimeTitleLbl.text = @"出行时间";
-    self.ctrl.peopleTimeTitleLbl.text = @"出行人员";
+    self.ctrl.playTimeTitleLbl.text = @"出行";
+    self.ctrl.peopleTimeTitleLbl.text = @"人员";
     
     self.ctrl.courseNameLbl.text = dict[@"coursename"];
     self.ctrl.orderIdLbl.text = dict[@"order_sn"];
@@ -118,6 +140,14 @@
     else if([playTime isKindOfClass:[NSNumber class]])
     {
         self.ctrl.playTimeLbl.text = [((NSNumber*)playTime) stringValue];
+    }
+    if ([self.ctrl.orderTimeLbl.text length] > 0)
+    {
+        self.ctrl.orderTimeLbl.text = [self tsStringToDateString:self.ctrl.orderTimeLbl.text];
+    }
+    if (self.ctrl.playTimeLbl.text)
+    {
+        self.ctrl.playTimeLbl.text = [self tsStringToDateString:self.ctrl.playTimeLbl.text];
     }
     self.ctrl.peopleTimeLbl.text = dict[@"players"];
     self.ctrl.descriptionTimeLbl.text = dict[@"cancel_desc"];
@@ -141,6 +171,11 @@
     else
     {
         self.ctrl.priceTimeLbl.text = @"获取数据失败";
+    }
+    
+    if (![@"获取数据失败" isEqualToString:self.ctrl.priceTimeLbl.text])
+    {
+        self.ctrl.priceTimeLbl.text = [@"￥" stringByAppendingString:self.ctrl.priceTimeLbl.text];
     }
     
     int status = [dict[@"status"] integerValue];
@@ -454,10 +489,10 @@
 
 - (void)shareOrder:(NSDictionary*)dict
 {
-    NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"" ofType:@"jpg"];
+    NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"icon" ofType:@"jpg"];
     
     NSString* title = [NSString stringWithFormat:@"我正在使用爱高高尔夫订场，场地众多，价格实惠"];
-    NSString* url = [[ServerConfig sharedInstance].baseUrl stringByAppendingFormat:@"/"];
+    NSString* url = [[ServerConfig sharedInstance].baseUrl stringByAppendingFormat:@"/app/"];
     NSString* summary = @" ";
     
     if ([summary length] == 0)
@@ -470,7 +505,7 @@
     //构造分享内容
     id<ISSContent> publishContent = [ShareSDK content:collectedContent
                                        defaultContent:collectedContent
-                                                image:nil
+                                                image:[ShareSDK imageWithPath:imagePath]
                                                 title:title
                                                   url:url
                                           description:summary
@@ -484,8 +519,8 @@
                                          content:summary
                                            title:title
                                              url:url
-                                      thumbImage:nil
-                                           image:nil
+                                      thumbImage:[ShareSDK imageWithPath:imagePath]
+                                           image:[ShareSDK imageWithPath:imagePath]
                                     musicFileUrl:nil
                                          extInfo:nil
                                         fileData:nil
@@ -496,8 +531,8 @@
                                           content:summary
                                             title:title
                                               url:url
-                                       thumbImage:nil
-                                            image:nil
+                                       thumbImage:[ShareSDK imageWithPath:imagePath]
+                                            image:[ShareSDK imageWithPath:imagePath]
                                      musicFileUrl:nil
                                           extInfo:nil
                                          fileData:nil
@@ -508,8 +543,8 @@
                                      content:summary
                                        title:title
                                          url:url
-                                  thumbImage:nil
-                                       image:nil
+                                  thumbImage:[ShareSDK imageWithPath:imagePath]
+                                       image:[ShareSDK imageWithPath:imagePath]
                                 musicFileUrl:nil
                                      extInfo:nil
                                     fileData:nil

@@ -96,6 +96,12 @@ ON_SIGNAL2( BeeUIBoard, signal )
         rect.size.height-=6+self.handInputView.frame.size.height-70;
         _scroll.frame =rect;
         
+        /*
+        CGRect rectInputView = self.handInputView.frame;
+        rectInputView.origin.y = self.viewBound.size.height - rectInputView.size.height;
+        self.handInputView.frame = rectInputView;
+        */
+        
         _oldInputViewFrame = self.handInputView.frame;
         
         [self resetCells];

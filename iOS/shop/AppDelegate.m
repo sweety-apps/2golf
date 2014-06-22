@@ -67,7 +67,7 @@ static BMKMapManager* _mapManager = nil;
      注册SDK应用，此应用请到http://www.sharesdk.cn中进行注册申请。
      此方法必须在启动时调用，否则会限制SDK的使用。
      **/
-    [ShareSDK registerApp:@"iosv1101"];
+    [ShareSDK registerApp:@"1e7533f59639"];
     
     //如果使用服务中配置的app信息，请把初始化代码改为下面的初始化方法。
     //    [ShareSDK registerApp:@"iosv1101" useAppTrusteeship:YES];
@@ -216,7 +216,7 @@ static BMKMapManager* _mapManager = nil;
      连接微信应用以使用相关功能，此应用需要引用WeChatConnection.framework和微信官方SDK
      http://open.weixin.qq.com上注册应用，并将相关信息填写以下字段
      **/
-    [ShareSDK connectWeChatWithAppId:@"wx4868b35061f87885" wechatCls:[WXApi class]];
+    [ShareSDK connectWeChatWithAppId:@"wxa51ce6f1188bc44d" wechatCls:[WXApi class]];
     
 }
 

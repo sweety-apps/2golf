@@ -38,11 +38,11 @@
 @property (nonatomic,retain) UITextField* descriptionTextField;
 @property (nonatomic,retain) NSString* description;
 
-@property (nonatomic,assign) NSInteger numPeople;
-@property (nonatomic,assign) NSInteger price1;
-@property (nonatomic,assign) NSInteger price2;
-@property (nonatomic,assign) NSInteger price3;
-@property (nonatomic,assign) NSInteger priceAll;
+@property (nonatomic,assign) double numPeople;
+@property (nonatomic,assign) double price1;
+@property (nonatomic,assign) double price2;
+@property (nonatomic,assign) double price3;
+@property (nonatomic,assign) double priceAll;
 
 @end
 
@@ -206,7 +206,7 @@ ON_SIGNAL2( BeeUIScrollView, signal )
     [self.cellArray addObject:cell];
     
     //4
-    str = [NSString stringWithFormat:@"%d",self.numPeople];
+    str = [NSString stringWithFormat:@"%d",(int)self.numPeople];
     cell = [QiuchangOrderEditCell_iPhone cell];
     [cell setPeopleNumM];
     [cell setLeftText:@"打球人数"];
@@ -319,10 +319,10 @@ ON_SIGNAL2( BeeUIScrollView, signal )
     [self presentProgressTips:@"正在生成订单"];
     NSDictionary* paramDict = @{
                                 @"session":[UserModel sharedInstance].session.objectToDictionary,
-                                @"players":[NSString stringWithFormat:@"%d",self.numPeople],
+                                @"players":[NSString stringWithFormat:@"%d",(int)self.numPeople],
                                 @"contacts":[[CommonSharedData sharedInstance] getContactListNamesString],
                                 @"tel":self.phoneTextField.text,
-                                @"price":[NSString stringWithFormat:@"%d",self.priceAll],
+                                @"price":[NSString stringWithFormat:@"%@",[ NSNumber numberWithDouble:self.priceAll]],
                                 @"id":self.dataDict[@"id"],
                                 @"type":@"2",
                                 @"agentid":self.dataDict[@"distributorid"],

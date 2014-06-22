@@ -65,7 +65,7 @@
             self.ctrl.nameLbl.text = [NSString stringWithFormat:@"%@区",dict[@"areaname"]];
         }
         
-        self.ctrl.priceLbl.text = [NSString stringWithFormat:@"￥%d",[(dict[@"price"]) intValue]] ;
+        self.ctrl.priceLbl.text = [NSString stringWithFormat:@"￥%@",dict[@"price"]] ;
         
         [self.ctrl.orderBtn addTarget:self action:@selector(_pressedBtn:) forControlEvents:UIControlEventTouchUpInside];
     }

@@ -71,7 +71,7 @@ DEF_SIGNAL( TOUCHED )
         self.ctrl.timeLbl.text = [NSString stringWithFormat:@"%02d:%02d~%02d:%02d",[d1 hour],[d1 minute],[d2 hour],[d2 minute]];
         
         self.ctrl.xianImg.hidden = YES;
-        if ([dict[@"payway"] intValue] == 1)
+        if (dict[@"payway"] != [NSNull null] && [dict[@"payway"] intValue] == 1)
         {
             self.ctrl.xianImg.hidden = NO;
         }
@@ -81,7 +81,7 @@ DEF_SIGNAL( TOUCHED )
         }
         
         self.ctrl.huiImg.hidden = YES;
-        if ([dict[@"distributortype"] intValue] == 1)
+        if (dict[@"distributortype"] != [NSNull null] && [dict[@"distributortype"] intValue] == 1)
         {
             self.ctrl.huiImg.hidden = NO;
         }

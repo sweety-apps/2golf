@@ -20,6 +20,7 @@
 #pragma mark -
 
 @interface QiuchangOrderResultBoard_iPhone : BeeUIBoard
+@property (retain, nonatomic) IBOutlet UIButton *backToHomeButton;
 
 @property (nonatomic,retain) NSMutableDictionary* dataDict;
 - (IBAction)pressedBackToHome:(id)sender;

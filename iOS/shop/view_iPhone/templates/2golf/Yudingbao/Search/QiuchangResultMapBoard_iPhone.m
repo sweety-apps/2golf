@@ -250,6 +250,7 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
     UILabel* label = [[[UILabel alloc] initWithFrame:rect] autorelease];
     label.font = [UIFont systemFontOfSize:20.f];
     label.textColor = [UIColor whiteColor];
+    label.backgroundColor = [UIColor clearColor];
     label.textAlignment = NSTextAlignmentCenter;
     label.text = text;
     [newAnnotation addSubview:label];

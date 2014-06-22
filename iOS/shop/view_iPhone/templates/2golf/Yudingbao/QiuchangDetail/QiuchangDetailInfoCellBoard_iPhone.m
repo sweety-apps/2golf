@@ -123,6 +123,7 @@
     [[[self superview] superview].board.view addSubview:pickerBg];
     
     UIPickerView* picker = [[[UIPickerView alloc] init] autorelease];
+    picker.showsSelectionIndicator = YES;
     rect = picker.frame;
     rect.origin = CGPointZero;
     rect.origin.y = pickerBg.frame.size.height - rect.size.height;
@@ -197,27 +198,36 @@
 // returns the # of rows in each component..
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-    return 24*6;//10分钟区间
+    return 14*6;//10分钟区间,9:00-23:00
 }
 
 #pragma mark - <UIPickerViewDelegate>
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    NSDate* date = [NSDate dateWithTimeIntervalSince1970:row*10.0f*60.f];
+    NSDate* date = [NSDate dateWithTimeIntervalSince1970:1*3600 + row*10.0f*60.f];
     return [NSString stringWithFormat:@"%02d:%02d",[date hour],[date minute]];
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    NSDate* date = [NSDate dateWithTimeIntervalSince1970:row*10.0f*60.f];
+    NSDate* date = [NSDate dateWithTimeIntervalSince1970:1*3600 + row*10.0f*60.f];
     [[NSUserDefaults standardUserDefaults] setObject:date forKey:@"search_time"];
-    [[pickerView superview] removeFromSuperview];
+    
     [self dataDidChanged];
     if (self.delegate && [self.delegate respondsToSelector:@selector(qiuchangDetailInfoCell:shouldRefreshData:)])
     {
         [self.delegate qiuchangDetailInfoCell:self shouldRefreshData:[CommonUtility getSearchTimeStamp]];
     }
+    
+    UIView* bgView = [pickerView superview];
+    [self performSelectorOnMainThread:@selector(_removePickerBgView:) withObject:bgView waitUntilDone:NO];
+    
+}
+
+- (void)_removePickerBgView:(UIView*)bgView
+{
+    [bgView removeFromSuperview];
 }
 
 @end
