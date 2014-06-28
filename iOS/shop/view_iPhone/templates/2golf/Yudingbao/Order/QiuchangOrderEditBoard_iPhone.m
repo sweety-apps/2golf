@@ -198,7 +198,7 @@ ON_SIGNAL2( BeeUIScrollView, signal )
     NSDate* date = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_date"];
     if (date == nil)
     {
-        date = [NSDate date];
+        date = [NSDate dateWithTimeIntervalSinceNow:3600*24 + 3600];//明天1小时以后
     }
     str = [NSString stringWithFormat:@"%d年%d月%d日\n%@",[date year],[date month],[date day],[date weekdayChinese]];
     if ([str length] == 0)
@@ -218,7 +218,7 @@ ON_SIGNAL2( BeeUIScrollView, signal )
     date = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_time"];
     if (date == nil)
     {
-        date = [NSDate date];
+        date = [NSDate dateWithTimeIntervalSinceNow:3600*24 + 3600];//明天1小时以后
     }
     str = [NSString stringWithFormat:@"%02d:%02d",[date hour],[date minute]];
     if ([str length] == 0)

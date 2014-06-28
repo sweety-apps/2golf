@@ -37,6 +37,7 @@ AS_SIGNAL( TOUCHED )
 #pragma mark -
 
 @interface BannerCell_iPhone : BeeUICell
+@property (nonatomic, retain) NSTimer* autoScrollTimer;
 @property (nonatomic, retain) UIView *		shadow;
 @property (nonatomic, retain) BeeUIScrollView *		scroll;
 @property (nonatomic, retain) BeeUIPageControl *	pageControl;

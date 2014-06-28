@@ -54,6 +54,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
         _ctrl.calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
         _ctrl.calendar.locale = [NSLocale currentLocale];
         
+        
         [self.view addSubview:_ctrl.view];
         
         _ctrl.tsqView.delegate = self;
@@ -109,13 +110,36 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
 #pragma mark - <TSQCalendarViewDelegate>
 - (BOOL)calendarView:(TSQCalendarView *)calendarView shouldSelectDate:(NSDate *)date
 {
+    NSDate* todyDate = [NSDate date];
+    NSTimeInterval todyDateInterval =  [todyDate timeIntervalSince1970] - ((int)[todyDate timeIntervalSince1970]) % (3600 * 24);
+    //NSTimeInterval dateInterval =  [date timeIntervalSince1970] - ((int)[date timeIntervalSince1970]) % (3600 * 24);
+    NSTimeInterval dateInterval =  [date timeIntervalSince1970];
+    if (dateInterval - todyDateInterval < 0/*3600 * 23*/)
+    {
+        return NO;
+    }
     return YES;
 }
 
 - (void)calendarView:(TSQCalendarView *)calendarView didSelectDate:(NSDate *)date
 {
-    [[NSUserDefaults standardUserDefaults] setObject:date forKey:@"search_date"];
-    [self.stack popBoardAnimated:YES];
+    NSDate* todyDate = [NSDate date];
+    NSTimeInterval todyDateInterval =  [todyDate timeIntervalSince1970] - ((int)[todyDate timeIntervalSince1970]) % (3600 * 24);
+    //NSTimeInterval dateInterval =  [date timeIntervalSince1970] - ((int)[date timeIntervalSince1970]) % (3600 * 24);
+    NSTimeInterval dateInterval =  [date timeIntervalSince1970];
+    if (dateInterval - todyDateInterval < 0/*3600 * 23*/)
+    {
+        BeeUIAlertView * alert = [BeeUIAlertView spawn];
+        alert.title = @"选择日期不能早于明天";
+        [alert addCancelTitle:@"好的"];
+        [alert showInViewController:self];
+    }
+    else
+    {
+        [[NSUserDefaults standardUserDefaults] setObject:date forKey:@"search_date"];
+        [self.stack popBoardAnimated:YES];
+    }
+    
 }
 
 @end

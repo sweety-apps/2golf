@@ -37,6 +37,7 @@
 
 @property (nonatomic,retain) NSMutableDictionary* dataDict;
 @property (nonatomic,retain) NSMutableArray* courseArray;
+@property (nonatomic,retain) NSArray* hourMinDateArr;
 
 @end
 
@@ -165,19 +166,20 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
 // returns the # of rows in each component..
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-    return 14*6;//10分钟区间,9:00-23:00
+    self.hourMinDateArr = [CommonUtility getCanSelectHourMin];
+    return [self.hourMinDateArr count];
 }
 
 #pragma mark - <UIPickerViewDelegate>
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    NSDate* date = [NSDate dateWithTimeIntervalSince1970:1*3600+row*10.0f*60.f];
+    NSDate* date = self.hourMinDateArr[row];
     return [NSString stringWithFormat:@"%02d:%02d",[date hour],[date minute]];
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    NSDate* date = [NSDate dateWithTimeIntervalSince1970:1*3600+row*10.0f*60.f];
+    NSDate* date = self.hourMinDateArr[row];
     [[NSUserDefaults standardUserDefaults] setObject:date forKey:@"search_time"];
     [self _refreshSelections];
     
@@ -233,7 +235,7 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
     NSDate* date = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_date"];
     if (date == nil)
     {
-        date = [NSDate date];
+        date = [NSDate dateWithTimeIntervalSinceNow:3600*24 + 3600];//明天1小时以后
         [[NSUserDefaults standardUserDefaults] setObject:date forKey:@"search_date"];
     }
     str = [NSString stringWithFormat:@"%d年%d月%d日\n%@",[date year],[date month],[date day],[date weekdayChinese]];
@@ -246,7 +248,7 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
     date = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_time"];
     if (date == nil)
     {
-        date = [NSDate date];
+        date = [CommonUtility getCanSelectHourMin][0];//明天1小时以后
         [[NSUserDefaults standardUserDefaults] setObject:date forKey:@"search_time"];
     }
     str = [NSString stringWithFormat:@"%02d:%02d",[date hour],[date minute]];
@@ -323,7 +325,7 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
 
 - (void)resetCells
 {
-    [self devideDatas];
+    //[self devideDatas];
     [_bottomCtrl setDataArray:self.courseArray];
 }
 
@@ -348,7 +350,7 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
                                 @"session":[UserModel sharedInstance].session.objectToDictionary
                                 };
     //[self presentLoadingTips:@"正在加载"];
-    self.HTTP_POST([[ServerConfig sharedInstance].url stringByAppendingString:@"courseorder/list"])
+    self.HTTP_POST([[ServerConfig sharedInstance].url stringByAppendingString:@"searchrecentcourse"])
     .PARAM(@"json",[paramDict JSONString])
     .TIMEOUT(30);
 }
@@ -380,13 +382,13 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
     if (dict)
     {
         //球场详情
-        if ([[req.url absoluteString] rangeOfString:@"courseorder/list"].length > 0)
+        if ([[req.url absoluteString] rangeOfString:@"searchrecentcourse"].length > 0)
         {
             //正确逻辑
             if ([(dict[@"status"])[@"succeed"] intValue] == 1)
             {
                 //拉订单
-                self.dataDict = [NSMutableDictionary dictionaryWithDictionary:(dict[@"data"])];
+                self.courseArray = [NSMutableArray arrayWithArray:(dict[@"data"])];
                 [self resetCells];
             }
             else

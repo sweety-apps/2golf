@@ -42,7 +42,7 @@
 					<button id="carema"/>
                 </linear>
                 
-                <label id="name" class="header-name"></label>
+                <!--label id="name" class="header-name"></label-->
                 
                 <linear orientation="h" class="header-level-box">
                     <image id="header-level-icon"/>
@@ -284,7 +284,7 @@
         
         .header-wrapper {
             width: 100%;
-            height: 167px;
+            height: 134px;
             v-align: center;
         }
         
@@ -304,15 +304,15 @@
         }
         
         .header-avatar-box {
-            width: 64px;
-            height: 64px;
+            width: 135px;
+            height: 100px;
             v-align: bottom;
-            margin-top: 20px;
+            margin-top: 30px;
         }
 
         .header-avatar {
-            width: 64px;
-            height: 64px;
+            width: 135px;
+            height: 100px;
             position: absolute !important;
             top: 0;
             left: 0;
@@ -353,9 +353,9 @@
         }
 
         .header-name {
-            font-size: 13px;
+            font-size: 18px;
 			font-weight: bold;
-            color: #ffffffff;
+            color: #559703;
             width: auto;
             height: 20px;
             text-align: center;

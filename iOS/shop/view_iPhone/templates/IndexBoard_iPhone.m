@@ -108,6 +108,7 @@ SUPPORT_RESOURCE_LOADING( YES )
 @synthesize shadow = _shadow;
 @synthesize scroll = _scroll;
 @synthesize pageControl = _pageControl;
+@synthesize autoScrollTimer = _autoScrollTimer;
 
 - (void)load
 {
@@ -136,11 +137,27 @@ SUPPORT_RESOURCE_LOADING( YES )
 	[self addSubview:self.pageControl];
 }
 
+- (void)_onAutoScroll
+{
+    if ([self.scroll pageIndex] + 1 >= [self.scroll pageCount])
+    {
+        [self.scroll scrollToFirstPage:YES];
+        self.pageControl.currentPage = 0;
+    }
+    else
+    {
+        [self.scroll scrollToIndex:[self.scroll pageIndex]+1 animated:YES];
+        self.pageControl.currentPage = [self.scroll pageIndex]+1;
+    }
+}
+
 - (void)unload
 {
     self.shadow = nil;
 	self.scroll = nil;
 	self.pageControl = nil;
+    [self.autoScrollTimer invalidate];
+    self.autoScrollTimer = nil;
 	
 	[super unload];
 }
@@ -163,7 +180,12 @@ SUPPORT_RESOURCE_LOADING( YES )
 
 - (void)dataDidChanged
 {
+    [self.autoScrollTimer invalidate];
+    self.autoScrollTimer = nil;
+    
     [self.scroll reloadData];
+    
+    self.autoScrollTimer = [NSTimer scheduledTimerWithTimeInterval:5.0f target:self selector:@selector(_onAutoScroll) userInfo:nil repeats:YES];
 }
 
 #pragma mark -

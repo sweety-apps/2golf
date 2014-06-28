@@ -61,7 +61,16 @@ DEF_SIGNAL( TOUCHED )
     {
         NSDictionary* dict = self.data;
         self.ctrl.titleLbl.text = dict[@"title"];
-        [self.ctrl.imgView setUrl:dict[@"imgurl"]];
+        
+        if ([dict[@"imgurl"] isKindOfClass:[NSArray class]]
+            && [dict[@"imgurl"] count] > 0)
+        {
+            [self.ctrl.imgView setUrl:dict[@"imgurl"][0]];
+        }
+        else if([dict[@"imgurl"] isKindOfClass:[NSString class]])
+        {
+            [self.ctrl.imgView setUrl:dict[@"imgurl"]];
+        }
         self.ctrl.desLbl.text = dict[@"summary"];
         if ([self.ctrl.desLbl.text length] == 0)
         {

@@ -99,7 +99,14 @@
     }
     else if([price isKindOfClass:[NSDictionary class]])
     {
-        self.ctrl.priceTimeLbl.text = [((NSDictionary*)price)[@"price"] stringValue];
+        if ([((NSDictionary*)price)[@"price"] isKindOfClass:[NSDictionary class]])
+        {
+            self.ctrl.priceTimeLbl.text = [((NSDictionary*)price)[@"price"][@"price"] stringValue];
+        }
+        else
+        {
+            self.ctrl.priceTimeLbl.text = [((NSDictionary*)price)[@"price"] stringValue];
+        }
     }
     else
     {
@@ -108,7 +115,13 @@
     
     if (![@"获取数据失败" isEqualToString:self.ctrl.priceTimeLbl.text])
     {
-        self.ctrl.priceTimeLbl.text = [@"￥" stringByAppendingString:self.ctrl.priceTimeLbl.text];
+        NSNumber* persons = dict[@"persons"];
+        if (persons == nil || [persons isKindOfClass:[NSNull class]])
+        {
+            persons = [NSNumber numberWithInt:1];
+        }
+        NSNumber* money = [NSNumber numberWithDouble:[self.ctrl.priceTimeLbl.text doubleValue] * [persons doubleValue]];
+        self.ctrl.priceTimeLbl.text = [NSString stringWithFormat:@"￥%@",money];
     }
     
     int status = [dict[@"status"] integerValue];
@@ -121,6 +134,15 @@
     NSDate* date = [NSDate dateWithTimeIntervalSince1970:iterval];
     
     NSString* ret = [NSString stringWithFormat:@"%04d/%02d/%02d %02d:%02d\n%@",[date year],[date month],[date day],[date hour],[date minute],[date weekdayChinese]];
+    return ret;
+}
+
+- (NSString*)tsStringToYearMonthOnlyDateString:(NSString*)tsStr
+{
+    NSTimeInterval iterval = [tsStr doubleValue];
+    NSDate* date = [NSDate dateWithTimeIntervalSince1970:iterval];
+    
+    NSString* ret = [NSString stringWithFormat:@"%04d/%02d/%02d\n%@",[date year],[date month],[date day],[date weekdayChinese]];
     return ret;
 }
 
@@ -147,7 +169,7 @@
     }
     if (self.ctrl.playTimeLbl.text)
     {
-        self.ctrl.playTimeLbl.text = [self tsStringToDateString:self.ctrl.playTimeLbl.text];
+        self.ctrl.playTimeLbl.text = [self tsStringToYearMonthOnlyDateString:self.ctrl.playTimeLbl.text];
     }
     self.ctrl.peopleTimeLbl.text = dict[@"players"];
     self.ctrl.descriptionTimeLbl.text = dict[@"cancel_desc"];
@@ -166,7 +188,14 @@
     }
     else if([price isKindOfClass:[NSDictionary class]])
     {
-        self.ctrl.priceTimeLbl.text = [((NSDictionary*)price)[@"price"] stringValue];
+        if ([((NSDictionary*)price)[@"price"] isKindOfClass:[NSDictionary class]])
+        {
+            self.ctrl.priceTimeLbl.text = [((NSDictionary*)price)[@"price"][@"price"] stringValue];
+        }
+        else
+        {
+            self.ctrl.priceTimeLbl.text = [((NSDictionary*)price)[@"price"] stringValue];
+        }
     }
     else
     {
@@ -175,7 +204,13 @@
     
     if (![@"获取数据失败" isEqualToString:self.ctrl.priceTimeLbl.text])
     {
-        self.ctrl.priceTimeLbl.text = [@"￥" stringByAppendingString:self.ctrl.priceTimeLbl.text];
+        NSNumber* persons = dict[@"persons"];
+        if (persons == nil || [persons isKindOfClass:[NSNull class]])
+        {
+            persons = [NSNumber numberWithInt:1];
+        }
+        NSNumber* money = [NSNumber numberWithDouble:[self.ctrl.priceTimeLbl.text doubleValue] * [persons doubleValue]];
+        self.ctrl.priceTimeLbl.text = [NSString stringWithFormat:@"￥%@",money];
     }
     
     int status = [dict[@"status"] integerValue];
@@ -489,6 +524,7 @@
 
 - (void)shareOrder:(NSDictionary*)dict
 {
+#if 0
     NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"icon" ofType:@"jpg"];
     
     NSString* title = [NSString stringWithFormat:@"我正在使用爱高高尔夫订场，场地众多，价格实惠"];
@@ -501,6 +537,34 @@
     }
     
     NSString* collectedContent = [NSString stringWithFormat:@"【爱高高尔夫】%@ %@",title,url];
+#else
+    NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"icon" ofType:@"jpg"];
+    
+    
+    NSObject* playTime = dict[@"playtime"];
+    NSString* tsStr = nil;
+    if ([playTime isKindOfClass:[NSString class]])
+    {
+        tsStr = (NSString*)playTime;
+    }
+    else if([playTime isKindOfClass:[NSNumber class]])
+    {
+        tsStr = [((NSNumber*)playTime) stringValue];
+    }
+    NSTimeInterval iterval = [tsStr doubleValue];
+    NSDate* date = [NSDate dateWithTimeIntervalSince1970:iterval];
+    
+    NSString* title = @"高尔夫人士必备之应用";
+    NSString* url = [[ServerConfig sharedInstance].baseUrl stringByAppendingFormat:@"/app/"];
+    NSString* summary = [NSString stringWithFormat:@"我预订了 %@ %02d月%02d日 %@ %02d:%02d 的球场，欢迎一起打球哦",dict[@"coursename"],[date month],[date day],[date weekdayChinese],[date hour],[date minute]];
+    
+    if ([summary length] == 0)
+    {
+        summary = @"爱高高尔夫，爱上高尔夫";
+    }
+    
+    NSString* collectedContent = [NSString stringWithFormat:@"【爱高高尔夫】%@ %@",title,url];
+#endif
     
     //构造分享内容
     id<ISSContent> publishContent = [ShareSDK content:collectedContent

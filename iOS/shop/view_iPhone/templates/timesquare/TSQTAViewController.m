@@ -35,6 +35,12 @@
     calendarView.rowCellClass = [TSQTACalendarRowCell class];
     calendarView.firstDate = [NSDate dateWithTimeIntervalSinceNow:0];
     calendarView.lastDate = [NSDate dateWithTimeIntervalSinceNow:60 * 60 * 24 * 30 * 3];
+    NSDate* date = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_date"];
+    if (date == nil)
+    {
+        date = [NSDate dateWithTimeIntervalSinceNow:3600*24 + 3600];//明天1小时以后
+    }
+    calendarView.selectedDate = date;
     calendarView.backgroundColor = [UIColor colorWithRed:0.84f green:0.85f blue:0.86f alpha:1.0f];
     calendarView.pagingEnabled = YES;
     CGFloat onePixel = 1.0f / [UIScreen mainScreen].scale;

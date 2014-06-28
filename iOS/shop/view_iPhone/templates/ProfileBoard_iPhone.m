@@ -38,6 +38,9 @@
 #import "HelpBoard_iPhone.h"
 #import "Placeholder.h"
 #import "MyOrderListBoard_iPhone.h"
+#import "ChangePasswordBoard_iPhone.h"
+#import "RechargeBoard_iPhone.h"
+#import "MyPointsBoard_iPhone.h"
 
 #pragma mark -
 
@@ -82,16 +85,19 @@ SUPPORT_RESOURCE_LOADING(YES);
     if (needRelayout)
     {
         self.FROM_RESOURCE(xmlName);
-        //self.layout.name = xmlName;
+        self.layout.name = [xmlName substringToIndex:[xmlName rangeOfString:@".xml"].location];
+        [self performSelector:@selector(updateContents) withObject:nil afterDelay:0.01];
+    }
+    else
+    {
+        [self updateContents];
     }
 }
 
-- (void)dataDidChanged
+- (void)updateContents
 {
     if ( self.data )
     {
-        [self checkXMLAndLayout];
-        
         UserModel * userModel = self.data;
         
 		if ( [UserModel online] )
@@ -100,7 +106,7 @@ SUPPORT_RESOURCE_LOADING(YES);
 		}
 		else
 		{
-			$(@"#name").TEXT(__TEXT(@"click_to_login"));
+			//$(@"#name").TEXT(__TEXT(@"click_to_login"));
 		}
         
         NSInteger order_num = 0;
@@ -120,7 +126,7 @@ SUPPORT_RESOURCE_LOADING(YES);
 		{
 			$(@"#order-count").TEXT( [NSString stringWithFormat:@"%d%@", order_num, @""] );
 		}
-
+        
 		if ( 0 == userModel.user.collection_num.intValue )
 		{
 			$(@"#fav-count").TEXT( @"无" );
@@ -129,7 +135,7 @@ SUPPORT_RESOURCE_LOADING(YES);
 		{
 			$(@"#fav-count").TEXT( [NSString stringWithFormat:@"%@%@", userModel.user.collection_num, @""] );
 		}
-		      
+        
 		NSNumber * num1 = [[userModel.user.order_num objectAtPath:@"await_pay"] asNSNumber];
 		if ( num1 && num1.intValue )
 		{
@@ -141,7 +147,7 @@ SUPPORT_RESOURCE_LOADING(YES);
 			$(@"#await_pay-bg").HIDE();
 			$(@"#await_pay").HIDE();
 		}
-
+        
 		NSNumber * num2 = [[userModel.user.order_num objectAtPath:@"await_ship"] asNSNumber];
 		if ( num2 && num2.intValue )
 		{
@@ -182,17 +188,21 @@ SUPPORT_RESOURCE_LOADING(YES);
 		{
 			if ( [UserModel sharedInstance].avatar )
 			{
-				$(@"#header-avatar").IMAGE( [UserModel sharedInstance].avatar );
+                $(@"#header-avatar-head-icon").SHOW();
+                $(@"#header-avatar-head-icon").IMAGE( [UserModel sharedInstance].avatar );
+                $(@"#header-avatar").HIDE();
 			}
 			else
 			{
-				$(@"#header-avatar").IMAGE( [Placeholder avatar] );
+                $(@"#header-avatar-head-icon").HIDE();
+				$(@"#header-avatar").IMAGE( [Placeholder has_avatar] );
+                $(@"#header-avatar").SHOW();
 			}
 			
 			$(@"#header-carema").SHOW();
 			$(@"#carema").SHOW();
 			$(@"#signin").HIDE();
-
+            
             if ( userModel.user.rank_level.integerValue == RANK_LEVEL_NORMAL )
             {
                 $(@"#header-level-icon").HIDE();
@@ -202,14 +212,27 @@ SUPPORT_RESOURCE_LOADING(YES);
                 $(@"#header-level-icon").HIDE();
                 $(@"#header-level-icon").DATA( @"profile-vip-icon.png" );
             }
-                
+            
             $(@"#header-level-name").HIDE();
             $(@"#header-level-name").DATA( userModel.user.rank_name );
+            
+            if ([userModel.user.user_money floatValue] > 0.0001)
+            {
+                $(@"#header_money_name").DATA(@"余额");
+                $(@"#header_money_value").DATA( [NSString stringWithFormat:@"￥%@",userModel.user.user_money]);
+            }
+            else
+            {
+                $(@"#header_money_name").DATA(@"我要充值");
+                $(@"#header_money_value").DATA(@"");
+            }
+            
+            $(@"#header_score_value").DATA( [userModel.user.points stringValue]);
 		}
 		else
 		{
 			// [[AppBoard_iPhone sharedInstance] showLogin];
-			
+			$(@"#header-avatar-head-icon").HIDE();
 			$(@"#header-avatar").IMAGE( [Placeholder avatar] );
 			$(@"#header-carema").HIDE();
 			$(@"#carema").HIDE();
@@ -217,8 +240,15 @@ SUPPORT_RESOURCE_LOADING(YES);
             $(@"#header-level-icon").HIDE();
             $(@"#header-level-name").HIDE();
             
+            [self setNeedsDisplay];
+            [self setNeedsLayout];
 		}
     }
+}
+
+- (void)dataDidChanged
+{
+    [self checkXMLAndLayout];
 }
 
 @end
@@ -464,6 +494,8 @@ ON_SIGNAL2( ProfileBoard_iPhone, signal )
 
         [[UserModel sharedInstance] setAvatar:nil];
         
+        [self updateState];
+        
 		[self dismissModalViewControllerAnimated:YES];
 	}
     else if ( [signal is:self.DAIL_PHONE_NAV_BTN] )
@@ -579,6 +611,38 @@ ON_SIGNAL3( ProfileCell_iPhone, order_shipped, signal )
     }
 }
 
+ON_SIGNAL3( ProfileCell_iPhone, change_password, signal )
+{
+    if ( [signal is:BeeUIButton.TOUCH_UP_INSIDE] )
+    {
+		if ( NO == [UserModel online] )
+		{
+			[[AppBoard_iPhone sharedInstance] showLogin];
+			return;
+		}
+        
+        [self.stack pushBoard:[ChangePasswordBoard_iPhone boardWithNibName:@"ChangePasswordBoard_iPhone"] animated:YES];
+    }
+}
+
+ON_SIGNAL3( ProfileCell_iPhone, help, signal )
+{
+    if ( [signal is:BeeUIButton.TOUCH_UP_INSIDE] )
+    {
+        if (self.helpModel && [self.helpModel.articleGroups count] > 0)
+        {
+            ARTICLE_GROUP * articleGroup = self.helpModel.articleGroups[0];
+            if ( articleGroup )
+            {
+                HelpBoard_iPhone * board = [HelpBoard_iPhone board];
+                board.articleGroup = articleGroup;
+                [self.stack pushBoard:board animated:YES];
+            }
+        }
+		
+    }
+}
+
 ON_SIGNAL3( ProfileCell_iPhone, order_finished, signal )
 {
     if ( [signal is:BeeUIButton.TOUCH_UP_INSIDE] )
@@ -609,6 +673,31 @@ ON_SIGNAL3( ProfileCell_iPhone, orders_list, signal )
     }
 }
 
+ON_SIGNAL3( ProfileCell_iPhone, new_version, signal )
+{
+    if ( [signal is:BeeUIButton.TOUCH_UP_INSIDE] )
+    {
+		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.2golf.cn/app/"]];
+    }
+}
+
+ON_SIGNAL3( ProfileCell_iPhone, header_money_button, signal )
+{
+    if ( [signal is:BeeUIButton.TOUCH_UP_INSIDE] )
+    {
+		RechargeBoard_iPhone* board = [RechargeBoard_iPhone boardWithNibName:@"RechargeBoard_iPhone"];
+        [self.stack pushBoard:board animated:YES];
+    }
+}
+
+ON_SIGNAL3( ProfileCell_iPhone, header_score_button, signal )
+{
+    if ( [signal is:BeeUIButton.TOUCH_UP_INSIDE] )
+    {
+        MyPointsBoard_iPhone* board = [MyPointsBoard_iPhone boardWithNibName:@"MyPointsBoard_iPhone"];
+        [self.stack pushBoard:board animated:YES];
+    }
+}
 
 ON_SIGNAL3( ProfileCell_iPhone, logout, signal )
 {
@@ -623,6 +712,7 @@ ON_SIGNAL3( ProfileCell_iPhone, logout, signal )
         [self signout];
     }
 }
+
 
 ON_SIGNAL3( ProfileCell_iPhone, carema, signal )
 {
@@ -704,6 +794,8 @@ ON_SIGNAL2( signout_yes, signal )
     [[UserModel sharedInstance] signout];
     
     [self updateState];
+    
+    //[self performSelector:@selector(updateState) withObject:nil afterDelay:0.5];
 }
 
 - (void)updateState
@@ -725,6 +817,9 @@ ON_SIGNAL2( signout_yes, signal )
 		
 		[_scroll showHeaderLoader:NO animated:NO];
 	}
+    
+    [_profile release];
+    _profile = [[ProfileCell_iPhone alloc] initWithFrame:CGRectZero];
 	
 	[_scroll reloadData];
 }
@@ -776,6 +871,10 @@ ON_SIGNAL2( signout_yes, signal )
             //            [self presentFailureTips:@"加载失败,请稍后再试"];
 			[ErrorMsg presentErrorMsg:msg inBoard:self];
 		}
+    }
+    else if ( [msg is:API.user_signin] )
+    {
+        [self updateState];
     }
 }
 

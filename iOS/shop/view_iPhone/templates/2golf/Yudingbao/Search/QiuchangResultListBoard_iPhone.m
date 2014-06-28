@@ -220,10 +220,10 @@ ON_SIGNAL2( BeeUIBoard, signal )
     NSMutableArray* arr_dis = self.distanceArray;
     for (int i = 0; i < arr.count; ++i)
     {
-        int cost_i = [arr[i][@"cheapestprice"] integerValue];
+        double cost_i = [arr[i][@"cheapestprice"] doubleValue];
         for (int j = i + 1; j < arr.count; ++j)
         {
-            int cost_j = [arr[j][@"cheapestprice"] integerValue];
+            double cost_j = [arr[j][@"cheapestprice"] doubleValue];
             if (cost_i > cost_j)
             {
                 id t = arr[j];

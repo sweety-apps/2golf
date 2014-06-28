@@ -424,6 +424,8 @@ enum RANK_LEVEL
 @property (nonatomic, retain) NSDictionary *	order_num;
 @property (nonatomic, retain) NSString *		rank_name;
 @property (nonatomic, retain) NSNumber *		rank_level;
+@property (nonatomic, retain) NSNumber *		points;
+@property (nonatomic, retain) NSString *		user_money;
 @property (nonatomic, retain) NSNumber *		id;
 @end
 

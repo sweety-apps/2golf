@@ -38,6 +38,7 @@ AS_SINGLETON( CollectionModel )
 @property (nonatomic, retain) NSMutableArray *	goods;
 
 - (void)collect:(GOODS *)goods;
+- (void)collectCourse:(NSString*)courseid;
 - (void)uncollect:(COLLECT_GOODS *)goods;
 
 @end

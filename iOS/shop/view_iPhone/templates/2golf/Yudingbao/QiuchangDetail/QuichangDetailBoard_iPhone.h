@@ -21,6 +21,7 @@
 #import "QiuchangDetailCollectCellBoard_iPhone.h"
 #import "QiuchangDetailPriceContentCellBoard_iPhone.h"
 #import "QiuchangDetailPriceHeaderCellBoard_iPhone.h"
+#import "CollectionModel.h"
 
 #pragma mark -
 
@@ -38,11 +39,14 @@ AS_SIGNAL( TOUCHED )
 @property (nonatomic, retain) UIButton *		detailBtn;
 @property (nonatomic, retain) BeeUIScrollView *		scroll;
 @property (nonatomic, retain) BeeUIPageControl *	pageControl;
+
 @end
 
 #pragma mark -
 
 @interface QuichangDetailBoard_iPhone : BeeUIBoard
+
+@property (nonatomic, retain) CollectionModel *	collectionModel;
 
 - (void) setCourseId:(NSString*)courseId;
 

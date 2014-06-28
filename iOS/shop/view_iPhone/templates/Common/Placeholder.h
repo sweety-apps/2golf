@@ -30,5 +30,6 @@
 
 + (UIImage *)image;
 + (UIImage *)avatar;
++ (UIImage *)has_avatar;
 
 @end

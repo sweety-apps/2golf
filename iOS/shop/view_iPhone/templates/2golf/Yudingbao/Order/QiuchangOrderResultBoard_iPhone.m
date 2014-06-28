@@ -22,7 +22,7 @@
 
 #pragma mark -
 
-@interface QiuchangOrderResultBoard_iPhone() <QiuchangOrderCell_iPhoneDelegate>
+@interface QiuchangOrderResultBoard_iPhone() <QiuchangOrderCell_iPhoneDelegate,UIActionSheetDelegate>
 {
 	QiuchangOrderCell_iPhone* _cell;
 }
@@ -255,7 +255,8 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
 - (void)QiuchangOrderCell_iPhone:(QiuchangOrderCell_iPhone*)cell
                     onPressedPay:(NSDictionary*)data
 {
-    
+    UIActionSheet* as = [[UIActionSheet alloc] initWithTitle:@"选择支付方式" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"支付宝支付", nil];
+    [as showInView:[[UIApplication sharedApplication] keyWindow]];
 }
 
 - (void)QiuchangOrderCell_iPhone:(QiuchangOrderCell_iPhone*)cell
@@ -263,6 +264,25 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
 {
     
 }
+
+#pragma mark <UIActionSheetDelegate>
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (buttonIndex)
+    {
+        case 0:
+        {
+            //支付宝支付
+            NSLog(@"支付宝支付");
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
+
 
 - (void)dealloc {
     [_backToHomeButton release];

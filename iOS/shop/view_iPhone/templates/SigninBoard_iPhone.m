@@ -26,6 +26,7 @@
 
 #import "SigninBoard_iPhone.h"
 #import "SignupBoard_iPhone.h"
+#import "SendVerifyCodeBoard_iPhone.h"
 #import "AppBoard_iPhone.h"
 #import "model.h"
 
@@ -186,6 +187,14 @@ ON_SIGNAL3( SigninBoard_iPhone, signup, signal )
 	if ( [signal is:BeeUIButton.TOUCH_UP_INSIDE] )
 	{
 		[self.stack pushBoard:[[[SignupBoard_iPhone alloc] init] autorelease] animated:YES];
+	}
+}
+
+ON_SIGNAL3( SigninBoard_iPhone, changepswd, signal )
+{
+	if ( [signal is:BeeUIButton.TOUCH_UP_INSIDE] )
+	{
+		[self.stack pushBoard:[SendVerifyCodeBoard_iPhone boardWithNibName:@"SendVerifyCodeBoard_iPhone"] animated:YES];
 	}
 }
 

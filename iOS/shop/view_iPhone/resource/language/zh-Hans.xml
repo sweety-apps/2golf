@@ -88,8 +88,8 @@
 <string name="floatView_2g">模拟2G网络</string>
 <string name="floatView_cancel2g">取消模拟2G网络</string>
 <string name="gooddetail_parameter">基本参数</string>
-<string name="gooddetail_product">球场详情</string>
-<string name="gooddetail_commit">球场评论</string>
+<string name="gooddetail_product">商品详情</string>
+<string name="gooddetail_commit">商品评论</string>
 <string name="gooddetail_buy">预定付款</string>
 <string name="gooddetail_shoppingcart">加入购物车</string>
 <string name="hotselling_recommend">推荐</string>

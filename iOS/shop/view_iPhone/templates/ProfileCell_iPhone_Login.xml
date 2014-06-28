@@ -1,31 +1,3 @@
-<!--
-/*
- *                                                                          
- *       _/_/_/                      _/        _/_/_/_/_/                     
- *    _/          _/_/      _/_/    _/  _/          _/      _/_/      _/_/    
- *   _/  _/_/  _/_/_/_/  _/_/_/_/  _/_/          _/      _/    _/  _/    _/   
- *  _/    _/  _/        _/        _/  _/      _/        _/    _/  _/    _/    
- *   _/_/_/    _/_/_/    _/_/_/  _/    _/  _/_/_/_/_/    _/_/      _/_/       
- *                                                                          
- *
- *  Copyright 2013-2014, Geek Zoo Studio
- *  http://www.ecmobile.cn/license.html
- *
- *  HQ China:
- *    2319 Est.Tower Van Palace 
- *    No.2 Guandongdian South Street 
- *    Beijing , China
- *
- *  U.S. Office:
- *    One Park Place, Elmira College, NY, 14901, USA
- *
- *  QQ Group:   329673575
- *  BBS:        bbs.ecmobile.cn
- *  Fax:        +86-10-6561-5510
- *  Mail:       info@geek-zoo.com
- */
- -->
-
 <?xml version="1.0" encoding="utf-8" ?>
 
 <ui namespace="ProfileCell_iPhone">
@@ -38,12 +10,21 @@
                 <!--<button id="setting" class="header-setting" />-->
                 <linear orientation="v" class="header-avatar-box">
                     <image id="header-avatar" class="header-avatar"/>
-                    <button id="header-carema" class="header-carema"/>
+                    <image id="header-avatar-head-icon" class="header-avatar-head-icon"/>
+                    
+                    <!--button id="header-carema" class="header-carema"/-->
 					<button id="carema"/>
+                    <label id="name" class="header-name"></label>
                 </linear>
                 
-                <label id="name" class="header-name"></label>
+                <label id="header_money_name">余额</label>
+                <label id="header_money_value">￥0</label>
+                <button id="header_money_button"></button>
                 
+                <label id="header_score_name">积分</label>
+                <label id="header_score_value">0</label>
+                <button id="header_score_button"></button>
+
                 <linear orientation="h" class="header-level-box">
                     <image id="header-level-icon"/>
                     <label id="header-level-name"/>
@@ -331,7 +312,7 @@
         
         .header-wrapper {
             width: 100%;
-            height: 167px;
+            height: 134px;
             v-align: center;
         }
         
@@ -351,22 +332,98 @@
         }
         
         .header-avatar-box {
-            width: 64px;
-            height: 64px;
+        left:20px
+            width: 135px;
+            height: 100px;
             v-align: bottom;
-            margin-top: 20px;
+            margin-top: 30px;
         }
 
         .header-avatar {
-            width: 64px;
-            height: 64px;
+            width: 135px;
+            height: 100px;
             position: absolute !important;
             top: 0;
             left: 0;
-            border-radius: 32px;
             image-mode: fill;
 			image-style: round;
             border: 5px solid #ffffff;
+        }
+        
+        .header-avatar-head-icon {
+        width: 60px;
+        height: 60px;
+        position: absolute !important;
+        top: 0;
+        left: 40px;
+        border-radius: 30px;
+        image-mode: fill;
+        image-style: round;
+        border: 5px solid #ffffff;
+        }
+        
+        #header_money_name {
+        color: #559703;
+        width: 120px;
+        height: 25px;
+        position: absolute !important;
+        font-size: 18px;
+        text-align: left;
+        font-weight: bold;
+        top:50px;
+        left:150px;
+        }
+        
+        #header_money_value {
+        color: #ff0000;
+        position: absolute !important;
+        width:auto;
+        height: 25px;
+        font-size: 18px;
+        text-align: left;
+        font-weight: bold;
+        top:50px;
+        left:190px;
+        }
+        
+        #header_money_button {
+        width:160px;
+        height: 35px;
+        position: absolute !important;
+        top:45px;
+        left:140px;
+        }
+        
+        #header_score_name {
+        color: #559703;
+        width: 120px;
+        height: 25px;
+        position: absolute !important;
+        font-size: 18px;
+        text-align: left;
+        font-weight: bold;
+        top:82px;
+        left:150px;
+        }
+        
+        #header_score_value {
+        color: #ff0000;
+        position: absolute !important;
+        width:auto;
+        height: 25px;
+        font-size: 18px;
+        text-align: left;
+        font-weight: bold;
+        top:82px;
+        left:190px;
+        }
+        
+        #header_score_button {
+        width:160px;
+        height: 35px;
+        position: absolute !important;
+        top:80px;
+        left:140px;
         }
 
         .header-level-box {
@@ -400,13 +457,17 @@
         }
 
         .header-name {
-            font-size: 13px;
-			font-weight: bold;
-            color: #ffffffff;
+        position: absolute !important;
+            font-size: 18px;
+            font-weight: bold;
+            color: #559703;
+            
             width: auto;
             height: 20px;
             text-align: center;
-            margin: 6px;
+            left: 15px;
+            margin: 0px;
+            top : 65px;
         }
 
 		#signin {

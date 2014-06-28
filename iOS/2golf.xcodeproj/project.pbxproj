@@ -670,6 +670,21 @@
 		F39B614A191BDAF500C89F6A /* OtherTripBoard_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = F39B6149191BDAF500C89F6A /* OtherTripBoard_iPhone.xib */; };
 		F39B614D191BDD0A00C89F6A /* CommonFillTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = F39B614C191BDD0A00C89F6A /* CommonFillTableCellView.m */; };
 		F39B614F191BF1C700C89F6A /* send_other_trip_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F39B614E191BF1C700C89F6A /* send_other_trip_btn@2x.png */; };
+		F3B1E3B7195DA7F3004B615E /* qcss_ok_btn_mid@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3B1E3B6195DA7F3004B615E /* qcss_ok_btn_mid@2x.png */; };
+		F3B1E3C5195DEE5C004B615E /* ChangePasswordBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = F3B1E3BE195DEE5C004B615E /* ChangePasswordBoard_iPhone.m */; };
+		F3B1E3C6195DEE5C004B615E /* ChangePasswordBoard_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3B1E3BF195DEE5C004B615E /* ChangePasswordBoard_iPhone.xib */; };
+		F3B1E3C7195DEE5C004B615E /* RechargeBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = F3B1E3C3195DEE5C004B615E /* RechargeBoard_iPhone.m */; };
+		F3B1E3C8195DEE5C004B615E /* RechargeBoard_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3B1E3C4195DEE5C004B615E /* RechargeBoard_iPhone.xib */; };
+		F3B1E3CB195DEFB1004B615E /* RechargeViewUICell.m in Sources */ = {isa = PBXBuildFile; fileRef = F3B1E3CA195DEFB1004B615E /* RechargeViewUICell.m */; };
+		F3B1E3CD195DF151004B615E /* RechargeViewUICell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3B1E3CC195DF151004B615E /* RechargeViewUICell.xib */; };
+		F3B1E3D0195DF186004B615E /* ExtractViewUICell.m in Sources */ = {isa = PBXBuildFile; fileRef = F3B1E3CF195DF186004B615E /* ExtractViewUICell.m */; };
+		F3B1E3D2195DF194004B615E /* ExtractViewUICell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3B1E3D1195DF194004B615E /* ExtractViewUICell.xib */; };
+		F3B1E3D5195DF2A2004B615E /* MyPointsBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = F3B1E3D4195DF2A2004B615E /* MyPointsBoard_iPhone.m */; };
+		F3B1E3D7195DF2B6004B615E /* MyPointsBoard_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3B1E3D6195DF2B6004B615E /* MyPointsBoard_iPhone.xib */; };
+		F3B1E400195EDDA2004B615E /* ChargeValueView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3B1E3FF195EDDA2004B615E /* ChargeValueView.m */; };
+		F3B1E402195EDDB2004B615E /* ChargeValueView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3B1E401195EDDB2004B615E /* ChargeValueView.xib */; };
+		F3B1E405195EDEC7004B615E /* ChargeConfirmView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3B1E404195EDEC7004B615E /* ChargeConfirmView.m */; };
+		F3B1E407195EDEE1004B615E /* ChargeConfirmView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3B1E406195EDEE1004B615E /* ChargeConfirmView.xib */; };
 		F3B5375418FE29FC004E72D4 /* courselisticonguan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3B5373F18FE29FC004E72D4 /* courselisticonguan@2x.png */; };
 		F3B5375518FE29FC004E72D4 /* courselisticonhui@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3B5374018FE29FC004E72D4 /* courselisticonhui@2x.png */; };
 		F3B5375618FE29FC004E72D4 /* courselisticonlist@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3B5374118FE29FC004E72D4 /* courselisticonlist@2x.png */; };
@@ -761,6 +776,24 @@
 		F3C5CD2B18F3FF9E00C8DF06 /* expand_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3C5CD2918F3FF9E00C8DF06 /* expand_down@2x.png */; };
 		F3C5CD2C18F3FF9E00C8DF06 /* expand_left@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3C5CD2A18F3FF9E00C8DF06 /* expand_left@2x.png */; };
 		F3C5CD3118F578BE00C8DF06 /* MJNIndexView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C5CD3018F578BE00C8DF06 /* MJNIndexView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		F3D14E2B1957257B00A0DA3E /* AlipayRsaLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D14E1D1957257B00A0DA3E /* AlipayRsaLib.a */; };
+		F3D14E2C1957257B00A0DA3E /* Alixpay.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F3D14E1F1957257B00A0DA3E /* Alixpay.bundle */; };
+		F3D14E2D1957257B00A0DA3E /* AlixPaylib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D14E201957257B00A0DA3E /* AlixPaylib.a */; };
+		F3D14E2F1957257B00A0DA3E /* AlixPayOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D14E231957257B00A0DA3E /* AlixPayOrder.m */; };
+		F3D14E301957257B00A0DA3E /* AlixPayResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D14E251957257B00A0DA3E /* AlixPayResult.m */; };
+		F3D14E311957257B00A0DA3E /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D14E261957257B00A0DA3E /* libcrypto.a */; };
+		F3D14E321957257B00A0DA3E /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D14E271957257B00A0DA3E /* libssl.a */; };
+		F3D14E43195726B300A0DA3E /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D14E38195726B300A0DA3E /* NSObject+SBJSON.m */; };
+		F3D14E44195726B300A0DA3E /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D14E3A195726B300A0DA3E /* NSString+SBJSON.m */; };
+		F3D14E45195726B300A0DA3E /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D14E3C195726B300A0DA3E /* SBJSON.m */; };
+		F3D14E46195726B300A0DA3E /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D14E3E195726B300A0DA3E /* SBJsonBase.m */; };
+		F3D14E47195726B300A0DA3E /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D14E40195726B300A0DA3E /* SBJsonParser.m */; };
+		F3D14E48195726B300A0DA3E /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D14E42195726B300A0DA3E /* SBJsonWriter.m */; };
+		F3D14E82195AF59500A0DA3E /* SendVerifyCodeBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D14E81195AF59500A0DA3E /* SendVerifyCodeBoard_iPhone.m */; };
+		F3D14E84195AF5D100A0DA3E /* SendVerifyCodeBoard_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3D14E83195AF5D100A0DA3E /* SendVerifyCodeBoard_iPhone.xib */; };
+		F3D14E87195AF5F200A0DA3E /* InputNewPasswordBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D14E86195AF5F200A0DA3E /* InputNewPasswordBoard_iPhone.m */; };
+		F3D14E89195AF60800A0DA3E /* InputNewPasswordBoard_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3D14E88195AF60800A0DA3E /* InputNewPasswordBoard_iPhone.xib */; };
+		F3D14EA7195C8DEB00A0DA3E /* profile-has-avatar-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3D14EA6195C8DEB00A0DA3E /* profile-has-avatar-icon@2x.png */; };
 		F3E45FFD18D4C7D100C8E952 /* 2golf-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F3E45FFC18D4C7D100C8E952 /* 2golf-Info.plist */; };
 		F3E4607018DF395400C8E952 /* coursefragmentcustomizationbkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3E4605C18DF395400C8E952 /* coursefragmentcustomizationbkg@2x.png */; };
 		F3E4607118DF395400C8E952 /* coursefragmentcustomizationicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3E4605D18DF395400C8E952 /* coursefragmentcustomizationicon@2x.png */; };
@@ -1961,6 +1994,28 @@
 		F39B614B191BDD0A00C89F6A /* CommonFillTableCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonFillTableCellView.h; sourceTree = "<group>"; };
 		F39B614C191BDD0A00C89F6A /* CommonFillTableCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonFillTableCellView.m; sourceTree = "<group>"; };
 		F39B614E191BF1C700C89F6A /* send_other_trip_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "send_other_trip_btn@2x.png"; sourceTree = "<group>"; };
+		F3B1E3B6195DA7F3004B615E /* qcss_ok_btn_mid@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qcss_ok_btn_mid@2x.png"; sourceTree = "<group>"; };
+		F3B1E3BD195DEE5C004B615E /* ChangePasswordBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordBoard_iPhone.h; sourceTree = "<group>"; };
+		F3B1E3BE195DEE5C004B615E /* ChangePasswordBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordBoard_iPhone.m; sourceTree = "<group>"; };
+		F3B1E3BF195DEE5C004B615E /* ChangePasswordBoard_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangePasswordBoard_iPhone.xib; sourceTree = "<group>"; };
+		F3B1E3C2195DEE5C004B615E /* RechargeBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeBoard_iPhone.h; sourceTree = "<group>"; };
+		F3B1E3C3195DEE5C004B615E /* RechargeBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RechargeBoard_iPhone.m; sourceTree = "<group>"; };
+		F3B1E3C4195DEE5C004B615E /* RechargeBoard_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RechargeBoard_iPhone.xib; sourceTree = "<group>"; };
+		F3B1E3C9195DEFB1004B615E /* RechargeViewUICell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeViewUICell.h; sourceTree = "<group>"; };
+		F3B1E3CA195DEFB1004B615E /* RechargeViewUICell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RechargeViewUICell.m; sourceTree = "<group>"; };
+		F3B1E3CC195DF151004B615E /* RechargeViewUICell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RechargeViewUICell.xib; sourceTree = "<group>"; };
+		F3B1E3CE195DF186004B615E /* ExtractViewUICell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtractViewUICell.h; sourceTree = "<group>"; };
+		F3B1E3CF195DF186004B615E /* ExtractViewUICell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtractViewUICell.m; sourceTree = "<group>"; };
+		F3B1E3D1195DF194004B615E /* ExtractViewUICell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExtractViewUICell.xib; sourceTree = "<group>"; };
+		F3B1E3D3195DF2A2004B615E /* MyPointsBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPointsBoard_iPhone.h; sourceTree = "<group>"; };
+		F3B1E3D4195DF2A2004B615E /* MyPointsBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPointsBoard_iPhone.m; sourceTree = "<group>"; };
+		F3B1E3D6195DF2B6004B615E /* MyPointsBoard_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyPointsBoard_iPhone.xib; sourceTree = "<group>"; };
+		F3B1E3FE195EDDA2004B615E /* ChargeValueView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChargeValueView.h; sourceTree = "<group>"; };
+		F3B1E3FF195EDDA2004B615E /* ChargeValueView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChargeValueView.m; sourceTree = "<group>"; };
+		F3B1E401195EDDB2004B615E /* ChargeValueView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChargeValueView.xib; sourceTree = "<group>"; };
+		F3B1E403195EDEC7004B615E /* ChargeConfirmView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChargeConfirmView.h; sourceTree = "<group>"; };
+		F3B1E404195EDEC7004B615E /* ChargeConfirmView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChargeConfirmView.m; sourceTree = "<group>"; };
+		F3B1E406195EDEE1004B615E /* ChargeConfirmView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChargeConfirmView.xib; sourceTree = "<group>"; };
 		F3B5373F18FE29FC004E72D4 /* courselisticonguan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "courselisticonguan@2x.png"; sourceTree = "<group>"; };
 		F3B5374018FE29FC004E72D4 /* courselisticonhui@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "courselisticonhui@2x.png"; sourceTree = "<group>"; };
 		F3B5374118FE29FC004E72D4 /* courselisticonlist@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "courselisticonlist@2x.png"; sourceTree = "<group>"; };
@@ -2114,6 +2169,39 @@
 		F3C5CD2A18F3FF9E00C8DF06 /* expand_left@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "expand_left@2x.png"; sourceTree = "<group>"; };
 		F3C5CD2F18F578BE00C8DF06 /* MJNIndexView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJNIndexView.h; sourceTree = "<group>"; };
 		F3C5CD3018F578BE00C8DF06 /* MJNIndexView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJNIndexView.m; sourceTree = "<group>"; };
+		F3D14E1D1957257B00A0DA3E /* AlipayRsaLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = AlipayRsaLib.a; sourceTree = "<group>"; };
+		F3D14E1E1957257B00A0DA3E /* AlixLibService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlixLibService.h; sourceTree = "<group>"; };
+		F3D14E1F1957257B00A0DA3E /* Alixpay.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Alixpay.bundle; sourceTree = "<group>"; };
+		F3D14E201957257B00A0DA3E /* AlixPaylib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = AlixPaylib.a; sourceTree = "<group>"; };
+		F3D14E221957257B00A0DA3E /* AlixPayOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlixPayOrder.h; sourceTree = "<group>"; };
+		F3D14E231957257B00A0DA3E /* AlixPayOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlixPayOrder.m; sourceTree = "<group>"; };
+		F3D14E241957257B00A0DA3E /* AlixPayResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlixPayResult.h; sourceTree = "<group>"; };
+		F3D14E251957257B00A0DA3E /* AlixPayResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlixPayResult.m; sourceTree = "<group>"; };
+		F3D14E261957257B00A0DA3E /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
+		F3D14E271957257B00A0DA3E /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssl.a; sourceTree = "<group>"; };
+		F3D14E291957257B00A0DA3E /* DataSigner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSigner.h; sourceTree = "<group>"; };
+		F3D14E2A1957257B00A0DA3E /* DataVerifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataVerifier.h; sourceTree = "<group>"; };
+		F3D14E331957260500A0DA3E /* PartnerConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartnerConfig.h; sourceTree = "<group>"; };
+		F3D14E36195726B300A0DA3E /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		F3D14E37195726B300A0DA3E /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
+		F3D14E38195726B300A0DA3E /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
+		F3D14E39195726B300A0DA3E /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
+		F3D14E3A195726B300A0DA3E /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJSON.m"; sourceTree = "<group>"; };
+		F3D14E3B195726B300A0DA3E /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
+		F3D14E3C195726B300A0DA3E /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
+		F3D14E3D195726B300A0DA3E /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
+		F3D14E3E195726B300A0DA3E /* SBJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonBase.m; sourceTree = "<group>"; };
+		F3D14E3F195726B300A0DA3E /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		F3D14E40195726B300A0DA3E /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		F3D14E41195726B300A0DA3E /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		F3D14E42195726B300A0DA3E /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		F3D14E80195AF59500A0DA3E /* SendVerifyCodeBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendVerifyCodeBoard_iPhone.h; sourceTree = "<group>"; };
+		F3D14E81195AF59500A0DA3E /* SendVerifyCodeBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendVerifyCodeBoard_iPhone.m; sourceTree = "<group>"; };
+		F3D14E83195AF5D100A0DA3E /* SendVerifyCodeBoard_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SendVerifyCodeBoard_iPhone.xib; sourceTree = "<group>"; };
+		F3D14E85195AF5F200A0DA3E /* InputNewPasswordBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputNewPasswordBoard_iPhone.h; sourceTree = "<group>"; };
+		F3D14E86195AF5F200A0DA3E /* InputNewPasswordBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputNewPasswordBoard_iPhone.m; sourceTree = "<group>"; };
+		F3D14E88195AF60800A0DA3E /* InputNewPasswordBoard_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InputNewPasswordBoard_iPhone.xib; sourceTree = "<group>"; };
+		F3D14EA6195C8DEB00A0DA3E /* profile-has-avatar-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile-has-avatar-icon@2x.png"; sourceTree = "<group>"; };
 		F3E45FFC18D4C7D100C8E952 /* 2golf-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "2golf-Info.plist"; sourceTree = "<group>"; };
 		F3E4605C18DF395400C8E952 /* coursefragmentcustomizationbkg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "coursefragmentcustomizationbkg@2x.png"; sourceTree = "<group>"; };
 		F3E4605D18DF395400C8E952 /* coursefragmentcustomizationicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "coursefragmentcustomizationicon@2x.png"; sourceTree = "<group>"; };
@@ -2334,6 +2422,10 @@
 				F3F0EF2219358213004613DA /* DropboxConnection.framework in Frameworks */,
 				6324A4241754FC7700372FD7 /* UIKit.framework in Frameworks */,
 				6324A91E1755AA8300372FD7 /* AudioToolbox.framework in Frameworks */,
+				F3D14E2B1957257B00A0DA3E /* AlipayRsaLib.a in Frameworks */,
+				F3D14E2D1957257B00A0DA3E /* AlixPaylib.a in Frameworks */,
+				F3D14E311957257B00A0DA3E /* libcrypto.a in Frameworks */,
+				F3D14E321957257B00A0DA3E /* libssl.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2552,6 +2644,7 @@
 				E970D3E4182CD67600146363 /* closed@2x.jpg */,
 				E9DB7F2317DECF37003AB6E1 /* filter-blue-btn@2x.png */,
 				E9DB7F2417DECF37003AB6E1 /* index-hot-icon@2x.png */,
+				F3D14EA6195C8DEB00A0DA3E /* profile-has-avatar-icon@2x.png */,
 				E9DB7F2517DECF37003AB6E1 /* profile-vip-icon@2x.png */,
 				E9DB7F2617DECF37003AB6E1 /* shopping-checkout-required-bg@2x.png */,
 				E9DB7F2717DECF37003AB6E1 /* shopping-coupon-cur-icon@2x.png */,
@@ -4158,6 +4251,38 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		F3B1E3C0195DEE5C004B615E /* Points */ = {
+			isa = PBXGroup;
+			children = (
+				F3B1E3D3195DF2A2004B615E /* MyPointsBoard_iPhone.h */,
+				F3B1E3D4195DF2A2004B615E /* MyPointsBoard_iPhone.m */,
+				F3B1E3D6195DF2B6004B615E /* MyPointsBoard_iPhone.xib */,
+			);
+			path = Points;
+			sourceTree = "<group>";
+		};
+		F3B1E3C1195DEE5C004B615E /* Recharge */ = {
+			isa = PBXGroup;
+			children = (
+				F3B1E3C2195DEE5C004B615E /* RechargeBoard_iPhone.h */,
+				F3B1E3C3195DEE5C004B615E /* RechargeBoard_iPhone.m */,
+				F3B1E3C4195DEE5C004B615E /* RechargeBoard_iPhone.xib */,
+				F3B1E3C9195DEFB1004B615E /* RechargeViewUICell.h */,
+				F3B1E3CA195DEFB1004B615E /* RechargeViewUICell.m */,
+				F3B1E3CC195DF151004B615E /* RechargeViewUICell.xib */,
+				F3B1E3CE195DF186004B615E /* ExtractViewUICell.h */,
+				F3B1E3CF195DF186004B615E /* ExtractViewUICell.m */,
+				F3B1E3D1195DF194004B615E /* ExtractViewUICell.xib */,
+				F3B1E3FE195EDDA2004B615E /* ChargeValueView.h */,
+				F3B1E3FF195EDDA2004B615E /* ChargeValueView.m */,
+				F3B1E401195EDDB2004B615E /* ChargeValueView.xib */,
+				F3B1E403195EDEC7004B615E /* ChargeConfirmView.h */,
+				F3B1E404195EDEC7004B615E /* ChargeConfirmView.m */,
+				F3B1E406195EDEE1004B615E /* ChargeConfirmView.xib */,
+			);
+			path = Recharge;
+			sourceTree = "<group>";
+		};
 		F3B5372218FE2588004E72D4 /* Aifenxiang */ = {
 			isa = PBXGroup;
 			children = (
@@ -4170,6 +4295,12 @@
 		F3B5372318FE2588004E72D4 /* MyAigao */ = {
 			isa = PBXGroup;
 			children = (
+				F3B1E3C0195DEE5C004B615E /* Points */,
+				F3B1E3C1195DEE5C004B615E /* Recharge */,
+				F3D14E7F195AF57B00A0DA3E /* ResetPassword */,
+				F3B1E3BD195DEE5C004B615E /* ChangePasswordBoard_iPhone.h */,
+				F3B1E3BE195DEE5C004B615E /* ChangePasswordBoard_iPhone.m */,
+				F3B1E3BF195DEE5C004B615E /* ChangePasswordBoard_iPhone.xib */,
 				F3F0EFC31938827A004613DA /* ProfileCell_iPhone_Login.xml */,
 				F3F0EFC41938827A004613DA /* ProfileCell_iPhone_Unlogin.xml */,
 				E909CBD8182D0D650095B262 /* ProfileBoard_iPhone.h */,
@@ -4208,6 +4339,7 @@
 		F3B5374518FE29FC004E72D4 /* QiuChangSouSuo */ = {
 			isa = PBXGroup;
 			children = (
+				F3B1E3B6195DA7F3004B615E /* qcss_ok_btn_mid@2x.png */,
 				F3B5374618FE29FC004E72D4 /* qcss_date@2x.png */,
 				F3B5374718FE29FC004E72D4 /* qcss_kw_inputbar@2x.png */,
 				F3B5374818FE29FC004E72D4 /* qcss_local@2x.png */,
@@ -4223,6 +4355,7 @@
 		F3B5377F18FE9629004E72D4 /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				F3D14E1C1957257B00A0DA3E /* alipay */,
 				F3F0EECC19358212004613DA /* ShareSDK */,
 				4FB952E2190122D300EE0CF7 /* xg */,
 				F3B538BD18FEB195004E72D4 /* mapapi.bundle */,
@@ -4435,6 +4568,68 @@
 				F3C5CD3018F578BE00C8DF06 /* MJNIndexView.m */,
 			);
 			path = alphaIndex;
+			sourceTree = "<group>";
+		};
+		F3D14E1C1957257B00A0DA3E /* alipay */ = {
+			isa = PBXGroup;
+			children = (
+				F3D14E35195726B300A0DA3E /* json */,
+				F3D14E331957260500A0DA3E /* PartnerConfig.h */,
+				F3D14E1D1957257B00A0DA3E /* AlipayRsaLib.a */,
+				F3D14E1E1957257B00A0DA3E /* AlixLibService.h */,
+				F3D14E1F1957257B00A0DA3E /* Alixpay.bundle */,
+				F3D14E201957257B00A0DA3E /* AlixPaylib.a */,
+				F3D14E221957257B00A0DA3E /* AlixPayOrder.h */,
+				F3D14E231957257B00A0DA3E /* AlixPayOrder.m */,
+				F3D14E241957257B00A0DA3E /* AlixPayResult.h */,
+				F3D14E251957257B00A0DA3E /* AlixPayResult.m */,
+				F3D14E261957257B00A0DA3E /* libcrypto.a */,
+				F3D14E271957257B00A0DA3E /* libssl.a */,
+				F3D14E281957257B00A0DA3E /* RSA */,
+			);
+			path = alipay;
+			sourceTree = "<group>";
+		};
+		F3D14E281957257B00A0DA3E /* RSA */ = {
+			isa = PBXGroup;
+			children = (
+				F3D14E291957257B00A0DA3E /* DataSigner.h */,
+				F3D14E2A1957257B00A0DA3E /* DataVerifier.h */,
+			);
+			path = RSA;
+			sourceTree = "<group>";
+		};
+		F3D14E35195726B300A0DA3E /* json */ = {
+			isa = PBXGroup;
+			children = (
+				F3D14E36195726B300A0DA3E /* JSON.h */,
+				F3D14E37195726B300A0DA3E /* NSObject+SBJSON.h */,
+				F3D14E38195726B300A0DA3E /* NSObject+SBJSON.m */,
+				F3D14E39195726B300A0DA3E /* NSString+SBJSON.h */,
+				F3D14E3A195726B300A0DA3E /* NSString+SBJSON.m */,
+				F3D14E3B195726B300A0DA3E /* SBJSON.h */,
+				F3D14E3C195726B300A0DA3E /* SBJSON.m */,
+				F3D14E3D195726B300A0DA3E /* SBJsonBase.h */,
+				F3D14E3E195726B300A0DA3E /* SBJsonBase.m */,
+				F3D14E3F195726B300A0DA3E /* SBJsonParser.h */,
+				F3D14E40195726B300A0DA3E /* SBJsonParser.m */,
+				F3D14E41195726B300A0DA3E /* SBJsonWriter.h */,
+				F3D14E42195726B300A0DA3E /* SBJsonWriter.m */,
+			);
+			path = json;
+			sourceTree = "<group>";
+		};
+		F3D14E7F195AF57B00A0DA3E /* ResetPassword */ = {
+			isa = PBXGroup;
+			children = (
+				F3D14E80195AF59500A0DA3E /* SendVerifyCodeBoard_iPhone.h */,
+				F3D14E81195AF59500A0DA3E /* SendVerifyCodeBoard_iPhone.m */,
+				F3D14E83195AF5D100A0DA3E /* SendVerifyCodeBoard_iPhone.xib */,
+				F3D14E85195AF5F200A0DA3E /* InputNewPasswordBoard_iPhone.h */,
+				F3D14E86195AF5F200A0DA3E /* InputNewPasswordBoard_iPhone.m */,
+				F3D14E88195AF60800A0DA3E /* InputNewPasswordBoard_iPhone.xib */,
+			);
+			path = ResetPassword;
 			sourceTree = "<group>";
 		};
 		F3E4605B18DF395400C8E952 /* 2golf */ = {
@@ -4872,6 +5067,7 @@
 				E909CC4F182D0D650095B262 /* SearchCategory_iPhone.xml in Resources */,
 				F3F0EF5919358216004613DA /* ShareSDKiPhoneDefaultShareViewUI.bundle in Resources */,
 				F3C5CD2118F3ADFC00C8DF06 /* normallist_head_content_bg_m@2x.png in Resources */,
+				F3D14EA7195C8DEB00A0DA3E /* profile-has-avatar-icon@2x.png in Resources */,
 				F3FBB2E0190B8013000E9F3F /* QiuchangTehuiListBoard_iPhone.xib in Resources */,
 				CB3775CC17C5FF6F00DF5F21 /* body-bg@2x.png in Resources */,
 				CB3775CD17C5FF6F00DF5F21 /* body-cont-bg@2x.png in Resources */,
@@ -4899,6 +5095,7 @@
 				F39B60FB1916332100C89F6A /* send_verify_btn@2x.png in Resources */,
 				F319AE1D192ED1C500D64FA2 /* goodsmyorderbtn@2x.png in Resources */,
 				CB3775D317C5FF6F00DF5F21 /* button-narrow-blue@2x.png in Resources */,
+				F3B1E3D2195DF194004B615E /* ExtractViewUICell.xib in Resources */,
 				E909CC40182D0D650095B262 /* NotificationCell_iPhone.xml in Resources */,
 				CB3775D417C5FF6F00DF5F21 /* button-narrow-gray@2x.png in Resources */,
 				F3E4607518DF395400C8E952 /* coursefragmenthotsellicon@2x.png in Resources */,
@@ -4907,6 +5104,7 @@
 				F3F0EEBE19351C3C004613DA /* aifenxiangmenubtna@2x.png in Resources */,
 				F3E4607D18DF395400C8E952 /* tabsharea@2x.png in Resources */,
 				E909CC2D182D0D650095B262 /* GoodsListFilter_iPhone.xml in Resources */,
+				F3B1E3D7195DF2B6004B615E /* MyPointsBoard_iPhone.xib in Resources */,
 				CB3775D617C5FF6F00DF5F21 /* button-orange@2x.png in Resources */,
 				F3E4607818DF395400C8E952 /* foot_bg@2x.png in Resources */,
 				F3B5391018FFD80A004E72D4 /* QiuchangDetailCollectCellBoard_iPhone.xib in Resources */,
@@ -4947,6 +5145,7 @@
 				E909CC12182D0D650095B262 /* CollectionCell_iPhone.xml in Resources */,
 				F3C5CD1F18F3ADFC00C8DF06 /* normallist_content_bg_t@2x.png in Resources */,
 				CB3775EB17C5FF6F00DF5F21 /* footer-user-active-icon@2x.png in Resources */,
+				F3B1E3B7195DA7F3004B615E /* qcss_ok_btn_mid@2x.png in Resources */,
 				CB3775EC17C5FF6F00DF5F21 /* footer-user-icon@2x.png in Resources */,
 				E909CC45182D0D650095B262 /* OrderCellInfo_iPhone.xml in Resources */,
 				CB3775ED17C5FF6F00DF5F21 /* grayArrow@2x.png in Resources */,
@@ -4995,6 +5194,7 @@
 				E909CBF6182D0D650095B262 /* AddAddressCell_iPhone.xml in Resources */,
 				E909CC09182D0D650095B262 /* CategoryCell_iPhone.xml in Resources */,
 				CB3775FE17C5FF6F00DF5F21 /* item-grid-filter-sanjiao-icon@2x.png in Resources */,
+				F3D14E84195AF5D100A0DA3E /* SendVerifyCodeBoard_iPhone.xib in Resources */,
 				F3B5390318FFD77C004E72D4 /* QiuchangDetailInfoCellBoard_iPhone.xib in Resources */,
 				CB3775FF17C5FF6F00DF5F21 /* item-grid-filter-up-active-arrow@2x.png in Resources */,
 				CB37760017C5FF6F00DF5F21 /* item-grid-filter-up-arrow@2x.png in Resources */,
@@ -5057,6 +5257,8 @@
 				F3B538DF18FFCD4E004E72D4 /* coursedetailtelicon@2x.png in Resources */,
 				CB37762017C5FF6F00DF5F21 /* profile-refresh-goods-num-bg@2x.png in Resources */,
 				F3B5375D18FE29FC004E72D4 /* qcss_more_btn@2x.png in Resources */,
+				F3B1E407195EDEE1004B615E /* ChargeConfirmView.xib in Resources */,
+				F3D14E2C1957257B00A0DA3E /* Alixpay.bundle in Resources */,
 				CB37762117C5FF6F00DF5F21 /* profile-refresh-history-icon@2x.png in Resources */,
 				CB37762217C5FF6F00DF5F21 /* profile-refresh-payment-icon@2x.png in Resources */,
 				CB37762317C5FF6F00DF5F21 /* profile-refresh-prompt-bg@2x.png in Resources */,
@@ -5065,6 +5267,7 @@
 				F3C5CD2B18F3FF9E00C8DF06 /* expand_down@2x.png in Resources */,
 				F3B5375418FE29FC004E72D4 /* courselisticonguan@2x.png in Resources */,
 				F3FBB2E2190B9473000E9F3F /* privilegelisticonspecialday@2x.png in Resources */,
+				F3B1E3C8195DEE5C004B615E /* RechargeBoard_iPhone.xib in Resources */,
 				CB37762517C5FF6F00DF5F21 /* profile-refresh-ship-icon@2x.png in Resources */,
 				CB37762617C5FF6F00DF5F21 /* profile-refresh-site-icon@2x.png in Resources */,
 				F3B5376018FE29FC004E72D4 /* qcss_search_btn@2x.png in Resources */,
@@ -5073,10 +5276,12 @@
 				F3977A0A195612CB00340D76 /* topbarselectbtn@2x.png in Resources */,
 				CB37762917C5FF6F00DF5F21 /* search-new-shopping-cart-num-bg@2x.png in Resources */,
 				E909CBFB182D0D650095B262 /* AdvancedSearchCell_iPhone.xml in Resources */,
+				F3B1E3CD195DF151004B615E /* RechargeViewUICell.xib in Resources */,
 				F3FBB2E7190B94C9000E9F3F /* QiuchangTehuiRiziCellBoard_iPhone.xib in Resources */,
 				CB37762A17C5FF6F00DF5F21 /* searcher-new-body-btn-blue@2x.png in Resources */,
 				CB37762B17C5FF6F00DF5F21 /* searcher-new-body-btn-grey@2x.png in Resources */,
 				CB37762C17C5FF6F00DF5F21 /* searcher-new-cont-btn-red@2x.png in Resources */,
+				F3B1E402195EDDB2004B615E /* ChargeValueView.xib in Resources */,
 				F37AA7FF18E63B45004BE9B2 /* CalendarRow@2x.png in Resources */,
 				E909CC41182D0D650095B262 /* OrderCellBody_iPhone.xml in Resources */,
 				CB37762D17C5FF6F00DF5F21 /* searcher-new-search-box@2x.png in Resources */,
@@ -5186,8 +5391,10 @@
 				CB37765717C5FF6F00DF5F21 /* trade-info-stream-logistics-time-icon@2x.png in Resources */,
 				F3B5395C1900C1A6004E72D4 /* QiuchangOrderCellViewController.xib in Resources */,
 				F3B5375518FE29FC004E72D4 /* courselisticonhui@2x.png in Resources */,
+				F3D14E89195AF60800A0DA3E /* InputNewPasswordBoard_iPhone.xib in Resources */,
 				CB37765817C5FF6F00DF5F21 /* trade-info-stream-logistics-time-line@2x.png in Resources */,
 				F3C5CD2C18F3FF9E00C8DF06 /* expand_left@2x.png in Resources */,
+				F3B1E3C6195DEE5C004B615E /* ChangePasswordBoard_iPhone.xib in Resources */,
 				F3E4608318DF395400C8E952 /* titleicon@2x.png in Resources */,
 				E9DB7F2917DECF37003AB6E1 /* index-hot-icon@2x.png in Resources */,
 				E9DB7F2217DEC1D5003AB6E1 /* icon-necessary@2x.png in Resources */,
@@ -5215,6 +5422,7 @@
 				E970D6C6182CE4E200146363 /* UIView+Animation.m in Sources */,
 				6302390C177C1676004C052D /* AppDelegate.m in Sources */,
 				E970D69F182CE4E200146363 /* Bee_UIRouter.m in Sources */,
+				F3B1E3D5195DF2A2004B615E /* MyPointsBoard_iPhone.m in Sources */,
 				F37AA81618E63BE7004BE9B2 /* TSQCalendarMonthHeaderCell.m in Sources */,
 				E970D783182CE4E200146363 /* Bee_HTTPServer2.m in Sources */,
 				E970D7A1182CE4E200146363 /* CXMLElement.m in Sources */,
@@ -5245,6 +5453,7 @@
 				F3F0EEB6193517DF004613DA /* NibLoader.m in Sources */,
 				E909CC31182D0D650095B262 /* GoodsPropertyBoard_iPhone.m in Sources */,
 				E970D772182CE4E200146363 /* NSString+BeeExtension.mm in Sources */,
+				F3B1E3D0195DF186004B615E /* ExtractViewUICell.m in Sources */,
 				E970D77B182CE4E200146363 /* Bee_HTTPRequest.m in Sources */,
 				E970D76E182CE4E200146363 /* NSObject+BeeProperty.mm in Sources */,
 				E970D736182CE4E200146363 /* Bee_UITemplateSyntaxEXPR.m in Sources */,
@@ -5269,6 +5478,7 @@
 				E970D716182CE4E200146363 /* UILabel+BeeUILayout.m in Sources */,
 				E970D72D182CE4E200146363 /* UIView+Transition.m in Sources */,
 				E970D6BD182CE4E200146363 /* UITextView+BeeUIStyle.m in Sources */,
+				F3D14E43195726B300A0DA3E /* NSObject+SBJSON.m in Sources */,
 				E970D79A182CE4E200146363 /* OpenUDID.m in Sources */,
 				F3B539431900C0E9004E72D4 /* CitySelectCell.m in Sources */,
 				E970D764182CE4E200146363 /* Bee_UnitTest.m in Sources */,
@@ -5279,6 +5489,7 @@
 				E970D719182CE4E200146363 /* UITextView+BeeUILayout.m in Sources */,
 				E970D761182CE4E200146363 /* Bee_SystemInfo.mm in Sources */,
 				F3B5390218FFD77C004E72D4 /* QiuchangDetailInfoCellBoard_iPhone.m in Sources */,
+				F3D14E301957257B00A0DA3E /* AlixPayResult.m in Sources */,
 				E970D702182CE4E200146363 /* Bee_UIPullLoader.m in Sources */,
 				E970D7AD182CE4E200146363 /* ZipArchive.mm in Sources */,
 				E909CC49182D0D650095B262 /* ProfileBoard_iPhone.m in Sources */,
@@ -5304,6 +5515,7 @@
 				E970D6C4182CE4E200146363 /* Bee_UIAnimationStyling.m in Sources */,
 				F3B5390418FFD77C004E72D4 /* QiuchangDetailPriceContentCellBoard_iPhone.m in Sources */,
 				E909CC26182D0D650095B262 /* GoodsDetailBoard_iPhone.m in Sources */,
+				F3D14E47195726B300A0DA3E /* SBJsonParser.m in Sources */,
 				E970D71C182CE4E200146363 /* Bee_UIQuery.m in Sources */,
 				F3B5390618FFD77C004E72D4 /* QiuchangDetailPriceHeaderCellBoard_iPhone.m in Sources */,
 				E970D78F182CE4E200146363 /* ASIDownloadCache.m in Sources */,
@@ -5340,6 +5552,7 @@
 				F3B539411900C0E9004E72D4 /* CitySelectBoard_iPhone.m in Sources */,
 				E970D77A182CE4E200146363 /* Bee_HTTPMockServer.m in Sources */,
 				E970D6EF182CE4E200146363 /* Bee_UIWebView.m in Sources */,
+				F3B1E3C5195DEE5C004B615E /* ChangePasswordBoard_iPhone.m in Sources */,
 				F3F0EF801935AFB6004613DA /* ioapi.c in Sources */,
 				E970D7A2182CE4E200146363 /* CXMLElement_CreationExtensions.m in Sources */,
 				F3B539631900C337004E72D4 /* QiuchangOrderEditCellViewController.m in Sources */,
@@ -5360,6 +5573,7 @@
 				E970D747182CE4E200146363 /* Bee_CacheProtocol.mm in Sources */,
 				E970D691182CE4E200146363 /* BeeMessage+BeeJSON.mm in Sources */,
 				E970D78C182CE4E200146363 /* ASIAuthenticationDialog.m in Sources */,
+				F3D14E2F1957257B00A0DA3E /* AlixPayOrder.m in Sources */,
 				E970D6F1182CE4E200146363 /* UIView+HoldGesture.m in Sources */,
 				E970D750182CE4E200146363 /* Bee_ActiveProtocol.m in Sources */,
 				6302391F177C1676004C052D /* GoodsModel.m in Sources */,
@@ -5393,6 +5607,7 @@
 				E970D690182CE4E200146363 /* BeeMessage+BeeActiveRecord.mm in Sources */,
 				E970D6E5182CE4E200146363 /* Bee_UISegmentedControl.m in Sources */,
 				63023920177C1676004C052D /* HelpModel.m in Sources */,
+				F3B1E400195EDDA2004B615E /* ChargeValueView.m in Sources */,
 				E970D694182CE4E200146363 /* NSObject+BeeMessage.mm in Sources */,
 				E970D6C0182CE4E200146363 /* Bee_UIAnimation.m in Sources */,
 				E970D76C182CE4E200146363 /* NSObject+BeeMacros.mm in Sources */,
@@ -5410,6 +5625,7 @@
 				E970D718182CE4E200146363 /* UITextField+BeeUILayout.m in Sources */,
 				F39B6148191BDAE500C89F6A /* OtherTripBoard_iPhone.m in Sources */,
 				E970D79B182CE4E200146363 /* Reachability.m in Sources */,
+				F3B1E3C7195DEE5C004B615E /* RechargeBoard_iPhone.m in Sources */,
 				E970D6C9182CE4E200146363 /* UIImageView+UIDataBinding.m in Sources */,
 				E970D6BF182CE4E200146363 /* UIViewController+BeeUIStyle.m in Sources */,
 				E909CC52182D0D650095B262 /* SettingBoard_iPhone.m in Sources */,
@@ -5482,12 +5698,14 @@
 				E970D759182CE4E200146363 /* NSObject+BeeDatabase.m in Sources */,
 				E970D6D1182CE4E200146363 /* Bee_UIAccelerometer.m in Sources */,
 				E970D72C182CE4E200146363 /* Bee_UITransitionPush.m in Sources */,
+				F3D14E45195726B300A0DA3E /* SBJSON.m in Sources */,
 				E970D758182CE4E200146363 /* NSObject+BeeActiveRecord.m in Sources */,
 				E970D6CF182CE4E200146363 /* UINavigationBar+BeeExtension.m in Sources */,
 				E970D753182CE4E200146363 /* Bee_MYSQL.m in Sources */,
 				6302392A177C1676004C052D /* AppBoard_iPad.m in Sources */,
 				E909CC4D182D0D650095B262 /* RegionPickBoard_iPhone.m in Sources */,
 				E970D6AE182CE4E200146363 /* UIViewController+Traversing.m in Sources */,
+				F3D14E48195726B300A0DA3E /* SBJsonWriter.m in Sources */,
 				F37AA81818E63BE7004BE9B2 /* TSQCalendarView.m in Sources */,
 				E970D767182CE4E200146363 /* NSData+BeeExtension.mm in Sources */,
 				E909CC47182D0D650095B262 /* PayBoard_iPhone.m in Sources */,
@@ -5521,6 +5739,7 @@
 				E970D699182CE4E200146363 /* Bee_UIMetrics.m in Sources */,
 				E970D73D182CE4E200146363 /* UIViewController+BeeUITemplate.m in Sources */,
 				E970D69E182CE4E200146363 /* Bee_UIBoard.m in Sources */,
+				F3B1E405195EDEC7004B615E /* ChargeConfirmView.m in Sources */,
 				F3C5CD3118F578BE00C8DF06 /* MJNIndexView.m in Sources */,
 				E970D726182CE4E200146363 /* BeeUIQuery+Traversing.m in Sources */,
 				E970D755182CE4E200146363 /* BeeDatabase+BeeActiveRecord.m in Sources */,
@@ -5532,6 +5751,7 @@
 				E970D70E182CE4E200146363 /* Bee_UILayout.m in Sources */,
 				E970D786182CE4E200146363 /* Bee_HTTPWorklet2.m in Sources */,
 				E970D6B9182CE4E200146363 /* UIImageView+BeeUIStyle.m in Sources */,
+				F3B1E3CB195DEFB1004B615E /* RechargeViewUICell.m in Sources */,
 				E970D748182CE4E200146363 /* Bee_FileCache.mm in Sources */,
 				E970D775182CE4E200146363 /* Bee_LanguageSetting.m in Sources */,
 				E909CC1A182D0D650095B262 /* ErrorMsg.m in Sources */,
@@ -5551,6 +5771,7 @@
 				F3F0EEC919353871004613DA /* AifenxiangDetailWebBoard_iPhone.m in Sources */,
 				E909CC36182D0D650095B262 /* HelpCell_iPhone.m in Sources */,
 				E970D75C182CE4E200146363 /* Bee_Log.mm in Sources */,
+				F3D14E82195AF59500A0DA3E /* SendVerifyCodeBoard_iPhone.m in Sources */,
 				E970D6BE182CE4E200146363 /* UIView+BeeUIStyle.m in Sources */,
 				F31007BE1945E74C002DF54F /* MyOrderListTopSwitchViewController.m in Sources */,
 				E970D6E1182CE4E200146363 /* Bee_UIPickerView.m in Sources */,
@@ -5565,6 +5786,7 @@
 				E970D780182CE4E200146363 /* Bee_HTTPRequest2.m in Sources */,
 				F31491B01951E66C0077385C /* NALLabelsMatrix.m in Sources */,
 				E970D68B182CE4E200146363 /* Bee_Message.mm in Sources */,
+				F3D14E44195726B300A0DA3E /* NSString+SBJSON.m in Sources */,
 				E909CC4E182D0D650095B262 /* SearchBoard_iPhone.m in Sources */,
 				E970D722182CE4E200146363 /* BeeUIQuery+Manipulation.m in Sources */,
 				E909CC3C182D0D650095B262 /* IntegralBoard_iPhone.m in Sources */,
@@ -5636,6 +5858,8 @@
 				CB8C732B17B92D1C0044DC3E /* PHOTO+AutoSelection.m in Sources */,
 				E970D735182CE4E200146363 /* Bee_UITemplateContext.m in Sources */,
 				E970D745182CE4E200146363 /* Bee_SystemPackage.mm in Sources */,
+				F3D14E87195AF5F200A0DA3E /* InputNewPasswordBoard_iPhone.m in Sources */,
+				F3D14E46195726B300A0DA3E /* SBJsonBase.m in Sources */,
 				E970D723182CE4E200146363 /* BeeUIQuery+Miscellaneous.m in Sources */,
 				E970D6AA182CE4E200146363 /* UIView+UIViewController.m in Sources */,
 				E970D6B0182CE4E200146363 /* UIViewController+UINavigationController.m in Sources */,
@@ -5771,6 +5995,7 @@
 					"$(PROJECT_DIR)/libs/ShareSDK/Extend/TencentWeiboSDK",
 					"$(PROJECT_DIR)/libs/ShareSDK/Extend/WeChatSDK",
 					"$(PROJECT_DIR)/libs/ShareSDK/Extend/YiXinSDK",
+					"$(PROJECT_DIR)/libs/alipay",
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = 2golf;
@@ -5819,6 +6044,7 @@
 					"$(PROJECT_DIR)/libs/ShareSDK/Extend/TencentWeiboSDK",
 					"$(PROJECT_DIR)/libs/ShareSDK/Extend/WeChatSDK",
 					"$(PROJECT_DIR)/libs/ShareSDK/Extend/YiXinSDK",
+					"$(PROJECT_DIR)/libs/alipay",
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = 2golf;
@@ -5895,6 +6121,7 @@
 					"$(PROJECT_DIR)/libs/ShareSDK/Extend/TencentWeiboSDK",
 					"$(PROJECT_DIR)/libs/ShareSDK/Extend/WeChatSDK",
 					"$(PROJECT_DIR)/libs/ShareSDK/Extend/YiXinSDK",
+					"$(PROJECT_DIR)/libs/alipay",
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = 2golf;

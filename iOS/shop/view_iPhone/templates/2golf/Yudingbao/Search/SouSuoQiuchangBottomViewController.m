@@ -10,6 +10,8 @@
 #import "QiuchangCellViewController.h"
 #import "QuichangDetailBoard_iPhone.h"
 #import "MyOrderListBoard_iPhone.h"
+#import "CommonUtility.h"
+#import "ServerConfig.h"
 
 @interface SouSuoQiuchangBottomViewController ()
 
@@ -91,13 +93,46 @@
                 cellCtrl.view.hidden = NO;
                 NSDictionary* dict = _dataArray[i];
                 
-                //[cellCtrl setNoIcon];
                 cellCtrl.nameLabel.text = dict[@"coursename"];
-                cellCtrl.distanceLabel.text = @"";
-                cellCtrl.descriptionLabel.text = dict[@"description"];
-                cellCtrl.valueLabel.text = [NSString stringWithFormat:@"￥%@",[dict[@"price"][@"price"] stringValue]];
-                cellCtrl.huiIcon.hidden = YES;
-                cellCtrl.guanIcon.hidden = YES;
+                double locX = [((self.dataArray[i])[@"latitude"]) doubleValue];
+                double locY = [((self.dataArray[i])[@"longitude"]) doubleValue];
+                double dis =
+                [CommonUtility metersOfDistanceBetween:[CommonUtility currentPositionX] _y1:[CommonUtility currentPositionY] _x2:locX _y2:locY];
+                cellCtrl.distanceLabel.text = [NSString stringWithFormat:@"距离：%.3f公里",dis/1000.f];
+                cellCtrl.descriptionLabel.text = dict[@"slogan"];
+                cellCtrl.valueLabel.text = [NSString stringWithFormat:@"￥%@",dict[@"cheapestprice"]];
+                if ([(dict[@"img"])[@"small"] length]>0)
+                {
+                    NSString* url = dict[@"img"][@"small"];
+                    if ([url rangeOfString:@"http://"].length <= 0 && [url rangeOfString:@"https://"].length <= 0)
+                    {
+                        url = [[ServerConfig sharedInstance].baseUrl stringByAppendingFormat:@"/%@",url];
+                    }
+                    [cellCtrl.iconImageView GET:url useCache:YES];
+                }
+                else
+                {
+                    [cellCtrl.iconImageView setImage:__IMAGE(@"icon")];
+                }
+                
+                if (dict[@"ispreferential"] && [dict[@"ispreferential"] boolValue])
+                {
+                    cellCtrl.huiIcon.hidden = NO;
+                }
+                else
+                {
+                    cellCtrl.huiIcon.hidden = YES;
+                }
+                
+                if (dict[@"isspotpayment"] && [dict[@"isspotpayment"] boolValue])
+                {
+                    cellCtrl.guanIcon.hidden = NO;
+                }
+                else
+                {
+                    cellCtrl.guanIcon.hidden = YES;
+                }
+
             }
         }
     }
@@ -127,7 +162,7 @@
     NSInteger index = btn.tag;
     
     QuichangDetailBoard_iPhone* board = [QuichangDetailBoard_iPhone boardWithNibName:@"QuichangDetailBoard_iPhone"];
-    [board setCourseId:_dataArray[index][@"courseid"]];
+    [board setCourseId:_dataArray[index][@"course_id"]];
     [[[[self.view superview] superview] superview].stack pushBoard:board animated:YES];
 }
 

@@ -38,6 +38,11 @@
 
 #import "model.h"
 
+
+#import "AlixPayResult.h"
+#import "PartnerConfig.h"
+#import "DataVerifier.h"
+
 #pragma mark -
 
 @interface AppDelegate () <BMKGeneralDelegate,CLLocationManagerDelegate>
@@ -62,6 +67,12 @@ static BMKMapManager* _mapManager = nil;
     [XGPush startApp:2200018157 appKey:@"I3VS41E2R8EI"];
 	[XGPush handleLaunching: launchOptions];
     
+    //清空选中时间
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"search_time"];
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"search_date"];
+    NSDate* date = [NSDate dateWithTimeIntervalSinceNow:3600*24 + 3600];//明天1小时以后
+    [[NSUserDefaults standardUserDefaults] setObject:date forKey:@"search_date"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     
     /**
      注册SDK应用，此应用请到http://www.sharesdk.cn中进行注册申请。
@@ -235,6 +246,7 @@ static BMKMapManager* _mapManager = nil;
 - (BOOL)application:(UIApplication *)application
       handleOpenURL:(NSURL *)url
 {
+    [self parse:url application:application];
     return [ShareSDK handleOpenURL:url
                         wxDelegate:self];
 }
@@ -244,6 +256,7 @@ static BMKMapManager* _mapManager = nil;
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation
 {
+    [self parse:url application:application];
     return [ShareSDK handleOpenURL:url
                  sourceApplication:sourceApplication
                         annotation:annotation
@@ -311,6 +324,68 @@ static BMKMapManager* _mapManager = nil;
 
 -(void) onResp:(BaseResp*)resp
 {
+    
+}
+
+#pragma mark 支付宝回调
+
+- (AlixPayResult *)resultFromURL:(NSURL *)url {
+	NSString * query = [[url query] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+#if ! __has_feature(objc_arc)
+    return [[[AlixPayResult alloc] initWithString:query] autorelease];
+#else
+	return [[AlixPayResult alloc] initWithString:query];
+#endif
+}
+
+- (AlixPayResult *)handleOpenURL:(NSURL *)url {
+	AlixPayResult * result = nil;
+	
+	if (url != nil && [[url host] compare:@"safepay"] == 0) {
+		result = [self resultFromURL:url];
+	}
+    
+	return result;
+}
+
+- (void)parse:(NSURL *)url application:(UIApplication *)application {
+    
+    //结果处理
+    AlixPayResult* result = [self handleOpenURL:url];
+    
+	if (result)
+    {
+		
+		if (result.statusCode == 9000)
+        {
+			/*
+			 *用公钥验证签名 严格验证请使用result.resultString与result.signString验签
+			 */
+            
+            //交易成功
+            NSString* key = AlipayPubKey;
+			id<DataVerifier> verifier;
+            verifier = CreateRSADataVerifier(key);
+            
+			if ([verifier verifyString:result.resultString withSign:result.signString])
+            {
+                //验证签名成功，交易结果无篡改
+                NSLog(@"SUCCEED");
+                [[[UIApplication sharedApplication] keyWindow] presentSuccessTips:@"交易成功"];
+			}
+        }
+        else
+        {
+            //交易失败
+            [[[UIApplication sharedApplication] keyWindow] presentFailureTips:@"签名不符"];
+        }
+    }
+    else
+    {
+        //失败
+        [[[UIApplication sharedApplication] keyWindow] presentFailureTips:@"交易失败"];
+    }
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"moneyPaid" object:nil];
     
 }
 

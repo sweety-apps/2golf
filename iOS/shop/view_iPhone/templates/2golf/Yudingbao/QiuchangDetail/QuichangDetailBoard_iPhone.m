@@ -275,6 +275,9 @@ DEF_SIGNAL(DAIL_RIGHT_NAV_BTN);
 - (void)load
 {
 	[super load];
+    
+    self.collectionModel = [CollectionModel sharedInstance];
+	[self.collectionModel addObserver:self];
 }
 
 - (void)unload
@@ -282,6 +285,10 @@ DEF_SIGNAL(DAIL_RIGHT_NAV_BTN);
     self.cellArray = nil;
     self.dataDict = nil;
     [_courseId release];
+    
+    [self.collectionModel removeObserver:self];
+    self.collectionModel = nil;
+    
 	[super unload];
 }
 
@@ -507,7 +514,7 @@ ON_SIGNAL2( QiuchangBannerPhotoCell_iPhone, signal )
     if (self.weatherDataDict)
     {
         self.weatherBoard = [WeatherViewBoard_iPhone boardWithNibName:@"WeatherViewBoard_iPhone"];
-        [self.view addSubview:self.weatherBoard.view];
+        [[[UIApplication sharedApplication] keyWindow] addSubview:self.weatherBoard.view];
         [self.weatherBoard showViewWithDataDict:self.weatherDataDict];
     }
 }
@@ -601,16 +608,13 @@ ON_SIGNAL2( QiuchangBannerPhotoCell_iPhone, signal )
 
 - (void)onPressedCollect:(QiuchangDetailCollectCellBoard_iPhone*)board
 {
-    if ([board.collectLabel.text isEqualToString:@"收藏"])
+    if (![CommonUtility checkLoginAndPresentLoginView])
     {
-        [self presentMessageTips:@"已收藏球场"];
-        board.collectLabel.text = @"已收藏";
+        return;
     }
-    else
-    {
-        [self presentMessageTips:@"取消收藏球场"];
-        board.collectLabel.text = @"收藏";
-    }
+    
+    [self.collectionModel collectCourse:self.dataDict[@"course_id"]];
+    [self presentLoadingTips:@"正在收藏"];
 }
 
 - (void)onPressedMemberVerify:(QiuchangDetailCollectCellBoard_iPhone*)board
@@ -625,6 +629,31 @@ ON_SIGNAL2( QiuchangBannerPhotoCell_iPhone, signal )
              shouldRefreshData:(long)timestamp
 {
     [self fetchData];
+}
+
+#pragma mark -
+
+- (void)handleMessage:(BeeMessage *)msg
+{
+    if ( [msg is:API.user_collect_create] )
+    {
+        if ( msg.sending )
+        {
+        }
+		else
+		{
+            [self dismissTips];
+		}
+		
+        if ( msg.succeed )
+        {
+            [self presentMessageTips:@"已收藏"];
+        }
+        else if ( msg.failed )
+        {
+            [self presentMessageTips:@"您已收藏过了"];
+        }
+    }
 }
 
 @end

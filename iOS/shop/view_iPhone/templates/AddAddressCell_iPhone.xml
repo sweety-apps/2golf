@@ -88,11 +88,11 @@
             position: absolute;
             top: 0;
             left: 0;
-            background-image: url(button-blue.png);
+            background-image: url(coursedetailorderbtn.png);
         }
         
         .button-label {
-            color: #fff;
+            color: #ffffff;
             font-size: 16px;
 			font-weight: bold;
             height: 40px;

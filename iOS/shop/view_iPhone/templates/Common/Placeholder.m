@@ -38,4 +38,9 @@
 	return [UIImage imageNamed:@"profile-no-avatar-icon.png"];
 }
 
++ (UIImage *)has_avatar
+{
+	return [UIImage imageNamed:@"profile-has-avatar-icon.png"];
+}
+
 @end

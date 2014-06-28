@@ -21,10 +21,16 @@
 #import "UserModel.h"
 #import "ServerConfig.h"
 #import "MyOrderListTopSwitchViewController.h"
+#import "PartnerConfig.h"
+#import "DataSigner.h"
+#import "AlixPayResult.h"
+#import "DataVerifier.h"
+#import "AlixPayOrder.h"
+#import "CommonUtility.h"
 
 #pragma mark -
 
-@interface MyOrderListBoard_iPhone() <QiuchangOrderCell_iPhoneDelegate>
+@interface MyOrderListBoard_iPhone() <QiuchangOrderCell_iPhoneDelegate,UIActionSheetDelegate>
 {
 	BeeUIScrollView* _scroll;
 }
@@ -35,6 +41,7 @@
 @property (nonatomic,retain) NSArray* currentArray;
 @property (nonatomic,assign) BOOL isTaocan;
 @property (nonatomic,retain) MyOrderListTopSwitchViewController* switchCtrl;
+@property (nonatomic,retain) NSDictionary* payingData;
 
 @end
 
@@ -90,9 +97,12 @@ ON_SIGNAL2( BeeUIBoard, signal )
         //_scroll.bounces = NO;
 		[_scroll showHeaderLoader:NO animated:NO];
 		[self.view addSubview:_scroll];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fetchData) name:@"moneyPaid" object:nil];
     }
     else if ( [signal is:BeeUIBoard.DELETE_VIEWS] )
     {
+        [[NSNotificationCenter defaultCenter] removeObserver:self];
         SAFE_RELEASE_SUBVIEW( _scroll );
     }
     else if ( [signal is:BeeUIBoard.LAYOUT_VIEWS] )
@@ -151,7 +161,23 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
     {
         self.currentArray = self.taocanArray;
     }
+    [self reorderDatas];
     [_scroll reloadData];
+}
+
+- (void)reorderDatas
+{
+    id tmp = nil;
+    NSArray* lists = @[self.courseArray,self.taocanArray];
+    for (NSMutableArray* arr in lists)
+    {
+        for (int i = 0; i < arr.count/2 ; ++i)
+        {
+            tmp = arr[arr.count - 1 - i];
+            arr[arr.count - 1 - i] = arr[i];
+            arr[i] = tmp;
+        }
+    }
 }
 
 - (void)devideDatas
@@ -226,6 +252,17 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
     .TIMEOUT(30);
 }
 
+- (void)requestMoneyPayCourse:(NSString*)orderId
+{
+    NSDictionary* paramDict = @{
+                                @"session":[UserModel sharedInstance].session.objectToDictionary,
+                                @"orderid":orderId
+                                };
+    self.HTTP_POST([[ServerConfig sharedInstance].url stringByAppendingString:@"balance"])
+    .PARAM(@"json",[paramDict JSONString])
+    .TIMEOUT(30);
+}
+
 - (NSDictionary*) commonCheckRequest:(BeeHTTPRequest *)req
 {
     if ( req.sending) {
@@ -267,7 +304,7 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
             }
             else
             {
-                [self presentFailureTips:__TEXT(@"error_network")];
+                [self presentFailureTips:dict[@"status"][@"error_desc"]];
             }
         }
         else if ([[req.url absoluteString] rangeOfString:@"courseorder/cancel"].length > 0)
@@ -282,11 +319,30 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
             }
             else
             {
-                [self presentFailureTips:__TEXT(@"error_network")];
+                [self presentFailureTips:dict[@"status"][@"error_desc"]];
+            }
+        }
+        else if ([[req.url absoluteString] rangeOfString:@"balance"].length > 0)
+        {
+            //余额支付
+            if ([(dict[@"status"])[@"succeed"] intValue] == 1)
+            {
+                self.dataDict = [NSMutableDictionary dictionaryWithDictionary:(dict[@"data"])];
+                [self presentMessageTips:@"付款成功"];
+                [self _presentAertView];
+                [self fetchData];
+            }
+            else
+            {
+                [self presentFailureTips:dict[@"status"][@"error_desc"]];
             }
         }
     }
 }
+
+
+
+
 
 #pragma mark <QiuchangOrderCell_iPhoneDelegate>
 
@@ -305,13 +361,93 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
 - (void)QiuchangOrderCell_iPhone:(QiuchangOrderCell_iPhone*)cell
                     onPressedPay:(NSDictionary*)data
 {
-    
+    self.payingData = data;
+    UIActionSheet* as = [[[UIActionSheet alloc] initWithTitle:@"选择支付方式" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"支付宝支付",@"余额支付", nil] autorelease];
+    [as showInView:[[UIApplication sharedApplication] keyWindow]];
 }
 
 - (void)QiuchangOrderCell_iPhone:(QiuchangOrderCell_iPhone*)cell
                onPressedQiuchang:(NSDictionary*)data
 {
     
+}
+
+#pragma mark <UIActionSheetDelegate>
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSString* realPrice = [self _getPayingPrice];
+    
+    switch (buttonIndex)
+    {
+        case 0:
+        {
+            //支付宝支付
+            NSLog(@"支付宝支付");
+            if (realPrice)
+            {
+                [CommonUtility alipayCourseWithPayId:self.payingData[@"pay_id"]
+                                             ordersn:self.payingData[@"order_sn"]
+                                                body:self.payingData[@"pay_id"]
+                                               price:realPrice
+                                      callbackTarget:self
+                                         callbackSel:@selector(paymentResult:)];
+            }
+            
+        }
+            break;
+        
+        case 1:
+        {
+            //余额支付
+            NSLog(@"余额支付");
+            if (self.payingData)
+            {
+                [self requestMoneyPayCourse:self.payingData[@"id"]];
+            }
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
+
+//wap回调函数
+-(void)paymentResult:(NSString *)resultd
+{
+    //结果处理
+    AlixPayResult* result = [[AlixPayResult alloc] initWithString:resultd];
+	if (result)
+    {
+		
+		if (result.statusCode == 9000)
+        {
+			/*
+			 *用公钥验证签名 严格验证请使用result.resultString与result.signString验签
+			 */
+            
+            //交易成功
+            NSString* key = AlipayPubKey;//签约帐户后获取到的支付宝公钥
+			id<DataVerifier> verifier;
+            verifier = CreateRSADataVerifier(key);
+            
+			if ([verifier verifyString:result.resultString withSign:result.signString])
+            {
+                //验证签名成功，交易结果无篡改
+                [self _presentAertView];
+			}
+        }
+        else
+        {
+            //交易失败
+        }
+    }
+    else
+    {
+        //失败
+    }
+    [self fetchData];
 }
 
 #pragma mark -
@@ -328,6 +464,49 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
     [self.switchCtrl selectButtonTaocan];
     self.isTaocan = YES;
     [self fetchData];
+}
+
+- (NSString*)_getPayingPrice
+{
+    NSObject* price = nil;
+    NSString* realPrice = nil;
+    
+    if (self.payingData)
+    {
+        price = self.payingData[@"price"];
+        if ([price isKindOfClass:[NSString class]])
+        {
+            realPrice = (NSString*)price;
+        }
+        else if([price isKindOfClass:[NSNumber class]])
+        {
+            realPrice = [NSString stringWithFormat:@"%@",price];
+        }
+        else if([price isKindOfClass:[NSDictionary class]])
+        {
+            if ([((NSDictionary*)price)[@"price"] isKindOfClass:[NSDictionary class]])
+            {
+                realPrice = ((NSDictionary*)price)[@"price"][@"price"];
+            }
+            else
+            {
+                realPrice = ((NSDictionary*)price)[@"price"];
+            }
+            
+        }
+    }
+    
+    return realPrice;
+}
+
+- (void)_presentAertView
+{
+    BeeUIAlertView * alert = [BeeUIAlertView spawn];
+    NSString* price = [self _getPayingPrice];
+    alert.title = @"付款成功";
+    alert.message = [NSString stringWithFormat:@"恭喜您获得爱高积分：%d分\n支付金额中会有1块钱支持慈善活动",[price intValue]];
+    [alert addCancelTitle:@"好的"];
+    [alert showInViewController:self];
 }
 
 @end

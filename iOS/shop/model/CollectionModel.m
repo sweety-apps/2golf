@@ -115,6 +115,12 @@ DEF_SINGLETON( CollectionModel )
 	self.MSG( API.user_collect_create ).INPUT( @"goods_id", goods.id );
 }
 
+- (void)collectCourse:(NSString*)courseid
+{
+    self.CANCEL_MSG( API.user_collect_create );
+	self.MSG( API.user_collect_create ).INPUT( @"goods_id", [NSNumber numberWithLongLong:[courseid longLongValue]] );
+}
+
 - (void)uncollect:(COLLECT_GOODS *)goods
 {
 	self.CANCEL_MSG( API.user_collect_delete );

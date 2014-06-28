@@ -42,8 +42,10 @@
 		</linear>
 		
 		<linear orientation="v" class="signup-wrapper">
-			<button id="signup">@{login_register}</button>
-			<view class="line"/>
+            <linear orientation="h">
+                <button id="signup">免费注册</button>
+                <button id="changepswd">忘记密码</button>
+            </linear>
 		</linear>
 	</linear>
 
@@ -74,12 +76,22 @@
         
         #signup {
             margin-top: 20px;
-            float: center;
-            height: 20px;
-            width: 50%;
-            float: center;
-            margin-right: 20;
-            button-title-color: #666;
+            height: 35px;
+            font-size: 22px;
+            width: 40%;
+            margin-left: 20;
+            button-title-color: #ffffff;
+            background-image: url(qcss_ok_btn_mid.png);
+        }
+        
+        #changepswd {
+            margin-top: 20px;
+            height: 35px;
+            font-size: 22px;
+            width: 40%;
+            margin-left: 20;
+            button-title-color: #ffffff;
+            background-image: url(qcss_ok_btn_mid.png);
         }
 		
 		.line {

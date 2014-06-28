@@ -21,5 +21,13 @@
 + (double)currentPositionLongitude;
 + (long) getSearchTimeStamp;
 + (BOOL) checkLoginAndPresentLoginView;
++ (NSArray*) getCanSelectHourMin;
+
++ (void)alipayCourseWithPayId:(NSString*)payId
+                      ordersn:(NSString*)ordersn
+                         body:(NSString*)body
+                        price:(NSString*)price
+               callbackTarget:(id)target
+                  callbackSel:(SEL)sel;
 
 @end
