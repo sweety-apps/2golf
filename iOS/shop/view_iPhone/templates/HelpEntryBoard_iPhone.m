@@ -53,6 +53,10 @@ ON_SIGNAL2( BeeUIBoard, signal )
 	
 	if ( [signal is:BeeUIBoard.CREATE_VIEWS] )
 	{
+        [self showNavigationBarAnimated:NO];
+        [self setTitleViewWithIcon:__IMAGE(@"titleicon") andTitleString:@"帮助"];
+        [self showBarButton:BeeUINavigationBar.LEFT image:[UIImage imageNamed:@"nav-back.png"]];
+        
 	}
 	else if ( [signal is:BeeUIBoard.DELETE_VIEWS] )
 	{

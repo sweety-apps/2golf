@@ -134,6 +134,9 @@ ON_SIGNAL2( BeeUIBoard, signal )
         bar.clipsToBounds = NO;
         [[bar subviews][0] insertSubview:gBarBGView atIndex:2];
         
+        [((UIButton*)$(@"#signup").view).titleLabel setFont:[UIFont systemFontOfSize:18]];
+        [((UIButton*)$(@"#changepswd").view).titleLabel setFont:[UIFont systemFontOfSize:18]];
+        
     }
     else if ( [signal is:BeeUIBoard.WILL_DISAPPEAR] )
     {

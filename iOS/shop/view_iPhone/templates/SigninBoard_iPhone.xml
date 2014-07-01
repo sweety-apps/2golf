@@ -76,8 +76,8 @@
         
         #signup {
             margin-top: 20px;
-            height: 35px;
-            font-size: 22px;
+            height: 40px;
+            font-size: 18px;
             width: 40%;
             margin-left: 20;
             button-title-color: #ffffff;
@@ -86,10 +86,10 @@
         
         #changepswd {
             margin-top: 20px;
-            height: 35px;
-            font-size: 22px;
+            height: 40px;
+            font-size: 18px;
             width: 40%;
-            margin-left: 20;
+            margin-left: 25;
             button-title-color: #ffffff;
             background-image: url(qcss_ok_btn_mid.png);
         }

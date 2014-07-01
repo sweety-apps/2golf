@@ -374,6 +374,18 @@
 	return NO;
 }
 
+- (UIViewController *) lastBoardWithClass:(Class)boardClazz
+{
+    for (int i = [self.viewControllers count] - 1; i >= 0; --i  )
+	{
+        UIViewController * controller = self.viewControllers[i];
+		if ( [controller isKindOfClass:boardClazz] )
+			return controller;
+	}
+	
+	return nil;
+}
+
 #pragma mark -
 
 - (void)loadView

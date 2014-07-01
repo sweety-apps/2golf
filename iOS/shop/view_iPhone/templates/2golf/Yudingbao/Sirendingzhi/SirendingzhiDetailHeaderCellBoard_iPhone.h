@@ -38,16 +38,12 @@
 @property (nonatomic,retain) IBOutlet UILabel* leftLabel2;
 @property (nonatomic,retain) IBOutlet UILabel* leftLabel3;
 
-@property (nonatomic,retain) IBOutlet UILabel* leftLabel4;
-@property (nonatomic,retain) IBOutlet UILabel* leftLabel5;
 
 @property (nonatomic,retain) IBOutlet UIButton* bgBtn0;
 @property (nonatomic,retain) IBOutlet UIButton* bgBtn1;
 @property (nonatomic,retain) IBOutlet UIButton* bgBtn2;
 @property (nonatomic,retain) IBOutlet UIButton* bgBtn3;
 
-@property (nonatomic,retain) IBOutlet UIButton* bgBtn4;
-@property (nonatomic,retain) IBOutlet UIButton* bgBtn5;
 
 @property (nonatomic,retain) IBOutlet UIButton* yudingBtn;
 
@@ -55,9 +51,6 @@
 - (IBAction)onPressedBgBtn1:(id)sender;
 - (IBAction)onPressedBgBtn2:(id)sender;
 - (IBAction)onPressedBgBtn3:(id)sender;
-
-- (IBAction)onPressedBgBtn4:(id)sender;
-- (IBAction)onPressedBgBtn5:(id)sender;
 
 - (IBAction)onPressedYudingBtn:(id)sender;
 

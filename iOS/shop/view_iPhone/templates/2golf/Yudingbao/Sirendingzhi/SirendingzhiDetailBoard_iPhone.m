@@ -23,6 +23,9 @@
 #import "SirendingzhiDetailInfoCellBoard_iPhone.h"
 #import "ServerConfig.h"
 #import "FlightViewBoard_iPhone.h"
+#import "SirendingzhiDetailSingleCell.h"
+#import "NibLoader.h"
+#import "QuichangDetailBoard_iPhone.h"
 
 #pragma mark -
 
@@ -400,8 +403,41 @@ ON_SIGNAL2( SirendingzhiDetailBannerPhotoCell_iPhone, signal )
     {
         SirendingzhiDetailHeaderCell_iPhone* cell = [[SirendingzhiDetailHeaderCell_iPhone alloc] initWithFrame:CGRectZero];
         cell.data = self.dataDict;
-        [cell.ctrl.bgBtn5 addTarget:self action:@selector(onShowFlight) forControlEvents:UIControlEventTouchUpInside];
+        //[cell.ctrl.bgBtn5 addTarget:self action:@selector(onShowFlight) forControlEvents:UIControlEventTouchUpInside];
         [self.cellArray addObject:cell];
+    }
+    
+    //球场
+    int ncourse = [((NSArray*)self.dataDict[@"courseid"]) count];
+    for (int i = 0; i < ncourse; ++i)
+    {
+        SirendingzhiDetailSingleCell* cell = CREATE_NIBVIEW(@"SirendingzhiDetailSingleCell");
+        if (i == 0)
+        {
+            [cell setH];
+        }
+        else
+        {
+            [cell setM];
+        }
+        cell.bgBtn.tag = i;
+        [cell.bgBtn addTarget:self action:@selector(_onShowCourse:) forControlEvents:UIControlEventTouchUpInside];
+        cell.leftLabel.text = self.dataDict[@"coursename"][i];
+        cell.rightLabel.text = @"";
+        [self.cellArray addObject:cell];
+    }
+    
+    //航班
+    {
+        SirendingzhiDetailSingleCell* cell = CREATE_NIBVIEW(@"SirendingzhiDetailSingleCell");
+        [cell setB];
+        [cell.bgBtn addTarget:self action:@selector(onShowFlight) forControlEvents:UIControlEventTouchUpInside];
+        cell.leftLabel.text = @"往返航班及机票参考价";
+        cell.rightLabel.text = @"详情";
+        [self.cellArray addObject:cell];
+        CGRect rect = cell.frame;
+        rect.size.height += 20;
+        cell.frame = rect;
     }
     
     //
@@ -510,6 +546,15 @@ ON_SIGNAL2( SirendingzhiDetailBannerPhotoCell_iPhone, signal )
         [self.view addSubview:board.view];
         [board showViewWithDataArray:flightArr];
     }
+}
+
+- (void) _onShowCourse:(UIButton*)btn
+{
+    int index = btn.tag;
+    
+    QuichangDetailBoard_iPhone* board = [QuichangDetailBoard_iPhone boardWithNibName:@"QuichangDetailBoard_iPhone"];
+    [board setCourseId:self.dataDict[@"courseid"][index]];
+    [self.stack pushBoard:board animated:YES];
 }
 
 @end

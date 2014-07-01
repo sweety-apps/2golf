@@ -65,10 +65,18 @@ DEF_SIGNAL( TOUCHED )
         self.ctrl.oldPriceLbl.text = [NSString stringWithFormat:@"原价￥%@",dict[@"originalprice"]];
         self.ctrl.newPriceLbl.text = [NSString stringWithFormat:@"￥%@",(dict[@"price"])[@"price"]];
         
-        NSDate* d1 = [NSDate dateWithTimeIntervalSince1970:[dict[@"starttime"] doubleValue]];
-        NSDate* d2 = [NSDate dateWithTimeIntervalSince1970:[dict[@"endtime"] doubleValue]];
+        NSDate* d1 = [NSDate dateWithTimeIntervalSince1970:[dict[@"price"][@"starttime"] doubleValue]];
+        NSDate* d2 = [NSDate dateWithTimeIntervalSince1970:[dict[@"price"][@"endtime"] doubleValue]];
         
         self.ctrl.timeLbl.text = [NSString stringWithFormat:@"%02d:%02d~%02d:%02d",[d1 hour],[d1 minute],[d2 hour],[d2 minute]];
+        
+        NSDate* searchDate = [NSDate dateWithTimeIntervalSinceNow:24*3600];
+        NSDate* showDate = d1;
+        if ([searchDate timeIntervalSince1970] > [d1 timeIntervalSince1970])
+        {
+            showDate = searchDate;
+        }
+        self.ctrl.dateLbl.text = [NSString stringWithFormat:@"%02d月%02d日",[showDate month],[showDate day]];
         
         self.ctrl.xianImg.hidden = YES;
         if (dict[@"payway"] != [NSNull null] && [dict[@"payway"] intValue] == 1)

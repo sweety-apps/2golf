@@ -81,6 +81,7 @@
 
 - (BOOL)existsBoard:(BeeUIBoard *)board;
 - (BOOL)existsBoardClass:(Class)boardClazz;
+- (UIViewController *) lastBoardWithClass:(Class)boardClazz;
 
 // life-cycle
 

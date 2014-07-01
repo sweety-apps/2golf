@@ -70,7 +70,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
 	
 	if ( [signal is:BeeUIBoard.CREATE_VIEWS] )
 	{
-        self.titleString = __TEXT(@"redpaper");
+        [self setTitleViewWithIcon:__IMAGE(@"titleicon") andTitleString:__TEXT(@"redpaper")];
         [self showNavigationBarAnimated:NO];
     }
 	else if ( [signal is:BeeUIBoard.DELETE_VIEWS] )

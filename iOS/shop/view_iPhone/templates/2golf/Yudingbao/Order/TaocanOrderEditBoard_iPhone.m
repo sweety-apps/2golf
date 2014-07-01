@@ -217,7 +217,7 @@ ON_SIGNAL2( BeeUIScrollView, signal )
     //5
     cell = [QiuchangOrderEditCell_iPhone cell];
     [cell setNormalM];
-    [cell setLeftText:@"退订说明"];
+    [cell setLeftText:@"备注"];
     cell.ctrl.normalRightTitle.hidden = YES;
     cell.ctrl.phoneTextField.hidden = NO;
     cell.ctrl.phoneTextField.keyboardType = UIKeyboardTypeDefault;

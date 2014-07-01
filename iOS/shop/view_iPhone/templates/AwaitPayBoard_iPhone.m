@@ -245,8 +245,8 @@ ON_SIGNAL2( BeeUIBoard, signal )
 	[super handleUISignal_BeeUIBoard:signal];
 	
 	if ( [signal is:BeeUIBoard.CREATE_VIEWS] )
-	{		
-		self.titleString = __TEXT(@"await_pay");
+	{
+        [self setTitleViewWithIcon:__IMAGE(@"titleicon") andTitleString:__TEXT(@"await_pay")];
 
         [self showNavigationBarAnimated:NO];
         [self showBarButton:BeeUINavigationBar.LEFT image:[UIImage imageNamed:@"nav-back.png"]];
@@ -343,6 +343,8 @@ ON_SIGNAL2( AwaitPayCell_iPhone, signal )
 
 		PayBoard_iPhone * board = [PayBoard_iPhone board];
 		board.orderID = order.order_id;
+        board.orderSN = order.order_sn;
+        board.totalFee = [order.total_fee substringFromIndex:1];
 		board.titleString = __TEXT(@"pay");
 		[self.stack pushBoard:board animated:YES];
     }
@@ -436,7 +438,7 @@ ON_NOTIFICATION3( ServiceAlipay, SUCCEED, notification )
 
 ON_NOTIFICATION3( ServiceAlipay, FAILED, notification )
 {
-	[[BeeUIApplication sharedInstance] presentMessageTips:__TEXT(@"pay_failed")];
+	//[[BeeUIApplication sharedInstance] presentMessageTips:__TEXT(@"pay_failed")];
 }
 
 #pragma mark -

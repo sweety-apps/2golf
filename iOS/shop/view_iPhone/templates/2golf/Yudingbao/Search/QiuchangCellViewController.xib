@@ -33,9 +33,9 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="球场名" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j5d-l3-kts">
-                    <rect key="frame" x="60" y="5" width="180" height="14"/>
+                    <rect key="frame" x="60" y="0.0" width="188" height="24"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                     <color key="textColor" red="0.25490197539329529" green="0.25098040699958801" blue="0.25882354378700256" alpha="1" colorSpace="deviceRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -54,15 +54,15 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="courselisticonhui.png" translatesAutoresizingMaskIntoConstraints="NO" id="9CR-ob-yKb">
-                    <rect key="frame" x="253" y="29" width="20" height="20"/>
+                    <rect key="frame" x="263" y="29" width="20" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="courselisticonguan.png" translatesAutoresizingMaskIntoConstraints="NO" id="kKd-cs-Gr3">
-                    <rect key="frame" x="276" y="29" width="20" height="20"/>
+                    <rect key="frame" x="286" y="29" width="20" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="￥400" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="izA-B4-D7I">
-                    <rect key="frame" x="240" y="4" width="80" height="21"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="￥400" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="izA-B4-D7I">
+                    <rect key="frame" x="248" y="4" width="62" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                     <color key="textColor" red="0.058823533356189728" green="0.32941177487373352" blue="0.19607844948768616" alpha="1" colorSpace="deviceRGB"/>

@@ -43,8 +43,6 @@
 			<button id="cart-button" class="item-icon icon-cart"></button>
             <label class="item-label">爱分享</label>
 			<linear class="badge-wrapper">
-				<image id="badge-bg" class="badge-bg"/>
-				<label id="badge" class="badge-number"/>
 			</linear>
 		</linear>
 		<linear id="user" class="item-wrapper" orientation="h">

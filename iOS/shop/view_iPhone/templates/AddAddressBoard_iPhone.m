@@ -70,8 +70,8 @@ ON_SIGNAL2( BeeUIBoard, signal )
 	
 	if ( [signal is:BeeUIBoard.CREATE_VIEWS] )
 	{
-		[self setTitleString:__TEXT(@"address_add")];
         [self showNavigationBarAnimated:NO];
+        [self setTitleViewWithIcon:__IMAGE(@"titleicon") andTitleString:__TEXT(@"address_add")];
         
         [self showBarButton:BeeUINavigationBar.LEFT image:[UIImage imageNamed:@"nav-back.png"]];
 

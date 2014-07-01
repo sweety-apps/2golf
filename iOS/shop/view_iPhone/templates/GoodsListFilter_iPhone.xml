@@ -33,30 +33,17 @@
         <image class="filter-bg"/>
         
         <linear orientation="h" class="filter-item">
-            <label id="item-popular" class="filter-title">@{popularity}</label>
-            <image id="item-popular-arrow" class="filter-icon arrow-down"/>
-            <image id="item-popular-indicator" class="filter-indicator"/>
-			<button id="item-popular-button" class="filter-button"/>
-        </linear>
-
-        <image class="filter-seprator"/>
-
-        <linear orientation="h" class="filter-item">
-            <label id="item-cheap" class="filter-title">@{cheapest}</label>
-            <image id="item-cheap-arrow" class="filter-icon arrow-down"/>
-            <image id="item-cheap-indicator" class="filter-indicator"/>
+            <label id="item-cheap" class="filter-title">价格排序↑</label>
+            <!--image id="item-cheap-arrow" class="filter-icon arrow-down"/-->
 			<button id="item-cheap-button" class="filter-button"/>
         </linear>
 
-        <image class="filter-seprator"/>
-
         <linear orientation="h" class="filter-item">
-            <label id="item-expensive" class="filter-title">@{top_price}</label>
-            <image id="item-expensive-arrow" class="filter-icon arrow-down"/>
-            <image id="item-expensive-indicator" class="filter-indicator"/>
-			<button id="item-expensive-button" class="filter-button"/>
+                <label id="item-popular" class="filter-title">热门排序↓</label>
+                <!--image id="item-popular-arrow" class="filter-icon arrow-down"/-->
+                <button id="item-popular-button" class="filter-button"/>
         </linear>
-        
+
     </linear>
     
     <style>
@@ -73,7 +60,6 @@
 			position: absolute !important;
 			top: 0;
 			left: 0;
-            background-color: #333;
         }
         
         .filter-indicator {
@@ -86,7 +72,7 @@
         
         .filter-item {
 			height: 45px;
-			width: 105px;
+			width: 160px;
 			color: #ffffff;
         }
         
@@ -97,25 +83,25 @@
         }
         
         .filter-title {
-			width: 65px;
+			width: 100%;
 			height: 100%;
-			color: #999999;
-			font-size: 12px;
+			color: #ffffff;
+			font-size: 18px;
 			font-weight: bold;
-			text-align: right;
+			text-align: center;
         }
         
         .filter-title-selected {
-			width: 65px;
+			width: 100%;
 			height: 100%;
 			color: #ffffff;
-			font-size: 12px;
+			font-size: 18px;
 			font-weight: bold;
-			text-align: right;
+			text-align: center;
         }
         
         .filter-icon {
-			margin-left: 5px;
+			margin-left: 125px;
 			width: 12px;
 			height: 13px;
 			v-float: center;
@@ -138,7 +124,7 @@
         }
         
         .arrow-down {
-			image-src: url(item-grid-filter-down-arrow.png);
+			image-src: url(item-grid-filter-down-active-arrow.png);
         }
         
         .arrow-down-selected {

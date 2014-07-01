@@ -78,7 +78,7 @@ static BMKMapManager* _mapManager = nil;
      注册SDK应用，此应用请到http://www.sharesdk.cn中进行注册申请。
      此方法必须在启动时调用，否则会限制SDK的使用。
      **/
-    [ShareSDK registerApp:@"1e7533f59639"];
+    [ShareSDK registerApp:@"1e7533f59639" useAppTrusteeship:NO];
     
     //如果使用服务中配置的app信息，请把初始化代码改为下面的初始化方法。
     //    [ShareSDK registerApp:@"iosv1101" useAppTrusteeship:YES];
@@ -201,6 +201,9 @@ static BMKMapManager* _mapManager = nil;
 
 - (void)initializePlat
 {
+    [ShareSDK statEnabled:NO];
+    [ShareSDK allowExchangeDataEnabled:NO];
+    [ShareSDK useAppTrusteeship:NO];
     /**
      连接新浪微博开放平台应用以使用相关功能，此应用需要引用SinaWeiboConnection.framework
      http://open.weibo.com上注册新浪微博开放平台应用，并将相关信息填写到以下字段

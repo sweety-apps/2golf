@@ -37,7 +37,7 @@
             <input id="search-input" placeholder="@{search_input}"></input>
         </linear>
 
-        <button id="open" class="search-voice-button"/>
+        <!--button id="open" class="search-voice-button"/-->
 
     </linear>
     

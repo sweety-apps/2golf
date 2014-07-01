@@ -30,9 +30,11 @@
 @interface QiuchangTehuiListBoard_iPhone()
 {
 	BeeUIScrollView *	_scroll;
+    BOOL _isFirstFetchData;
 }
 
 @property (nonatomic,retain) NSMutableDictionary* dataDict;
+@property (nonatomic,retain) NSMutableDictionary* rawDataDict;
 
 @end
 
@@ -43,6 +45,7 @@ DEF_SIGNAL(LOCAL_RIGHT_NAV_BTN);
 - (void)load
 {
 	[super load];
+    _isFirstFetchData = YES;
 }
 
 - (void)unload
@@ -156,8 +159,12 @@ ON_SIGNAL2( BeeUIBoard, signal )
         }
         gRightLabel.text = str;
         
-        [self onPressedShiduanBtn:self.shiduanBtn];
-        [self onPressedJiagepaixuBtn:self.jiagepaixuBtn];
+        if (_isFirstFetchData)
+        {
+            _isFirstFetchData = NO;
+            [self onPressedShiduanBtn:self.shiduanBtn];
+            [self onPressedJiagepaixuBtn:self.jiagepaixuBtn];
+        }
     }
     else if ( [signal is:BeeUIBoard.DID_APPEAR] )
     {
@@ -257,7 +264,121 @@ ON_SIGNAL2( QiuchangTehuiShiduanCell_iPhone, signal )
 
 - (void)resetCells
 {
+    self.rawDataDict = [NSMutableDictionary dictionaryWithDictionary:self.dataDict];
     
+    if (self.jiagepaixuBtn.selected)
+    {
+        if (self.shiduanBtn.selected)
+        {
+            [self _reorderDataDictTeeTimeByMoney];
+        }
+        else
+        {
+            [self _reorderDataDictSpecialDayByMoney];
+        }
+    }
+    else
+    {
+        if (self.shiduanBtn.selected)
+        {
+            [self _reorderDataDictTeeTimeByTime];
+        }
+        else
+        {
+            [self _reorderDataDictSpecialDayByTime];
+        }
+    }
+}
+
+- (void)_reorderDataDictTeeTimeByTime
+{
+    NSMutableArray* arr = [NSMutableArray arrayWithArray:self.rawDataDict[@"teetime"]];
+    for (int i = 0; i < [arr count]; ++i)
+    {
+        NSDictionary* dict_i = arr[i];
+        for (int j = i + 1; j < [arr count]; ++j)
+        {
+            NSDictionary* dict_j = arr[j];
+            double val_i = [dict_i[@"price"][@"starttime"] doubleValue];
+            double val_j = [dict_j[@"price"][@"starttime"] doubleValue];
+            if (val_i > val_j)
+            {
+                id t = arr[i];
+                arr[i] = arr[j];
+                arr[j] = t;
+            }
+        }
+    }
+    self.dataDict[@"teetime"] = arr;
+}
+
+- (void)_reorderDataDictTeeTimeByMoney
+{
+    NSMutableArray* arr = [NSMutableArray arrayWithArray:self.rawDataDict[@"teetime"]];
+    for (int i = 0; i < [arr count]; ++i)
+    {
+        NSDictionary* dict_i = arr[i];
+        for (int j = i + 1; j < [arr count]; ++j)
+        {
+            NSDictionary* dict_j = arr[j];
+            double val_i = [dict_i[@"price"][@"price"] doubleValue];
+            double val_j = [dict_j[@"price"][@"price"] doubleValue];
+            if (val_i > val_j)
+            {
+                id t = arr[i];
+                arr[i] = arr[j];
+                arr[j] = t;
+            }
+        }
+    }
+    self.dataDict[@"teetime"] = arr;
+}
+
+- (void)_reorderDataDictSpecialDayByTime
+{
+    NSMutableArray* arr = [NSMutableArray arrayWithArray:self.rawDataDict[@"specialday"]];
+    /*
+    for (int i = 0; i < [arr count]; ++i)
+    {
+        NSDictionary* dict_i = arr[i];
+        for (int j = i + 1; j < [arr count]; ++j)
+        {
+            NSDictionary* dict_j = arr[j];
+            double val_i = [dict_i[@"price"][@"starttime"] doubleValue];
+            double val_j = [dict_j[@"price"][@"starttime"] doubleValue];
+            if (val_i > val_j)
+            {
+                id t = arr[i];
+                arr[i] = arr[j];
+                arr[j] = t;
+            }
+        }
+    }
+     */
+    self.dataDict[@"specialday"] = arr;
+}
+
+- (void)_reorderDataDictSpecialDayByMoney
+{
+    NSMutableArray* arr = [NSMutableArray arrayWithArray:self.rawDataDict[@"specialday"]];
+    for (int i = 0; i < [arr count]; ++i)
+    {
+        NSDictionary* dict_i = arr[i];
+        for (int j = i + 1; j < [arr count]; ++j)
+        {
+            NSDictionary* dict_j = arr[j];
+            double val_i = [dict_i[@"price"] doubleValue];
+            double val_j = [dict_j[@"price"] doubleValue];
+            if (val_i > val_j)
+            {
+                id t = arr[i];
+                arr[i] = arr[j];
+                arr[j] = t;
+            }
+        }
+    }
+    
+    self.dataDict[@"specialday"] = arr;
 }
 
 #pragma mark - Network
@@ -272,7 +393,7 @@ ON_SIGNAL2( QiuchangTehuiShiduanCell_iPhone, signal )
         .PARAM(@"longitude",dic[@"longitude"])
         .PARAM(@"latitude",dic[@"latitude"])
         .PARAM(@"scope",@"50")
-        .PARAM(@"timestamp", [NSString stringWithFormat:@"%ld",[CommonUtility getSearchTimeStamp]])
+        .PARAM(@"timestamp", [NSNumber numberWithLongLong:[CommonUtility getSearchTimeStamp]])
         .TIMEOUT(30);
     }
     else
@@ -282,7 +403,7 @@ ON_SIGNAL2( QiuchangTehuiShiduanCell_iPhone, signal )
         .PARAM(@"longitude",dic[@"longitude"])
         .PARAM(@"latitude",dic[@"latitude"])
         .PARAM(@"scope",@"50")
-        .PARAM(@"timestamp", [NSString stringWithFormat:@"%ld",[CommonUtility getSearchTimeStamp]])
+        .PARAM(@"timestamp", [NSNumber numberWithLongLong:[CommonUtility getSearchTimeStamp]])
         .TIMEOUT(30);
     }
     
@@ -361,7 +482,15 @@ ON_SIGNAL2( QiuchangTehuiShiduanCell_iPhone, signal )
     self.jiagepaixuBtn.selected = YES;
     self.shijianpaixuBtn.selected = NO;
     
-    //[self fetchData];
+    if (self.shiduanBtn.selected)
+    {
+        [self _reorderDataDictTeeTimeByMoney];
+    }
+    else
+    {
+        [self _reorderDataDictSpecialDayByMoney];
+    }
+    [_scroll reloadData];
 }
 
 -(IBAction)onPressedShijianpaixuBtn:(id)sender
@@ -369,7 +498,15 @@ ON_SIGNAL2( QiuchangTehuiShiduanCell_iPhone, signal )
     self.jiagepaixuBtn.selected = NO;
     self.shijianpaixuBtn.selected = YES;
     
-    //[self fetchData];
+    if (self.shiduanBtn.selected)
+    {
+        [self _reorderDataDictTeeTimeByTime];
+    }
+    else
+    {
+        [self _reorderDataDictSpecialDayByTime];
+    }
+    [_scroll reloadData];
 }
 
 @end

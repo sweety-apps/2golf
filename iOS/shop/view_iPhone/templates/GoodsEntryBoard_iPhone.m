@@ -58,8 +58,8 @@ ON_SIGNAL2( BeeUIBoard, signal )
 	if ( [signal is:BeeUIBoard.CREATE_VIEWS] )
 	{
         [self showNavigationBarAnimated:YES];
+        [self setTitleViewWithIcon:__IMAGE(@"titleicon") andTitleString:__TEXT(@"gooddetail_product")];
         
-        self.titleString = __TEXT(@"gooddetail_product");
         self.webView.scalesPageToFit = YES;
         
         [self showBarButton:BeeUINavigationBar.LEFT image:[UIImage imageNamed:@"nav-back.png"]];

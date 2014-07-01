@@ -232,7 +232,7 @@ ON_SIGNAL2( AifenxiangListCell_iPhone, signal )
 
 - (CGSize)scrollView:(BeeUIScrollView *)scrollView sizeForIndex:(NSInteger)index
 {
-	return CGSizeMake(320, 235);
+	return CGSizeMake(320, 280);
 }
 
 #pragma mark -

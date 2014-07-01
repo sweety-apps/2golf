@@ -538,7 +538,7 @@
     
     NSString* collectedContent = [NSString stringWithFormat:@"【爱高高尔夫】%@ %@",title,url];
 #else
-    NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"icon" ofType:@"jpg"];
+    NSString *imagePath = nil;
     
     
     NSObject* playTime = dict[@"playtime"];
@@ -554,61 +554,83 @@
     NSTimeInterval iterval = [tsStr doubleValue];
     NSDate* date = [NSDate dateWithTimeIntervalSince1970:iterval];
     
-    NSString* title = @"高尔夫人士必备之应用";
-    NSString* url = [[ServerConfig sharedInstance].baseUrl stringByAppendingFormat:@"/app/"];
-    NSString* summary = [NSString stringWithFormat:@"我预订了 %@ %02d月%02d日 %@ %02d:%02d 的球场，欢迎一起打球哦",dict[@"coursename"],[date month],[date day],[date weekdayChinese],[date hour],[date minute]];
+    NSString* title = nil;//@"高尔夫人士必备之应用";
+    NSString* url = nil;//[[ServerConfig sharedInstance].baseUrl stringByAppendingFormat:@"/app/"];
+    NSString* summary = nil;//[NSString stringWithFormat:@"我预订了 %@ %02d月%02d日 %@ %02d:%02d 的球场，欢迎一起打球哦",dict[@"coursename"],[date month],[date day],[date weekdayChinese],[date hour],[date minute]];
     
-    if ([summary length] == 0)
+    NSString* orderType = @"球场";
+    if ([dict[@"type"] integerValue] == 1)
     {
-        summary = @"爱高高尔夫，爱上高尔夫";
+        orderType = @"球场";
+    }
+    else if ([dict[@"type"] integerValue] == 2)
+    {
+        orderType = @"套餐";
+    }
+    NSNumber* personCount = dict[@"persons"];
+    
+    NSString* collectedContent = nil;
+    if ([dict[@"type"] integerValue] == 1)
+    {
+        collectedContent = [NSString stringWithFormat:@"您好！已预订%@：%@，日期：%d月%d日（%@），时间：%02d：%02d分，人数：%@人，祝您打球愉快！用爱高订场真的很方便，一站式服务平台，您也试试看：http://www.2golf.cn/app【爱高高尔夫】400-822-9222",orderType,dict[@"coursename"],[date month],[date day],[date weekdayChinese],[date hour],[date minute],personCount];
+    }
+    else if ([dict[@"type"] integerValue] == 2)
+    {
+        collectedContent = [NSString stringWithFormat:@"您好！已预订%@：%@，日期：%d月%d日（%@），人数：%@人，祝您打球愉快！用爱高订场真的很方便，一站式服务平台，您也试试看：http://www.2golf.cn/app【爱高高尔夫】400-822-9222",orderType,dict[@"coursename"],[date month],[date day],[date weekdayChinese],personCount];
     }
     
-    NSString* collectedContent = [NSString stringWithFormat:@"【爱高高尔夫】%@ %@",title,url];
+    title = collectedContent;
+    summary = collectedContent;
+    
 #endif
     
     //构造分享内容
     id<ISSContent> publishContent = [ShareSDK content:collectedContent
                                        defaultContent:collectedContent
-                                                image:[ShareSDK imageWithPath:imagePath]
+                                                image:nil//[ShareSDK imageWithPath:imagePath]
                                                 title:title
                                                   url:url
                                           description:summary
-                                            mediaType:SSPublishContentMediaTypeNews];
+                                            mediaType:SSPublishContentMediaTypeText//SSPublishContentMediaTypeNews
+                                     ];
     
     ///////////////////////
     //以下信息为特定平台需要定义分享内容，如果不需要可省略下面的添加方法
     
     //定制微信好友信息
-    [publishContent addWeixinSessionUnitWithType:[NSNumber numberWithInteger:SSPublishContentMediaTypeNews]
+    [publishContent addWeixinSessionUnitWithType:[NSNumber numberWithInteger:SSPublishContentMediaTypeText//SSPublishContentMediaTypeNews
+                                                  ]
                                          content:summary
                                            title:title
                                              url:url
-                                      thumbImage:[ShareSDK imageWithPath:imagePath]
-                                           image:[ShareSDK imageWithPath:imagePath]
+                                      thumbImage:nil//[ShareSDK imageWithPath:imagePath]
+                                           image:nil//[ShareSDK imageWithPath:imagePath]
                                     musicFileUrl:nil
                                          extInfo:nil
                                         fileData:nil
                                     emoticonData:nil];
     
     //定制微信朋友圈信息
-    [publishContent addWeixinTimelineUnitWithType:[NSNumber numberWithInteger:SSPublishContentMediaTypeNews]
+    [publishContent addWeixinTimelineUnitWithType:[NSNumber numberWithInteger:SSPublishContentMediaTypeText//SSPublishContentMediaTypeNews
+                                                   ]
                                           content:summary
                                             title:title
                                               url:url
-                                       thumbImage:[ShareSDK imageWithPath:imagePath]
-                                            image:[ShareSDK imageWithPath:imagePath]
+                                       thumbImage:nil//[ShareSDK imageWithPath:imagePath]
+                                            image:nil//[ShareSDK imageWithPath:imagePath]
                                      musicFileUrl:nil
                                           extInfo:nil
                                          fileData:nil
                                      emoticonData:nil];
     
     //定制微信收藏信息
-    [publishContent addWeixinFavUnitWithType:[NSNumber numberWithInteger:SSPublishContentMediaTypeNews]
+    [publishContent addWeixinFavUnitWithType:[NSNumber numberWithInteger:SSPublishContentMediaTypeText//SSPublishContentMediaTypeNews
+                                              ]
                                      content:summary
                                        title:title
                                          url:url
-                                  thumbImage:[ShareSDK imageWithPath:imagePath]
-                                       image:[ShareSDK imageWithPath:imagePath]
+                                  thumbImage:nil//[ShareSDK imageWithPath:imagePath]
+                                       image:nil//[ShareSDK imageWithPath:imagePath]
                                 musicFileUrl:nil
                                      extInfo:nil
                                     fileData:nil
@@ -664,7 +686,7 @@
                                 }
                                 else if (state == SSResponseStateFail)
                                 {
-                                    NSLog(NSLocalizedString(@"TEXT_ShARE_FAI", @"分享失败,错误码:%d,错误描述:%@"), [error errorCode], [error errorDescription]);
+                                    NSLog(@"[TEXT_ShARE_FAI] 分享失败,错误码:%d,错误描述:%@", [error errorCode], [error errorDescription]);
                                 }
                             }];
 }

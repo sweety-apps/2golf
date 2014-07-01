@@ -28,6 +28,7 @@
 #import "AppBoard_iPhone.h"
 #import "CollectionBoard_iPhone.h"
 #import "CommonWaterMark.h"
+#import "QuichangDetailBoard_iPhone.h"
 
 @implementation CollectionCell_iPhone
 
@@ -53,7 +54,9 @@ DEF_SIGNAL( DELETE )
 	    $(@".goods-photo").IMAGE( goods.img.thumbURL );
 		$(@".goods-title").TEXT( goods.name );
 		$(@".goods-price").TEXT( goods.shop_price );
+        $(@".goods-price").HIDE();
 		$(@".goods-subprice").TEXT( goods.market_price );
+        $(@".goods-subprice").HIDE();
         
         if ( self.isEditing )
         {
@@ -112,7 +115,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
 	
 	if ( [signal is:BeeUIBoard.CREATE_VIEWS] )
 	{
-        self.titleString = __TEXT(@"collect_myfavorite");
+        [self setTitleViewWithIcon:__IMAGE(@"titleicon") andTitleString:__TEXT(@"collect_myfavorite")];
         self.isEditing = NO;
         
         [self showNavigationBarAnimated:NO];
@@ -189,15 +192,33 @@ ON_SIGNAL2( BeeUIScrollView, signal )
 	}
 }
 
+- (BOOL) checkIsCourse:(COLLECT_GOODS*)goods
+{
+    if ([goods.name hasSuffix:@"高尔夫"] || [goods.name hasSuffix:@"场"] || [goods.name hasSuffix:@"俱乐部"] || [goods.name hasSuffix:@"会所"] || [goods.name hasSuffix:@"球会"] || [goods.name hasSuffix:@"场球"])
+    {
+        return YES;
+    }
+    return NO;
+}
+
 ON_SIGNAL2( CollectionCell_iPhone, signal )
 {
     COLLECT_GOODS * goods = ((CollectionCell_iPhone *)signal.source).data;
     
     if ( [signal is:CollectionCell_iPhone.TAPPED] )
     {
-        GoodsDetailBoard_iPhone * board = [GoodsDetailBoard_iPhone board];
-        board.goodsModel.goods_id = goods.goods_id;
-        [self.stack pushBoard:board animated:YES];
+        if ([self checkIsCourse:goods])
+        {
+            QuichangDetailBoard_iPhone * board = [QuichangDetailBoard_iPhone boardWithNibName:@"QuichangDetailBoard_iPhone"];
+            [board setCourseId:[NSString stringWithFormat:@"%@",goods.goods_id]];
+            [self.stack pushBoard:board animated:YES];
+        }
+        else
+        {
+            GoodsDetailBoard_iPhone * board = [GoodsDetailBoard_iPhone board];
+            board.goodsModel.goods_id = goods.goods_id;
+            [self.stack pushBoard:board animated:YES];
+        }
     }
     else if ( [signal is:CollectionCell_iPhone.DELETE] )
     {

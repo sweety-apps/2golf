@@ -107,7 +107,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
 		[_scroll showHeaderLoader:NO animated:NO];
 		[self.view addSubview:_scroll];
         
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fetchData) name:@"moneyPaid" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(succeedPaid) name:@"moneyPaid" object:nil];
         //注册键盘监听消息
         [self registerKeyBoardNotification];
     }
@@ -376,6 +376,11 @@ ON_SIGNAL2( BeeUIAlertView, signal)
     }
 }
 
+- (void) succeedPaid
+{
+    [[UserModel sharedInstance] updateProfile];
+}
+
 //wap回调函数
 -(void)paymentResult:(NSString *)resultd
 {
@@ -409,7 +414,7 @@ ON_SIGNAL2( BeeUIAlertView, signal)
     {
         //失败
     }
-    [[UserModel sharedInstance] updateProfile];
+    [self succeedPaid];
 }
 
 #pragma mark -

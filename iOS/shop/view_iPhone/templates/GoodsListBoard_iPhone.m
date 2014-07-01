@@ -31,6 +31,9 @@
 #import "CommonWaterMark.h"
 #import "Placeholder.h"
 #import "AdvancedSearchBoard_iPhone.h"
+#import "GoodsTagHeaderCell.h"
+#import "NibLoader.h"
+#import "SearchBoard_iPhone.h"
 
 @implementation GoodsListCart_iPhone
 
@@ -63,37 +66,61 @@ SUPPORT_RESOURCE_LOADING( YES )
     [super load];
     
     BeeUIImageView * bg = (BeeUIImageView *)$(@".filter-bg").view;
-    bg.backgroundColor = [UIImage imageNamed:@"item-grid-filter-bg.png"].patternColor;
+    bg.backgroundColor = [UIColor clearColor];
 }
 
 - (void)selectTab1
 {
 	$(@"#item-popular").CSS( @"color: #ffffff" );
-	$(@"#item-cheap").CSS( @"color: #999999" );
-	$(@"#item-expensive").CSS( @"color: #999999" );
+	$(@"#item-cheap").CSS( @"color: #ffffff" );
+	$(@"#item-expensive").CSS( @"color: #ffffff" );
     
     $(@"item-popular-arrow").CSS( @"image-src: url(item-grid-filter-down-active-arrow.png)" );
-    $(@"item-cheap-arrow").CSS( @"image-src: url(item-grid-filter-down-arrow.png)" );
+    $(@"item-cheap-arrow").CSS( @"image-src: url(item-grid-filter-down-active-arrow.png)" );
     $(@"item-expensive-arrow").CSS( @"image-src: url(item-grid-filter-down-arrow.png)" );
     
     $(@"item-popular-indicator").SHOW();
     $(@"item-cheap-indicator").HIDE();
     $(@"item-expensive-indicator").HIDE();
+    
+    $(@"item-popular-indicator").SHOW();
+    
+    $(@"#item-cheap").view.backgroundColor = [UIColor colorWithRed:0.676 green:0.769 blue:0.835 alpha:1.000];
+    $(@"#item-popular").view.backgroundColor = [UIColor colorWithRed:0.125 green:0.619 blue:0.171 alpha:1.000];
+    
+    $(@"#item-cheap").view.layer.masksToBounds = YES;
+    $(@"#item-cheap").view.layer.borderColor = [UIColor whiteColor].CGColor;
+    $(@"#item-cheap").view.layer.borderWidth = 1;
+    
+    $(@"#item-popular").view.layer.masksToBounds = YES;
+    $(@"#item-popular").view.layer.borderColor = [UIColor whiteColor].CGColor;
+    $(@"#item-popular").view.layer.borderWidth = 1;
 }
 
 - (void)selectTab2
 {
-	$(@"#item-popular").CSS( @"color: #999999" );
+	$(@"#item-popular").CSS( @"color: #ffffff" );
 	$(@"#item-cheap").CSS( @"color: #ffffff" );
-	$(@"#item-expensive").CSS( @"color: #999999" );
+	$(@"#item-expensive").CSS( @"color: #ffffff" );
     
-    $(@"item-popular-arrow").CSS( @"image-src: url(item-grid-filter-down-arrow.png)" );
+    $(@"item-popular-arrow").CSS( @"image-src: url(item-grid-filter-down-active-arrow.png)" );
     $(@"item-cheap-arrow").CSS( @"image-src: url(item-grid-filter-down-active-arrow.png)" );
     $(@"item-expensive-arrow").CSS( @"image-src: url(item-grid-filter-down-arrow.png)" );
     
     $(@"item-popular-indicator").HIDE();
     $(@"item-cheap-indicator").SHOW();
     $(@"item-expensive-indicator").HIDE();
+    
+    $(@"#item-cheap").view.backgroundColor = [UIColor colorWithRed:0.125 green:0.619 blue:0.171 alpha:1.000];
+    $(@"#item-popular").view.backgroundColor = [UIColor colorWithRed:0.676 green:0.769 blue:0.835 alpha:1.000];
+    
+    $(@"#item-cheap").view.layer.masksToBounds = YES;
+    $(@"#item-cheap").view.layer.borderColor = [UIColor whiteColor].CGColor;
+    $(@"#item-cheap").view.layer.borderWidth = 1;
+    
+    $(@"#item-popular").view.layer.masksToBounds = YES;
+    $(@"#item-popular").view.layer.borderColor = [UIColor whiteColor].CGColor;
+    $(@"#item-popular").view.layer.borderWidth = 1;
 }
 
 - (void)selectTab3
@@ -213,6 +240,8 @@ ON_SIGNAL2( BeeUIImageView, signal )
 
 }
 
+@property (nonatomic,retain) GoodsTagHeaderCell* tagHeaderCell;
+
 AS_INT( MODE_GRID )
 AS_INT( MODE_LARGE )
 
@@ -231,7 +260,6 @@ SUPPORT_RESOURCE_LOADING( YES );
 
 @interface GoodsListBoard_iPhone()
 {
-    GoodsListSearchBar_iPhone * _titleSearch;
 }
 @end
 
@@ -293,9 +321,18 @@ ON_SIGNAL2( BeeUIBoard, signal )
 	if ( [signal is:BeeUIBoard.CREATE_VIEWS] )
 	{
         [self showNavigationBarAnimated:NO];
+        [self setTitleViewWithIcon:__IMAGE(@"titleicon") andTitleString:@"商品列表"];
         [self showBarButton:BeeUINavigationBar.LEFT image:[UIImage imageNamed:@"nav-back.png"]];
-        [self showBarButton:BeeUINavigationBar.RIGHT title:__TEXT(@"filter") image:[UIImage imageNamed:@"nav-right.png"]];
+        //[self showBarButton:BeeUINavigationBar.RIGHT title:__TEXT(@"filter") image:[UIImage imageNamed:@"nav-right.png"]];
 		
+        //顶部Tag
+        self.tagHeaderCell = CREATE_NIBVIEW(@"GoodsTagHeaderCell");
+        self.tagHeaderCell.clipsToBounds = YES;
+        [self.tagHeaderCell.brandButton addTarget:self action:@selector(_pressedBrandBtn:) forControlEvents:UIControlEventTouchUpInside];
+        [self.tagHeaderCell.categoryButton addTarget:self action:@selector(_pressedCategoryBtn:) forControlEvents:UIControlEventTouchUpInside];
+        [self.tagHeaderCell.keywordButton addTarget:self action:@selector(_pressedKeywordBtn:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:self.tagHeaderCell];
+        
         self.currentMode = self.MODE_GRID; // TODO, persist
         
         _filter = [[GoodsListFilter_iPhone alloc] initWithFrame:CGRectZero];
@@ -317,15 +354,16 @@ ON_SIGNAL2( BeeUIBoard, signal )
 	{
 		[self unobserveAllNotifications];
 		
+        self.tagHeaderCell = nil;
 		SAFE_RELEASE_SUBVIEW( _scroll );
 		SAFE_RELEASE_SUBVIEW( _filter );
 		SAFE_RELEASE_SUBVIEW( _floatingCart );
 	}
 	else if ( [signal is:BeeUIBoard.LAYOUT_VIEWS] )
 	{
-        CGFloat filterheight = 44.0f;
+        CGFloat filterheight = 44.0f + 52;
 
-        _filter.frame = CGRectMake( 0, 0, self.view.width, filterheight );
+        _filter.frame = CGRectMake( 0, 52, self.view.width, filterheight );
 		_scroll.frame = CGRectMake( 0, filterheight, self.view.width, self.view.height - filterheight );
         _floatingCart.frame = CGRectMake( self.view.width - 44 - 10, self.view.height - 44 - 10, 44, 44 );
 	}
@@ -340,13 +378,6 @@ ON_SIGNAL2( BeeUIBoard, signal )
     }
     else if ( [signal is:BeeUIBoard.WILL_APPEAR] )
     {
-        if ( nil == _titleSearch )
-		{
-			_titleSearch = [[GoodsListSearchBar_iPhone alloc] initWithFrame:CGRectZero];
-			_titleSearch.frame = CGRectMake(0, 0, self.view.width, 44.0f);
-			self.titleView = _titleSearch;
-		}
-        
 //		if ( self.model1.filter.keywords.length )
 //		{
 //			self.titleString = [NSString stringWithFormat:@"%@", self.model1.filter.keywords];
@@ -541,6 +572,29 @@ ON_SIGNAL3( GoodsListCart_iPhone, cart, signal )
 	{
 		[_filter selectTab3];
 	}
+    
+    NSString* brandName = [self currentModel].filter.brand_name;
+    NSString* categoryName = [self currentModel].filter.category_name;
+    NSString* keywords = [self currentModel].filter.keywords;
+    
+    if (brandName == nil || [brandName isKindOfClass:[NSNull class]] || [brandName length]<=0)
+    {
+        brandName = @"全部";
+    }
+    
+    if (categoryName == nil || [categoryName isKindOfClass:[NSNull class]] || [categoryName length]<=0)
+    {
+        categoryName = @"全部";
+    }
+    
+    if (keywords == nil || [keywords isKindOfClass:[NSNull class]] || [keywords length]<=0)
+    {
+        keywords = @"";
+    }
+    
+    [_tagHeaderCell.brandButton setTitle:brandName forState:UIControlStateNormal];
+    [_tagHeaderCell.categoryButton setTitle:categoryName forState:UIControlStateNormal];
+    [_tagHeaderCell.keywordButton setTitle:keywords forState:UIControlStateNormal];
 	
     [_scroll asyncReloadData];
 }
@@ -710,6 +764,29 @@ ON_SIGNAL3( GoodsListCart_iPhone, cart, signal )
     {
         return CGSizeZero;
     }
+}
+
+#pragma mark - tag
+
+- (void)_pressedBrandBtn:(UIButton*)btn
+{
+    AdvancedSearchBoard_iPhone * board = [AdvancedSearchBoard_iPhone board];
+    board.filter = self.model1.filter;
+    [self.stack pushBoard:board animated:YES];
+}
+
+- (void)_pressedCategoryBtn:(UIButton*)btn
+{
+    SearchBoard_iPhone * board = [SearchBoard_iPhone board];
+    //board.filter = self.model1.filter;
+    [self.stack pushBoard:board animated:YES];
+}
+
+- (void)_pressedKeywordBtn:(UIButton*)btn
+{
+    SearchBoard_iPhone * board = [SearchBoard_iPhone board];
+    //board.filter = self.model1.filter;
+    [self.stack pushBoard:board animated:YES];
 }
 
 @end

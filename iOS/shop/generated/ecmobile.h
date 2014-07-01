@@ -230,6 +230,8 @@ enum RANK_LEVEL
 @property (nonatomic, retain) NSString *		keywords;
 @property (nonatomic, retain) PRICE_RANGE *		price_range;
 @property (nonatomic, retain) NSString *		sort_by;
+@property (nonatomic, retain) NSString *		brand_name;
+@property (nonatomic, retain) NSString *		category_name;
 @end
 
 @interface GOODS : NSObject

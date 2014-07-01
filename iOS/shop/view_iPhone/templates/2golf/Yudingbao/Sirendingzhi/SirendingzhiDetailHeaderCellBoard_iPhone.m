@@ -72,9 +72,10 @@
         
         self.ctrl.leftLabel3.text = [NSString stringWithFormat:@"套餐价：￥%@",price];
         
-        
+        /*
         self.ctrl.leftLabel4.text = dict[@"coursename"][0];
         self.ctrl.leftLabel5.text = @"往返航班及机票参考价";
+         */
         
         self.ctrl.dataDict = dict;
         
@@ -132,8 +133,6 @@ ON_SIGNAL2( BeeUIBoard, signal )
         [self.bgBtn1 setBackgroundImage:[[self.bgBtn1 backgroundImageForState:UIControlStateNormal] stretchableImageWithLeftCapWidth:25.f topCapHeight:10.f] forState:UIControlStateNormal];
         [self.bgBtn2 setBackgroundImage:[[self.bgBtn2 backgroundImageForState:UIControlStateNormal] stretchableImageWithLeftCapWidth:25.f topCapHeight:10.f] forState:UIControlStateNormal];
         [self.bgBtn3 setBackgroundImage:[[self.bgBtn3 backgroundImageForState:UIControlStateNormal] stretchableImageWithLeftCapWidth:25.f topCapHeight:10.f] forState:UIControlStateNormal];
-        [self.bgBtn4 setBackgroundImage:[[self.bgBtn4 backgroundImageForState:UIControlStateNormal] stretchableImageWithLeftCapWidth:25.f topCapHeight:10.f] forState:UIControlStateNormal];
-        [self.bgBtn5 setBackgroundImage:[[self.bgBtn5 backgroundImageForState:UIControlStateNormal] stretchableImageWithLeftCapWidth:25.f topCapHeight:10.f] forState:UIControlStateNormal];
         
         [self resetDate];
     }

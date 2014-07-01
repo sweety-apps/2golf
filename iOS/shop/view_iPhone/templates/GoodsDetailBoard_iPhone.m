@@ -36,6 +36,8 @@
 #import "GoodsSpecifyBoard_iPhone.h"
 #import "ShareBoard_iPhone.h"
 #import "Placeholder.h"
+#import "ServerConfig.h"
+#import <ShareSDK/ShareSDK.h>
 
 @implementation GoodsDetailTab_iPhone
 
@@ -350,7 +352,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
     
     if ( [signal is:BeeUIBoard.CREATE_VIEWS] )
     {
-        self.titleString = __TEXT(@"gooddetail_product");
+        [self setTitleViewWithIcon:__IMAGE(@"titleicon") andTitleString:__TEXT(@"gooddetail_product")];
         [self showNavigationBarAnimated:YES];
         
         [self showBarButton:BeeUINavigationBar.LEFT image:[UIImage imageNamed:@"nav-back.png"]];
@@ -428,13 +430,7 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
     }
     else if ( [signal is:BeeUINavigationBar.RIGHT_TOUCHED] )
     {
-		BeeUIActionSheet * sheet = [BeeUIActionSheet spawn];
-		[sheet addButtonTitle:__TEXT(@"share_sina") signal:ShareBoard_iPhone.SHARE_TO_SINA];
-		[sheet addButtonTitle:__TEXT(@"share_tencent") signal:ShareBoard_iPhone.SHARE_TO_TENCENT];
-        [sheet addButtonTitle:__TEXT(@"share_weixin") signal:ShareBoard_iPhone.SHARE_TO_WEIXIN_FRIEND];
-        [sheet addButtonTitle:__TEXT(@"share_weixin_timeline") signal:ShareBoard_iPhone.SHARE_TO_WEIXIN_TIMELINE];
-		[sheet addCancelTitle:__TEXT(@"button_cancel")];
-		[sheet showInViewController:self];
+		[self shareAllButtonClickHandler:nil];
     }
 }
 
@@ -915,6 +911,143 @@ ON_SIGNAL3( GoodsDetailTab_iPhone, cart, signal)
     }
     
     return CGSizeZero;
+}
+
+#pragma mark 分享
+
+- (void)shareAllButtonClickHandler:(UIButton *)sender
+{
+    /*
+     PayBoard_iPhone * board = [PayBoard_iPhone board];
+     board.title = __TEXT(@"pay");
+     board.isFromCheckoutBoard = YES;
+     board.orderID = @12345;
+     [self.stack pushBoard:board animated:YES];
+     return;
+     */
+    
+    GoodsModel * goodsModel = self.goodsModel;
+    
+    NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"" ofType:@"jpg"];
+    
+    NSString* title = nil;
+    NSString* url = nil;
+    NSString* summary = nil;
+    NSString* imageUrl = nil;
+    
+    title = @"高球用品尽在【爱高高尔夫】";
+    url = [[ServerConfig sharedInstance].baseUrl stringByAppendingFormat:@"/goods.php?id=%@",goodsModel.goods_id];
+    summary = goodsModel.goods.goods_name;
+    imageUrl = goodsModel.goods.img.thumbURL;
+    
+    if ([summary length] == 0)
+    {
+        summary = @"爱高高尔夫，爱上高尔夫";
+    }
+    
+    NSString* collectedContent = [NSString stringWithFormat:@"【爱高高尔夫】%@ %@",title,url];
+    
+    //构造分享内容
+    id<ISSContent> publishContent = [ShareSDK content:collectedContent
+                                       defaultContent:collectedContent
+                                                image:[ShareSDK imageWithUrl:imageUrl]
+                                                title:title
+                                                  url:url
+                                          description:summary
+                                            mediaType:SSPublishContentMediaTypeNews];
+    
+    ///////////////////////
+    //以下信息为特定平台需要定义分享内容，如果不需要可省略下面的添加方法
+    
+    //定制微信好友信息
+    [publishContent addWeixinSessionUnitWithType:[NSNumber numberWithInteger:SSPublishContentMediaTypeNews]
+                                         content:summary
+                                           title:title
+                                             url:url
+                                      thumbImage:[ShareSDK imageWithUrl:imageUrl]
+                                           image:[ShareSDK imageWithUrl:imageUrl]
+                                    musicFileUrl:nil
+                                         extInfo:nil
+                                        fileData:nil
+                                    emoticonData:nil];
+    
+    //定制微信朋友圈信息
+    [publishContent addWeixinTimelineUnitWithType:[NSNumber numberWithInteger:SSPublishContentMediaTypeNews]
+                                          content:summary
+                                            title:title
+                                              url:url
+                                       thumbImage:[ShareSDK imageWithUrl:imageUrl]
+                                            image:[ShareSDK imageWithUrl:imageUrl]
+                                     musicFileUrl:nil
+                                          extInfo:nil
+                                         fileData:nil
+                                     emoticonData:nil];
+    
+    //定制微信收藏信息
+    [publishContent addWeixinFavUnitWithType:[NSNumber numberWithInteger:SSPublishContentMediaTypeNews]
+                                     content:summary
+                                       title:title
+                                         url:url
+                                  thumbImage:[ShareSDK imageWithUrl:imageUrl]
+                                       image:[ShareSDK imageWithUrl:imageUrl]
+                                musicFileUrl:nil
+                                     extInfo:nil
+                                    fileData:nil
+                                emoticonData:nil];
+    
+    //定制短信信息
+    [publishContent addSMSUnitWithContent:collectedContent];
+    
+    //结束定制信息
+    ////////////////////////
+    
+    
+    //创建弹出菜单容器
+    id<ISSContainer> container = [ShareSDK container];
+    //[container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
+    
+    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                         allowCallback:NO
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
+                                                          viewDelegate:nil
+                                               authManagerViewDelegate:self];
+    
+    //在授权页面中添加关注官方微博
+    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
+                                    nil]];
+    
+    id<ISSShareOptions> shareOptions = [ShareSDK defaultShareOptionsWithTitle:@"内容分享"
+                                                              oneKeyShareList:[NSArray defaultOneKeyShareList]
+                                                               qqButtonHidden:YES
+                                                        wxSessionButtonHidden:YES
+                                                       wxTimelineButtonHidden:YES
+                                                         showKeyboardOnAppear:NO
+                                                            shareViewDelegate:self
+                                                          friendsViewDelegate:self
+                                                        picViewerViewDelegate:nil];
+    
+    //弹出分享菜单
+    [ShareSDK showShareActionSheet:container
+                         shareList:[ShareSDK getShareListWithType:ShareTypeSMS, ShareTypeWeixiTimeline, ShareTypeWeixiSession,ShareTypeSinaWeibo, ShareTypeTencentWeibo, nil]
+                           content:publishContent
+                     statusBarTips:YES
+                       authOptions:authOptions
+                      shareOptions:shareOptions
+                            result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                
+                                if (state == SSResponseStateSuccess)
+                                {
+                                    NSLog(NSLocalizedString(@"TEXT_ShARE_SUC", @"分享成功"));
+                                }
+                                else if (state == SSResponseStateFail)
+                                {
+                                    NSLog(NSLocalizedString(@"TEXT_ShARE_FAI", @"分享失败,错误码:%d,错误描述:%@"), [error errorCode], [error errorDescription]);
+                                }
+                            }];
 }
 
 @end

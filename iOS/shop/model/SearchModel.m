@@ -151,7 +151,9 @@ DEF_SINGLETON( SearchModel )
 - (void)setValueWithFilter:(FILTER *)filter
 {
     self.filter.brand_id = filter.brand_id;
+    self.filter.brand_name = filter.brand_name;
     self.filter.category_id = filter.category_id;
+    self.filter.category_name = filter.category_name;
     self.filter.price_range = filter.price_range;
 }
 

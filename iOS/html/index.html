@@ -54,7 +54,58 @@ footer{text-decoration:none;color:#28a13a;font-size:22px;text-align:center;heigh
 	</style>
 
     <script>
-        window
+
+        var xmlHttp;
+        var newVersionURL="http://www.2golf.cn/ECMobile/?url=checkversion";
+        var apkURL="http://www.2golf.cn/ECMobile/apks/201405280030/aigolf.apk";
+        function createXMLHttpRequest()
+        {
+            if(window.ActiveXObject)
+            {
+                xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            else if(window.XMLHttpRequest)
+            {
+                xmlHttp = new XMLHttpRequest();
+            }
+        }
+        function startRequest()
+        {
+            createXMLHttpRequest();
+            try
+            {
+                xmlHttp.onreadystatechange = handleStateChange;
+                xmlHttp.open("GET", newVersionURL, true);
+                xmlHttp.send(null);
+            }
+            catch(exception)
+            {
+                alert("xmlHttp Fail");
+            }
+        }
+        function handleStateChange()
+        {
+            if(xmlHttp.readyState == 4)
+            {
+                if (xmlHttp.status == 200 || xmlHttp.status == 0)
+                {
+                    var result = xmlHttp.responseText;
+                    var json = eval("(" + result + ")");
+                    if(json.status.succeed==1)
+                    {
+                        apkURL = json.data.url;
+                        //alert(apkURL);
+                    }
+                }
+            }
+        }
+        function jumpToAndroidApk()
+        {
+            window.open(apkURL);
+        }
+
+        startRequest();
+
     </script>
 </head>
 <body>
@@ -80,11 +131,11 @@ footer{text-decoration:none;color:#28a13a;font-size:22px;text-align:center;heigh
         </p>
         <p>
         <div style="text-align: center;height: 86px;">
-        <a id="web_apk1" href="http://115.29.144.237/ECMobile/apks/201405280030/aigolf.apk">
+            <div id="web_apk1" onclick="jumpToAndroidApk()">
 
             <img class="btn_bg" src="backgrounds.png" />
                 <p class="text-top">立即下载Android版</p>
-            </a>
+            </div>
 
         </div>
         </p>

@@ -213,7 +213,9 @@ ON_SIGNAL2( BeeUIBoard, signal )
 //        [self.rangeModel loadCache];
         
         _tempFilter.brand_id = self.filter.brand_id;
+        _tempFilter.brand_name = self.filter.brand_name;
         _tempFilter.category_id = self.filter.category_id;
+        _tempFilter.category_name = self.filter.category_name;
         _tempFilter.price_range = self.filter.price_range;
     }
     else if ( [signal is:BeeUIBoard.FREE_DATAS] )
@@ -225,7 +227,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
         {
             if ( NO == self.categoryModel.loaded )
             {
-                [self.categoryModel fetchFromServer];
+                //[self.categoryModel fetchFromServer];
             }
         }
         else
@@ -241,7 +243,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
 
         if ( NO == self.rangeModel.loaded )
         {
-            [self.rangeModel fetchFromServer];
+            //[self.rangeModel fetchFromServer];
         }
     }
     else if ( [signal is:BeeUIBoard.DID_APPEAR] )
@@ -266,12 +268,29 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
 	else if ( [signal is:BeeUINavigationBar.RIGHT_TOUCHED] )
 	{
 //        GoodsListBoard_iPhone * board = (GoodsListBoard_iPhone *)self.parentBoard;
-        GoodsListBoard_iPhone * board = (GoodsListBoard_iPhone *)self.previousBoard;
+        GoodsListBoard_iPhone * board = nil;
+        
+        if ([self.previousBoard isKindOfClass:[GoodsListBoard_iPhone class]])
+        {
+            board = (GoodsListBoard_iPhone *)self.previousBoard;
+        }
+        else
+        {
+            board = [GoodsListBoard_iPhone board];
+        }
+        
         [board.model1 setValueWithFilter:_tempFilter];
         [board.model2 setValueWithFilter:_tempFilter];
         [board.model3 setValueWithFilter:_tempFilter];
-		
-		[self.stack popBoardAnimated:YES];
+        
+        if ([self.previousBoard isKindOfClass:[GoodsListBoard_iPhone class]])
+        {
+            [self.stack popBoardAnimated:YES];
+        }
+        else
+        {
+            [self.stack pushBoard:board animated:YES];
+        }
 //        [self.parentBoard dismissModalStackAnimated:YES];
 	}
 }
@@ -305,15 +324,17 @@ ON_SIGNAL3( UITagListCell, button, signal )
         if ( [cell.data isKindOfClass:[BRAND class]] )
         {
             _tempFilter.brand_id = ((BRAND *)cell.data).brand_id;
+            _tempFilter.brand_name = ((BRAND *)cell.data).brand_name;
         }
         else if ( [cell.data isKindOfClass:[CATEGORY class]] )
         {
             _tempFilter.category_id = ((CATEGORY *)cell.data).id;
+            _tempFilter.category_name = ((CATEGORY *)cell.data).name;
             
             if ( nil == self.filter.category_id )
             {
                 self.rangeModel.category_id = ((CATEGORY *)cell.data).id;
-                [self.rangeModel fetchFromServer];
+                //[self.rangeModel fetchFromServer];
             }
         }
         else if ( [cell.data isKindOfClass:[PRICE_RANGE class]] )

@@ -114,6 +114,15 @@
 	self.MSG( API.order_pay ).INPUT( @"order_id", order.order_id );	
 }
 
+- (BOOL) checkIsCourse:(NSString*)goods_name
+{
+    if ([goods_name hasSuffix:@"高尔夫"] || [goods_name hasSuffix:@"场"] || [goods_name hasSuffix:@"俱乐部"] || [goods_name hasSuffix:@"会所"] || [goods_name hasSuffix:@"球会"] || [goods_name hasSuffix:@"场球"])
+    {
+        return YES;
+    }
+    return NO;
+}
+
 #pragma mark -
 
 - (void)handleMessage:(BeeMessage *)msg
@@ -133,13 +142,35 @@
 			if ( page && [page.page isEqualToNumber:@1] )
 			{
 				self.orders = msg.GET_OUTPUT( @"data" );
+                
+                //剃掉球场
+                NSMutableArray* tarr = [NSMutableArray array];
+                for (int i = 0; i <self.orders.count; ++i)
+                {
+                    ORDER* o = self.orders[i];
+                    NSString* name = [o.order_info.subject substringToIndex:([o.order_info.subject length] - 5)];
+                    if (![self checkIsCourse:name])
+                    {
+                        [tarr addObject:o];
+                    }
+                }
+                self.orders = tarr;
 			}
 			else
 			{
 				NSArray * array = msg.GET_OUTPUT(@"data");
 				if ( array && array.count )
 				{
-					[self.orders addObjectsFromArray:array];
+                    //剃掉球场
+                    for (int i = 0; i <array.count; ++i)
+                    {
+                        ORDER* o = array[i];
+                        NSString* name = [o.order_info.subject substringToIndex:([o.order_info.subject length] - 5)];
+                        if (![self checkIsCourse:name])
+                        {
+                            [self.orders addObject:o];
+                        }
+                    }
 				}
 			}
 			

@@ -25,6 +25,7 @@
 #import "SearchCategoryModel.h"
 #import "CartBoard_iPhone.h"
 #import "SearchBoard_iPhone.h"
+#import "GoodsListBoard_iPhone.h"
 
 #pragma mark -
 
@@ -592,11 +593,96 @@ ON_SIGNAL2( QiuchangBannerPhotoCell_iPhone, signal )
 - (void)onPressedCategoryBtn:(UIButton*)btn
 {
     int index = btn.tag;
+    
+    NSString* categoryName = nil;
+    NSNumber* categoryID = nil;
+    
+    NSObject * obj = [SearchCategoryModel sharedInstance].topCategories[index];
+    
+    if ( [obj isKindOfClass:[TOP_CATEGORY class]] )
+    {
+        TOP_CATEGORY * category = (TOP_CATEGORY *)obj;
+        if ( category )
+        {
+            categoryName = category.name;
+            categoryID = category.id;
+        }
+    }
+    else if ( [obj isKindOfClass:[CATEGORY class]] )
+    {
+        CATEGORY * category = (CATEGORY *)obj;
+        if ( category )
+        {
+            categoryName = category.name;
+            categoryID = category.id;
+        }
+    }
+    
+    GoodsListBoard_iPhone * board = nil;
+    if (![self.stack existsBoardClass:[GoodsListBoard_iPhone class]])
+    {
+        board = [[[GoodsListBoard_iPhone alloc] init] autorelease];
+    }
+    else
+    {
+        board = (GoodsListBoard_iPhone*)[self.stack lastBoardWithClass:[GoodsListBoard_iPhone class]];
+    }
+    
+    board.category = categoryName;
+    board.model1.filter.category_id = categoryID;
+    board.model2.filter.category_id = categoryID;
+    board.model3.filter.category_id = categoryID;
+    
+    board.model1.filter.category_name = categoryName;
+    board.model2.filter.category_name = categoryName;
+    board.model3.filter.category_name = categoryName;
+    
+    
+    
+    if (![self.stack existsBoardClass:[GoodsListBoard_iPhone class]])
+    {
+        [self.stack pushBoard:board animated:YES];
+    }
+    else
+    {
+        [self.stack popToBoard:board animated:YES];
+    }
 }
 
 - (void)onPressedBrandBtn:(UIButton*)btn
 {
     int index = btn.tag;
+    
+    NSString* brandName = self.dataArray[index][@"brand_name"];
+    NSNumber* brandNameID = self.dataArray[index][@"id"];
+    
+    GoodsListBoard_iPhone * board = nil;
+    if (![self.stack existsBoardClass:[GoodsListBoard_iPhone class]])
+    {
+        board = [[[GoodsListBoard_iPhone alloc] init] autorelease];
+    }
+    else
+    {
+        board = (GoodsListBoard_iPhone*)[self.stack lastBoardWithClass:[GoodsListBoard_iPhone class]];
+    }
+    
+    board.category = @"";
+    board.model1.filter.brand_id = brandNameID;
+    board.model2.filter.brand_id = brandNameID;
+    board.model3.filter.brand_id = brandNameID;
+    
+    board.model1.filter.brand_name = brandName;
+    board.model2.filter.brand_name = brandName;
+    board.model3.filter.brand_name = brandName;
+    
+    if (![self.stack existsBoardClass:[GoodsListBoard_iPhone class]])
+    {
+        [self.stack pushBoard:board animated:YES];
+    }
+    else
+    {
+        [self.stack popToBoard:board animated:YES];
+    }
 }
 
 @end

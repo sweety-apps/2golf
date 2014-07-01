@@ -36,7 +36,7 @@
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入关键字或拼音首字母" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HOh-6L-Vdp">
                     <rect key="frame" x="20" y="19" width="206" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <textInputTraits key="textInputTraits" returnKeyType="search"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="0OL-UA-g6o"/>

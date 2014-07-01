@@ -30,6 +30,7 @@
 #import "CartBoard_iPhone.h"
 #import "ProfileBoard_iPhone.h"
 #import "AifenxiangListBoard_iPhone.h"
+#import "ServerConfig.h"
 
 //#import "SettingBoard_iPhone.h"
 #import "GoodsListBoard_iPhone.h"
@@ -60,6 +61,8 @@
 	
 	BeeUIButton *	_expiredView;
 	BeeUIButton *	_shopClosedView;
+    
+    BeeUIImageView * _adImagePage;
 }
 @end
 
@@ -142,6 +145,9 @@ ON_SIGNAL2( BeeUIBoard, signal )
 //		[self observeNotification:BeeNetworkReachability.WIFI_REACHABLE];
 //		[self observeNotification:BeeNetworkReachability.WLAN_REACHABLE];
 //		[self observeNotification:BeeNetworkReachability.UNREACHABLE];
+        
+        [self showAdImage];
+        [self fetchADImage];
         
         [CommonUtility refreshLocalPositionWithCallBack:nil];
 
@@ -371,6 +377,96 @@ ON_NOTIFICATION3( ConfigModel, SHOP_OPENED, notification )
 - (void)stop
 {
 //    self.tabbar.hidden = hidden;
+}
+
+- (void)showAdImage
+{
+    UIImage* image = __IMAGE(@"Default");
+    if ([[UIApplication sharedApplication].delegate window].frame.size.height > 480)
+    {
+        image = __IMAGE(@"Default-568h");
+    }
+    
+    _adImagePage = [[BeeUIImageView alloc] initWithImage:image];
+    CGRect rect = _adImagePage.frame;
+    if (IOS7_OR_LATER)
+    {
+        rect.origin.y = 0;
+    }
+    else
+    {
+        rect.origin.y = -20;
+    }
+    _adImagePage.frame = rect;
+    [self.view addSubview:_adImagePage];
+    [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(hideAdImage) userInfo:nil repeats:NO];
+}
+
+- (void)hideAdImage
+{
+    [_adImagePage removeFromSuperview];
+    _adImagePage = nil;
+}
+
+#pragma mark - Network
+
+- (void)fetchADImage
+{
+    //[self presentLoadingTips:@"正在加载"];
+    self.HTTP_POST([[ServerConfig sharedInstance].url stringByAppendingString:@"adimage"]).TIMEOUT(30);
+}
+
+- (NSDictionary*) commonCheckRequest:(BeeHTTPRequest *)req
+{
+    if ( req.sending) {
+    } else if ( req.recving ) {
+    } else if ( req.failed ) {
+        
+    } else if ( req.succeed ) {
+        // 判断返回数据是
+        NSError* error;
+        NSDictionary* dict = [NSJSONSerialization JSONObjectWithData:req.responseData options:NSJSONReadingMutableLeaves error:&error];
+        if ( dict == nil || [dict count] == 0 ) {
+        } else {
+            return dict;
+        }
+    }
+    return nil;
+}
+
+- (void) handleRequest:(BeeHTTPRequest *)req
+{
+    NSDictionary* dict = [self commonCheckRequest:req];
+    if (dict)
+    {
+        //广告image
+        if ([[req.url absoluteString] rangeOfString:@"adimage"].length > 0)
+        {
+            //正确逻辑
+            if ([(dict[@"status"])[@"succeed"] intValue] == 1)
+            {
+                NSString* url = dict[@"data"][@"imageurl"];
+                if ([url length] > 0)
+                {
+                    if (![url hasPrefix:@"http://"] && ![url hasPrefix:@"https://"])
+                    {
+                        url = [[ServerConfig sharedInstance].baseUrl stringByAppendingString:url];
+                    }
+                    UIImage* image = __IMAGE(@"Default");
+                    if ([[UIApplication sharedApplication].delegate window].frame.size.height > 480)
+                    {
+                        image = __IMAGE(@"Default-568h");
+                    }
+                    [_adImagePage GET:url useCache:YES placeHolder:image];
+                }
+            }
+            else
+            {
+                [self hideAdImage];
+                //[self presentFailureTips:__TEXT(@"error_network")];
+            }
+        }
+    }
 }
 
 @end

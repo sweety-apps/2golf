@@ -31,6 +31,8 @@
 
 @interface PayBoard_iPhone : WebViewBoard_iPhone
 @property (nonatomic, retain) NSNumber * orderID;
+@property (nonatomic, retain) NSString * orderSN;
+@property (nonatomic, retain) NSString * totalFee;
 @property (nonatomic, retain) OrderModel * orderModel;
 @property (nonatomic, assign) BOOL isFromCheckoutBoard;
 @end

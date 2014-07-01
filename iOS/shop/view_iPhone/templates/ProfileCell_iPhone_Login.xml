@@ -35,7 +35,7 @@
         
         <linear orientation="v" class="scroll-wrapper">
                         
-                        <!--linear orientation="h" class="bar-wrapper">
+                        <linear orientation="h" class="bar-wrapper">
                             <image class="list-large-bg"/>
                             <linear orientation="v" class="bar-item">
                                 <image class="bar-item-icon payment"/>
@@ -76,13 +76,13 @@
                                 </linear>
                                 <button id="order_finished" class="fill"/>
                             </linear>
-                        </linear-->
+                        </linear>
             
             <linear orientation="v" class="list-wrapper">
                 
                 <linear id="orders_list_item" orientation="h" class="list-item">
                     <image class="list-bg"/>
-                    <label class="list-title">历史订单</label>
+                    <label class="list-title">历史订场</label>
                     <label id="order-count" class="list-subtitle">0</label>
                     <image class="list-indictor"/>
                     <button id="orders_list" class="fill"/>
@@ -196,7 +196,7 @@
         
         .list-title {
             margin-left: 14px;
-            font-size: 14px;
+            font-size: 18px;
 			font-weight: bold;
             color: #333;
             width: 146px;
@@ -205,7 +205,7 @@
         }
         
         .list-subtitle {
-            font-size: 14px;
+            font-size: 18px;
 			font-weight: lighter;
             color: #333;
             margin: 0 10px;

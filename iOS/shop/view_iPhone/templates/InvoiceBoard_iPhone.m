@@ -65,8 +65,11 @@ ON_SIGNAL2( BeeUIBoard, signal )
 	[super handleUISignal_BeeUIBoard:signal];
 	
 	if ( [signal is:BeeUIBoard.CREATE_VIEWS] )
-	{		
-        self.titleString = __TEXT(@"balance_bill");
+	{
+        [self showNavigationBarAnimated:NO];
+        [self setTitleViewWithIcon:__IMAGE(@"titleicon") andTitleString:__TEXT(@"balance_bill")];
+        [self showBarButton:BeeUINavigationBar.LEFT image:[UIImage imageNamed:@"nav-back.png"]];
+        
         
         [self observeNotification:BeeUIKeyboard.SHOWN];
         [self observeNotification:BeeUIKeyboard.HIDDEN];

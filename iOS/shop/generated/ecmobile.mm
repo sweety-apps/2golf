@@ -2410,7 +2410,16 @@ DEF_MESSAGE_( brand, msg )
 	{
 		NSDictionary * response = msg.responseJSONDictionary;
 		STATUS * status = [STATUS objectFromDictionary:[response dictAtPath:@"status"]];
-        NSArray * data = [BRAND objectsFromArray:[response arrayAtPath:@"data"]];
+        NSMutableArray * data = [NSMutableArray array];
+        NSArray* brandArr = response[@"data"][@"player"];
+        for (NSDictionary* dict in brandArr)
+        {
+            BRAND* brand = [[[BRAND alloc] init] autorelease];
+            brand.brand_id = dict[@"id"];//[NSNumber numberWithLong:[dict[@"id"] longValue]];
+            brand.brand_name = dict[@"brand_name"];
+            brand.url = dict[@"url"];
+            [data addObject:brand];
+        }
         
 		if ( nil == status || NO == [status isKindOfClass:[STATUS class]] )
 		{

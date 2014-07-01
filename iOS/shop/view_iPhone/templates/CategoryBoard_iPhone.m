@@ -62,7 +62,8 @@ ON_SIGNAL2( BeeUIBoard, signal )
 	
 	if ( [signal is:BeeUIBoard.CREATE_VIEWS] )
 	{
-        self.titleString = self.category.name;
+        [self setTitleViewWithIcon:__IMAGE(@"titleicon") andTitleString:self.category.name];
+        
         [self showNavigationBarAnimated:NO];
         [self showBarButton:BeeUINavigationBar.LEFT image:[UIImage imageNamed:@"nav-back.png"]];
 
@@ -127,12 +128,33 @@ ON_SIGNAL3( SearchCategory_iPhone, mask, signal )
 	
 	CATEGORY * category = signal.sourceCell.data;
 	
-	GoodsListBoard_iPhone * board = [GoodsListBoard_iPhone board];
-	board.category = category.name;
-	board.model1.filter.category_id = category.id;
-	board.model2.filter.category_id = category.id;
-	board.model3.filter.category_id = category.id;
-	[self.stack pushBoard:board animated:YES];
+    GoodsListBoard_iPhone * board = nil;
+    if (![self.stack existsBoardClass:[GoodsListBoard_iPhone class]])
+    {
+        board = [[[GoodsListBoard_iPhone alloc] init] autorelease];
+    }
+    else
+    {
+        board = (GoodsListBoard_iPhone*)[self.stack lastBoardWithClass:[GoodsListBoard_iPhone class]];
+    }
+    
+    board.category = category.name;
+    board.model1.filter.category_id = category.id;
+    board.model2.filter.category_id = category.id;
+    board.model3.filter.category_id = category.id;
+    
+    board.model1.filter.category_name = category.name;
+    board.model2.filter.category_name = category.name;
+    board.model3.filter.category_name = category.name;
+    
+    if (![self.stack existsBoardClass:[GoodsListBoard_iPhone class]])
+    {
+        [self.stack pushBoard:board animated:YES];
+    }
+    else
+    {
+        [self.stack popToBoard:board animated:YES];
+    }
 }
 
 #pragma mark -

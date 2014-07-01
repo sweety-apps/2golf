@@ -331,8 +331,8 @@ ON_SIGNAL2( BeeUIBoard, signal )
 	[super handleUISignal_BeeUIBoard:signal];
 	
 	if ( [signal is:BeeUIBoard.CREATE_VIEWS] )
-	{        
-        self.titleString = __TEXT(@"shopcar_shopcar");
+	{
+        [self setTitleViewWithIcon:__IMAGE(@"titleicon") andTitleString:__TEXT(@"shopcar_shopcar")];
         
         [self showNavigationBarAnimated:NO];
         

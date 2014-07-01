@@ -128,6 +128,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
 	if ( [signal is:BeeUIBoard.CREATE_VIEWS] )
 	{
         [self showNavigationBarAnimated:NO];
+        [self showBarButton:BeeUINavigationBar.LEFT image:[UIImage imageNamed:@"nav-back.png"]];
         
 		_scroll = [[BeeUIScrollView alloc] init];
 		_scroll.dataSource = self;
@@ -159,9 +160,13 @@ ON_SIGNAL2( BeeUIBoard, signal )
         
 		if ( nil == _titleSearch )
 		{
+            UIView* searchContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 4, self.view.width, 50.0f)];
+            searchContainer.backgroundColor = [UIColor clearColor];
+            searchContainer.userInteractionEnabled = YES;
 			_titleSearch = [[SearchInput_iPhone alloc] initWithFrame:CGRectZero];
-			_titleSearch.frame = CGRectMake(0, 0, self.view.width, 44.0f);
-			self.titleView = _titleSearch;
+			_titleSearch.frame = CGRectMake(0, 6, self.view.width, 44.0f);
+            [searchContainer addSubview:_titleSearch];
+			self.titleView = searchContainer;
 		}
 
 		[[SearchCategoryModel sharedInstance] fetchFromServer];
@@ -193,6 +198,19 @@ ON_SIGNAL2( BeeUIBoard, signal )
     }
 }
 
+ON_SIGNAL2( BeeUINavigationBar, signal )
+{
+	[super handleUISignal:signal];
+	
+	if ( [signal is:BeeUINavigationBar.LEFT_TOUCHED] )
+	{
+        [self.stack popBoardAnimated:YES];
+	}
+	else if ( [signal is:BeeUINavigationBar.RIGHT_TOUCHED] )
+	{
+	}
+}
+
 ON_SIGNAL2( BeeUITextField, signal )
 {
 	[super handleUISignal:signal];
@@ -215,11 +233,30 @@ ON_SIGNAL2( BeeUITextField, signal )
         return;
     }
     
-    GoodsListBoard_iPhone * board = [[[GoodsListBoard_iPhone alloc] init] autorelease];
+    GoodsListBoard_iPhone * board = nil;
+    if (![self.stack existsBoardClass:[GoodsListBoard_iPhone class]])
+    {
+        board = [[[GoodsListBoard_iPhone alloc] init] autorelease];
+    }
+    else
+    {
+        board = (GoodsListBoard_iPhone*)[self.stack lastBoardWithClass:[GoodsListBoard_iPhone class]];
+    }
+    
+    
     board.model1.filter.keywords = keyword;
     board.model2.filter.keywords = keyword;
     board.model3.filter.keywords = keyword;
-    [self.stack pushBoard:board animated:YES];
+    
+    if (![self.stack existsBoardClass:[GoodsListBoard_iPhone class]])
+    {
+        [self.stack pushBoard:board animated:YES];
+    }
+    else
+    {
+        [self.stack popToBoard:board animated:YES];
+    }
+    
 }
 
 ON_SIGNAL3( SearchInput_iPhone, open, signal )
@@ -276,12 +313,33 @@ ON_SIGNAL3( SearchCategory_iPhone, mask, signal )
 		}
 		else
 		{
-			GoodsListBoard_iPhone * board = [GoodsListBoard_iPhone board];
-			board.category = category.name;
+            GoodsListBoard_iPhone * board = nil;
+            if (![self.stack existsBoardClass:[GoodsListBoard_iPhone class]])
+            {
+                board = [[[GoodsListBoard_iPhone alloc] init] autorelease];
+            }
+            else
+            {
+                board = (GoodsListBoard_iPhone*)[self.stack lastBoardWithClass:[GoodsListBoard_iPhone class]];
+            }
+            
+            board.category = category.name;
 			board.model1.filter.category_id = category.id;
 			board.model2.filter.category_id = category.id;
 			board.model3.filter.category_id = category.id;
-			[self.stack pushBoard:board animated:YES];
+            
+            board.model1.filter.category_name = category.name;
+			board.model2.filter.category_name = category.name;
+			board.model3.filter.category_name = category.name;
+            
+            if (![self.stack existsBoardClass:[GoodsListBoard_iPhone class]])
+            {
+                [self.stack pushBoard:board animated:YES];
+            }
+            else
+            {
+                [self.stack popToBoard:board animated:YES];
+            }
 		}
 	}
 }

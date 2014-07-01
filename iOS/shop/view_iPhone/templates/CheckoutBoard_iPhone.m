@@ -339,9 +339,9 @@ DEF_SIGNAL( ACTION_BACK )
     
 //    _orders   = [FormElement subtitleWithTitle:__TEXT(@"balance_list")];
     
-    _bonus    = [FormElement subtitleWithTitle:__TEXT(@"balance_redpocket")];
+    //_bonus    = [FormElement subtitleWithTitle:__TEXT(@"balance_redpocket")];
     
-    _integral = [FormElement subtitleWithTitle:__TEXT(@"balance_exp")];
+    //_integral = [FormElement subtitleWithTitle:__TEXT(@"balance_exp")];
 
     _details  = [FormElement customWithClass:[CheckoutOrderCell_iPhone class]];
     
@@ -351,8 +351,8 @@ DEF_SIGNAL( ACTION_BACK )
     NSArray * group2 = @[ _payment, _shipping, _invoice ];
     [self.datas addObject:group2];
 
-    NSArray * group3 = @[ _bonus, _integral ];
-    [self.datas addObject:group3];
+    //NSArray * group3 = @[ _bonus, _integral ];//NSArray * group3 = @[ _bonus, _integral ];
+    //[self.datas addObject:group3];
     
     NSArray * group4 = @[ _details ];
     [self.datas addObject:group4];
@@ -380,7 +380,8 @@ ON_SIGNAL2( BeeUIBoard, signal )
 	
 	if ( [signal is:BeeUIBoard.CREATE_VIEWS] )
 	{
-        self.titleString = __TEXT(@"checkout");
+        [self setTitleViewWithIcon:__IMAGE(@"titleicon") andTitleString:__TEXT(@"checkout")];
+        
         [self showNavigationBarAnimated:NO];
         [self hideBarButton:BeeUINavigationBar.RIGHT];
         [self showBarButton:BeeUINavigationBar.LEFT image:[UIImage imageNamed:@"nav-back.png"]];
@@ -396,6 +397,12 @@ ON_SIGNAL2( BeeUIBoard, signal )
 	}
 	else if ( [signal is:BeeUIBoard.LAYOUT_VIEWS] )
 	{
+        CGRect rect;
+        rect = self.viewBound;
+        rect.origin.y = 6;
+        rect.size.height-=22;
+        self.table.frame = rect;
+        //self.table.bounds = rect;
 	}
     else if ( [signal is:BeeUIBoard.LOAD_DATAS] )
     {
@@ -449,6 +456,8 @@ ON_SIGNAL2( CheckoutBoard_iPhone , signal )
 		board.title = __TEXT(@"pay");
 		board.isFromCheckoutBoard = YES;
 		board.orderID = self.flowModel.order_id;
+        board.orderSN = order_info.order_sn;
+        board.totalFee = order_info.order_amount;
 		[self.stack pushBoard:board animated:YES];
     }
     else if ( [signal is:self.ACTION_BACK] )
@@ -735,7 +744,7 @@ ON_NOTIFICATION3( ServiceAlipay, SUCCEED, notification )
 
 ON_NOTIFICATION3( ServiceAlipay, FAILED, notification )
 {
-	[[BeeUIApplication sharedInstance] presentMessageTips:__TEXT(@"pay_failed")];
+	//[[BeeUIApplication sharedInstance] presentMessageTips:__TEXT(@"pay_failed")];
 	
 	[self.stack popBoardAnimated:YES];
 }
