@@ -402,7 +402,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
     }
     else if ( [signal is:BeeUIBoard.DID_APPEAR] )
     {
-        
+        [[AppBoard_iPhone sharedInstance] setTabbarHidden:YES animated:NO];
     }
     else if ( [signal is:BeeUIBoard.WILL_DISAPPEAR] )
     {

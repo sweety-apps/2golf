@@ -149,21 +149,158 @@ ON_SIGNAL2( BeeUIScrollView, signal )
 	}
 }
 
+ON_SIGNAL( signal )
+{
+    if ( [signal is:@"exceed_alert_dail"] )
+    {
+		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://4008229222"]];//打电话
+    }
+}
+
 - (void)setUpCourseData:(NSDictionary*)courseDict
 {
     self.courseDict = [NSMutableDictionary dictionaryWithDictionary:courseDict];
-    [self resetData];
+    [self resetCell];
 }
 
 - (void)setUpPriceData:(NSDictionary *)priceDict
 {
     self.priceDict = [NSMutableDictionary dictionaryWithDictionary:priceDict];
-    [self resetData];
+    [self resetCell];
 }
 
 #pragma mark -
 
 - (void)resetData
+{
+    if (self.priceDict==nil || self.courseDict == nil)
+    {
+        return;
+    }
+    
+    NSString* str = nil;
+    int pcount = 0;
+    
+    self.priceAll = [self.priceDict[@"price"] doubleValue]*self.numPeople;
+    
+    for (QiuchangOrderEditCell_iPhone* cell in self.cellArray)
+    {
+        str = @"";
+        if ([cell.ctrl.cellTitle.text isEqualToString:@"服务商"])
+        {
+            [cell setRightText:self.priceDict[@"distributorname"] color:[UIColor blackColor]];
+        }
+        else if ([cell.ctrl.cellTitle.text isEqualToString:@"球场"])
+        {
+            [cell setRightText:self.courseDict[@"coursename"] color:[UIColor blackColor]];
+        }
+        else if ([cell.ctrl.cellTitle.text isEqualToString:@"日期"])
+        {
+            NSDate* date = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_date"];
+            if (date == nil)
+            {
+                date = [NSDate dateWithTimeIntervalSinceNow:3600*24 + 3600];//明天1小时以后
+            }
+            str = [NSString stringWithFormat:@"%d年%d月%d日\n%@",[date year],[date month],[date day],[date weekdayChinese]];
+            if ([str length] == 0)
+            {
+                str = @"2014年02月21日\n星期五";
+            }
+            [cell setRightText:str color:[UIColor blackColor]];
+        }
+        else if ([cell.ctrl.cellTitle.text isEqualToString:@"时间"])
+        {
+            NSDate* date = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_time"];
+            if (date == nil)
+            {
+                date = [NSDate dateWithTimeIntervalSinceNow:3600*24 + 3600];//明天1小时以后
+            }
+            str = [NSString stringWithFormat:@"%02d:%02d",[date hour],[date minute]];
+            if ([str length] == 0)
+            {
+                str = @"08:30";
+            }
+            [cell setRightText:str color:[UIColor blackColor]];
+        }
+        else if ([cell.ctrl.cellTitle.text isEqualToString:@"姓名"])
+        {
+            str = [[CommonSharedData sharedInstance] getContactListNamesString];
+            [cell setRightText:str color:[UIColor blackColor]];
+        }
+        else if ([cell.ctrl.cellTitle.text isEqualToString:@"打球人数"])
+        {
+            str = [NSString stringWithFormat:@"%d",(int)self.numPeople];
+            [cell setRightText:str color:[UIColor blackColor]];
+        }
+        else if ([cell.ctrl.cellTitle.text isEqualToString:@"押金"])
+        {
+            if (self.priceDict[@"deposit"] == [NSNull null])
+            {
+                str = @"0";
+            }
+            else
+            {
+                double val = [((NSNumber*)self.priceDict[@"deposit"]) doubleValue] *self.numPeople;
+                str = [NSString stringWithFormat:@"￥%@",[NSNumber numberWithDouble:val]];
+            }
+            [cell setRightText:str color:[UIColor redColor]];
+        }
+        else if ([cell.ctrl.cellTitle.text isEqualToString:@"费用包含"])
+        {
+            NSDictionary* pdict = @{
+                                    @"green":@"果岭",
+                                    @"cabinet":@"衣柜",
+                                    @"insurance":@"保险",
+                                    @"car":@"球车",
+                                    @"meal":@"午餐",
+                                    @"tips":@"小费",
+                                    @"caddie":@"球童",
+                                    };
+            pcount = 0;
+            for (NSString* key in pdict)
+            {
+                if ([self.priceDict[key] boolValue])
+                {
+                    if (pcount > 0)
+                    {
+                        str = [str stringByAppendingString:@","];
+                    }
+                    str = [str stringByAppendingString:pdict[key]];
+                    pcount++;
+                }
+            }
+            [cell setRightText:str color:[UIColor blackColor]];
+        }
+        else if ([cell.ctrl.cellTitle.text isEqualToString:@"订单总价"])
+        {
+            self.priceAll = [self.priceDict[@"price"] doubleValue]*self.numPeople;
+            str = [NSString stringWithFormat:@"￥%.2f",self.priceAll];
+            [cell setRightText:str color:[UIColor redColor]];
+        }
+        else if ([cell.ctrl.cellTitle.text isEqualToString:@"说明"])
+        {
+            self.priceAll = [self.priceDict[@"price"] doubleValue]*self.numPeople;
+            str = [NSString stringWithFormat:@"￥%@",[NSNumber numberWithDouble:self.priceAll]];
+            [cell setRightText:self.priceDict[@"description"] color:[UIColor blackColor]];
+        }
+        else if ([cell.ctrl.cellTitle.text isEqualToString:@"退订说明"])
+        {
+            self.priceAll = [self.priceDict[@"price"] doubleValue]*self.numPeople;
+            str = [NSString stringWithFormat:@"￥%@",[NSNumber numberWithDouble:self.priceAll]];
+            [cell setRightText:self.priceDict[@"cancel_desc"] color:[UIColor blackColor]];
+        }
+        else if ([cell.ctrl.cellTitle.text isEqualToString:@"退订说明"])
+        {
+            self.priceAll = [self.priceDict[@"price"] doubleValue]*self.numPeople;
+            str = [NSString stringWithFormat:@"￥%@",[NSNumber numberWithDouble:self.priceAll]];
+            [cell setRightText:self.priceDict[@"cancel_desc"] color:[UIColor blackColor]];
+        }
+    }
+    
+    //[_scroll reloadData];
+}
+
+- (void)resetCell
 {
     if (self.priceDict==nil || self.courseDict == nil)
     {
@@ -392,8 +529,21 @@ ON_SIGNAL2( BeeUIScrollView, signal )
 {
     NSInteger num = self.numPeople;
     num++;
-    self.numPeople = num;
-    [self resetData];
+    if (num > 12)
+    {
+        BeeUIAlertView * alert = [BeeUIAlertView spawn];
+        alert.title = @"打球人数最多不能超过12人";
+        alert.message = @"打球人数超过12人可以享受团队优惠价，请拨打爱高服务热线人工预订。";
+        [alert addCancelTitle:@"取消"];
+        [alert addButtonTitle:@"拨打热线" signal:@"exceed_alert_dail"];
+        [alert showInViewController:self];
+    }
+    else
+    {
+        self.numPeople = num;
+        [self resetData];
+    }
+    
 }
 
 - (void)onPressedDecreasePeople:(QiuchangOrderEditCell_iPhone*)cell
@@ -484,6 +634,17 @@ ON_SIGNAL2( BeeUIScrollView, signal )
 }
 
 #pragma mark - <UITextFieldDelegate>
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    CGFloat i_textFieldY = [textField convertRect:textField.frame toView:_scroll].origin.y;
+    i_textFieldY -= 80;
+    if (i_textFieldY < 0)
+    {
+        i_textFieldY = 0;
+    }
+    [_scroll setContentOffset:CGPointMake(0, i_textFieldY) animated:YES];
+}
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {

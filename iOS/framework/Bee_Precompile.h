@@ -122,7 +122,7 @@
 // Global compile option
 // ----------------------------------
 
-#define __BEE_DEVELOPMENT__				(__ON__)
+#define __BEE_DEVELOPMENT__				(__OFF__)
 #define __BEE_LOG__						(__BEE_DEVELOPMENT__)
 #define __BEE_ASSERT__					(__BEE_DEVELOPMENT__)
 #define __BEE_PERFORMANCE__				(__BEE_DEVELOPMENT__)

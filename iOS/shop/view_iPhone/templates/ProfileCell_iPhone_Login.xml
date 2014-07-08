@@ -7,12 +7,10 @@
         <linear orientation="v" class="header-wrapper">
             <image id="bg" class="bg"/>
 			<linear orientation="v" class="header-box">
-                <!--<button id="setting" class="header-setting" />-->
                 <linear orientation="v" class="header-avatar-box">
                     <image id="header-avatar" class="header-avatar"/>
                     <image id="header-avatar-head-icon" class="header-avatar-head-icon"/>
                     
-                    <!--button id="header-carema" class="header-carema"/-->
 					<button id="carema"/>
                     <label id="name" class="header-name"></label>
                 </linear>

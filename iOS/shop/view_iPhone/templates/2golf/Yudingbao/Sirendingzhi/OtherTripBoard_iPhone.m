@@ -16,6 +16,9 @@
 //
 
 #import "OtherTripBoard_iPhone.h"
+#import "ServerConfig.h"
+#import "CommonUtility.h"
+#import "UserModel.h"
 
 #pragma mark -
 
@@ -118,6 +121,11 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
 
 - (IBAction)onPressedSend:(id)sender
 {
+    if (![CommonUtility checkLoginAndPresentLoginView])
+    {
+        return;
+    }
+    
     NSArray* textFeilds = @[
                             self.customerName,
                             self.personNum,
@@ -142,9 +150,81 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
         }
     }
     
-    [[BeeUITipsCenter sharedInstance] presentMessageTips:@"行程表格已提交" inView:[[UIApplication sharedApplication] keyWindow]];
-    [self.stack popBoardAnimated:YES];
+    [self fetchData];
 }
+
+#pragma mark - Network
+
+
+- (void)fetchData
+{
+    NSDictionary* paramDict = @{
+                                @"session":[UserModel sharedInstance].session.objectToDictionary,
+                                @"name":self.customerName.text,
+                                @"num":self.personNum.text,
+                                @"start_date":self.goDate.text,
+                                @"end_date":self.backDate.text,
+                                @"hotel_type":self.hotelRoomModel.text,
+                                @"hotel_level":self.hotelStars.text,
+                                @"hotel_num":self.hotelRoomNum.text,
+                                @"course_name":self.qiuchangName.text,
+                                @"use_car":[NSNumber numberWithBool:self.needCar.on],
+                                @"email":self.email.text,
+                                @"phone":self.phoneNum.text,
+                                @"contact":self.customerName.text,
+                                @"need_guide":@0,
+                                @"extra":self.otherNeeds.text
+                                };
+    [self presentLoadingTips:@"正在加载"];
+    self.HTTP_POST([[ServerConfig sharedInstance].url stringByAppendingString:@"personalcombo"])
+    .PARAM(@"json",[paramDict JSONString])
+    .TIMEOUT(30);
+    
+}
+
+- (NSDictionary*) commonCheckRequest:(BeeHTTPRequest *)req
+{
+    if ( req.sending) {
+    } else if ( req.recving ) {
+    } else if ( req.failed ) {
+        [self dismissTips];
+        [self presentFailureTips:__TEXT(@"error_network")];
+    } else if ( req.succeed ) {
+        [self dismissTips];
+        // 判断返回数据是
+        NSError* error;
+        NSDictionary* dict = [NSJSONSerialization JSONObjectWithData:req.responseData options:NSJSONReadingMutableLeaves error:&error];
+        if ( dict == nil || [dict count] == 0 ) {
+            [self presentFailureTips:__TEXT(@"error_network")];
+        } else {
+            return dict;
+        }
+    }
+    return nil;
+}
+
+- (void) handleRequest:(BeeHTTPRequest *)req
+{
+    NSDictionary* dict = [self commonCheckRequest:req];
+    if (dict)
+    {
+        //球场详情
+        if ([[req.url absoluteString] rangeOfString:@"personalcombo"].length > 0)
+        {
+            //正确逻辑
+            if ([(dict[@"status"])[@"succeed"] intValue] == 1)
+            {
+                [[BeeUITipsCenter sharedInstance] presentMessageTips:@"行程表格已提交" inView:[[UIApplication sharedApplication] keyWindow]];
+                [self.stack popBoardAnimated:YES];
+            }
+            else
+            {
+                [self presentFailureTips:(dict[@"status"])[@"error_desc"]];
+            }
+        }
+    }
+}
+
 
 #pragma mark- 键盘通知事件 ［核心代码］
 

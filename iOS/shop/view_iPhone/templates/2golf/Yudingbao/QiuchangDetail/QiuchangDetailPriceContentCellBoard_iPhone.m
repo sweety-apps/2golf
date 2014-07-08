@@ -56,13 +56,33 @@
     if (self.data)
     {
         NSDictionary* dict = self.data;
+        
+        NSString* nameAppendix = @"";
+        if (dict[@"holecount"])
+        {
+            NSInteger holeType = [dict[@"holecount"] intValue];
+            if (holeType == 1)
+            {
+                nameAppendix = @"(9洞)";
+            }
+            else if (holeType == 2)
+            {
+                //nameAppendix = @"(18洞)";
+            }
+            else if (holeType == 3)
+            {
+                nameAppendix = @"(27洞)";
+            }
+        }
+        
         if ([dict[@"distributortype"] intValue] == 1)
         {
-            self.ctrl.nameLbl.text = dict[@"distributorname"];
+            self.ctrl.nameLbl.text = [NSString stringWithFormat:@"%@%@",dict[@"distributorname"],nameAppendix];
         }
         if ([dict[@"distributortype"] intValue] == 0)
         {
-            self.ctrl.nameLbl.text = [NSString stringWithFormat:@"%@区",dict[@"areaname"]];
+            //self.ctrl.nameLbl.text = [NSString stringWithFormat:@"%@区%@",dict[@"areaname"],nameAppendix];
+            self.ctrl.nameLbl.text = [NSString stringWithFormat:@"%@%@",dict[@"distributorname"],nameAppendix];
         }
         
         self.ctrl.priceLbl.text = [NSString stringWithFormat:@"￥%@",dict[@"price"]] ;

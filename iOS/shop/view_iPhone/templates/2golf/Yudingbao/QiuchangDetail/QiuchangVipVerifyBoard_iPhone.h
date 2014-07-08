@@ -24,6 +24,8 @@
 AS_SIGNAL(DAIL_PHONE_OK)
 AS_SIGNAL(SEND_VERIFY_OK)
 
+@property (nonatomic,retain) NSString* courseId;
+
 @property (nonatomic,retain) IBOutlet UITextField* numTextFeild;
 @property (nonatomic,retain) IBOutlet UITextField* nameTextFeild;
 

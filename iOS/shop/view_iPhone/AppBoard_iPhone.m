@@ -63,6 +63,8 @@
 	BeeUIButton *	_shopClosedView;
     
     BeeUIImageView * _adImagePage;
+    
+    NSTimer* _adImageTimer;
 }
 @end
 
@@ -152,6 +154,23 @@ ON_SIGNAL2( BeeUIBoard, signal )
         [CommonUtility refreshLocalPositionWithCallBack:nil];
 
         _tabbarOriginY = self.viewBound.size.height - TAB_HEIGHT + 1;
+        
+        NSDictionary* dic = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_local"];
+        if (dic)
+        {
+            NSMutableDictionary* mdict = [NSMutableDictionary dictionaryWithDictionary:dic];
+            if (dic[@"longitude"] == nil || dic[@"latitude"] == nil
+                || [dic[@"longitude"] doubleValue] <= 0.0000000001
+                || [dic[@"latitude"] doubleValue] <= 0.0000000001
+                )
+            {
+                //默认设为深圳
+                mdict[@"longitude"] = @114.06667;
+                mdict[@"latitude"] = @22.61667;
+            }
+            [[NSUserDefaults standardUserDefaults] setObject:mdict forKey:@"search_local"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
 	}
 	else if ( [signal is:BeeUIBoard.DELETE_VIEWS] )
 	{
@@ -360,18 +379,30 @@ ON_NOTIFICATION3( ConfigModel, SHOP_OPENED, notification )
 
 - (void)setTabbarHidden:(BOOL)hidden
 {
+    [self setTabbarHidden:hidden animated:YES];
+}
+
+- (void)setTabbarHidden:(BOOL)hidden animated:(BOOL)animated
+{
     CGRect tabbarFrame = self.tabbar.frame;
     _tabbarOriginY = !hidden ? self.view.height - TAB_HEIGHT + 1 : self.view.height;
     tabbarFrame.origin.y = _tabbarOriginY;
     
-    [UIView beginAnimations:nil context:NULL];
-	[UIView setAnimationDuration:0.3];
-    [UIView setAnimationDelay:0.2];
-    [UIView setAnimationBeginsFromCurrentState:YES];
+    if (animated)
+    {
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:0.3];
+        [UIView setAnimationDelay:0.2];
+        [UIView setAnimationBeginsFromCurrentState:YES];
+        
+    }
     self.tabbar.frame = tabbarFrame;
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationDidStopSelector:@selector(stop)];
-    [UIView commitAnimations];
+    if (animated)
+    {
+        [UIView setAnimationDelegate:self];
+        [UIView setAnimationDidStopSelector:@selector(stop)];
+        [UIView commitAnimations];
+    }
 }
 
 - (void)stop
@@ -399,7 +430,11 @@ ON_NOTIFICATION3( ConfigModel, SHOP_OPENED, notification )
     }
     _adImagePage.frame = rect;
     [self.view addSubview:_adImagePage];
-    [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(hideAdImage) userInfo:nil repeats:NO];
+    if (_adImageTimer)
+    {
+        [_adImageTimer invalidate];
+    }
+    _adImageTimer = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(hideAdImage) userInfo:nil repeats:NO];
 }
 
 - (void)hideAdImage
@@ -452,12 +487,26 @@ ON_NOTIFICATION3( ConfigModel, SHOP_OPENED, notification )
                     {
                         url = [[ServerConfig sharedInstance].baseUrl stringByAppendingString:url];
                     }
+                    
                     UIImage* image = __IMAGE(@"Default");
                     if ([[UIApplication sharedApplication].delegate window].frame.size.height > 480)
                     {
                         image = __IMAGE(@"Default-568h");
                     }
                     [_adImagePage GET:url useCache:YES placeHolder:image];
+                    if ([[BeeImageCache sharedInstance] fileImageForURL:url]!= nil)
+                    {
+                        if (_adImageTimer)
+                        {
+                            [_adImageTimer invalidate];
+                        }
+                        _adImageTimer = [NSTimer scheduledTimerWithTimeInterval:4.0 target:self selector:@selector(hideAdImage) userInfo:nil repeats:NO];
+                    }
+                    else
+                    {
+                        [self hideAdImage];
+                    }
+                    
                 }
             }
             else

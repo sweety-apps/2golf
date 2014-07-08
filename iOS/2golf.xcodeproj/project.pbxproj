@@ -639,6 +639,15 @@
 		F319AE26192ED2AC00D64FA2 /* YongpinbaoMainBoard_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = F319AE24192ED2AC00D64FA2 /* YongpinbaoMainBoard_iPhone.xib */; };
 		F319AE29192ED2B900D64FA2 /* YongpinbaoMainInfoCellBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = F319AE28192ED2B900D64FA2 /* YongpinbaoMainInfoCellBoard_iPhone.m */; };
 		F319AE2B192ED2E000D64FA2 /* YongpinbaoMainInfoCellBoard_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = F319AE2A192ED2DF00D64FA2 /* YongpinbaoMainInfoCellBoard_iPhone.xib */; };
+		F32FA7631966A56200C3A0C5 /* InputNewPasswordBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = F32FA75E1966A56200C3A0C5 /* InputNewPasswordBoard_iPhone.m */; };
+		F32FA7641966A56200C3A0C5 /* InputNewPasswordBoard_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = F32FA75F1966A56200C3A0C5 /* InputNewPasswordBoard_iPhone.xib */; };
+		F32FA7651966A56200C3A0C5 /* SendVerifyCodeBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = F32FA7611966A56200C3A0C5 /* SendVerifyCodeBoard_iPhone.m */; };
+		F32FA7661966A56200C3A0C5 /* SendVerifyCodeBoard_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = F32FA7621966A56200C3A0C5 /* SendVerifyCodeBoard_iPhone.xib */; };
+		F32FA76B1966A58800C3A0C5 /* MyPointsBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = F32FA7691966A58800C3A0C5 /* MyPointsBoard_iPhone.m */; };
+		F32FA76C1966A58800C3A0C5 /* MyPointsBoard_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = F32FA76A1966A58800C3A0C5 /* MyPointsBoard_iPhone.xib */; };
+		F32FA7701966A67A00C3A0C5 /* HelpMainBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = F32FA76F1966A67A00C3A0C5 /* HelpMainBoard_iPhone.m */; };
+		F32FA7721966A68E00C3A0C5 /* HelpMainBoard_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = F32FA7711966A68E00C3A0C5 /* HelpMainBoard_iPhone.xib */; };
+		F32FA7741966B6F100C3A0C5 /* help.html in Resources */ = {isa = PBXBuildFile; fileRef = F32FA7731966B6F100C3A0C5 /* help.html */; };
 		F3696824190C37C40020E991 /* SirendingzhiListBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = F3696823190C37C40020E991 /* SirendingzhiListBoard_iPhone.m */; };
 		F3696826190C37D30020E991 /* SirendingzhiListBoard_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3696825190C37D30020E991 /* SirendingzhiListBoard_iPhone.xib */; };
 		F3696829190C37F80020E991 /* SirendingzhiListCellBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = F3696828190C37F80020E991 /* SirendingzhiListCellBoard_iPhone.m */; };
@@ -681,8 +690,6 @@
 		F3B1E3CD195DF151004B615E /* RechargeViewUICell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3B1E3CC195DF151004B615E /* RechargeViewUICell.xib */; };
 		F3B1E3D0195DF186004B615E /* ExtractViewUICell.m in Sources */ = {isa = PBXBuildFile; fileRef = F3B1E3CF195DF186004B615E /* ExtractViewUICell.m */; };
 		F3B1E3D2195DF194004B615E /* ExtractViewUICell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3B1E3D1195DF194004B615E /* ExtractViewUICell.xib */; };
-		F3B1E3D5195DF2A2004B615E /* MyPointsBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = F3B1E3D4195DF2A2004B615E /* MyPointsBoard_iPhone.m */; };
-		F3B1E3D7195DF2B6004B615E /* MyPointsBoard_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3B1E3D6195DF2B6004B615E /* MyPointsBoard_iPhone.xib */; };
 		F3B1E400195EDDA2004B615E /* ChargeValueView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3B1E3FF195EDDA2004B615E /* ChargeValueView.m */; };
 		F3B1E402195EDDB2004B615E /* ChargeValueView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3B1E401195EDDB2004B615E /* ChargeValueView.xib */; };
 		F3B1E405195EDEC7004B615E /* ChargeConfirmView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3B1E404195EDEC7004B615E /* ChargeConfirmView.m */; };
@@ -793,10 +800,6 @@
 		F3D14E46195726B300A0DA3E /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D14E3E195726B300A0DA3E /* SBJsonBase.m */; };
 		F3D14E47195726B300A0DA3E /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D14E40195726B300A0DA3E /* SBJsonParser.m */; };
 		F3D14E48195726B300A0DA3E /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D14E42195726B300A0DA3E /* SBJsonWriter.m */; };
-		F3D14E82195AF59500A0DA3E /* SendVerifyCodeBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D14E81195AF59500A0DA3E /* SendVerifyCodeBoard_iPhone.m */; };
-		F3D14E84195AF5D100A0DA3E /* SendVerifyCodeBoard_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3D14E83195AF5D100A0DA3E /* SendVerifyCodeBoard_iPhone.xib */; };
-		F3D14E87195AF5F200A0DA3E /* InputNewPasswordBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D14E86195AF5F200A0DA3E /* InputNewPasswordBoard_iPhone.m */; };
-		F3D14E89195AF60800A0DA3E /* InputNewPasswordBoard_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3D14E88195AF60800A0DA3E /* InputNewPasswordBoard_iPhone.xib */; };
 		F3D14EA7195C8DEB00A0DA3E /* profile-has-avatar-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3D14EA6195C8DEB00A0DA3E /* profile-has-avatar-icon@2x.png */; };
 		F3E45FFD18D4C7D100C8E952 /* 2golf-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F3E45FFC18D4C7D100C8E952 /* 2golf-Info.plist */; };
 		F3E4607018DF395400C8E952 /* coursefragmentcustomizationbkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3E4605C18DF395400C8E952 /* coursefragmentcustomizationbkg@2x.png */; };
@@ -1951,6 +1954,19 @@
 		F319AE27192ED2B900D64FA2 /* YongpinbaoMainInfoCellBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YongpinbaoMainInfoCellBoard_iPhone.h; sourceTree = "<group>"; };
 		F319AE28192ED2B900D64FA2 /* YongpinbaoMainInfoCellBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YongpinbaoMainInfoCellBoard_iPhone.m; sourceTree = "<group>"; };
 		F319AE2A192ED2DF00D64FA2 /* YongpinbaoMainInfoCellBoard_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YongpinbaoMainInfoCellBoard_iPhone.xib; sourceTree = "<group>"; };
+		F32FA75D1966A56200C3A0C5 /* InputNewPasswordBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputNewPasswordBoard_iPhone.h; sourceTree = "<group>"; };
+		F32FA75E1966A56200C3A0C5 /* InputNewPasswordBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputNewPasswordBoard_iPhone.m; sourceTree = "<group>"; };
+		F32FA75F1966A56200C3A0C5 /* InputNewPasswordBoard_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InputNewPasswordBoard_iPhone.xib; sourceTree = "<group>"; };
+		F32FA7601966A56200C3A0C5 /* SendVerifyCodeBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendVerifyCodeBoard_iPhone.h; sourceTree = "<group>"; };
+		F32FA7611966A56200C3A0C5 /* SendVerifyCodeBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendVerifyCodeBoard_iPhone.m; sourceTree = "<group>"; };
+		F32FA7621966A56200C3A0C5 /* SendVerifyCodeBoard_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SendVerifyCodeBoard_iPhone.xib; sourceTree = "<group>"; };
+		F32FA7681966A58800C3A0C5 /* MyPointsBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPointsBoard_iPhone.h; sourceTree = "<group>"; };
+		F32FA7691966A58800C3A0C5 /* MyPointsBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPointsBoard_iPhone.m; sourceTree = "<group>"; };
+		F32FA76A1966A58800C3A0C5 /* MyPointsBoard_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyPointsBoard_iPhone.xib; sourceTree = "<group>"; };
+		F32FA76E1966A67A00C3A0C5 /* HelpMainBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpMainBoard_iPhone.h; sourceTree = "<group>"; };
+		F32FA76F1966A67A00C3A0C5 /* HelpMainBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpMainBoard_iPhone.m; sourceTree = "<group>"; };
+		F32FA7711966A68E00C3A0C5 /* HelpMainBoard_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HelpMainBoard_iPhone.xib; sourceTree = "<group>"; };
+		F32FA7731966B6F100C3A0C5 /* help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = help.html; sourceTree = "<group>"; };
 		F3696822190C37C40020E991 /* SirendingzhiListBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SirendingzhiListBoard_iPhone.h; sourceTree = "<group>"; };
 		F3696823190C37C40020E991 /* SirendingzhiListBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SirendingzhiListBoard_iPhone.m; sourceTree = "<group>"; };
 		F3696825190C37D30020E991 /* SirendingzhiListBoard_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SirendingzhiListBoard_iPhone.xib; sourceTree = "<group>"; };
@@ -2014,9 +2030,6 @@
 		F3B1E3CE195DF186004B615E /* ExtractViewUICell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtractViewUICell.h; sourceTree = "<group>"; };
 		F3B1E3CF195DF186004B615E /* ExtractViewUICell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtractViewUICell.m; sourceTree = "<group>"; };
 		F3B1E3D1195DF194004B615E /* ExtractViewUICell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExtractViewUICell.xib; sourceTree = "<group>"; };
-		F3B1E3D3195DF2A2004B615E /* MyPointsBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPointsBoard_iPhone.h; sourceTree = "<group>"; };
-		F3B1E3D4195DF2A2004B615E /* MyPointsBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPointsBoard_iPhone.m; sourceTree = "<group>"; };
-		F3B1E3D6195DF2B6004B615E /* MyPointsBoard_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyPointsBoard_iPhone.xib; sourceTree = "<group>"; };
 		F3B1E3FE195EDDA2004B615E /* ChargeValueView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChargeValueView.h; sourceTree = "<group>"; };
 		F3B1E3FF195EDDA2004B615E /* ChargeValueView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChargeValueView.m; sourceTree = "<group>"; };
 		F3B1E401195EDDB2004B615E /* ChargeValueView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChargeValueView.xib; sourceTree = "<group>"; };
@@ -2205,12 +2218,6 @@
 		F3D14E40195726B300A0DA3E /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
 		F3D14E41195726B300A0DA3E /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		F3D14E42195726B300A0DA3E /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
-		F3D14E80195AF59500A0DA3E /* SendVerifyCodeBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendVerifyCodeBoard_iPhone.h; sourceTree = "<group>"; };
-		F3D14E81195AF59500A0DA3E /* SendVerifyCodeBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendVerifyCodeBoard_iPhone.m; sourceTree = "<group>"; };
-		F3D14E83195AF5D100A0DA3E /* SendVerifyCodeBoard_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SendVerifyCodeBoard_iPhone.xib; sourceTree = "<group>"; };
-		F3D14E85195AF5F200A0DA3E /* InputNewPasswordBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputNewPasswordBoard_iPhone.h; sourceTree = "<group>"; };
-		F3D14E86195AF5F200A0DA3E /* InputNewPasswordBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputNewPasswordBoard_iPhone.m; sourceTree = "<group>"; };
-		F3D14E88195AF60800A0DA3E /* InputNewPasswordBoard_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InputNewPasswordBoard_iPhone.xib; sourceTree = "<group>"; };
 		F3D14EA6195C8DEB00A0DA3E /* profile-has-avatar-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile-has-avatar-icon@2x.png"; sourceTree = "<group>"; };
 		F3E45FFC18D4C7D100C8E952 /* 2golf-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "2golf-Info.plist"; sourceTree = "<group>"; };
 		F3E4605C18DF395400C8E952 /* coursefragmentcustomizationbkg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "coursefragmentcustomizationbkg@2x.png"; sourceTree = "<group>"; };
@@ -4156,6 +4163,40 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		F32FA75C1966A56200C3A0C5 /* ResetPassword */ = {
+			isa = PBXGroup;
+			children = (
+				F32FA75D1966A56200C3A0C5 /* InputNewPasswordBoard_iPhone.h */,
+				F32FA75E1966A56200C3A0C5 /* InputNewPasswordBoard_iPhone.m */,
+				F32FA75F1966A56200C3A0C5 /* InputNewPasswordBoard_iPhone.xib */,
+				F32FA7601966A56200C3A0C5 /* SendVerifyCodeBoard_iPhone.h */,
+				F32FA7611966A56200C3A0C5 /* SendVerifyCodeBoard_iPhone.m */,
+				F32FA7621966A56200C3A0C5 /* SendVerifyCodeBoard_iPhone.xib */,
+			);
+			path = ResetPassword;
+			sourceTree = "<group>";
+		};
+		F32FA7671966A58800C3A0C5 /* Points */ = {
+			isa = PBXGroup;
+			children = (
+				F32FA7681966A58800C3A0C5 /* MyPointsBoard_iPhone.h */,
+				F32FA7691966A58800C3A0C5 /* MyPointsBoard_iPhone.m */,
+				F32FA76A1966A58800C3A0C5 /* MyPointsBoard_iPhone.xib */,
+			);
+			path = Points;
+			sourceTree = "<group>";
+		};
+		F32FA76D1966A66B00C3A0C5 /* Help */ = {
+			isa = PBXGroup;
+			children = (
+				F32FA7731966B6F100C3A0C5 /* help.html */,
+				F32FA76E1966A67A00C3A0C5 /* HelpMainBoard_iPhone.h */,
+				F32FA76F1966A67A00C3A0C5 /* HelpMainBoard_iPhone.m */,
+				F32FA7711966A68E00C3A0C5 /* HelpMainBoard_iPhone.xib */,
+			);
+			path = Help;
+			sourceTree = "<group>";
+		};
 		F376B7C81961B16E00C5D32D /* Detail */ = {
 			isa = PBXGroup;
 			children = (
@@ -4278,16 +4319,6 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
-		F3B1E3C0195DEE5C004B615E /* Points */ = {
-			isa = PBXGroup;
-			children = (
-				F3B1E3D3195DF2A2004B615E /* MyPointsBoard_iPhone.h */,
-				F3B1E3D4195DF2A2004B615E /* MyPointsBoard_iPhone.m */,
-				F3B1E3D6195DF2B6004B615E /* MyPointsBoard_iPhone.xib */,
-			);
-			path = Points;
-			sourceTree = "<group>";
-		};
 		F3B1E3C1195DEE5C004B615E /* Recharge */ = {
 			isa = PBXGroup;
 			children = (
@@ -4322,9 +4353,10 @@
 		F3B5372318FE2588004E72D4 /* MyAigao */ = {
 			isa = PBXGroup;
 			children = (
-				F3B1E3C0195DEE5C004B615E /* Points */,
+				F32FA76D1966A66B00C3A0C5 /* Help */,
+				F32FA7671966A58800C3A0C5 /* Points */,
+				F32FA75C1966A56200C3A0C5 /* ResetPassword */,
 				F3B1E3C1195DEE5C004B615E /* Recharge */,
-				F3D14E7F195AF57B00A0DA3E /* ResetPassword */,
 				F3B1E3BD195DEE5C004B615E /* ChangePasswordBoard_iPhone.h */,
 				F3B1E3BE195DEE5C004B615E /* ChangePasswordBoard_iPhone.m */,
 				F3B1E3BF195DEE5C004B615E /* ChangePasswordBoard_iPhone.xib */,
@@ -4646,19 +4678,6 @@
 				F3D14E42195726B300A0DA3E /* SBJsonWriter.m */,
 			);
 			path = json;
-			sourceTree = "<group>";
-		};
-		F3D14E7F195AF57B00A0DA3E /* ResetPassword */ = {
-			isa = PBXGroup;
-			children = (
-				F3D14E80195AF59500A0DA3E /* SendVerifyCodeBoard_iPhone.h */,
-				F3D14E81195AF59500A0DA3E /* SendVerifyCodeBoard_iPhone.m */,
-				F3D14E83195AF5D100A0DA3E /* SendVerifyCodeBoard_iPhone.xib */,
-				F3D14E85195AF5F200A0DA3E /* InputNewPasswordBoard_iPhone.h */,
-				F3D14E86195AF5F200A0DA3E /* InputNewPasswordBoard_iPhone.m */,
-				F3D14E88195AF60800A0DA3E /* InputNewPasswordBoard_iPhone.xib */,
-			);
-			path = ResetPassword;
 			sourceTree = "<group>";
 		};
 		F3E4605B18DF395400C8E952 /* 2golf */ = {
@@ -5108,6 +5127,7 @@
 				E909CBF8182D0D650095B262 /* AddressListCell_iPhone.xml in Resources */,
 				F39B60F71916303E00C89F6A /* QiuchangVipVerifyBoard_iPhone.xib in Resources */,
 				F369682D190C3C420020E991 /* sirendingzhi_cell@2x.png in Resources */,
+				F32FA7641966A56200C3A0C5 /* InputNewPasswordBoard_iPhone.xib in Resources */,
 				E909CC33182D0D650095B262 /* GoodsSpecifyBoardCell_iPhone.xml in Resources */,
 				CB3775CE17C5FF6F00DF5F21 /* browser-baritem-back@2x.png in Resources */,
 				CB3775CF17C5FF6F00DF5F21 /* browser-baritem-forward@2x.png in Resources */,
@@ -5137,7 +5157,6 @@
 				F3F0EEBE19351C3C004613DA /* aifenxiangmenubtna@2x.png in Resources */,
 				F3E4607D18DF395400C8E952 /* tabsharea@2x.png in Resources */,
 				E909CC2D182D0D650095B262 /* GoodsListFilter_iPhone.xml in Resources */,
-				F3B1E3D7195DF2B6004B615E /* MyPointsBoard_iPhone.xib in Resources */,
 				CB3775D617C5FF6F00DF5F21 /* button-orange@2x.png in Resources */,
 				F3E4607818DF395400C8E952 /* foot_bg@2x.png in Resources */,
 				F3B5391018FFD80A004E72D4 /* QiuchangDetailCollectCellBoard_iPhone.xib in Resources */,
@@ -5195,6 +5214,7 @@
 				CB3775F417C5FF6F00DF5F21 /* item-graph-cont-box-bg@2x.png in Resources */,
 				F3B539521900C0E9004E72D4 /* SouSuoQiuChangViewController.xib in Resources */,
 				CB3775F517C5FF6F00DF5F21 /* item-graph-header-view-icon@2x.png in Resources */,
+				F32FA7741966B6F100C3A0C5 /* help.html in Resources */,
 				CB3775F617C5FF6F00DF5F21 /* item-grid-body-free-shipping-bg@2x.png in Resources */,
 				4FB952E7190122D300EE0CF7 /* ReleaseNotes.txt in Resources */,
 				F3B5391218FFF3DB004E72D4 /* coursesearchicontime@2x.png in Resources */,
@@ -5227,7 +5247,6 @@
 				E909CBF6182D0D650095B262 /* AddAddressCell_iPhone.xml in Resources */,
 				E909CC09182D0D650095B262 /* CategoryCell_iPhone.xml in Resources */,
 				CB3775FE17C5FF6F00DF5F21 /* item-grid-filter-sanjiao-icon@2x.png in Resources */,
-				F3D14E84195AF5D100A0DA3E /* SendVerifyCodeBoard_iPhone.xib in Resources */,
 				F3B5390318FFD77C004E72D4 /* QiuchangDetailInfoCellBoard_iPhone.xib in Resources */,
 				CB3775FF17C5FF6F00DF5F21 /* item-grid-filter-up-active-arrow@2x.png in Resources */,
 				CB37760017C5FF6F00DF5F21 /* item-grid-filter-up-arrow@2x.png in Resources */,
@@ -5237,6 +5256,7 @@
 				CB37760417C5FF6F00DF5F21 /* item-grid-header-view-icon@2x.png in Resources */,
 				CB37760517C5FF6F00DF5F21 /* item-info-buy-choose-min-btn@2x.png in Resources */,
 				F3F0EF2919358213004613DA /* InstapaperResource.bundle in Resources */,
+				F32FA7661966A56200C3A0C5 /* SendVerifyCodeBoard_iPhone.xib in Resources */,
 				CB37760617C5FF6F00DF5F21 /* item-info-buy-choose-num-bg@2x.png in Resources */,
 				CB37760717C5FF6F00DF5F21 /* item-info-buy-choose-sum-btn@2x.png in Resources */,
 				CB37760817C5FF6F00DF5F21 /* item-info-buy-entry-header-refresh-icon@2x.png in Resources */,
@@ -5357,6 +5377,7 @@
 				CB37763917C5FF6F00DF5F21 /* shopping-cart-body-bg-02@2x.png in Resources */,
 				CB37763A17C5FF6F00DF5F21 /* shopping-cart-body-bg-03@2x.png in Resources */,
 				E909CC28182D0D650095B262 /* GoodsDetailSlide_iPhone.xml in Resources */,
+				F32FA7721966A68E00C3A0C5 /* HelpMainBoard_iPhone.xib in Resources */,
 				CB37763B17C5FF6F00DF5F21 /* shopping-cart-body-bg-04@2x.png in Resources */,
 				F3E4607718DF395400C8E952 /* coursefragmentsearchicon@2x.png in Resources */,
 				F3696826190C37D30020E991 /* SirendingzhiListBoard_iPhone.xib in Resources */,
@@ -5380,6 +5401,7 @@
 				CB37764117C5FF6F00DF5F21 /* shopping-cart-edit-remove-bg-grey@2x.png in Resources */,
 				CB37764217C5FF6F00DF5F21 /* shopping-cart-edit-remove-box@2x.png in Resources */,
 				E909CC1E182D0D650095B262 /* UITagListCell.xml in Resources */,
+				F32FA76C1966A58800C3A0C5 /* MyPointsBoard_iPhone.xib in Resources */,
 				F3977A0B195612CB00340D76 /* topbarunselectbtn@2x.png in Resources */,
 				CB37764317C5FF6F00DF5F21 /* shopping-cart-empty-cart-icon@2x.png in Resources */,
 				CB37764417C5FF6F00DF5F21 /* shopping-cart-modify-btn-grey@2x.png in Resources */,
@@ -5425,7 +5447,6 @@
 				CB37765717C5FF6F00DF5F21 /* trade-info-stream-logistics-time-icon@2x.png in Resources */,
 				F3B5395C1900C1A6004E72D4 /* QiuchangOrderCellViewController.xib in Resources */,
 				F3B5375518FE29FC004E72D4 /* courselisticonhui@2x.png in Resources */,
-				F3D14E89195AF60800A0DA3E /* InputNewPasswordBoard_iPhone.xib in Resources */,
 				CB37765817C5FF6F00DF5F21 /* trade-info-stream-logistics-time-line@2x.png in Resources */,
 				F3C5CD2C18F3FF9E00C8DF06 /* expand_left@2x.png in Resources */,
 				F3B1E3C6195DEE5C004B615E /* ChangePasswordBoard_iPhone.xib in Resources */,
@@ -5456,7 +5477,6 @@
 				E970D6C6182CE4E200146363 /* UIView+Animation.m in Sources */,
 				6302390C177C1676004C052D /* AppDelegate.m in Sources */,
 				E970D69F182CE4E200146363 /* Bee_UIRouter.m in Sources */,
-				F3B1E3D5195DF2A2004B615E /* MyPointsBoard_iPhone.m in Sources */,
 				F37AA81618E63BE7004BE9B2 /* TSQCalendarMonthHeaderCell.m in Sources */,
 				E970D783182CE4E200146363 /* Bee_HTTPServer2.m in Sources */,
 				E970D7A1182CE4E200146363 /* CXMLElement.m in Sources */,
@@ -5505,6 +5525,7 @@
 				E970D771182CE4E200146363 /* NSObject+BeeTypeConversion.mm in Sources */,
 				E970D693182CE4E200146363 /* BeeMessage+BeeXML.mm in Sources */,
 				E970D7A8182CE4E200146363 /* CXMLNode_XPathExtensions.m in Sources */,
+				F32FA7701966A67A00C3A0C5 /* HelpMainBoard_iPhone.m in Sources */,
 				E970D7A3182CE4E200146363 /* CXMLElement_ElementTreeExtensions.m in Sources */,
 				63023917177C1676004C052D /* BannerModel.m in Sources */,
 				E970D730182CE4E200146363 /* Bee_UITemplateManager.m in Sources */,
@@ -5575,6 +5596,7 @@
 				E9B7689517E175B80065F42C /* NSObject+TagList.m in Sources */,
 				E970D6A6182CE4E200146363 /* BeeUIBoard+Popover.m in Sources */,
 				E970D6DD182CE4E200146363 /* Bee_UIMenuController.m in Sources */,
+				F32FA76B1966A58800C3A0C5 /* MyPointsBoard_iPhone.m in Sources */,
 				E909CC17182D0D650095B262 /* CommonWaterMark.m in Sources */,
 				E970D728182CE4E200146363 /* Bee_UITransition.m in Sources */,
 				E970D69A182CE4E200146363 /* UIColor+BeeExtension.m in Sources */,
@@ -5708,6 +5730,7 @@
 				E970D6E0182CE4E200146363 /* Bee_UIPageViewController.m in Sources */,
 				E970D6A8182CE4E200146363 /* BeeUIStack+BackwardCompatible.m in Sources */,
 				F3B5394C1900C0E9004E72D4 /* SearchKeywordsListBoard_iPhone.m in Sources */,
+				F32FA7631966A56200C3A0C5 /* InputNewPasswordBoard_iPhone.m in Sources */,
 				E970D6BC182CE4E200146363 /* UITextField+BeeUIStyle.m in Sources */,
 				E970D766182CE4E200146363 /* NSBundle+BeeExtension.m in Sources */,
 				F3B5390818FFD77C004E72D4 /* QuichangDetailBoard_iPhone.m in Sources */,
@@ -5766,6 +5789,7 @@
 				E970D778182CE4E200146363 /* Bee_HTTPPackage.mm in Sources */,
 				E970D685182CE4E200146363 /* Bee.mm in Sources */,
 				E970D688182CE4E200146363 /* Bee_CLI.mm in Sources */,
+				F32FA7651966A56200C3A0C5 /* SendVerifyCodeBoard_iPhone.m in Sources */,
 				E909CC56182D0D650095B262 /* ShippingBoard_iPhone.m in Sources */,
 				E970D6FB182CE4E200146363 /* UIView+Traversing.m in Sources */,
 				E909CBF5182D0D650095B262 /* AddAddressBoard_iPhone.m in Sources */,
@@ -5807,7 +5831,6 @@
 				F3F0EEC919353871004613DA /* AifenxiangDetailWebBoard_iPhone.m in Sources */,
 				E909CC36182D0D650095B262 /* HelpCell_iPhone.m in Sources */,
 				E970D75C182CE4E200146363 /* Bee_Log.mm in Sources */,
-				F3D14E82195AF59500A0DA3E /* SendVerifyCodeBoard_iPhone.m in Sources */,
 				E970D6BE182CE4E200146363 /* UIView+BeeUIStyle.m in Sources */,
 				F31007BE1945E74C002DF54F /* MyOrderListTopSwitchViewController.m in Sources */,
 				E970D6E1182CE4E200146363 /* Bee_UIPickerView.m in Sources */,
@@ -5894,7 +5917,6 @@
 				CB8C732B17B92D1C0044DC3E /* PHOTO+AutoSelection.m in Sources */,
 				E970D735182CE4E200146363 /* Bee_UITemplateContext.m in Sources */,
 				E970D745182CE4E200146363 /* Bee_SystemPackage.mm in Sources */,
-				F3D14E87195AF5F200A0DA3E /* InputNewPasswordBoard_iPhone.m in Sources */,
 				F3D14E46195726B300A0DA3E /* SBJsonBase.m in Sources */,
 				E970D723182CE4E200146363 /* BeeUIQuery+Miscellaneous.m in Sources */,
 				E970D6AA182CE4E200146363 /* UIView+UIViewController.m in Sources */,

@@ -22,6 +22,7 @@
 #import "ServerConfig.h"
 #import "ErrorMsg.h"
 #import "MJNIndexView.h"
+#import "AppDelegate.h"
 
 #pragma mark -
 
@@ -208,6 +209,12 @@ ON_SIGNAL2( BeeUIBoard, signal )
 - (void)fetchData
 {
     self.HTTP_POST([[ServerConfig sharedInstance].url stringByAppendingString:@"province"]).TIMEOUT(30);
+}
+
+- (void)fetchLocationFromBaidu:(NSString*)cityName
+{
+    self.HTTP_GET(@"http://api.map.baidu.com/geocoder/v2/").PARAM(@"address",cityName).PARAM(@"output",@"json").PARAM(@"ak",@"pb55FxtgDEXG9qzKIOhFpGZa").TIMEOUT(30);
+    [self presentLoadingTips:@"正在获取经纬度"];
 }
 
 - (void)handleDatas
@@ -467,6 +474,23 @@ ON_SIGNAL2( BeeUIBoard, signal )
                 [self presentFailureTips:__TEXT(@"error_network")];
             }
         }
+        //百度经纬度
+        if ([[req.url absoluteString] rangeOfString:@"api.map.baidu.com/geocoder"].length > 0) {
+            //正确逻辑
+            if ([(dict[@"status"]) intValue] == 0)
+            {
+                NSMutableDictionary* mdict = [NSMutableDictionary dictionaryWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:@"search_local"]];
+                mdict[@"latitude"] = dict[@"result"][@"location"][@"lat"];
+                mdict[@"longitude"] = dict[@"result"][@"location"][@"lng"];
+                [[NSUserDefaults standardUserDefaults] setObject:mdict forKey:@"search_local"];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+                [self.stack popBoardAnimated:YES];
+            }
+            else
+            {
+                [self presentFailureTips:__TEXT(@"error_network")];
+            }
+        }
     }
 }
 
@@ -632,8 +656,16 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
     }
     else
     {
-        [[NSUserDefaults standardUserDefaults] setObject:province forKey:@"search_local"];
-        [self.stack popBoardAnimated:YES];
+        NSMutableDictionary* mdict = [NSMutableDictionary dictionaryWithDictionary:province];
+        if ([mdict[@"longitude"] doubleValue] < 0.000001
+            || [mdict[@"latitude"] doubleValue] < 0.000001)
+        {
+            mdict[@"latitude"] = [NSNumber numberWithDouble:[(AppDelegate*)[AppDelegate sharedInstance] getCurrentLatitude]];
+            mdict[@"longitude"] = [NSNumber numberWithDouble:[(AppDelegate*)[AppDelegate sharedInstance] getCurrentLongitude]];
+        }
+        [[NSUserDefaults standardUserDefaults] setObject:mdict forKey:@"search_local"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        [self fetchLocationFromBaidu:province[@"name"]];
     }
 }
 

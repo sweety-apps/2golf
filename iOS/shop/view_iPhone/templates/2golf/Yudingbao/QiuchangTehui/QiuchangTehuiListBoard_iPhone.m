@@ -147,6 +147,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
               @"hasExpand":@NO
               };
             [[NSUserDefaults standardUserDefaults] setObject:loc forKey:@"search_local"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
         }
         str = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_local"][@"name"];
         if ([str length] == 0 || [str isEqualToString:@"当前位置"])

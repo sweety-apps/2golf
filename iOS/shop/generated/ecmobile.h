@@ -435,6 +435,7 @@ enum RANK_LEVEL
 @property (nonatomic, retain) NSNumber *		rec_id;
 @property (nonatomic, retain) NSNumber *        goods_id;
 @property (nonatomic, retain) NSString *		name;
+@property (nonatomic, retain) NSString *		type;
 @property (nonatomic, retain) NSString *		market_price;
 @property (nonatomic, retain) NSString *		shop_price;
 @property (nonatomic, retain) NSString *		promote_price;

@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "shop/generated/ecmobile.mm"
-            timestampString = "408647739.398226"
+            timestampString = "426168190.695347"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1135"
-            endingLineNumber = "1135"
+            startingLineNumber = "1136"
+            endingLineNumber = "1136"
             landmarkName = "DEF_MESSAGE_( config, msg )"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "shop/generated/ecmobile.mm"
-            timestampString = "408647739.398226"
+            timestampString = "426168190.695347"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1139"
-            endingLineNumber = "1139"
+            startingLineNumber = "1140"
+            endingLineNumber = "1140"
             landmarkName = "DEF_MESSAGE_( config, msg )"
             landmarkType = "7">
          </BreakpointContent>
@@ -414,11 +414,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "framework/mvc/view/dom-element/Bee_UIScrollView.m"
-            timestampString = "418648626.741189"
+            timestampString = "426011073.25695"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "732"
-            endingLineNumber = "732"
+            startingLineNumber = "736"
+            endingLineNumber = "736"
             landmarkName = "-asyncReloadData"
             landmarkType = "5">
          </BreakpointContent>
@@ -734,11 +734,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "shop/view_iPhone/templates/2golf/Yudingbao/Order/QiuchangOrderEditBoard_iPhone.m"
-            timestampString = "425073033.571137"
+            timestampString = "426108817.858618"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "366"
-            endingLineNumber = "366"
+            startingLineNumber = "503"
+            endingLineNumber = "503"
             landmarkName = "-scrollView:sizeForIndex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -808,11 +808,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "shop/generated/ecmobile.mm"
-            timestampString = "420016723.430841"
+            timestampString = "426168190.695347"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2194"
-            endingLineNumber = "2194"
+            startingLineNumber = "2195"
+            endingLineNumber = "2195"
             landmarkName = "DEF_MESSAGE_( user_signup, msg )"
             landmarkType = "7">
          </BreakpointContent>
@@ -824,11 +824,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "shop/generated/ecmobile.mm"
-            timestampString = "420016763.880831"
+            timestampString = "426168190.695347"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2200"
-            endingLineNumber = "2200"
+            startingLineNumber = "2201"
+            endingLineNumber = "2201"
             landmarkName = "DEF_MESSAGE_( user_signup, msg )"
             landmarkType = "7">
          </BreakpointContent>
@@ -952,11 +952,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "shop/view_iPhone/templates/2golf/Yudingbao/Search/CitySelectBoard_iPhone.m"
-            timestampString = "422119562.891728"
+            timestampString = "426276997.758684"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "727"
-            endingLineNumber = "727"
+            startingLineNumber = "759"
+            endingLineNumber = "759"
             landmarkName = "-_setUpCell:forIndex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -983,38 +983,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "shop/view_iPhone/templates/2golf/Yudingbao/QiuchangDetail/QuichangDetailBoard_iPhone.m"
-            timestampString = "425326414.322296"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "528"
-            endingLineNumber = "528"
-            landmarkName = "-fetchData"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "shop/view_iPhone/templates/2golf/Yudingbao/QiuchangDetail/QuichangDetailBoard_iPhone.m"
-            timestampString = "425326414.322296"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "527"
-            endingLineNumber = "527"
-            landmarkName = "-fetchData"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "shop/view_iPhone/templates/2golf/Yudingbao/Search/QiuchangResultListBoard_iPhone.m"
             timestampString = "424793342.162839"
             startingColumnNumber = "9223372036854775807"
@@ -1032,11 +1000,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "shop/view_iPhone/templates/2golf/Yudingbao/Order/QiuchangOrderEditBoard_iPhone.m"
-            timestampString = "425073033.571137"
+            timestampString = "426108817.858618"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "444"
-            endingLineNumber = "444"
+            startingLineNumber = "594"
+            endingLineNumber = "594"
             landmarkName = "-commonCheckRequest:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1048,11 +1016,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "shop/view_iPhone/templates/2golf/Yudingbao/Order/QiuchangOrderEditBoard_iPhone.m"
-            timestampString = "425073033.571137"
+            timestampString = "426108817.858618"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "448"
-            endingLineNumber = "448"
+            startingLineNumber = "598"
+            endingLineNumber = "598"
             landmarkName = "-commonCheckRequest:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1111,22 +1079,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "shop/view_iPhone/templates/2golf/Aifenxiang/Detail/AifenxiangDetailWebBoard_iPhone.m"
-            timestampString = "424708390.708621"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "196"
-            endingLineNumber = "196"
-            landmarkName = "ON_SIGNAL2()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "framework/mvc/view/dom-element/Bee_UIWebView.m"
             timestampString = "422952915.980846"
             startingColumnNumber = "9223372036854775807"
@@ -1144,11 +1096,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "shop/view_iPhone/templates/ProfileBoard_iPhone.m"
-            timestampString = "425660720.666154"
+            timestampString = "426162030.232099"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
             landmarkName = "-checkXMLAndLayout"
             landmarkType = "5">
          </BreakpointContent>
@@ -1160,11 +1112,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "shop/view_iPhone/templates/2golf/Yongpinbao/MyOrderList/MyOrderListBoard_iPhone.m"
-            timestampString = "425288472.996299"
+            timestampString = "426140630.562814"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "251"
-            endingLineNumber = "251"
+            startingLineNumber = "252"
+            endingLineNumber = "252"
             landmarkName = "-requestCancelCourse:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1176,11 +1128,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "shop/view_iPhone/templates/2golf/Yongpinbao/MyOrderList/MyOrderListBoard_iPhone.m"
-            timestampString = "425288472.996299"
+            timestampString = "426140630.562814"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "241"
-            endingLineNumber = "241"
+            startingLineNumber = "242"
+            endingLineNumber = "242"
             landmarkName = "-fetchData"
             landmarkType = "5">
          </BreakpointContent>
@@ -1208,11 +1160,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "shop/view_iPhone/templates/2golf/Yudingbao/QiuchangDetail/QuichangDetailBoard_iPhone.m"
-            timestampString = "425326414.322296"
+            timestampString = "426141977.925861"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "518"
-            endingLineNumber = "518"
+            startingLineNumber = "537"
+            endingLineNumber = "537"
             landmarkName = "-showWetherView"
             landmarkType = "5">
          </BreakpointContent>
@@ -1224,11 +1176,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "shop/view_iPhone/templates/2golf/Yudingbao/Sirendingzhi/OtherTripBoard_iPhone.m"
-            timestampString = "424107137.252357"
+            timestampString = "426163668.35449"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "228"
-            endingLineNumber = "228"
+            startingLineNumber = "308"
+            endingLineNumber = "308"
             landmarkName = "-textFieldDidBeginEditing:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1330,11 +1282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "shop/view_iPhone/templates/2golf/Yudingbao/Order/QiuchangOrderResultBoard_iPhone.m"
-            timestampString = "425143167.422028"
+            timestampString = "426140630.562814"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "277"
-            endingLineNumber = "277"
+            startingLineNumber = "279"
+            endingLineNumber = "279"
             landmarkName = "-actionSheet:clickedButtonAtIndex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1346,11 +1298,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "shop/view_iPhone/templates/2golf/Yudingbao/Order/QiuchangOrderResultBoard_iPhone.m"
-            timestampString = "425143190.018358"
+            timestampString = "426140630.562814"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "259"
-            endingLineNumber = "259"
+            startingLineNumber = "261"
+            endingLineNumber = "261"
             landmarkName = "-QiuchangOrderCell_iPhone:onPressedPay:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1378,11 +1330,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "shop/view_iPhone/templates/2golf/Yongpinbao/MyOrderList/MyOrderListBoard_iPhone.m"
-            timestampString = "425288631.049769"
+            timestampString = "426140630.562814"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "235"
-            endingLineNumber = "235"
+            startingLineNumber = "236"
+            endingLineNumber = "236"
             landmarkName = "-fetchData"
             landmarkType = "5">
          </BreakpointContent>
@@ -1474,11 +1426,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "shop/view_iPhone/templates/ProfileBoard_iPhone.m"
-            timestampString = "425660720.666154"
+            timestampString = "426162030.232099"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "900"
-            endingLineNumber = "900"
+            startingLineNumber = "912"
+            endingLineNumber = "912"
             landmarkName = "-scrollView:viewForIndex:scale:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1490,11 +1442,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "shop/view_iPhone/templates/ProfileBoard_iPhone.m"
-            timestampString = "425660720.666154"
+            timestampString = "426162030.232099"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "727"
-            endingLineNumber = "727"
+            startingLineNumber = "739"
+            endingLineNumber = "739"
             landmarkName = "ON_SIGNAL3()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1506,11 +1458,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "shop/view_iPhone/templates/ProfileBoard_iPhone.m"
-            timestampString = "425660720.666154"
+            timestampString = "426162030.232099"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "792"
-            endingLineNumber = "792"
+            startingLineNumber = "804"
+            endingLineNumber = "804"
             landmarkName = "ON_SIGNAL2()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1554,11 +1506,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "shop/view_iPhone/templates/ProfileBoard_iPhone.m"
-            timestampString = "425660720.666154"
+            timestampString = "426162030.232099"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
             landmarkName = "-load"
             landmarkType = "5">
          </BreakpointContent>
@@ -1570,11 +1522,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "shop/view_iPhone/templates/ProfileBoard_iPhone.m"
-            timestampString = "425660720.666154"
+            timestampString = "426162030.232099"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
             landmarkName = "-checkXMLAndLayout"
             landmarkType = "5">
          </BreakpointContent>
@@ -1586,11 +1538,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "shop/view_iPhone/templates/ProfileBoard_iPhone.m"
-            timestampString = "425660720.666154"
+            timestampString = "426162030.232099"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
             landmarkName = "-checkXMLAndLayout"
             landmarkType = "5">
          </BreakpointContent>
@@ -1602,11 +1554,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "shop/view_iPhone/templates/ProfileBoard_iPhone.m"
-            timestampString = "425660720.666154"
+            timestampString = "426162030.232099"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
             landmarkName = "-updateContents"
             landmarkType = "5">
          </BreakpointContent>
@@ -1618,11 +1570,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "shop/view_iPhone/templates/ProfileBoard_iPhone.m"
-            timestampString = "425660720.666154"
+            timestampString = "426162030.232099"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "-checkXMLAndLayout"
             landmarkType = "5">
          </BreakpointContent>
@@ -1634,11 +1586,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "shop/view_iPhone/templates/2golf/Aifenxiang/Detail/AifenxiangDetailWebBoard_iPhone.m"
-            timestampString = "425571812.252259"
+            timestampString = "426140983.69678"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "326"
-            endingLineNumber = "326"
+            startingLineNumber = "332"
+            endingLineNumber = "332"
             landmarkName = "-shareAllButtonClickHandler:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1682,11 +1634,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "shop/view_iPhone/templates/ProfileBoard_iPhone.m"
-            timestampString = "425660720.666154"
+            timestampString = "426162030.232099"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "807"
-            endingLineNumber = "807"
+            startingLineNumber = "819"
+            endingLineNumber = "819"
             landmarkName = "-updateState"
             landmarkType = "5">
          </BreakpointContent>
@@ -1698,11 +1650,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "shop/generated/ecmobile.mm"
-            timestampString = "425581231.929323"
+            timestampString = "426168190.695347"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2082"
-            endingLineNumber = "2082"
+            startingLineNumber = "2083"
+            endingLineNumber = "2083"
             landmarkName = "DEF_MESSAGE_( user_info, msg )"
             landmarkType = "7">
          </BreakpointContent>
@@ -1710,23 +1662,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "shop/view_iPhone/templates/2golf/MyAigao/Recharge/RechargeBoard_iPhone.m"
-            timestampString = "425673131.635809"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "259"
-            endingLineNumber = "259"
-            landmarkName = "-requestRechargeData"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "shop/view_iPhone/templates/2golf/MyAigao/Recharge/RechargeBoard_iPhone.m"
@@ -1762,11 +1698,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "shop/view_iPhone/templates/2golf/Yongpinbao/MyOrderList/MyOrderListBoard_iPhone.m"
-            timestampString = "425676499.010425"
+            timestampString = "426140630.562814"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "406"
-            endingLineNumber = "406"
+            startingLineNumber = "407"
+            endingLineNumber = "407"
             landmarkName = "-actionSheet:clickedButtonAtIndex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1778,11 +1714,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "shop/view_iPhone/templates/2golf/Yongpinbao/MyOrderList/MyOrderListBoard_iPhone.m"
-            timestampString = "425674668.189089"
+            timestampString = "426140630.562814"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "337"
-            endingLineNumber = "337"
+            startingLineNumber = "338"
+            endingLineNumber = "338"
             landmarkName = "-handleRequest:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1810,11 +1746,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "shop/view_iPhone/templates/2golf/Yongpinbao/MyOrderList/MyOrderListBoard_iPhone.m"
-            timestampString = "425677107.253741"
+            timestampString = "426140630.562814"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "474"
-            endingLineNumber = "474"
+            startingLineNumber = "475"
+            endingLineNumber = "475"
             landmarkName = "-_getPayingPrice"
             landmarkType = "5">
          </BreakpointContent>
@@ -1825,28 +1761,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "shop/view_iPhone/templates/CollectionBoard_iPhone.m"
-            timestampString = "425847562.512289"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "208"
-            endingLineNumber = "208"
-            landmarkName = "ON_SIGNAL2()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "shop/view_iPhone/AppBoard_iPhone.m"
-            timestampString = "425731056.018071"
+            timestampString = "426151283.933851"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "407"
-            endingLineNumber = "407"
+            startingLineNumber = "442"
+            endingLineNumber = "442"
             landmarkName = "-hideAdImage"
             landmarkType = "5">
          </BreakpointContent>
@@ -1858,11 +1778,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "shop/view_iPhone/AppBoard_iPhone.m"
-            timestampString = "425731056.018071"
+            timestampString = "426151283.933851"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "416"
-            endingLineNumber = "416"
+            startingLineNumber = "451"
+            endingLineNumber = "451"
             landmarkName = "-fetchADImage"
             landmarkType = "5">
          </BreakpointContent>
@@ -1874,11 +1794,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "shop/view_iPhone/AppBoard_iPhone.m"
-            timestampString = "425731056.018071"
+            timestampString = "426151283.933851"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "446"
-            endingLineNumber = "446"
+            startingLineNumber = "481"
+            endingLineNumber = "481"
             landmarkName = "-handleRequest:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1890,11 +1810,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "shop/view_iPhone/AppBoard_iPhone.m"
-            timestampString = "425731056.018071"
+            timestampString = "426151283.933851"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "460"
-            endingLineNumber = "460"
+            startingLineNumber = "509"
+            endingLineNumber = "509"
             landmarkName = "-handleRequest:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1906,11 +1826,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "shop/view_iPhone/AppBoard_iPhone.m"
-            timestampString = "425731073.216512"
+            timestampString = "426151283.933851"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "384"
-            endingLineNumber = "384"
+            startingLineNumber = "415"
+            endingLineNumber = "415"
             landmarkName = "-showAdImage"
             landmarkType = "5">
          </BreakpointContent>
@@ -1922,11 +1842,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "shop/view_iPhone/templates/2golf/Yudingbao/QiuchangTehui/QiuchangTehuiListBoard_iPhone.m"
-            timestampString = "425826321.323256"
+            timestampString = "426149941.548033"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "437"
-            endingLineNumber = "437"
+            startingLineNumber = "438"
+            endingLineNumber = "438"
             landmarkName = "-handleRequest:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1970,11 +1890,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "shop/view_iPhone/templates/2golf/Yudingbao/QiuchangTehui/QiuchangTehuiListBoard_iPhone.m"
-            timestampString = "425826321.323256"
+            timestampString = "426149941.548033"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "487"
-            endingLineNumber = "487"
+            startingLineNumber = "488"
+            endingLineNumber = "488"
             landmarkName = "-onPressedJiagepaixuBtn:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1986,11 +1906,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "shop/view_iPhone/templates/2golf/Yudingbao/QiuchangTehui/QiuchangTehuiListBoard_iPhone.m"
-            timestampString = "425826321.323256"
+            timestampString = "426149941.548033"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "491"
-            endingLineNumber = "491"
+            startingLineNumber = "492"
+            endingLineNumber = "492"
             landmarkName = "-onPressedJiagepaixuBtn:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2002,11 +1922,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "shop/view_iPhone/templates/2golf/Yudingbao/QiuchangTehui/QiuchangTehuiListBoard_iPhone.m"
-            timestampString = "425826321.323256"
+            timestampString = "426149941.548033"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "503"
-            endingLineNumber = "503"
+            startingLineNumber = "504"
+            endingLineNumber = "504"
             landmarkName = "-onPressedShijianpaixuBtn:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2018,11 +1938,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "shop/view_iPhone/templates/2golf/Yudingbao/QiuchangTehui/QiuchangTehuiListBoard_iPhone.m"
-            timestampString = "425826321.323256"
+            timestampString = "426149941.548033"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "507"
-            endingLineNumber = "507"
+            startingLineNumber = "508"
+            endingLineNumber = "508"
             landmarkName = "-onPressedShijianpaixuBtn:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2098,11 +2018,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "shop/generated/ecmobile.mm"
-            timestampString = "425842110.760411"
+            timestampString = "426168190.695347"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2411"
-            endingLineNumber = "2411"
+            startingLineNumber = "2412"
+            endingLineNumber = "2412"
             landmarkName = "DEF_MESSAGE_( brand, msg )"
             landmarkType = "7">
          </BreakpointContent>
@@ -2174,7 +2094,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "shop/view_iPhone/templates/PayBoard_iPhone.m"
@@ -2206,38 +2126,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "shop/view_iPhone/templates/CheckoutBoard_iPhone.m"
-            timestampString = "425894954.987923"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "460"
-            endingLineNumber = "460"
-            landmarkName = "ON_SIGNAL2()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "shop/view_iPhone/templates/GoodsDetailBoard_iPhone.m"
-            timestampString = "425896496.339764"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "780"
-            endingLineNumber = "780"
-            landmarkName = "-handleMessage:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -2264,6 +2152,390 @@
             startingLineNumber = "132"
             endingLineNumber = "132"
             landmarkName = "-handleMessage:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "shop/view_iPhone/templates/ProfileBoard_iPhone.m"
+            timestampString = "426162030.232099"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "919"
+            endingLineNumber = "919"
+            landmarkName = "-scrollView:viewForIndex:scale:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "shop/view_iPhone/templates/ProfileBoard_iPhone.m"
+            timestampString = "426162030.232099"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "443"
+            endingLineNumber = "443"
+            landmarkName = "ON_SIGNAL2()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "framework/mvc/view/dom-element/Bee_UIScrollView.m"
+            timestampString = "426011073.25695"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1232"
+            endingLineNumber = "1232"
+            landmarkName = "-syncPositionsIfNeeded"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "shop/view_iPhone/templates/2golf/Yudingbao/Order/QiuchangOrderEditBoard_iPhone.m"
+            timestampString = "426108817.858618"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "305"
+            endingLineNumber = "305"
+            landmarkName = "-resetCell"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "shop/view_iPhone/templates/2golf/Yudingbao/Search/CitySelectBoard_iPhone.m"
+            timestampString = "426276997.758684"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "460"
+            endingLineNumber = "460"
+            landmarkName = "-handleRequest:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "shop/view_iPhone/templates/2golf/Aifenxiang/Detail/AifenxiangDetailWebBoard_iPhone.m"
+            timestampString = "426140983.69678"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "298"
+            endingLineNumber = "298"
+            landmarkName = "-_loadPage"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "shop/view_iPhone/templates/2golf/Aifenxiang/Detail/AifenxiangDetailWebBoard_iPhone.m"
+            timestampString = "426140983.69678"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "247"
+            endingLineNumber = "247"
+            landmarkName = "-fetchData"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "shop/view_iPhone/templates/2golf/Aifenxiang/Detail/AifenxiangDetailWebBoard_iPhone.m"
+            timestampString = "426140983.69678"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "281"
+            endingLineNumber = "281"
+            landmarkName = "-handleRequest:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "shop/view_iPhone/templates/2golf/Yudingbao/Sirendingzhi/SirendingzhiListBoard_iPhone.m"
+            timestampString = "426149665.944821"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
+            landmarkName = "-numberOfViewsInScrollView:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "shop/view_iPhone/templates/2golf/Yudingbao/Sirendingzhi/SirendingzhiListBoard_iPhone.m"
+            timestampString = "426149668.988263"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "182"
+            endingLineNumber = "182"
+            landmarkName = "-scrollView:viewForIndex:scale:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "shop/view_iPhone/templates/2golf/Yudingbao/Search/SouSuoQiuChangBoard_iPhone.m"
+            timestampString = "426149865.908918"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "220"
+            endingLineNumber = "220"
+            landmarkName = "-_refreshSelections"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "shop/view_iPhone/templates/2golf/Yudingbao/QiuchangTehui/QiuchangTehuiListBoard_iPhone.m"
+            timestampString = "426151276.712533"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
+            landmarkName = "ON_SIGNAL2()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "shop/view_iPhone/templates/2golf/Yudingbao/Search/CitySelectBoard_iPhone.m"
+            timestampString = "426276997.758684"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "468"
+            endingLineNumber = "468"
+            landmarkName = "-handleRequest:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "shop/view_iPhone/templates/2golf/Yudingbao/Sirendingzhi/OtherTripBoard_iPhone.m"
+            timestampString = "426163794.931838"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
+            landmarkName = "-onPressedSend:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "shop/view_iPhone/templates/2golf/Yudingbao/QiuchangDetail/QiuchangVipVerifyBoard_iPhone.m"
+            timestampString = "426165151.46571"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
+            landmarkName = "-handleRequest:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "shop/view_iPhone/templates/2golf/Yudingbao/QiuchangDetail/QuichangDetailBoard_iPhone.m"
+            timestampString = "426270399.594395"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "589"
+            endingLineNumber = "589"
+            landmarkName = "-handleRequest:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "shop/view_iPhone/templates/2golf/Yudingbao/QiuchangDetail/QuichangDetailBoard_iPhone.m"
+            timestampString = "426270411.556512"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "604"
+            endingLineNumber = "604"
+            landmarkName = "-handleRequest:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "shop/view_iPhone/templates/2golf/Yudingbao/QiuchangDetail/QuichangDetailBoard_iPhone.m"
+            timestampString = "426270707.554692"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "478"
+            endingLineNumber = "478"
+            landmarkName = "-resetCells"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "shop/view_iPhone/templates/2golf/Yudingbao/QiuchangDetail/QiuchangDetailPriceContentCellBoard_iPhone.m"
+            timestampString = "426272000.894013"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "-dataDidChanged"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "shop/view_iPhone/templates/2golf/Yudingbao/QiuchangDetail/QiuchangDetailPriceContentCellBoard_iPhone.m"
+            timestampString = "426272313.332981"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "-dataDidChanged"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "shop/view_iPhone/templates/2golf/Yudingbao/QiuchangDetail/QiuchangDetailPriceContentCellBoard_iPhone.m"
+            timestampString = "426272905.092692"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "-dataDidChanged"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "shop/view_iPhone/templates/2golf/Yudingbao/Search/CitySelectBoard_iPhone.m"
+            timestampString = "426277013.334198"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "217"
+            endingLineNumber = "217"
+            landmarkName = "-fetchLocationFromBaidu:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "shop/view_iPhone/templates/2golf/Yudingbao/Search/CitySelectBoard_iPhone.m"
+            timestampString = "426277118.612775"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "480"
+            endingLineNumber = "480"
+            landmarkName = "-handleRequest:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "shop/view_iPhone/templates/2golf/Yudingbao/Search/CitySelectBoard_iPhone.m"
+            timestampString = "426277126.345785"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "427"
+            endingLineNumber = "427"
+            landmarkName = "-commonCheckRequest:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

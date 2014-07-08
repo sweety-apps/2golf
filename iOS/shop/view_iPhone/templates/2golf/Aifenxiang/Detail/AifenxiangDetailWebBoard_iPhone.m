@@ -28,6 +28,7 @@
 @interface AifenxiangDetailWebBoard_iPhone() <ISSShareViewDelegate>
 {
     BOOL _showLoading;
+    BOOL _hasLoaded;
 }
 
 @property (nonatomic, retain) NSString* detailID;
@@ -149,11 +150,16 @@ ON_SIGNAL2( BeeUIBoard, signal )
         self.webView.frame = rect;
         self.webView.scrollView.frame = rect;
         //self.webView.bounds = rect;
-        [self fetchData];
+        
+        if (!_hasLoaded)
+        {
+            _hasLoaded = YES;
+            [self fetchData];
+        }
     }
     else if ( [signal is:BeeUIBoard.DID_APPEAR] )
     {
-        
+        [[AppBoard_iPhone sharedInstance] setTabbarHidden:YES animated:NO];
     }
     else if ( [signal is:BeeUIBoard.WILL_DISAPPEAR] )
     {

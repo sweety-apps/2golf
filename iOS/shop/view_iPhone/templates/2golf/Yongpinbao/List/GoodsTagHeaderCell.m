@@ -34,14 +34,17 @@
     self.brandButton.layer.masksToBounds = YES;
     self.brandButton.layer.borderColor = [UIColor colorWithRed:0.274 green:0.535 blue:0.079 alpha:1.000].CGColor;
     self.brandButton.layer.borderWidth = 2;
+    self.brandButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     
     self.categoryButton.layer.masksToBounds = YES;
     self.categoryButton.layer.borderColor = [UIColor colorWithRed:0.274 green:0.535 blue:0.079 alpha:1.000].CGColor;
     self.categoryButton.layer.borderWidth = 2;
+    self.categoryButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     
     self.keywordButton.layer.masksToBounds = YES;
     self.keywordButton.layer.borderColor = [UIColor colorWithRed:0.274 green:0.535 blue:0.079 alpha:1.000].CGColor;
     self.keywordButton.layer.borderWidth = 2;
+    self.keywordButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     
 }
 

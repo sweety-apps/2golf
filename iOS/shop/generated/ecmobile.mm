@@ -433,6 +433,7 @@ CONVERT_PROPERTY_CLASS( goods_list, ORDER_GOODS );
 @implementation COLLECT_GOODS
 
 @synthesize rec_id = _rec_id;
+@synthesize type = _type;
 
 @end
 

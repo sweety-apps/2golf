@@ -217,6 +217,7 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
                               @"hasExpand":@NO
                               };
         [[NSUserDefaults standardUserDefaults] setObject:loc forKey:@"search_local"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
     }
     str = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_local"][@"name"];
     if ([str length] == 0)

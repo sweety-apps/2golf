@@ -71,7 +71,14 @@ DEF_SIGNAL( TOUCHED )
         {
             [self.ctrl.imgView setUrl:dict[@"imgurl"]];
         }
-        self.ctrl.desLbl.text = dict[@"summary"];
+        NSString* desStr =  dict[@"summary"];
+        desStr = [desStr stringByReplacingOccurrencesOfString:@"&nbsp;" withString:@""];
+        desStr = [desStr stringByReplacingOccurrencesOfString:@"&mdash;" withString:@""];
+        desStr = [desStr stringByReplacingOccurrencesOfString:@"&middot;" withString:@""];
+        desStr = [desStr stringByReplacingOccurrencesOfString:@"&ldquo;" withString:@""];
+        desStr = [desStr stringByReplacingOccurrencesOfString:@"&rdquo;" withString:@""];
+        desStr = [desStr stringByReplacingOccurrencesOfString:@"&amp;" withString:@""];
+        self.ctrl.desLbl.text = desStr;
         if ([self.ctrl.desLbl.text length] == 0)
         {
             self.ctrl.desLbl.text = self.ctrl.titleLbl.text;

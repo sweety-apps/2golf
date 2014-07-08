@@ -41,6 +41,7 @@
 #import "ChangePasswordBoard_iPhone.h"
 #import "RechargeBoard_iPhone.h"
 #import "MyPointsBoard_iPhone.h"
+#import "HelpMainBoard_iPhone.h"
 
 #pragma mark -
 
@@ -240,8 +241,8 @@ SUPPORT_RESOURCE_LOADING(YES);
             $(@"#header-level-icon").HIDE();
             $(@"#header-level-name").HIDE();
             
-            [self setNeedsDisplay];
-            [self setNeedsLayout];
+            //[self setNeedsDisplay];
+            //[self setNeedsLayout];
 		}
     }
 }
@@ -275,6 +276,8 @@ SUPPORT_RESOURCE_LOADING(YES);
 {
 	BeeUIScrollView *		_scroll;
     ProfileCell_iPhone *	_profile;
+    
+    BOOL _hasViewWillAppear;
 }
 @end
 
@@ -342,10 +345,13 @@ ON_SIGNAL2( BeeUIBoard, signal )
         
 		_scroll = [[BeeUIScrollView alloc] init];
 		_scroll.dataSource = self;
+        _scroll.disableResyncCellPosition = YES;
 		[self.view addSubview:_scroll];
         
         _profile = [[ProfileCell_iPhone alloc] initWithFrame:CGRectZero];
-        [_scroll showHeaderLoader:YES animated:YES];
+        [_scroll showHeaderLoader:NO animated:NO];
+        _scroll.headerShown = NO;
+        _scroll.footerShown = NO;
 		
 		[self observeNotification:UserModel.LOGIN];
 		[self observeNotification:UserModel.LOGOUT];
@@ -394,15 +400,20 @@ ON_SIGNAL2( BeeUIBoard, signal )
     }
     else if ( [signal is:BeeUIBoard.DID_APPEAR] )
     {
-		[self updateState];
-        
-        if ( NO == self.helpModel.loaded )
-		{
-			[self.helpModel fetchFromServer];
-		}
+        if (!_hasViewWillAppear)
+        {
+            _hasViewWillAppear = YES;
+            [self updateState];
+            
+            if ( NO == self.helpModel.loaded )
+            {
+                [self.helpModel fetchFromServer];
+            }
+        }
     }
     else if ( [signal is:BeeUIBoard.WILL_DISAPPEAR] )
     {
+        _hasViewWillAppear = NO;
         [[AppBoard_iPhone sharedInstance] setTabbarHidden:YES];
     }
     else if ( [signal is:BeeUIBoard.DID_DISAPPEAR] )
@@ -437,9 +448,6 @@ ON_SIGNAL2( BeeUIScrollView, signal )
 		}
         
 		[[CartModel sharedInstance] fetchFromServer];
-	}
-	else if ( [signal is:BeeUIScrollView.REACH_BOTTOM] )
-	{
 	}
 }
 
@@ -629,6 +637,7 @@ ON_SIGNAL3( ProfileCell_iPhone, help, signal )
 {
     if ( [signal is:BeeUIButton.TOUCH_UP_INSIDE] )
     {
+        /*
         if (self.helpModel && [self.helpModel.articleGroups count] > 0)
         {
             ARTICLE_GROUP * articleGroup = self.helpModel.articleGroups[0];
@@ -639,6 +648,9 @@ ON_SIGNAL3( ProfileCell_iPhone, help, signal )
                 [self.stack pushBoard:board animated:YES];
             }
         }
+         */
+        HelpMainBoard_iPhone* board = [HelpMainBoard_iPhone boardWithNibName:@"HelpMainBoard_iPhone"];
+        [self.stack pushBoard:board animated:YES];
 		
     }
 }
@@ -809,7 +821,7 @@ ON_SIGNAL2( signout_yes, signal )
 			[[UserModel sharedInstance] updateProfile];
 		}
 		
-		[_scroll showHeaderLoader:YES animated:NO];
+		[_scroll showHeaderLoader:NO animated:NO];
 	}
 	else
 	{

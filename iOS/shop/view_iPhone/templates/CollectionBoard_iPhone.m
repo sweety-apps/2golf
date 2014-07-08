@@ -194,6 +194,14 @@ ON_SIGNAL2( BeeUIScrollView, signal )
 
 - (BOOL) checkIsCourse:(COLLECT_GOODS*)goods
 {
+    if (goods.type && [goods.type length] > 0)
+    {
+        if ([goods.type intValue] == 0)
+        {
+            return YES;
+        }
+        return NO;
+    }
     if ([goods.name hasSuffix:@"高尔夫"] || [goods.name hasSuffix:@"场"] || [goods.name hasSuffix:@"俱乐部"] || [goods.name hasSuffix:@"会所"] || [goods.name hasSuffix:@"球会"] || [goods.name hasSuffix:@"场球"])
     {
         return YES;

@@ -19,6 +19,7 @@
 #import "QiuchangOrderCellViewController.h"
 #import "UserModel.h"
 #import "ServerConfig.h"
+#import "AppBoard_iPhone.h"
 
 #pragma mark -
 
@@ -79,6 +80,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
     }
     else if ( [signal is:BeeUIBoard.DID_APPEAR] )
     {
+        [[AppBoard_iPhone sharedInstance] setTabbarHidden:YES animated:NO];
     }
     else if ( [signal is:BeeUIBoard.WILL_DISAPPEAR] )
     {

@@ -166,6 +166,8 @@
 	BeeUIScrollViewBlock		_whenReachBottom;
 	BeeUIScrollViewBlock		_whenHeaderRefresh;
 	BeeUIScrollViewBlock		_whenFooterRefresh;
+    
+    BOOL _disableResyncCellPosition;
 }
 
 - (void)initSelf;
@@ -271,6 +273,8 @@ DEF_SIGNAL( FOOTER_REFRESH )
 @synthesize whenReachBottom = _whenReachBottom;
 @synthesize whenHeaderRefresh = _whenHeaderRefresh;
 @synthesize whenFooterRefresh = _whenFooterRefresh;
+
+@synthesize disableResyncCellPosition = _disableResyncCellPosition;
 
 - (id)init
 {
@@ -1231,11 +1235,14 @@ DEF_SIGNAL( FOOTER_REFRESH )
 	
 	if ( needed )
 	{
-		[self recalcVisibleRange];
+        if(!_disableResyncCellPosition)
+        {
+            [self recalcVisibleRange];
 
 //		[self notifyLayouting];
+            [self syncCellPositions];
+        }
 		
-		[self syncCellPositions];
 		[self syncPullPositions];
 
 //		[self notifyLayouted];

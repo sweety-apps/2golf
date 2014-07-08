@@ -251,7 +251,7 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
 #pragma mark -
 - (void)textFieldChanged:(UITextField *)textField
 {
-    [self fetchData];
+    //[self fetchData];
 }
 
 #pragma mark - <UITextFieldDelegate>

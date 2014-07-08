@@ -133,6 +133,8 @@ AS_SIGNAL( FOOTER_REFRESH )	// 上拉刷新
 @property (nonatomic, readonly) NSArray *			items;
 @property (nonatomic, readonly) NSArray *			visibleItems;
 
+@property (nonatomic, assign) BOOL disableResyncCellPosition;
+
 @property (nonatomic, readonly) BeeUIPullLoader *	headerLoader;
 @property (nonatomic, readonly) BeeUIFootLoader *	footerLoader;
 

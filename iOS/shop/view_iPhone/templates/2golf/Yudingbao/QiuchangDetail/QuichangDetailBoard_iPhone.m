@@ -449,6 +449,9 @@ ON_SIGNAL2( QiuchangBannerPhotoCell_iPhone, signal )
     }
     [self.cellArray removeAllObjects];
     
+    BOOL hasPriceHeader = NO;
+    BeeUICell * priceHeaderCell = nil;
+    
     //banner
     BeeUICell * cell = [[[QiuchangBannerCell_iPhone alloc] initWithFrame:CGRectMake(0, 0, 320, 106)] autorelease];
     cell.data = self.dataDict;
@@ -465,6 +468,9 @@ ON_SIGNAL2( QiuchangBannerPhotoCell_iPhone, signal )
     cell.data = @"球会官方直销";
     [self.cellArray addObject:cell];
     
+    priceHeaderCell = cell;
+    hasPriceHeader = NO;
+    
     for (NSDictionary* price in self.dataDict[@"price"])
     {
         if ([price[@"distributortype"] integerValue] == 0)
@@ -473,13 +479,22 @@ ON_SIGNAL2( QiuchangBannerPhotoCell_iPhone, signal )
             cell.data = price;
             ((QiuchangDetailPriceContentCell_iPhone*)cell).delegate = self;
             [self.cellArray addObject:cell];
+            hasPriceHeader = YES;
         }
+    }
+    
+    if (!hasPriceHeader)
+    {
+        [self.cellArray removeObject:priceHeaderCell];
     }
     
     //服务商价格列表
     cell = [[QiuchangDetailPriceHeaderCell_iPhone alloc] initWithFrame:CGRectZero];
     cell.data = @"第三方供应商";
     [self.cellArray addObject:cell];
+    
+    priceHeaderCell = cell;
+    hasPriceHeader = NO;
     
     for (NSDictionary* price in self.dataDict[@"price"])
     {
@@ -489,10 +504,14 @@ ON_SIGNAL2( QiuchangBannerPhotoCell_iPhone, signal )
             cell.data = price;
             ((QiuchangDetailPriceContentCell_iPhone*)cell).delegate = self;
             [self.cellArray addObject:cell];
+            hasPriceHeader = YES;
         }
     }
     
-    
+    if (!hasPriceHeader)
+    {
+        [self.cellArray removeObject:priceHeaderCell];
+    }
     
     //收藏和会员验证
     cell = [[QiuchangDetailCollectCell_iPhone alloc] initWithFrame:CGRectZero];
@@ -620,6 +639,7 @@ ON_SIGNAL2( QiuchangBannerPhotoCell_iPhone, signal )
 - (void)onPressedMemberVerify:(QiuchangDetailCollectCellBoard_iPhone*)board
 {
     QiuchangVipVerifyBoard_iPhone* newBoard = [QiuchangVipVerifyBoard_iPhone boardWithNibName:@"QiuchangVipVerifyBoard_iPhone"];
+    newBoard.courseId = _courseId;
     [self.stack pushBoard:newBoard animated:YES];
 }
 

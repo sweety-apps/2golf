@@ -43,5 +43,6 @@ AS_SINGLETON( AppBoard_iPhone )
 - (void)hideLogin;
 
 - (void)setTabbarHidden:(BOOL)hidden;
+- (void)setTabbarHidden:(BOOL)hidden animated:(BOOL)animated;
 
 @end

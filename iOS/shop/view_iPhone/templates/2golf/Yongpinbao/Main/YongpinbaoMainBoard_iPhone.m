@@ -207,14 +207,16 @@ ON_SIGNAL2( BeeUIScrollView , signal)
 	
 	if ( [signal is:BeeUIScrollView.DID_STOP] )
 	{
-		NSInteger pageCount = ((NSArray *)self.data).count;
+		//NSInteger pageCount = ((NSArray *)self.data).count;
+        NSInteger pageCount = 1;
 		
 		self.pageControl.currentPage = self.scroll.pageIndex;
 		self.pageControl.numberOfPages = pageCount;
 	}
 	else if ( [signal is:BeeUIScrollView.RELOADED] )
 	{
-		NSInteger pageCount = ((NSArray *)self.data).count;
+		//NSInteger pageCount = ((NSArray *)self.data).count;
+        NSInteger pageCount = 1;
 		
 		self.pageControl.currentPage = self.scroll.pageIndex;
 		self.pageControl.numberOfPages = pageCount;
@@ -237,7 +239,11 @@ ON_SIGNAL2( BeeUIScrollView , signal)
 
 - (NSInteger)numberOfViewsInScrollView:(BeeUIScrollView *)scrollView
 {
-    return ((NSArray *)(self.data)).count;
+    if (((NSArray *)(self.data)).count > 0)
+    {
+        return 1;//return ((NSArray *)(self.data)).count;
+    }
+    return 0;//return ((NSArray *)(self.data)).count;
 }
 
 - (UIView *)scrollView:(BeeUIScrollView *)scrollView viewForIndex:(NSInteger)index scale:(CGFloat)scale
@@ -260,6 +266,7 @@ ON_SIGNAL2( BeeUIScrollView , signal)
 @interface YongpinbaoMainBoard_iPhone()
 {
 	BeeUIScrollView *	_scroll;
+    BOOL _hasLoaded;
 }
 
 @property (nonatomic,retain) NSMutableArray* dataArray;
@@ -487,7 +494,10 @@ ON_SIGNAL2( QiuchangBannerPhotoCell_iPhone, signal )
         
 		if ( msg.succeed )
 		{
-			[self fetchData];
+            if (!_hasLoaded)
+            {
+                [self fetchData];
+            }
 		}
 	}
 }
@@ -576,6 +586,7 @@ ON_SIGNAL2( QiuchangBannerPhotoCell_iPhone, signal )
             //正确逻辑
             if ([(dict[@"status"])[@"succeed"] intValue] == 1)
             {
+                _hasLoaded = YES;
                 self.dataArray = [NSMutableArray arrayWithArray:dict[@"data"][@"player"]];
                 [self resetCells];
                 [_scroll reloadData];

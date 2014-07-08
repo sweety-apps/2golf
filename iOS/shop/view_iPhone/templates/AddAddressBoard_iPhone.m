@@ -266,6 +266,12 @@ ON_SIGNAL3( AddAddressCell_iPhone, add, signal )
         return;
     }
     
+    if ([tel length] < 11)
+    {
+        [self presentFailureTips:@"电话号码不能少于11位"];
+        return;
+    }
+    
     ADDRESS * address = [[[ADDRESS alloc] init] autorelease];
     address.tel = tel;
     address.email = email;

@@ -37,7 +37,7 @@
         
         <linear orientation="h" class="list-item">
             <image class="list-item-bg"/>
-            <input id="tel" class="input" placeholder="@{address_phone}"></input>
+            <input id="tel" class="input_phone" placeholder="@{address_phone}"></input>
         </linear>
         
         <linear orientation="h" class="list-item">
@@ -138,6 +138,17 @@
             font-size: 14px;
             input-clear: editing;
         }
+        
+        .input_phone {
+        margin-left: 10px;
+        height: 25px;
+        width: 285px;
+        line-height: 25px;
+        font-size: 14px;
+        input-clear: editing;
+        input-keyboard: phone;
+        }
+        
         
         
         .list-wrapper {

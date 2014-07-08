@@ -294,7 +294,7 @@
             self.ctrl.btn3.hidden = YES;
             self.ctrl.btn4.hidden = YES;
             
-            self.ctrl.stateTimeLbl.text = @"完成预定";
+            self.ctrl.stateTimeLbl.text = @"完成预订";
         }
             break;
         case 3:
