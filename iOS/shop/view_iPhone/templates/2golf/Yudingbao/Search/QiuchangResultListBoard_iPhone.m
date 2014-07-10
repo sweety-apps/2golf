@@ -410,7 +410,7 @@ ON_SIGNAL( signal )
     
     [cell setFrame:CGRectMake(0, 0, 320, 58)];
     cell.ctrl.nameLabel.text = (self.dataArray[index])[@"coursename"];
-    cell.ctrl.distanceLabel.text = [NSString stringWithFormat:@"距离：%.3f公里",[((NSNumber*)(self.distanceArray[index])) doubleValue]/1000.f];
+    cell.ctrl.distanceLabel.text = [NSString stringWithFormat:@"距离：%.1f公里",[((NSNumber*)(self.distanceArray[index])) doubleValue]/1000.f];
     cell.ctrl.descriptionLabel.text = (self.dataArray[index])[@"slogan"];
     cell.ctrl.valueLabel.text = [NSString stringWithFormat:@"￥%@",(self.dataArray[index])[@"cheapestprice"]];
     if ([((self.dataArray[index])[@"img"])[@"small"] length]>0)

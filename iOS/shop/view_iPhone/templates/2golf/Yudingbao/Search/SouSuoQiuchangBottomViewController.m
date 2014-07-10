@@ -98,7 +98,7 @@
                 double locY = [((self.dataArray[i])[@"longitude"]) doubleValue];
                 double dis =
                 [CommonUtility metersOfDistanceBetween:[CommonUtility currentPositionX] _y1:[CommonUtility currentPositionY] _x2:locX _y2:locY];
-                cellCtrl.distanceLabel.text = [NSString stringWithFormat:@"距离：%.3f公里",dis/1000.f];
+                cellCtrl.distanceLabel.text = [NSString stringWithFormat:@"距离：%.1f公里",dis/1000.f];
                 cellCtrl.descriptionLabel.text = dict[@"slogan"];
                 cellCtrl.valueLabel.text = [NSString stringWithFormat:@"￥%@",dict[@"cheapestprice"]];
                 if ([(dict[@"img"])[@"small"] length]>0)

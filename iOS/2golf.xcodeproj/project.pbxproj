@@ -253,10 +253,6 @@
 		E909CC23182D0D650095B262 /* FinishedCellFooter_iPhone.xml in Resources */ = {isa = PBXBuildFile; fileRef = E909CBA2182D0D650095B262 /* FinishedCellFooter_iPhone.xml */; };
 		E909CC24182D0D650095B262 /* GoodsCommentBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = E909CBA4182D0D650095B262 /* GoodsCommentBoard_iPhone.m */; };
 		E909CC25182D0D650095B262 /* GoodsCommentCell_iPhone.xml in Resources */ = {isa = PBXBuildFile; fileRef = E909CBA5182D0D650095B262 /* GoodsCommentCell_iPhone.xml */; };
-		E909CC26182D0D650095B262 /* GoodsDetailBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = E909CBA7182D0D650095B262 /* GoodsDetailBoard_iPhone.m */; };
-		E909CC27182D0D650095B262 /* GoodsDetailCell_iPhone.xml in Resources */ = {isa = PBXBuildFile; fileRef = E909CBA8182D0D650095B262 /* GoodsDetailCell_iPhone.xml */; };
-		E909CC28182D0D650095B262 /* GoodsDetailSlide_iPhone.xml in Resources */ = {isa = PBXBuildFile; fileRef = E909CBA9182D0D650095B262 /* GoodsDetailSlide_iPhone.xml */; };
-		E909CC29182D0D650095B262 /* GoodsDetailTab_iPhone.xml in Resources */ = {isa = PBXBuildFile; fileRef = E909CBAA182D0D650095B262 /* GoodsDetailTab_iPhone.xml */; };
 		E909CC2A182D0D650095B262 /* GoodsEntryBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = E909CBAC182D0D650095B262 /* GoodsEntryBoard_iPhone.m */; };
 		E909CC2B182D0D650095B262 /* GoodsListBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = E909CBAE182D0D650095B262 /* GoodsListBoard_iPhone.m */; };
 		E909CC2C182D0D650095B262 /* GoodsListCart_iPhone.xml in Resources */ = {isa = PBXBuildFile; fileRef = E909CBAF182D0D650095B262 /* GoodsListCart_iPhone.xml */; };
@@ -787,6 +783,10 @@
 		F3C5CD2B18F3FF9E00C8DF06 /* expand_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3C5CD2918F3FF9E00C8DF06 /* expand_down@2x.png */; };
 		F3C5CD2C18F3FF9E00C8DF06 /* expand_left@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3C5CD2A18F3FF9E00C8DF06 /* expand_left@2x.png */; };
 		F3C5CD3118F578BE00C8DF06 /* MJNIndexView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C5CD3018F578BE00C8DF06 /* MJNIndexView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		F3CA6A35196E8372005C2CD4 /* GoodsDetailBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = F3CA6A31196E8372005C2CD4 /* GoodsDetailBoard_iPhone.m */; };
+		F3CA6A36196E8372005C2CD4 /* GoodsDetailCell_iPhone.xml in Resources */ = {isa = PBXBuildFile; fileRef = F3CA6A32196E8372005C2CD4 /* GoodsDetailCell_iPhone.xml */; };
+		F3CA6A37196E8372005C2CD4 /* GoodsDetailSlide_iPhone.xml in Resources */ = {isa = PBXBuildFile; fileRef = F3CA6A33196E8372005C2CD4 /* GoodsDetailSlide_iPhone.xml */; };
+		F3CA6A38196E8372005C2CD4 /* GoodsDetailTab_iPhone.xml in Resources */ = {isa = PBXBuildFile; fileRef = F3CA6A34196E8372005C2CD4 /* GoodsDetailTab_iPhone.xml */; };
 		F3D14E2B1957257B00A0DA3E /* AlipayRsaLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D14E1D1957257B00A0DA3E /* AlipayRsaLib.a */; };
 		F3D14E2C1957257B00A0DA3E /* Alixpay.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F3D14E1F1957257B00A0DA3E /* Alixpay.bundle */; };
 		F3D14E2D1957257B00A0DA3E /* AlixPaylib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D14E201957257B00A0DA3E /* AlixPaylib.a */; };
@@ -1227,11 +1227,6 @@
 		E909CBA3182D0D650095B262 /* GoodsCommentBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GoodsCommentBoard_iPhone.h; path = ../../../GoodsCommentBoard_iPhone.h; sourceTree = "<group>"; };
 		E909CBA4182D0D650095B262 /* GoodsCommentBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GoodsCommentBoard_iPhone.m; path = ../../../GoodsCommentBoard_iPhone.m; sourceTree = "<group>"; };
 		E909CBA5182D0D650095B262 /* GoodsCommentCell_iPhone.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = GoodsCommentCell_iPhone.xml; path = ../../../GoodsCommentCell_iPhone.xml; sourceTree = "<group>"; };
-		E909CBA6182D0D650095B262 /* GoodsDetailBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GoodsDetailBoard_iPhone.h; path = ../../../GoodsDetailBoard_iPhone.h; sourceTree = "<group>"; };
-		E909CBA7182D0D650095B262 /* GoodsDetailBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GoodsDetailBoard_iPhone.m; path = ../../../GoodsDetailBoard_iPhone.m; sourceTree = "<group>"; };
-		E909CBA8182D0D650095B262 /* GoodsDetailCell_iPhone.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = GoodsDetailCell_iPhone.xml; path = ../../../GoodsDetailCell_iPhone.xml; sourceTree = "<group>"; };
-		E909CBA9182D0D650095B262 /* GoodsDetailSlide_iPhone.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = GoodsDetailSlide_iPhone.xml; path = ../../../GoodsDetailSlide_iPhone.xml; sourceTree = "<group>"; };
-		E909CBAA182D0D650095B262 /* GoodsDetailTab_iPhone.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = GoodsDetailTab_iPhone.xml; path = ../../../GoodsDetailTab_iPhone.xml; sourceTree = "<group>"; };
 		E909CBAB182D0D650095B262 /* GoodsEntryBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GoodsEntryBoard_iPhone.h; path = ../../../GoodsEntryBoard_iPhone.h; sourceTree = "<group>"; };
 		E909CBAC182D0D650095B262 /* GoodsEntryBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GoodsEntryBoard_iPhone.m; path = ../../../GoodsEntryBoard_iPhone.m; sourceTree = "<group>"; };
 		E909CBAD182D0D650095B262 /* GoodsListBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GoodsListBoard_iPhone.h; path = ../../../GoodsListBoard_iPhone.h; sourceTree = "<group>"; };
@@ -2192,6 +2187,11 @@
 		F3C5CD2A18F3FF9E00C8DF06 /* expand_left@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "expand_left@2x.png"; sourceTree = "<group>"; };
 		F3C5CD2F18F578BE00C8DF06 /* MJNIndexView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJNIndexView.h; sourceTree = "<group>"; };
 		F3C5CD3018F578BE00C8DF06 /* MJNIndexView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJNIndexView.m; sourceTree = "<group>"; };
+		F3CA6A30196E8372005C2CD4 /* GoodsDetailBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsDetailBoard_iPhone.h; sourceTree = "<group>"; };
+		F3CA6A31196E8372005C2CD4 /* GoodsDetailBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsDetailBoard_iPhone.m; sourceTree = "<group>"; };
+		F3CA6A32196E8372005C2CD4 /* GoodsDetailCell_iPhone.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = GoodsDetailCell_iPhone.xml; sourceTree = "<group>"; };
+		F3CA6A33196E8372005C2CD4 /* GoodsDetailSlide_iPhone.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = GoodsDetailSlide_iPhone.xml; sourceTree = "<group>"; };
+		F3CA6A34196E8372005C2CD4 /* GoodsDetailTab_iPhone.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = GoodsDetailTab_iPhone.xml; sourceTree = "<group>"; };
 		F3D14E1D1957257B00A0DA3E /* AlipayRsaLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = AlipayRsaLib.a; sourceTree = "<group>"; };
 		F3D14E1E1957257B00A0DA3E /* AlixLibService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlixLibService.h; sourceTree = "<group>"; };
 		F3D14E1F1957257B00A0DA3E /* Alixpay.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Alixpay.bundle; sourceTree = "<group>"; };
@@ -4200,11 +4200,11 @@
 		F376B7C81961B16E00C5D32D /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				E909CBA6182D0D650095B262 /* GoodsDetailBoard_iPhone.h */,
-				E909CBA7182D0D650095B262 /* GoodsDetailBoard_iPhone.m */,
-				E909CBA8182D0D650095B262 /* GoodsDetailCell_iPhone.xml */,
-				E909CBA9182D0D650095B262 /* GoodsDetailSlide_iPhone.xml */,
-				E909CBAA182D0D650095B262 /* GoodsDetailTab_iPhone.xml */,
+				F3CA6A30196E8372005C2CD4 /* GoodsDetailBoard_iPhone.h */,
+				F3CA6A31196E8372005C2CD4 /* GoodsDetailBoard_iPhone.m */,
+				F3CA6A32196E8372005C2CD4 /* GoodsDetailCell_iPhone.xml */,
+				F3CA6A33196E8372005C2CD4 /* GoodsDetailSlide_iPhone.xml */,
+				F3CA6A34196E8372005C2CD4 /* GoodsDetailTab_iPhone.xml */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -5195,6 +5195,7 @@
 				F3B5377E18FE95E4004E72D4 /* select_text_poi@2x.png in Resources */,
 				CB3775EA17C5FF6F00DF5F21 /* footer-shopping-cart-icon@2x.png in Resources */,
 				E909CC12182D0D650095B262 /* CollectionCell_iPhone.xml in Resources */,
+				F3CA6A38196E8372005C2CD4 /* GoodsDetailTab_iPhone.xml in Resources */,
 				F3C5CD1F18F3ADFC00C8DF06 /* normallist_content_bg_t@2x.png in Resources */,
 				CB3775EB17C5FF6F00DF5F21 /* footer-user-active-icon@2x.png in Resources */,
 				F3B1E3B7195DA7F3004B615E /* qcss_ok_btn_mid@2x.png in Resources */,
@@ -5227,7 +5228,6 @@
 				F319AE1C192ED1C500D64FA2 /* goodsfragmentslogan@2x.png in Resources */,
 				F31007BF1945E74C002DF54F /* MyOrderListTopSwitchViewController.xib in Resources */,
 				F3F0EF4919358215004613DA /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
-				E909CC27182D0D650095B262 /* GoodsDetailCell_iPhone.xml in Resources */,
 				F3FBB2D8190B7F31000E9F3F /* privilegetophighlight@2x.png in Resources */,
 				E909CC0B182D0D650095B262 /* CheckoutHeader_iPhone.xml in Resources */,
 				F3FBB2EC190B94FC000E9F3F /* QiuchangTehuiShiduanCellBoard_iPhone.xib in Resources */,
@@ -5304,7 +5304,6 @@
 				CB37761D17C5FF6F00DF5F21 /* placeholder-image@2x.png in Resources */,
 				CB37761E17C5FF6F00DF5F21 /* profile-no-avatar-icon@2x.png in Resources */,
 				E909CC58182D0D650095B262 /* SigninBoard_iPhone.xml in Resources */,
-				E909CC29182D0D650095B262 /* GoodsDetailTab_iPhone.xml in Resources */,
 				E909CC55182D0D650095B262 /* ShippedCellFooter_iPhone.xml in Resources */,
 				CB37761F17C5FF6F00DF5F21 /* profile-refresh-camera-icon@2x.png in Resources */,
 				F3B1E40C196002D0004B615E /* SirendingzhiDetailSingleCell.xib in Resources */,
@@ -5341,6 +5340,7 @@
 				CB37762D17C5FF6F00DF5F21 /* searcher-new-search-box@2x.png in Resources */,
 				F3B5390918FFD77C004E72D4 /* QuichangDetailBoard_iPhone.xib in Resources */,
 				CB37762E17C5FF6F00DF5F21 /* searcher-new-search-icon@2x.png in Resources */,
+				F3CA6A37196E8372005C2CD4 /* GoodsDetailSlide_iPhone.xml in Resources */,
 				F3F0EF5B19358216004613DA /* ShareSDKiPhoneSimpleShareViewUI.bundle in Resources */,
 				CB37762F17C5FF6F00DF5F21 /* searcher-new-voice-btn@2x.png in Resources */,
 				F3B539421900C0E9004E72D4 /* CitySelectBoard_iPhone.xib in Resources */,
@@ -5349,6 +5349,7 @@
 				CB37763117C5FF6F00DF5F21 /* searcher-new-voice-cont-voice-icon@2x.png in Resources */,
 				E909CC3B182D0D650095B262 /* IndexNotifiCell_iPhone.xml in Resources */,
 				E909CBFD182D0D650095B262 /* AwaitPayCellFooter_iPhone.xml in Resources */,
+				F3CA6A36196E8372005C2CD4 /* GoodsDetailCell_iPhone.xml in Resources */,
 				F3E4607418DF395400C8E952 /* coursefragmenthotsellbkg@2x.png in Resources */,
 				F3C5CD1E18F3ADFC00C8DF06 /* normallist_content_bg_s@2x.png in Resources */,
 				E909CC25182D0D650095B262 /* GoodsCommentCell_iPhone.xml in Resources */,
@@ -5376,7 +5377,6 @@
 				CB37763817C5FF6F00DF5F21 /* shopping-cart-body-bg-01@2x.png in Resources */,
 				CB37763917C5FF6F00DF5F21 /* shopping-cart-body-bg-02@2x.png in Resources */,
 				CB37763A17C5FF6F00DF5F21 /* shopping-cart-body-bg-03@2x.png in Resources */,
-				E909CC28182D0D650095B262 /* GoodsDetailSlide_iPhone.xml in Resources */,
 				F32FA7721966A68E00C3A0C5 /* HelpMainBoard_iPhone.xib in Resources */,
 				CB37763B17C5FF6F00DF5F21 /* shopping-cart-body-bg-04@2x.png in Resources */,
 				F3E4607718DF395400C8E952 /* coursefragmentsearchicon@2x.png in Resources */,
@@ -5485,6 +5485,7 @@
 				E909CC02182D0D650095B262 /* BonusBoard_iPhone.m in Sources */,
 				F3B539501900C0E9004E72D4 /* SouSuoQiuchangBottomViewController.m in Sources */,
 				63023913177C1676004C052D /* ecmobile.mm in Sources */,
+				F3CA6A35196E8372005C2CD4 /* GoodsDetailBoard_iPhone.m in Sources */,
 				E970D792182CE4E200146363 /* ASIInputStream.m in Sources */,
 				E970D72B182CE4E200146363 /* Bee_UITransitionFlip.m in Sources */,
 				E970D7A6182CE4E200146363 /* CXMLNode_CreationExtensions.m in Sources */,
@@ -5571,7 +5572,6 @@
 				E970D6D8182CE4E200146363 /* Bee_UIDatePicker.m in Sources */,
 				E970D6C4182CE4E200146363 /* Bee_UIAnimationStyling.m in Sources */,
 				F3B5390418FFD77C004E72D4 /* QiuchangDetailPriceContentCellBoard_iPhone.m in Sources */,
-				E909CC26182D0D650095B262 /* GoodsDetailBoard_iPhone.m in Sources */,
 				F3D14E47195726B300A0DA3E /* SBJsonParser.m in Sources */,
 				E970D71C182CE4E200146363 /* Bee_UIQuery.m in Sources */,
 				F3B5390618FFD77C004E72D4 /* QiuchangDetailPriceHeaderCellBoard_iPhone.m in Sources */,
