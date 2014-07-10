@@ -27,6 +27,7 @@
 #import "DataVerifier.h"
 #import "AlixPayOrder.h"
 #import "CommonUtility.h"
+#import "RechargeBoard_iPhone.h"
 
 #pragma mark -
 
@@ -149,6 +150,22 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
 	}
 }
 
+ON_SIGNAL( signal )
+{
+    if ( [signal is:@"pay_with_account"] )
+    {
+        if (self.payingData)
+        {
+            [self requestMoneyPayCourse:self.payingData[@"id"]];
+        }
+    }
+    else if ([signal is:@"increase_account"])
+    {
+        RechargeBoard_iPhone* board = [RechargeBoard_iPhone boardWithNibName:@"RechargeBoard_iPhone"];
+        [self.stack pushBoard:board animated:YES];
+    }
+}
+
 #pragma mark -
 
 - (void)resetCells
@@ -168,15 +185,25 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
 
 - (void)reorderDatas
 {
+    //按照订单时间排序
     id tmp = nil;
     NSArray* lists = @[self.courseArray,self.taocanArray];
     for (NSMutableArray* arr in lists)
     {
-        for (int i = 0; i < arr.count/2 ; ++i)
+        for (int i = 0; i < arr.count ; ++i)
         {
-            tmp = arr[arr.count - 1 - i];
-            arr[arr.count - 1 - i] = arr[i];
-            arr[i] = tmp;
+            for (int j = i + 1; j < arr.count; ++j)
+            {
+                NSNumber* dti = arr[i][@"createtime"];
+                NSNumber* dtj = arr[j][@"createtime"];
+                if ([dtj intValue] > [dti intValue])
+                {
+                    tmp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = tmp;
+                }
+            }
+            
         }
     }
 }
@@ -402,10 +429,24 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
         {
             //余额支付
             NSLog(@"余额支付");
-            if (self.payingData)
+            if ([[UserModel sharedInstance].user.user_money floatValue] < [[self _getPayingPrice] floatValue])
             {
-                [self requestMoneyPayCourse:self.payingData[@"id"]];
+                BeeUIAlertView * alert = [BeeUIAlertView spawn];
+                alert.title = @"您的余额不足以支付";
+                [alert addCancelTitle:@"取消"];
+                [alert addButtonTitle:@"充值" signal:@"increase_account"];
+                [alert showInViewController:self];
             }
+            else
+            {
+                BeeUIAlertView * alert = [BeeUIAlertView spawn];
+                alert.title = [NSString stringWithFormat:@"确定使用余额中￥%@支付此订单？",[self _getPayingPrice]];
+                alert.message = [NSString stringWithFormat:@"支付后余额还剩￥%.2f",[[UserModel sharedInstance].user.user_money floatValue] - [[self _getPayingPrice] floatValue]];
+                [alert addCancelTitle:@"取消"];
+                [alert addButtonTitle:@"支付" signal:@"pay_with_account"];
+                [alert showInViewController:self];
+            }
+            
         }
             break;
             

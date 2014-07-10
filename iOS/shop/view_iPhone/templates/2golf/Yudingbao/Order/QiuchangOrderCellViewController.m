@@ -29,7 +29,7 @@
 
 + (CGSize)getCellSize
 {
-    return CGSizeMake(320, 243);
+    return CGSizeMake(320, 280);
 }
 
 - (void)load
@@ -88,6 +88,7 @@
     {
         self.ctrl.descriptionTimeLbl.text = dict[@"description"];
     }
+    [self resizeFontOfDesLabel];
     NSObject* price = dict[@"price"];
     if ([price isKindOfClass:[NSString class]])
     {
@@ -137,6 +138,17 @@
     return ret;
 }
 
+- (void)resizeFontOfDesLabel
+{
+    self.ctrl.descriptionTimeLbl.font = [UIFont systemFontOfSize:14.0f];
+    CGSize size = self.ctrl.descriptionTimeLbl.frame.size;
+    size = [self.ctrl.descriptionTimeLbl.text sizeWithFont:self.ctrl.descriptionTimeLbl.font constrainedToSize:CGSizeMake(self.ctrl.descriptionTimeLbl.frame.size.width, 999999) lineBreakMode:NSLineBreakByTruncatingTail];
+    if (size.height > self.ctrl.descriptionTimeLbl.frame.size.height)
+    {
+        self.ctrl.descriptionTimeLbl.font = [UIFont systemFontOfSize:8.0f];
+    }
+}
+
 - (NSString*)tsStringToYearMonthOnlyDateString:(NSString*)tsStr
 {
     NSTimeInterval iterval = [tsStr doubleValue];
@@ -177,6 +189,7 @@
     {
         self.ctrl.descriptionTimeLbl.text = dict[@"description"];
     }
+    [self resizeFontOfDesLabel];
     NSObject* price = dict[@"price"];
     if ([price isKindOfClass:[NSString class]])
     {

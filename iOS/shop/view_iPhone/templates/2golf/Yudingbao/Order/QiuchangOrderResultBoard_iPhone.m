@@ -20,12 +20,15 @@
 #import "UserModel.h"
 #import "ServerConfig.h"
 #import "AppBoard_iPhone.h"
+#import "QuichangDetailBoard_iPhone.h"
+#import "SirendingzhiDetailBoard_iPhone.h"
 
 #pragma mark -
 
 @interface QiuchangOrderResultBoard_iPhone() <QiuchangOrderCell_iPhoneDelegate,UIActionSheetDelegate>
 {
 	QiuchangOrderCell_iPhone* _cell;
+    BOOL _popedInfoBox;
 }
 @end
 
@@ -81,6 +84,59 @@ ON_SIGNAL2( BeeUIBoard, signal )
     else if ( [signal is:BeeUIBoard.DID_APPEAR] )
     {
         [[AppBoard_iPhone sharedInstance] setTabbarHidden:YES animated:NO];
+        
+        if (!_popedInfoBox && _dataDict)
+        {
+            _popedInfoBox = YES;
+            int status = [_dataDict[@"status"] integerValue];
+            switch (status)
+            {
+                case 0:
+                {
+                    //"待确认";
+                    BeeUIAlertView * alert = [BeeUIAlertView spawn];
+                    alert.title = @"您的订单已收到，等待服务商确认";
+                    alert.message = @"我们将尽快确认您的预订请求，并尽快通知您，您可以在\"我的爱高\"->\"历史订场\"中查看订单状态";
+                    [alert addCancelTitle:@"确定"];
+                    [alert showInViewController:self];
+                }
+                    break;
+                case 1:
+                {
+                    //"待付款";
+                    BeeUIAlertView * alert = [BeeUIAlertView spawn];
+                    alert.title = @"订单已收到，您可以直接付款以完成预订";
+                    [alert addCancelTitle:@"确定"];
+                    [alert showInViewController:self];
+                }
+                    break;
+                case 2:
+                {
+                    //"完成预订";
+                    BeeUIAlertView * alert = [BeeUIAlertView spawn];
+                    if ([self.dataDict[@"type"] intValue] == 1)
+                    {
+                        //球场订单
+                        alert.title = @"恭喜您成功预订，于预订时间到球场付款打球即可";
+                    }
+                    else if ([self.dataDict[@"type"] intValue] == 2)
+                    {
+                        //套餐订单
+                        alert.title = @"恭喜您成功预订，我们将尽快通知您后续的安排";
+                    }
+                    
+                    [alert addCancelTitle:@"确定"];
+                    [alert showInViewController:self];
+                }
+                    break;
+                default:
+                {
+                    
+                }
+                    break;
+            }
+        }
+        
     }
     else if ( [signal is:BeeUIBoard.WILL_DISAPPEAR] )
     {
@@ -96,7 +152,24 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
 	
 	if ( [signal is:BeeUINavigationBar.LEFT_TOUCHED] )
 	{
-        [self.stack popBoardAnimated:YES];
+        BeeUIBoard* destBoard = nil;
+        for (BeeUIBoard* board in [self.stack boards])
+        {
+            if ([board isKindOfClass:[QuichangDetailBoard_iPhone class]]
+                || [board isKindOfClass:[SirendingzhiDetailBoard_iPhone class]])
+            {
+                destBoard = board;
+                break;
+            }
+        }
+        if (destBoard)
+        {
+            [self.stack popToBoard:destBoard animated:YES];
+        }
+        else
+        {
+            [self.stack popBoardAnimated:YES];
+        }
 	}
 	else if ( [signal is:BeeUINavigationBar.RIGHT_TOUCHED] )
 	{

@@ -33,7 +33,7 @@ AS_SIGNAL( TOUCHED )
 
 @interface AifenxiangListCellBoard_iPhone : BeeUIBoard
 
-@property (nonatomic,retain) IBOutlet UITextView* titleLbl;
+@property (nonatomic,retain) IBOutlet UILabel* titleLbl;
 @property (nonatomic,retain) IBOutlet UILabel* dateLbl;
 @property (nonatomic,retain) IBOutlet UILabel* desLbl;
 @property (nonatomic,retain) IBOutlet BeeUIImageView* imgView;

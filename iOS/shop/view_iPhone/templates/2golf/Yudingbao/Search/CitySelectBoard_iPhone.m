@@ -665,7 +665,14 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
         }
         [[NSUserDefaults standardUserDefaults] setObject:mdict forKey:@"search_local"];
         [[NSUserDefaults standardUserDefaults] synchronize];
-        [self fetchLocationFromBaidu:province[@"name"]];
+        if ([province[@"name"] isEqualToString:@"当前位置"])
+        {
+            [self.stack popBoardAnimated:YES];
+        }
+        else
+        {
+            [self fetchLocationFromBaidu:province[@"name"]];
+        }
     }
 }
 

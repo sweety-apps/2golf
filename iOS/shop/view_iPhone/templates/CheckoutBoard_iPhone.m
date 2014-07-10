@@ -677,7 +677,7 @@ ON_SIGNAL3( BeeUIPickerView, CONFIRMED, signal )
         }
         else if ( msg.failed )
         {
-            [self presentFailureTips:__TEXT(@"error_network")];
+            [self presentFailureTips:((STATUS*)msg.output[@"status"]).error_desc];
         }
     }
     else if ( [msg is:API.flow_done] )

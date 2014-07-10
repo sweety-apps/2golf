@@ -394,7 +394,7 @@ ON_SIGNAL2( SirendingzhiDetailBannerPhotoCell_iPhone, signal )
     
     //banner
     {
-        SirendingzhiDetailBannerCell_iPhone * cell = [[[SirendingzhiDetailBannerCell_iPhone alloc] initWithFrame:CGRectMake(0, 0, 320, 86)] autorelease];
+        SirendingzhiDetailBannerCell_iPhone * cell = [[[SirendingzhiDetailBannerCell_iPhone alloc] initWithFrame:CGRectMake(0, 0, 320, 126)] autorelease];
         cell.data = self.dataDict;
         [self.cellArray addObject:cell];
     }

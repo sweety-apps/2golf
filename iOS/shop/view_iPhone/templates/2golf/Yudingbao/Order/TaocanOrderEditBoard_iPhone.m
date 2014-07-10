@@ -279,6 +279,12 @@ ON_SIGNAL2( BeeUIScrollView, signal )
         return;
     }
     
+    if ([[[CommonSharedData sharedInstance] getContactListNamesString] length] <=0)
+    {
+        [self presentFailureTips:@"请输入打球人姓名"];
+        return;
+    }
+    
     [self generateOrder];
 }
 
@@ -385,6 +391,13 @@ ON_SIGNAL2( BeeUIScrollView, signal )
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
     [[CommonSharedData sharedInstance] setContactPhoneNum:self.phoneTextField.text];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    
+    return YES;
 }
 
 @end

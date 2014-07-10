@@ -34,6 +34,7 @@
 #import "Bee_UIAlertView.h"
 #import "UIView+BeeUISignal.h"
 #import "UIView+LifeCycle.h"
+#import "UIViewController+BeeUISignal.h"
 
 #pragma mark -
 
@@ -94,6 +95,8 @@ DEF_SIGNAL( DID_DISMISS )
 	[_actions release];
 
 	[_parentView release];
+    
+    self.anotherSignalView = nil;
 	
 	[super dealloc];
 }
@@ -185,6 +188,12 @@ DEF_SIGNAL( DID_DISMISS )
 				[_parentView sendUISignal:signal
 							   withObject:object
 									 from:self];
+                if (self.anotherSignalView)
+                {
+                    [self.anotherSignalView sendUISignal:signal
+                                   withObject:object
+                                         from:self];
+                }
 			}
 			else if ( buttonIndex != self.cancelButtonIndex )
 			{

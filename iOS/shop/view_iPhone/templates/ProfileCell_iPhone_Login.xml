@@ -37,7 +37,7 @@
                             <image class="list-large-bg"/>
                             <linear orientation="v" class="bar-item">
                                 <image class="bar-item-icon payment"/>
-                                <label class="bar-item-info" id="await_pay_label">@{profile_obligation}</label>
+                                <label class="bar-item-info" id="await_pay_label">待付款商品</label>
                                 <linear orientation="v" class="badge-wrapper">
                                     <image id="await_pay-bg" class="badge-wrapper-bg"/>
                                     <label id="await_pay" class="bar-item-badge"></label>
@@ -47,7 +47,7 @@
                             
                             <linear orientation="v" class="bar-item">
                                 <image class="bar-item-icon ship" />
-                                <label class="bar-item-info" id="await_ship_label">@{profile_readyforshipment}</label>
+                                <label class="bar-item-info" id="await_ship_label">待发货商品</label>
                                 <linear orientation="v" class="badge-wrapper">
                                     <image id="await_ship-bg" class="badge-wrapper-bg"/>
                                     <label id="await_ship" class="bar-item-badge"></label>
@@ -57,7 +57,7 @@
                             
                             <linear orientation="v" class="bar-item">
                                 <image class="bar-item-icon receipt"/>
-                                <label class="bar-item-info" id="shipped_label">@{profile_forthegoods}</label>
+                                <label class="bar-item-info" id="shipped_label">待收货商品</label>
                                 <linear orientation="v" class="badge-wrapper">
                                     <image id="shipped-bg" class="badge-wrapper-bg"/>
                                     <label id="shipped" class="bar-item-badge"></label>
@@ -67,7 +67,7 @@
                             
                             <linear orientation="v" class="bar-item">
                                 <image class="bar-item-icon history"/>
-                                <label class="bar-item-info" id="finished_label">@{profile_history}</label>
+                                <label class="bar-item-info" id="finished_label">购物历史</label>
                                 <linear orientation="v" class="badge-wrapper">
                                     <image id="finished-bg" class="badge-wrapper-bg"/>
                                     <label id="finished" class="bar-item-badge"></label>

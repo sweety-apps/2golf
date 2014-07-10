@@ -431,6 +431,11 @@ ON_SIGNAL( signal )
     }
     if ( [signal is:self.DAIL_LEFT_NAV_BTN] )
     {
+        if ( NO == [UserModel online] )
+		{
+			[[AppBoard_iPhone sharedInstance] showLogin];
+			return;
+		}
         CartBoard_iPhone * board = [CartBoard_iPhone board];
         //board.filter = self.model1.filter;
 		[self.stack pushBoard:board animated:YES];
@@ -520,7 +525,7 @@ ON_SIGNAL2( QiuchangBannerPhotoCell_iPhone, signal )
     [self.cellArray removeAllObjects];
     
     //banner
-    BeeUICell * cell = [[[YongpinbaoMainBannerCell_iPhone alloc] initWithFrame:CGRectMake(0, 0, 320, 86)] autorelease];
+    BeeUICell * cell = [[[YongpinbaoMainBannerCell_iPhone alloc] initWithFrame:CGRectMake(0, 0, 320, 115)] autorelease];
     cell.data = self.dataArray;
     [self.cellArray addObject:cell];
     

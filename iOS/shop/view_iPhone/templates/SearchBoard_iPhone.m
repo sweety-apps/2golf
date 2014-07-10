@@ -158,6 +158,8 @@ ON_SIGNAL2( BeeUIBoard, signal )
     {
         [[AppBoard_iPhone sharedInstance] setTabbarHidden:NO];
         
+        self.view.backgroundColor = [UIColor whiteColor];
+        
 		if ( nil == _titleSearch )
 		{
             UIView* searchContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 4, self.view.width, 50.0f)];

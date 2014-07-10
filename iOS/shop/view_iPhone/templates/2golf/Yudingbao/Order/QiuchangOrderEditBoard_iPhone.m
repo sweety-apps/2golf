@@ -651,4 +651,11 @@ ON_SIGNAL( signal )
     [[CommonSharedData sharedInstance] setContactPhoneNum:self.phoneTextField.text];
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    
+    return YES;
+}
+
 @end

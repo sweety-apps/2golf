@@ -75,6 +75,7 @@ DEF_SIGNAL(DAIL_PHONE_OK)
     alert.message = @"拨打电话?";
     [alert addCancelTitle:@"取消"];
     [alert addButtonTitle:@"拨打" signal:self.DAIL_PHONE_OK];
+    alert.anotherSignalView = self;
     [alert show];
 }
 
@@ -90,7 +91,7 @@ DEF_SIGNAL(DAIL_PHONE_OK)
     [[[self superview] superview].board.stack pushBoard:board animated:YES];
 }
 
-ON_SIGNAL2( BeeUIAlertView, signal)
+ON_SIGNAL( signal)
 {
     if ([signal is:self.DAIL_PHONE_OK])
     {

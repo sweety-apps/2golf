@@ -10,7 +10,7 @@
                 <outlet property="dateLbl" destination="xnd-qC-Qbo" id="BMC-eG-vHp"/>
                 <outlet property="desLbl" destination="bkO-Fh-xEe" id="X9q-sG-DYy"/>
                 <outlet property="imgView" destination="jvd-2S-rcF" id="mE1-g9-ijQ"/>
-                <outlet property="titleLbl" destination="SVk-Lh-2Xm" id="6c6-Si-56a"/>
+                <outlet property="titleLbl" destination="WSf-Ha-cpU" id="efv-yI-kWw"/>
                 <outlet property="view" destination="mpa-Hk-Pcj" id="rza-cM-6WK"/>
             </connections>
         </placeholder>
@@ -40,16 +40,16 @@
                     <rect key="frame" x="18" y="62" width="286" height="112"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <textView multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SVk-Lh-2Xm">
-                    <rect key="frame" x="20" y="2" width="284" height="66"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="284" translatesAutoresizingMaskIntoConstraints="NO" id="WSf-Ha-cpU">
+                    <rect key="frame" x="20" y="10" width="284" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <string key="text">清迈4天高尔夫自由行
 fdsaf</string>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.058823533359999999" green="0.32941177490000001" blue="0.1960784495" alpha="1" colorSpace="deviceRGB"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                </textView>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
         </view>

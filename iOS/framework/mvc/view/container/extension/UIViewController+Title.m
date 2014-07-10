@@ -83,6 +83,11 @@
 {
     UIFont* font = [UIFont systemFontOfSize:18.0f];
     CGSize textSize = [text sizeWithFont:font constrainedToSize:CGSizeMake(120, 999999)];
+    if (textSize.height > 51)
+    {
+        font = [UIFont systemFontOfSize:14.0f];
+        textSize = [text sizeWithFont:font constrainedToSize:CGSizeMake(120, 999999)];
+    }
     CGSize imgSize = [image size];
     CGRect rect = CGRectMake(0, 0, textSize.width+imgSize.width, MAX(textSize.height, imgSize.height));
     UIView* containerView = [[[UIView alloc] initWithFrame:rect] autorelease];

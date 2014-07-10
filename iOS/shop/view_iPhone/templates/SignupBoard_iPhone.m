@@ -94,6 +94,15 @@ ON_SIGNAL2( BeeUIBoard, signal )
         [rightBtnContainerView addSubview:rightBtn];
         [self showBarButton:BeeUINavigationBar.RIGHT custom:rightBtnContainerView];
         
+        UILabel* infoLbl = [[UILabel alloc] initWithFrame:CGRectMake(20, 130, 280, 80)];
+        infoLbl.backgroundColor = [UIColor clearColor];
+        infoLbl.textAlignment = NSTextAlignmentCenter;
+        infoLbl.textColor = [UIColor grayColor];
+        infoLbl.font = [UIFont systemFontOfSize:14.0f];
+        infoLbl.numberOfLines = 0;
+        infoLbl.text = @"密码只支持大小写字母和数字，请不要含有 . , / ! 等特殊符号";
+        [self.view addSubview:infoLbl];
+        
         [self observeNotification:BeeUIKeyboard.HIDDEN];
         [self observeNotification:BeeUIKeyboard.SHOWN];
         [self observeNotification:BeeUIKeyboard.HEIGHT_CHANGED];

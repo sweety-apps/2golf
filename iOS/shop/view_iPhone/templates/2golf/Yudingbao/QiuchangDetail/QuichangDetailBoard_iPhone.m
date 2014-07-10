@@ -106,10 +106,10 @@ SUPPORT_RESOURCE_LOADING( YES )
     [self addSubview:self.scroll];
 	
     self.shadow = [[[UIView alloc] init] autorelease];
-    self.shadow.backgroundColor = RGBA(0, 0, 0, 0.3);;//RGBA(0, 180, 0, 0.3);
+    self.shadow.backgroundColor = RGBA(0, 0, 0, 0.45);;//RGBA(0, 180, 0, 0.3);
     [self addSubview:self.shadow];
     
-    self.leftLabel  = [[[UILabel alloc]initWithFrame:CGRectMake(22, 0, 200, 30)] autorelease];
+    self.leftLabel  = [[[UILabel alloc]initWithFrame:CGRectMake(22, 0, 200, 40)] autorelease];
     self.leftLabel.backgroundColor = [UIColor clearColor];
     self.leftLabel.font = [UIFont systemFontOfSize:14];
     self.leftLabel.textColor = [UIColor whiteColor];
@@ -117,7 +117,7 @@ SUPPORT_RESOURCE_LOADING( YES )
     self.leftLabel.text = @"";
     [self.shadow addSubview:self.leftLabel];
     
-    self.rightLabel  = [[[UILabel alloc]initWithFrame:CGRectMake(256, 0, 100, 30)] autorelease];
+    self.rightLabel  = [[[UILabel alloc]initWithFrame:CGRectMake(256, 0, 100, 40)] autorelease];
     self.rightLabel.backgroundColor = [UIColor clearColor];
     self.rightLabel.font = [UIFont systemFontOfSize:14];
     self.rightLabel.textColor = [UIColor whiteColor];
@@ -126,11 +126,11 @@ SUPPORT_RESOURCE_LOADING( YES )
     [self.shadow addSubview:self.rightLabel];
     
     self.arrowImg = [[[UIImageView alloc] initWithImage:__IMAGE(@"expand_left_white")] autorelease];
-    self.arrowImg.frame = CGRectMake(287, 8, self.arrowImg.frame.size.width, self.arrowImg.frame.size.height);
+    self.arrowImg.frame = CGRectMake(287, 15, self.arrowImg.frame.size.width, self.arrowImg.frame.size.height);
     [self.shadow addSubview:self.arrowImg];
     
     self.detailBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.detailBtn.frame = CGRectMake(0, 0, 320, 20);
+    self.detailBtn.frame = CGRectMake(0, 0, 320, 40);
     [self.shadow addSubview:self.detailBtn];
     
     [self.detailBtn addTarget:self action:@selector(_pressedDetail:) forControlEvents:UIControlEventTouchUpInside];
@@ -169,7 +169,7 @@ SUPPORT_RESOURCE_LOADING( YES )
     self.scroll.frame = self.bounds;
 	[_scroll reloadData];
     
-    CGRect shadowFrame = CGRectMake(0, self.scroll.height - 30, 320, 30);
+    CGRect shadowFrame = CGRectMake(0, self.scroll.height - 40, 320, 40);
     self.shadow.frame = shadowFrame;
 	
 	CGRect controlFrame;
@@ -453,7 +453,7 @@ ON_SIGNAL2( QiuchangBannerPhotoCell_iPhone, signal )
     BeeUICell * priceHeaderCell = nil;
     
     //banner
-    BeeUICell * cell = [[[QiuchangBannerCell_iPhone alloc] initWithFrame:CGRectMake(0, 0, 320, 106)] autorelease];
+    BeeUICell * cell = [[[QiuchangBannerCell_iPhone alloc] initWithFrame:CGRectMake(0, 0, 320, 146)] autorelease];
     cell.data = self.dataDict;
     [self.cellArray addObject:cell];
     

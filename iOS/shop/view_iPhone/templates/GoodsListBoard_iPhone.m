@@ -378,6 +378,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
     }
     else if ( [signal is:BeeUIBoard.WILL_APPEAR] )
     {
+        self.view.backgroundColor = [UIColor whiteColor];
 //		if ( self.model1.filter.keywords.length )
 //		{
 //			self.titleString = [NSString stringWithFormat:@"%@", self.model1.filter.keywords];
@@ -521,6 +522,11 @@ ON_SIGNAL3( GoodsListFilter_iPhone, item_expensive_button, signal )
 
 ON_SIGNAL3( GoodsListCart_iPhone, cart, signal )
 {
+    if ( NO == [UserModel online] )
+    {
+        [[AppBoard_iPhone sharedInstance] showLogin];
+        return;
+    }
 	CartBoard_iPhone * board = [CartBoard_iPhone board];
 	[self.stack pushBoard:board animated:YES];
 }

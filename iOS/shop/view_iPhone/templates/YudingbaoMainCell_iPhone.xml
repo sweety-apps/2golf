@@ -81,7 +81,8 @@
         .align-to-bottom-label {
         position: absolute;
         height:24px;
-        font-size: 24px;
+        font-size: 22px;
+        font-weight: lighter;
         color: #ffffffff;
         text-align: center;
         bottom:5px;
@@ -101,7 +102,8 @@
         .align-to-top-label {
         position: absolute;
         height:24px;
-        font-size: 24px;
+        font-size: 22px;
+        font-weight: lighter;
         color: #ffffffff;
         text-align: center;
         top:80px;

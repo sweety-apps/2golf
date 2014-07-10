@@ -47,6 +47,7 @@ AS_SIGNAL( DID_DISMISS )	// 已经隐藏
 
 @property (nonatomic, retain) UIView *				parentView;
 @property (nonatomic, retain) NSObject *			userData;
+@property (nonatomic, assign) UIView *			anotherSignalView;
 
 + (BeeUIAlertView *)showMessage:(NSString *)message cancelTitle:(NSString *)title;
 
