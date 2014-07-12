@@ -472,6 +472,11 @@ DEF_MESSAGE_( address_add, msg )
 	{
 		SESSION * session = msg.GET_INPUT( @"session" );
 		ADDRESS * address = msg.GET_INPUT( @"address" );
+        
+        if(address.mobile == nil || [address.mobile length] <= 0)
+        {
+            address.mobile = address.tel;
+        }
 
 		if ( nil == session || NO == [session isKindOfClass:[SESSION class]] )
 		{
@@ -722,6 +727,11 @@ DEF_MESSAGE_( address_update, msg )
 		ADDRESS * address = msg.GET_INPUT( @"address" );
 		NSNumber * address_id = msg.GET_INPUT( @"address_id" );
 		SESSION * session = msg.GET_INPUT( @"session" );
+        
+        if(address.mobile == nil || [address.mobile length] <= 0)
+        {
+            address.mobile = address.tel;
+        }
 
 		if ( nil == address || NO == [address isKindOfClass:[ADDRESS class]] )
 		{

@@ -36,6 +36,7 @@
 @property (nonatomic,retain) NSMutableDictionary* courseDict;
 @property (nonatomic,retain) NSMutableDictionary* priceDict;
 @property (nonatomic,retain) UITextField* phoneTextField;
+@property (nonatomic,retain) UITextField* descriptionTextField; //备注
 
 @property (nonatomic,assign) double numPeople;
 @property (nonatomic,assign) double price1;
@@ -390,6 +391,20 @@ ON_SIGNAL( signal )
     cell.delegate = self;
     [self.cellArray addObject:cell];
     
+    //5
+    cell = [QiuchangOrderEditCell_iPhone cell];
+    [cell setNormalM];
+    [cell setLeftText:@"备注"];
+    cell.ctrl.normalRightTitle.hidden = YES;
+    cell.ctrl.phoneTextField.hidden = NO;
+    cell.ctrl.phoneTextField.keyboardType = UIKeyboardTypeDefault;
+    cell.ctrl.phoneTextField.placeholder = @"请输入备注说明";
+    cell.ctrl.phoneTextField.delegate = self;
+    self.descriptionTextField = cell.ctrl.phoneTextField;
+    //self.descriptionTextField.text = self.description;
+    cell.delegate = self;
+    [self.cellArray addObject:cell];
+    
     str = [NSString stringWithFormat:@"%d",(int)self.numPeople];
     cell = [QiuchangOrderEditCell_iPhone cell];
     [cell setPeopleNum];
@@ -459,12 +474,14 @@ ON_SIGNAL( signal )
     [cell setLeftText:@"说明"];
     [cell setRightText:self.priceDict[@"description"] color:[UIColor blackColor]];
     cell.delegate = self;
+    [cell resizeSelfWithRightText];
     [self.cellArray addObject:cell];
     
     cell = [QiuchangOrderEditCell_iPhone cell];
     [cell setNormalM];
     [cell setLeftText:@"退订说明"];
     [cell setRightText:self.priceDict[@"cancel_desc"] color:[UIColor blackColor]];
+    [cell resizeSelfWithRightText];
     cell.delegate = self;
     [self.cellArray addObject:cell];
     
@@ -519,6 +536,18 @@ ON_SIGNAL( signal )
         return;
     }
     
+    if ([[[CommonSharedData sharedInstance] getContactListNamesString] length] <= 0)
+    {
+        [self presentFailureTips:@"请填写打球人姓名"];
+        return;
+    }
+    
+    if ([self.phoneTextField.text length] <= 0)
+    {
+        [self presentFailureTips:@"请填写联系电话"];
+        return;
+    }
+    
     [self generateOrder];
 }
 
@@ -570,6 +599,11 @@ ON_SIGNAL( signal )
 - (void)generateOrder
 {
     [self presentProgressTips:@"正在生成订单"];
+    NSString* desStr = self.descriptionTextField.text;
+    if (desStr == nil)
+    {
+        desStr = @"";
+    }
     NSDictionary* paramDict = @{
                                 @"session":[UserModel sharedInstance].session.objectToDictionary,
                                 @"players":[NSString stringWithFormat:@"%d",(int)self.numPeople],
@@ -579,7 +613,8 @@ ON_SIGNAL( signal )
                                 @"id":self.courseDict[@"course_id"],
                                 @"type":@"1",
                                 @"agentid":self.priceDict[@"distributorid"],
-                                @"timestamp":[NSString stringWithFormat:@"%ld",[CommonUtility getSearchTimeStamp]]
+                                @"timestamp":[NSString stringWithFormat:@"%ld",[CommonUtility getSearchTimeStamp]],
+                                @"postscript":desStr
                                 };
     self.HTTP_POST([[ServerConfig sharedInstance].url stringByAppendingString:@"courseorder/generate"])
     .PARAM(@"json",[paramDict JSONString])

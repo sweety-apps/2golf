@@ -169,7 +169,7 @@
         
         .list-title {
             margin-left: 14px;
-            font-size: 18px;
+            font-size: 20px;
 			font-weight: bold;
             color: #333;
             width: 146px;
@@ -178,7 +178,7 @@
         }
         
         .list-subtitle {
-            font-size: 18px;
+            font-size: 20px;
 			font-weight: lighter;
             color: #333;
             margin: 0 10px;

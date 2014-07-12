@@ -12,6 +12,123 @@
 #import "ServerConfig.h"
 #import <ShareSDK/ShareSDK.h>
 
+
+#pragma mark -
+
+@implementation QiuchangOrderCell_iPhoneLayout
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        
+    }
+    return self;
+}
+
+- (void)dealloc
+{
+    [super dealloc];
+}
+
++ (QiuchangOrderCell_iPhoneLayout*)layoutWithDict:(NSDictionary*)dataDict
+{
+    if (dataDict == nil)
+    {
+        return nil;
+    }
+    
+    CGRect desKeyRect = CGRectMake(0, 199, 56, 34);
+    CGRect desKeyBgRect = CGRectMake(-1, 195, 56, 37);
+    
+    CGRect desContentRect = CGRectMake(57, 199, 113, 34);
+    CGRect desContentBgRect = CGRectMake(55, 195, 120, 37);
+    
+    CGRect apxKeyRect = CGRectMake(0, 246, 56, 34);
+    CGRect apxContentRect = CGRectMake(57, 246, 113, 34);
+    
+    CGRect btmBgRect = CGRectMake(0, 199, 320, 40);
+    CGSize cellSize = CGSizeMake(320, 280);
+    
+    CGRect btn1Rect = CGRectMake(227, 152, 93, 40);
+    CGRect btn2Rect = CGRectMake(227, 152, 93, 40);
+    CGRect btn3Rect = CGRectMake(227, 152, 93, 40);
+    CGRect btn4Rect = CGRectMake(227, 152, 93, 40);
+    
+    NSString* des = nil;
+    des = dataDict[@"cancel_desc"];
+    if ([des length] == 0)
+    {
+        des = dataDict[@"description"];
+    }
+    
+    NSString* appendix = @" ";
+    UIFont* font =[UIFont systemFontOfSize:16];
+    
+    CGSize desSize = [des sizeWithFont:font constrainedToSize:CGSizeMake(desContentRect.size.width, 999999) lineBreakMode:NSLineBreakByTruncatingTail];
+    if (desSize.height < 90)
+    {
+        desSize.height = 90;
+    }
+    
+    desContentRect.size.height = desSize.height;
+    
+    desContentBgRect.size.height = desSize.height + 10;
+    
+    desKeyRect.size.height = desSize.height;
+    desKeyBgRect.size.height = desSize.height + 10;
+    
+    CGSize apxSize = [appendix sizeWithFont:font constrainedToSize:CGSizeMake(apxContentRect.size.width, 999999) lineBreakMode:NSLineBreakByTruncatingTail];
+    apxContentRect.origin.y = CGRectGetMaxY(desKeyBgRect) + 5;
+    apxContentRect.size.height = apxSize.height;
+    
+    apxKeyRect.origin.y = apxContentRect.origin.y;
+    apxKeyRect.size.height = apxContentRect.size.height;
+    
+    cellSize.height = CGRectGetMaxY(apxContentRect) + 10;
+    
+    btmBgRect.size.height = cellSize.height - btmBgRect.origin.y;
+    
+    //计算btn
+    CGFloat btnHeight = cellSize.height - 5 - btn1Rect.origin.y;
+    btnHeight /= 4;
+    
+    btn1Rect.size.height = btnHeight + 1;
+    
+    btn2Rect.origin.y = CGRectGetMaxY(btn1Rect) - 1;
+    btn2Rect.size.height = btnHeight + 1;
+    
+    btn3Rect.origin.y = CGRectGetMaxY(btn2Rect) - 1;
+    btn3Rect.size.height = btnHeight + 1;
+    
+    btn4Rect.origin.y = CGRectGetMaxY(btn3Rect) - 1;
+    btn4Rect.size.height = btnHeight + 1;
+    
+    QiuchangOrderCell_iPhoneLayout* ret = [[[QiuchangOrderCell_iPhoneLayout alloc] init] autorelease];
+    
+    ret.descriptionKeyLblRect = desKeyRect;
+    ret.descriptionKeyBgImageViewRect = desKeyBgRect;
+    ret.descriptionTimeLblRect = desContentRect;
+    ret.descriptionBgImageViewRect = desContentBgRect;
+    
+    ret.appendixKeyLblRect = apxKeyRect;
+    ret.appendixLblRect = apxContentRect;
+    ret.bottomBgImageViewRect = btmBgRect;
+    
+    ret.btn1Rect = btn1Rect;
+    ret.btn2Rect = btn2Rect;
+    ret.btn3Rect = btn3Rect;
+    ret.btn4Rect = btn4Rect;
+    
+    ret.cellSize = cellSize;
+    
+    return ret;
+    
+}
+
+@end
+
+
 #pragma mark -
 
 @interface QiuchangOrderCell_iPhone () <ISSShareViewDelegate>
@@ -27,9 +144,23 @@
     _orderCellType = orderCellType;
 }
 
-+ (CGSize)getCellSize
+- (void)setCellLayout:(QiuchangOrderCell_iPhoneLayout*)layout
 {
-    return CGSizeMake(320, 280);
+    self.frame = CGRectMake(0, 0, layout.cellSize.width, layout.cellSize.height);
+    self.ctrl.view.frame = self.frame;
+    
+    self.ctrl.btn1.frame = layout.btn1Rect;
+    self.ctrl.btn2.frame = layout.btn2Rect;
+    self.ctrl.btn3.frame = layout.btn3Rect;
+    self.ctrl.btn4.frame = layout.btn4Rect;
+    
+    self.ctrl.appendixKeyLbl.frame = layout.appendixKeyLblRect;
+    self.ctrl.appendixLbl.frame = layout.appendixLblRect;
+    self.ctrl.descriptionKeyLbl.frame = layout.descriptionKeyLblRect;
+    self.ctrl.descriptionTimeLbl.frame = layout.descriptionTimeLblRect;
+    self.ctrl.descriptionKeyBgImageView.frame = layout.descriptionKeyBgImageViewRect;
+    self.ctrl.descriptionBgImageView.frame = layout.descriptionBgImageViewRect;
+    self.ctrl.bottomBgImageView.frame = layout.bottomBgImageViewRect;
 }
 
 - (void)load
@@ -40,6 +171,16 @@
     self.frame = self.ctrl.view.frame;
     self.backgroundColor = [UIColor clearColor];
     [self addSubview:self.ctrl.view];
+    self.ctrl.bottomBgImageView.image = [self.ctrl.bottomBgImageView.image stretched];
+    self.ctrl.descriptionBgImageView.image = [self.ctrl.descriptionBgImageView.image stretched];
+    self.ctrl.descriptionKeyBgImageView.image = [self.ctrl.descriptionKeyBgImageView.image stretched];
+    
+    UIImage* btnBgImage = [self.ctrl.btn1 backgroundImageForState:UIControlStateNormal];
+    btnBgImage = [btnBgImage stretched];
+    [self.ctrl.btn1 setBackgroundImage:btnBgImage forState:UIControlStateNormal];
+    [self.ctrl.btn2 setBackgroundImage:btnBgImage forState:UIControlStateNormal];
+    [self.ctrl.btn3 setBackgroundImage:btnBgImage forState:UIControlStateNormal];
+    [self.ctrl.btn4 setBackgroundImage:btnBgImage forState:UIControlStateNormal];
     
     _orderCellType = EOrderCellTypeCourse;
     //self.ctrl.phoneTextField.delegate = self;
@@ -59,10 +200,17 @@
 
 - (void)_setupSelfCourseDict:(NSDictionary*)dict
 {
+    self.ctrl.courseKeyLbl.text = @"球场";
     self.ctrl.playTimeTitleLbl.text = @"打球";
     self.ctrl.peopleTimeTitleLbl.text = @"人员";
     
-    self.ctrl.courseNameLbl.text = dict[@"coursename"];
+    NSString* titleStr = dict[@"coursename"];
+    NSString* distrbutorName = dict[@"price"][@"distributorname"];
+    if (distrbutorName && [distrbutorName isKindOfClass:[NSString class]])
+    {
+        titleStr = [titleStr stringByAppendingFormat:@"(服务商:%@)",distrbutorName];
+    }
+    self.ctrl.courseNameLbl.text = titleStr;
     self.ctrl.orderIdLbl.text = dict[@"order_sn"];
     self.ctrl.orderTimeLbl.text = dict[@"createtime"];
     NSObject* playTime = dict[@"playtime"];
@@ -88,7 +236,7 @@
     {
         self.ctrl.descriptionTimeLbl.text = dict[@"description"];
     }
-    [self resizeFontOfDesLabel];
+    //[self resizeFontOfDesLabel];
     NSObject* price = dict[@"price"];
     if ([price isKindOfClass:[NSString class]])
     {
@@ -134,7 +282,7 @@
     NSTimeInterval iterval = [tsStr doubleValue];
     NSDate* date = [NSDate dateWithTimeIntervalSince1970:iterval];
     
-    NSString* ret = [NSString stringWithFormat:@"%04d/%02d/%02d %02d:%02d\n%@",[date year],[date month],[date day],[date hour],[date minute],[date weekdayChinese]];
+    NSString* ret = [NSString stringWithFormat:@"%02d月%02d日 %02d:%02d\n%@",[date month],[date day],[date hour],[date minute],[date weekdayChinese]];
     return ret;
 }
 
@@ -160,10 +308,13 @@
 
 - (void)_setupSelfTaocanDict:(NSDictionary*)dict
 {
+    self.ctrl.courseKeyLbl.text = @"套餐";
     self.ctrl.playTimeTitleLbl.text = @"出行";
     self.ctrl.peopleTimeTitleLbl.text = @"人员";
     
-    self.ctrl.courseNameLbl.text = dict[@"coursename"];
+    NSString* titleStr = dict[@"coursename"];
+    
+    self.ctrl.courseNameLbl.text = titleStr;
     self.ctrl.orderIdLbl.text = dict[@"order_sn"];
     self.ctrl.orderTimeLbl.text = dict[@"createtime"];
     NSObject* playTime = dict[@"playtime"];
@@ -189,7 +340,7 @@
     {
         self.ctrl.descriptionTimeLbl.text = dict[@"description"];
     }
-    [self resizeFontOfDesLabel];
+    //[self resizeFontOfDesLabel];
     NSObject* price = dict[@"price"];
     if ([price isKindOfClass:[NSString class]])
     {

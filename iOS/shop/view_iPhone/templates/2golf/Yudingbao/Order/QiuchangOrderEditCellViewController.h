@@ -71,5 +71,6 @@ AS_SIGNAL( TOUCHED )
 
 - (void)setLeftText:(NSString*)text;
 - (void)setRightText:(NSString*)text color:(UIColor*)color;
+- (void)resizeSelfWithRightText;
 
 @end

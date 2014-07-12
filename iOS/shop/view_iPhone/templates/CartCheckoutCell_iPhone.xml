@@ -80,11 +80,11 @@
         }
         
         #cart-goods-desc {
-            font: 14px;
+            font: 16px;
             color: #333;
             width: 100%;
             text-align: left;
-            height: 15px;
+            height: 18px;
         }
         
         #cart-goods-price {
@@ -116,7 +116,7 @@
             margin-top: 10px;
 			padding-left: 36px;
             color: #ffffff;
-            font: 14px bold;
+            font: 16px bold;
 			text-align: center;
             height: 20px;
             width: 100%;

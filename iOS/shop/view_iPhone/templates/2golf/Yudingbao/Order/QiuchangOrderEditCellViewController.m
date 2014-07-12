@@ -384,6 +384,40 @@ DEF_SIGNAL( TOUCHED )
     ctrl.numLabel.textColor = color;
 }
 
+- (void)resizeSelfWithRightText
+{
+    UIFont*  font = self.ctrl.normalRightTitle.font;
+    NSString* text = self.ctrl.normalRightTitle.text;
+    CGSize size = self.ctrl.normalRightTitle.frame.size;
+    size.height = 9999999;
+    size = [text sizeWithFont:font constrainedToSize:size lineBreakMode:NSLineBreakByTruncatingTail];
+    CGFloat height = self.ctrl.normalRightTitle.frame.size.height;
+    if (size.height > self.ctrl.normalRightTitle.frame.size.height)
+    {
+        height = size.height + 2;
+    }
+    
+    CGRect rect = self.ctrl.normalRightTitle.frame;
+    rect.size.height = size.height;
+    self.ctrl.normalRightTitle.frame = rect;
+    
+    rect = self.ctrl.contactRightTitle.frame;
+    rect.size.height = size.height;
+    self.ctrl.contactRightTitle.frame = rect;
+    
+    rect = self.ctrl.cellBg.frame;
+    rect.size.height = height;
+    self.ctrl.cellBg.frame = rect;
+    
+    rect = self.ctrl.view.frame;
+    rect.size.height = height;
+    self.ctrl.view.frame = rect;
+    
+    rect = self.frame;
+    rect.size.height = height;
+    self.frame = rect;
+}
+
 #pragma mark -
 
 - (void)onPressedContact:(UIButton*)btn

@@ -149,7 +149,7 @@
         
         #goods-subprice {
             color: #666;
-			font-size: 14px;
+			font-size: 18px;
 			font-weight: bold;
             height: 100%;
             width: auto;
@@ -194,7 +194,7 @@
             margin-top: 5px;
             margin-left: 14px;
             color: #333;
-            font-size: 14px;
+            font-size: 18px;
 			font-weight: lighter;
             text-align: left;
             line-num: 0;
@@ -267,7 +267,7 @@
 
         .list-title {
             margin-left: 14px;
-            font-size: 14px;
+            font-size: 18px;
 			font-weight: bold;
             color: #333;
             width: 140px;
@@ -276,7 +276,7 @@
         }
 
         .list-subtitle {
-            font-size: 12px;
+            font-size: 18px;
 			color: #333;
             margin: 0 10px;
             width: 106px;
@@ -288,7 +288,7 @@
             margin-top: 10px;
             margin-bottom: 10px;
             margin-left: 14px;
-            font-size: 14px;
+            font-size: 18px;
 			font-weight: bold;
             color: #333;
             width: 266px;

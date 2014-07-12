@@ -787,6 +787,8 @@
 		F3CA6A36196E8372005C2CD4 /* GoodsDetailCell_iPhone.xml in Resources */ = {isa = PBXBuildFile; fileRef = F3CA6A32196E8372005C2CD4 /* GoodsDetailCell_iPhone.xml */; };
 		F3CA6A37196E8372005C2CD4 /* GoodsDetailSlide_iPhone.xml in Resources */ = {isa = PBXBuildFile; fileRef = F3CA6A33196E8372005C2CD4 /* GoodsDetailSlide_iPhone.xml */; };
 		F3CA6A38196E8372005C2CD4 /* GoodsDetailTab_iPhone.xml in Resources */ = {isa = PBXBuildFile; fileRef = F3CA6A34196E8372005C2CD4 /* GoodsDetailTab_iPhone.xml */; };
+		F3CA6A56196EE548005C2CD4 /* order_qiuchang_cell_bottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3CA6A54196EE548005C2CD4 /* order_qiuchang_cell_bottom@2x.png */; };
+		F3CA6A57196EE548005C2CD4 /* order_qiuchang_cell_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3CA6A55196EE548005C2CD4 /* order_qiuchang_cell_button@2x.png */; };
 		F3D14E2B1957257B00A0DA3E /* AlipayRsaLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D14E1D1957257B00A0DA3E /* AlipayRsaLib.a */; };
 		F3D14E2C1957257B00A0DA3E /* Alixpay.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F3D14E1F1957257B00A0DA3E /* Alixpay.bundle */; };
 		F3D14E2D1957257B00A0DA3E /* AlixPaylib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D14E201957257B00A0DA3E /* AlixPaylib.a */; };
@@ -2192,6 +2194,8 @@
 		F3CA6A32196E8372005C2CD4 /* GoodsDetailCell_iPhone.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = GoodsDetailCell_iPhone.xml; sourceTree = "<group>"; };
 		F3CA6A33196E8372005C2CD4 /* GoodsDetailSlide_iPhone.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = GoodsDetailSlide_iPhone.xml; sourceTree = "<group>"; };
 		F3CA6A34196E8372005C2CD4 /* GoodsDetailTab_iPhone.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = GoodsDetailTab_iPhone.xml; sourceTree = "<group>"; };
+		F3CA6A54196EE548005C2CD4 /* order_qiuchang_cell_bottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "order_qiuchang_cell_bottom@2x.png"; sourceTree = "<group>"; };
+		F3CA6A55196EE548005C2CD4 /* order_qiuchang_cell_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "order_qiuchang_cell_button@2x.png"; sourceTree = "<group>"; };
 		F3D14E1D1957257B00A0DA3E /* AlipayRsaLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = AlipayRsaLib.a; sourceTree = "<group>"; };
 		F3D14E1E1957257B00A0DA3E /* AlixLibService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlixLibService.h; sourceTree = "<group>"; };
 		F3D14E1F1957257B00A0DA3E /* Alixpay.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Alixpay.bundle; sourceTree = "<group>"; };
@@ -4584,6 +4588,8 @@
 		F3B5396519011CFE004E72D4 /* Order */ = {
 			isa = PBXGroup;
 			children = (
+				F3CA6A54196EE548005C2CD4 /* order_qiuchang_cell_bottom@2x.png */,
+				F3CA6A55196EE548005C2CD4 /* order_qiuchang_cell_button@2x.png */,
 				F3977A08195612CB00340D76 /* topbarselectbtn@2x.png */,
 				F3977A09195612CB00340D76 /* topbarunselectbtn@2x.png */,
 				F3B53975190129D1004E72D4 /* searcher_new_btn_green@2x.png */,
@@ -5302,6 +5308,7 @@
 				F37AA80018E63B45004BE9B2 /* CalendarRowBottom@2x.png in Resources */,
 				CB37761C17C5FF6F00DF5F21 /* no-internet-connection-inter-icon@2x.png in Resources */,
 				CB37761D17C5FF6F00DF5F21 /* placeholder-image@2x.png in Resources */,
+				F3CA6A57196EE548005C2CD4 /* order_qiuchang_cell_button@2x.png in Resources */,
 				CB37761E17C5FF6F00DF5F21 /* profile-no-avatar-icon@2x.png in Resources */,
 				E909CC58182D0D650095B262 /* SigninBoard_iPhone.xml in Resources */,
 				E909CC55182D0D650095B262 /* ShippedCellFooter_iPhone.xml in Resources */,
@@ -5377,6 +5384,7 @@
 				CB37763817C5FF6F00DF5F21 /* shopping-cart-body-bg-01@2x.png in Resources */,
 				CB37763917C5FF6F00DF5F21 /* shopping-cart-body-bg-02@2x.png in Resources */,
 				CB37763A17C5FF6F00DF5F21 /* shopping-cart-body-bg-03@2x.png in Resources */,
+				F3CA6A56196EE548005C2CD4 /* order_qiuchang_cell_bottom@2x.png in Resources */,
 				F32FA7721966A68E00C3A0C5 /* HelpMainBoard_iPhone.xib in Resources */,
 				CB37763B17C5FF6F00DF5F21 /* shopping-cart-body-bg-04@2x.png in Resources */,
 				F3E4607718DF395400C8E952 /* coursefragmentsearchicon@2x.png in Resources */,

@@ -107,7 +107,7 @@
             background-image: url(shopping-cart-modify-btn-grey.png); 
             button-title: 修 改;
             button-title-color: #666;
-            font: 12px;
+            font: 16px;
             float: right;
         }
     
@@ -151,7 +151,7 @@
             line-num: 3;
             height: auto;
             color: #333;
-            font: 15px;
+            font: 16px;
             text-align: left;
 			text-v-align: top;
         }
@@ -169,7 +169,7 @@
             line-num: 2;
             height: 14px;
             color: #333;
-            font: 12px;
+            font: 16px;
             text-align: right;
         }
 
@@ -180,7 +180,7 @@
             line-num: 2;
             height: 10px;
             color: #666;
-            font: 10px;
+            font: 16px;
             text-align: right;
         }
                 

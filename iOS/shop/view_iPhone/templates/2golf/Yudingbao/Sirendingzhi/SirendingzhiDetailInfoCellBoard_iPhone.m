@@ -44,20 +44,20 @@ SUPPORT_AUTOMATIC_LAYOUT( NO );
     //self.frame = self.ctrl.view.frame;
     self.backgroundColor = [UIColor clearColor];
     
-    self.titleBg = [[[UIView alloc] initWithFrame:CGRectMake(0, 5, 150, 20)] autorelease];
+    self.titleBg = [[[UIView alloc] initWithFrame:CGRectMake(0, 5, 150, 24)] autorelease];
     self.titleBg.backgroundColor = RGB(101, 149, 161);
     [self addSubview:self.titleBg];
     
-    self.titleLabel = [[[UILabel alloc] initWithFrame:CGRectMake(20, 6, 120, 20)] autorelease];
+    self.titleLabel = [[[UILabel alloc] initWithFrame:CGRectMake(20, 6, 120, 24)] autorelease];
     self.titleLabel.backgroundColor = [UIColor clearColor];
     self.titleLabel.textColor = [UIColor whiteColor];
-    self.titleLabel.font = [UIFont systemFontOfSize:14.f];
+    self.titleLabel.font = [UIFont systemFontOfSize:18.f];
     [self addSubview:self.titleLabel];
     
-    self.contentLabel = [[[UILabel alloc] initWithFrame:CGRectMake(20, 30, 280, 20)] autorelease];
+    self.contentLabel = [[[UILabel alloc] initWithFrame:CGRectMake(20, 30, 280, 24)] autorelease];
     self.contentLabel.backgroundColor = [UIColor clearColor];
     self.contentLabel.textColor = [UIColor blackColor];
-    self.contentLabel.font = [UIFont systemFontOfSize:14.f];
+    self.contentLabel.font = [UIFont systemFontOfSize:16.f];
     [self addSubview:self.contentLabel];
     
     self.bottomLine = [[UIView alloc] initWithFrame:CGRectMake(0, 5, 320, 1)];

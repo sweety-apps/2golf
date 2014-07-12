@@ -58,18 +58,18 @@ DEF_SIGNAL( TOUCHED )
     self.titleLabel.text = @"";
     self.titleLabel.textAlignment = NSTextAlignmentLeft;
 	self.titleLabel.contentMode = UIViewContentModeScaleAspectFill;
-    self.titleLabel.font = [UIFont systemFontOfSize:16.0f];
+    self.titleLabel.font = [UIFont systemFontOfSize:20.0f];
     self.titleLabel.textColor = RGBA(0, 104, 56, 1.0);
-	self.titleLabel.frame = CGRectMake(40, 20, 240, 16);
+	self.titleLabel.frame = CGRectMake(40, 20, 240, 22);
 	[self addSubview:self.titleLabel];
     
     self.contentLabel = [[[BeeUILabel alloc] init] autorelease];
     self.contentLabel.textAlignment = NSTextAlignmentLeft;
     self.contentLabel.text = @"";
 	self.contentLabel.contentMode = UIViewContentModeScaleAspectFill;
-	self.contentLabel.font = [UIFont systemFontOfSize:14.0f];
+	self.contentLabel.font = [UIFont systemFontOfSize:18.0f];
     self.contentLabel.textColor = [UIColor blackColor];
-	self.contentLabel.frame = CGRectMake(40, 20, 240, 16);
+	self.contentLabel.frame = CGRectMake(40, 20, 240, 20);
     self.contentLabel.numberOfLines = 0;
 	[self addSubview:self.contentLabel];
     
@@ -122,6 +122,8 @@ DEF_SIGNAL( TOUCHED )
         str = self.data[@"title"];
         self.titleLabel.text = str;
         str = self.data[@"contentText"];
+        str = [str stringByReplacingOccurrencesOfString:@"<p>" withString:@""];
+        str = [str stringByReplacingOccurrencesOfString:@"</p>" withString:@""];
         self.contentLabel.text = str;
         str = self.data[@"image"][0];
         if ([str length] > 0)
@@ -151,6 +153,8 @@ DEF_SIGNAL( TOUCHED )
     CGSize size = CGSizeZero;
     
     str = self.data[@"contentText"];
+    str = [str stringByReplacingOccurrencesOfString:@"<p>" withString:@""];
+    str = [str stringByReplacingOccurrencesOfString:@"</p>" withString:@""];
     if ([str length] > 0)
     {
         size = rect.size;
@@ -281,10 +285,19 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
 
 ON_SIGNAL2( QiuchangDetailDescriptionCell_iPhone, signal )
 {
-	PhotoSlideViewBoard_iPhone * board = [PhotoSlideViewBoard_iPhone board];
-    board.pictures = self.dataDict[@"imgdetail"];
-	//board.pageIndex = [self.goodsModel.goods.pictures indexOfObject:photo];
-    [self.stack pushBoard:board animated:YES];
+    QiuchangDetailDescriptionCell_iPhone* cell = signal.source;
+    if ([cell.titleLabel.text isEqualToString:@"球道详情"])
+    {
+        PhotoSlideViewBoard_iPhone * board = [PhotoSlideViewBoard_iPhone board];
+        board.pictures = self.dataDict[@"imgdetail"];
+        //board.pageIndex = [self.goodsModel.goods.pictures indexOfObject:photo];
+        [self.stack pushBoard:board animated:YES];
+    }
+    else if ([cell.titleLabel.text isEqualToString:@"球场电话(点击拨打)"])
+    {
+        NSString* telUrl = [NSString stringWithFormat:@"tel://%@",cell.contentLabel.text];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:telUrl]];//打电话
+    }
 }
 
 #pragma mark -
@@ -332,13 +345,13 @@ ON_SIGNAL2( QiuchangDetailDescriptionCell_iPhone, signal )
     QiuchangDetailDescriptionCell_iPhone * cell = nil;
     
     cell = [QiuchangDetailDescriptionCell_iPhone cell];
-    cell.data = @{@"title":@"球场简介",
+    cell.data = @{@"title":@"球场概况",
                   @"contentText":self.dataDict[@"brief"],
                   @"image":@[@"",@"",@""]};
     [self.cellArray addObject:cell];
     
     cell = [QiuchangDetailDescriptionCell_iPhone cell];
-    cell.data = @{@"title":@"球场电话",
+    cell.data = @{@"title":@"球场电话(点击拨打)",
                   @"contentText":self.dataDict[@"tel"],
                   @"image":@[@"",@"",@""]};
     [self.cellArray addObject:cell];
@@ -401,7 +414,7 @@ ON_SIGNAL2( QiuchangDetailDescriptionCell_iPhone, signal )
     [self.cellArray addObject:cell];
     
     cell = [QiuchangDetailDescriptionCell_iPhone cell];
-    cell.data = @{@"title":@"球场描述",
+    cell.data = @{@"title":@"球场简介",
                   @"contentText":self.dataDict[@"description"],
                   @"image":@[@"",@"",@""]};
     [self.cellArray addObject:cell];

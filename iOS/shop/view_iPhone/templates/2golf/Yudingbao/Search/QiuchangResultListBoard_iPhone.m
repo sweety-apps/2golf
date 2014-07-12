@@ -408,7 +408,7 @@ ON_SIGNAL( signal )
 {
 	QiuchangResultListCellContainer * cell = [scrollView dequeueWithContentClass:[QiuchangResultListCellContainer class]];
     
-    [cell setFrame:CGRectMake(0, 0, 320, 58)];
+    [cell setFrame:CGRectMake(0, 0, 320, 68)];
     cell.ctrl.nameLabel.text = (self.dataArray[index])[@"coursename"];
     cell.ctrl.distanceLabel.text = [NSString stringWithFormat:@"距离：%.1f公里",[((NSNumber*)(self.distanceArray[index])) doubleValue]/1000.f];
     cell.ctrl.descriptionLabel.text = (self.dataArray[index])[@"slogan"];
@@ -448,7 +448,7 @@ ON_SIGNAL( signal )
 
 - (CGSize)scrollView:(BeeUIScrollView *)scrollView sizeForIndex:(NSInteger)index
 {
-	return CGSizeMake(320, 58);
+	return CGSizeMake(320, 68);
 }
 
 #pragma mark -

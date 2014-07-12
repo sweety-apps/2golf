@@ -125,7 +125,9 @@ ON_SIGNAL2( BeeUIBoard, signal )
 	{
 		if ( _isToolbarHiden )
 		{
-			_webView.frame = self.view.frame;
+            CGRect rect = self.view.frame;
+            rect.origin = CGPointZero;
+			_webView.frame = rect;
 		}
 		else
 		{

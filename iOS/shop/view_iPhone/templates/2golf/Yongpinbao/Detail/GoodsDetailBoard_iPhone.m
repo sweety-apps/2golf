@@ -178,7 +178,7 @@ SUPPORT_RESOURCE_LOADING( YES )
 		// info
 		NSMutableString * goodsInfo = [NSMutableString string];
 		goodsInfo
-		.LINE( @"%@: %@", __TEXT(@"shipping_fee"), goodsModel.goods.is_shipping.boolValue ?  __TEXT(@"shipping_fee_free") : __TEXT(@"shipping_fee_notfree") )
+		//.LINE( @"%@: %@", __TEXT(@"shipping_fee"), goodsModel.goods.is_shipping.boolValue ?  __TEXT(@"shipping_fee_free") : __TEXT(@"shipping_fee_notfree") )
 		.LINE( @"%@: %@", __TEXT(@"remain"), goodsModel.goods.goods_number )
 		.LINE( @"%@: %@", __TEXT(@"shop_price"), goodsModel.goods.shop_price )
 		.LINE( @"%@: %@", __TEXT(@"market_price"), goodsModel.goods.market_price );

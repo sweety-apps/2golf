@@ -94,9 +94,23 @@ ON_SIGNAL2( BeeUIBoard, signal )
                 case 0:
                 {
                     //"待确认";
+                    NSString* tabName = nil;
+                    switch (_cell.orderCellType)
+                    {
+                        case EOrderCellTypeCourse:
+                            tabName = @"球场";
+                            break;
+                        case EOrderCellTypeTaocan:
+                            tabName = @"套餐";
+                            break;
+                            
+                        default:
+                            break;
+                    }
+                    NSString* msg = [NSString stringWithFormat:@"我们将尽快确认您的预订请求，并尽快通知您，您可以在\"我的爱高\"->\"历史订场\"里 【%@】 页中查看订单状态",tabName];
                     BeeUIAlertView * alert = [BeeUIAlertView spawn];
                     alert.title = @"您的订单已收到，等待服务商确认";
-                    alert.message = @"我们将尽快确认您的预订请求，并尽快通知您，您可以在\"我的爱高\"->\"历史订场\"中查看订单状态";
+                    alert.message = msg;
                     [alert addCancelTitle:@"确定"];
                     [alert showInViewController:self];
                 }

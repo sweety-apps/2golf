@@ -60,7 +60,7 @@
             margin-left: 3px;
 			margin-top: 3px;
             width: 314px;
-            height: 50px;
+            height: 70px;
         }
 
         .order-wrapper-bg {
@@ -76,16 +76,16 @@
         
         .order-group {
 			width: 100%;
-			height: 25px;
+			height: 20px;
         }
 
         #order-date-label {
             margin-left: 20px;
 			margin-top: 10px;
             width: auto;
-            height: 14px;   
+            height: 18px;
             color: #333;
-            font-size: 12px;
+            font-size: 16px;
             text-align: left;
         }
 
@@ -93,29 +93,29 @@
             margin-left: 5px;
 			margin-top: 10px;
             width: 200px;
-            height: 14px;
+            height: 18px;
             color: #333;
-            font-size: 12px;
+            font-size: 16px;
             text-align: left;
         }
         
         #order-number-label {
-			margin-top: 15px;
+			margin-top: 10px;
 			margin-left: 20px;
 			width: auto;
-			height: 14px;
+			height: 18px;
 			color: #333;
-			font-size: 12px;
+			font-size: 16px;
 			text-align: left;
         }
         
         #order-number {
-			margin-top: 15px;
+			margin-top: 10px;
 			margin-left: 5px;
 			width: 200px;
-			height: 14px;
+			height: 18px;
 			color: #333;
-			font-size: 12px;
+			font-size: 16x;
 			text-align: left;
         }
 

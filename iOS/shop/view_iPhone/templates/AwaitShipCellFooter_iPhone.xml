@@ -67,7 +67,7 @@
         }
         
         #cart-goods-desc {
-			font: 14px;
+			font: 16px;
 			color: #333;
 			width: auto;
 			text-align: left;
@@ -76,7 +76,7 @@
         }
 
         #cart-goods-price {
-			font: 14px;
+			font: 16px;
 			color: #cc0b00;
 			height: 20px;
 			width: 210px;

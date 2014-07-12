@@ -40,6 +40,7 @@
 @property (nonatomic,retain) NSMutableArray* courseArray;
 @property (nonatomic,retain) NSMutableArray* taocanArray;
 @property (nonatomic,retain) NSArray* currentArray;
+@property (nonatomic,retain) NSMutableArray* currentLayoutArray;
 @property (nonatomic,assign) BOOL isTaocan;
 @property (nonatomic,retain) MyOrderListTopSwitchViewController* switchCtrl;
 @property (nonatomic,retain) NSDictionary* payingData;
@@ -52,11 +53,13 @@
 {
 	[super load];
     self.switchCtrl = [[MyOrderListTopSwitchViewController alloc] initWithNibName:@"MyOrderListTopSwitchViewController" bundle:nil];
+    self.currentLayoutArray = [NSMutableArray array];
 }
 
 - (void)unload
 {
     self.dataDict = nil;
+    self.currentLayoutArray = nil;
 	[super unload];
 }
 
@@ -180,7 +183,20 @@ ON_SIGNAL( signal )
         self.currentArray = self.taocanArray;
     }
     [self reorderDatas];
+    [self resetLayouts];
     [_scroll reloadData];
+    //[_scroll scrollToLastPage:NO];
+    //[_scroll scrollToFirstPage:NO];
+}
+
+- (void)resetLayouts
+{
+    [self.currentLayoutArray removeAllObjects];
+    for (NSDictionary* dict in self.currentArray)
+    {
+        QiuchangOrderCell_iPhoneLayout* lo = [QiuchangOrderCell_iPhoneLayout layoutWithDict:dict];
+        [self.currentLayoutArray addObject:lo];
+    }
 }
 
 - (void)reorderDatas
@@ -235,6 +251,7 @@ ON_SIGNAL( signal )
     {
         row = [self.currentArray count];
     }
+    //scrollView->_lineCount = 0;
     
 	return row;
 }
@@ -247,12 +264,17 @@ ON_SIGNAL( signal )
     cell.delegate = self;
     cell.data = self.currentArray[index];
     
+    QiuchangOrderCell_iPhoneLayout* lo = self.currentLayoutArray[index];
+    
+    [cell setCellLayout:lo];
+    
     return cell;
 }
 
 - (CGSize)scrollView:(BeeUIScrollView *)scrollView sizeForIndex:(NSInteger)index
 {
-    return [QiuchangOrderCell_iPhone getCellSize];
+    QiuchangOrderCell_iPhoneLayout* lo = self.currentLayoutArray[index];
+    return lo.cellSize;
 }
 
 #pragma mark - Network

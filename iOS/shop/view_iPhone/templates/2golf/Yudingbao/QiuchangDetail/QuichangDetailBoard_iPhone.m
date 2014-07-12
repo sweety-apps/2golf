@@ -25,6 +25,7 @@
 #import "QiuchangDetailDescriptionBoard_iPhone.h"
 #import "CommonUtility.h"
 #import "WeatherViewBoard_iPhone.h"
+#import "UserModel.h"
 
 #pragma mark -
 
@@ -490,7 +491,7 @@ ON_SIGNAL2( QiuchangBannerPhotoCell_iPhone, signal )
     
     //服务商价格列表
     cell = [[QiuchangDetailPriceHeaderCell_iPhone alloc] initWithFrame:CGRectZero];
-    cell.data = @"第三方供应商";
+    cell.data = @"服务商";
     [self.cellArray addObject:cell];
     
     priceHeaderCell = cell;
@@ -668,6 +669,8 @@ ON_SIGNAL2( QiuchangBannerPhotoCell_iPhone, signal )
         if ( msg.succeed )
         {
             [self presentMessageTips:@"已收藏"];
+            [[UserModel sharedInstance] updateFields];
+            [[UserModel sharedInstance] updateProfile];
         }
         else if ( msg.failed )
         {

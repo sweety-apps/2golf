@@ -677,6 +677,7 @@ ON_SIGNAL3( BeeUIPickerView, CONFIRMED, signal )
         }
         else if ( msg.failed )
         {
+            //[self reloadData];
             [self presentFailureTips:((STATUS*)msg.output[@"status"]).error_desc];
         }
     }

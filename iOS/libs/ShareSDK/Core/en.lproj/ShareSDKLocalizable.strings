@@ -55,7 +55,7 @@
 "ERROR_DESC_YIXIN_SEND_REQUEST_ERROR" = "YiXin OpenApi Request failed";
 "ERROR_DESC_YIXIN_NOT_SET_URL_SCHEME" = "YiXin's URL Scheme has not been set";
 
-"ShareType_1" = "Sina Weibo";
+"ShareType_1" = "新浪微博";
 "ShareType_2" = "腾讯微博";
 "ShareType_3" = "搜狐微博";
 "ShareType_4" = "网易微博";
@@ -139,7 +139,7 @@
 "ACCOUNT_VIEW_TIPS_SECTION_TITLE" = "Authorization fails, please re-authorization";
 
 "AUTH_VIEW_CANCEL_BUTTON" = "Cancel";
-"AUTH_VIEW_TITLE_1" = "Sina Weibo";
+"AUTH_VIEW_TITLE_1" = "新浪微博";
 "AUTH_VIEW_TITLE_2" = "腾讯微博";
 "AUTH_VIEW_TITLE_3" = "搜狐微博";
 "AUTH_VIEW_TITLE_4" = "网易微博";

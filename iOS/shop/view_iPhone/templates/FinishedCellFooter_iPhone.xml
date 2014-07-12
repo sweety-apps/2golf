@@ -47,7 +47,7 @@
             height: 23px;
             background-image: url(button-narrow-gray.png) stretch;
 			color: #333;
-            font-size: 10px;
+            font-size: 16px;
 			font-weight: lighter;
         }
         
@@ -56,7 +56,7 @@
             height: 23px;
             background-image: url(button-narrow-red.png) stretch;
 			color: #ffffff;
-            font-size: 10px;
+            font-size: 16px;
 			font-weight: lighter;
             margin-left: 5px;
         }
@@ -86,7 +86,7 @@
         }
         
         #cart-goods-desc {
-			font: 14px;
+			font: 16px;
 			color: #333;
 			width: auto;
 			text-align: left;
@@ -95,7 +95,7 @@
         }
         
         #cart-goods-price {
-			font: 14px;
+			font: 16px;
 			color: #cc0b00;
 			height: 20px;
 			width: 150px;

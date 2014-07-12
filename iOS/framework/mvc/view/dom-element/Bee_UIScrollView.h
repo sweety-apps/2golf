@@ -85,6 +85,10 @@ typedef enum
 #pragma mark -
 
 @interface BeeUIScrollView : UIScrollView<BeeUIScrollViewDataSource, UIScrollViewDelegate>
+{
+@public
+    NSInteger					_lineCount;
+}
 
 AS_INT( DIRECTION_HORIZONTAL )
 AS_INT( DIRECTION_VERTICAL )

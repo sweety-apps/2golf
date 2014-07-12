@@ -285,6 +285,12 @@ ON_SIGNAL2( BeeUIScrollView, signal )
         return;
     }
     
+    if ([self.phoneTextField.text length] <= 0)
+    {
+        [self presentFailureTips:@"请填写联系电话"];
+        return;
+    }
+    
     [self generateOrder];
 }
 
@@ -323,6 +329,11 @@ ON_SIGNAL2( BeeUIScrollView, signal )
 - (void)generateOrder
 {
     [self presentProgressTips:@"正在生成订单"];
+    NSString* desStr = self.descriptionTextField.text;
+    if (desStr == nil)
+    {
+        desStr = @"";
+    }
     NSDictionary* paramDict = @{
                                 @"session":[UserModel sharedInstance].session.objectToDictionary,
                                 @"players":[NSString stringWithFormat:@"%d",(int)self.numPeople],
@@ -332,7 +343,8 @@ ON_SIGNAL2( BeeUIScrollView, signal )
                                 @"id":self.dataDict[@"id"],
                                 @"type":@"2",
                                 @"agentid":self.dataDict[@"distributorid"],
-                                @"timestamp":[NSString stringWithFormat:@"%ld",[CommonUtility getSearchTimeStamp]]
+                                @"timestamp":[NSString stringWithFormat:@"%ld",[CommonUtility getSearchTimeStamp]],
+                                @"postscript":desStr
                                 };
     self.HTTP_POST([[ServerConfig sharedInstance].url stringByAppendingString:@"courseorder/generate"])
     .PARAM(@"json",[paramDict JSONString])

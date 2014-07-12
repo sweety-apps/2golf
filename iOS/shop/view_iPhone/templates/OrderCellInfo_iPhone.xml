@@ -77,17 +77,17 @@
         
         .order-info-title {
         width: 100px;
-        height: 14px;
+        height: 18px;
         color: #333;
-        font: 12px;
+        font: 16px;
         text-align: left;
         }
         
         .order-info-content {
         text: ￥0.00;
         width: 185px;
-        height: 10px;
-        font: 12px;
+        height: 18px;
+        font: 16px;
         text-align: right;
         }
         

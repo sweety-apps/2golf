@@ -74,7 +74,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
         _bottomCtrl = [[SouSuoQiuchangBottomViewController alloc] initWithNibName:@"SouSuoQiuchangBottomViewController" bundle:nil];
         
         CGRect rect = _bottomCtrl.view.frame;
-        CGFloat y = self.scrollContentView.frame.size.height - 66-6 - rect.size.height;
+        CGFloat y = self.scrollContentView.frame.size.height - 36-6 - rect.size.height;
         rect.origin.y = y;
         _bottomCtrl.view.frame = rect;
         [self.scrollContentView addSubview:_bottomCtrl.view];
@@ -118,12 +118,12 @@ ON_SIGNAL2( BeeUIBoard, signal )
         if ([UIApplication sharedApplication].keyWindow.frame.size.height <= 480)
         {
             //self.scrollView.frame = CGRectMake(0, 6, 320, 480);
-            self.scrollView.contentSize = CGSizeMake(320, 568);
+            self.scrollView.contentSize = CGSizeMake(320, 598);
         }
         else
         {
             //self.scrollView.frame = CGRectMake(0, 6, 320, 568);
-            self.scrollView.contentSize = CGSizeMake(320, 568);
+            self.scrollView.contentSize = CGSizeMake(320, 598);
         }
         
         //self.scrollContentView.hidden = YES;
@@ -131,7 +131,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
         CGRect rect = self.scrollView.frame;
         rect.size = self.viewBound.size;
         self.scrollView.frame = rect;
-        self.scrollView.contentSize = CGSizeMake(320, 528);
+        self.scrollView.contentSize = CGSizeMake(320, 558);
         self.scrollView.scrollEnabled = YES;
     }
     else if ( [signal is:BeeUIBoard.WILL_DISAPPEAR] )
@@ -362,14 +362,14 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
     } else if ( req.recving ) {
     } else if ( req.failed ) {
         [self dismissTips];
-        [self presentFailureTips:__TEXT(@"error_network")];
+        //[self presentFailureTips:__TEXT(@"error_network")];
     } else if ( req.succeed ) {
         [self dismissTips];
         // 判断返回数据是
         NSError* error;
         NSDictionary* dict = [NSJSONSerialization JSONObjectWithData:req.responseData options:NSJSONReadingMutableLeaves error:&error];
         if ( dict == nil || [dict count] == 0 ) {
-            [self presentFailureTips:__TEXT(@"error_network")];
+            //[self presentFailureTips:__TEXT(@"error_network")];
         } else {
             return dict;
         }
@@ -394,7 +394,7 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
             }
             else
             {
-                [self presentFailureTips:__TEXT(@"error_network")];
+                //[self presentFailureTips:__TEXT(@"error_network")];
             }
         }
     }

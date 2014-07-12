@@ -134,7 +134,6 @@
 	NSInteger					_visibleStart;
 	NSInteger					_visibleEnd;
 	
-	NSInteger					_lineCount;
 	CGFloat						_lineHeights[MAX_LINES];
 	
 	NSInteger					_total;
@@ -1214,9 +1213,16 @@ DEF_SIGNAL( FOOTER_REFRESH )
 
 	offset.x += self.contentInset.left;
 	offset.y += self.contentInset.top;
+    
+    //这里解个BUG，当cell大小超过contentSize时会有问题
+    NSInteger visibleEnd = _visibleEnd;
+    if (_visibleEnd > 0 && visibleEnd + 1 - _visibleStart >= _total)
+    {
+        visibleEnd = _visibleStart + 1;
+    }
 
 	CGRect visibleStartRect = ((BeeUIScrollItem *)_items[_visibleStart]).rect;
-	CGRect visibleEndRect = ((BeeUIScrollItem *)_items[_visibleEnd]).rect;
+	CGRect visibleEndRect = ((BeeUIScrollItem *)_items[visibleEnd]).rect;
 	
 	if ( self.DIRECTION_VERTICAL == _direction )
 	{
@@ -1224,6 +1230,7 @@ DEF_SIGNAL( FOOTER_REFRESH )
 		{
 			needed = YES;
 		}
+        //needed = YES;
 	}
 	else if ( self.DIRECTION_HORIZONTAL == _direction )
 	{

@@ -22,7 +22,7 @@
 
 #pragma mark -
 
-@interface OtherTripBoard_iPhone()
+@interface OtherTripBoard_iPhone() <UIScrollViewDelegate>
 {
     
     int i_offset;    //偏移量
@@ -95,6 +95,8 @@ ON_SIGNAL2( BeeUIBoard, signal )
         
         self.scrollView.scrollEnabled = YES;
         self.scrollView.contentSize = CGSizeMake(320, 800);
+        
+        self.scrollView.delegate = self;
     }
     else if ( [signal is:BeeUIBoard.WILL_DISAPPEAR] )
     {
@@ -321,6 +323,13 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
     [textField resignFirstResponder];
     
     return YES;
+}
+
+#pragma mark <UIScrollViewDelegate>
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    [self resignFirstResponder];
 }
 
 @end

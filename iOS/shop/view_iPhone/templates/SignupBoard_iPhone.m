@@ -337,15 +337,15 @@ ON_SIGNAL3( SignupBoard_iPhone, signin, signal )
 		return;
 	}
     
-	if ( userName.length < 3 )
+	if ( userName.length < 11 )
 	{
-		[self presentMessageTips:__TEXT(@"username_too_short")];
+		[self presentMessageTips:@"电话号码不能少于11位"];
 		return;
 	}
     
 	if ( userName.length > 20 )
 	{
-		[self presentMessageTips:__TEXT(@"username_too_long")];
+		[self presentMessageTips:@"错误的电话号码"];
 		return;
 	}
 

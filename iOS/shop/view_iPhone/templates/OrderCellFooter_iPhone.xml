@@ -73,7 +73,7 @@
         }
         
         #cart-goods-desc {
-            font: 14px;
+            font: 16px;
             color: #333;
             width: 100px;
             text-align: left;
@@ -86,7 +86,7 @@
             float: right;
             font: 20px;
             color: #cc0b00;
-            height: 20px;
+            height: 22px;
             width: 100px;
             text-align: left;
         }

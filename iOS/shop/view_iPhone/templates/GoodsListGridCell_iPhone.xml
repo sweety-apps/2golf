@@ -73,15 +73,14 @@
         }
         
         .goods-title {
-			width: 150px;
+			width: 160px;
 			height: 24px;
 			position: absolute;
-			top: 150px;
-			left: 10px;
+			top: 142px;
+			left: 0px;
 			color: #333;
-			font-size: 14px;
-			font-weight: bold;
-			text-align: left;
+			font-size: 16px;
+			text-align: center;
 			margin-top: 8px;
 			line-break: tail-trunc;
         }

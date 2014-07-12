@@ -15,10 +15,12 @@
                     <label id="name" class="header-name"></label>
                 </linear>
                 
+                <label id="header_money_bg"></label>
                 <label id="header_money_name">余额</label>
                 <label id="header_money_value">￥0</label>
                 <button id="header_money_button"></button>
                 
+                <label id="header_score_bg"></label>
                 <label id="header_score_name">积分</label>
                 <label id="header_score_value">0</label>
                 <button id="header_score_button"></button>
@@ -37,7 +39,7 @@
                             <image class="list-large-bg"/>
                             <linear orientation="v" class="bar-item">
                                 <image class="bar-item-icon payment"/>
-                                <label class="bar-item-info" id="await_pay_label">待付款商品</label>
+                                <label class="bar-item-info" id="await_pay_label">待付款 商品</label>
                                 <linear orientation="v" class="badge-wrapper">
                                     <image id="await_pay-bg" class="badge-wrapper-bg"/>
                                     <label id="await_pay" class="bar-item-badge"></label>
@@ -47,7 +49,7 @@
                             
                             <linear orientation="v" class="bar-item">
                                 <image class="bar-item-icon ship" />
-                                <label class="bar-item-info" id="await_ship_label">待发货商品</label>
+                                <label class="bar-item-info" id="await_ship_label">待发货 商品</label>
                                 <linear orientation="v" class="badge-wrapper">
                                     <image id="await_ship-bg" class="badge-wrapper-bg"/>
                                     <label id="await_ship" class="bar-item-badge"></label>
@@ -57,7 +59,7 @@
                             
                             <linear orientation="v" class="bar-item">
                                 <image class="bar-item-icon receipt"/>
-                                <label class="bar-item-info" id="shipped_label">待收货商品</label>
+                                <label class="bar-item-info" id="shipped_label">待收货 商品</label>
                                 <linear orientation="v" class="badge-wrapper">
                                     <image id="shipped-bg" class="badge-wrapper-bg"/>
                                     <label id="shipped" class="bar-item-badge"></label>
@@ -194,7 +196,7 @@
         
         .list-title {
             margin-left: 14px;
-            font-size: 18px;
+            font-size: 20px;
 			font-weight: bold;
             color: #333;
             width: 146px;
@@ -203,7 +205,7 @@
         }
         
         .list-subtitle {
-            font-size: 18px;
+            font-size: 20px;
 			font-weight: lighter;
             color: #333;
             margin: 0 10px;
@@ -237,13 +239,13 @@
         
         .bar-wrapper {
             width: 300px;
-            height: 60px;
+            height: 70px;
             v-align: center;
         }
         
         .bar-item {
             width: 60px;
-            height: 40px;
+            height: 60px;
             align: center;
             margin-left: 10px;
         }
@@ -301,11 +303,12 @@
         
         .bar-item-info {
             text-align: center;
-			font-size: 12px;
+			font-size: 16px;
 			font-weight: bold;
             color: #333;
             width: 100%;
-            height: 20px;
+            height: 40px;
+            line-num: 2;
         }
         
         .header-wrapper {
@@ -392,6 +395,16 @@
         left:140px;
         }
         
+        #header_money_bg {
+        width:160px;
+        height: 25px;
+        position: absolute !important;
+        top:50px;
+        left:140px;
+        background-color: #ffffff;
+        alpha: 0.7;
+        }
+        
         #header_score_name {
         color: #559703;
         width: 120px;
@@ -422,6 +435,16 @@
         position: absolute !important;
         top:80px;
         left:140px;
+        }
+        
+        #header_score_bg {
+        width:160px;
+        height: 25px;
+        position: absolute !important;
+        top:83px;
+        left:140px;
+        background-color: #ffffff;
+        alpha: 0.7;
         }
 
         .header-level-box {

@@ -1090,11 +1090,19 @@ ON_SIGNAL2( BeeUIAlertView, signal)
 {
 	if ( index == 0 )
 	{
+        if ([UIApplication sharedApplication].keyWindow.frame.size.height > 480)
+        {
+            return CGSizeMake( scrollView.width, 150.0f );
+        }
 		return CGSizeMake( scrollView.width, 115.0f );
 	}
 
 	if ( index == 1 )
 	{
+        if ([UIApplication sharedApplication].keyWindow.frame.size.height > 480)
+        {
+            return CGSizeMake( scrollView.width, scrollView.height - 150.0f-[AppBoard_iPhone sharedInstance].tabbar.height);
+        }
 		return CGSizeMake( scrollView.width, scrollView.height - 115.0f-[AppBoard_iPhone sharedInstance].tabbar.height);
 	}
 	
