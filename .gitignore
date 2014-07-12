@@ -28,3 +28,7 @@ iOS/2golf.xcodeproj/xcuserdata/2golf.xcuserdatad/xcschemes/2golf.xcscheme
 *.xcscheme
 
 iOS/2golf.xcodeproj/xcuserdata/*
+
+iOS/2golf.xcodeproj/project.xcworkspace/xcuserdata/*
+
+*.xcuserdatad
