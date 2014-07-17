@@ -237,7 +237,8 @@ ON_SIGNAL2( BeeUIBoard, signal )
                          @"longitude":@0,
                          @"course_sum":@0,
                          @"city_expand":@[],
-                         @"hasExpand":@NO
+                         @"hasExpand":@NO,
+                         @"international":@NO
                          }];
                 //当前位置
     [hotCity addObject:@{
@@ -253,7 +254,8 @@ ON_SIGNAL2( BeeUIBoard, signal )
                              @"longitude":@-1,
                              @"course_sum":@0,
                              @"city_expand":@[],
-                             @"hasExpand":@NO
+                             @"hasExpand":@NO,
+                             @"international":@NO
                              }];
     for (NSDictionary* city in (self.cityDataDict[@"data"])[@"city"]) {
         if ([city[@"is_hot_city"] boolValue])
@@ -271,7 +273,8 @@ ON_SIGNAL2( BeeUIBoard, signal )
                                  @"longitude":city[@"longitude"],
                                  @"course_sum":@0,
                                  @"city_expand":@[],
-                                 @"hasExpand":@NO
+                                 @"hasExpand":@NO,
+                                 @"international":@NO
                                  }];
         }
     }
@@ -289,7 +292,8 @@ ON_SIGNAL2( BeeUIBoard, signal )
                          @"longitude":@0,
                          @"course_sum":@0,
                          @"city_expand":@[],
-                         @"hasExpand":@NO
+                         @"hasExpand":@NO,
+                         @"international":@NO
                          }];
     for (NSDictionary* province in (self.provinceDataDict[@"data"])[@"province"]) {
         if (![province[@"international"] boolValue])
@@ -309,7 +313,8 @@ ON_SIGNAL2( BeeUIBoard, signal )
                                     @"longitude":@0,
                                     @"course_sum":province[@"course_sum"],
                                     @"city_expand":@[],
-                                    @"hasExpand":@NO
+                                    @"hasExpand":@NO,
+                                    @"international":@NO
                                     }]];
         }
     }
@@ -334,7 +339,8 @@ ON_SIGNAL2( BeeUIBoard, signal )
                                      @"longitude":city[@"longitude"],
                                      @"course_sum":@0,
                                      @"city_expand":@[],
-                                     @"hasExpand":@NO
+                                     @"hasExpand":@NO,
+                                     @"international":@NO
                                      }];
                     province[@"city_expand"] = arr;
                 }
@@ -355,7 +361,8 @@ ON_SIGNAL2( BeeUIBoard, signal )
                            @"longitude":@0,
                            @"course_sum":@0,
                            @"city_expand":@[],
-                           @"hasExpand":@NO
+                           @"hasExpand":@NO,
+                           @"international":@YES
                            }];
     for (NSDictionary* province in (self.provinceDataDict[@"data"])[@"province"]) {
         if ([province[@"international"] boolValue])
@@ -375,7 +382,8 @@ ON_SIGNAL2( BeeUIBoard, signal )
                                     @"longitude":@0,
                                     @"course_sum":province[@"course_sum"],
                                     @"city_expand":@[],
-                                    @"hasExpand":@NO
+                                    @"hasExpand":@NO,
+                                    @"international":@YES
                                     }]];
         }
     }
@@ -400,7 +408,8 @@ ON_SIGNAL2( BeeUIBoard, signal )
                                      @"longitude":city[@"longitude"],
                                      @"course_sum":@0,
                                      @"city_expand":@[],
-                                     @"hasExpand":@NO
+                                     @"hasExpand":@NO,
+                                     @"international":@YES
                                      }];
                     province[@"city_expand"] = arr;
                 }
@@ -582,7 +591,8 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
                          @"longitude":@0,
                          @"course_sum":@0,
                          @"city_expand":@[],
-                         @"hasExpand":@NO
+                         @"hasExpand":@NO,
+                         @"international":@NO
                          }];
     }
     
@@ -612,7 +622,8 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
                             @"longitude":city[@"longitude"],
                             @"course_sum":@0,
                             @"city_expand":@[],
-                            @"hasExpand":@NO
+                            @"hasExpand":@NO,
+                            @"international":city[@"international"]
                             }
                   atIndex:index + 1];
     }
@@ -662,6 +673,16 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
         {
             mdict[@"latitude"] = [NSNumber numberWithDouble:[(AppDelegate*)[AppDelegate sharedInstance] getCurrentLatitude]];
             mdict[@"longitude"] = [NSNumber numberWithDouble:[(AppDelegate*)[AppDelegate sharedInstance] getCurrentLongitude]];
+        }
+        mdict[@"city_id"] = province[@"city_id"];
+        mdict[@"name"] = province[@"name"];
+        if (province[@"international"] == nil)
+        {
+            mdict[@"international"] = @NO;
+        }
+        else
+        {
+            mdict[@"international"] = province[@"international"];
         }
         [[NSUserDefaults standardUserDefaults] setObject:mdict forKey:@"search_local"];
         [[NSUserDefaults standardUserDefaults] synchronize];

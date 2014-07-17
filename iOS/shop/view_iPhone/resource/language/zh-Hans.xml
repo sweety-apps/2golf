@@ -109,7 +109,7 @@
 <string name="redpaper_input">输入红包</string>
 <string name="register_regist">注册</string>
 <string name="register_email">邮箱</string>
-<string name="register_confirm">确认密码</string>
+<string name="register_confirm">确认密码(密码至少6位)</string>
 <string name="search_input">请输入搜索关键字</string>
 <string name="setting_picture">图片显示</string>
 <string name="setting_smartmode">智能模式</string>

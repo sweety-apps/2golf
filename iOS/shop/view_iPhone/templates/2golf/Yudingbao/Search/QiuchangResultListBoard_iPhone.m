@@ -295,17 +295,38 @@ ON_SIGNAL2( BeeUIBoard, signal )
 {
     NSDictionary* dic = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_local"];
     NSString* keywords = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_keywords"];
-    if ([keywords isEqualToString:@"请输入关键字"])
+    if (keywords == nil || [keywords isEqualToString:@"请输入关键字"])
     {
         keywords = @"";
     }
-    self.HTTP_POST([[ServerConfig sharedInstance].url stringByAppendingString:@"searcharound"])
+    NSString* cityid = dic[@"city_id"];
+    
+    NSNumber* lng = dic[@"longitude"];
+    NSNumber* lat = dic[@"latitude"];
+    //lng = @114.02597365732;
+    //lat = @22.546053546205;
+    BeeHTTPRequest* req = self.HTTP_POST([[ServerConfig sharedInstance].url stringByAppendingString:@"searcharound"])
     .PARAM(@"coursename",keywords)
-    .PARAM(@"longitude",dic[@"longitude"])
-    .PARAM(@"latitude",dic[@"latitude"])
-    .PARAM(@"scope",@"50")
-    .PARAM(@"timestamp", [NSString stringWithFormat:@"%ld",[CommonUtility getSearchTimeStamp]])
-    .TIMEOUT(30);
+    .PARAM(@"timestamp", [NSString stringWithFormat:@"%ld",[CommonUtility getSearchTimeStamp]]);
+    
+    if ([dic[@"international"] integerValue] > 0)
+    {
+        req.PARAM(@"isinternational",@"true")
+        .PARAM(@"scope",@"50");
+    }
+    else
+    {
+        req.PARAM(@"longitude",lng)
+        .PARAM(@"latitude",lat)
+        .PARAM(@"scope",@"50");
+    }
+    
+    if ([cityid intValue] > 0)
+    {
+        req.PARAM(@"cityid",cityid);
+    }
+    
+    req.TIMEOUT(30);
     
 }
 

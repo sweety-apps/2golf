@@ -222,6 +222,15 @@ ON_SIGNAL2( ContactListCell_iPhone, signal )
     
     // Create addressbook data model
     ABAddressBookRef addressBooks =  ABAddressBookCreateWithOptions(NULL, NULL);
+    if (addressBooks == NULL)
+    {
+        BeeUIAlertView * alert = [BeeUIAlertView spawn];
+        alert.title = @"不能获取通讯录列表";
+        alert.message = @"由于您没有授权读取通讯录，爱高不能直接获取您的通讯录列表，请在系统的 设置->隐私->通讯录 中打开【爱高高尔夫】读取通讯录的权限，谢谢。";
+        [alert addCancelTitle:@"好的"];
+        [alert showInViewController:self];
+        return;
+    }
     //获取通讯录权限
     dispatch_semaphore_t sema = dispatch_semaphore_create(0);
     ABAddressBookRequestAccessWithCompletion(addressBooks, ^(bool granted, CFErrorRef error){dispatch_semaphore_signal(sema);});
@@ -294,8 +303,14 @@ ON_SIGNAL2( ContactListCell_iPhone, signal )
         if (abFullName) CFRelease(abFullName);
     }
     
-    CFRelease(allPeople);
-    CFRelease(addressBooks);
+    if (allPeople)
+    {
+        CFRelease(allPeople);
+    }
+    if (addressBooks)
+    {
+        CFRelease(addressBooks);
+    }
 }
 
 - (void) _registerForKeyboardNotifications

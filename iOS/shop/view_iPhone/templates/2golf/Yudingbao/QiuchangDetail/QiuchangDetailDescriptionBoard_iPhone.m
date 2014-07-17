@@ -288,10 +288,14 @@ ON_SIGNAL2( QiuchangDetailDescriptionCell_iPhone, signal )
     QiuchangDetailDescriptionCell_iPhone* cell = signal.source;
     if ([cell.titleLabel.text isEqualToString:@"球道详情"])
     {
-        PhotoSlideViewBoard_iPhone * board = [PhotoSlideViewBoard_iPhone board];
-        board.pictures = self.dataDict[@"imgdetail"];
-        //board.pageIndex = [self.goodsModel.goods.pictures indexOfObject:photo];
-        [self.stack pushBoard:board animated:YES];
+        NSArray* pics = self.dataDict[@"imgdetail"];
+        if ([pics count] > 0)
+        {
+            PhotoSlideViewBoard_iPhone * board = [PhotoSlideViewBoard_iPhone board];
+            board.pictures = pics;
+            //board.pageIndex = [self.goodsModel.goods.pictures indexOfObject:photo];
+            [self.stack pushBoard:board animated:YES];
+        }
     }
     else if ([cell.titleLabel.text isEqualToString:@"球场电话(点击拨打)"])
     {

@@ -30,6 +30,7 @@
 @interface QiuchangTehuiListBoard_iPhone()
 {
 	BeeUIScrollView *	_scroll;
+    BOOL _needRefreshData;
     BOOL _isFirstFetchData;
 }
 
@@ -160,6 +161,12 @@ ON_SIGNAL2( BeeUIBoard, signal )
         }
         gRightLabel.text = str;
         
+        if (_needRefreshData)
+        {
+            _needRefreshData = NO;
+            [self onPressedShiduanBtn:self.shiduanBtn];
+            [self onPressedJiagepaixuBtn:self.jiagepaixuBtn];
+        }
         if (_isFirstFetchData)
         {
             _isFirstFetchData = NO;
@@ -196,6 +203,7 @@ ON_SIGNAL( signal )
 {
     if ( [signal is:self.LOCAL_RIGHT_NAV_BTN] )
     {
+        _needRefreshData = YES;
         [self.stack pushBoard:[CitySelectBoard_iPhone boardWithNibName:@"CitySelectBoard_iPhone"] animated:YES];
     }
 }

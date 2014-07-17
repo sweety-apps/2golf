@@ -803,7 +803,6 @@
 		F3D14E47195726B300A0DA3E /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D14E40195726B300A0DA3E /* SBJsonParser.m */; };
 		F3D14E48195726B300A0DA3E /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D14E42195726B300A0DA3E /* SBJsonWriter.m */; };
 		F3D14EA7195C8DEB00A0DA3E /* profile-has-avatar-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3D14EA6195C8DEB00A0DA3E /* profile-has-avatar-icon@2x.png */; };
-		F3E45FFD18D4C7D100C8E952 /* 2golf-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F3E45FFC18D4C7D100C8E952 /* 2golf-Info.plist */; };
 		F3E4607018DF395400C8E952 /* coursefragmentcustomizationbkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3E4605C18DF395400C8E952 /* coursefragmentcustomizationbkg@2x.png */; };
 		F3E4607118DF395400C8E952 /* coursefragmentcustomizationicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3E4605D18DF395400C8E952 /* coursefragmentcustomizationicon@2x.png */; };
 		F3E4607218DF395400C8E952 /* coursefragmentfavorablebkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3E4605E18DF395400C8E952 /* coursefragmentfavorablebkg@2x.png */; };
@@ -5058,7 +5057,7 @@
 		63249C931754E07900372FD7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "geek-zoo studio";
 				TargetAttributes = {
 					63249C9A1754E07900372FD7 = {
@@ -5150,7 +5149,6 @@
 				CB3775D217C5FF6F00DF5F21 /* button-blue@2x.png in Resources */,
 				F3E4608118DF395400C8E952 /* telephoneicon@2x.png in Resources */,
 				E909CC23182D0D650095B262 /* FinishedCellFooter_iPhone.xml in Resources */,
-				F3E45FFD18D4C7D100C8E952 /* 2golf-Info.plist in Resources */,
 				F39B60FB1916332100C89F6A /* send_verify_btn@2x.png in Resources */,
 				F319AE1D192ED1C500D64FA2 /* goodsmyorderbtn@2x.png in Resources */,
 				CB3775D317C5FF6F00DF5F21 /* button-narrow-blue@2x.png in Resources */,
@@ -6029,8 +6027,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = (
-					armv7,
 					armv7s,
+					armv7,
 				);
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: JINXIN LI (DJJ4XT349N)";
@@ -6078,8 +6076,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = (
-					armv7,
 					armv7s,
+					armv7,
 				);
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -6155,8 +6153,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = (
-					armv7,
 					armv7s,
+					armv7,
 				);
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Angoo Studio";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Angoo Studio";

@@ -255,6 +255,7 @@ ON_SIGNAL3( SignupBoard_iPhone, signin, signal )
     username.tagString = @"username";
     username.placeholder = __TEXT(@"login_username");
     username.returnKeyType = UIReturnKeyNext;
+    //((FormInputCell*)username).input.maxLength = 11;
     
     FormElement * email = [FormElement input];
     email.tagString = @"email";
@@ -263,7 +264,7 @@ ON_SIGNAL3( SignupBoard_iPhone, signin, signal )
     
     FormElement * password = [FormElement input];
     password.tagString = @"password";
-    password.placeholder = __TEXT(@"login_password");
+    password.placeholder = @"密码(密码至少6位)";
     password.isSecure = YES;
     password.returnKeyType = UIReturnKeyNext;
     
@@ -354,18 +355,25 @@ ON_SIGNAL3( SignupBoard_iPhone, signin, signal )
 		[self presentMessageTips:__TEXT(@"wrong_email")];
 		return;
 	}
+    
+    if ( 0 == password.length)
+    {
+        [self presentMessageTips:@"请输入密码"];
+        return;
+    }
+    
+    if ( password.length < 6 )
+	{
+		[self presentMessageTips:__TEXT(@"password_too_short")];
+		return;
+	}
 	
 	if ( 0 == password.length || NO == [password isPassword] )
 	{
 		[self presentMessageTips:__TEXT(@"wrong_password")];
 		return;
 	}
-    
-	if ( password.length < 6 )
-	{
-		[self presentMessageTips:__TEXT(@"password_too_short")];
-		return;
-	}
+	
 	
 	if ( password.length > 20 )
 	{

@@ -147,7 +147,7 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
     {
         if ([tf.text length] == 0)
         {
-            [self presentFailureTips:@"请完整填写后再提交"];
+            [[[UIApplication sharedApplication] keyWindow] presentFailureTips:@"请完整填写后再提交"];
             return;
         }
     }

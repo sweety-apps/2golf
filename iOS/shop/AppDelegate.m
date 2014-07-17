@@ -117,8 +117,8 @@ static BMKMapManager* _mapManager = nil;
 //		self.window.rootViewController = [TestBoard_iPhone sharedInstance];
 	}
     
-    _latitude = 114.06667f;
-    _longitude = 22.61667f;
+    _longitude = 114.02597365731999f;
+    _latitude = 22.546053546204998f;
 }
 
 - (void)unload

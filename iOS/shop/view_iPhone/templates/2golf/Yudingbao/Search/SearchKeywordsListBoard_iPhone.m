@@ -18,6 +18,7 @@
 #import "SearchKeywordsListBoard_iPhone.h"
 #import "CitySelectCellBoard_iPhone.h"
 #import "ServerConfig.h"
+#import "AppDelegate.h"
 
 #pragma mark -
 
@@ -89,6 +90,7 @@
 }
 
 @property (nonatomic,retain) NSMutableArray* keyWordsArray;
+@property (nonatomic,retain) NSDictionary* selectedCellDataDict;
 
 @end
 
@@ -173,7 +175,8 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
 
 - (void)_onPressedCell:(UIButton*)sender
 {
-    self.textField.text = self.keyWordsArray[sender.tag];
+    self.textField.text = self.keyWordsArray[sender.tag][@"name"];
+    self.selectedCellDataDict = self.keyWordsArray[sender.tag];
     [self onPressedSearch:nil];
 }
 
@@ -188,7 +191,41 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
     }
     [[NSUserDefaults standardUserDefaults] setObject:keywords forKey:@"search_keywords"];
     [self.textField resignFirstResponder];
-    [self.stack popBoardAnimated:YES];
+    
+    if (sender)
+    {
+        [self.stack popBoardAnimated:YES];
+    }
+    else
+    {
+        NSMutableDictionary* mdict = [NSMutableDictionary dictionaryWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:@"search_local"]];
+        
+        if ([mdict[@"longitude"] doubleValue] < 0.000001
+            || [mdict[@"latitude"] doubleValue] < 0.000001)
+        {
+            mdict[@"latitude"] = [NSNumber numberWithDouble:[(AppDelegate*)[AppDelegate sharedInstance] getCurrentLatitude]];
+            mdict[@"longitude"] = [NSNumber numberWithDouble:[(AppDelegate*)[AppDelegate sharedInstance] getCurrentLongitude]];
+        }
+        mdict[@"city_id"] = self.selectedCellDataDict[@"cityid"];
+        mdict[@"name"] = self.selectedCellDataDict[@"city"];
+        if (self.selectedCellDataDict[@"international"] == nil)
+        {
+            mdict[@"international"] = @NO;
+        }
+        else
+        {
+            mdict[@"international"] = self.selectedCellDataDict[@"international"];
+        }
+        
+        if ([mdict[@"name"] isEqualToString:@"海外地区"])
+        {
+            mdict[@"international"] = @YES;
+        }
+        
+        [[NSUserDefaults standardUserDefaults] setObject:mdict forKey:@"search_local"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        [self fetchLocationFromBaidu:self.selectedCellDataDict[@"city"]];
+    }
 }
 
 
@@ -239,7 +276,7 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
             {
                 [container.cell setBeContentM];
             }
-            container.cell.cellTitle.text = self.keyWordsArray[indexPath.row];
+            container.cell.cellTitle.text = self.keyWordsArray[indexPath.row][@"name"];
             container.cell.cellBg.tag = indexPath.row;
             break;
         }
@@ -292,6 +329,12 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
     self.HTTP_POST([[ServerConfig sharedInstance].url stringByAppendingString:@"coursekeyword"]).PARAM(@"keyword",self.textField.text).TIMEOUT(30);
 }
 
+- (void)fetchLocationFromBaidu:(NSString*)cityName
+{
+    self.HTTP_GET(@"http://api.map.baidu.com/geocoder/v2/").PARAM(@"address",cityName).PARAM(@"output",@"json").PARAM(@"ak",@"pb55FxtgDEXG9qzKIOhFpGZa").TIMEOUT(30);
+    [self presentLoadingTips:@"正在获取经纬度"];
+}
+
 - (NSDictionary*) commonCheckRequest:(BeeHTTPRequest *)req
 {
     if ( req.sending) {
@@ -324,7 +367,7 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
             if ([(dict[@"status"])[@"succeed"] intValue] == 1)
             {
                 [self dismissTips];
-                self.keyWordsArray = [NSMutableArray arrayWithArray:(dict[@"data"])[@"name"]];
+                self.keyWordsArray = [NSMutableArray arrayWithArray:(dict[@"data"])];
                 [self.tableView reloadData];
             }
             else
@@ -334,7 +377,23 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
                 [self.tableView reloadData];
             }
         }
-        
+        //百度经纬度
+        if ([[req.url absoluteString] rangeOfString:@"api.map.baidu.com/geocoder"].length > 0) {
+            //正确逻辑
+            if ([(dict[@"status"]) intValue] == 0)
+            {
+                NSMutableDictionary* mdict = [NSMutableDictionary dictionaryWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:@"search_local"]];
+                mdict[@"latitude"] = dict[@"result"][@"location"][@"lat"];
+                mdict[@"longitude"] = dict[@"result"][@"location"][@"lng"];
+                [[NSUserDefaults standardUserDefaults] setObject:mdict forKey:@"search_local"];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+                [self.stack popBoardAnimated:YES];
+            }
+            else
+            {
+                [self presentFailureTips:__TEXT(@"error_network")];
+            }
+        }
     }
 }
 

@@ -531,11 +531,15 @@ ON_SIGNAL2( QiuchangBannerPhotoCell_iPhone, signal )
 
 - (void)showWetherView
 {
-    if (self.weatherDataDict)
+    if (self.weatherDataDict && [[self.weatherDataDict allKeys] count] > 0)
     {
         self.weatherBoard = [WeatherViewBoard_iPhone boardWithNibName:@"WeatherViewBoard_iPhone"];
         [[[UIApplication sharedApplication] keyWindow] addSubview:self.weatherBoard.view];
         [self.weatherBoard showViewWithDataDict:self.weatherDataDict];
+    }
+    else
+    {
+        [self presentFailureTips:@"暂无该城市的天气情况"];
     }
 }
 

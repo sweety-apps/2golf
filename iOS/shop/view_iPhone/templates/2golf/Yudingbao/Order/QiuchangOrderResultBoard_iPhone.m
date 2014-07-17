@@ -29,6 +29,8 @@
 {
 	QiuchangOrderCell_iPhone* _cell;
     BOOL _popedInfoBox;
+    BeeUIScrollView *	_scroll;
+    BeeUICell* _containerCell;
 }
 @end
 
@@ -56,14 +58,35 @@ ON_SIGNAL2( BeeUIBoard, signal )
         [self setTitleViewWithIcon:__IMAGE(@"titleicon") andTitleString:@"预订结果"];
         [self showBarButton:BeeUINavigationBar.LEFT image:[UIImage imageNamed:@"nav-back.png"]];
         
-        _cell = [QiuchangOrderCell_iPhone cell];
+        _cell = [[QiuchangOrderCell_iPhone cell] retain];
         [self _manuData];
         _cell.data = _dataDict;
         _cell.delegate = self;
-        [self.view addSubview:_cell];
+        QiuchangOrderCell_iPhoneLayout* lo = [QiuchangOrderCell_iPhoneLayout layoutWithDict:self.dataDict];
+        [_cell setCellLayout:lo];
+        
+        CGRect rect = _cell.frame;
+        rect.size.height += 80 + self.backToHomeButton.frame.size.height;
+        _containerCell = [[BeeUICell cell] retain];
+        _containerCell.backgroundColor = [UIColor clearColor];
+        _containerCell.frame = rect;
+        
+        ////
+        rect = self.viewBound;
+        rect.origin.y+=6;
+        rect.size.height-=6;
+        _scroll = [[BeeUIScrollView alloc] initWithFrame:rect];
+		_scroll.dataSource = self;
+		_scroll.vertical = YES;
+        //_scroll.bounces = NO;
+		[_scroll showHeaderLoader:NO animated:NO];
+		[self.view addSubview:_scroll];
     }
     else if ( [signal is:BeeUIBoard.DELETE_VIEWS] )
     {
+        [_cell release];
+        [_containerCell release];
+        SAFE_RELEASE_SUBVIEW( _scroll );
     }
     else if ( [signal is:BeeUIBoard.LAYOUT_VIEWS] )
     {
@@ -76,10 +99,23 @@ ON_SIGNAL2( BeeUIBoard, signal )
     }
     else if ( [signal is:BeeUIBoard.WILL_APPEAR] )
     {
-        CGRect rect = _cell.frame;
-        rect.origin.y = 6;
+        [_scroll setBaseInsets:UIEdgeInsetsMake(0, 0, [AppBoard_iPhone sharedInstance].tabbar.height, 0)];
+		CGRect rect = self.viewBound;
+        rect.origin.y+=6;
+        rect.size.height-=6;
+        _scroll.frame =rect;
+        
+        rect = _cell.frame;
+        rect.origin.y = 0;
         _cell.frame = rect;
         [self.backToHomeButton setBackgroundImage:[__IMAGE(@"searcher_new_btn_green") stretched] forState:UIControlStateNormal];
+        
+        [_containerCell addSubview:_cell];
+        
+        rect = self.backToHomeButton.frame;
+        rect.origin.y = CGRectGetMaxY(_cell.frame) + 40;
+        self.backToHomeButton.frame = rect;
+        [_containerCell addSubview:self.backToHomeButton];
     }
     else if ( [signal is:BeeUIBoard.DID_APPEAR] )
     {
@@ -268,6 +304,24 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
         self.dataDict = [[NSMutableDictionary dictionaryWithDictionary:dict] retain];
     }
 }
+
+#pragma mark -
+
+- (NSInteger)numberOfViewsInScrollView:(BeeUIScrollView *)scrollView
+{
+    return 1;
+}
+
+- (UIView *)scrollView:(BeeUIScrollView *)scrollView viewForIndex:(NSInteger)index scale:(CGFloat)scale
+{
+    return _containerCell;
+}
+
+- (CGSize)scrollView:(BeeUIScrollView *)scrollView sizeForIndex:(NSInteger)index
+{
+	return _containerCell.frame.size;
+}
+
 
 #pragma mark - Network
 

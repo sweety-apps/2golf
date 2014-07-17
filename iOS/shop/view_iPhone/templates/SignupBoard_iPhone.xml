@@ -44,7 +44,7 @@
         
         <linear orientation="h" class="list-item-header">
             <image class="list-item-body-bg"/>
-            <input id="password" class="input" placeholder="@{login_password}"></input>
+            <input id="password" class="input" placeholder="密码(密码至少6位)"></input>
         </linear>
         
         <linear orientation="h" class="list-item-footer">
@@ -74,6 +74,7 @@
 		input-return-key: next;
 		input-keyboard: phone;
 		input-correction: false;
+        maxlength: 11;
         }
         
         .input {
