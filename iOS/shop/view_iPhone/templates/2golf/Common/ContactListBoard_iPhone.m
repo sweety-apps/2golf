@@ -260,10 +260,13 @@ ON_SIGNAL2( ContactListCell_iPhone, signal )
             }
         }
         
-        NSMutableDictionary* dict = [NSMutableDictionary dictionary];
-        dict[@"selected"] = @NO;
-        dict[@"name"] = nameString;
-        self.allNames[i] = dict;
+        if (nameString != nil)
+        {
+            NSMutableDictionary* dict = [NSMutableDictionary dictionary];
+            dict[@"selected"] = @NO;
+            dict[@"name"] = nameString;
+            [self.allNames addObject:dict];
+        }
         
         ABPropertyID multiProperties[] = {
             kABPersonPhoneProperty,
