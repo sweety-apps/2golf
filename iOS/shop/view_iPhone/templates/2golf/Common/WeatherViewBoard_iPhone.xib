@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
+        <deployment defaultVersion="1552" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
@@ -43,8 +43,14 @@
                                     <rect key="frame" x="0.0" y="10" width="320" height="60"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </imageView>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="周二 06月10日 (实时：28℃)" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="125" translatesAutoresizingMaskIntoConstraints="NO" id="LPM-Z6-wyP">
-                                    <rect key="frame" x="20" y="10" width="125" height="60"/>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="周二" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="40" translatesAutoresizingMaskIntoConstraints="NO" id="LPM-Z6-wyP">
+                                    <rect key="frame" x="20" y="10" width="40" height="60"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="33~27C°" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="120" translatesAutoresizingMaskIntoConstraints="NO" id="IgG-82-T6G">
+                                    <rect key="frame" x="60" y="10" width="120" height="60"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                     <nil key="highlightedColor"/>
@@ -65,7 +71,8 @@
                                 <outlet property="bgImageView" destination="HTu-gf-3ya" id="Jl6-RG-deC"/>
                                 <outlet property="iconImageView" destination="bn7-yK-cyY" id="3ip-Oa-H8C"/>
                                 <outlet property="leftLabel" destination="LPM-Z6-wyP" id="uaq-g1-L0w"/>
-                                <outlet property="midLabel" destination="gu8-M2-u5m" id="DH2-my-j9B"/>
+                                <outlet property="midLabel" destination="IgG-82-T6G" id="WjN-qP-Fai"/>
+                                <outlet property="rightLabel" destination="gu8-M2-u5m" id="LMJ-wp-Bur"/>
                             </connections>
                         </view>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wAF-pI-gvq" customClass="WeatherViewCellView">
@@ -76,8 +83,14 @@
                                     <rect key="frame" x="0.0" y="10" width="320" height="60"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </imageView>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="周二 06月10日 (实时：28℃)" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="125" translatesAutoresizingMaskIntoConstraints="NO" id="IEH-35-trz">
-                                    <rect key="frame" x="20" y="10" width="125" height="60"/>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="周二" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="40" translatesAutoresizingMaskIntoConstraints="NO" id="IEH-35-trz">
+                                    <rect key="frame" x="20" y="10" width="40" height="60"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="33~27C°" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="120" translatesAutoresizingMaskIntoConstraints="NO" id="IpS-do-dme">
+                                    <rect key="frame" x="60" y="10" width="120" height="60"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                     <nil key="highlightedColor"/>
@@ -98,7 +111,8 @@
                                 <outlet property="bgImageView" destination="w4d-e6-Na8" id="ZEI-f7-al3"/>
                                 <outlet property="iconImageView" destination="Gpb-GO-cy8" id="sk1-gO-KrJ"/>
                                 <outlet property="leftLabel" destination="IEH-35-trz" id="LH4-f7-l7D"/>
-                                <outlet property="midLabel" destination="Vs5-9N-LBh" id="U4V-2s-fSn"/>
+                                <outlet property="midLabel" destination="IpS-do-dme" id="vqu-gD-NPn"/>
+                                <outlet property="rightLabel" destination="Vs5-9N-LBh" id="KwB-QR-HHV"/>
                             </connections>
                         </view>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a72-hI-utz" customClass="WeatherViewCellView">
@@ -109,8 +123,14 @@
                                     <rect key="frame" x="0.0" y="10" width="320" height="60"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </imageView>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="周二 06月10日 (实时：28℃)" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="125" translatesAutoresizingMaskIntoConstraints="NO" id="hRV-8m-Yvk">
-                                    <rect key="frame" x="20" y="10" width="125" height="60"/>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="周二" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="40" translatesAutoresizingMaskIntoConstraints="NO" id="hRV-8m-Yvk">
+                                    <rect key="frame" x="20" y="10" width="40" height="60"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="33~27C°" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="120" translatesAutoresizingMaskIntoConstraints="NO" id="6zI-BR-b7r">
+                                    <rect key="frame" x="60" y="10" width="120" height="60"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                     <nil key="highlightedColor"/>
@@ -130,8 +150,9 @@
                             <connections>
                                 <outlet property="bgImageView" destination="BxW-jk-dIt" id="caX-WV-Y34"/>
                                 <outlet property="iconImageView" destination="vDq-tS-7bz" id="6Ip-N3-TdU"/>
-                                <outlet property="leftLabel" destination="hRV-8m-Yvk" id="ENC-0U-txm"/>
-                                <outlet property="midLabel" destination="CIF-ee-FX2" id="6T2-bX-aLS"/>
+                                <outlet property="leftLabel" destination="hRV-8m-Yvk" id="nfP-Wl-cZD"/>
+                                <outlet property="midLabel" destination="6zI-BR-b7r" id="ZKH-px-f3n"/>
+                                <outlet property="rightLabel" destination="CIF-ee-FX2" id="7Up-5G-lVb"/>
                             </connections>
                         </view>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QEg-y6-sWR" customClass="WeatherViewCellView">
@@ -142,8 +163,14 @@
                                     <rect key="frame" x="0.0" y="10" width="320" height="60"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </imageView>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="周二 06月10日 (实时：28℃)" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="125" translatesAutoresizingMaskIntoConstraints="NO" id="Qcr-7f-M7f">
-                                    <rect key="frame" x="20" y="10" width="125" height="60"/>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="周二" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="40" translatesAutoresizingMaskIntoConstraints="NO" id="Qcr-7f-M7f">
+                                    <rect key="frame" x="20" y="10" width="40" height="60"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="33~27C°" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="120" translatesAutoresizingMaskIntoConstraints="NO" id="Fsb-CN-9FO">
+                                    <rect key="frame" x="60" y="10" width="120" height="60"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                     <nil key="highlightedColor"/>
@@ -163,8 +190,9 @@
                             <connections>
                                 <outlet property="bgImageView" destination="WCF-Gk-R9k" id="2bp-4Y-KUt"/>
                                 <outlet property="iconImageView" destination="Luc-CH-HYC" id="Nb3-ki-VpV"/>
-                                <outlet property="leftLabel" destination="Qcr-7f-M7f" id="HyI-Hs-t6b"/>
-                                <outlet property="midLabel" destination="W70-VQ-fX8" id="0O9-BY-Bmm"/>
+                                <outlet property="leftLabel" destination="Qcr-7f-M7f" id="6We-cV-Sy6"/>
+                                <outlet property="midLabel" destination="Fsb-CN-9FO" id="iC2-uG-GD3"/>
+                                <outlet property="rightLabel" destination="W70-VQ-fX8" id="CPT-za-JHI"/>
                             </connections>
                         </view>
                     </subviews>
