@@ -23,6 +23,7 @@
 @property (nonatomic,retain) IBOutlet UILabel* leftLabel;
 @property (nonatomic,retain) IBOutlet UILabel* leftLabel1;
 @property (nonatomic,retain) IBOutlet UILabel* midLabel;
+@property (nonatomic,retain) IBOutlet UILabel* rightLabel;
 @property (nonatomic,retain) IBOutlet BeeUIImageView* iconImageView;
 
 @end
