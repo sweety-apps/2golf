@@ -595,7 +595,7 @@ ON_SIGNAL2( QiuchangBannerPhotoCell_iPhone, signal )
             }
             else
             {
-                [self presentFailureTips:__TEXT(@"error_network")];
+                [self presentFailureTips:dict[@"status"][@"error_desc"]];
             }
         }
         //天气数据

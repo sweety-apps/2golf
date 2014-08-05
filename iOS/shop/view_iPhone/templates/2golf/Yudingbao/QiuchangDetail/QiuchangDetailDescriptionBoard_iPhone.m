@@ -349,6 +349,12 @@ ON_SIGNAL2( QiuchangDetailDescriptionCell_iPhone, signal )
     QiuchangDetailDescriptionCell_iPhone * cell = nil;
     
     cell = [QiuchangDetailDescriptionCell_iPhone cell];
+    cell.data = @{@"title":@"球场简介",
+                  @"contentText":self.dataDict[@"description"],
+                  @"image":@[@"",@"",@""]};
+    [self.cellArray addObject:cell];
+    
+    cell = [QiuchangDetailDescriptionCell_iPhone cell];
     cell.data = @{@"title":@"球场概况",
                   @"contentText":self.dataDict[@"brief"],
                   @"image":@[@"",@"",@""]};
@@ -414,12 +420,6 @@ ON_SIGNAL2( QiuchangDetailDescriptionCell_iPhone, signal )
     cell = [QiuchangDetailDescriptionCell_iPhone cell];
     cell.data = @{@"title":@"交通方式",
                   @"contentText":self.dataDict[@"traffic"],
-                  @"image":@[@"",@"",@""]};
-    [self.cellArray addObject:cell];
-    
-    cell = [QiuchangDetailDescriptionCell_iPhone cell];
-    cell.data = @{@"title":@"球场简介",
-                  @"contentText":self.dataDict[@"description"],
                   @"image":@[@"",@"",@""]};
     [self.cellArray addObject:cell];
     

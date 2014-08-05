@@ -592,6 +592,7 @@ ON_SIGNAL( signal )
 - (void)showOrderResult:(NSDictionary*)resultDict
 {
     QiuchangOrderResultBoard_iPhone* board = [QiuchangOrderResultBoard_iPhone boardWithNibName:@"QiuchangOrderResultBoard_iPhone"];
+    board.priceDict = [NSMutableDictionary dictionaryWithDictionary:self.priceDict];
     board.dataDict = [NSMutableDictionary dictionaryWithDictionary:resultDict];
     [self.stack pushBoard:board animated:YES];
 }

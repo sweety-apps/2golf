@@ -335,7 +335,7 @@ DEF_SIGNAL( ACTION_BACK )
     _shipping = [FormElement subtitleWithTitle:__TEXT(@"balance_shipping")];
     _shipping.isNecessary = YES;
     
-    _invoice  = [FormElement subtitleWithTitle:__TEXT(@"balance_bill")];
+    //_invoice  = [FormElement subtitleWithTitle:__TEXT(@"balance_bill")];
     
 //    _orders   = [FormElement subtitleWithTitle:__TEXT(@"balance_list")];
     
@@ -348,7 +348,7 @@ DEF_SIGNAL( ACTION_BACK )
     NSArray * group1 = @[ _address ];
     [self.datas addObject:group1];
 
-    NSArray * group2 = @[ _payment, _shipping, _invoice ];
+    NSArray * group2 = @[ _payment, _shipping/*, _invoice*/ ];
     [self.datas addObject:group2];
 
     //NSArray * group3 = @[ _bonus, _integral ];//NSArray * group3 = @[ _bonus, _integral ];
@@ -418,7 +418,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
     }
     else if ( [signal is:BeeUIBoard.DID_APPEAR] )
     {
-        
+        [[AppBoard_iPhone sharedInstance] setTabbarHidden:YES];
     }
 }
 
@@ -547,7 +547,7 @@ ON_SIGNAL3( BeeUIPickerView, CONFIRMED, signal )
     }
 	
     _address.data = [CurrentAddressModel sharedInstance].address;
-    _invoice.subtitle = self.flowModel.done_inv_payee;
+    //_invoice.subtitle = self.flowModel.done_inv_payee;
     _payment.subtitle = self.flowModel.done_payment.pay_name;
     _shipping.subtitle = self.flowModel.done_shipping.shipping_name;
     _orders.subtitle = [NSString stringWithFormat:@"%d%@", self.flowModel.goods_list.count, __TEXT(@"no_of_items")];

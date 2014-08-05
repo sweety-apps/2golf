@@ -156,7 +156,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
     }
     else if ( [signal is:BeeUIBoard.WILL_APPEAR] )
     {
-        [[AppBoard_iPhone sharedInstance] setTabbarHidden:NO];
+        [[AppBoard_iPhone sharedInstance] setTabbarHidden:YES];
         
         self.view.backgroundColor = [UIColor whiteColor];
         
@@ -187,7 +187,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
     {
 		[self dismissModalViewAnimated:YES];
 
-        [[AppBoard_iPhone sharedInstance] setTabbarHidden:YES];
+        //[[AppBoard_iPhone sharedInstance] setTabbarHidden:YES];
     }
     else if ( [signal is:BeeUIBoard.DID_DISAPPEAR] )
     {

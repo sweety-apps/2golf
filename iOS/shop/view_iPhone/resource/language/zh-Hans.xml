@@ -90,7 +90,7 @@
 <string name="gooddetail_parameter">基本参数</string>
 <string name="gooddetail_product">商品详情</string>
 <string name="gooddetail_commit">商品评论</string>
-<string name="gooddetail_buy">预订付款</string>
+<string name="gooddetail_buy">立即付款</string>
 <string name="gooddetail_shoppingcart">加入购物车</string>
 <string name="hotselling_recommend">推荐</string>
 <string name="integral_creditsexchange">积分兑换</string>
@@ -187,7 +187,7 @@
 <string name="exemption_from_postage">预订方式：网上支付</string>
 <string name="not_pack_mail">预订方式：到场付款</string>
 <string name="brstock">库存：</string>
-<string name="store_price">商店价格：</string>
+<string name="store_price">爱高价格：</string>
 <string name="enter_score">请输入正确积分</string>
 <string name="score_not_zero">输入积分不能为0</string>
 <string name="all_of_you">您总共有</string>
@@ -364,7 +364,7 @@
 <string name="successful_authentication">认证成功！</string>
 <string name="none">无</string>
 <string name="broadcast_success">转播成功</string>
-<string name="shop_price">商店价格</string>
+<string name="shop_price">爱高价格</string>
 <string name="remain">库存</string>
 <string name="shipping_fee">预订方式</string>
 <string name="shipping_fee_free">网上支付</string>

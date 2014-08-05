@@ -24,6 +24,7 @@
 @property (nonatomic,retain) IBOutlet UIButton* btn1;
 @property (nonatomic,retain) IBOutlet UIButton* btn2;
 @property (nonatomic,retain) IBOutlet UIButton* btn3;
+@property (retain, nonatomic) IBOutlet UILabel *noResultLabel;
 
 - (IBAction)btn1Pressed:(id)sender;
 - (IBAction)btn2Pressed:(id)sender;

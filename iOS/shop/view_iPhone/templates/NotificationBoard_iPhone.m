@@ -78,7 +78,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
 	if ( [signal is:BeeUIBoard.CREATE_VIEWS] )
 	{
         [self showNavigationBarAnimated:NO];
-        [self setTitleViewWithIcon:__IMAGE(@"titleicon") andTitleString:__TEXT(@"profile_message")];
+        [self setTitleViewWithIcon:__IMAGE(@"titleicon") andTitleString:@"消息列表"];
         [self showBarButton:BeeUINavigationBar.LEFT image:[UIImage imageNamed:@"nav-back.png"]];
         
 		_scroll = [[BeeUIScrollView alloc] init];

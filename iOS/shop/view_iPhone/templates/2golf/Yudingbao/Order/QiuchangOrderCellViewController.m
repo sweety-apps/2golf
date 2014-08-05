@@ -393,6 +393,8 @@
     self.ctrl.btn3.hidden = NO;
     self.ctrl.btn4.hidden = NO;
     
+    self.ctrl.stateTimeLbl.textColor = [UIColor colorWithRed:0.064 green:0.266 blue:0.148 alpha:1.000];
+    
     switch (status)
     {
         case 0:
@@ -415,6 +417,8 @@
             self.ctrl.btn4.hidden = YES;
             
             self.ctrl.stateTimeLbl.text = @"待确认";
+            
+            self.ctrl.stateTimeLbl.textColor = [UIColor colorWithRed:0.974 green:0.337 blue:0.107 alpha:1.000];
         }
             break;
         case 1:
@@ -438,6 +442,8 @@
             [self.ctrl.btn4 setTitle:@"付款" forState:UIControlStateNormal];
             
             self.ctrl.stateTimeLbl.text = @"待付款";
+            
+            self.ctrl.stateTimeLbl.textColor = [UIColor colorWithRed:0.974 green:0.337 blue:0.107 alpha:1.000];
         }
             break;
         case 2:
@@ -543,6 +549,8 @@
             self.ctrl.btn4.hidden = YES;
             
             self.ctrl.stateTimeLbl.text = @"已取消";
+            
+            self.ctrl.stateTimeLbl.textColor = [UIColor colorWithRed:0.974 green:0.337 blue:0.107 alpha:1.000];
         }
             break;
         case 7:

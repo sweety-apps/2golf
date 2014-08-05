@@ -74,10 +74,10 @@
                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" preferredMaxLayoutWidth="160" translatesAutoresizingMaskIntoConstraints="NO" id="rGK-om-3Yr">
+                        <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="160" translatesAutoresizingMaskIntoConstraints="NO" id="rGK-om-3Yr">
                             <rect key="frame" x="101" y="1" width="160" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
                             <color key="textColor" red="0.058823533359999999" green="0.32941177490000001" blue="0.1960784495" alpha="1" colorSpace="deviceRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -103,10 +103,10 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" backgroundImage="normallist_content_bg_h.png"/>
                         </button>
-                        <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" preferredMaxLayoutWidth="186" translatesAutoresizingMaskIntoConstraints="NO" id="pb8-Gx-Qod">
+                        <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pb8-Gx-Qod">
                             <rect key="frame" x="34" y="1" width="186" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zMt-v5-Q64">

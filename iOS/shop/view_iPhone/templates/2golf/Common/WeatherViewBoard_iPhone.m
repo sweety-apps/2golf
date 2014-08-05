@@ -44,7 +44,8 @@
         
         self.bgImageView.image = [__IMAGE(@"body-cont-bg.png") stretched];
         self.leftLabel.text = dict[@"date"];
-        self.midLabel.text = dict[@"weather"];
+        self.leftLabel1.text = dict[@"temperature"];
+        self.midLabel.text = [NSString stringWithFormat:@"%@,%@",dict[@"weather"],dict[@"wind"]];
         self.iconImageView.url = dict[@"dayPictureUrl"];
     }
 }
@@ -150,7 +151,14 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
     {
         if (i < [dataDict[@"weather_data"] count])
         {
-            ((WeatherViewCellView*)(cells[i])).data = dataDict[@"weather_data"][i];
+            NSMutableDictionary* dict = [NSMutableDictionary dictionaryWithDictionary:dataDict[@"weather_data"][i]];
+            
+            if (i == 0)
+            {
+                dict[@"date"] = @"今天";
+            }
+            
+            ((WeatherViewCellView*)(cells[i])).data = dict;
         }
     }
 }

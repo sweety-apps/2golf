@@ -157,7 +157,8 @@ SUPPORT_RESOURCE_LOADING( YES )
         }
         else
         {
-            $(@"#goods-price").TEXT( goodsModel.goods.shop_price );
+            NSString* str = [NSString stringWithFormat:@"爱高价%@",goodsModel.goods.shop_price];
+            $(@"#goods-price").TEXT( str );
         }
 
 		$(@"#goods-subprice").TEXT( goodsModel.goods.market_price );
@@ -179,14 +180,16 @@ SUPPORT_RESOURCE_LOADING( YES )
 		NSMutableString * goodsInfo = [NSMutableString string];
 		goodsInfo
 		//.LINE( @"%@: %@", __TEXT(@"shipping_fee"), goodsModel.goods.is_shipping.boolValue ?  __TEXT(@"shipping_fee_free") : __TEXT(@"shipping_fee_notfree") )
-		.LINE( @"%@: %@", __TEXT(@"remain"), goodsModel.goods.goods_number )
-		.LINE( @"%@: %@", __TEXT(@"shop_price"), goodsModel.goods.shop_price )
-		.LINE( @"%@: %@", __TEXT(@"market_price"), goodsModel.goods.market_price );
+		.LINE( @"%@: %@", __TEXT(@"remain"), goodsModel.goods.goods_number );
+		//.LINE( @"%@: %@", __TEXT(@"shop_price"), goodsModel.goods.shop_price )
+		//.LINE( @"%@: %@", __TEXT(@"market_price"), goodsModel.goods.market_price );
 
+        /*
 		for ( GOOD_RANK_PRICE * price in goodsModel.goods.rank_prices )
 		{
 			goodsInfo.LINE( @"%@ %@: %@", price.rank_name, __TEXT(@"price"), price.price );
 		}
+         */
 
         $(@"#goods-info").TEXT( goodsInfo );
         
@@ -377,6 +380,12 @@ ON_SIGNAL2( BeeUIBoard, signal )
     }
     else if ( [signal is:BeeUIBoard.LAYOUT_VIEWS] )
     {
+        /*
+        CGRect rect = self.viewBound;
+        rect.origin.y+=6;
+        rect.size.height-=6;
+        _scroll.frame =rect;
+        */
         _tabbar.frame = CGRectMake(0, self.view.height - 44, self.view.width, 44);
 		_scroll.frame = CGRectMake(0, 0, self.width, self.height - 44);
     }
@@ -389,6 +398,10 @@ ON_SIGNAL2( BeeUIBoard, signal )
     }
     else if ( [signal is:BeeUIBoard.WILL_APPEAR] )
     {
+        _tabbar.frame = CGRectMake(0, self.view.height - 44, self.view.width, 44);
+		_scroll.frame = CGRectMake(0, 0, self.width, self.height - 44);
+        _scroll.clipsToBounds = NO;
+        
         if ( NO == self.goodsModel.loaded )
 		{
 			[self.goodsModel update];
@@ -561,8 +574,15 @@ ON_SIGNAL3( GoodsDetailTab_iPhone, buy, signal)
 			[[AppBoard_iPhone sharedInstance] showLogin];
 			return;
 		}
-
-        [self addToCart:self.ACTION_BUY];
+        
+        if ([self.count integerValue] > [self.goodsModel.goods.goods_number integerValue])
+        {
+            [self presentFailureTips:@"库存不足"];
+        }
+        else
+        {
+            [self addToCart:self.ACTION_BUY];
+        }
     }
 }
 
@@ -575,8 +595,15 @@ ON_SIGNAL3( GoodsDetailTab_iPhone, add, signal)
 			[[AppBoard_iPhone sharedInstance] showLogin];
 			return;
 		}
-
-        [self addToCart:self.ACTION_ADD];
+        
+        if ([self.count integerValue] > [self.goodsModel.goods.goods_number integerValue])
+        {
+            [self presentFailureTips:@"库存不足"];
+        }
+        else
+        {
+            [self addToCart:self.ACTION_ADD];
+        }
     }
 }
 
@@ -906,8 +933,10 @@ ON_SIGNAL3( GoodsDetailTab_iPhone, cart, signal)
 		
         [data setObject:self.count      forKey:@"count"];
         [data setObject:self.goodsModel forKey:@"goodsModel"];
-
-        return [GoodsDetailCell_iPhone estimateUISizeByWidth:scrollView.width forData:data];
+        CGSize bounds = CGSizeMake(scrollView.width, 500);
+        return bounds;
+        //return [GoodsDetailCell_iPhone estimateUISizeByBound:bounds forData:data];
+        //return [GoodsDetailCell_iPhone estimateUISizeByWidth:scrollView.width forData:data];
     }
     
     return CGSizeZero;

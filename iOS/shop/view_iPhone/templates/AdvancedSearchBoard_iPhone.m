@@ -183,8 +183,8 @@ ON_SIGNAL2( BeeUIBoard, signal )
     {
         self.view.backgroundColor = [UIColor whiteColor];
         [self showNavigationBarAnimated:NO];
-
-        self.titleString = __TEXT(@"filter");
+        [self setTitleViewWithIcon:__IMAGE(@"titleicon") andTitleString:@"品牌"];
+        
         [self showBarButton:BeeUINavigationBar.LEFT image:[UIImage imageNamed:@"nav-back.png"]];
         [self showBarButton:BeeUINavigationBar.RIGHT title:__TEXT(@"collect_done") image:[UIImage imageNamed:@"nav-right.png"]];
 

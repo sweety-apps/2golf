@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
+        <deployment defaultVersion="1552" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
@@ -43,20 +43,29 @@
                                     <rect key="frame" x="0.0" y="10" width="320" height="60"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </imageView>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="周二 06月10日 (实时：28℃)" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="125" translatesAutoresizingMaskIntoConstraints="NO" id="LPM-Z6-wyP">
-                                    <rect key="frame" x="20" y="10" width="125" height="60"/>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="周二 06月10日 (实时：28℃)" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="60" translatesAutoresizingMaskIntoConstraints="NO" id="LPM-Z6-wyP">
+                                    <rect key="frame" x="10" y="10" width="60" height="60"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <color key="textColor" red="0.058823533359999999" green="0.32941177490000001" blue="0.1960784495" alpha="1" colorSpace="deviceRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="多云" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="89" translatesAutoresizingMaskIntoConstraints="NO" id="gu8-M2-u5m">
-                                    <rect key="frame" x="160" y="10" width="89" height="60"/>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="20度~30度" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="105" translatesAutoresizingMaskIntoConstraints="NO" id="crt-yd-UU9">
+                                    <rect key="frame" x="60" y="10" width="105" height="60"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <color key="textColor" red="0.058823533359999999" green="0.32941177490000001" blue="0.1960784495" alpha="1" colorSpace="deviceRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="多云" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="90" translatesAutoresizingMaskIntoConstraints="NO" id="gu8-M2-u5m">
+                                    <rect key="frame" x="165" y="10" width="90" height="60"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <color key="textColor" red="0.058823533359999999" green="0.32941177490000001" blue="0.1960784495" alpha="1" colorSpace="deviceRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bn7-yK-cyY" customClass="BeeUIImageView">
-                                    <rect key="frame" x="257" y="20" width="40" height="40"/>
+                                    <rect key="frame" x="265" y="20" width="40" height="40"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
                             </subviews>
@@ -65,6 +74,7 @@
                                 <outlet property="bgImageView" destination="HTu-gf-3ya" id="Jl6-RG-deC"/>
                                 <outlet property="iconImageView" destination="bn7-yK-cyY" id="3ip-Oa-H8C"/>
                                 <outlet property="leftLabel" destination="LPM-Z6-wyP" id="uaq-g1-L0w"/>
+                                <outlet property="leftLabel1" destination="crt-yd-UU9" id="nvv-ym-30V"/>
                                 <outlet property="midLabel" destination="gu8-M2-u5m" id="DH2-my-j9B"/>
                             </connections>
                         </view>
@@ -76,20 +86,29 @@
                                     <rect key="frame" x="0.0" y="10" width="320" height="60"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </imageView>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="周二 06月10日 (实时：28℃)" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="125" translatesAutoresizingMaskIntoConstraints="NO" id="IEH-35-trz">
-                                    <rect key="frame" x="20" y="10" width="125" height="60"/>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="周二 06月10日 (实时：28℃)" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="60" translatesAutoresizingMaskIntoConstraints="NO" id="IEH-35-trz">
+                                    <rect key="frame" x="10" y="10" width="60" height="60"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <color key="textColor" red="0.058823533359999999" green="0.32941177490000001" blue="0.1960784495" alpha="1" colorSpace="deviceRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="多云" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="89" translatesAutoresizingMaskIntoConstraints="NO" id="Vs5-9N-LBh">
-                                    <rect key="frame" x="160" y="10" width="89" height="60"/>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="20度~30度" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="105" translatesAutoresizingMaskIntoConstraints="NO" id="D2m-3t-Mm1">
+                                    <rect key="frame" x="60" y="10" width="105" height="60"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <color key="textColor" red="0.058823533359999999" green="0.32941177490000001" blue="0.1960784495" alpha="1" colorSpace="deviceRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="多云" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="90" translatesAutoresizingMaskIntoConstraints="NO" id="Vs5-9N-LBh">
+                                    <rect key="frame" x="165" y="10" width="90" height="60"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <color key="textColor" red="0.058823533359999999" green="0.32941177490000001" blue="0.1960784495" alpha="1" colorSpace="deviceRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gpb-GO-cy8" customClass="BeeUIImageView">
-                                    <rect key="frame" x="257" y="20" width="40" height="40"/>
+                                    <rect key="frame" x="265" y="20" width="40" height="40"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
                             </subviews>
@@ -98,6 +117,7 @@
                                 <outlet property="bgImageView" destination="w4d-e6-Na8" id="ZEI-f7-al3"/>
                                 <outlet property="iconImageView" destination="Gpb-GO-cy8" id="sk1-gO-KrJ"/>
                                 <outlet property="leftLabel" destination="IEH-35-trz" id="LH4-f7-l7D"/>
+                                <outlet property="leftLabel1" destination="D2m-3t-Mm1" id="5df-Ga-HN6"/>
                                 <outlet property="midLabel" destination="Vs5-9N-LBh" id="U4V-2s-fSn"/>
                             </connections>
                         </view>
@@ -109,20 +129,29 @@
                                     <rect key="frame" x="0.0" y="10" width="320" height="60"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </imageView>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="周二 06月10日 (实时：28℃)" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="125" translatesAutoresizingMaskIntoConstraints="NO" id="hRV-8m-Yvk">
-                                    <rect key="frame" x="20" y="10" width="125" height="60"/>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="周二 06月10日 (实时：28℃)" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="60" translatesAutoresizingMaskIntoConstraints="NO" id="hRV-8m-Yvk">
+                                    <rect key="frame" x="10" y="10" width="60" height="60"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <color key="textColor" red="0.058823533359999999" green="0.32941177490000001" blue="0.1960784495" alpha="1" colorSpace="deviceRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="多云" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="89" translatesAutoresizingMaskIntoConstraints="NO" id="CIF-ee-FX2">
-                                    <rect key="frame" x="160" y="10" width="89" height="60"/>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="20度~30度" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="105" translatesAutoresizingMaskIntoConstraints="NO" id="U4T-TI-IJe">
+                                    <rect key="frame" x="60" y="10" width="105" height="60"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <color key="textColor" red="0.058823533359999999" green="0.32941177490000001" blue="0.1960784495" alpha="1" colorSpace="deviceRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="多云" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="90" translatesAutoresizingMaskIntoConstraints="NO" id="CIF-ee-FX2">
+                                    <rect key="frame" x="165" y="10" width="90" height="60"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <color key="textColor" red="0.058823533359999999" green="0.32941177490000001" blue="0.1960784495" alpha="1" colorSpace="deviceRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vDq-tS-7bz" customClass="BeeUIImageView">
-                                    <rect key="frame" x="257" y="20" width="40" height="40"/>
+                                    <rect key="frame" x="265" y="20" width="40" height="40"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
                             </subviews>
@@ -131,6 +160,7 @@
                                 <outlet property="bgImageView" destination="BxW-jk-dIt" id="caX-WV-Y34"/>
                                 <outlet property="iconImageView" destination="vDq-tS-7bz" id="6Ip-N3-TdU"/>
                                 <outlet property="leftLabel" destination="hRV-8m-Yvk" id="ENC-0U-txm"/>
+                                <outlet property="leftLabel1" destination="U4T-TI-IJe" id="a3H-hd-YZH"/>
                                 <outlet property="midLabel" destination="CIF-ee-FX2" id="6T2-bX-aLS"/>
                             </connections>
                         </view>
@@ -142,20 +172,29 @@
                                     <rect key="frame" x="0.0" y="10" width="320" height="60"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </imageView>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="周二 06月10日 (实时：28℃)" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="125" translatesAutoresizingMaskIntoConstraints="NO" id="Qcr-7f-M7f">
-                                    <rect key="frame" x="20" y="10" width="125" height="60"/>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="周二 06月10日 (实时：28℃)" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="60" translatesAutoresizingMaskIntoConstraints="NO" id="Qcr-7f-M7f">
+                                    <rect key="frame" x="10" y="10" width="60" height="60"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <color key="textColor" red="0.058823533359999999" green="0.32941177490000001" blue="0.1960784495" alpha="1" colorSpace="deviceRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="多云" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="89" translatesAutoresizingMaskIntoConstraints="NO" id="W70-VQ-fX8">
-                                    <rect key="frame" x="160" y="10" width="89" height="60"/>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="20度~30度" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="105" translatesAutoresizingMaskIntoConstraints="NO" id="KN5-NC-PpB">
+                                    <rect key="frame" x="60" y="10" width="105" height="60"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <color key="textColor" red="0.058823533359999999" green="0.32941177490000001" blue="0.1960784495" alpha="1" colorSpace="deviceRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="多云" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="90" translatesAutoresizingMaskIntoConstraints="NO" id="W70-VQ-fX8">
+                                    <rect key="frame" x="165" y="10" width="90" height="60"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <color key="textColor" red="0.058823533359999999" green="0.32941177490000001" blue="0.1960784495" alpha="1" colorSpace="deviceRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Luc-CH-HYC" customClass="BeeUIImageView">
-                                    <rect key="frame" x="257" y="20" width="40" height="40"/>
+                                    <rect key="frame" x="265" y="20" width="40" height="40"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
                             </subviews>
@@ -164,6 +203,7 @@
                                 <outlet property="bgImageView" destination="WCF-Gk-R9k" id="2bp-4Y-KUt"/>
                                 <outlet property="iconImageView" destination="Luc-CH-HYC" id="Nb3-ki-VpV"/>
                                 <outlet property="leftLabel" destination="Qcr-7f-M7f" id="HyI-Hs-t6b"/>
+                                <outlet property="leftLabel1" destination="KN5-NC-PpB" id="gVn-5T-35X"/>
                                 <outlet property="midLabel" destination="W70-VQ-fX8" id="0O9-BY-Bmm"/>
                             </connections>
                         </view>

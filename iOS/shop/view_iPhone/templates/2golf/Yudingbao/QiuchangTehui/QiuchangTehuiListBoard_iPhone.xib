@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="headView" destination="xkw-62-eI0" id="sB5-hG-Nk0"/>
                 <outlet property="jiagepaixuBtn" destination="GMm-uL-8mt" id="Yd4-IN-iso"/>
+                <outlet property="noResultLabel" destination="kMP-83-bfF" id="Jqc-G2-tmS"/>
                 <outlet property="riziBtn" destination="Mzc-b4-Jul" id="hSK-ix-08f"/>
                 <outlet property="shiduanBtn" destination="TfN-eO-VRY" id="d9u-aT-Z1N"/>
                 <outlet property="shijianpaixuBtn" destination="ukB-cq-weq" id="2X2-CB-cep"/>
@@ -20,6 +21,13 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="没有结果" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMP-83-bfF">
+                    <rect key="frame" x="0.0" y="140" width="320" height="64"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xkw-62-eI0">
                     <rect key="frame" x="0.0" y="6" width="320" height="74"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -61,7 +69,7 @@
                             <rect key="frame" x="0.0" y="40" width="159" height="34"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <state key="normal" title="价格排序↑↓" backgroundImage="list_order_btn_bgn.png">
+                            <state key="normal" title="价格排序↑" backgroundImage="list_order_btn_bgn.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <state key="selected" backgroundImage="list_order_btn_bga.png"/>
@@ -74,7 +82,7 @@
                             <rect key="frame" x="160" y="40" width="160" height="34"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <state key="normal" title="时间排序↑↓" backgroundImage="list_order_btn_bgn.png">
+                            <state key="normal" title="时间排序↑" backgroundImage="list_order_btn_bgn.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <state key="selected" backgroundImage="list_order_btn_bga.png"/>

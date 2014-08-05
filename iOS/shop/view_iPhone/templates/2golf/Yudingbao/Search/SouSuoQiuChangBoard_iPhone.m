@@ -239,17 +239,17 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
         date = [NSDate dateWithTimeIntervalSinceNow:3600*24 + 3600];//明天1小时以后
         [[NSUserDefaults standardUserDefaults] setObject:date forKey:@"search_date"];
     }
-    str = [NSString stringWithFormat:@"%d年%d月%d日\n%@",[date year],[date month],[date day],[date weekdayChinese]];
+    str = [NSString stringWithFormat:@"%d月%d日 %@",[date month],[date day],[date weekdayChinese]];
     if ([str length] == 0)
     {
-        str = @"2014年02月21日\n星期五";
+        str = @"02月21日 星期五";
     }
     self.lblDate.text = str;
     //时间
     date = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_time"];
     if (date == nil)
     {
-        date = [CommonUtility getCanSelectHourMin][0];//明天1小时以后
+        date = [CommonUtility getCanSelectHourMin][9];//明天1小时以后
         [[NSUserDefaults standardUserDefaults] setObject:date forKey:@"search_time"];
     }
     str = [NSString stringWithFormat:@"%02d:%02d",[date hour],[date minute]];

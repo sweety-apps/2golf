@@ -273,7 +273,7 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
                              @"meal": @NO,
                              @"tips": @NO,
                              @"deposit": @0,
-                             @"distributorname": @"",
+                             @"distributorname": self.priceDict[@"distributorname"],
                              @"distributortype": @"1",
                              @"payway": @"3",
                              @"price": self.dataDict[@"price"],

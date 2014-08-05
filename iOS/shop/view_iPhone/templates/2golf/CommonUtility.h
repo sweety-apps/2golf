@@ -8,6 +8,8 @@
 
 #import "Bee.h"
 
+#define kCurrentAppVersion (2)
+
 @interface CommonUtility : NSObject
 
 #pragma mark locale

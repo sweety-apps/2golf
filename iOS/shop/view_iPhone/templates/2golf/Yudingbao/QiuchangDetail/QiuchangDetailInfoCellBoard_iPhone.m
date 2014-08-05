@@ -75,10 +75,10 @@
         {
             date = [NSDate dateWithTimeIntervalSinceNow:3600*24 + 3600];//明天1小时以后
         }
-        str = [NSString stringWithFormat:@"%d年%d月%d日\n%@",[date year],[date month],[date day],[date weekdayChinese]];
+        str = [NSString stringWithFormat:@"%d月%d日%@",[date month],[date day],[date weekdayChinese]];
         if ([str length] == 0)
         {
-            str = @"2014年02月21日\n星期五";
+            str = @"02月21日\n星期五";
         }
         self.ctrl.leftLbl2.text = @"打球日期";
         self.ctrl.rightLbl2.text = str;

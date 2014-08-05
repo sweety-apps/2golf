@@ -29,6 +29,7 @@ AS_SIGNAL(LOCAL_RIGHT_NAV_BTN)
 @property (nonatomic,retain) IBOutlet UIButton* riziBtn;
 @property (nonatomic,retain) IBOutlet UIButton* jiagepaixuBtn;
 @property (nonatomic,retain) IBOutlet UIButton* shijianpaixuBtn;
+@property (retain, nonatomic) IBOutlet UILabel *noResultLabel;
 
 -(IBAction)onPressedShiduanBtn:(id)sender;
 -(IBAction)onPressedRiziBtn:(id)sender;

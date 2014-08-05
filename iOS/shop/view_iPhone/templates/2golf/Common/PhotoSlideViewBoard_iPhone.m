@@ -132,6 +132,10 @@ ON_SIGNAL2( BeeUIBoard, signal )
         
         CGRect controlFrame;
         controlFrame.size.width = 80.0f;
+        if ([self.pictures count] > 0)
+        {
+            controlFrame.size.width = [self.pictures count] * 16;
+        }
         controlFrame.size.height = 16.0f;
         controlFrame.origin.x = (self.view.width - controlFrame.size.width) / 2.0f;
         controlFrame.origin.y = self.view.height - 84.0f;

@@ -21,6 +21,7 @@
 
 @property (nonatomic,retain) IBOutlet UIImageView* bgImageView;
 @property (nonatomic,retain) IBOutlet UILabel* leftLabel;
+@property (nonatomic,retain) IBOutlet UILabel* leftLabel1;
 @property (nonatomic,retain) IBOutlet UILabel* midLabel;
 @property (nonatomic,retain) IBOutlet BeeUIImageView* iconImageView;
 

@@ -80,7 +80,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WkW-6F-suu">
-                                    <rect key="frame" x="0.0" y="207" width="320" height="35"/>
+                                    <rect key="frame" x="0.0" y="202" width="320" height="49"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <state key="normal" backgroundImage="qcss_search_btn.png">
@@ -126,12 +126,10 @@
                                     <color key="textColor" red="0.25490197539999998" green="0.25098040700000002" blue="0.2588235438" alpha="1" colorSpace="deviceRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="149" translatesAutoresizingMaskIntoConstraints="NO" id="kPL-sh-gc3">
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="02月21日 星期五" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="149" translatesAutoresizingMaskIntoConstraints="NO" id="kPL-sh-gc3">
                                     <rect key="frame" x="136" y="112" width="149" height="48"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <string key="text">2014年02月21日
-星期五</string>
-                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" red="0.039215687662363052" green="0.40392160415649414" blue="0.22352942824363708" alpha="1" colorSpace="deviceRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -173,7 +171,7 @@
         <image name="qcss_local.png" width="320" height="34"/>
         <image name="qcss_more_btn.png" width="320" height="38"/>
         <image name="qcss_name.png" width="320" height="33"/>
-        <image name="qcss_search_btn.png" width="320" height="34"/>
+        <image name="qcss_search_btn.png" width="320" height="49"/>
         <image name="qcss_time.png" width="320" height="35"/>
     </resources>
 </document>

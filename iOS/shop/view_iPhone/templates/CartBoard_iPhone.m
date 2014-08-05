@@ -375,13 +375,15 @@ ON_SIGNAL2( BeeUIBoard, signal )
     }
     else if ( [signal is:BeeUIBoard.WILL_APPEAR] )
     {
+        [[AppBoard_iPhone sharedInstance] setTabbarHidden:YES];
+        
         [self reloadData];
         
         if ( nil == self.previousBoard )
         {
 			[self hideBarButton:BeeUINavigationBar.LEFT];
 			
-            [[AppBoard_iPhone sharedInstance] setTabbarHidden:NO];
+            //[[AppBoard_iPhone sharedInstance] setTabbarHidden:NO];
 			
 			if ( [UserModel online] )
 			{
@@ -392,7 +394,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
 		{
 			[self showBarButton:BeeUINavigationBar.LEFT image:[UIImage imageNamed:@"nav-back.png"]];
 
-			[[AppBoard_iPhone sharedInstance] setTabbarHidden:YES];
+			//[[AppBoard_iPhone sharedInstance] setTabbarHidden:YES];
 		}
     }
     else if ( [signal is:BeeUIBoard.DID_APPEAR] )
@@ -403,7 +405,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
     {
         if ( nil == self.previousBoard )
         {
-            [[AppBoard_iPhone sharedInstance] setTabbarHidden:YES];
+            //[[AppBoard_iPhone sharedInstance] setTabbarHidden:YES];
         }
     }
     else if ( [signal is:BeeUIBoard.DID_DISAPPEAR] )

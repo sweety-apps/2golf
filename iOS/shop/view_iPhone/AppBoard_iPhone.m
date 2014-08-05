@@ -66,6 +66,9 @@
     
     NSTimer* _adImageTimer;
 }
+
+@property (nonatomic,strong) NSString* newVersionURL;
+
 @end
 
 #pragma mark -
@@ -150,6 +153,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
         
         [self showAdImage];
         [self fetchADImage];
+        [self fetchNewVersion];
         
         [CommonUtility refreshLocalPositionWithCallBack:nil];
 
@@ -278,6 +282,18 @@ ON_NOTIFICATION3( ConfigModel, SHOP_OPENED, notification )
 		[_shopClosedView release];
 		_shopClosedView = nil;
 	}
+}
+
+ON_SIGNAL( signal )
+{
+    if ( [signal is:@"newversion_button_pressed"] )
+    {
+        if ([self.newVersionURL length] > 0)
+        {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.newVersionURL]];
+        }
+    }
+    
 }
 
 - (void)handleUISignal_tabbar_home_button:(BeeUISignal *)signal
@@ -451,6 +467,11 @@ ON_NOTIFICATION3( ConfigModel, SHOP_OPENED, notification )
     self.HTTP_POST([[ServerConfig sharedInstance].url stringByAppendingString:@"adimage"]).TIMEOUT(30);
 }
 
+- (void)fetchNewVersion
+{
+    self.HTTP_GET([[ServerConfig sharedInstance].baseUrl stringByAppendingString:@"/app/newversion.json"]).TIMEOUT(30);
+}
+
 - (NSDictionary*) commonCheckRequest:(BeeHTTPRequest *)req
 {
     if ( req.sending) {
@@ -513,6 +534,28 @@ ON_NOTIFICATION3( ConfigModel, SHOP_OPENED, notification )
             {
                 [self hideAdImage];
                 //[self presentFailureTips:__TEXT(@"error_network")];
+            }
+        }
+        //版本检测
+        if ([[req.url absoluteString] rangeOfString:@"/app/newversion.json"].length > 0)
+        {
+            //正确逻辑
+            if ([(dict[@"status"])[@"succeed"] intValue] == 1)
+            {
+                if (kCurrentAppVersion < [dict[@"data"][@"versionCode"] intValue])
+                {
+                    self.newVersionURL = dict[@"data"][@"url"];
+                    BeeUIAlertView * alert = [BeeUIAlertView spawn];
+                    alert.title = @"发现新版本";
+                    alert.message = @"请尽快更新爱高高尔夫新版本，以保证正常使用";
+                    [alert addCancelTitle:@"取消"];
+                    [alert addButtonTitle:@"更新" signal:@"newversion_button_pressed"];
+                    [alert showInViewController:self];
+                }
+            }
+            else
+            {
+                
             }
         }
     }

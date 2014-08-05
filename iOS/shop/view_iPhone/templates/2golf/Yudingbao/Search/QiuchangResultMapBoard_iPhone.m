@@ -72,7 +72,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
         [self.view setOpaque:YES];
         
         [self.view addSubview:_mapView];
-        self.view.backgroundColor = [UIColor redColor];
+        //self.view.backgroundColor = [UIColor redColor];
     }
     else if ( [signal is:BeeUIBoard.DELETE_VIEWS] )
     {
@@ -94,7 +94,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
         rect.origin.y+=6;
         rect.size.height-=6;
         _mapView.frame = rect;
-        _mapView.backgroundColor = [UIColor redColor];
+        _mapView.backgroundColor = [UIColor clearColor];
         [_mapView viewWillAppear];
         
         [_mapView setZoomLevel:11.5];

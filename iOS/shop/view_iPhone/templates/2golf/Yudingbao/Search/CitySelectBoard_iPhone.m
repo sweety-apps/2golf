@@ -139,7 +139,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
     if ( [signal is:BeeUIBoard.CREATE_VIEWS] )
     {
         [self showNavigationBarAnimated:NO];
-        [self setTitleViewWithIcon:__IMAGE(@"titleicon") andTitleString:@"球场搜索"];
+        [self setTitleViewWithIcon:__IMAGE(@"titleicon") andTitleString:@"城市列表"];
         [self showBarButton:BeeUINavigationBar.LEFT image:[UIImage imageNamed:@"nav-back.png"]];
         
         CGRect rect = self.viewBound;

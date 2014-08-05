@@ -293,6 +293,8 @@ ON_SIGNAL2( BeeUIBoard, signal )
 
 - (void)fetchData
 {
+    self.noResultLabel.hidden = YES;
+    
     NSDictionary* dic = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_local"];
     NSString* keywords = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_keywords"];
     if (keywords == nil || [keywords isEqualToString:@"请输入关键字"])
@@ -327,7 +329,6 @@ ON_SIGNAL2( BeeUIBoard, signal )
     }
     
     req.TIMEOUT(30);
-    
 }
 
 - (NSDictionary*) commonCheckRequest:(BeeHTTPRequest *)req
@@ -346,6 +347,8 @@ ON_SIGNAL2( BeeUIBoard, signal )
         NSDictionary* dict = [NSJSONSerialization JSONObjectWithData:req.responseData options:NSJSONReadingMutableLeaves error:&error];
         if ( dict == nil || [dict count] == 0 ) {
             [self presentFailureTips:__TEXT(@"error_network")];
+            self.noResultLabel.text = @"网络错误,请重新搜索";
+            self.noResultLabel.hidden = NO;
         } else {
             return dict;
         }
@@ -374,12 +377,19 @@ ON_SIGNAL2( BeeUIBoard, signal )
                     [CommonUtility metersOfDistanceBetween:[CommonUtility currentPositionX] _y1:[CommonUtility currentPositionY] _x2:locX _y2:locY];
                     [self.distanceArray addObject:[NSNumber numberWithDouble:dis]];
                 }
+                if ([self.dataArray count] <= 0)
+                {
+                    self.noResultLabel.hidden = NO;
+                    self.noResultLabel.text = @"没有结果";
+                }
                 [self reorderDatas];
                 [_scroll reloadData];
             }
             else
             {
                 [self presentFailureTips:__TEXT(@"error_network")];
+                self.noResultLabel.text = @"网络错误,请重新搜索";
+                self.noResultLabel.hidden = NO;
             }
         }
     }
@@ -431,7 +441,7 @@ ON_SIGNAL( signal )
     
     [cell setFrame:CGRectMake(0, 0, 320, 68)];
     cell.ctrl.nameLabel.text = (self.dataArray[index])[@"coursename"];
-    cell.ctrl.distanceLabel.text = [NSString stringWithFormat:@"距离：%.1f公里",[((NSNumber*)(self.distanceArray[index])) doubleValue]/1000.f];
+    cell.ctrl.distanceLabel.text = [NSString stringWithFormat:@"距您%.2f公里",[((NSNumber*)(self.distanceArray[index])) doubleValue]/1000.f];
     cell.ctrl.descriptionLabel.text = (self.dataArray[index])[@"slogan"];
     cell.ctrl.valueLabel.text = [NSString stringWithFormat:@"￥%@",(self.dataArray[index])[@"cheapestprice"]];
     if ([((self.dataArray[index])[@"img"])[@"small"] length]>0)
@@ -515,4 +525,8 @@ ON_SIGNAL( signal )
     [self fetchData];
 }
 
+- (void)dealloc {
+    [_noResultLabel release];
+    [super dealloc];
+}
 @end

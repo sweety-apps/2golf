@@ -334,7 +334,18 @@ ON_SIGNAL2( BeeUIWebView, signal )
         title = self.summaryDataDict[@"title"];
         url = [[ServerConfig sharedInstance].baseUrl stringByAppendingFormat:@"/article.php?id=%@",self.detailID];
         summary = self.summaryDataDict[@"summary"];
-        imageUrl = self.summaryDataDict[@"imgurl"];
+        id iu = self.summaryDataDict[@"imgurl"];
+        if ([iu isKindOfClass:[NSArray class]])
+        {
+            if([((NSArray*)iu) count] > 0)
+            {
+                imageUrl = ((NSArray*)iu)[0];
+            }
+        }
+        else if([iu isKindOfClass:[NSString class]])
+        {
+            imageUrl = iu;
+        }
     }
     else
     {
@@ -348,6 +359,11 @@ ON_SIGNAL2( BeeUIWebView, signal )
     if ([summary length] == 0)
     {
         summary = @"爱高高尔夫，爱上高尔夫";
+    }
+    
+    if ([imageUrl length] <= 0)
+    {
+        imageUrl =  [[NSBundle mainBundle] pathForResource:@"" ofType:@"jpg"];
     }
     
     NSString* collectedContent = [NSString stringWithFormat:@"【爱高高尔夫】%@ %@",title,url];

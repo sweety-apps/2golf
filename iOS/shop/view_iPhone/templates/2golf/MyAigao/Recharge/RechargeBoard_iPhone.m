@@ -408,6 +408,7 @@ ON_SIGNAL2( BeeUIAlertView, signal)
         else
         {
             //交易失败
+            [[[UIApplication sharedApplication] keyWindow] presentFailureTips:@"交易失败"];
         }
     }
     else

@@ -200,11 +200,11 @@ DEF_SINGLETON( SharedLocaleDelegate )
     }
     
     NSTimeInterval startHour =  [selectedDate timeIntervalSince1970] - ((int)[selectedDate timeIntervalSince1970]) % (3600 * 24);//8点时间
-    startHour += (3600 * 1);//9点后才可以选
+    startHour -= 2*(3600 * 1);//6点后才可以选
     
-    NSTimeInterval step = 10 * 60; //10分钟一档
+    NSTimeInterval step = 30 * 60; //30分钟一档
     NSTimeInterval accumulate = 0;
-    NSTimeInterval endHour = startHour + (14*3600);//最晚到11点
+    NSTimeInterval endHour = startHour + (14*3600)+(30*60);//最晚到20点
     NSTimeInterval tomorrowInterval = [tomorrowDate timeIntervalSince1970];
     
     NSMutableArray* ret = [NSMutableArray array];
