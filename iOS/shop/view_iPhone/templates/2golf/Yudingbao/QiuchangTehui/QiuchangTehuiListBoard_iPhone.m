@@ -173,6 +173,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
             [self onPressedShiduanBtn:self.shiduanBtn];
             [self onPressedJiagepaixuBtn:self.jiagepaixuBtn];
         }
+        [self _refreshTvWeekDaysByTime];
     }
     else if ( [signal is:BeeUIBoard.DID_APPEAR] )
     {
@@ -723,4 +724,140 @@ ON_SIGNAL2( QiuchangTehuiShiduanCell_iPhone, signal )
     [_scroll reloadData];
 }
 
+
+
+- (void)dealloc {
+    [_btnmon release];
+    [_btntwo release];
+    [_btnwed release];
+    [_btnthus release];
+    [_btnfri release];
+    [_btnsat release];
+    [_btnsun release];
+    [super dealloc];
+}
+
+- (IBAction)onPressedMon:(id)sender {
+    [self _setSelectedTimestamp:2];
+}
+
+- (IBAction)onPressedTwo:(id)sender {
+    [self _setSelectedTimestamp:3];
+}
+
+- (IBAction)onPressedWed:(id)sender {
+    [self _setSelectedTimestamp:4];
+}
+
+- (IBAction)onPressedThus:(id)sender {
+    [self _setSelectedTimestamp:5];
+}
+
+- (IBAction)onPressedFri:(id)sender {
+    [self _setSelectedTimestamp:6];
+}
+
+- (IBAction)onPressedSat:(id)sender {
+    [self _setSelectedTimestamp:7];
+}
+
+- (IBAction)onPressedSun:(id)sender {
+    [self _setSelectedTimestamp:1];
+    
+}
+
+-(void)_setSelectedTimestamp:(int)weekday
+{
+    //  先定义一个遵循某个历法的日历对象
+    NSCalendar *greCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    //  通过已定义的日历对象，获取某个时间点的NSDateComponents表示，并设置需要表示哪些信息（NSYearCalendarUnit, NSMonthCalendarUnit, NSDayCalendarUnit等）
+    NSDateComponents *dateComponents = [greCalendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit | NSWeekCalendarUnit | NSWeekdayCalendarUnit | NSWeekOfMonthCalendarUnit | NSWeekOfYearCalendarUnit fromDate:[NSDate date]];
+    dateComponents.hour = 0;
+    dateComponents.minute = 0;
+    dateComponents.second = 0;
+    int week = dateComponents.weekday;
+    if (week >= weekday) {
+        int dateoffset = 7 - (week - weekday);
+        NSDate* date = [NSDate dateWithTimeInterval:dateoffset*24*60*60 sinceDate:[greCalendar dateFromComponents:dateComponents]];
+        // 如果选择的日期小于等于当前日期，那么返回下周的选择的日期
+        [[NSUserDefaults standardUserDefaults] setObject:date forKey:@"search_date"];
+        [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"search_time"];
+    } else {
+        int dateoffset = (weekday - week);
+        NSDate* date = [NSDate dateWithTimeInterval:dateoffset*24*60*60 sinceDate:[greCalendar dateFromComponents:dateComponents]];
+        // 如果选择的日期大于当前日期，那么返回本周选择的日期
+        [[NSUserDefaults standardUserDefaults] setObject:date forKey:@"search_date"];
+    }
+    [self _refreshTvWeekDaysByTime];
+    [self fetchData];
+//    if (mSelectedType == 0) {
+//        if (btnArea.getText().toString().equalsIgnoreCase("当前位置")) {
+//            dataModel.fetchTeeTime(LocationUtil.longitude,
+//                                   LocationUtil.latitude, 50, mSelectedTimeStamp, -1,
+//                                   false);
+//        } else {
+//            if (!isLocationValid()) {
+//                pd = new ProgressDialog(PrivilegeListActivity.this);
+//                pd.setMessage("搜索中...");
+//                pd.show();
+//                GeoWithBaiduUtil.shareInstance().getGeoInfo(
+//                                                            mLastWatchedCity, PrivilegeListActivity.this);
+//            } else {
+//                dataModel.fetchTeeTime(mLastWatchedCity.longitude,
+//                                       mLastWatchedCity.latitude, 50, mSelectedTimeStamp,
+//                                       mLastWatchedCity.city_id,
+//                                       mLastWatchedCity.international);
+//            }
+//        }
+//    } else {
+//        if (btnArea.getText().toString().equalsIgnoreCase("当前位置")) {
+//            searchspecialday(LocationUtil.longitude, LocationUtil.latitude,
+//                             -1, false);
+//        } else {
+//            if (isLocationValid()) {
+//                searchspecialday(mLastWatchedCity.longitude,
+//                                 mLastWatchedCity.latitude,
+//                                 mLastWatchedCity.city_id,
+//                                 mLastWatchedCity.international);
+//            } else {
+//                GeoWithBaiduUtil.shareInstance().getGeoInfo(
+//                                                            mLastWatchedCity, this);
+//            }
+//        }
+//    }
+}
+
+-(void)_refreshTvWeekDaysByTime
+{
+    // 初始化
+    NSDate* d = [NSDate dateWithTimeIntervalSince1970:[CommonUtility getSearchTimeStamp]];
+    NSCalendar *greCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *dateComponents = [greCalendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit | NSWeekCalendarUnit | NSWeekdayCalendarUnit | NSWeekOfMonthCalendarUnit | NSWeekOfYearCalendarUnit fromDate:d];
+    int week = dateComponents.weekday;
+    switch (week) {
+		case 2:
+            [self.btnmon setSelected:TRUE];
+			break;
+		case 3:
+            [self.btntwo setSelected:TRUE];
+			break;
+		case 4:
+            [self.btnwed setSelected:TRUE];
+			break;
+		case 5:
+            [self.btnthus setSelected:TRUE];
+			break;
+		case 6:
+            [self.btnfri setSelected:TRUE];
+			break;
+		case 7:
+            [self.btnsat setSelected:TRUE];
+			break;
+		case 1:
+            [self.btnsun setSelected:TRUE];
+			break;
+		default:
+			break;
+    }
+}
 @end
