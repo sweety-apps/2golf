@@ -40,12 +40,21 @@ SUPPORT_RESOURCE_LOADING( YES )
     self.tapEnabled = YES;
     self.tapSignal = self.TOUCHED;
     
-	ARTICLE_GROUP * articleGroup = self.data;
-	if ( articleGroup )
-	{
-		$(@"#helper-title").TEXT( articleGroup.name );
-		$(@"#helper-subtitle").TEXT( nil );
-	}
+    if ([self.data isKindOfClass:[ARTICLE_GROUP class]])
+    {
+        ARTICLE_GROUP * articleGroup = self.data;
+        if ( articleGroup )
+        {
+            $(@"#helper-title").TEXT( articleGroup.name );
+            $(@"#helper-subtitle").TEXT( nil );
+        }
+    }
+	else if ([self.data isKindOfClass:[NSDictionary class]])
+    {
+        NSDictionary* dict = self.data;
+        $(@"#helper-title").TEXT( dict[@"name"] );
+        $(@"#helper-subtitle").TEXT( nil );
+    }
 }
 
 @end

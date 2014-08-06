@@ -80,7 +80,7 @@ DEF_SIGNAL( TOUCHED )
       [ServerConfig sharedInstance].baseUrl,
       self.data[@"url"]]];
      */
-    [self setImageUrl:@"http://115.29.144.237/data/afficheimg/20140509aywklb.jpg"];
+    [self setImageUrl:@"http://www.2golf.cn/data/afficheimg/20140804ymbvwa.jpg"];
 }
 
 @end

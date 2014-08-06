@@ -83,6 +83,20 @@ DEF_SIGNAL( TOUCHED )
                                              self.ctrl.brandImageView7,
                                              self.ctrl.brandImageView8,
                                              ]];
+    
+    
+    for (UIButton* btn in self.brandBtns)
+    {
+        //[btn setBackgroundImage:[__IMAGE(@"brandbtnborder") stretched] forState:UIControlStateNormal];
+        [btn setBackgroundImage:[__IMAGE(@"brandbtnborder") stretched] forState:UIControlStateHighlighted];
+        [btn setBackgroundImage:[__IMAGE(@"brandbtnborder") stretched] forState:UIControlStateSelected];
+        [btn addTarget:self action:@selector(_onpressed:) forControlEvents:UIControlEventTouchDown];
+        [btn addTarget:self action:@selector(_onendpressed:) forControlEvents:UIControlEventTouchUpInside];
+        [btn addTarget:self action:@selector(_onendpressed:) forControlEvents:UIControlEventTouchUpOutside];
+        [btn addTarget:self action:@selector(_onendpressed:) forControlEvents:UIControlEventTouchCancel];
+        btn.alpha = 0.1;
+        btn.enabled = YES;
+    }
 }
 
 - (void)unload
@@ -98,7 +112,24 @@ DEF_SIGNAL( TOUCHED )
 
 - (void)layoutDidFinish
 {
-    
+}
+
+- (void)_onpressed:(UIButton*)btn
+{
+    [btn setBackgroundImage:[__IMAGE(@"brandbtnborder") stretched] forState:UIControlStateNormal];
+    btn.alpha = 1.0;
+}
+
+- (void)_onendpressed:(UIButton*)btn
+{
+    [btn setBackgroundImage:[__IMAGE(@"brandbtnborder") stretched] forState:UIControlStateNormal];
+    btn.alpha = 1.0;
+    [UIView animateWithDuration:0.2 animations:^(){
+        btn.alpha = 0.1;
+    } completion:^(BOOL finished) {
+        btn.alpha = 0.1;
+        [btn setBackgroundImage:nil forState:UIControlStateNormal];
+    }];
 }
 
 - (void)dataDidChanged

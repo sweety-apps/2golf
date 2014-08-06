@@ -42,6 +42,7 @@
 #import "RechargeBoard_iPhone.h"
 #import "MyPointsBoard_iPhone.h"
 #import "HelpMainBoard_iPhone.h"
+#import "HelpArticlesBoard_iPhone.h"
 
 #pragma mark -
 
@@ -649,7 +650,8 @@ ON_SIGNAL3( ProfileCell_iPhone, help, signal )
             }
         }
          */
-        HelpMainBoard_iPhone* board = [HelpMainBoard_iPhone boardWithNibName:@"HelpMainBoard_iPhone"];
+        HelpArticlesBoard_iPhone* board = [HelpArticlesBoard_iPhone boardWithNibName:@"HelpArticlesBoard_iPhone"];
+        board.helpModel = self.helpModel;
         [self.stack pushBoard:board animated:YES];
 		
     }
@@ -897,7 +899,7 @@ ON_SIGNAL2( signout_yes, signal )
     NSUInteger row = 0;
     
 	row += 1;
-	row += self.helpModel.articleGroups.count;
+	//row += self.helpModel.articleGroups.count;
     
 	return row;
 }
@@ -913,6 +915,7 @@ ON_SIGNAL2( signout_yes, signal )
         return _profile;
 	}
     
+    /*
 	section += self.helpModel.articleGroups.count;
 	if ( index < section )
 	{
@@ -920,6 +923,7 @@ ON_SIGNAL2( signout_yes, signal )
         cell.data = [self.helpModel.articleGroups safeObjectAtIndex:(self.helpModel.articleGroups.count - (section - index))];
 		return cell;
 	}
+     */
     
     return nil;
 }
@@ -934,12 +938,14 @@ ON_SIGNAL2( signout_yes, signal )
         return [ProfileCell_iPhone estimateUISizeByWidth:scrollView.width forData:[UserModel sharedInstance]];
 	}
     
+    /*
 	section += self.helpModel.articleGroups.count;
 	if ( index < section )
 	{
 		id data = [self.helpModel.articleGroups safeObjectAtIndex:(self.helpModel.articleGroups.count - (section - index))];
 		return [HelpCell_iPhone estimateUISizeByWidth:scrollView.width forData:data];
 	}
+     */
     
     return CGSizeZero;
 }

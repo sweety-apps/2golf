@@ -8,19 +8,20 @@
 //	Powered by BeeFramework
 //
 //
-//  HelpMainBoard_iPhone.h
+//  HelpArticlesBoard_iPhone.h
 //  2golf
 //
-//  Created by Lee Justin on 14-7-4.
+//  Created by Lee Justin on 14-8-6.
 //  Copyright (c) 2014年 geek-zoo studio. All rights reserved.
 //
 
 #import "Bee.h"
+#import "HelpModel.h"
 
 #pragma mark -
 
-@interface HelpMainBoard_iPhone : BeeUIBoard
-@property (retain, nonatomic) IBOutlet BeeUIWebView *webView;
-@property (retain, nonatomic) NSDictionary *customDict;
+@interface HelpArticlesBoard_iPhone : BeeUIBoard
+
+@property (nonatomic, retain) HelpModel * helpModel;
 
 @end

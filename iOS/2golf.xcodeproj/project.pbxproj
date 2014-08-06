@@ -644,6 +644,9 @@
 		F32FA7701966A67A00C3A0C5 /* HelpMainBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = F32FA76F1966A67A00C3A0C5 /* HelpMainBoard_iPhone.m */; };
 		F32FA7721966A68E00C3A0C5 /* HelpMainBoard_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = F32FA7711966A68E00C3A0C5 /* HelpMainBoard_iPhone.xib */; };
 		F32FA7741966B6F100C3A0C5 /* help.html in Resources */ = {isa = PBXBuildFile; fileRef = F32FA7731966B6F100C3A0C5 /* help.html */; };
+		F333A5BF1991383F00F0DE48 /* HelpArticlesBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = F333A5BE1991383F00F0DE48 /* HelpArticlesBoard_iPhone.m */; };
+		F333A5C119913EB300F0DE48 /* HelpArticlesBoard_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = F333A5C019913EB300F0DE48 /* HelpArticlesBoard_iPhone.xib */; };
+		F333A5C319916F3B00F0DE48 /* brandbtnborder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F333A5C219916F3A00F0DE48 /* brandbtnborder@2x.png */; };
 		F3696824190C37C40020E991 /* SirendingzhiListBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = F3696823190C37C40020E991 /* SirendingzhiListBoard_iPhone.m */; };
 		F3696826190C37D30020E991 /* SirendingzhiListBoard_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3696825190C37D30020E991 /* SirendingzhiListBoard_iPhone.xib */; };
 		F3696829190C37F80020E991 /* SirendingzhiListCellBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = F3696828190C37F80020E991 /* SirendingzhiListCellBoard_iPhone.m */; };
@@ -1963,6 +1966,10 @@
 		F32FA76F1966A67A00C3A0C5 /* HelpMainBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpMainBoard_iPhone.m; sourceTree = "<group>"; };
 		F32FA7711966A68E00C3A0C5 /* HelpMainBoard_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HelpMainBoard_iPhone.xib; sourceTree = "<group>"; };
 		F32FA7731966B6F100C3A0C5 /* help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = help.html; sourceTree = "<group>"; };
+		F333A5BD1991383F00F0DE48 /* HelpArticlesBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpArticlesBoard_iPhone.h; sourceTree = "<group>"; };
+		F333A5BE1991383F00F0DE48 /* HelpArticlesBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpArticlesBoard_iPhone.m; sourceTree = "<group>"; };
+		F333A5C019913EB300F0DE48 /* HelpArticlesBoard_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HelpArticlesBoard_iPhone.xib; sourceTree = "<group>"; };
+		F333A5C219916F3A00F0DE48 /* brandbtnborder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brandbtnborder@2x.png"; sourceTree = "<group>"; };
 		F3696822190C37C40020E991 /* SirendingzhiListBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SirendingzhiListBoard_iPhone.h; sourceTree = "<group>"; };
 		F3696823190C37C40020E991 /* SirendingzhiListBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SirendingzhiListBoard_iPhone.m; sourceTree = "<group>"; };
 		F3696825190C37D30020E991 /* SirendingzhiListBoard_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SirendingzhiListBoard_iPhone.xib; sourceTree = "<group>"; };
@@ -4147,6 +4154,7 @@
 		F319AE19192ED1C500D64FA2 /* main */ = {
 			isa = PBXGroup;
 			children = (
+				F333A5C219916F3A00F0DE48 /* brandbtnborder@2x.png */,
 				F319AE1A192ED1C500D64FA2 /* goodsfragmentslogan@2x.png */,
 				F319AE1B192ED1C500D64FA2 /* goodsmyorderbtn@2x.png */,
 			);
@@ -4196,6 +4204,9 @@
 				F32FA76E1966A67A00C3A0C5 /* HelpMainBoard_iPhone.h */,
 				F32FA76F1966A67A00C3A0C5 /* HelpMainBoard_iPhone.m */,
 				F32FA7711966A68E00C3A0C5 /* HelpMainBoard_iPhone.xib */,
+				F333A5BD1991383F00F0DE48 /* HelpArticlesBoard_iPhone.h */,
+				F333A5BE1991383F00F0DE48 /* HelpArticlesBoard_iPhone.m */,
+				F333A5C019913EB300F0DE48 /* HelpArticlesBoard_iPhone.xib */,
 			);
 			path = Help;
 			sourceTree = "<group>";
@@ -5233,6 +5244,7 @@
 				F31007BF1945E74C002DF54F /* MyOrderListTopSwitchViewController.xib in Resources */,
 				F3F0EF4919358215004613DA /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				F3FBB2D8190B7F31000E9F3F /* privilegetophighlight@2x.png in Resources */,
+				F333A5C119913EB300F0DE48 /* HelpArticlesBoard_iPhone.xib in Resources */,
 				E909CC0B182D0D650095B262 /* CheckoutHeader_iPhone.xml in Resources */,
 				F3FBB2EC190B94FC000E9F3F /* QiuchangTehuiShiduanCellBoard_iPhone.xib in Resources */,
 				F3B5375718FE29FC004E72D4 /* courselisticonmap@2x.png in Resources */,
@@ -5347,6 +5359,7 @@
 				CB37762E17C5FF6F00DF5F21 /* searcher-new-search-icon@2x.png in Resources */,
 				F3CA6A37196E8372005C2CD4 /* GoodsDetailSlide_iPhone.xml in Resources */,
 				F3F0EF5B19358216004613DA /* ShareSDKiPhoneSimpleShareViewUI.bundle in Resources */,
+				F333A5C319916F3B00F0DE48 /* brandbtnborder@2x.png in Resources */,
 				CB37762F17C5FF6F00DF5F21 /* searcher-new-voice-btn@2x.png in Resources */,
 				F3B539421900C0E9004E72D4 /* CitySelectBoard_iPhone.xib in Resources */,
 				F3F0EFC219386828004613DA /* profile_img_bg@2x.png in Resources */,
@@ -5686,6 +5699,7 @@
 				E909CC15182D0D650095B262 /* CommonPullLoader.m in Sources */,
 				E970D6B8182CE4E200146363 /* UICheck+BeeUIStyle.m in Sources */,
 				63023922177C1676004C052D /* OrderModel.m in Sources */,
+				F333A5BF1991383F00F0DE48 /* HelpArticlesBoard_iPhone.m in Sources */,
 				E970D718182CE4E200146363 /* UITextField+BeeUILayout.m in Sources */,
 				F39B6148191BDAE500C89F6A /* OtherTripBoard_iPhone.m in Sources */,
 				E970D79B182CE4E200146363 /* Reachability.m in Sources */,

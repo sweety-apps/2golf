@@ -335,6 +335,7 @@ ON_SIGNAL2( AifenxiangListCell_iPhone, signal )
             //if ([(dict[@"status"])[@"succeed"] intValue] == 1)
             {
                 self.listDataDict = [NSMutableDictionary dictionaryWithDictionary:dict[@"data"]];
+                [_scroll scrollToFirstPage:YES];
                 [_scroll reloadData];
             }
             else

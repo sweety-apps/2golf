@@ -95,8 +95,8 @@ ON_SIGNAL2( BeeUIBoard, signal )
         [self showBarButton:BeeUINavigationBar.RIGHT custom:rightBtnContainerView];
         
         rect = self.viewBound;
-        rect.origin.y+=6+self.headView.height;
-        rect.size.height-=6+self.headView.height;
+        rect.origin.y+=41+self.headView.height;
+        rect.size.height-=41+self.headView.height;
         _scroll = [[BeeUIScrollView alloc] initWithFrame:rect];
 		_scroll.dataSource = self;
 		_scroll.vertical = YES;
@@ -124,8 +124,8 @@ ON_SIGNAL2( BeeUIBoard, signal )
     {
         [_scroll setBaseInsets:UIEdgeInsetsMake(0, 0, [AppBoard_iPhone sharedInstance].tabbar.height, 0)];
 		CGRect rect = self.viewBound;
-        rect.origin.y+=6+self.headView.height;
-        rect.size.height-=6+self.headView.height;
+        rect.origin.y+=41+self.headView.height;
+        rect.size.height-=41+self.headView.height;
         _scroll.frame =rect;
         
         NSString* str = nil;
@@ -768,26 +768,16 @@ ON_SIGNAL2( QiuchangTehuiShiduanCell_iPhone, signal )
 
 -(void)_setSelectedTimestamp:(int)weekday
 {
-    //  先定义一个遵循某个历法的日历对象
-    NSCalendar *greCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    //  通过已定义的日历对象，获取某个时间点的NSDateComponents表示，并设置需要表示哪些信息（NSYearCalendarUnit, NSMonthCalendarUnit, NSDayCalendarUnit等）
-    NSDateComponents *dateComponents = [greCalendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit | NSWeekCalendarUnit | NSWeekdayCalendarUnit | NSWeekOfMonthCalendarUnit | NSWeekOfYearCalendarUnit fromDate:[NSDate date]];
-    dateComponents.hour = 0;
-    dateComponents.minute = 0;
-    dateComponents.second = 0;
-    int week = dateComponents.weekday;
-    if (week >= weekday) {
-        int dateoffset = 7 - (week - weekday);
-        NSDate* date = [NSDate dateWithTimeInterval:dateoffset*24*60*60 sinceDate:[greCalendar dateFromComponents:dateComponents]];
-        // 如果选择的日期小于等于当前日期，那么返回下周的选择的日期
-        [[NSUserDefaults standardUserDefaults] setObject:date forKey:@"search_date"];
-        [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"search_time"];
-    } else {
-        int dateoffset = (weekday - week);
-        NSDate* date = [NSDate dateWithTimeInterval:dateoffset*24*60*60 sinceDate:[greCalendar dateFromComponents:dateComponents]];
-        // 如果选择的日期大于当前日期，那么返回本周选择的日期
-        [[NSUserDefaults standardUserDefaults] setObject:date forKey:@"search_date"];
+    int currentweekday = [[NSDate date] weekday];
+    if (weekday <= currentweekday)
+    {
+        weekday += 7;
     }
+    NSTimeInterval dateoffset = (weekday - currentweekday) * 24*60*60;
+    NSDate* date = [[NSDate date] dateByAddingTimeInterval:dateoffset];
+    [[NSUserDefaults standardUserDefaults] setObject:date forKey:@"search_date"];
+    [[NSUserDefaults standardUserDefaults] setObject:date forKey:@"search_time"];
+    
     [self _refreshTvWeekDaysByTime];
     [self fetchData];
 //    if (mSelectedType == 0) {
@@ -831,9 +821,17 @@ ON_SIGNAL2( QiuchangTehuiShiduanCell_iPhone, signal )
 {
     // 初始化
     NSDate* d = [NSDate dateWithTimeIntervalSince1970:[CommonUtility getSearchTimeStamp]];
-    NSCalendar *greCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSDateComponents *dateComponents = [greCalendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit | NSWeekCalendarUnit | NSWeekdayCalendarUnit | NSWeekOfMonthCalendarUnit | NSWeekOfYearCalendarUnit fromDate:d];
-    int week = dateComponents.weekday;
+    
+    int week = [d weekday];
+    
+    [self.btnmon setSelected:NO];
+    [self.btntwo setSelected:NO];
+    [self.btnwed setSelected:NO];
+    [self.btnthus setSelected:NO];
+    [self.btnfri setSelected:NO];
+    [self.btnsat setSelected:NO];
+    [self.btnsun setSelected:NO];
+    
     switch (week) {
 		case 2:
             [self.btnmon setSelected:TRUE];

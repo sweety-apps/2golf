@@ -49,7 +49,15 @@ ON_SIGNAL2( BeeUIBoard, signal )
         [self setTitleViewWithIcon:__IMAGE(@"titleicon") andTitleString:@"帮助"];
         [self showBarButton:BeeUINavigationBar.LEFT image:[UIImage imageNamed:@"nav-back.png"]];
         
-        [self.webView setResource:@"help.html"];
+        if (self.customDict)
+        {
+            [self.webView setUrl:self.customDict[@"url"]];
+            [self setTitleViewWithIcon:__IMAGE(@"titleicon") andTitleString:self.customDict[@"name"]];
+        }
+        else
+        {
+            [self.webView setResource:@"help.html"];
+        }
     }
     else if ( [signal is:BeeUIBoard.DELETE_VIEWS] )
     {
@@ -65,6 +73,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
     }
     else if ( [signal is:BeeUIBoard.WILL_APPEAR] )
     {
+        
     }
     else if ( [signal is:BeeUIBoard.DID_APPEAR] )
     {
