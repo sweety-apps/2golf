@@ -40,6 +40,7 @@ AS_SIGNAL( TOUCHED )
 @property (nonatomic, retain) BeeUIButton *     pluss;
 @property (nonatomic, retain) BeeUIButton *     minus;
 @property (nonatomic, retain) BeeUITextField *  input;
+@property (nonatomic, retain) NSNumber *      maxcount;
 
 AS_SIGNAL( COUNT_CHANGED )
 
@@ -61,6 +62,6 @@ AS_SIGNAL( SPEC_CANCEL )
 @property (nonatomic, retain) GOODS *           goods;
 @property (nonatomic, retain) BeeUIButton *     modalBack;
 @property (nonatomic, retain) NSMutableArray *  specs;
-@property (nonatomic, assign) NSNumber *        count;
+@property (nonatomic, retain) NSNumber *        count;
 
 @end

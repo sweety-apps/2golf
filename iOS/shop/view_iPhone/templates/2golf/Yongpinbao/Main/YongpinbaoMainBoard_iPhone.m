@@ -26,6 +26,11 @@
 #import "CartBoard_iPhone.h"
 #import "SearchBoard_iPhone.h"
 #import "GoodsListBoard_iPhone.h"
+#import "QuichangDetailBoard_iPhone.h"
+#import "GoodsDetailBoard_iPhone.h"
+#import "SirendingzhiDetailBoard_iPhone.h"
+#import "AifenxiangDetailWebBoard_iPhone.h"
+#import "WebViewBoard_iPhone.h"
 
 #pragma mark -
 
@@ -74,13 +79,11 @@ DEF_SIGNAL( TOUCHED )
 
 - (void)dataDidChanged
 {
-    /*
-    [self setImageUrl:
-     [NSString stringWithFormat:@"%@%@",
-      [ServerConfig sharedInstance].baseUrl,
-      self.data[@"url"]]];
-     */
-    [self setImageUrl:@"http://www.2golf.cn/data/afficheimg/20140804ymbvwa.jpg"];
+    NSDictionary * banner = self.data;
+	if ( banner )
+	{
+		_image.url = banner[@"photo"][@"url"];
+	}
 }
 
 @end
@@ -100,6 +103,7 @@ SUPPORT_RESOURCE_LOADING( YES )
 @synthesize rightLabel = _rightLabel;
 @synthesize arrowImg = _arrowImg;
 @synthesize detailBtn = _detailBtn;
+@synthesize autoScrollTimer = _autoScrollTimer;
 
 - (void)load
 {
@@ -160,6 +164,20 @@ SUPPORT_RESOURCE_LOADING( YES )
     //[[self superview] superview].board
 }
 
+- (void)_onAutoScroll
+{
+    if ([self.scroll pageIndex] + 1 >= [self.scroll pageCount])
+    {
+        [self.scroll scrollToFirstPage:YES];
+        self.pageControl.currentPage = 0;
+    }
+    else
+    {
+        [self.scroll scrollToIndex:[self.scroll pageIndex]+1 animated:YES];
+        self.pageControl.currentPage = [self.scroll pageIndex]+1;
+    }
+}
+
 - (void)unload
 {
     self.shadow = nil;
@@ -169,6 +187,8 @@ SUPPORT_RESOURCE_LOADING( YES )
     self.rightLabel = nil;
     self.arrowImg = nil;
     self.detailBtn = nil;
+    [self.autoScrollTimer invalidate];
+    self.autoScrollTimer = nil;
     
 	[super unload];
 }
@@ -191,12 +211,12 @@ SUPPORT_RESOURCE_LOADING( YES )
 
 - (void)dataDidChanged
 {
-    if (self.data)
-    {
-        //self.leftLabel.text = self.data[@"slogan"];
-    }
+    [self.autoScrollTimer invalidate];
+    self.autoScrollTimer = nil;
     
     [self.scroll reloadData];
+    
+    self.autoScrollTimer = [NSTimer scheduledTimerWithTimeInterval:5.0f target:self selector:@selector(_onAutoScroll) userInfo:nil repeats:YES];
 }
 
 #pragma mark -
@@ -241,16 +261,22 @@ ON_SIGNAL2( BeeUIScrollView , signal)
 {
     if (((NSArray *)(self.data)).count > 0)
     {
-        return 1;//return ((NSArray *)(self.data)).count;
+        return ((NSArray *)self.data).count;
     }
     return 0;//return ((NSArray *)(self.data)).count;
 }
 
 - (UIView *)scrollView:(BeeUIScrollView *)scrollView viewForIndex:(NSInteger)index scale:(CGFloat)scale
 {
-    YongpinbaoMainBannerPhotoCell_iPhone * cell = [scrollView dequeueWithContentClass:[YongpinbaoMainBannerPhotoCell_iPhone class]];
-    cell.data = (self.data[index])[@"photo"];
-    return cell;
+    NSDictionary* banner = [(NSArray *)self.data safeObjectAtIndex:index];
+	if ( banner )
+	{
+		YongpinbaoMainBannerPhotoCell_iPhone * cell = [scrollView dequeueWithContentClass:[YongpinbaoMainBannerPhotoCell_iPhone class]];
+        cell.data = banner;
+		return cell;
+	}
+    
+    return nil;
 }
 
 - (CGSize)scrollView:(BeeUIScrollView *)scrollView sizeForIndex:(NSInteger)index
@@ -271,6 +297,7 @@ ON_SIGNAL2( BeeUIScrollView , signal)
 
 @property (nonatomic,retain) NSMutableArray* dataArray;
 @property (nonatomic,retain) NSMutableArray* cellArray;
+@property (nonatomic,retain) NSArray* bannerDataArray;
 
 @end
 
@@ -380,6 +407,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
     }
     else if ( [signal is:BeeUIBoard.LOAD_DATAS] )
     {
+        [self fetchBanner];
     }
     else if ( [signal is:BeeUIBoard.FREE_DATAS] )
     {
@@ -443,12 +471,60 @@ ON_SIGNAL( signal )
     
 }
 
-ON_SIGNAL2( QiuchangBannerPhotoCell_iPhone, signal )
+ON_SIGNAL2( YongpinbaoMainBannerPhotoCell_iPhone, signal )
 {
-    //这里先预留
-    PhotoSlideViewBoard_iPhone * board = [PhotoSlideViewBoard_iPhone board];
-    //board.pictures = self.dataDict[@""];
-	[self.stack pushBoard:board animated:YES];
+	[super handleUISignal:signal];
+	
+    NSDictionary * banner = signal.sourceCell.data;
+    
+    // TODO: for test to be removed
+    //    banner.action = BANNER_ACTION_GOODS;
+    //    banner.action_id = @(33);
+    
+    //    banner.action = BANNER_ACTION_CATEGORY;
+    //    banner.action_id = @(1);
+    
+    //    banner.action = BANNER_ACTION_BRAND;
+    //    banner.action_id = @();
+    
+	if ( banner )
+	{
+        if ( [banner[@"type"] intValue] == 0 )
+        {
+            //球场
+            QuichangDetailBoard_iPhone * board = [QuichangDetailBoard_iPhone boardWithNibName:@"QuichangDetailBoard_iPhone"];
+            [board setCourseId:banner[@"id"]];
+            [self.stack pushBoard:board animated:YES];
+        }
+        else if ( [banner[@"type"] intValue] == 1 )
+        {
+            //商品
+            GoodsDetailBoard_iPhone * board = [GoodsDetailBoard_iPhone board];
+            board.goodsModel.goods_id = [NSNumber numberWithInt:[banner[@"id"] intValue]];
+            [self.stack pushBoard:board animated:YES];
+        }
+        else if ( [banner[@"type"] intValue] == 2 )
+        {
+            //套餐
+            SirendingzhiDetailBoard_iPhone* board = [SirendingzhiDetailBoard_iPhone boardWithNibName:@"SirendingzhiDetailBoard_iPhone"];
+            [board setCustomId:banner[@"id"]];
+            [self.stack pushBoard:board animated:YES];
+        }
+        else if ( [banner[@"type"] intValue] == 3 )
+        {
+            //爱分享
+            AifenxiangDetailWebBoard_iPhone* board = [AifenxiangDetailWebBoard_iPhone boardWithNibName:@"AifenxiangDetailWebBoard_iPhone"];
+            [board setShareDetailID:banner[@"id"]];
+            [self.stack pushBoard:board animated:YES];
+        }
+        else
+        {
+            WebViewBoard_iPhone * board = [[[WebViewBoard_iPhone alloc] init] autorelease];
+            board.defaultTitle = banner.description.length ? banner.description : __TEXT(@"new_activity");
+            board.urlString = banner[@"url"];
+            [self.stack pushBoard:board animated:YES];
+        }
+	}
 }
 
 #pragma mark -
@@ -467,7 +543,13 @@ ON_SIGNAL2( QiuchangBannerPhotoCell_iPhone, signal )
 
 - (UIView *)scrollView:(BeeUIScrollView *)scrollView viewForIndex:(NSInteger)index scale:(CGFloat)scale
 {
-    return self.cellArray[index];
+    BeeUICell* cell = self.cellArray[index];
+    if (index == 0)
+    {
+        //banner
+        cell.data = self.bannerDataArray;
+    }
+    return cell;
 }
 
 - (CGSize)scrollView:(BeeUIScrollView *)scrollView sizeForIndex:(NSInteger)index
@@ -526,7 +608,7 @@ ON_SIGNAL2( QiuchangBannerPhotoCell_iPhone, signal )
     
     //banner
     BeeUICell * cell = [[[YongpinbaoMainBannerCell_iPhone alloc] initWithFrame:CGRectMake(0, 0, 320, 115)] autorelease];
-    cell.data = self.dataArray;
+    cell.data = self.bannerDataArray;
     [self.cellArray addObject:cell];
     
     //下面的所有按钮
@@ -551,6 +633,11 @@ ON_SIGNAL2( QiuchangBannerPhotoCell_iPhone, signal )
 
 #pragma mark - Network
 
+- (void)fetchBanner
+{
+    self.HTTP_POST([[ServerConfig sharedInstance].url stringByAppendingString:@"hotcourse&type=goods"])
+    .TIMEOUT(30);
+}
 
 - (void)fetchData
 {
@@ -585,7 +672,24 @@ ON_SIGNAL2( QiuchangBannerPhotoCell_iPhone, signal )
     NSDictionary* dict = [self commonCheckRequest:req];
     if (dict)
     {
-        //球场详情
+        //banner
+        if ([[req.url absoluteString] rangeOfString:@"hotcourse&type=goods"].length > 0)
+        {
+            //正确逻辑
+            if ([(dict[@"status"])[@"succeed"] intValue] == 1)
+            {
+                //banner数据
+                self.bannerDataArray = dict[@"data"][@"player"];
+                [_scroll setHeaderLoading:NO];
+                [self dismissTips];
+                [_scroll asyncReloadData];
+            }
+            else
+            {
+                [self presentFailureTips:__TEXT(@"error_network")];
+            }
+        }
+        //品牌列表
         if ([[req.url absoluteString] rangeOfString:@"brand"].length > 0)
         {
             //正确逻辑

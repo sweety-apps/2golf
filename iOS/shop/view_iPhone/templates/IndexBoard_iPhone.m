@@ -859,7 +859,7 @@ ON_SIGNAL2( BannerPhotoCell_iPhone, signal )
         {
             //商品
             GoodsDetailBoard_iPhone * board = [GoodsDetailBoard_iPhone board];
-            board.goodsModel.goods_id = banner[@"id"];
+            board.goodsModel.goods_id = [NSNumber numberWithInt:[banner[@"id"] intValue]];
             [self.stack pushBoard:board animated:YES];
         }
         else if ( [banner[@"type"] intValue] == 2 )

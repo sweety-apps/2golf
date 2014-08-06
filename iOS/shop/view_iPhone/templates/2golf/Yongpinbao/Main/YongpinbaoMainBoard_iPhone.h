@@ -26,6 +26,7 @@ AS_SIGNAL( TOUCHED )
 #pragma mark -
 
 @interface YongpinbaoMainBannerCell_iPhone : BeeUICell
+@property (nonatomic, retain) NSTimer* autoScrollTimer;
 @property (nonatomic, retain) UIView *		shadow;
 @property (nonatomic, retain) UILabel *		leftLabel;
 @property (nonatomic, retain) UILabel *		rightLabel;

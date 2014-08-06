@@ -78,7 +78,8 @@
 
 - (NSString *)tagTitle
 {
-    return [NSString stringWithFormat:@"%@( %@ )", self.value.label, self.value.format_price];
+    return [NSString stringWithFormat:@"%@", self.value.label];
+    //return [NSString stringWithFormat:@"%@( %@ )", self.value.label, self.value.format_price];
 }
 
 - (NSString *)tagRecipt

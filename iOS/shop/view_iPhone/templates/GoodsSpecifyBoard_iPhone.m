@@ -126,13 +126,18 @@ DEF_SIGNAL( COUNT_CHANGED )
         {
             _input.text = [NSString stringWithFormat:@"%d", (count - 1)];
         }
+        
+        [self sendUISignal:self.COUNT_CHANGED];
     }
     else if ( sender == _pluss )
     {
-        _input.text = [NSString stringWithFormat:@"%d", (count + 1)];
+        if (count < self.maxcount.integerValue)
+        {
+            _input.text = [NSString stringWithFormat:@"%d", (count + 1)];
+            
+            [self sendUISignal:self.COUNT_CHANGED];
+        }
     }
-    
-    [self sendUISignal:self.COUNT_CHANGED];
 }
 
 + (CGSize)estimateUISizeByWidth:(CGFloat)width forData:(id)data
@@ -553,6 +558,7 @@ ON_SIGNAL3( SpecifyCountCell, COUNT_CHANGED, signal )
     {
         SpecifyCountCell * cell = [scrollView dequeueWithContentClass:[SpecifyCountCell class]];
         cell.data = self.count;
+        cell.maxcount = self.goods.goods_number;
         return cell;
     }
     

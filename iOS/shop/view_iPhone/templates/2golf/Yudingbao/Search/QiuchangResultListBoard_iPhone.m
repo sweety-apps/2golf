@@ -462,7 +462,7 @@ ON_SIGNAL( signal )
         cell.ctrl.huiIcon.hidden = YES;
     }
     
-    if (self.dataArray[index][@"isspotpayment"] && [self.dataArray[index][@"isspotpayment"] boolValue])
+    if (self.dataArray[index][@"hasGuan"] && [self.dataArray[index][@"hasGuan"] intValue])
     {
         cell.ctrl.guanIcon.hidden = NO;
     }

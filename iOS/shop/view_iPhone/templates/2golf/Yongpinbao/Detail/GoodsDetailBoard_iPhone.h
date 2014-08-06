@@ -53,6 +53,6 @@ AS_INT( ACTION_SPEC )
 @property (nonatomic, retain) CollectionModel *	collectionModel;
 @property (nonatomic, retain) GoodsModel *		goodsModel;
 @property (nonatomic, retain) NSMutableArray *  specs;
-@property (nonatomic, assign) NSNumber *        count;
+@property (nonatomic, retain) NSNumber *        count;
 
 @end

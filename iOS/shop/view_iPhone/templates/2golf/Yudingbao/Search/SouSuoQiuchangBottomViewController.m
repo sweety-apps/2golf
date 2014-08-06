@@ -124,7 +124,7 @@
                     cellCtrl.huiIcon.hidden = YES;
                 }
                 
-                if (dict[@"isspotpayment"] && [dict[@"isspotpayment"] boolValue])
+                if (dict[@"hasGuan"] && [dict[@"hasGuan"] intValue])
                 {
                     cellCtrl.guanIcon.hidden = NO;
                 }

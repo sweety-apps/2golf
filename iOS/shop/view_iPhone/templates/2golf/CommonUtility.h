@@ -8,7 +8,7 @@
 
 #import "Bee.h"
 
-#define kCurrentAppVersion (3)
+#define kCurrentAppVersion (4)
 
 @interface CommonUtility : NSObject
 
