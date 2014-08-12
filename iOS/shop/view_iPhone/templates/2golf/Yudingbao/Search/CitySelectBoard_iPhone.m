@@ -492,6 +492,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
                 mdict[@"latitude"] = dict[@"result"][@"location"][@"lat"];
                 mdict[@"longitude"] = dict[@"result"][@"location"][@"lng"];
                 [[NSUserDefaults standardUserDefaults] setObject:mdict forKey:@"search_local"];
+                [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"search_keywords"];
                 [[NSUserDefaults standardUserDefaults] synchronize];
                 [self.stack popBoardAnimated:YES];
             }

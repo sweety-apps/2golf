@@ -305,11 +305,12 @@ ON_SIGNAL2( BeeUIBoard, signal )
     
     NSNumber* lng = dic[@"longitude"];
     NSNumber* lat = dic[@"latitude"];
+    NSString* timestamp = [NSString stringWithFormat:@"%ld",[CommonUtility getSearchTimeStamp]];
     //lng = @114.02597365732;
     //lat = @22.546053546205;
     BeeHTTPRequest* req = self.HTTP_POST([[ServerConfig sharedInstance].url stringByAppendingString:@"searcharound"])
     .PARAM(@"coursename",keywords)
-    .PARAM(@"timestamp", [NSString stringWithFormat:@"%ld",[CommonUtility getSearchTimeStamp]]);
+    .PARAM(@"timestamp", timestamp);
     
     if ([dic[@"international"] integerValue] > 0)
     {
@@ -453,7 +454,13 @@ ON_SIGNAL( signal )
         [cell.ctrl.iconImageView setImage:__IMAGE(@"icon")];
     }
     
-    if (self.dataArray[index][@"ispreferential"] && [self.dataArray[index][@"ispreferential"] boolValue])
+    if (self.dataArray[index][@"ispreferential"] == nil) {
+        cell.ctrl.huiIcon.hidden = YES;
+    }
+    else if ([self.dataArray[index][@"ispreferential"] isKindOfClass:[NSNull class]]) {
+        cell.ctrl.huiIcon.hidden = YES;
+    }
+    else if ([self.dataArray[index][@"ispreferential"] boolValue])
     {
         cell.ctrl.huiIcon.hidden = NO;
     }
@@ -462,7 +469,13 @@ ON_SIGNAL( signal )
         cell.ctrl.huiIcon.hidden = YES;
     }
     
-    if (self.dataArray[index][@"hasGuan"] && [self.dataArray[index][@"hasGuan"] intValue])
+    if (self.dataArray[index][@"hasGuan"] == nil) {
+        cell.ctrl.guanIcon.hidden = YES;
+    }
+    else if ([self.dataArray[index][@"hasGuan"] isKindOfClass:[NSNull class]]) {
+        cell.ctrl.guanIcon.hidden = YES;
+    }
+    else if ([self.dataArray[index][@"hasGuan"] boolValue])
     {
         cell.ctrl.guanIcon.hidden = NO;
     }
