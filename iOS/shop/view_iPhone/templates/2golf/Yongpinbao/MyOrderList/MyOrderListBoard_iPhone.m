@@ -45,6 +45,7 @@
 @property (nonatomic,retain) MyOrderListTopSwitchViewController* switchCtrl;
 @property (nonatomic,retain) NSDictionary* payingData;
 @property (nonatomic,assign) NSInteger currentSelectBtnIndex;
+@property (nonatomic,assign) BOOL hasRefreshed;
 
 @end
 
@@ -127,7 +128,11 @@ ON_SIGNAL2( BeeUIBoard, signal )
         rect.size.height-=40;
         _scroll.frame =rect;
         
-        [self pressedSwitchBtn:self.btnsel0];
+        if (!self.hasRefreshed)
+        {
+            self.hasRefreshed = YES;
+            [self pressedSwitchBtn:self.btnsel0];
+        }
     }
     else if ( [signal is:BeeUIBoard.DID_APPEAR] )
     {
@@ -325,25 +330,7 @@ ON_SIGNAL( signal )
 
 - (NSDictionary*) commonCheckRequest:(BeeHTTPRequest *)req
 {
-    if ( req.sending) {
-    } else if ( req.recving ) {
-    } else if ( req.failed ) {
-        [_scroll setHeaderLoading:NO];
-        [self dismissTips];
-        [self presentFailureTips:__TEXT(@"error_network")];
-    } else if ( req.succeed ) {
-        [_scroll setHeaderLoading:NO];
-        [self dismissTips];
-        // 判断返回数据是
-        NSError* error;
-        NSDictionary* dict = [NSJSONSerialization JSONObjectWithData:req.responseData options:NSJSONReadingMutableLeaves error:&error];
-        if ( dict == nil || [dict count] == 0 ) {
-            [self presentFailureTips:__TEXT(@"error_network")];
-        } else {
-            return dict;
-        }
-    }
-    return nil;
+    return [super commonCheckRequest:req];
 }
 
 - (void) handleRequest:(BeeHTTPRequest *)req

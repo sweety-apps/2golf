@@ -549,27 +549,7 @@ ON_SIGNAL2( QiuchangTehuiShiduanCell_iPhone, signal )
 
 - (NSDictionary*) commonCheckRequest:(BeeHTTPRequest *)req
 {
-    if ( req.sending) {
-    } else if ( req.recving ) {
-    } else if ( req.failed ) {
-        [_scroll setHeaderLoading:NO];
-        [self dismissTips];
-        [self presentFailureTips:__TEXT(@"error_network")];
-    } else if ( req.succeed ) {
-        [_scroll setHeaderLoading:NO];
-        [self dismissTips];
-        // 判断返回数据是
-        NSError* error;
-        NSDictionary* dict = [NSJSONSerialization JSONObjectWithData:req.responseData options:NSJSONReadingMutableLeaves error:&error];
-        if ( dict == nil || [dict count] == 0 ) {
-            [self presentFailureTips:__TEXT(@"error_network")];
-            self.noResultLabel.text = @"网络错误,请重新搜索";
-            self.noResultLabel.hidden = NO;
-        } else {
-            return dict;
-        }
-    }
-    return nil;
+    return [super commonCheckRequest:req];
 }
 
 - (void) handleRequest:(BeeHTTPRequest *)req

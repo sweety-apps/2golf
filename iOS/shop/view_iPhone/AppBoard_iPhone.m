@@ -484,6 +484,7 @@ ON_SIGNAL( signal )
         NSDictionary* dict = [NSJSONSerialization JSONObjectWithData:req.responseData options:NSJSONReadingMutableLeaves error:&error];
         if ( dict == nil || [dict count] == 0 ) {
         } else {
+            dict = [super _removeNSNullInDectionary:dict];
             return dict;
         }
     }

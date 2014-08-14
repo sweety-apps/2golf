@@ -695,6 +695,7 @@
 		F3B1E407195EDEE1004B615E /* ChargeConfirmView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3B1E406195EDEE1004B615E /* ChargeConfirmView.xib */; };
 		F3B1E40A196002B8004B615E /* SirendingzhiDetailSingleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F3B1E409196002B8004B615E /* SirendingzhiDetailSingleCell.m */; };
 		F3B1E40C196002D0004B615E /* SirendingzhiDetailSingleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3B1E40B196002D0004B615E /* SirendingzhiDetailSingleCell.xib */; };
+		F3B53462199CBFC10014C790 /* NSObject+_golfCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = F3B53461199CBFC10014C790 /* NSObject+_golfCommon.m */; };
 		F3B5375418FE29FC004E72D4 /* courselisticonguan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3B5373F18FE29FC004E72D4 /* courselisticonguan@2x.png */; };
 		F3B5375518FE29FC004E72D4 /* courselisticonhui@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3B5374018FE29FC004E72D4 /* courselisticonhui@2x.png */; };
 		F3B5375618FE29FC004E72D4 /* courselisticonlist@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3B5374118FE29FC004E72D4 /* courselisticonlist@2x.png */; };
@@ -2042,6 +2043,8 @@
 		F3B1E408196002B8004B615E /* SirendingzhiDetailSingleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SirendingzhiDetailSingleCell.h; sourceTree = "<group>"; };
 		F3B1E409196002B8004B615E /* SirendingzhiDetailSingleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SirendingzhiDetailSingleCell.m; sourceTree = "<group>"; };
 		F3B1E40B196002D0004B615E /* SirendingzhiDetailSingleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SirendingzhiDetailSingleCell.xib; sourceTree = "<group>"; };
+		F3B53460199CBFC10014C790 /* NSObject+_golfCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+_golfCommon.h"; sourceTree = "<group>"; };
+		F3B53461199CBFC10014C790 /* NSObject+_golfCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+_golfCommon.m"; sourceTree = "<group>"; };
 		F3B5373F18FE29FC004E72D4 /* courselisticonguan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "courselisticonguan@2x.png"; sourceTree = "<group>"; };
 		F3B5374018FE29FC004E72D4 /* courselisticonhui@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "courselisticonhui@2x.png"; sourceTree = "<group>"; };
 		F3B5374118FE29FC004E72D4 /* courselisticonlist@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "courselisticonlist@2x.png"; sourceTree = "<group>"; };
@@ -4634,6 +4637,8 @@
 				F3B5372318FE2588004E72D4 /* MyAigao */,
 				F3B5372418FE2588004E72D4 /* Yongpinbao */,
 				F3B5372518FE2588004E72D4 /* Yudingbao */,
+				F3B53460199CBFC10014C790 /* NSObject+_golfCommon.h */,
+				F3B53461199CBFC10014C790 /* NSObject+_golfCommon.m */,
 			);
 			path = 2golf;
 			sourceTree = "<group>";
@@ -5772,6 +5777,7 @@
 				F319AC5F191E2C3E00D64FA2 /* SirendingzhiDetailBoard_iPhone.m in Sources */,
 				E970D6A5182CE4E200146363 /* BeeUIBoard+ModalView.m in Sources */,
 				63023928177C1676004C052D /* ValidateModel.m in Sources */,
+				F3B53462199CBFC10014C790 /* NSObject+_golfCommon.m in Sources */,
 				E970D6DC182CE4E200146363 /* Bee_UILabel.m in Sources */,
 				E970D74C182CE4E200146363 /* NSObject+BeeKeychain.mm in Sources */,
 				E970D759182CE4E200146363 /* NSObject+BeeDatabase.m in Sources */,

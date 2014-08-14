@@ -180,23 +180,7 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
 
 - (NSDictionary*) commonCheckRequest:(BeeHTTPRequest *)req
 {
-    if ( req.sending) {
-    } else if ( req.recving ) {
-    } else if ( req.failed ) {
-        [self dismissTips];
-        [self presentFailureTips:__TEXT(@"error_network")];
-    } else if ( req.succeed ) {
-        [self dismissTips];
-        // 判断返回数据是
-        NSError* error;
-        NSDictionary* dict = [NSJSONSerialization JSONObjectWithData:req.responseData options:NSJSONReadingMutableLeaves error:&error];
-        if ( dict == nil || [dict count] == 0 ) {
-            [self presentFailureTips:__TEXT(@"error_network")];
-        } else {
-            return dict;
-        }
-    }
-    return nil;
+    return [super commonCheckRequest:req];
 }
 
 - (void) handleRequest:(BeeHTTPRequest *)req

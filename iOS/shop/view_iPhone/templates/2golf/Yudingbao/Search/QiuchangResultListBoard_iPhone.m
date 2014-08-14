@@ -334,27 +334,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
 
 - (NSDictionary*) commonCheckRequest:(BeeHTTPRequest *)req
 {
-    if ( req.sending) {
-    } else if ( req.recving ) {
-    } else if ( req.failed ) {
-        [_scroll setHeaderLoading:NO];
-        [self dismissTips];
-        [self presentFailureTips:__TEXT(@"error_network")];
-    } else if ( req.succeed ) {
-        [_scroll setHeaderLoading:NO];
-        [self dismissTips];
-        // 判断返回数据是
-        NSError* error;
-        NSDictionary* dict = [NSJSONSerialization JSONObjectWithData:req.responseData options:NSJSONReadingMutableLeaves error:&error];
-        if ( dict == nil || [dict count] == 0 ) {
-            [self presentFailureTips:__TEXT(@"error_network")];
-            self.noResultLabel.text = @"网络错误,请重新搜索";
-            self.noResultLabel.hidden = NO;
-        } else {
-            return dict;
-        }
-    }
-    return nil;
+    return [super commonCheckRequest:req];
 }
 
 - (void) handleRequest:(BeeHTTPRequest *)req
@@ -445,14 +425,18 @@ ON_SIGNAL( signal )
     cell.ctrl.distanceLabel.text = [NSString stringWithFormat:@"距您%.2f公里",[((NSNumber*)(self.distanceArray[index])) doubleValue]/1000.f];
     cell.ctrl.descriptionLabel.text = (self.dataArray[index])[@"slogan"];
     cell.ctrl.valueLabel.text = [NSString stringWithFormat:@"￥%@",(self.dataArray[index])[@"cheapestprice"]];
-    if ([((self.dataArray[index])[@"img"])[@"small"] length]>0)
+    if ([((self.dataArray[index])[@"img"])[@"small"] isKindOfClass:[NSString class]])
     {
-        [cell.ctrl.iconImageView GET:((self.dataArray[index])[@"img"])[@"small"] useCache:YES];
+        if ([((self.dataArray[index])[@"img"])[@"small"] length]>0)
+        {
+            [cell.ctrl.iconImageView GET:((self.dataArray[index])[@"img"])[@"small"] useCache:YES];
+        }
+        else
+        {
+            [cell.ctrl.iconImageView setImage:__IMAGE(@"icon")];
+        }
     }
-    else
-    {
-        [cell.ctrl.iconImageView setImage:__IMAGE(@"icon")];
-    }
+    
     
     if (self.dataArray[index][@"ispreferential"] == nil) {
         cell.ctrl.huiIcon.hidden = YES;

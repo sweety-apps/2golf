@@ -27,6 +27,7 @@
 #import "Bee.h"
 #import "AppTab_iPhone.h"
 #import "ErrorMsg.h"
+#import "NSObject+_golfCommon.h"
 
 @interface AppBoard_iPhone : BeeUIBoard
 

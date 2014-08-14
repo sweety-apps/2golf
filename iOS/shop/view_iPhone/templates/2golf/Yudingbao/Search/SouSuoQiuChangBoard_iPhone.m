@@ -371,6 +371,7 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
         if ( dict == nil || [dict count] == 0 ) {
             //[self presentFailureTips:__TEXT(@"error_network")];
         } else {
+            dict = [self _removeNSNullInDectionary:dict];
             return dict;
         }
     }
