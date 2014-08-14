@@ -20,4 +20,14 @@
 #pragma mark -
 
 @interface MyOrderListBoard_iPhone : BeeUIBoard
+
+@property (retain, nonatomic) IBOutlet UIButton *btnsel0;
+@property (retain, nonatomic) IBOutlet UIButton *btnsel1;
+@property (retain, nonatomic) IBOutlet UIButton *btnsel2;
+@property (retain, nonatomic) IBOutlet UIButton *btnsel3;
+@property (retain, nonatomic) IBOutlet UIButton *btnsel4;
+@property (retain, nonatomic) IBOutlet UIButton *btnsel5;
+
+- (IBAction)pressedSwitchBtn:(UIButton *)sender;
+
 @end

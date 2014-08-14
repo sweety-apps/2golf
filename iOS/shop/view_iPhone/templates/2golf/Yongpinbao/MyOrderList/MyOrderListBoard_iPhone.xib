@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
+        <deployment defaultVersion="1552" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyOrderListBoard_iPhone">
             <connections>
+                <outlet property="btnsel0" destination="DHe-DN-ruY" id="6oU-eL-tmF"/>
+                <outlet property="btnsel1" destination="aep-A4-ens" id="bFu-04-hbc"/>
+                <outlet property="btnsel2" destination="6X5-93-jL6" id="5Z1-75-l6F"/>
+                <outlet property="btnsel3" destination="kVG-Wf-sjP" id="iNR-uU-Rz2"/>
+                <outlet property="btnsel4" destination="Wlq-2j-dcS" id="6Yt-us-Umv"/>
+                <outlet property="btnsel5" destination="tda-F0-FQ7" id="tJB-MX-vCD"/>
                 <outlet property="view" destination="iN0-l3-epB" id="q6d-Zi-gHy"/>
             </connections>
         </placeholder>
@@ -14,9 +20,98 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Smi-xn-6Xx">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DHe-DN-ruY">
+                    <rect key="frame" x="0.0" y="6" width="53" height="34"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title="全部" backgroundImage="aifenxiangmenubtnn.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" backgroundImage="list_order_btn_bga.png"/>
+                    <state key="highlighted" backgroundImage="list_order_btn_bga.png"/>
+                    <connections>
+                        <action selector="pressedSwitchBtn:" destination="-1" eventType="touchUpInside" id="Ze9-F6-8wp"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aep-A4-ens">
+                    <rect key="frame" x="54" y="6" width="53" height="34"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title="待确认" backgroundImage="aifenxiangmenubtnn.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" backgroundImage="list_order_btn_bga.png"/>
+                    <state key="highlighted" backgroundImage="list_order_btn_bga.png"/>
+                    <connections>
+                        <action selector="pressedSwitchBtn:" destination="-1" eventType="touchUpInside" id="5VX-1n-UM2"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6X5-93-jL6">
+                    <rect key="frame" x="108" y="6" width="53" height="34"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title="待付款" backgroundImage="aifenxiangmenubtnn.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" backgroundImage="list_order_btn_bga.png"/>
+                    <state key="highlighted" backgroundImage="list_order_btn_bga.png"/>
+                    <connections>
+                        <action selector="pressedSwitchBtn:" destination="-1" eventType="touchUpInside" id="80l-gB-9x2"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kVG-Wf-sjP">
+                    <rect key="frame" x="162" y="6" width="53" height="34"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title="已付款" backgroundImage="aifenxiangmenubtnn.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" backgroundImage="list_order_btn_bga.png"/>
+                    <state key="highlighted" backgroundImage="list_order_btn_bga.png"/>
+                    <connections>
+                        <action selector="pressedSwitchBtn:" destination="-1" eventType="touchUpInside" id="EaB-Ov-2IV"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wlq-2j-dcS">
+                    <rect key="frame" x="216" y="6" width="53" height="34"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title="已完成" backgroundImage="aifenxiangmenubtnn.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" backgroundImage="list_order_btn_bga.png"/>
+                    <state key="highlighted" backgroundImage="list_order_btn_bga.png"/>
+                    <connections>
+                        <action selector="pressedSwitchBtn:" destination="-1" eventType="touchUpInside" id="L1I-rq-DSf"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tda-F0-FQ7">
+                    <rect key="frame" x="270" y="6" width="53" height="34"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title="已取消" backgroundImage="aifenxiangmenubtnn.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" backgroundImage="list_order_btn_bga.png"/>
+                    <state key="highlighted" backgroundImage="list_order_btn_bga.png"/>
+                    <connections>
+                        <action selector="pressedSwitchBtn:" destination="-1" eventType="touchUpInside" id="vmZ-4i-rcD"/>
+                    </connections>
+                </button>
+            </subviews>
             <color key="backgroundColor" red="0.93333339691162109" green="0.92941182851791382" blue="0.93333339691162109" alpha="1" colorSpace="deviceRGB"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>
+    <resources>
+        <image name="aifenxiangmenubtnn.png" width="7" height="7"/>
+        <image name="list_order_btn_bga.png" width="14" height="17"/>
+    </resources>
 </document>

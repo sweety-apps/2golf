@@ -60,7 +60,7 @@
         
         .list-title {
         margin-left: 14px;
-        font-size: 14px;
+        font-size: 22px;
         font-weight: bold;
         color: #333;
         width: 146px;

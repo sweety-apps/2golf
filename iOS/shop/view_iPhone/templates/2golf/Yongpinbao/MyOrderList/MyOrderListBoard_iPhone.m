@@ -44,6 +44,7 @@
 @property (nonatomic,assign) BOOL isTaocan;
 @property (nonatomic,retain) MyOrderListTopSwitchViewController* switchCtrl;
 @property (nonatomic,retain) NSDictionary* payingData;
+@property (nonatomic,assign) NSInteger currentSelectBtnIndex;
 
 @end
 
@@ -93,8 +94,8 @@ ON_SIGNAL2( BeeUIBoard, signal )
         
         ////
         rect = self.viewBound;
-        rect.origin.y+=6;
-        rect.size.height-=6;
+        rect.origin.y+=40;
+        rect.size.height-=40;
         _scroll = [[BeeUIScrollView alloc] initWithFrame:rect];
 		_scroll.dataSource = self;
 		_scroll.vertical = YES;
@@ -122,11 +123,11 @@ ON_SIGNAL2( BeeUIBoard, signal )
     {
         [_scroll setBaseInsets:UIEdgeInsetsMake(0, 0, [AppBoard_iPhone sharedInstance].tabbar.height, 0)];
 		CGRect rect = self.viewBound;
-        rect.origin.y+=6;
-        rect.size.height-=6;
+        rect.origin.y+=40;
+        rect.size.height-=40;
         _scroll.frame =rect;
         
-        [self fetchData];
+        [self pressedSwitchBtn:self.btnsel0];
     }
     else if ( [signal is:BeeUIBoard.DID_APPEAR] )
     {
@@ -282,8 +283,17 @@ ON_SIGNAL( signal )
 
 - (void)fetchData
 {
+    NSArray* statusArr = @[
+                           @-1,
+                             @0,
+                             @1,
+                             @3,
+                             @2,
+                             @6
+                           ];
     NSDictionary* paramDict = @{
-                                @"session":[UserModel sharedInstance].session.objectToDictionary
+                                @"session":[UserModel sharedInstance].session.objectToDictionary,
+                                @"status":statusArr[self.currentSelectBtnIndex]
                                 };
     [self presentLoadingTips:@"正在加载"];
     self.HTTP_POST([[ServerConfig sharedInstance].url stringByAppendingString:@"courseorder/list"])
@@ -574,4 +584,38 @@ ON_SIGNAL( signal )
     [alert showInViewController:self];
 }
 
+- (void)dealloc {
+    [_btnsel0 release];
+    [_btnsel1 release];
+    [_btnsel2 release];
+    [_btnsel3 release];
+    [_btnsel4 release];
+    [_btnsel5 release];
+    [super dealloc];
+}
+
+- (IBAction)pressedSwitchBtn:(UIButton *)sender
+{
+    NSArray* btnArr = @[
+                        self.btnsel0,
+                        self.btnsel1,
+                        self.btnsel2,
+                        self.btnsel3,
+                        self.btnsel4,
+                        self.btnsel5
+                        ];
+    
+    for (int i = 0; i < btnArr.count; ++i)
+    {
+        UIButton* b = btnArr[i];
+        b.selected = NO;
+        if (b == sender)
+        {
+            self.currentSelectBtnIndex = i;
+            b.selected = YES;
+        }
+    }
+    
+    [self fetchData];
+}
 @end
