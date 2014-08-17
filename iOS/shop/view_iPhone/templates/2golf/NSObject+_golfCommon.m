@@ -86,4 +86,14 @@
     return nil;
 }
 
+- (NSInteger) length
+{
+    return 0;
+}
+
+- (NSInteger) count
+{
+    return 0;
+}
+
 @end

@@ -61,4 +61,47 @@ DEF_SINGLETON( CommonSharedData )
     return [[NSUserDefaults standardUserDefaults] objectForKey:@"contact_phone_num"];
 }
 
+- (void)setCheckedSelectedSaveUserNameAndPassword:(BOOL)checked
+{
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:checked] forKey:@"checked_saved_user_name_psw"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (BOOL)hasCheckedSelectedSaveUserNameAndPassword
+{
+    NSNumber* checkedNum = [[NSUserDefaults standardUserDefaults] objectForKey:@"checked_saved_user_name_psw"];
+    if (checkedNum == nil)
+    {
+        return YES;
+    }
+    return [checkedNum boolValue];
+}
+
+- (void)saveUserName:(NSString*)username andPassword:(NSString*)pwd
+{
+    if ([username length] > 0 && [pwd length] > 0)
+    {
+        [[NSUserDefaults standardUserDefaults] setObject:username forKey:@"saved_user_name"];
+        [[NSUserDefaults standardUserDefaults] setObject:pwd forKey:@"saved_user_psw"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+}
+
+- (void)clearsavedUserNameAndPassword
+{
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"saved_user_name"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"saved_user_psw"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (NSString*)getSavedUserName
+{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:@"saved_user_name"];
+}
+
+- (NSString*)getSavedPawword
+{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:@"saved_user_psw"];
+}
+
 @end

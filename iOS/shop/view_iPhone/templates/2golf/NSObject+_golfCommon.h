@@ -13,5 +13,7 @@
 - (NSDictionary*) _removeNSNullInDectionary:(NSDictionary*)dict;
 - (NSArray*) _removeNSNullInArray:(NSArray*)arr;
 - (NSDictionary*) commonCheckRequest:(BeeHTTPRequest *)req;
+- (NSInteger) length;
+- (NSInteger) count;
 
 @end

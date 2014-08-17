@@ -109,8 +109,8 @@
                 
                 <linear id="new_version_list_item" orientation="h" class="list-item">
                     <image class="list-bg"/>
-                    <label class="list-title">有新版本</label>
-                    <label class="list-subtitle"></label>
+                    <label class="list-title">当前版本</label>
+                    <label id="current-version" class="list-subtitle"></label>
                     <image class="list-indictor"/>
                     <button id="new_version" class="fill"/>
                 </linear>

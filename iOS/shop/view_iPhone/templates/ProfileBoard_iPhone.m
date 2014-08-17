@@ -43,6 +43,7 @@
 #import "MyPointsBoard_iPhone.h"
 #import "HelpMainBoard_iPhone.h"
 #import "HelpArticlesBoard_iPhone.h"
+#import "CommonUtility.h"
 
 #pragma mark -
 
@@ -137,6 +138,8 @@ SUPPORT_RESOURCE_LOADING(YES);
 		{
 			$(@"#fav-count").TEXT( [NSString stringWithFormat:@"%@%@", userModel.user.collection_num, @""] );
 		}
+        
+        $(@"#current-version").TEXT([NSString stringWithFormat:@"%d",kCurrentAppVersion]);
         
 		NSNumber * num1 = [[userModel.user.order_num objectAtPath:@"await_pay"] asNSNumber];
 		if ( num1 && num1.intValue )

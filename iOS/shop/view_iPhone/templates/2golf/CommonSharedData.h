@@ -19,4 +19,12 @@ AS_SINGLETON( CommonSharedData )
 - (void)setContactPhoneNum:(NSString*)phone;
 - (NSString*)getContactPhoneNum;
 
+- (void)setCheckedSelectedSaveUserNameAndPassword:(BOOL)checked;
+- (BOOL)hasCheckedSelectedSaveUserNameAndPassword;
+
+- (void)saveUserName:(NSString*)username andPassword:(NSString*)pwd;
+- (void)clearsavedUserNameAndPassword;
+- (NSString*)getSavedUserName;
+- (NSString*)getSavedPawword;
+
 @end

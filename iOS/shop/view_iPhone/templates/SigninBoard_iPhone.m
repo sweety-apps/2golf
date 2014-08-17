@@ -29,13 +29,16 @@
 #import "SendVerifyCodeBoard_iPhone.h"
 #import "AppBoard_iPhone.h"
 #import "model.h"
+#import "RememberPasswordView.h"
+#import "CommonSharedData.h"
 
 #pragma mark -
 
-@interface SigninBoard_iPhone()
+@interface SigninBoard_iPhone() <RememberPasswordViewDelegate>
 {
 	BeeUIScrollView * _scroll;
 }
+@property (nonatomic,retain) RememberPasswordView* remeberPswView;
 @end
 
 #pragma mark -
@@ -116,6 +119,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
 	}
 	else if ( [signal is:BeeUIBoard.DELETE_VIEWS] )
 	{
+        self.remeberPswView = nil;
         [gBarBGView release];
 	}
 	else if ( [signal is:BeeUIBoard.LAYOUT_VIEWS] )
@@ -137,9 +141,42 @@ ON_SIGNAL2( BeeUIBoard, signal )
         [((UIButton*)$(@"#signup").view).titleLabel setFont:[UIFont systemFontOfSize:18]];
         [((UIButton*)$(@"#changepswd").view).titleLabel setFont:[UIFont systemFontOfSize:18]];
         
+        if (self.remeberPswView == nil)
+        {
+            self.remeberPswView = CREATE_NIBVIEW(@"RememberPasswordView");
+            CGRect rct = self.remeberPswView.frame;
+            rct.origin = CGPointMake(0, 110);
+            self.remeberPswView.frame = rct;
+            [self.view addSubview:self.remeberPswView];
+            self.remeberPswView.delegate = self;
+        }
+        self.remeberPswView.checkBtn.selected = [[CommonSharedData sharedInstance] hasCheckedSelectedSaveUserNameAndPassword] ? YES : NO;
+        $(@"username").TEXT(@"");
+        $(@"password").TEXT(@"");
+        if ([[CommonSharedData sharedInstance] hasCheckedSelectedSaveUserNameAndPassword])
+        {
+            NSString* userName = [[CommonSharedData sharedInstance] getSavedUserName];
+            NSString* psw = [[CommonSharedData sharedInstance] getSavedPawword];
+            if (userName != nil)
+            {
+                $(@"username").TEXT(userName);
+            }
+            if (psw != nil)
+            {
+                $(@"password").TEXT(psw);
+            }
+        }
     }
     else if ( [signal is:BeeUIBoard.WILL_DISAPPEAR] )
     {
+        [[CommonSharedData sharedInstance] saveUserName:@"" andPassword:@""];
+        NSString * userName = $(@"username").text.trim;
+        NSString * password = $(@"password").text.trim;
+        if (self.remeberPswView.checkBtn.selected)
+        {
+            [[CommonSharedData sharedInstance] saveUserName:userName andPassword:password];
+        }
+        [[CommonSharedData sharedInstance] setCheckedSelectedSaveUserNameAndPassword:self.remeberPswView.checkBtn.selected];
     }
 }
 
@@ -242,6 +279,13 @@ ON_SIGNAL3( SigninBoard_iPhone, changepswd, signal )
 		return;
 	}
 
+    [[CommonSharedData sharedInstance] saveUserName:@"" andPassword:@""];
+    if (self.remeberPswView.checkBtn.selected)
+    {
+        [[CommonSharedData sharedInstance] saveUserName:userName andPassword:password];
+    }
+    [[CommonSharedData sharedInstance] setCheckedSelectedSaveUserNameAndPassword:self.remeberPswView.checkBtn.selected];
+    
 	[[UserModel sharedInstance] signinWithUser:userName password:password];
 }
 
@@ -277,6 +321,17 @@ ON_SIGNAL3( SigninBoard_iPhone, changepswd, signal )
 			[ErrorMsg presentErrorMsg:msg inBoard:self];
 		}
 	}
+}
+
+#pragma mark <RememberPasswordViewDelegate>
+
+- (void) rememberPasswordSelected:(BOOL)selected
+{
+    if (!selected)
+    {
+        //$(@"username").TEXT(@"");
+        //$(@"password").TEXT(@"");
+    }
 }
 
 @end

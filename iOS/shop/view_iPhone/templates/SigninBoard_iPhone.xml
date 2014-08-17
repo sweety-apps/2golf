@@ -75,7 +75,7 @@
 		}
         
         #signup {
-            margin-top: 20px;
+            margin-top: 35px;
             height: 40px;
             font-size: 18px;
             width: 40%;
@@ -85,7 +85,7 @@
         }
         
         #changepswd {
-            margin-top: 20px;
+            margin-top: 35px;
             height: 40px;
             font-size: 18px;
             width: 40%;
