@@ -17,6 +17,7 @@
 
 #import "TimeSquareBoard_iPhone.h"
 #import "TSQTAViewController.h"
+#import "CommonUtility.h"
 
 #pragma mark -
 
@@ -110,35 +111,37 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
 #pragma mark - <TSQCalendarViewDelegate>
 - (BOOL)calendarView:(TSQCalendarView *)calendarView shouldSelectDate:(NSDate *)date
 {
-    NSDate* todyDate = [NSDate date];
-    NSTimeInterval todyDateInterval =  [todyDate timeIntervalSince1970] - ((int)[todyDate timeIntervalSince1970]) % (3600 * 24);
-    //NSTimeInterval dateInterval =  [date timeIntervalSince1970] - ((int)[date timeIntervalSince1970]) % (3600 * 24);
-    NSTimeInterval dateInterval =  [date timeIntervalSince1970];
-    if (dateInterval - todyDateInterval < 0/*3600 * 23*/)
-    {
-        return NO;
-    }
+//    NSDate* todyDate = [NSDate date];
+//    NSTimeInterval todyDateInterval =  [todyDate timeIntervalSince1970] - ((int)[todyDate timeIntervalSince1970]) % (3600 * 24);
+//    //NSTimeInterval dateInterval =  [date timeIntervalSince1970] - ((int)[date timeIntervalSince1970]) % (3600 * 24);
+//    NSTimeInterval dateInterval =  [date timeIntervalSince1970];
+//    if (dateInterval - todyDateInterval < 0/*3600 * 23*/)
+//    {
+//        return NO;
+//    }
+    NSDate* search_time = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_time"];
+    
     return YES;
 }
 
 - (void)calendarView:(TSQCalendarView *)calendarView didSelectDate:(NSDate *)date
 {
-    NSDate* todyDate = [NSDate date];
-    NSTimeInterval todyDateInterval =  [todyDate timeIntervalSince1970] - ((int)[todyDate timeIntervalSince1970]) % (3600 * 24);
+//    NSDate* todyDate = [NSDate date];
+//    NSTimeInterval todyDateInterval =  [todyDate timeIntervalSince1970] - ((int)[todyDate timeIntervalSince1970]) % (3600 * 24);
     //NSTimeInterval dateInterval =  [date timeIntervalSince1970] - ((int)[date timeIntervalSince1970]) % (3600 * 24);
-    NSTimeInterval dateInterval =  [date timeIntervalSince1970];
-    if (dateInterval - todyDateInterval < 0/*3600 * 23*/)
-    {
-        BeeUIAlertView * alert = [BeeUIAlertView spawn];
-        alert.title = @"选择日期不能早于明天";
-        [alert addCancelTitle:@"好的"];
-        [alert showInViewController:self];
-    }
-    else
-    {
+//    NSTimeInterval dateInterval =  [date timeIntervalSince1970];
+//    if (dateInterval - todyDateInterval < 0/*3600 * 23*/)
+//    {
+//        BeeUIAlertView * alert = [BeeUIAlertView spawn];
+//        alert.title = @"选择日期不能早于明天";
+//        [alert addCancelTitle:@"好的"];
+//        [alert showInViewController:self];
+//    }
+//    else
+//    {
         [[NSUserDefaults standardUserDefaults] setObject:date forKey:@"search_date"];
         [self.stack popBoardAnimated:YES];
-    }
+//    }
     
 }
 

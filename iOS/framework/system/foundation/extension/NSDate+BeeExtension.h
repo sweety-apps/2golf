@@ -57,7 +57,7 @@
 - (NSString *)stringWithDateFormat:(NSString *)format;
 - (NSString *)timeAgo;
 - (NSString *)timeLeft;
-
+- (BOOL)istoday;
 + (long long)timeStamp;
 
 + (NSDate *)dateWithString:(NSString *)string;

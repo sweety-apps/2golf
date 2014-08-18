@@ -213,6 +213,15 @@
 	return result;
 }
 
+- (BOOL)istoday
+{
+    NSDate* date = [NSDate now];
+    if (date.year == self.year && date.month == self.month && date.day == self.day) {
+        return YES;
+    }
+    return NO;
+}
+
 + (long long)timeStamp
 {
 	return (long long)[[NSDate date] timeIntervalSince1970];

@@ -192,26 +192,33 @@ DEF_SINGLETON( SharedLocaleDelegate )
 
 + (NSArray*) getCanSelectHourMin
 {
-    NSDate* tomorrowDate = [NSDate dateWithTimeIntervalSinceNow:-(3600*24)];
     NSDate* selectedDate = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_date"];
+    NSTimeInterval realStartTimeInterval;
+    //如果是今天，則返回距離當前時間的第一個整點或者整30分。如果超過20點的話，則返回空數組就好
+    if ([selectedDate istoday]) {
+        realStartTimeInterval = [[NSDate date] timeIntervalSince1970];
+    }
+    //如果是今天之後，則返回的數組，從6點到20點
+    else
+    {
+        realStartTimeInterval = [selectedDate timeIntervalSince1970];
+    }
     if (selectedDate == nil)
     {
         selectedDate = [NSDate dateWithTimeIntervalSinceNow:0];//今天
     }
     
-    NSTimeInterval startHour =  [selectedDate timeIntervalSince1970] - ((int)[selectedDate timeIntervalSince1970]) % (3600 * 24);//8点时间
-    startHour -= 2*(3600 * 1);//6点后才可以选
+    NSTimeInterval startHour =  [selectedDate timeIntervalSince1970] + 13*1800;//6点30開始
     
     NSTimeInterval step = 30 * 60; //30分钟一档
     NSTimeInterval accumulate = 0;
-    NSTimeInterval endHour = startHour + (14*3600)+(30*60);//最晚到20点
-    NSTimeInterval tomorrowInterval = [tomorrowDate timeIntervalSince1970];
+    NSTimeInterval endHour = startHour + (27*1800);//最晚到20点
     
     NSMutableArray* ret = [NSMutableArray array];
     
-    for (accumulate = startHour ; accumulate < endHour; accumulate += step)
+    for (accumulate = startHour ; accumulate <= endHour; accumulate += step)
     {
-        if (accumulate > tomorrowInterval)
+        if (accumulate > realStartTimeInterval)
         {
             NSDate* date = [NSDate dateWithTimeIntervalSince1970:accumulate];
             [ret addObject:date];
@@ -220,6 +227,49 @@ DEF_SINGLETON( SharedLocaleDelegate )
     return ret;
 }
 
++(NSDate*) getNearestHalfTime:(NSDate*)time
+{
+    NSTimeInterval realStartTimeInterval = [time timeIntervalSince1970];
+    NSTimeInterval startHour =  [[CommonUtility getDateFromZeroPerDay:time] timeIntervalSince1970] + 19*1800;//6点30開始
+    
+    NSTimeInterval step = 30 * 60; //30分钟一档
+    NSTimeInterval accumulate = 0;
+    NSTimeInterval endHour = startHour + (27*1800);//最晚到20点
+    
+    for (accumulate = startHour ; accumulate <= endHour; accumulate += step)
+    {
+        if (accumulate > realStartTimeInterval)
+        {
+            NSDate* date = [NSDate dateWithTimeIntervalSince1970:accumulate];
+            return date;
+        }
+    }
+    //今天找不到，找次日的第一個合法時刻
+    NSDateComponents* comp = [NSDateComponents new];
+    [comp setCalendar:[NSCalendar currentCalendar]];
+    comp.year = time.year;
+    comp.month = time.month;
+    comp.day = time.day + 1;
+    comp.hour = 0;
+    comp.minute = 0;
+    comp.second = 0;
+    NSDate* day = [comp date];
+    return [CommonUtility getNearestHalfTime:day];
+}
+
++(NSDate*)getDateFromZeroPerDay:(NSDate*)time
+{
+    NSDateComponents* comp = [NSDateComponents new];
+    [comp setCalendar:[NSCalendar currentCalendar]];
+    comp.year = time.year;
+    comp.month = time.month;
+    comp.day = time.day;
+    comp.hour = 0;
+    comp.minute = 0;
+    comp.second = 0;
+    NSDate* day = [comp date];
+    return day;
+}
 //
 + (void)alipayCourseWithPayId:(NSString*)payId
                       ordersn:(NSString*)ordersn

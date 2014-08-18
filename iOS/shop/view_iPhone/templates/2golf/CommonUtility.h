@@ -25,7 +25,8 @@
 + (long) getSearchTimeStamp;
 + (BOOL) checkLoginAndPresentLoginView;
 + (NSArray*) getCanSelectHourMin;
-
++(NSDate*)getDateFromZeroPerDay:(NSDate*)time;
++(NSDate*) getNearestHalfTime:(NSDate*)time;
 + (void)alipayCourseWithPayId:(NSString*)payId
                       ordersn:(NSString*)ordersn
                          body:(NSString*)body

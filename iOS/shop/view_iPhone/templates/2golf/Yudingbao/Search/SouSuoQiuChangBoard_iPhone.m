@@ -33,11 +33,12 @@
 {
     SouSuoQiuChangViewController* _ctrl;
     SouSuoQiuchangBottomViewController* _bottomCtrl;
+    UIView* _pickerBg;
+    UIPickerView* _picker;
 }
 
 @property (nonatomic,retain) NSMutableDictionary* dataDict;
 @property (nonatomic,retain) NSMutableArray* courseArray;
-@property (nonatomic,retain) NSArray* hourMinDateArr;
 
 @end
 
@@ -55,6 +56,8 @@
 {
     [_ctrl release];
     [_bottomCtrl release];
+    [_picker release];
+    [_pickerBg release];
 	[super unload];
 }
 
@@ -78,6 +81,41 @@ ON_SIGNAL2( BeeUIBoard, signal )
         rect.origin.y = y;
         _bottomCtrl.view.frame = rect;
         [self.scrollContentView addSubview:_bottomCtrl.view];
+        
+        rect = self.frame;
+        rect.origin = CGPointZero;
+        
+        _pickerBg = [[UIView alloc] initWithFrame:rect];
+        _pickerBg.backgroundColor = RGBA(0, 0, 0, 0.4);
+        [self.view addSubview:_pickerBg];
+        [_pickerBg setHidden:YES];
+        
+        _picker = [[UIPickerView alloc] init];
+        _picker.showsSelectionIndicator = YES;
+        rect = _picker.frame;
+        rect.origin = CGPointZero;
+        rect.origin.y = _pickerBg.frame.size.height - rect.size.height;
+        _picker.frame = rect;
+        _picker.delegate = self;
+        _picker.dataSource = self;
+        
+        
+        
+        UIView* bgView = [[[UIView alloc] initWithFrame:rect] autorelease];
+        bgView.backgroundColor = RGBA(255, 255, 255, 1.0);
+        [_pickerBg addSubview:bgView];
+        
+        
+        UIButton* cancelBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        cancelBtn.backgroundColor = [UIColor clearColor];
+        rect.size.height = rect.origin.y;
+        rect.origin.x = 0;
+        cancelBtn.frame = rect;
+        [cancelBtn addTarget:self action:@selector(_onCancelTimeSelect) forControlEvents:UIControlEventTouchUpInside];
+        [_pickerBg addSubview:cancelBtn];
+        [_pickerBg addSubview:_picker];
+
+        
     }
     else if ( [signal is:BeeUIBoard.DELETE_VIEWS] )
     {
@@ -166,26 +204,22 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
 // returns the # of rows in each component..
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-    self.hourMinDateArr = [CommonUtility getCanSelectHourMin];
-    return [self.hourMinDateArr count];
+    return [[CommonUtility getCanSelectHourMin] count];
 }
 
 #pragma mark - <UIPickerViewDelegate>
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    NSDate* date = self.hourMinDateArr[row];
+    NSDate* date = [CommonUtility getCanSelectHourMin][row];
     return [NSString stringWithFormat:@"%02d:%02d",[date hour],[date minute]];
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    NSDate* date = self.hourMinDateArr[row];
+    NSDate* date = [CommonUtility getCanSelectHourMin][row];
     [[NSUserDefaults standardUserDefaults] setObject:date forKey:@"search_time"];
     [self _refreshSelections];
-    
-    UIView* bgView = [pickerView superview];
-    [self performSelectorOnMainThread:@selector(_removePickerBgView:) withObject:bgView waitUntilDone:NO];
-    
+    [_pickerBg setHidden:YES];
 }
 
 - (void)_removePickerBgView:(UIView*)bgView
@@ -236,7 +270,7 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
     NSDate* date = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_date"];
     if (date == nil)
     {
-        date = [NSDate dateWithTimeIntervalSinceNow:3600*24 + 3600];//明天1小时以后
+        date = [CommonUtility getDateFromZeroPerDay:[NSDate now]];
         [[NSUserDefaults standardUserDefaults] setObject:date forKey:@"search_date"];
     }
     str = [NSString stringWithFormat:@"%d月%d日 %@",[date month],[date day],[date weekdayChinese]];
@@ -246,18 +280,44 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
     }
     self.lblDate.text = str;
     //时间
-    date = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_time"];
-    if (date == nil)
-    {
-        date = [CommonUtility getCanSelectHourMin][9];//明天1小时以后
-        [[NSUserDefaults standardUserDefaults] setObject:date forKey:@"search_time"];
+    NSDate* time = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_time"];
+    BOOL b = time == nil;
+    BOOL b1 = (time.year != date.year) ;
+    BOOL b2 = (time.month != date.month) ;
+    BOOL b3 = (time.day != date.day) ;
+    if (b || b1|| b2 || b3) {
+        //未選事件或者日期改了的話，就從新設置下
+        NSArray* array = [CommonUtility getCanSelectHourMin];
+        if (date.istoday) {
+            if (array.count == 0) {
+                //超出范围,得到当前时间的最近的半个钟
+                time = [CommonUtility getNearestHalfTime:[NSDate now]];
+            }
+            else
+            {
+                time = array[0];
+            }
+        }
+        else
+        {
+            time = array[6];//9點開始
+            
+        }
+        [[NSUserDefaults standardUserDefaults] setObject:time forKey:@"search_time"];
     }
-    str = [NSString stringWithFormat:@"%02d:%02d",[date hour],[date minute]];
+    else
+    {
+        
+    }
+
+    
+    str = [NSString stringWithFormat:@"%02d:%02d",[time hour],[time minute]];
     if ([str length] == 0)
     {
         str = @"08:30";
     }
     self.lblTime.text = str;
+    [_picker reloadAllComponents];
 }
 
 - (void)_onCancelTimeSelect:(UIButton*)btn
@@ -282,38 +342,20 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
 
 - (IBAction)onPressedTime:(id)sender
 {
-    CGRect rect = self.frame;
-    rect.origin = CGPointZero;
-    
-    UIView* pickerBg = [[[UIView alloc] initWithFrame:rect] autorelease];
-    pickerBg.backgroundColor = RGBA(0, 0, 0, 0.4);
-    [self.view addSubview:pickerBg];
-    
-    UIPickerView* picker = [[[UIPickerView alloc] init] autorelease];
-    picker.showsSelectionIndicator = YES;
-    rect = picker.frame;
-    rect.origin = CGPointZero;
-    rect.origin.y = pickerBg.frame.size.height - rect.size.height;
-    picker.frame = rect;
-    picker.delegate = self;
-    picker.dataSource = self;
-    
-    UIView* bgView = [[[UIView alloc] initWithFrame:rect] autorelease];
-    bgView.backgroundColor = RGBA(255, 255, 255, 1.0);
-    [pickerBg addSubview:bgView];
-    
-    
-    UIButton* cancelBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    cancelBtn.backgroundColor = [UIColor clearColor];
-    rect.size.height = rect.origin.y;
-    rect.origin.x = 0;
-    cancelBtn.frame = rect;
-    [cancelBtn addTarget:self action:@selector(_onCancelTimeSelect) forControlEvents:UIControlEventTouchUpInside];
-    [pickerBg addSubview:cancelBtn];
-     
-    
-    
-    [pickerBg addSubview:picker];
+    NSArray* array = [CommonUtility getCanSelectHourMin];
+    if ([array count] == 0) {
+        return;
+    }
+    [_pickerBg setHidden:NO];
+    NSDate* time = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_time"];
+    if (time != nil) {
+        for (int i = 0; i < [[CommonUtility getCanSelectHourMin] count]; i++) {
+            if ([time isEqualToDate:[[CommonUtility getCanSelectHourMin] objectAtIndex:i]]) {
+                [_picker selectRow:i inComponent:0 animated:YES];
+                break;
+            }
+        }
+    }
 }
 
 - (IBAction)onPressedSearch:(id)sender

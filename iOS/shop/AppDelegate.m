@@ -70,8 +70,6 @@ static BMKMapManager* _mapManager = nil;
     //清空选中时间
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"search_time"];
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"search_date"];
-    NSDate* date = [NSDate dateWithTimeIntervalSinceNow:3600*24 + 3600];//明天1小时以后
-    [[NSUserDefaults standardUserDefaults] setObject:date forKey:@"search_date"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     /**

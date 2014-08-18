@@ -220,6 +220,8 @@ ON_SIGNAL2( QiuchangTehuiRiziCell_iPhone, signal )
 ON_SIGNAL2( QiuchangTehuiShiduanCell_iPhone, signal )
 {
     int index = ((BeeUICell*)signal.source).tag;
+    NSDate* date = [NSDate dateWithTimeIntervalSince1970:[self.dataDict[@"teetime"][index][@"price"][@"starttime"] doubleValue]];
+    [[NSUserDefaults standardUserDefaults] setObject:date forKey:@"search_time"];
     QuichangDetailBoard_iPhone* board = [QuichangDetailBoard_iPhone boardWithNibName:@"QuichangDetailBoard_iPhone"];
     [board setCourseId:self.dataDict[@"teetime"][index][@"courseid"]];
     [self.stack pushBoard:board animated:YES];
