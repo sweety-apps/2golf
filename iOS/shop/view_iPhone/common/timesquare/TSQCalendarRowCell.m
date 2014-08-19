@@ -160,6 +160,9 @@
                 UIButton *button = self.dayButtons[index];
                 button.enabled = ![self.calendarView.delegate respondsToSelector:@selector(calendarView:shouldSelectDate:)] || [self.calendarView.delegate calendarView:self.calendarView shouldSelectDate:date];
                 button.hidden = NO;
+                if ([date compare:[NSDate date]] == NSOrderedAscending) {
+                    [button setEnabled:NO];
+                }
             }
         }
 

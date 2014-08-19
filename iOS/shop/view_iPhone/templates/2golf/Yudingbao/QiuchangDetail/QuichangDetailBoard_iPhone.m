@@ -409,6 +409,45 @@ ON_SIGNAL2( BeeUIBoard, signal )
         rect.size.height-=6;
         _scroll.frame =rect;
         
+        //日期
+        NSDate* date = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_date"];
+        if (date == nil)
+        {
+            date = [CommonUtility getDateFromZeroPerDay:[NSDate now]];
+            [[NSUserDefaults standardUserDefaults] setObject:date forKey:@"search_date"];
+        }
+        NSDate* time = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_time"];
+        BOOL b = time == nil;
+        BOOL b1 = (time.year != date.year) ;
+        BOOL b2 = (time.month != date.month) ;
+        BOOL b3 = (time.day != date.day) ;
+        if (b || b1|| b2 || b3) {
+            //未選事件或者日期改了的話，就從新設置下
+            NSArray* array = [CommonUtility getCanSelectHourMin];
+            if (date.istoday) {
+                if (array.count == 0) {
+                    //超出范围,得到当前时间的最近的半个钟
+                    time = [NSDate dateWithTimeInterval:3600*2 sinceDate:[CommonUtility getNearestHalfTime:[NSDate now]] ];
+                }
+                else
+                {
+                    time = array[0];
+                }
+            }
+            else
+            {
+                time = array[6];//9點開始
+                
+            }
+            [[NSUserDefaults standardUserDefaults] setObject:time forKey:@"search_time"];
+        }
+        else
+        {
+            
+        }
+        [self resetCells];
+        [_picker reloadAllComponents];
+        
         [self fetchData];
     }
     else if ( [signal is:BeeUIBoard.DID_APPEAR] )
