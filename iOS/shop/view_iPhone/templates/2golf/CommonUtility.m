@@ -51,8 +51,8 @@ DEF_SINGLETON( SharedLocaleDelegate )
         self.locManager.delegate = self;
         self.locManager.desiredAccuracy = kCLLocationAccuracyBest;
         self.locManager.distanceFilter = 5.0;
-        self.locX = -1.0;
-        self.locY = -1.0;
+        self.locX = 22.5515650000;
+        self.locY = 114.1134120000;
         self.locLatitude = -1.0;
         self.locLongitude = -1.0;
     }
@@ -230,7 +230,7 @@ DEF_SINGLETON( SharedLocaleDelegate )
 +(NSDate*) getNearestHalfTime:(NSDate*)time
 {
     NSTimeInterval realStartTimeInterval = [time timeIntervalSince1970];
-    NSTimeInterval startHour =  [[CommonUtility getDateFromZeroPerDay:time] timeIntervalSince1970] + 19*1800;//6点30開始
+    NSTimeInterval startHour =  [[CommonUtility getDateFromZeroPerDay:time] timeIntervalSince1970] + 19*1800;//9点30開始
     
     NSTimeInterval step = 30 * 60; //30分钟一档
     NSTimeInterval accumulate = 0;
@@ -244,17 +244,7 @@ DEF_SINGLETON( SharedLocaleDelegate )
             return date;
         }
     }
-    //今天找不到，找次日的第一個合法時刻
-    NSDateComponents* comp = [NSDateComponents new];
-    [comp setCalendar:[NSCalendar currentCalendar]];
-    comp.year = time.year;
-    comp.month = time.month;
-    comp.day = time.day + 1;
-    comp.hour = 0;
-    comp.minute = 0;
-    comp.second = 0;
-    NSDate* day = [comp date];
-    return [CommonUtility getNearestHalfTime:day];
+    return [NSDate now];
 }
 
 +(NSDate*)getDateFromZeroPerDay:(NSDate*)time
@@ -263,11 +253,25 @@ DEF_SINGLETON( SharedLocaleDelegate )
     [comp setCalendar:[NSCalendar currentCalendar]];
     comp.year = time.year;
     comp.month = time.month;
-    comp.day = time.day;
+    
+    if (time.hour > 20 || (time.hour == 20 && time.minute > 0) || (time.hour == 20 && time.second > 0)) {
+       //超过了
+        comp.day = time.day+1;
+    }
+    else
+    {
+         //今天之内，可以打晚上8点场的，最晚咯
+        comp.day = time.day;
+        
+    }
+    
     comp.hour = 0;
     comp.minute = 0;
     comp.second = 0;
     NSDate* day = [comp date];
+
+    
+    
     return day;
 }
 //

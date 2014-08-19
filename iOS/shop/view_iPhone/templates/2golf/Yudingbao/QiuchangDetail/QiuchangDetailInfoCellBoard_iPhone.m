@@ -73,24 +73,52 @@
         NSDate* date = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_date"];
         if (date == nil)
         {
-            date = [NSDate dateWithTimeIntervalSinceNow:3600*24 + 3600];//明天1小时以后
+            date = [CommonUtility getDateFromZeroPerDay:[NSDate now]];
+            [[NSUserDefaults standardUserDefaults] setObject:date forKey:@"search_date"];
         }
-        str = [NSString stringWithFormat:@"%d月%d日%@",[date month],[date day],[date weekdayChinese]];
+        str = [NSString stringWithFormat:@"%d月%d日 %@",[date month],[date day],[date weekdayChinese]];
         if ([str length] == 0)
         {
-            str = @"02月21日\n星期五";
+            str = @"02月21日 星期五";
         }
+
         self.ctrl.leftLbl2.text = @"打球日期";
         self.ctrl.rightLbl2.text = str;
         [self.ctrl.btn2 addTarget:self action:@selector(_pressedBtn2:) forControlEvents:UIControlEventTouchUpInside];
         
         //时间
-        date = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_time"];
-        if (date == nil)
-        {
-            date = [CommonUtility getCanSelectHourMin][0];//明天1小时以后
+        NSDate* time = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_time"];
+        BOOL b = time == nil;
+        BOOL b1 = (time.year != date.year) ;
+        BOOL b2 = (time.month != date.month) ;
+        BOOL b3 = (time.day != date.day) ;
+        if (b || b1|| b2 || b3) {
+            //未選事件或者日期改了的話，就從新設置下
+            NSArray* array = [CommonUtility getCanSelectHourMin];
+            if (date.istoday) {
+                if (array.count == 0) {
+                    //超出范围,得到当前时间的最近的半个钟
+                    time = [CommonUtility getNearestHalfTime:[NSDate now]];
+                }
+                else
+                {
+                    time = array[0];
+                }
+            }
+            else
+            {
+                time = array[6];//9點開始
+                
+            }
+            [[NSUserDefaults standardUserDefaults] setObject:time forKey:@"search_time"];
         }
-        str = [NSString stringWithFormat:@"%02d:%02d",[date hour],[date minute]];
+        else
+        {
+            
+        }
+        
+        
+        str = [NSString stringWithFormat:@"%02d:%02d",[time hour],[time minute]];
         if ([str length] == 0)
         {
             str = @"08:30";

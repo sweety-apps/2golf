@@ -119,8 +119,13 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
 //    {
 //        return NO;
 //    }
-    NSDate* search_time = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_time"];
-    
+    if (date.istoday) {
+        //首先必须是当天，才有可能需要判断是否可点
+        double interval = [[NSDate now] timeIntervalSince1970] - [[CommonUtility getDateFromZeroPerDay:date] timeIntervalSince1970];
+        if ((3600 * 24) - interval < 3600 * 4) {
+            return NO;
+        }
+    }
     return YES;
 }
 
