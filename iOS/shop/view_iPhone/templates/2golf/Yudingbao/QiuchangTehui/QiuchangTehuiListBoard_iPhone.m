@@ -47,6 +47,10 @@ DEF_SIGNAL(LOCAL_RIGHT_NAV_BTN);
 {
 	[super load];
     _isFirstFetchData = YES;
+    
+     NSDate*   d = [CommonUtility getDateFromZeroPerDay:[NSDate now]];
+    [[NSUserDefaults standardUserDefaults] setObject:d forKey:@"search_date"];
+    [[NSUserDefaults standardUserDefaults] setObject:d forKey:@"search_time"];
 }
 
 - (void)unload
@@ -214,14 +218,24 @@ ON_SIGNAL2( QiuchangTehuiRiziCell_iPhone, signal )
     int index = ((BeeUICell*)signal.source).tag;
     QuichangDetailBoard_iPhone* board = [QuichangDetailBoard_iPhone boardWithNibName:@"QuichangDetailBoard_iPhone"];
     [board setCourseId:self.dataDict[@"specialday"][index][@"courseid"]];
+    
     [self.stack pushBoard:board animated:YES];
 }
 
 ON_SIGNAL2( QiuchangTehuiShiduanCell_iPhone, signal )
 {
     int index = ((BeeUICell*)signal.source).tag;
-    NSDate* date = [NSDate dateWithTimeIntervalSince1970:[self.dataDict[@"teetime"][index][@"price"][@"starttime"] doubleValue]];
-    [[NSUserDefaults standardUserDefaults] setObject:date forKey:@"search_time"];
+    NSDate* playtime = [CommonUtility getNearestHalfTime:[NSDate dateWithTimeIntervalSince1970:[self.dataDict[@"teetime"][index][@"price"][@"starttime"] doubleValue]]];
+    NSDate* selecteddate = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_date"];
+    NSDateComponents* comp = [NSDateComponents new];
+    comp.calendar = [NSCalendar currentCalendar];
+    comp.year = selecteddate.year;
+    comp.month = selecteddate.month;
+    comp.day = selecteddate.day;
+    comp.hour = playtime.hour;
+    comp.minute = playtime.minute;
+    comp.second = playtime.second;
+    [[NSUserDefaults standardUserDefaults] setObject:[comp date] forKey:@"search_time"];
     QuichangDetailBoard_iPhone* board = [QuichangDetailBoard_iPhone boardWithNibName:@"QuichangDetailBoard_iPhone"];
     [board setCourseId:self.dataDict[@"teetime"][index][@"courseid"]];
     [self.stack pushBoard:board animated:YES];
@@ -750,15 +764,14 @@ ON_SIGNAL2( QiuchangTehuiShiduanCell_iPhone, signal )
 
 -(void)_setSelectedTimestamp:(int)weekday
 {
-    int currentweekday = [[NSDate date] weekday];
+    int currentweekday = [[NSDate now] weekday];
     if (weekday <= currentweekday)
     {
         weekday += 7;
     }
-    NSTimeInterval dateoffset = (weekday - currentweekday) * 24*60*60;
-    NSDate* date = [[NSDate date] dateByAddingTimeInterval:dateoffset];
+    NSTimeInterval dateoffset = (weekday - currentweekday - 1) * 24*60*60;
+    NSDate* date = [CommonUtility getDateFromZeroPerDay:[[NSDate date] dateByAddingTimeInterval:dateoffset]];
     [[NSUserDefaults standardUserDefaults] setObject:date forKey:@"search_date"];
-    [[NSUserDefaults standardUserDefaults] setObject:date forKey:@"search_time"];
     
     [self _refreshTvWeekDaysByTime];
     [self fetchData];
@@ -802,8 +815,8 @@ ON_SIGNAL2( QiuchangTehuiShiduanCell_iPhone, signal )
 -(void)_refreshTvWeekDaysByTime
 {
     // 初始化
-    NSDate* d = [NSDate dateWithTimeIntervalSince1970:[CommonUtility getSearchTimeStamp]];
-    
+    NSDate* d = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_date"];
+
     int week = [d weekday];
     
     [self.btnmon setSelected:NO];

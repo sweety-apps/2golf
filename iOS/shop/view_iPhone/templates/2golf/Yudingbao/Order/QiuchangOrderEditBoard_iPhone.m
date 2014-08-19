@@ -198,25 +198,17 @@ ON_SIGNAL( signal )
         else if ([cell.ctrl.cellTitle.text isEqualToString:@"日期"])
         {
             NSDate* date = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_date"];
-            if (date == nil)
-            {
-                date = [NSDate dateWithTimeIntervalSinceNow:3600*24 + 3600];//明天1小时以后
-            }
-            str = [NSString stringWithFormat:@"%d年%d月%d日\n%@",[date year],[date month],[date day],[date weekdayChinese]];
+            str = [NSString stringWithFormat:@"%d月%d日 %@",[date month],[date day],[date weekdayChinese]];
             if ([str length] == 0)
             {
-                str = @"2014年02月21日\n星期五";
+                str = @"02月21日 星期五";
             }
             [cell setRightText:str color:[UIColor blackColor]];
         }
         else if ([cell.ctrl.cellTitle.text isEqualToString:@"时间"])
         {
-            NSDate* date = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_time"];
-            if (date == nil)
-            {
-                date = [NSDate dateWithTimeIntervalSinceNow:3600*24 + 3600];//明天1小时以后
-            }
-            str = [NSString stringWithFormat:@"%02d:%02d",[date hour],[date minute]];
+            NSDate* time = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_time"];
+            str = [NSString stringWithFormat:@"%02d:%02d",[time hour],[time minute]];
             if ([str length] == 0)
             {
                 str = @"08:30";
@@ -334,10 +326,6 @@ ON_SIGNAL( signal )
     
     //日期
     NSDate* date = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_date"];
-    if (date == nil)
-    {
-        date = [NSDate dateWithTimeIntervalSinceNow:3600*24 + 3600];//明天1小时以后
-    }
     str = [NSString stringWithFormat:@"%d年%d月%d日\n%@",[date year],[date month],[date day],[date weekdayChinese]];
     if ([str length] == 0)
     {
@@ -353,16 +341,13 @@ ON_SIGNAL( signal )
     
     
     //时间
-    date = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_time"];
-    if (date == nil)
-    {
-        date = [NSDate dateWithTimeIntervalSinceNow:3600*24 + 3600];//明天1小时以后
-    }
-    str = [NSString stringWithFormat:@"%02d:%02d",[date hour],[date minute]];
+    NSDate* time = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_time"];
+    str = [NSString stringWithFormat:@"%02d:%02d",[time hour],[time minute]];
     if ([str length] == 0)
     {
         str = @"08:30";
     }
+
     
     cell = [QiuchangOrderEditCell_iPhone cell];
     [cell setNormalB];

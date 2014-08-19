@@ -50,6 +50,26 @@
 - (void)load
 {
 	[super load];
+    NSDate* date =  [CommonUtility getDateFromZeroPerDay:[NSDate now]];
+    [[NSUserDefaults standardUserDefaults] setObject:date forKey:@"search_date"];
+    NSDate* time = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_time"];
+    NSArray* array = [CommonUtility getCanSelectHourMin];
+    if (date.istoday) {
+        if (array.count == 0) {
+            //超出范围,得到当前时间的最近的半个钟
+            time = [NSDate dateWithTimeInterval:3600*2 sinceDate:[CommonUtility getNearestHalfTime:[NSDate now]] ];
+        }
+        else
+        {
+            time = array[0];
+        }
+    }
+    else
+    {
+        time = array[6];//9點開始
+        
+    }
+    [[NSUserDefaults standardUserDefaults] setObject:time forKey:@"search_time"];
 }
 
 - (void)unload
@@ -291,7 +311,7 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
         if (date.istoday) {
             if (array.count == 0) {
                 //超出范围,得到当前时间的最近的半个钟
-                time = [CommonUtility getNearestHalfTime:[NSDate now]];
+                time = [NSDate dateWithTimeInterval:3600*2 sinceDate:[CommonUtility getNearestHalfTime:[NSDate now]] ];
             }
             else
             {

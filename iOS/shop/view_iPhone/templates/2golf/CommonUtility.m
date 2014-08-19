@@ -230,7 +230,7 @@ DEF_SINGLETON( SharedLocaleDelegate )
 +(NSDate*) getNearestHalfTime:(NSDate*)time
 {
     NSTimeInterval realStartTimeInterval = [time timeIntervalSince1970];
-    NSTimeInterval startHour =  [[CommonUtility getDateFromZeroPerDay:time] timeIntervalSince1970] + 19*1800;//9点30開始
+    NSTimeInterval startHour =  [[CommonUtility getDateFromZeroPerDay:time] timeIntervalSince1970] + 13*1800;//6点30開始
     
     NSTimeInterval step = 30 * 60; //30分钟一档
     NSTimeInterval accumulate = 0;
@@ -238,7 +238,7 @@ DEF_SINGLETON( SharedLocaleDelegate )
     
     for (accumulate = startHour ; accumulate <= endHour; accumulate += step)
     {
-        if (accumulate > realStartTimeInterval)
+        if (accumulate >= realStartTimeInterval)
         {
             NSDate* date = [NSDate dateWithTimeIntervalSince1970:accumulate];
             return date;

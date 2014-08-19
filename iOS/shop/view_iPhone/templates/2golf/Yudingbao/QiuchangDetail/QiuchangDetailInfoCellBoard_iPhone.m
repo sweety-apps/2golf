@@ -98,7 +98,7 @@
             if (date.istoday) {
                 if (array.count == 0) {
                     //超出范围,得到当前时间的最近的半个钟
-                    time = [CommonUtility getNearestHalfTime:[NSDate now]];
+                    time = [NSDate dateWithTimeInterval:3600*2 sinceDate:[CommonUtility getNearestHalfTime:[NSDate now]] ];
                 }
                 else
                 {
