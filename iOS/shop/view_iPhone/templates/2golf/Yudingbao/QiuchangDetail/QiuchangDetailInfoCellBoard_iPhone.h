@@ -26,6 +26,7 @@
 - (void)qiuchangDetailInfoCell:(QiuchangDetailInfoCell_iPhone*)cell
              shouldRefreshData:(long)timestamp;
 
+-(void)onClickTime:(id)sender;
 @end
 
 #pragma mark -

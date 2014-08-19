@@ -85,7 +85,20 @@
             self.ctrl.nameLbl.text = [NSString stringWithFormat:@"%@%@",dict[@"distributorname"],nameAppendix];
         }
         
-        self.ctrl.priceLbl.text = [NSString stringWithFormat:@"￥%@",dict[@"price"]] ;
+        if (dict[@"teetimeprice"] != nil) {
+            NSObject* teetimedict = (dict[@"teetimeprice"]);
+            if ([teetimedict isKindOfClass:[NSDictionary class]]) {
+                self.ctrl.priceLbl.text = [NSString stringWithFormat:@"￥%@",dict[@"teetimeprice"][@"price"]] ;
+            }
+            else
+            {
+                self.ctrl.priceLbl.text = [NSString stringWithFormat:@"￥%@",dict[@"price"]] ;
+            }
+        }
+        else
+        {
+            self.ctrl.priceLbl.text = [NSString stringWithFormat:@"￥%@",dict[@"price"]] ;
+        }
         
         [self.ctrl.orderBtn addTarget:self action:@selector(_pressedBtn:) forControlEvents:UIControlEventTouchUpInside];
     }

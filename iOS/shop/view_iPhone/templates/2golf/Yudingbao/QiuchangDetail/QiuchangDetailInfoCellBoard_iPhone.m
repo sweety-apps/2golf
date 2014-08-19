@@ -24,8 +24,10 @@
 
 #pragma mark -
 
-@interface QiuchangDetailInfoCell_iPhone ()<UIPickerViewDelegate,UIPickerViewDataSource>
-
+@interface QiuchangDetailInfoCell_iPhone ()
+{
+    
+}
 @property (nonatomic,retain) QiuchangDetailInfoCellBoard_iPhone* ctrl;
 @property (nonatomic,retain) NSArray* hourMinDateArr;
 
@@ -48,7 +50,6 @@
 - (void)unload
 {
     self.ctrl = nil;
-    
 	[super unload];
 }
 
@@ -144,37 +145,11 @@
 
 - (void)_pressedBtn3:(UIButton*)btn
 {
-    CGRect rect = [[self superview] superview].board.view.frame;
-    rect.origin = CGPointZero;
-    
-    UIView* pickerBg = [[[UIView alloc] initWithFrame:rect] autorelease];
-    pickerBg.backgroundColor = RGBA(0, 0, 0, 0.4);
-    [[[self superview] superview].board.view addSubview:pickerBg];
-    
-    UIPickerView* picker = [[[UIPickerView alloc] init] autorelease];
-    picker.showsSelectionIndicator = YES;
-    rect = picker.frame;
-    rect.origin = CGPointZero;
-    rect.origin.y = pickerBg.frame.size.height - rect.size.height;
-    picker.frame = rect;
-    picker.delegate = self;
-    picker.dataSource = self;
-    
-    UIView* bgView = [[[UIView alloc] initWithFrame:rect] autorelease];
-    bgView.backgroundColor = RGBA(255, 255, 255, 1.0);
-    [pickerBg addSubview:bgView];
-    
-    
-    UIButton* cancelBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    cancelBtn.backgroundColor = [UIColor clearColor];
-    rect.size.height = rect.origin.y;
-    rect.origin.x = 0;
-    cancelBtn.frame = rect;
-    [cancelBtn addTarget:self action:@selector(_onCancelTimeSelect) forControlEvents:UIControlEventTouchUpInside];
-    [pickerBg addSubview:cancelBtn];
-    
-    [pickerBg addSubview:picker];
-}
+    if (self.delegate && [self.delegate respondsToSelector:@selector(onClickTime:)])
+    {
+        [self.delegate onClickTime:btn];
+    }
+ }
 
 - (void)webNavi
 {
@@ -214,45 +189,6 @@
     [BMKNavigation openBaiduMapNavigation:para];
     [para release];
 
-}
-
-#pragma mark - <UIPickerViewDataSource>
-
-// returns the number of 'columns' to display.
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
-{
-    return 1;
-}
-
-// returns the # of rows in each component..
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
-{
-    self.hourMinDateArr = [CommonUtility getCanSelectHourMin];
-    return [self.hourMinDateArr count];
-}
-
-#pragma mark - <UIPickerViewDelegate>
-
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
-{
-    NSDate* date = self.hourMinDateArr[row];
-    return [NSString stringWithFormat:@"%02d:%02d",[date hour],[date minute]];
-}
-
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
-{
-    NSDate* date = self.hourMinDateArr[row];
-    [[NSUserDefaults standardUserDefaults] setObject:date forKey:@"search_time"];
-    
-    [self dataDidChanged];
-    if (self.delegate && [self.delegate respondsToSelector:@selector(qiuchangDetailInfoCell:shouldRefreshData:)])
-    {
-        [self.delegate qiuchangDetailInfoCell:self shouldRefreshData:[CommonUtility getSearchTimeStamp]];
-    }
-    
-    UIView* bgView = [pickerView superview];
-    [self performSelectorOnMainThread:@selector(_removePickerBgView:) withObject:bgView waitUntilDone:NO];
-    
 }
 
 - (void)_removePickerBgView:(UIView*)bgView

@@ -173,11 +173,11 @@ DEF_SINGLETON( SharedLocaleDelegate )
         date = [NSDate dateWithTimeIntervalSinceNow:3600*24 + 3600];//明天1小时以后
     }
     
-    int time = ((int)[date timeIntervalSince1970]) % (3600 * 24);
+//    int time = ((int)[date timeIntervalSince1970]) % (3600 * 24);
     
-    searchDate = [NSDate dateWithTimeIntervalSince1970:(days * 3600 * 24)+time];
+//    searchDate = [NSDate dateWithTimeIntervalSince1970:(days * 3600 * 24)+time];
     
-    return [searchDate timeIntervalSince1970];
+    return [date timeIntervalSince1970];
 }
 
 + (BOOL) checkLoginAndPresentLoginView

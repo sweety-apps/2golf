@@ -70,12 +70,7 @@ DEF_SIGNAL( TOUCHED )
         
         self.ctrl.timeLbl.text = [NSString stringWithFormat:@"%02d:%02d~%02d:%02d",[d1 hour],[d1 minute],[d2 hour],[d2 minute]];
         
-        NSDate* searchDate = [NSDate dateWithTimeIntervalSinceNow:24*3600];
-        NSDate* showDate = d1;
-        if ([searchDate timeIntervalSince1970] > [d1 timeIntervalSince1970])
-        {
-            showDate = searchDate;
-        }
+        NSDate* showDate = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_date"];
         self.ctrl.dateLbl.text = [NSString stringWithFormat:@"%02d月%02d日",[showDate month],[showDate day]];
         
         self.ctrl.xianImg.hidden = YES;

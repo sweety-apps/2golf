@@ -769,7 +769,7 @@ ON_SIGNAL2( QiuchangTehuiShiduanCell_iPhone, signal )
     {
         weekday += 7;
     }
-    NSTimeInterval dateoffset = (weekday - currentweekday - 1) * 24*60*60;
+    NSTimeInterval dateoffset = (weekday - currentweekday) * 24*60*60;
     NSDate* date = [CommonUtility getDateFromZeroPerDay:[[NSDate date] dateByAddingTimeInterval:dateoffset]];
     [[NSUserDefaults standardUserDefaults] setObject:date forKey:@"search_date"];
     

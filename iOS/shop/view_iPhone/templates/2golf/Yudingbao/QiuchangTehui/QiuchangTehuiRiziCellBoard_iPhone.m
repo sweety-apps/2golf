@@ -66,7 +66,7 @@ DEF_SIGNAL( TOUCHED )
         self.ctrl.oldPriceLbl.text = [NSString stringWithFormat:@"原价￥%@",dict[@"originalprice"]];
         self.ctrl.newPriceLbl.text = [NSString stringWithFormat:@"￥%@",dict[@"price"]];
         
-        NSDate* showDate = [NSDate dateWithTimeIntervalSinceNow:24*3600];
+        NSDate* showDate = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_date"];
         self.ctrl.dateLbl.text = [NSString stringWithFormat:@"%02d月%02d日",[showDate month],[showDate day]];
         
         if (dict[@"dayname"] == [NSNull null])

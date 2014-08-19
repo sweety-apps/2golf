@@ -253,10 +253,12 @@ ON_SIGNAL2( BeeUIScrollView , signal)
 #pragma mark -
 
 @interface QuichangDetailBoard_iPhone() <QiuchangDetailPriceContentCell_iPhoneDelegate,QiuchangDetailCollectCellBoard_iPhoneDelegate,
-    QiuchangDetailInfoCell_iPhoneDelegate>
+    QiuchangDetailInfoCell_iPhoneDelegate,UIPickerViewDelegate,UIPickerViewDataSource>
 {
 	BeeUIScrollView *	_scroll;
     NSString* _courseId;
+    UIView* _pickerBg;
+    UIPickerView* _picker;
 }
 
 @property (nonatomic,retain) NSMutableArray* cellArray;
@@ -289,6 +291,8 @@ DEF_SIGNAL(DAIL_RIGHT_NAV_BTN);
     
     [self.collectionModel removeObserver:self];
     self.collectionModel = nil;
+    [_picker release];
+    [_pickerBg release];
     
 	[super unload];
 }
@@ -350,6 +354,39 @@ ON_SIGNAL2( BeeUIBoard, signal )
         //_scroll.bounces = NO;
 		[_scroll showHeaderLoader:NO animated:NO];
 		[self.view addSubview:_scroll];
+        
+        rect = self.view.frame;
+        rect.origin = CGPointZero;
+        
+        _pickerBg = [[UIView alloc] initWithFrame:rect];
+        _pickerBg.backgroundColor = RGBA(0, 0, 0, 0.4);
+        [self.view addSubview:_pickerBg];
+        [_pickerBg setHidden:YES];
+        
+        _picker = [[UIPickerView alloc] init];
+        _picker.showsSelectionIndicator = YES;
+        rect = _picker.frame;
+        rect.origin = CGPointZero;
+        rect.origin.y = _pickerBg.frame.size.height - rect.size.height;
+        _picker.frame = rect;
+        _picker.delegate = self;
+        _picker.dataSource = self;
+        
+        UIView* bgView = [[[UIView alloc] initWithFrame:rect] autorelease];
+        bgView.backgroundColor = RGBA(255, 255, 255, 1.0);
+        [_pickerBg addSubview:bgView];
+        
+        
+        UIButton* cancelBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        cancelBtn.backgroundColor = [UIColor clearColor];
+        rect.size.height = rect.origin.y;
+        rect.origin.x = 0;
+        cancelBtn.frame = rect;
+        [cancelBtn addTarget:self action:@selector(_onCancelTimeSelect) forControlEvents:UIControlEventTouchUpInside];
+        [_pickerBg addSubview:cancelBtn];
+        
+        [_pickerBg addSubview:_picker];
+        
     }
     else if ( [signal is:BeeUIBoard.DELETE_VIEWS] )
     {
@@ -639,6 +676,24 @@ ON_SIGNAL2( QiuchangBannerPhotoCell_iPhone, signal )
     [self fetchData];
 }
 
+-(void)onClickTime:(id)sender
+{
+    NSArray* array = [CommonUtility getCanSelectHourMin];
+    if ([array count] == 0) {
+        return;
+    }
+    [_pickerBg setHidden:NO];
+    NSDate* time = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_time"];
+    if (time != nil) {
+        for (int i = 0; i < [[CommonUtility getCanSelectHourMin] count]; i++) {
+            if ([time isEqualToDate:[[CommonUtility getCanSelectHourMin] objectAtIndex:i]]) {
+                [_picker selectRow:i inComponent:0 animated:YES];
+                break;
+            }
+        }
+    }
+}
+
 #pragma mark -
 
 - (void)handleMessage:(BeeMessage *)msg
@@ -665,5 +720,39 @@ ON_SIGNAL2( QiuchangBannerPhotoCell_iPhone, signal )
         }
     }
 }
+
+#pragma mark - <UIPickerViewDataSource>
+
+// returns the number of 'columns' to display.
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+// returns the # of rows in each component..
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return [[CommonUtility getCanSelectHourMin] count];
+}
+
+#pragma mark - <UIPickerViewDelegate>
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    NSDate* date = [CommonUtility getCanSelectHourMin][row];
+    return [NSString stringWithFormat:@"%02d:%02d",[date hour],[date minute]];
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    NSDate* date = [CommonUtility getCanSelectHourMin][row];
+    [[NSUserDefaults standardUserDefaults] setObject:date forKey:@"search_time"];
+    
+    [self resetCells];
+    [self fetchData];
+    [_pickerBg setHidden:YES];
+    
+}
+
 
 @end
