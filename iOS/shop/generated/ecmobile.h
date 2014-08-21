@@ -420,15 +420,25 @@ enum RANK_LEVEL
 @end
 
 @interface USER : NSObject
-@property (nonatomic, retain) NSNumber *		collection_num;
+@property (nonatomic, retain) NSNumber *		id;
 @property (nonatomic, retain) NSString *		name;
-@property (nonatomic, retain) NSString *		email;
-@property (nonatomic, retain) NSDictionary *	order_num;
 @property (nonatomic, retain) NSString *		rank_name;
 @property (nonatomic, retain) NSNumber *		rank_level;
-@property (nonatomic, retain) NSNumber *		points;
 @property (nonatomic, retain) NSString *		user_money;
-@property (nonatomic, retain) NSNumber *		id;
+@property (nonatomic, retain) NSNumber *		points;
+@property (nonatomic, retain) NSNumber *		collection_num;
+@property (nonatomic, retain) NSString *		email;
+@property (nonatomic, retain) NSDictionary *	order_num;
+@property (nonatomic, retain) NSString* user_name;
+@property (nonatomic, retain) NSString* qq;
+@property (nonatomic, assign) int sex_val;
+@property (nonatomic, retain) NSString* sex;
+@property (nonatomic, retain) NSString* birthday;
+@property (nonatomic, retain) NSString* sign_url;
+@property (nonatomic, retain) NSString* vip_number;
+@property (nonatomic, retain) NSString* vip_card_url;
+@property (nonatomic, retain) NSString* privilege;
+@property (nonatomic, assign) BOOL is_vip;
 @end
 
 @interface COLLECT_GOODS : SIMPLE_GOODS

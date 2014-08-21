@@ -105,7 +105,18 @@ SUPPORT_RESOURCE_LOADING(YES);
         
 		if ( [UserModel online] )
 		{
-			$(@"#name").TEXT(userModel.user.name);
+            NSString* namestr = @"";
+            if (userModel.user.is_vip) {
+                namestr = [NSString stringWithFormat:@"%@\n%@",userModel.user.name,userModel.user.vip_number];
+            } else {
+                if (userModel.user.name.length != 0) {
+                    namestr = [NSString stringWithFormat:@"%@\n%@",userModel.user.name,userModel.user.user_name];
+                } else {
+                    namestr = userModel.user.user_name;
+                }
+            }
+            
+			$(@"#name").TEXT(namestr);
 		}
 		else
 		{

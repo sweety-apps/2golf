@@ -427,6 +427,18 @@ CONVERT_PROPERTY_CLASS( goods_list, ORDER_GOODS );
 @synthesize order_num = _order_num;
 @synthesize rank_name = _rank_name;
 @synthesize rank_level = _rank_level;
+@synthesize user_name = _user_name;
+@synthesize user_money = _user_money;
+@synthesize points = _points;
+@synthesize qq = _qq;
+@synthesize sex = _sex;
+@synthesize sex_val = _sex_val;
+@synthesize birthday = _birthday;
+@synthesize sign_url = _sign_url;
+@synthesize vip_card_url = _vip_card_url;
+@synthesize privilege = _privilege;
+@synthesize vip_number = _vip_number;
+@synthesize is_vip = _is_vip;
 
 @end
 

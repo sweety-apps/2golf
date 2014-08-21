@@ -78,6 +78,8 @@ DEF_SIGNAL( TOUCHED )
         desStr = [desStr stringByReplacingOccurrencesOfString:@"&ldquo;" withString:@""];
         desStr = [desStr stringByReplacingOccurrencesOfString:@"&rdquo;" withString:@""];
         desStr = [desStr stringByReplacingOccurrencesOfString:@"&amp;" withString:@""];
+        desStr = [desStr stringByReplacingOccurrencesOfString:@"\r\n" withString:@""];
+        CFStringTrimWhitespace((CFMutableStringRef)desStr);
         self.ctrl.desLbl.text = desStr;
         if ([self.ctrl.desLbl.text length] == 0)
         {
