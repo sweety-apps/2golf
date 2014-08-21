@@ -69,7 +69,7 @@ DEF_SIGNAL( TOUCHED )
 
 - (void)setImageUrl:(NSString*)url
 {
-    _image.url = url;
+    [_image GET:url useCache:YES];
 }
 
 - (void)dataDidChanged
@@ -187,8 +187,6 @@ SUPPORT_RESOURCE_LOADING( YES )
     {
         self.leftLabel.text = self.data[@"slogan"];
     }
-    
-    [self.scroll reloadData];
 }
 
 #pragma mark -
@@ -507,6 +505,12 @@ ON_SIGNAL2( QiuchangBannerPhotoCell_iPhone, signal )
 
 - (UIView *)scrollView:(BeeUIScrollView *)scrollView viewForIndex:(NSInteger)index scale:(CGFloat)scale
 {
+    BeeUICell* cell = self.cellArray[index];
+    //
+    if ([cell isKindOfClass:[QiuchangBannerCell_iPhone class]])
+    {
+        cell.data = self.dataDict;
+    }
     return self.cellArray[index];
 }
 
@@ -531,7 +535,7 @@ ON_SIGNAL2( QiuchangBannerPhotoCell_iPhone, signal )
     
     //banner
     BeeUICell * cell = [[[QiuchangBannerCell_iPhone alloc] initWithFrame:CGRectMake(0, 0, 320, 146)] autorelease];
-    cell.data = self.dataDict;
+    //cell.data = self.dataDict;
     [self.cellArray addObject:cell];
     
     //头
