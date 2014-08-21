@@ -33,14 +33,14 @@
         
         <label id="goods-title"></label>
         
-        <linear orientation="h" class="goods-price-wrapper">
+        <!--<linear orientation="h" class="goods-price-wrapper">
             <label id="goods-price"></label>
             <linear orientation="h" class="goods-subprice-wrapper">
                 <label id="goods-subprice-label">@{market_price}</label>
                 <label id="goods-subprice"></label>
                 <view id="goods-subprice-line"></view>
             </linear>
-        </linear>
+        </linear> -->
         
         <view type="CountdownCell" id="countdown"/>
 
