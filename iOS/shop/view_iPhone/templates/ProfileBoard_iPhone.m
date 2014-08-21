@@ -110,7 +110,7 @@ SUPPORT_RESOURCE_LOADING(YES);
                 namestr = [NSString stringWithFormat:@"%@\n%@",userModel.user.name,userModel.user.vip_number];
             } else {
                 if (userModel.user.name.length != 0) {
-                    namestr = [NSString stringWithFormat:@"%@\n%@",userModel.user.name,userModel.user.user_name];
+                    namestr = [NSString stringWithFormat:@"%@\n%@",userModel.user.name,userModel.user.user_name == nil ?@"":userModel.user.user_name];
                 } else {
                     namestr = userModel.user.user_name;
                 }
