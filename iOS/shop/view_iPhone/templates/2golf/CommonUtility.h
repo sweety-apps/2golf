@@ -9,7 +9,7 @@
 #import "Bee.h"
 #import "NSObject+_golfCommon.h"
 
-#define kCurrentAppVersion (6)
+#define kCurrentAppVersion (7)
 
 @interface CommonUtility : NSObject
 
