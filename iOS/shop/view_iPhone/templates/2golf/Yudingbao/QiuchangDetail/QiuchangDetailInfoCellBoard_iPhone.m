@@ -108,7 +108,7 @@
             }
             else
             {
-                time = array[6];//9點開始
+                time = array[5];//9點開始
                 
             }
             [[NSUserDefaults standardUserDefaults] setObject:time forKey:@"search_time"];

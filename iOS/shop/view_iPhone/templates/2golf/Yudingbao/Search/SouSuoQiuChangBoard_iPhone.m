@@ -50,7 +50,8 @@
 - (void)load
 {
 	[super load];
-    NSDate* date =  [CommonUtility getDateFromZeroPerDay:[NSDate now]];
+//    NSDate* date =  [CommonUtility getDateFromZeroPerDay:[NSDate now]];
+    NSDate* date = [CommonUtility getDateFromZeroPerDay:[NSDate dateWithTimeIntervalSinceNow:3600*24 ]];
     [[NSUserDefaults standardUserDefaults] setObject:date forKey:@"search_date"];
     NSDate* time = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_time"];
     NSArray* array = [CommonUtility getCanSelectHourMin];
@@ -66,7 +67,7 @@
     }
     else
     {
-        time = array[6];//9點開始
+        time = array[5];//9點開始
         
     }
     [[NSUserDefaults standardUserDefaults] setObject:time forKey:@"search_time"];
@@ -306,7 +307,7 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
     BOOL b2 = (time.month != date.month) ;
     BOOL b3 = (time.day != date.day) ;
     if (b || b1|| b2 || b3) {
-        //未選事件或者日期改了的話，就從新設置下
+        //未選时间或者日期改了的話，就從新設置下
         NSArray* array = [CommonUtility getCanSelectHourMin];
         if (date.istoday) {
             if (array.count == 0) {
@@ -320,7 +321,7 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
         }
         else
         {
-            time = array[6];//9點開始
+            time = array[5];//9點開始
             
         }
         [[NSUserDefaults standardUserDefaults] setObject:time forKey:@"search_time"];
