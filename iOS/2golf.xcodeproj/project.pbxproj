@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F4FC09A19AB784F005B87B3 /* QiuchangOrderCell_iPhoneV2.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4FC09919AB784F005B87B3 /* QiuchangOrderCell_iPhoneV2.m */; };
+		4F4FC09F19AB7FE9005B87B3 /* CourseOrderCellBody_iPhone.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4F4FC09B19AB7FE9005B87B3 /* CourseOrderCellBody_iPhone.xml */; };
+		4F4FC0A019AB7FE9005B87B3 /* CourseOrderCellInfo_iPhone.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4F4FC09C19AB7FE9005B87B3 /* CourseOrderCellInfo_iPhone.xml */; };
+		4F4FC0A119AB7FE9005B87B3 /* CourseOrderCellHeader_iPhone.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4F4FC09D19AB7FE9005B87B3 /* CourseOrderCellHeader_iPhone.xml */; };
+		4F4FC0A219AB7FE9005B87B3 /* CourseOrderCellFooter_iPhone.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4F4FC09E19AB7FE9005B87B3 /* CourseOrderCellFooter_iPhone.xml */; };
 		4FB952E6190122D300EE0CF7 /* libXG-SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FB952E3190122D300EE0CF7 /* libXG-SDK.a */; };
 		4FB952E7190122D300EE0CF7 /* ReleaseNotes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4FB952E4190122D300EE0CF7 /* ReleaseNotes.txt */; };
 		4FB952E91901232900EE0CF7 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FB952E81901232900EE0CF7 /* CoreTelephony.framework */; };
@@ -930,6 +935,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4F4FC09819AB784F005B87B3 /* QiuchangOrderCell_iPhoneV2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuchangOrderCell_iPhoneV2.h; sourceTree = "<group>"; };
+		4F4FC09919AB784F005B87B3 /* QiuchangOrderCell_iPhoneV2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiuchangOrderCell_iPhoneV2.m; sourceTree = "<group>"; };
+		4F4FC09B19AB7FE9005B87B3 /* CourseOrderCellBody_iPhone.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = CourseOrderCellBody_iPhone.xml; sourceTree = "<group>"; };
+		4F4FC09C19AB7FE9005B87B3 /* CourseOrderCellInfo_iPhone.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = CourseOrderCellInfo_iPhone.xml; sourceTree = "<group>"; };
+		4F4FC09D19AB7FE9005B87B3 /* CourseOrderCellHeader_iPhone.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = CourseOrderCellHeader_iPhone.xml; sourceTree = "<group>"; };
+		4F4FC09E19AB7FE9005B87B3 /* CourseOrderCellFooter_iPhone.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = CourseOrderCellFooter_iPhone.xml; sourceTree = "<group>"; };
 		4FB952E3190122D300EE0CF7 /* libXG-SDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libXG-SDK.a"; sourceTree = "<group>"; };
 		4FB952E4190122D300EE0CF7 /* ReleaseNotes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReleaseNotes.txt; sourceTree = "<group>"; };
 		4FB952E5190122D300EE0CF7 /* XGPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGPush.h; sourceTree = "<group>"; };
@@ -4568,6 +4579,12 @@
 				F31007C01946051D002DF54F /* TaocanOrderEditBoard_iPhone.h */,
 				F31007C11946051D002DF54F /* TaocanOrderEditBoard_iPhone.m */,
 				F31007C31946052C002DF54F /* TaocanOrderEditBoard_iPhone.xib */,
+				4F4FC09819AB784F005B87B3 /* QiuchangOrderCell_iPhoneV2.h */,
+				4F4FC09919AB784F005B87B3 /* QiuchangOrderCell_iPhoneV2.m */,
+				4F4FC09B19AB7FE9005B87B3 /* CourseOrderCellBody_iPhone.xml */,
+				4F4FC09C19AB7FE9005B87B3 /* CourseOrderCellInfo_iPhone.xml */,
+				4F4FC09D19AB7FE9005B87B3 /* CourseOrderCellHeader_iPhone.xml */,
+				4F4FC09E19AB7FE9005B87B3 /* CourseOrderCellFooter_iPhone.xml */,
 			);
 			path = Order;
 			sourceTree = "<group>";
@@ -5122,9 +5139,11 @@
 				F3F0EEC419351D94004613DA /* AifenxiangListCellBoard_iPhone.xib in Resources */,
 				F3B5376118FE29FC004E72D4 /* qcss_time@2x.png in Resources */,
 				63023910177C1676004C052D /* Default.png in Resources */,
+				4F4FC0A219AB7FE9005B87B3 /* CourseOrderCellFooter_iPhone.xml in Resources */,
 				63023911177C1676004C052D /* Default@2x.png in Resources */,
 				F3F0EFC51938827A004613DA /* ProfileCell_iPhone_Login.xml in Resources */,
 				F3F0EFC61938827A004613DA /* ProfileCell_iPhone_Unlogin.xml in Resources */,
+				4F4FC0A119AB7FE9005B87B3 /* CourseOrderCellHeader_iPhone.xml in Resources */,
 				63023912177C1676004C052D /* InfoPlist.strings in Resources */,
 				CB60E56A179E2B100094F91C /* icon.png in Resources */,
 				CB60E56C179E2B360094F91C /* icon@2x.png in Resources */,
@@ -5318,6 +5337,7 @@
 				F3B5375A18FE29FC004E72D4 /* qcss_date@2x.png in Resources */,
 				CB37761517C5FF6F00DF5F21 /* log-in-key-icon@2x.png in Resources */,
 				F3B5376818FE2A73004E72D4 /* default_course_icon@2x.png in Resources */,
+				4F4FC09F19AB7FE9005B87B3 /* CourseOrderCellBody_iPhone.xml in Resources */,
 				CB37761617C5FF6F00DF5F21 /* log-in-user-name-icon@2x.png in Resources */,
 				CB37761717C5FF6F00DF5F21 /* nav-add@2x.png in Resources */,
 				F3B5375918FE29FC004E72D4 /* privilegelisticonxian@2x.png in Resources */,
@@ -5347,6 +5367,7 @@
 				CB37762217C5FF6F00DF5F21 /* profile-refresh-payment-icon@2x.png in Resources */,
 				CB37762317C5FF6F00DF5F21 /* profile-refresh-prompt-bg@2x.png in Resources */,
 				F3FBB2D9190B7F31000E9F3F /* privilegetopnormal@2x.png in Resources */,
+				4F4FC0A019AB7FE9005B87B3 /* CourseOrderCellInfo_iPhone.xml in Resources */,
 				CB37762417C5FF6F00DF5F21 /* profile-refresh-receipt-icon@2x.png in Resources */,
 				F3C5CD2B18F3FF9E00C8DF06 /* expand_down@2x.png in Resources */,
 				F3B5375418FE29FC004E72D4 /* courselisticonguan@2x.png in Resources */,
@@ -5946,6 +5967,7 @@
 				E970D6AF182CE4E200146363 /* UIViewController+UINavigationBar.m in Sources */,
 				E970D731182CE4E200146363 /* Bee_UITemplateMediaQuery.m in Sources */,
 				E970D73B182CE4E200146363 /* Bee_UITemplateTokenlizer.m in Sources */,
+				4F4FC09A19AB784F005B87B3 /* QiuchangOrderCell_iPhoneV2.m in Sources */,
 				CB8C731D17B8FCCC0044DC3E /* SearchCategoryModel.m in Sources */,
 				E970D70B182CE4E200146363 /* BeeUISignal+SourceView.m in Sources */,
 				E970D69D182CE4E200146363 /* Bee_UIApplication.m in Sources */,

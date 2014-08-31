@@ -28,7 +28,8 @@
 #import "AlixPayOrder.h"
 #import "CommonUtility.h"
 #import "RechargeBoard_iPhone.h"
-
+#import "CommonWaterMark.h"
+#import "QiuchangOrderCell_iPhoneV2.h"
 #pragma mark -
 
 @interface MyOrderListBoard_iPhone() <QiuchangOrderCell_iPhoneDelegate,UIActionSheetDelegate>
@@ -46,6 +47,7 @@
 @property (nonatomic,retain) NSDictionary* payingData;
 @property (nonatomic,assign) NSInteger currentSelectBtnIndex;
 @property (nonatomic,assign) BOOL hasRefreshed;
+@property (nonatomic, assign) BOOL	loaded;
 
 @end
 
@@ -56,6 +58,7 @@
 	[super load];
     self.switchCtrl = [[MyOrderListTopSwitchViewController alloc] initWithNibName:@"MyOrderListTopSwitchViewController" bundle:nil];
     self.currentLayoutArray = [NSMutableArray array];
+    self.loaded = false;
 }
 
 - (void)unload
@@ -249,38 +252,53 @@ ON_SIGNAL( signal )
 
 #pragma mark -
 
+
+- (NSInteger)numberOfLinesInScrollView:(BeeUIScrollView*)scrollView
+{
+    return 1;
+}
+
 - (NSInteger)numberOfViewsInScrollView:(BeeUIScrollView *)scrollView
 {
-    //self.view.backgroundColor = RGBA(255, 0, 0, 0.5f);
-    NSUInteger row = 0;
-    if (self.currentArray)
-    {
-        row = [self.currentArray count];
-    }
-    //scrollView->_lineCount = 0;
+    if ( self.loaded && 0 == self.currentArray.count )
+	{
+		return 1;
+	}
     
-	return row;
+	return self.currentArray.count;
 }
 
 - (UIView *)scrollView:(BeeUIScrollView *)scrollView viewForIndex:(NSInteger)index scale:(CGFloat)scale
 {
-	QiuchangOrderCell_iPhone* cell = [scrollView dequeueWithContentClass:[QiuchangOrderCell_iPhone class]];
+    if ( self.loaded && 0 == self.currentArray.count )
+	{
+		return [scrollView dequeueWithContentClass:[NoResultCell class]];
+	}
+    
+//	QiuchangOrderCell_iPhone* cell = [scrollView dequeueWithContentClass:[QiuchangOrderCell_iPhone class]];
+    QiuchangOrderCell_iPhoneV2* cell = [scrollView dequeueWithContentClass:[QiuchangOrderCell_iPhoneV2 class]];
     
     cell.tag = index;
-    cell.delegate = self;
+//    cell.delegate = self;
     cell.data = self.currentArray[index];
     
-    QiuchangOrderCell_iPhoneLayout* lo = self.currentLayoutArray[index];
+//    QiuchangOrderCell_iPhoneLayout* lo = self.currentLayoutArray[index];
     
-    [cell setCellLayout:lo];
+//    [cell setCellLayout:lo];
     
     return cell;
 }
 
 - (CGSize)scrollView:(BeeUIScrollView *)scrollView sizeForIndex:(NSInteger)index
 {
-    QiuchangOrderCell_iPhoneLayout* lo = self.currentLayoutArray[index];
-    return lo.cellSize;
+	if ( self.loaded && 0 == self.currentArray.count )
+	{
+		return self.size;
+	}
+    
+	int height = 195 + 90;
+	return CGSizeMake(scrollView.width, height);
+    
 }
 
 #pragma mark - Network
@@ -338,7 +356,7 @@ ON_SIGNAL( signal )
     NSDictionary* dict = [self commonCheckRequest:req];
     if (dict)
     {
-        //球场详情
+        //订单列表
         if ([[req.url absoluteString] rangeOfString:@"courseorder/list"].length > 0)
         {
             //正确逻辑
@@ -353,6 +371,7 @@ ON_SIGNAL( signal )
             {
                 [self presentFailureTips:dict[@"status"][@"error_desc"]];
             }
+			self.loaded = YES;
         }
         else if ([[req.url absoluteString] rangeOfString:@"courseorder/cancel"].length > 0)
         {
