@@ -211,8 +211,8 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
 {
 	if ([overlay isKindOfClass:[BMKGroundOverlay class]])
     {
-        BMKGroundOverlayView* groundView = [[[BMKGroundOverlayView alloc] initWithOverlay:overlay] autorelease];
-		return groundView;
+//        BMKGroundOverlayView* groundView = [[[BMKGroundOverlayView alloc] initWithOverlay:overlay] autorelease];
+//		return groundView;
     }
 	return nil;
 }

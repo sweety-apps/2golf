@@ -7,9 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F54C15A19B016AD00342A3B /* libUnionPayLib11 -Device.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F54C15919B016AD00342A3B /* libUnionPayLib11 -Device.a */; };
+		4F6BBEF019B090E90051F222 /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4F6BBEED19B090E90051F222 /* RootViewController.mm */; };
+		4F6BBEF119B090E90051F222 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F6BBEEE19B090E90051F222 /* RootViewController.xib */; };
 		4FB952E6190122D300EE0CF7 /* libXG-SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FB952E3190122D300EE0CF7 /* libXG-SDK.a */; };
 		4FB952E7190122D300EE0CF7 /* ReleaseNotes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4FB952E4190122D300EE0CF7 /* ReleaseNotes.txt */; };
 		4FB952E91901232900EE0CF7 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FB952E81901232900EE0CF7 /* CoreTelephony.framework */; };
+		4FFB1F3A19AF5150007F179B /* ResourceBundle11.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4FFB1F3819AF5150007F179B /* ResourceBundle11.bundle */; };
 		6302390C177C1676004C052D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 630236B1177C1675004C052D /* AppDelegate.m */; };
 		6302390F177C1676004C052D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 630236B7177C1675004C052D /* Default-568h@2x.png */; };
 		63023910177C1676004C052D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 630236B8177C1675004C052D /* Default.png */; };
@@ -930,10 +934,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4F54C15919B016AD00342A3B /* libUnionPayLib11 -Device.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libUnionPayLib11 -Device.a"; sourceTree = "<group>"; };
+		4F6BBEED19B090E90051F222 /* RootViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RootViewController.mm; sourceTree = "<group>"; };
+		4F6BBEEE19B090E90051F222 /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
+		4F6BBEEF19B090E90051F222 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		4FB952E3190122D300EE0CF7 /* libXG-SDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libXG-SDK.a"; sourceTree = "<group>"; };
 		4FB952E4190122D300EE0CF7 /* ReleaseNotes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReleaseNotes.txt; sourceTree = "<group>"; };
 		4FB952E5190122D300EE0CF7 /* XGPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGPush.h; sourceTree = "<group>"; };
 		4FB952E81901232900EE0CF7 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		4FFB1F3719AF5150007F179B /* LTInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTInterface.h; sourceTree = "<group>"; };
+		4FFB1F3819AF5150007F179B /* ResourceBundle11.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ResourceBundle11.bundle; sourceTree = "<group>"; };
 		630236B0177C1675004C052D /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		630236B1177C1675004C052D /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		630236B7177C1675004C052D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -2460,6 +2470,7 @@
 				F3D14E2B1957257B00A0DA3E /* AlipayRsaLib.a in Frameworks */,
 				F3D14E2D1957257B00A0DA3E /* AlixPaylib.a in Frameworks */,
 				F3D14E311957257B00A0DA3E /* libcrypto.a in Frameworks */,
+				4F54C15A19B016AD00342A3B /* libUnionPayLib11 -Device.a in Frameworks */,
 				F3D14E321957257B00A0DA3E /* libssl.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2477,9 +2488,22 @@
 			path = xg;
 			sourceTree = "<group>";
 		};
+		4FFB1F3519AF5150007F179B /* upomp_lthj */ = {
+			isa = PBXGroup;
+			children = (
+				4F54C15919B016AD00342A3B /* libUnionPayLib11 -Device.a */,
+				4FFB1F3719AF5150007F179B /* LTInterface.h */,
+				4FFB1F3819AF5150007F179B /* ResourceBundle11.bundle */,
+			);
+			path = upomp_lthj;
+			sourceTree = "<group>";
+		};
 		630236AF177C1675004C052D /* shop */ = {
 			isa = PBXGroup;
 			children = (
+				4F6BBEED19B090E90051F222 /* RootViewController.mm */,
+				4F6BBEEE19B090E90051F222 /* RootViewController.xib */,
+				4F6BBEEF19B090E90051F222 /* RootViewController.h */,
 				CB60E564179E2ACF0094F91C /* Supporting files */,
 				CB21F0ED17A139B6005C1B5D /* config */,
 				630236BC177C1675004C052D /* generated */,
@@ -4441,6 +4465,7 @@
 		F3B5377F18FE9629004E72D4 /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				4FFB1F3519AF5150007F179B /* upomp_lthj */,
 				F3D14E1C1957257B00A0DA3E /* alipay */,
 				F3F0EECC19358212004613DA /* ShareSDK */,
 				4FB952E2190122D300EE0CF7 /* xg */,
@@ -5182,6 +5207,7 @@
 				F3E4607518DF395400C8E952 /* coursefragmenthotsellicon@2x.png in Resources */,
 				E909CC2F182D0D650095B262 /* GoodsListLargeCell_Phone.xml in Resources */,
 				CB3775D517C5FF6F00DF5F21 /* button-narrow-red@2x.png in Resources */,
+				4FFB1F3A19AF5150007F179B /* ResourceBundle11.bundle in Resources */,
 				F3F0EEBE19351C3C004613DA /* aifenxiangmenubtna@2x.png in Resources */,
 				F3E4607D18DF395400C8E952 /* tabsharea@2x.png in Resources */,
 				E909CC2D182D0D650095B262 /* GoodsListFilter_iPhone.xml in Resources */,
@@ -5295,6 +5321,7 @@
 				CB37760B17C5FF6F00DF5F21 /* item-info-buy-kinds-btn-grey@2x.png in Resources */,
 				CB37760C17C5FF6F00DF5F21 /* item-info-buy-kinds-current-icon@2x.png in Resources */,
 				E992349E17D70D6C00C5F755 /* AppTab_iPhone.xml in Resources */,
+				4F6BBEF119B090E90051F222 /* RootViewController.xib in Resources */,
 				CB37760D17C5FF6F00DF5F21 /* item-info-carousel-bg@2x.png in Resources */,
 				F3B5375B18FE29FC004E72D4 /* qcss_kw_inputbar@2x.png in Resources */,
 				F3E4608518DF4A0500C8E952 /* YudingbaoMainCell_iPhone.xml in Resources */,
@@ -5660,6 +5687,7 @@
 				E970D733182CE4E200146363 /* Bee_UITemplateParser.m in Sources */,
 				E970D74A182CE4E200146363 /* Bee_MemoryCache.mm in Sources */,
 				F3696829190C37F80020E991 /* SirendingzhiListCellBoard_iPhone.m in Sources */,
+				4F6BBEF019B090E90051F222 /* RootViewController.mm in Sources */,
 				E909CC24182D0D650095B262 /* GoodsCommentBoard_iPhone.m in Sources */,
 				E970D747182CE4E200146363 /* Bee_CacheProtocol.mm in Sources */,
 				E970D691182CE4E200146363 /* BeeMessage+BeeJSON.mm in Sources */,
@@ -6056,10 +6084,11 @@
 		63249CB91754E07900372FD7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					armv7s,
-					armv7,
-				);
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libstdc++";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: JINXIN LI (DJJ4XT349N)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -6073,10 +6102,16 @@
 					"$(PROJECT_DIR)/libs/ShareSDK",
 					"$(PROJECT_DIR)/libs/ShareSDK/UI",
 				);
+				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "shop/2golf-Prefix.pch";
-				GENERATE_PROFILING_CODE = YES;
-				HEADER_SEARCH_PATHS = /usr/include/libxml2;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GENERATE_PROFILING_CODE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/include/libxml2,
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/shop/2golf-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
@@ -6090,12 +6125,13 @@
 					"$(PROJECT_DIR)/libs/ShareSDK/Extend/WeChatSDK",
 					"$(PROJECT_DIR)/libs/ShareSDK/Extend/YiXinSDK",
 					"$(PROJECT_DIR)/libs/alipay",
+					"$(PROJECT_DIR)/libs/upomp_lthj",
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = 2golf;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				STRIP_INSTALLED_PRODUCT = NO;
+				STRIP_INSTALLED_PRODUCT = YES;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
@@ -6105,12 +6141,14 @@
 		63249CBA1754E07900372FD7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					armv7s,
-					armv7,
-				);
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libstdc++";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_NS_ASSERTIONS = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/libs/ShareSDK/Connection",
@@ -6122,10 +6160,16 @@
 					"$(PROJECT_DIR)/libs/ShareSDK",
 					"$(PROJECT_DIR)/libs/ShareSDK/UI",
 				);
+				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "shop/2golf-Prefix.pch";
-				GENERATE_PROFILING_CODE = YES;
-				HEADER_SEARCH_PATHS = /usr/include/libxml2;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GENERATE_PROFILING_CODE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/include/libxml2,
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/shop/2golf-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
@@ -6139,6 +6183,7 @@
 					"$(PROJECT_DIR)/libs/ShareSDK/Extend/WeChatSDK",
 					"$(PROJECT_DIR)/libs/ShareSDK/Extend/YiXinSDK",
 					"$(PROJECT_DIR)/libs/alipay",
+					"$(PROJECT_DIR)/libs/upomp_lthj",
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = 2golf;
@@ -6182,12 +6227,14 @@
 		CBB448D417E86C4E00E83FFB /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					armv7s,
-					armv7,
-				);
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libstdc++";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Angoo Studio";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Angoo Studio";
+				ENABLE_NS_ASSERTIONS = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/libs/ShareSDK/Connection",
@@ -6199,10 +6246,16 @@
 					"$(PROJECT_DIR)/libs/ShareSDK",
 					"$(PROJECT_DIR)/libs/ShareSDK/UI",
 				);
+				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "shop/2golf-Prefix.pch";
-				GENERATE_PROFILING_CODE = YES;
-				HEADER_SEARCH_PATHS = /usr/include/libxml2;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GENERATE_PROFILING_CODE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/include/libxml2,
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/shop/2golf-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
@@ -6216,6 +6269,7 @@
 					"$(PROJECT_DIR)/libs/ShareSDK/Extend/WeChatSDK",
 					"$(PROJECT_DIR)/libs/ShareSDK/Extend/YiXinSDK",
 					"$(PROJECT_DIR)/libs/alipay",
+					"$(PROJECT_DIR)/libs/upomp_lthj",
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = 2golf;

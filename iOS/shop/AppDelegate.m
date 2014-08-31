@@ -42,6 +42,7 @@
 #import "AlixPayResult.h"
 #import "PartnerConfig.h"
 #import "DataVerifier.h"
+#import "RootViewController.h"
 
 #pragma mark -
 
@@ -111,7 +112,10 @@ static BMKMapManager* _mapManager = nil;
 	}
 	else
 	{
-		self.window.rootViewController = [AppBoard_iPhone sharedInstance];
+        RootViewController* ctrl = [[RootViewController alloc] init];
+        UINavigationController* controller = [[UINavigationController alloc] initWithRootViewController:ctrl];
+        self.window.rootViewController = controller;
+//		self.window.rootViewController = [AppBoard_iPhone sharedInstance];
 //		self.window.rootViewController = [TestBoard_iPhone sharedInstance];
 	}
     
