@@ -9,7 +9,6 @@
 #import "BMKShape.h"
 #import "BMKMultiPoint.h"
 #import "BMKOverlay.h"
-#import "BMKGeometry.h"
 
 /// 该类用于定义一个圆
 @interface BMKCircle : BMKMultiPoint <BMKOverlay> {
@@ -17,7 +16,6 @@
     BOOL _invalidate;
     CLLocationCoordinate2D _coordinate;
     CLLocationDistance _radius;
-    
     BMKMapRect _boundingMapRect;
 }
 

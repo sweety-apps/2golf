@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "BMKShape.h"
-#import "BMKGeometry.h"
 #import "BMKTypes.h"
 
 /// 该类定义多个点，是个由多个点组成的虚基类, 不能直接实例化对象, 要使用其子类BMKPolyline,BMKPolygon来实例化

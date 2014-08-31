@@ -6,20 +6,20 @@
  *
  */
 #import <UIKit/UIKit.h>
-#import "BMKRouteSearchType.h"
+#import"BMKTypes.h"
 //定义调起导航的两种类型
 typedef enum
 {
-    NAVI_TYPE_NATIVE = 0,//客户端导航
-    NAVI_TYPE_WEB,//web导航
-} NAVI_TYPE;
+    BMK_NAVI_TYPE_NATIVE = 0,//客户端导航
+    BMK_NAVI_TYPE_WEB,//web导航
+} BMK_NAVI_TYPE;
 
 ///此类管理调起导航时传入的参数
 @interface BMKNaviPara : NSObject
 {
 	BMKPlanNode* _startPoint;
 	BMKPlanNode* _endPoint;
-	NAVI_TYPE _naviType;
+	BMK_NAVI_TYPE _naviType;
     NSString* _appScheme;
     NSString* _appName;
 }
@@ -28,7 +28,7 @@ typedef enum
 ///终点
 @property (nonatomic, retain) BMKPlanNode* endPoint;
 ///导航类型
-@property (nonatomic, assign) NAVI_TYPE naviType;
+@property (nonatomic, assign) BMK_NAVI_TYPE naviType;
 ///应用返回scheme
 @property (nonatomic, retain) NSString* appScheme;
 ///应用名称

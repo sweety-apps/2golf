@@ -6,8 +6,6 @@
  *
  */
 #import <UIKit/UIKit.h>
-
-#import "BMKGeometry.h"
 #import "BMKOverlay.h"
 
 /// 该类是地图覆盖物View的基类，提供绘制overlay的接口但本身并无实现，所有地图覆盖物View需要继承自此类
@@ -32,6 +30,8 @@
 //@private
 //    int geometrylayerID;
 }
+/// 设置该overlay的GeometryDelegate
+- (void)setGeometryDelegate:(id)delegate;
 
 /**
  *初始化并返回一个overlay view
@@ -113,7 +113,13 @@
  @param usingTriangleFan YES对应GL_TRIANGLE_FAN, NO对应GL_TRIANGLES
  */
 - (void)renderRegionWithPoints:(BMKMapPoint *)points pointCount:(NSUInteger)pointCount fillColor:(UIColor *)fillColor usingTriangleFan:(BOOL)usingTriangleFan;
-
+/**
+ *使用OpenGLES 绘制区域（支持凹多边形）
+ @param points 直角坐标点
+ @param pointCount 点个数
+ @param fillColor 填充颜色
+ @param usingTriangleFan YES对应GL_TRIANGLE_FAN, NO对应GL_TRIANGLES
+ */
 - (void)renderATRegionWithPoint:(BMKMapPoint *)points pointCount:(NSUInteger)pointCount fillColor:(UIColor *)fillColor usingTriangleFan:(BOOL)usingTriangleFan;
 
 /**

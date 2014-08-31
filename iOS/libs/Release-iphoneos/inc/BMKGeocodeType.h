@@ -11,7 +11,7 @@
 
 
 ///此类表示地址结果的层次化信息
-@interface BMKGeocoderAddressComponent : NSObject
+@interface BMKAddressComponent : NSObject
 {
 	NSString* _streetNumber;
 	NSString* _streetName;
@@ -35,22 +35,35 @@
 
 
 
-///地址信息类，用于地理编码和反地理编码
-@interface BMKAddrInfo : NSObject
+///反地址编码结果
+@interface BMKReverseGeoCodeResult : NSObject
 {
-	BMKGeocoderAddressComponent* _addressComponent;
-	NSString* _strAddr;
-	CLLocationCoordinate2D _geoPt;
+	BMKAddressComponent* _addressDetail;
+	NSString* _address;
+	CLLocationCoordinate2D _location;
 	NSArray* _poiList;
 }
 ///层次化地址信息
-@property (nonatomic, retain) BMKGeocoderAddressComponent* addressComponent;
+@property (nonatomic, retain) BMKAddressComponent* addressDetail;
 ///地址名称
-@property (nonatomic, retain) NSString* strAddr;
+@property (nonatomic, retain) NSString* address;
 ///地址坐标
-@property (nonatomic) CLLocationCoordinate2D geoPt;
+@property (nonatomic) CLLocationCoordinate2D location;
 ///地址周边POI信息，成员类型为BMKPoiInfo
 @property (nonatomic, retain) NSArray* poiList;
+
+@end
+
+///地址编码结果
+@interface BMKGeoCodeResult : NSObject
+{
+    CLLocationCoordinate2D _location;
+    NSString* _address;
+}
+///地理编码位置
+@property (nonatomic) CLLocationCoordinate2D location;
+///地理编码地址
+@property (nonatomic,retain) NSString* address;
 
 @end
 

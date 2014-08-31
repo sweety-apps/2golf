@@ -39,7 +39,6 @@
 /**
  *根据指定经纬度坐标生成一个groundOverlay
  *@param position 指定的经纬度坐标
- *@param icon 绘制使用的图片
  *@param zoomLevel 不损失精度绘制原始图片的地图等级
  *@param anchor 绘制图片的锚点
  *@param icon   绘制使用的图片

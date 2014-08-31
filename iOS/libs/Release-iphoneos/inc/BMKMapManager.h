@@ -5,7 +5,10 @@
  *  Copyright 2011 Baidu Inc. All rights reserved.
  *
  */
+
+#import "BMKGeneralDelegate.h"
 #import <UIKit/UIKit.h>
+
 enum EN_PERMISSION_STATUS
 {
 	E_PERMISSION_OK = 0,	// 授权验证通过
@@ -13,7 +16,6 @@ enum EN_PERMISSION_STATUS
 	E_PERMISSION_NETWORK_ERROR = -300, //无法建立与服务端的连接
     
 };
-@protocol BMKGeneralDelegate;
 
 ///主引擎类
 @interface BMKMapManager : NSObject

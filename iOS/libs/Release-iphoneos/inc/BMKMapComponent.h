@@ -1,21 +1,18 @@
 /*
- *  BMapKit.h
- *  BMapKit
+ *  BMKMapComponent.h
+ *  BMKMapComponent
  *
  *  Copyright 2011 Baidu Inc. All rights reserved.
  *
  */
 
-#import "BMKMapManager.h"
-#import "BMKGeneralDelegate.h"
 #import "BMKAnnotation.h"
 #import "BMKAnnotationView.h"
-#import "BMKGeometry.h"
+
 #import "BMKMapView.h"
 #import "BMKOfflineMap.h"
 #import "BMKOfflineMapType.h"
-#import "BMKUserLocation.h"
-#import "BMKTypes.h"
+
 #import "BMKOverlay.h"
 #import "BMKShape.h"
 #import "BMKPointAnnotation.h"
@@ -34,13 +31,5 @@
 #import "BMKArclineView.h"
 #import "BMKGroundOverlay.h"
 #import "BMKGroundOverlayView.h"
-//
-#import "BMKSearch.h"
-#import "BMKPoiSearchType.h"
-#import "BMKRouteSearchType.h"
-#import "BMKGeocodeType.h"
-#import "BMKCloudSearch.h"
-#import "BMKCloudSearch.h"
-#import "BMKCloudSearchInfo.h"
-#import "BMKUserLocation.h"
-#import "BMKVersion.h"
+#import "BMKGradient.h"
+

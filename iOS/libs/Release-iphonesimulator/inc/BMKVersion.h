@@ -8,263 +8,313 @@
 #import <UIKit/UIKit.h>
 
 
-/*****¸üĞÂÈÕÖ¾£º*****
- V0.1.0£º ²âÊÔ°æ
- Ö§³ÖµØÍ¼ä¯ÀÀ£¬»ù´¡²Ù×÷
- Ö§³ÖPOIËÑË÷
- Ö§³ÖÂ·ÏßËÑË÷
- Ö§³ÖµØÀí±àÂë¹¦ÄÜ
+/*****æ›´æ–°æ—¥å¿—ï¼š*****
+ V0.1.0ï¼š æµ‹è¯•ç‰ˆ
+ æ”¯æŒåœ°å›¾æµè§ˆï¼ŒåŸºç¡€æ“ä½œ
+ æ”¯æŒPOIæœç´¢
+ æ”¯æŒè·¯çº¿æœç´¢
+ æ”¯æŒåœ°ç†ç¼–ç åŠŸèƒ½
  --------------------
- V1.0.0£ºÕıÊ½·¢²¼°æ
- µØÍ¼ä¯ÀÀ£¬²Ù×÷£¬¶àµã´¥Ãş£¬¶¯»­
- ±ê×¢£¬¸²¸ÇÎï
- POI¡¢Â·ÏßËÑË÷
- µØÀí±àÂë¡¢·´µØÀí±àÂë
- ¶¨Î»Í¼²ã
+ V1.0.0ï¼šæ­£å¼å‘å¸ƒç‰ˆ
+ åœ°å›¾æµè§ˆï¼Œæ“ä½œï¼Œå¤šç‚¹è§¦æ‘¸ï¼ŒåŠ¨ç”»
+ æ ‡æ³¨ï¼Œè¦†ç›–ç‰©
+ POIã€è·¯çº¿æœç´¢
+ åœ°ç†ç¼–ç ã€ååœ°ç†ç¼–ç 
+ å®šä½å›¾å±‚
  --------------------
- V1.1.0£º
- ÀëÏßµØÍ¼Ö§³Ö
+ V1.1.0ï¼š
+ ç¦»çº¿åœ°å›¾æ”¯æŒ
  --------------------
- V1.1.1£º
- Ôö¼ÓsuggestionSearch½Ó¿Ú
- ¿ÉÒÔ¶¯Ì¬¸ü¸Äannotation title
- fixĞ¡ÄÚ´æĞ¹Â¶ÎÊÌâ
+ V1.1.1ï¼š
+ å¢åŠ suggestionSearchæ¥å£
+ å¯ä»¥åŠ¨æ€æ›´æ”¹annotation title
+ fixå°å†…å­˜æ³„éœ²é—®é¢˜
  --------------------
- V1.2.1£º
- Ôö¼ÓbusLineSearch½Ó¿Ú
- ĞŞ¸´¶¨Î»È¦·¶Î§ÄÚ²»ÄÜÍÏ¶¯µØÍ¼µÄbug
+ V1.2.1ï¼š
+ å¢åŠ busLineSearchæ¥å£
+ ä¿®å¤å®šä½åœˆèŒƒå›´å†…ä¸èƒ½æ‹–åŠ¨åœ°å›¾çš„bug
  
  --------------------
  V2.0.0
  
- ĞÂÔö£º
- È«ĞÂµÄ3DÊ¸Á¿µØÍ¼äÖÈ¾
- BMKMapViewÉè¶¨µØÍ¼Ğı×ª¸©ÊÓ½Ç¶È£ºrotation¡¢overlooking
- BMKMapViewÉè¶¨Ö¸ÄÏÕëÏÔÊ¾Î»ÖÃ£ºcompassPosition
- BMKMapView¿ØÖÆÉúÃüÖÜÆÚ£ºviewWillAppear¡¢viewWillDisappear
- µØÍ¼±ê×¢¿Éµã£¬BMKMapViewDelegateĞÂÔö½Ó¿Ú»Øµ÷½Ó¿ÚonClickedMapPoi
- BMKAnnotationViewÉèÖÃannotationÊÇ·ñÆôÓÃ3DÄ£Ê½£ºenabled3D
- overlay»æÖÆ·½Ê½¸Ä±ä£¬²ÉÓÃopengl»æÖÆ£º
- BMKOverlayViewÊ¹ÓÃopengläÖÈ¾½Ó¿Ú£ºglRender×ÓÀàÖØÔØ´Ëº¯ÊıÊµÏÖgl»æÖÆ
- »ù±¾openglÏß»æÖÆ£ºrenderLinesWithPoints
- »ù±¾openglÃæ»æÖÆ£ºrenderRegionWithPointsl
- È«ĞÂµÄÊ¸Á¿ÀëÏßµØÍ¼Êı¾İ£º
- BMKOfflineMapÏÂÔØÀëÏßµØÍ¼£ºstart
- BMKOfflineMap¸üĞÂÀëÏßµØÍ¼£ºupdate
- BMKOfflineMapÔİÍ£ÏÂÔØ»ò¸üĞÂ£ºpasue
- »ñµÃÈÈµã³ÇÊĞÁĞ±í£ºgetHotCityList
- »ñµÃÖ§³ÖÀëÏßÊı¾İµÄ³ÇÊĞ£ºgetOfflineCityList
- ¸ù¾İ³ÇÊĞÃû²éÑ¯³ÇÊĞĞÅÏ¢£ºsearchCity
- ¸üĞÂ£º
- BMKMapViewµÄËõ·Å¼¶±ğzoomLevel¸üĞÂÎªfloatĞÍ£¬ÊµÏÖÎŞ¼¶Ëõ·Å
- ¸üĞÂµØÍ¼ÀàĞÍÃ¶¾Ù£º
- enum {   BMKMapTypeStandard  = 1,              ///< ±ê×¼µØÍ¼
- BMKMapTypeTrafficOn = 2,              ///< ÊµÊ±Â·¿ö
- BMKMapTypeSatellite = 4,              ///< ÎÀĞÇµØÍ¼
- BMKMapTypeTrafficAndSatellite = 8,    ///< Í¬Ê±´ò¿ªÊµÊ±Â·¿öºÍÎÀĞÇµØÍ¼
+ æ–°å¢ï¼š
+ å…¨æ–°çš„3DçŸ¢é‡åœ°å›¾æ¸²æŸ“
+ BMKMapViewè®¾å®šåœ°å›¾æ—‹è½¬ä¿¯è§†è§’åº¦ï¼šrotationã€overlooking
+ BMKMapViewè®¾å®šæŒ‡å—é’ˆæ˜¾ç¤ºä½ç½®ï¼šcompassPosition
+ BMKMapViewæ§åˆ¶ç”Ÿå‘½å‘¨æœŸï¼šviewWillAppearã€viewWillDisappear
+ åœ°å›¾æ ‡æ³¨å¯ç‚¹ï¼ŒBMKMapViewDelegateæ–°å¢æ¥å£å›è°ƒæ¥å£onClickedMapPoi
+ BMKAnnotationViewè®¾ç½®annotationæ˜¯å¦å¯ç”¨3Dæ¨¡å¼ï¼šenabled3D
+ overlayç»˜åˆ¶æ–¹å¼æ”¹å˜ï¼Œé‡‡ç”¨openglç»˜åˆ¶ï¼š
+ BMKOverlayViewä½¿ç”¨openglæ¸²æŸ“æ¥å£ï¼šglRenderå­ç±»é‡è½½æ­¤å‡½æ•°å®ç°glç»˜åˆ¶
+ åŸºæœ¬openglçº¿ç»˜åˆ¶ï¼šrenderLinesWithPoints
+ åŸºæœ¬openglé¢ç»˜åˆ¶ï¼šrenderRegionWithPointsl
+ å…¨æ–°çš„çŸ¢é‡ç¦»çº¿åœ°å›¾æ•°æ®ï¼š
+ BMKOfflineMapä¸‹è½½ç¦»çº¿åœ°å›¾ï¼šstart
+ BMKOfflineMapæ›´æ–°ç¦»çº¿åœ°å›¾ï¼šupdate
+ BMKOfflineMapæš‚åœä¸‹è½½æˆ–æ›´æ–°ï¼špasue
+ è·å¾—çƒ­ç‚¹åŸå¸‚åˆ—è¡¨ï¼šgetHotCityList
+ è·å¾—æ”¯æŒç¦»çº¿æ•°æ®çš„åŸå¸‚ï¼šgetOfflineCityList
+ æ ¹æ®åŸå¸‚åæŸ¥è¯¢åŸå¸‚ä¿¡æ¯ï¼šsearchCity
+ æ›´æ–°ï¼š
+ BMKMapViewçš„ç¼©æ”¾çº§åˆ«zoomLevelæ›´æ–°ä¸ºfloatå‹ï¼Œå®ç°æ— çº§ç¼©æ”¾
+ æ›´æ–°åœ°å›¾ç±»å‹æšä¸¾ï¼š
+ enum {   BMKMapTypeStandard  = 1,              ///< æ ‡å‡†åœ°å›¾
+ BMKMapTypeTrafficOn = 2,              ///< å®æ—¶è·¯å†µ
+ BMKMapTypeSatellite = 4,              ///< å«æ˜Ÿåœ°å›¾
+ BMKMapTypeTrafficAndSatellite = 8,    ///< åŒæ—¶æ‰“å¼€å®æ—¶è·¯å†µå’Œå«æ˜Ÿåœ°å›¾
  };
  
  
  --------------------
  v2.0.1
- ĞÂÔö£º
- ¡ì	MapViewÔö¼ÓÊÂ¼ş¼àÌı
- BMKMapviewDelegateÖĞ- mapView: onClickedMapBlank:·½·¨¼àÌıµØÍ¼µ¥»÷ÊÂ¼ş
- BMKMapviewDelegateÖĞ- mapView: onDoubleClick:·½·¨¼àÌıµØÍ¼Ë«»÷ÊÂ¼ş
- BMKMapviewDelegateÖĞ- mapView: onLongClick:·½·¨¼àÌıµØÍ¼³¤°´ÊÂ¼ş
- ¡ì	µØÍ¼½ØÍ¼¹¦ÄÜ
- BMKmapviewÖĞ -(UIImage*) takeSnapshot;
- ¡ì	Â·¾¶¹æ»®Ôö¼ÓÍ¾¾­µã
- BMKSearchÖĞ- (BOOL)drivingSearch: startNode: endCity: endNode: throughWayPoints:
- ¡ì	suggestionËÑË÷Ö§³Ö°´³ÇÊĞËÑË÷
- ÓÅ»¯£º
- ¡ì	È«ÃæÖ§³ÖiPad
- ¡ì	ÓÅ»¯Ìí¼Óº£Á¿annotationÂß¼­
- ¡ì	BMKOfflineMapÖĞ£º
+ æ–°å¢ï¼š
+ Â§	MapViewå¢åŠ äº‹ä»¶ç›‘å¬
+ BMKMapviewDelegateä¸­- mapView: onClickedMapBlank:æ–¹æ³•ç›‘å¬åœ°å›¾å•å‡»äº‹ä»¶
+ BMKMapviewDelegateä¸­- mapView: onDoubleClick:æ–¹æ³•ç›‘å¬åœ°å›¾åŒå‡»äº‹ä»¶
+ BMKMapviewDelegateä¸­- mapView: onLongClick:æ–¹æ³•ç›‘å¬åœ°å›¾é•¿æŒ‰äº‹ä»¶
+ Â§	åœ°å›¾æˆªå›¾åŠŸèƒ½
+ BMKmapviewä¸­ -(UIImage*) takeSnapshot;
+ Â§	è·¯å¾„è§„åˆ’å¢åŠ é€”ç»ç‚¹
+ BMKSearchä¸­- (BOOL)drivingSearch: startNode: endCity: endNode: throughWayPoints:
+ Â§	suggestionæœç´¢æ”¯æŒæŒ‰åŸå¸‚æœç´¢
+ ä¼˜åŒ–ï¼š
+ Â§	å…¨é¢æ”¯æŒiPad
+ Â§	ä¼˜åŒ–æ·»åŠ æµ·é‡annotationé€»è¾‘
+ Â§	BMKOfflineMapä¸­ï¼š
  - (BOOL)pasue:(int)cityID;
- ¸ÄÎª
+ æ”¹ä¸º
  - (BOOL)pause:(int)cityID
- ¡ì	BMKMapviewÖĞ£º
+ Â§	BMKMapviewä¸­ï¼š
  @property (nonatomic) CGPoint compassPositon;
- ¸ÄÎª
+ æ”¹ä¸º
  @property (nonatomic) CGPoint compassPosition;
- ¡ì	BMKRouteAddrResult½á¹¹Ìí¼ÓÊôĞÔ£º
+ Â§	BMKRouteAddrResultç»“æ„æ·»åŠ å±æ€§ï¼š
  @synthesize wayPointPoiList;
  @synthesize wayPointCityList;
- ¡ì	BMKPlanNodeÖĞÌí¼ÓÊôĞÔ£º
- @synthesize cityName; Ìí¼Ó³ÇÊĞÊôĞÔ
- ¡ì	BMKSuggestionresult½á¹¹Ìí¼ÓÊôĞÔ£º
- @synthesize districtList; ·µ»ØÇøÓòÁĞ±í
- ĞŞ¸´£º
- ¡ì	ĞŞ¸´ÓëµÚÈı·½Àà¿â³åÍ»µÄÎÊÌâ
- ĞŞ¸´Óëgzip¡¢Reachability¡¢png¡¢jpeg¡¢json¡¢xml¡¢sqliteµÈµÚÈı·½Àà¿â³åÍ»ÎÊÌâ
+ Â§	BMKPlanNodeä¸­æ·»åŠ å±æ€§ï¼š
+ @synthesize cityName; æ·»åŠ åŸå¸‚å±æ€§
+ Â§	BMKSuggestionresultç»“æ„æ·»åŠ å±æ€§ï¼š
+ @synthesize districtList; è¿”å›åŒºåŸŸåˆ—è¡¨
+ ä¿®å¤ï¼š
+ Â§	ä¿®å¤ä¸ç¬¬ä¸‰æ–¹ç±»åº“å†²çªçš„é—®é¢˜
+ ä¿®å¤ä¸gzipã€Reachabilityã€pngã€jpegã€jsonã€xmlã€sqliteç­‰ç¬¬ä¸‰æ–¹ç±»åº“å†²çªé—®é¢˜
  
  
  --------------------
  v2.0.2
- ĞÂÔö£º
- 1.È«ĞÂµÄkeyÑéÖ¤ÌåÏµ
+ æ–°å¢ï¼š
+ 1.å…¨æ–°çš„keyéªŒè¯ä½“ç³»
  
- 2.Ôö¼Ó¶Ì´®·ÖÏí½Ó¿Ú
- 1£©ÔÚBMKTypeÖĞĞÂÔöÊı¾İ½á¹¹£ºBMK_SHARE_URL_TYPE£¨·ÖÏí´®Êı¾İÀàĞÍ£©
- 2£©ÔÚBMKSearchÖĞĞÂÔö½Ó¿Ú-(BOOL)poiDetailShareUrl:(NSString*) uid; ·¢Æğpoi¶Ì´®ËÑË÷
- 3£©ÔÚBMKSearchÖĞĞÂÔö½Ó¿Ú-(BOOL)reverseGeoShareUrl:(CLLocationCoordinate2D)coor
-                              poiName:(NSString*)name
-                              poiAddress:(NSString*)address; ·¢Æğ·´geo¶Ì´®ËÑË÷
- 4£©ÔÚBMKSearchDelegateÖĞĞÂÔö½Ó¿Ú-(void)onGetShareUrl:(NSString*) url
-                                      withType:(BMK_SHARE_URL_TYPE) urlType
-                                      errorCode:(int)error; ·µ»Ø¶Ì´®·ÖÏíurl
- 3.±ÈÀı³ß¿Ø¼ş
- 1£©ÔÚBMKMapviewÖĞĞÂÔöÊôĞÔ@property (nonatomic) BOOL showMapScaleBar;±ÈÀı³ßÊÇ·ñÏÔÊ¾
- 2£©ÔÚBMKMapviewÖĞĞÂÔöÊôĞÔ@property (nonatomic) CGPoint mapScaleBarPosition;±ÈÀı³ßÏÔÊ¾Î»ÖÃ
+ 2.å¢åŠ çŸ­ä¸²åˆ†äº«æ¥å£
+ 1ï¼‰åœ¨BMKTypeä¸­æ–°å¢æ•°æ®ç»“æ„ï¼šBMK_SHARE_URL_TYPEï¼ˆåˆ†äº«ä¸²æ•°æ®ç±»å‹ï¼‰
+ 2ï¼‰åœ¨BMKSearchä¸­æ–°å¢æ¥å£-(BOOL)poiDetailShareUrl:(NSString*) uid; å‘èµ·poiçŸ­ä¸²æœç´¢
+ 3ï¼‰åœ¨BMKSearchä¸­æ–°å¢æ¥å£-(BOOL)reverseGeoShareUrl:(CLLocationCoordinate2D)coor
+ poiName:(NSString*)name
+ poiAddress:(NSString*)address; å‘èµ·ågeoçŸ­ä¸²æœç´¢
+ 4ï¼‰åœ¨BMKSearchDelegateä¸­æ–°å¢æ¥å£-(void)onGetShareUrl:(NSString*) url
+ withType:(BMK_SHARE_URL_TYPE) urlType
+ errorCode:(int)error; è¿”å›çŸ­ä¸²åˆ†äº«url
+ 3.æ¯”ä¾‹å°ºæ§ä»¶
+ 1ï¼‰åœ¨BMKMapviewä¸­æ–°å¢å±æ€§@property (nonatomic) BOOL showMapScaleBar;æ¯”ä¾‹å°ºæ˜¯å¦æ˜¾ç¤º
+ 2ï¼‰åœ¨BMKMapviewä¸­æ–°å¢å±æ€§@property (nonatomic) CGPoint mapScaleBarPosition;æ¯”ä¾‹å°ºæ˜¾ç¤ºä½ç½®
  
- 4.¶¨Î»ÂŞÅÌĞ§¹û
- 1£©ÔÚBMKMapviewÖĞĞÂÔöÊı¾İ½á¹¹£ºBMKUserTrackingMode£¨¶¨Î»Ä£Ê½£©
- 2£©ÔÚBMKMapviewÖĞĞÂÔöÊôĞÔ@property (nonattomic) BMKUserTrackingMode userTrackingMode; Éè¶¨¶¨Î»Ä£Ê½
+ 4.å®šä½ç½—ç›˜æ•ˆæœ
+ 1ï¼‰åœ¨BMKMapviewä¸­æ–°å¢æ•°æ®ç»“æ„ï¼šBMKUserTrackingModeï¼ˆå®šä½æ¨¡å¼ï¼‰
+ 2ï¼‰åœ¨BMKMapviewä¸­æ–°å¢å±æ€§@property (nonattomic) BMKUserTrackingMode userTrackingMode; è®¾å®šå®šä½æ¨¡å¼
  
- 5.¼İ³µ±ÜÈÃÓµ¶Â²ßÂÔ
- 1£©ÔÚBMKSearchÖĞĞÂÔö¼İ³µ¼ìË÷²ßÂÔ³£Á¿BMKCarTrafficFIRST = 60,///<¼İ³µ¼ìË÷²ßÂÔ³£Á¿£º¶ã±ÜÓµ¶Â
+ 5.é©¾è½¦é¿è®©æ‹¥å µç­–ç•¥
+ 1ï¼‰åœ¨BMKSearchä¸­æ–°å¢é©¾è½¦æ£€ç´¢ç­–ç•¥å¸¸é‡BMKCarTrafficFIRST = 60,///<é©¾è½¦æ£€ç´¢ç­–ç•¥å¸¸é‡ï¼šèº²é¿æ‹¥å µ
  
- 6.Â·¾¶²éÑ¯Ôö¼ÓÊ±¼ä¡¢´ò³µ·ÑÓÃ½á¹û
- 1£©ÔÚBMKSearchÖĞĞÂÔöÀà£ºBMKTime£¨´ËÀà´ú±íÒ»¸öÊ±¼ä¶Î£¬Ã¿¸öÊôĞÔ¶¼ÊÇÒ»¸öÊ±¼ä¶Î¡££©
- 2£©ÔÚBMKTransitRoutePlanÖĞĞÂÔöÊôĞÔ@property (nonatomic) float price; °×Ìì´ò³µ¹À¼Û£¬µ¥Î»(Ôª)
- 3£©ÔÚBMKTransitRoutePlanÖĞĞÂÔöÊôĞÔ@property (nonatomic, retain) BMKTime* time; ·½°¸ËùÓÃÊ±¼ä
- 4£©ÔÚBMKRoutePlanÖĞĞÂÔöÊôĞÔ@property (nonatomic, retain) BMKTime* time; ·½°¸Ô¤¼ÆµÄĞĞÊ»Ê±¼ä
-  
- ÓÅ»¯£º
- 1£©¶ÔÔÚBMKMapviewÖĞµÄ½Ó¿Ú- (void)removeAnnotations:(NSArray *)annotations;£¨ÒÆ³ıÒ»×é±ê×¢£©½øĞĞÁËÓÅ»¯
+ 6.è·¯å¾„æŸ¥è¯¢å¢åŠ æ—¶é—´ã€æ‰“è½¦è´¹ç”¨ç»“æœ
+ 1ï¼‰åœ¨BMKSearchä¸­æ–°å¢ç±»ï¼šBMKTimeï¼ˆæ­¤ç±»ä»£è¡¨ä¸€ä¸ªæ—¶é—´æ®µï¼Œæ¯ä¸ªå±æ€§éƒ½æ˜¯ä¸€ä¸ªæ—¶é—´æ®µã€‚ï¼‰
+ 2ï¼‰åœ¨BMKTransitRoutePlanä¸­æ–°å¢å±æ€§@property (nonatomic) float price; ç™½å¤©æ‰“è½¦ä¼°ä»·ï¼Œå•ä½(å…ƒ)
+ 3ï¼‰åœ¨BMKTransitRoutePlanä¸­æ–°å¢å±æ€§@property (nonatomic, retain) BMKTime* time; æ–¹æ¡ˆæ‰€ç”¨æ—¶é—´
+ 4ï¼‰åœ¨BMKRoutePlanä¸­æ–°å¢å±æ€§@property (nonatomic, retain) BMKTime* time; æ–¹æ¡ˆé¢„è®¡çš„è¡Œé©¶æ—¶é—´
  
- ĞŞ¸´£º
- 1£©ĞŞ¸´ÀëÏßµØÍ¼¡ª¡ªÖ§³ÖÀëÏß°üµÄ³ÇÊĞÁĞ±íÖĞÊ¡·İÏÂÎŞ×Ó³ÇÊĞµÄÎÊÌâ
- 2£©ĞŞ¸´Ç°Ì¨Êı¾İÇëÇóºóÍËÖÁºóÌ¨opengl¼ÌĞøäÖÈ¾£¬Ó¦ÓÃCrashµÄÎÊÌâ
+ ä¼˜åŒ–ï¼š
+ 1ï¼‰å¯¹åœ¨BMKMapviewä¸­çš„æ¥å£- (void)removeAnnotations:(NSArray *)annotations;ï¼ˆç§»é™¤ä¸€ç»„æ ‡æ³¨ï¼‰è¿›è¡Œäº†ä¼˜åŒ–
  
---------------------
+ ä¿®å¤ï¼š
+ 1ï¼‰ä¿®å¤ç¦»çº¿åœ°å›¾â€•â€•æ”¯æŒç¦»çº¿åŒ…çš„åŸå¸‚åˆ—è¡¨ä¸­çœä»½ä¸‹æ— å­åŸå¸‚çš„é—®é¢˜
+ 2ï¼‰ä¿®å¤å‰å°æ•°æ®è¯·æ±‚åé€€è‡³åå°openglç»§ç»­æ¸²æŸ“ï¼Œåº”ç”¨Crashçš„é—®é¢˜
+ 
+ --------------------
  v2.1.0
- ĞÂÔö£º
- 1.È«Ãæ½ÓÈëLBS.ÔÆV2.0£¬È«Ãæ¿ª·ÅLBS.ÔÆ¼ìË÷ÄÜÁ¦
- 1)ÔÚBMKCloudSearchInfoÖĞĞÂÔöÀàBMKBaseCloudSearchInfo£¬BMKCloudSearchInfo£¬BMKCloudLocalSearchInfo£¬BMKCloudNearbySearchInfo£¬BMKCloudBoundSearchInfo£¬BMKCloudDetailSearchInfoÀ´´æ´¢ÔÆ¼ìË÷²ÎÊı
- 2)ÔÚBMKCloudPOIListÖĞĞÂÔöÀàBMKCloudPOIListÀ´´æ´¢ÔÆ¼ìË÷½á¹û
- 3)ÔÚBMKCloudSearchÖĞĞÂÔöÊı¾İ½á¹¹£ºBMKCloudSearchType£¨ÔÆ¼ìË÷ÀàĞÍ£©
- 4)ÔÚBMKCloudSearchÖĞĞÂÔö½Ó¿Ú- (BOOL)localSearchWithSearchInfo:;·¢Æğ±¾µØÔÆ¼ìË÷
- 5)ÔÚBMKCloudSearchÖĞĞÂÔö½Ó¿Ú- (BOOL) nearbySearchWithSearchInfo:;·¢ÆğÖÜ±ßÔÆ¼ìË÷
- 6)ÔÚBMKCloudSearchÖĞĞÂÔö½Ó¿Ú- (BOOL) boundSearchWithSearchInfo:;·¢Æğ¾ØĞÎÔÆ¼ìË÷
- 7)ÔÚBMKCloudSearchÖĞĞÂÔö½Ó¿Ú- (BOOL) detailSearchWithSearchInfo:;·¢ÆğÏêÇéÔÆ¼ìË÷
- 8)ÔÚBMKCloudSearchÖĞĞÂÔö½Ó¿Ú- (void)onGetCloudPoiResult: searchType: errorCode:;·µ»ØÔÆ¼ìË÷ÁĞ±í½á¹û
- 9)ÔÚBMKCloudSearchÖĞĞÂÔö½Ó¿Ú- (void) onGetCloudPoiDetailResult: searchType: errorCode:;·µ»ØÔÆ¼ìË÷ÏêÇé½á¹û
- 2.Ôö¼ÓÍ¼Æ¬Í¼²ãBMKGroundOverlay¡¢BMKGroundOverlayView
- 1)ÔÚBMKGroundOverlayÖĞĞÂÔöÊôĞÔ@property (nonatomic,assign) CLLocationCoordinate2D pt;Á½ÖÖ»æÖÆGroundOverlayµÄ·½Ê½Ö®Ò»£º»æÖÆµÄÎ»ÖÃµØÀí×ø±ê£¬ÓëanchorÅä¶ÔÊ¹ÓÃ
- 2)ÔÚBMKGroundOverlayÖĞĞÂÔöÊôĞÔ@property (nonatomic,assign) CGPoint anchor;ÓÃÎ»ÖÃ»æÖÆÊ±Í¼Æ¬µÄÃªµã£¬Í¼Æ¬×óÉÏ½ÇÎª(0.0f,0.0f),ÏòÓÒÏòÏÂÎªÕı
- 3)ÔÚBMKGroundOverlayÖĞĞÂÔöÊôĞÔ@property (nonatomic,assign) BMKCoordinateBounds bound;Á½ÖÖ»æÖÆGroundOverlayµÄ·½Ê½Ö®¶ş£º»æÖÆµÄµØÀíÇøÓò·¶Î§£¬Í¼Æ¬ÔÚ´ËÇøÓòÄÚºÏÀíËõ·Å
- 4)ÔÚBMKGroundOverlayÖĞĞÂÔöÊôĞÔ@property(nonatomic, strong) UIImage *icon;»æÖÆÍ¼Æ¬
- 5)ÔÚBMKGroundOverlayÖĞĞÂÔö½Ó¿Ú+(BMKGroundOverlay*)groundOverlayWithPosition:zoomLevel:anchor:icon:;¸ù¾İÖ¸¶¨¾­Î³¶È×ø±êÉú³ÉÒ»¸ögroundOverlay
- 6)ÔÚBMKGroundOverlayÖĞĞÂÔö½Ó¿Ú+(BMKGroundOverlay*) groundOverlayWithBounds:icon:;¸ù¾İÖ¸¶¨ÇøÓòÉú³ÉÒ»¸ögroundOverlay
- 3.Ôö¼Ó×Ô¶¨ÒåÅİÅİ
- 1)ÔÚBMKActionPaopaoViewÖĞĞÂÔö½Ó¿Ú- (id)initWithCustomView:(UIView*)customView;ÅİÅİÏÔÊ¾View×Ô¶¨Òå
- 4.Ôö¼ÓµØÍ¼ÖĞĞÄµãÓ³ÉäÆÁÄ»µã
- 1)ÔÚBMKMapViewÖĞĞÂÔö½Ó¿Ú- (void)setMapCenterToScreenPt:;ÉèÖÃµØÍ¼ÖĞĞÄµãÔÚµØÍ¼ÖĞµÄÆÁÄ»×ø±êÎ»ÖÃ
- 5.Ôö¼ÓÒÔÊÖÊÆ´¥ÃşµãÖĞĞÄÎª»ù×¼Ğı×ªËõ·Åµ×Í¼¹¦ÄÜºÍ¿ØÖÆ¿ª¹Ø
- 1)ÔÚBMKMapViewÖĞĞÂÔöÊôĞÔ@property(nonatomic, getter=isChangeWithTouchPointCenterEnabled) BOOL ChangeWithTouchPointCenterEnabled;Éè¶¨µØÍ¼ViewÄÜ·ñÖ§³ÖÒÔÊÖÊÆÖĞĞÄµãÎªÖá½øĞĞĞı×ªºÍËõ·Å£¨Ä¬ÈÏÒÔÆÁÄ»ÖĞĞÄµãÎªĞı×ªºÍËõ·ÅÖĞĞÄ£©
- 6.Ôö¼ÓÍ¬Ê±¸Ä±äµØÍ¼¸©½Ç£¬Ğı×ª½Ç¶È£¬Ëõ·Å±ÈÀı£¬ÖĞĞÄµã½Ó¿Ú
- 1)ĞÂÔöÀàBMKMapStatusÀ´±íÊ¾µØÍ¼×´Ì¬²ÎÊı
- 2)ÔÚBMKMapViewÖĞĞÂÔö½Ó¿Ú- (void)setMapStatus:;ÉèÖÃµØÍ¼×´Ì¬
- 3)ÔÚBMKMapViewÖĞĞÂÔö½Ó¿Ú- (void)setMapStatus: withAnimation:;ÉèÖÃµØÍ¼×´Ì¬£¨Ö¸¶¨ÊÇ·ñĞèÒª¶¯»­Ğ§¹û£©
- 4)ÔÚBMKMapViewÖĞĞÂÔö½Ó¿Ú- (void)setMapStatus: withAnimation: withAnimationTime:;ÉèÖÃµØÍ¼×´Ì¬£¨Ö¸¶¨ÊÇ·ñĞèÒª¶¯»­Ğ§¹û£«Ö¸¶¨¶¯»­Ê±¼ä£©
- 5)ÔÚBMKMapViewÖĞĞÂÔö½Ó¿Ú- (BMKMapStatus*)getMapStatus;»ñÈ¡µØÍ¼×´Ì¬
- 7.Ôö¼ÓµØÍ¼×´Ì¬¸Ä±äÊµÊ±Í¨Öª
- 1)ÔÚBMKMapViewÖĞĞÂÔö½Ó¿Ú- (void)mapStatusDidChanged:;µØÍ¼×´Ì¬¸Ä±äÍê³Éºó»áµ÷ÓÃ´Ë½Ó¿Ú
+ æ–°å¢ï¼š
+ 1.å…¨é¢æ¥å…¥LBS.äº‘V2.0ï¼Œå…¨é¢å¼€æ”¾LBS.äº‘æ£€ç´¢èƒ½åŠ›
+ 1)åœ¨BMKCloudSearchInfoä¸­æ–°å¢ç±»BMKBaseCloudSearchInfoï¼ŒBMKCloudSearchInfoï¼ŒBMKCloudLocalSearchInfoï¼ŒBMKCloudNearbySearchInfoï¼ŒBMKCloudBoundSearchInfoï¼ŒBMKCloudDetailSearchInfoæ¥å­˜å‚¨äº‘æ£€ç´¢å‚æ•°
+ 2)åœ¨BMKCloudPOIListä¸­æ–°å¢ç±»BMKCloudPOIListæ¥å­˜å‚¨äº‘æ£€ç´¢ç»“æœ
+ 3)åœ¨BMKCloudSearchä¸­æ–°å¢æ•°æ®ç»“æ„ï¼šBMKCloudSearchTypeï¼ˆäº‘æ£€ç´¢ç±»å‹ï¼‰
+ 4)åœ¨BMKCloudSearchä¸­æ–°å¢æ¥å£- (BOOL)localSearchWithSearchInfo:;å‘èµ·æœ¬åœ°äº‘æ£€ç´¢
+ 5)åœ¨BMKCloudSearchä¸­æ–°å¢æ¥å£- (BOOL) nearbySearchWithSearchInfo:;å‘èµ·å‘¨è¾¹äº‘æ£€ç´¢
+ 6)åœ¨BMKCloudSearchä¸­æ–°å¢æ¥å£- (BOOL) boundSearchWithSearchInfo:;å‘èµ·çŸ©å½¢äº‘æ£€ç´¢
+ 7)åœ¨BMKCloudSearchä¸­æ–°å¢æ¥å£- (BOOL) detailSearchWithSearchInfo:;å‘èµ·è¯¦æƒ…äº‘æ£€ç´¢
+ 8)åœ¨BMKCloudSearchä¸­æ–°å¢æ¥å£- (void)onGetCloudPoiResult: searchType: errorCode:;è¿”å›äº‘æ£€ç´¢åˆ—è¡¨ç»“æœ
+ 9)åœ¨BMKCloudSearchä¸­æ–°å¢æ¥å£- (void) onGetCloudPoiDetailResult: searchType: errorCode:;è¿”å›äº‘æ£€ç´¢è¯¦æƒ…ç»“æœ
+ 2.å¢åŠ å›¾ç‰‡å›¾å±‚BMKGroundOverlayã€BMKGroundOverlayView
+ 1)åœ¨BMKGroundOverlayä¸­æ–°å¢å±æ€§@property (nonatomic,assign) CLLocationCoordinate2D pt;ä¸¤ç§ç»˜åˆ¶GroundOverlayçš„æ–¹å¼ä¹‹ä¸€ï¼šç»˜åˆ¶çš„ä½ç½®åœ°ç†åæ ‡ï¼Œä¸anchoré…å¯¹ä½¿ç”¨
+ 2)åœ¨BMKGroundOverlayä¸­æ–°å¢å±æ€§@property (nonatomic,assign) CGPoint anchor;ç”¨ä½ç½®ç»˜åˆ¶æ—¶å›¾ç‰‡çš„é”šç‚¹ï¼Œå›¾ç‰‡å·¦ä¸Šè§’ä¸º(0.0f,0.0f),å‘å³å‘ä¸‹ä¸ºæ­£
+ 3)åœ¨BMKGroundOverlayä¸­æ–°å¢å±æ€§@property (nonatomic,assign) BMKCoordinateBounds bound;ä¸¤ç§ç»˜åˆ¶GroundOverlayçš„æ–¹å¼ä¹‹äºŒï¼šç»˜åˆ¶çš„åœ°ç†åŒºåŸŸèŒƒå›´ï¼Œå›¾ç‰‡åœ¨æ­¤åŒºåŸŸå†…åˆç†ç¼©æ”¾
+ 4)åœ¨BMKGroundOverlayä¸­æ–°å¢å±æ€§@property(nonatomic, strong) UIImage *icon;ç»˜åˆ¶å›¾ç‰‡
+ 5)åœ¨BMKGroundOverlayä¸­æ–°å¢æ¥å£+(BMKGroundOverlay*)groundOverlayWithPosition:zoomLevel:anchor:icon:;æ ¹æ®æŒ‡å®šç»çº¬åº¦åæ ‡ç”Ÿæˆä¸€ä¸ªgroundOverlay
+ 6)åœ¨BMKGroundOverlayä¸­æ–°å¢æ¥å£+(BMKGroundOverlay*) groundOverlayWithBounds:icon:;æ ¹æ®æŒ‡å®šåŒºåŸŸç”Ÿæˆä¸€ä¸ªgroundOverlay
+ 3.å¢åŠ è‡ªå®šä¹‰æ³¡æ³¡
+ 1)åœ¨BMKActionPaopaoViewä¸­æ–°å¢æ¥å£- (id)initWithCustomView:(UIView*)customView;æ³¡æ³¡æ˜¾ç¤ºViewè‡ªå®šä¹‰
+ 4.å¢åŠ åœ°å›¾ä¸­å¿ƒç‚¹æ˜ å°„å±å¹•ç‚¹
+ 1)åœ¨BMKMapViewä¸­æ–°å¢æ¥å£- (void)setMapCenterToScreenPt:;è®¾ç½®åœ°å›¾ä¸­å¿ƒç‚¹åœ¨åœ°å›¾ä¸­çš„å±å¹•åæ ‡ä½ç½®
+ 5.å¢åŠ ä»¥æ‰‹åŠ¿è§¦æ‘¸ç‚¹ä¸­å¿ƒä¸ºåŸºå‡†æ—‹è½¬ç¼©æ”¾åº•å›¾åŠŸèƒ½å’Œæ§åˆ¶å¼€å…³
+ 1)åœ¨BMKMapViewä¸­æ–°å¢å±æ€§@property(nonatomic, getter=isChangeWithTouchPointCenterEnabled) BOOL ChangeWithTouchPointCenterEnabled;è®¾å®šåœ°å›¾Viewèƒ½å¦æ”¯æŒä»¥æ‰‹åŠ¿ä¸­å¿ƒç‚¹ä¸ºè½´è¿›è¡Œæ—‹è½¬å’Œç¼©æ”¾ï¼ˆé»˜è®¤ä»¥å±å¹•ä¸­å¿ƒç‚¹ä¸ºæ—‹è½¬å’Œç¼©æ”¾ä¸­å¿ƒï¼‰
+ 6.å¢åŠ åŒæ—¶æ”¹å˜åœ°å›¾ä¿¯è§’ï¼Œæ—‹è½¬è§’åº¦ï¼Œç¼©æ”¾æ¯”ä¾‹ï¼Œä¸­å¿ƒç‚¹æ¥å£
+ 1)æ–°å¢ç±»BMKMapStatusæ¥è¡¨ç¤ºåœ°å›¾çŠ¶æ€å‚æ•°
+ 2)åœ¨BMKMapViewä¸­æ–°å¢æ¥å£- (void)setMapStatus:;è®¾ç½®åœ°å›¾çŠ¶æ€
+ 3)åœ¨BMKMapViewä¸­æ–°å¢æ¥å£- (void)setMapStatus: withAnimation:;è®¾ç½®åœ°å›¾çŠ¶æ€ï¼ˆæŒ‡å®šæ˜¯å¦éœ€è¦åŠ¨ç”»æ•ˆæœï¼‰
+ 4)åœ¨BMKMapViewä¸­æ–°å¢æ¥å£- (void)setMapStatus: withAnimation: withAnimationTime:;è®¾ç½®åœ°å›¾çŠ¶æ€ï¼ˆæŒ‡å®šæ˜¯å¦éœ€è¦åŠ¨ç”»æ•ˆæœï¼‹æŒ‡å®šåŠ¨ç”»æ—¶é—´ï¼‰
+ 5)åœ¨BMKMapViewä¸­æ–°å¢æ¥å£- (BMKMapStatus*)getMapStatus;è·å–åœ°å›¾çŠ¶æ€
+ 7.å¢åŠ åœ°å›¾çŠ¶æ€æ”¹å˜å®æ—¶é€šçŸ¥
+ 1)åœ¨BMKMapViewä¸­æ–°å¢æ¥å£- (void)mapStatusDidChanged:;åœ°å›¾çŠ¶æ€æ”¹å˜å®Œæˆåä¼šè°ƒç”¨æ­¤æ¥å£
  
- ÓÅ»¯£º
- 1.µã»÷AnnotationÖÃ¶¥
- 1)ÔÚBMKMapViewÖĞĞÂÔöÊôĞÔ@property (nonatomic, assign) BOOL isSelectedAnnotationViewFront;Éè¶¨ÊÇ·ñ×ÜÈÃÑ¡ÖĞµÄannotaionÖÃÓÚ×îÇ°Ãæ
- 2.¶¨Î»ÍÑÀëMapView
- 1)ÔÚBMKUserLocationÖĞĞÂÔö½Ó¿Ú-(void)startUserLocationService;´ò¿ª¶¨Î»·şÎñ
- 2)ÔÚBMKUserLocationÖĞĞÂÔö½Ó¿Ú-(void)stopUserLocationService;¹Ø±Õ¶¨Î»·şÎñ
- 3)ÔÚBMKUserLocationÖĞĞÂÔö½Ó¿Ú- (void)viewDidGetLocatingUser:;¿ªÆô¶¨Î»ºó£¬»á×Ô¶¯µ÷ÓÃ´Ë½Ó¿Ú·µ»Øµ±Ç°Î»ÖÃµÄ¾­Î³¶È
- 3.¶¨Î»Í¼²ãÑùÊ½×Ô¶¨ÒåÁé»îĞÔÓÅ»¯
- 1)ĞÂÔöÀàBMKLocationViewDisplayParamÀ´´æ´¢¶¨Î»Í¼²ã×Ô¶¨Òå²ÎÊı
- 2)ÔÚBMKMapViewÖĞĞÂÔö½Ó¿Ú- (void)updateLocationViewWithParam:;¶¯Ì¬¶¨ÖÆ¶¨Î»Í¼²ãÑùÊ½
+ ä¼˜åŒ–ï¼š
+ 1.ç‚¹å‡»Annotationç½®é¡¶
+ 1)åœ¨BMKMapViewä¸­æ–°å¢å±æ€§@property (nonatomic, assign) BOOL isSelectedAnnotationViewFront;è®¾å®šæ˜¯å¦æ€»è®©é€‰ä¸­çš„annotaionç½®äºæœ€å‰é¢
+ 2.å®šä½è„±ç¦»MapView
+ 1)åœ¨BMKUserLocationä¸­æ–°å¢æ¥å£-(void)startUserLocationService;æ‰“å¼€å®šä½æœåŠ¡
+ 2)åœ¨BMKUserLocationä¸­æ–°å¢æ¥å£-(void)stopUserLocationService;å…³é—­å®šä½æœåŠ¡
+ 3)åœ¨BMKUserLocationä¸­æ–°å¢æ¥å£- (void)viewDidGetLocatingUser:;å¼€å¯å®šä½åï¼Œä¼šè‡ªåŠ¨è°ƒç”¨æ­¤æ¥å£è¿”å›å½“å‰ä½ç½®çš„ç»çº¬åº¦
+ 3.å®šä½å›¾å±‚æ ·å¼è‡ªå®šä¹‰çµæ´»æ€§ä¼˜åŒ–
+ 1)æ–°å¢ç±»BMKLocationViewDisplayParamæ¥å­˜å‚¨å®šä½å›¾å±‚è‡ªå®šä¹‰å‚æ•°
+ 2)åœ¨BMKMapViewä¸­æ–°å¢æ¥å£- (void)updateLocationViewWithParam:;åŠ¨æ€å®šåˆ¶å®šä½å›¾å±‚æ ·å¼
  
- ĞŞ¸´£º
- 1)ĞŞ¸´µã»÷annotation»Øµ÷³¤°´¼àÌı½Ó¿Ú- (void)mapview: onLongClick:µÄÎÊÌâ
- 2)ĞŞ¸´TransitRoutePlanÖĞContentÊôĞÔÎª¿ÕµÄÎÊÌâ
- 3)ĞŞ¸´Ëõ·Åµ×Í¼£¬½Ó¿Ú- (void)mapView: regionDidChangeAnimated:²»»Øµ÷µÄÎÊÌâ
- 4)ĞŞ¸´´ÓÆäËûÒ³Ãæ·µ»ØÔ­Ò³ÃæÅİÅİ±»Ñ¹¸ÇµÄÎÊÌâ
- 5)½â¾öWiFiÎŞÍøÂçĞÅºÅÊ±Ê×´Î¼ÓÔØ¿¨ÆÁµÄÎÊÌâ
+ ä¿®å¤ï¼š
+ 1)ä¿®å¤ç‚¹å‡»annotationå›è°ƒé•¿æŒ‰ç›‘å¬æ¥å£- (void)mapview: onLongClick:çš„é—®é¢˜
+ 2)ä¿®å¤TransitRoutePlanä¸­Contentå±æ€§ä¸ºç©ºçš„é—®é¢˜
+ 3)ä¿®å¤ç¼©æ”¾åº•å›¾ï¼Œæ¥å£- (void)mapView: regionDidChangeAnimated:ä¸å›è°ƒçš„é—®é¢˜
+ 4)ä¿®å¤ä»å…¶ä»–é¡µé¢è¿”å›åŸé¡µé¢æ³¡æ³¡è¢«å‹ç›–çš„é—®é¢˜
+ 5)è§£å†³WiFiæ— ç½‘ç»œä¿¡å·æ—¶é¦–æ¬¡åŠ è½½å¡å±çš„é—®é¢˜
  
  --------------------
  v2.1.1
- ĞÂÔö£º
- 1.ĞÂÔöµ÷Æô°Ù¶ÈµØÍ¼µ¼º½µÄ½Ó¿Ú£¨°Ù¶ÈµØÍ¼µ¼º½ºÍWeb¶Ëµ¼º½£©
- ÔÚBMKNavigationÖĞĞÂÔöÀàÃ¶¾ÙÀàĞÍµÄÊı¾İ½á¹¹NAVI_TYPEÀ´¶¨Òåµ÷Æğµ¼º½µÄÁ½ÖÖÀàĞÍ£ºNAVI_TYPE_NATIVE(µ÷Æğ¿Í»§¶Ëµ¼º½)ºÍNAVI_TYPE_WEB(µ÷Æğwebµ¼º½)
- ÔÚBMKNavigationÖĞĞÂÔöÀàNaviParaÀ´¹ÜÀíµ÷Æğµ¼º½Ê±´«ÈëµÄ²ÎÊı
- ÔÚÀàNaviParaÖĞĞÂÔöÊôĞÔ@property (nonatomic, retain) BMKPlanNode* startPoint;¶¨Òåµ¼º½µÄÆğµã
- ÔÚÀàNaviParaÖĞĞÂÔöÊôĞÔ@property (nonatomic, retain) BMKPlanNode* endPoint;¶¨Òåµ¼º½µÄÖÕµã
- ÔÚÀàNaviParaÖĞĞÂÔöÊôĞÔ@property (nonatomic, assign) NAVI_TYPE naviType;¶¨Òåµ¼º½µÄÀàĞÍ
- ÔÚÀàNaviParaÖĞĞÂÔöÊôĞÔ@property (nonatomic, retain) NSString* appScheme;¶¨ÒåÓ¦ÓÃ·µ»Øscheme
- ÔÚÀàNaviParaÖĞĞÂÔöÊôĞÔ@property (nonatomic, retain) NSString* appName;¶¨ÒåÓ¦ÓÃÃû³Æ
- ÔÚBMKNavigationÖĞĞÂÔö½Ó¿Ú+ (void)openBaiduMapNavigation:;¸ù¾İ´«ÈëµÄ²ÎÊıµ÷Æôµ¼º½
+ æ–°å¢ï¼š
+ 1.æ–°å¢è°ƒå¯ç™¾åº¦åœ°å›¾å¯¼èˆªçš„æ¥å£ï¼ˆç™¾åº¦åœ°å›¾å¯¼èˆªå’ŒWebç«¯å¯¼èˆªï¼‰
+ åœ¨BMKNavigationä¸­æ–°å¢ç±»æšä¸¾ç±»å‹çš„æ•°æ®ç»“æ„BMK_NAVI_TYPEæ¥å®šä¹‰è°ƒèµ·å¯¼èˆªçš„ä¸¤ç§ç±»å‹ï¼šBMK_NAVI_TYPE_NATIVE(è°ƒèµ·å®¢æˆ·ç«¯å¯¼èˆª)å’ŒBMK_NAVI_TYPE_WEB(è°ƒèµ·webå¯¼èˆª)
+ åœ¨BMKNavigationä¸­æ–°å¢ç±»NaviParaæ¥ç®¡ç†è°ƒèµ·å¯¼èˆªæ—¶ä¼ å…¥çš„å‚æ•°
+ åœ¨ç±»NaviParaä¸­æ–°å¢å±æ€§@property (nonatomic, retain) BMKPlanNode* startPoint;å®šä¹‰å¯¼èˆªçš„èµ·ç‚¹
+ åœ¨ç±»NaviParaä¸­æ–°å¢å±æ€§@property (nonatomic, retain) BMKPlanNode* endPoint;å®šä¹‰å¯¼èˆªçš„ç»ˆç‚¹
+ åœ¨ç±»NaviParaä¸­æ–°å¢å±æ€§@property (nonatomic, assign) BMK_NAVI_TYPE naviType;å®šä¹‰å¯¼èˆªçš„ç±»å‹
+ åœ¨ç±»NaviParaä¸­æ–°å¢å±æ€§@property (nonatomic, retain) NSString* appScheme;å®šä¹‰åº”ç”¨è¿”å›scheme
+ åœ¨ç±»NaviParaä¸­æ–°å¢å±æ€§@property (nonatomic, retain) NSString* appName;å®šä¹‰åº”ç”¨åç§°
+ åœ¨BMKNavigationä¸­æ–°å¢æ¥å£+ (void)openBaiduMapNavigation:;æ ¹æ®ä¼ å…¥çš„å‚æ•°è°ƒå¯å¯¼èˆª
  
- 2.¼¸ºÎÍ¼ĞÎ»æÖÆÖĞ£¬Ôö¼Ó»¡Ïß»æÖÆ·½·¨
- ÔÚBMKArclineÖĞĞÂÔö½Ó¿Ú+ (BMKArcline *)arclineWithPoints:;¸ù¾İÖ¸¶¨×ø±êµãÉú³ÉÒ»¶ÎÔ²»¡
- ÔÚBMKArclineÖĞĞÂÔö½Ó¿Ú+ (BMKArcline *)arclineWithCoordinates:;¸ù¾İÖ¸¶¨¾­Î³¶ÈÉú³ÉÒ»¶ÎÔ²»¡
- ÔÚÀàBMKArclineViewÖĞĞÂÔöÊôĞÔ@property (nonatomic, readonly) BMKArcline *arcline;À´¶¨Òå¸ÃView¶ÔÓ¦µÄÔ²»¡Êı¾İ¶ÔÏó
- ÔÚBMKArclineViewÖĞĞÂÔö½Ó¿Ú- (id)initWithArcline:;¸ù¾İÖ¸¶¨µÄ»¡ÏßÉú³ÉÒ»¸öÔ²»¡View
+ 2.å‡ ä½•å›¾å½¢ç»˜åˆ¶ä¸­ï¼Œå¢åŠ å¼§çº¿ç»˜åˆ¶æ–¹æ³•
+ åœ¨BMKArclineä¸­æ–°å¢æ¥å£+ (BMKArcline *)arclineWithPoints:;æ ¹æ®æŒ‡å®šåæ ‡ç‚¹ç”Ÿæˆä¸€æ®µåœ†å¼§
+ åœ¨BMKArclineä¸­æ–°å¢æ¥å£+ (BMKArcline *)arclineWithCoordinates:;æ ¹æ®æŒ‡å®šç»çº¬åº¦ç”Ÿæˆä¸€æ®µåœ†å¼§
+ åœ¨ç±»BMKArclineViewä¸­æ–°å¢å±æ€§@property (nonatomic, readonly) BMKArcline *arcline;æ¥å®šä¹‰è¯¥Viewå¯¹åº”çš„åœ†å¼§æ•°æ®å¯¹è±¡
+ åœ¨BMKArclineViewä¸­æ–°å¢æ¥å£- (id)initWithArcline:;æ ¹æ®æŒ‡å®šçš„å¼§çº¿ç”Ÿæˆä¸€ä¸ªåœ†å¼§View
  
- 3.¼¸ºÎÍ¼ĞÎ»æÖÆÖĞ£¬À©Ôö°¼¶à±ßĞÎ»æÖÆÄÜÁ¦
+ 3.å‡ ä½•å›¾å½¢ç»˜åˆ¶ä¸­ï¼Œæ‰©å¢å‡¹å¤šè¾¹å½¢ç»˜åˆ¶èƒ½åŠ›
  
- 4.ĞÂÔöKeyÑéÖ¤·µ»ØÖµ
- ÔÚBMKMapManagerÖĞĞÂÔöÃ¶¾ÙÊı¾İÀàĞÍEN_PERMISSION_STATUSÀàÀ´¶¨ÒåkeyÑéÖ¤´íÎóÂë
- ·şÎñ¶Ë¾ßÌå·µ»ØµÄ´íÎóÂëÇë²Î¼ûhttp://developer.baidu.com/map/lbs-appendix.htm#.appendix2
+ 4.æ–°å¢KeyéªŒè¯è¿”å›å€¼
+ åœ¨BMKMapManagerä¸­æ–°å¢æšä¸¾æ•°æ®ç±»å‹EN_PERMISSION_STATUSç±»æ¥å®šä¹‰keyéªŒè¯é”™è¯¯ç 
+ æœåŠ¡ç«¯å…·ä½“è¿”å›çš„é”™è¯¯ç è¯·å‚è§http://developer.baidu.com/map/lbs-appendix.htm#.appendix2
  
- 5.ĞÂÔö¹«½»»»³Ë²éÑ¯ÖĞµÄ½á¹û×Ö¶Î
- ÔÚÀàBMKLineÖĞĞÂÔöÊôĞÔ@property (nonatomic) int zonePrice;¶¨ÒåÂ·¶Î¼Û¸ñ
- ÔÚÀàBMKLineÖĞĞÂÔöÊôĞÔ@property (nonatomic) int totalPrice;¶¨ÒåÏßÂ·×Ü¼Û¸ñ
- ÔÚÀàBMKLineÖĞĞÂÔöÊôĞÔ@property (nonatomic) int time;¶¨ÒåÏßÂ·ºÄÊ±£¬µ¥Î»£ºÃë
- ÔÚÀàBMKRouteÖĞĞÂÔöÊôĞÔ@property (nonatomic) int time;¶¨Òå´ËÂ·¶ÎµÄÏûºÄÊ±¼ä£¬µ¥Î»£ºÃë
+ 5.æ–°å¢å…¬äº¤æ¢ä¹˜æŸ¥è¯¢ä¸­çš„ç»“æœå­—æ®µ
+ åœ¨ç±»BMKLineä¸­æ–°å¢å±æ€§@property (nonatomic) int zonePrice;å®šä¹‰è·¯æ®µä»·æ ¼
+ åœ¨ç±»BMKLineä¸­æ–°å¢å±æ€§@property (nonatomic) int totalPrice;å®šä¹‰çº¿è·¯æ€»ä»·æ ¼
+ åœ¨ç±»BMKLineä¸­æ–°å¢å±æ€§@property (nonatomic) int time;å®šä¹‰çº¿è·¯è€—æ—¶ï¼Œå•ä½ï¼šç§’
+ åœ¨ç±»BMKRouteä¸­æ–°å¢å±æ€§@property (nonatomic) int time;å®šä¹‰æ­¤è·¯æ®µçš„æ¶ˆè€—æ—¶é—´ï¼Œå•ä½ï¼šç§’
  
- ÓÅ»¯£º
- ÓÅ»¯Key¼øÈ¨ÈÏÖ¤²ßÂÔ
- ÓÅ»¯¼¸ºÎÍ¼ĞÎ»æÖÆÖĞ£¬ÕÛÏß¶Î»æÖÆÄ©¶ËÔ²»¬
- ÌáÉıÌí¼Ó¡¢É¾³ı¼¸ºÎÍ¼ĞÎ¸²¸ÇÎïµÄĞ§ÂÊ
- ĞŞ¸´£º
- ĞŞ¸´iOS7ÏµÍ³ÏÂ£¬¶¨Î»Í¼²ãÍÏÍ¼Ê±¿¨¶ÙµÄbug
- ĞŞ¸´POI¼ìË÷½á¹ûÖĞ£¬½á¹ûÒ³Ë÷ÒıÊ¼ÖÕÎª0µÄbug
- ĞŞ¸´¼İ³µÏßÂ·¹æ»®ÖĞ£¬×îºóÒ»¸ö½ÚµãÌáÊ¾ĞÅÏ¢ÓĞÎóµÄbug
+ ä¼˜åŒ–ï¼š
+ ä¼˜åŒ–Keyé‰´æƒè®¤è¯ç­–ç•¥
+ ä¼˜åŒ–å‡ ä½•å›¾å½¢ç»˜åˆ¶ä¸­ï¼ŒæŠ˜çº¿æ®µç»˜åˆ¶æœ«ç«¯åœ†æ»‘
+ æå‡æ·»åŠ ã€åˆ é™¤å‡ ä½•å›¾å½¢è¦†ç›–ç‰©çš„æ•ˆç‡
+ ä¿®å¤ï¼š
+ ä¿®å¤iOS7ç³»ç»Ÿä¸‹ï¼Œå®šä½å›¾å±‚æ‹–å›¾æ—¶å¡é¡¿çš„bug
+ ä¿®å¤POIæ£€ç´¢ç»“æœä¸­ï¼Œç»“æœé¡µç´¢å¼•å§‹ç»ˆä¸º0çš„bug
+ ä¿®å¤é©¾è½¦çº¿è·¯è§„åˆ’ä¸­ï¼Œæœ€åä¸€ä¸ªèŠ‚ç‚¹æç¤ºä¿¡æ¯æœ‰è¯¯çš„bug
  --------------------
  v2.2.0
- ĞÂÔö£º
- 1. ĞÂÔöµØÍ¼¶àÊµÀıÄÜÁ¦£¬¿ª·¢Õß¿ÉÔÚÍ¬Ò»¸öÒ³ÃæÉÏ¹¹½¨¶àÕÅÏà»¥¶ÀÁ¢µÄµØÍ¼£¬¸÷µØÍ¼ÉÏµÄ¸²¸ÇÎï»¥²»¸ÉÈÅ£»
- 2. ĞÂÔö¼ìË÷¶àÊµÀıÄÜÁ¦£¬¿ª·¢Õß¿É²¢ĞĞ·¢Æğ¶à¸ö¼ìË÷À´Âú×ã×Ô¼ºÊµ¼ÊµÄÒµÎñĞèÇó
- ÓÉÓÚĞÂÔö¼ìË÷¶àÊµÀıÄÜÁ¦£¬Òò´ËĞèÒªÔÚBMKSearchDelegateµÄ»Øµ÷ÖĞÔö¼Ósearcher²ÎÊıÀ´±íÃ÷ÊÇÄÄ¸ö¼ìË÷¶ÔÏó·¢ÆğµÄ¼ì   Ë÷¡£ËùÒÔÓ¦ÓÃ¼ìË÷¶àÊµÀıÊ±ĞèÒª½«¼ìË÷½á¹ûºÍsearcherÀ´½øĞĞÒ»Ò»¶ÔÓ¦¡£Ê¾ÀıÈçÏÂ£º
+ æ–°å¢ï¼š
+ 1. æ–°å¢åœ°å›¾å¤šå®ä¾‹èƒ½åŠ›ï¼Œå¼€å‘è€…å¯åœ¨åŒä¸€ä¸ªé¡µé¢ä¸Šæ„å»ºå¤šå¼ ç›¸äº’ç‹¬ç«‹çš„åœ°å›¾ï¼Œå„åœ°å›¾ä¸Šçš„è¦†ç›–ç‰©äº’ä¸å¹²æ‰°ï¼›
+ 2. æ–°å¢æ£€ç´¢å¤šå®ä¾‹èƒ½åŠ›ï¼Œå¼€å‘è€…å¯å¹¶è¡Œå‘èµ·å¤šä¸ªæ£€ç´¢æ¥æ»¡è¶³è‡ªå·±å®é™…çš„ä¸šåŠ¡éœ€æ±‚
+ ç”±äºæ–°å¢æ£€ç´¢å¤šå®ä¾‹èƒ½åŠ›ï¼Œå› æ­¤éœ€è¦åœ¨BMKSearchDelegateçš„å›è°ƒä¸­å¢åŠ searcherå‚æ•°æ¥è¡¨æ˜æ˜¯å“ªä¸ªæ£€ç´¢å¯¹è±¡å‘èµ·çš„æ£€   ç´¢ã€‚æ‰€ä»¥åº”ç”¨æ£€ç´¢å¤šå®ä¾‹æ—¶éœ€è¦å°†æ£€ç´¢ç»“æœå’Œsearcheræ¥è¿›è¡Œä¸€ä¸€å¯¹åº”ã€‚ç¤ºä¾‹å¦‚ä¸‹ï¼š
  - (void)onGetPoiResult:(BMKSearch*)searcher result:(NSArray*)poiResultListsearchType:(int)type errorCode:(int)error{
  if(searcher==_search){
- NSLog(@"ÕâÊÇ_search ¶ÔÓ¦µÄPOIËÑË÷½á¹û");
+ NSLog(@"è¿™æ˜¯_search å¯¹åº”çš„POIæœç´¢ç»“æœ");
  }else if(searcher==_search2){
- NSLog(@"ÕâÊÇ_search2¶ÔÓ¦µÄPOIËÑË÷½á¹û");
+ NSLog(@"è¿™æ˜¯_search2å¯¹åº”çš„POIæœç´¢ç»“æœ");
  }
  }
- 3. ĞÂÔöµØÍ¼×î´ó¡¢×îĞ¡Ëõ·ÅµÈ¼¶µÄ¿ØÖÆ·½·¨
- ÔÚÀàBMKMapViewÖĞĞÂÔöÊôĞÔ@property (nonatomic) float minZoomLevel;À´Éè¶¨µØÍ¼µÄ×Ô¶¨Òå×îĞ¡±ÈÀı³ß¼¶±ğ
- ÔÚÀàBMKMapViewÖĞĞÂÔöÊôĞÔ@property (nonatomic) float maxZoomLevel;À´Éè¶¨µØÍ¼µÄ×Ô¶¨Òå×î´ó±ÈÀı³ß¼¶±ğ
- 4. ĞÂÔöµØÍ¼²Ù×÷µÄÊÖÊÆ¿ØÖÆ¿ª¹Ø
- ÔÚÀàBMKMapViewÖĞĞÂÔöÊôĞÔ@property(nonatomic, getter=isZoomEnabledWithTap) BOOL zoomEnabledWithTap;À´Éè¶¨µØÍ¼ViewÄÜ·ñÖ§³ÖÓÃ»§µ¥Ö¸Ë«»÷·Å´óµØÍ¼£¬Ë«Ö¸µ¥»÷ËõĞ¡µØÍ¼
- ÔÚÀàBMKMapViewÖĞĞÂÔöÊôĞÔ@property(nonatomic, getter=isOverlookEnabled) BOOL overlookEnabled;À´Éè¶¨µØÍ¼ViewÄÜ·ñÖ§³Ö¸©Ñö½Ç
- ÔÚÀàBMKMapViewÖĞĞÂÔöÊôĞÔ@property(nonatomic, getter=isRotateEnabled) BOOL rotateEnabled;À´Éè¶¨µØÍ¼ViewÄÜ·ñÖ§³ÖĞı×ª
+ 3. æ–°å¢åœ°å›¾æœ€å¤§ã€æœ€å°ç¼©æ”¾ç­‰çº§çš„æ§åˆ¶æ–¹æ³•
+ åœ¨ç±»BMKMapViewä¸­æ–°å¢å±æ€§@property (nonatomic) float minZoomLevel;æ¥è®¾å®šåœ°å›¾çš„è‡ªå®šä¹‰æœ€å°æ¯”ä¾‹å°ºçº§åˆ«
+ åœ¨ç±»BMKMapViewä¸­æ–°å¢å±æ€§@property (nonatomic) float maxZoomLevel;æ¥è®¾å®šåœ°å›¾çš„è‡ªå®šä¹‰æœ€å¤§æ¯”ä¾‹å°ºçº§åˆ«
+ 4. æ–°å¢åœ°å›¾æ“ä½œçš„æ‰‹åŠ¿æ§åˆ¶å¼€å…³
+ åœ¨ç±»BMKMapViewä¸­æ–°å¢å±æ€§@property(nonatomic, getter=isZoomEnabledWithTap) BOOL zoomEnabledWithTap;æ¥è®¾å®šåœ°å›¾Viewèƒ½å¦æ”¯æŒç”¨æˆ·å•æŒ‡åŒå‡»æ”¾å¤§åœ°å›¾ï¼ŒåŒæŒ‡å•å‡»ç¼©å°åœ°å›¾
+ åœ¨ç±»BMKMapViewä¸­æ–°å¢å±æ€§@property(nonatomic, getter=isOverlookEnabled) BOOL overlookEnabled;æ¥è®¾å®šåœ°å›¾Viewèƒ½å¦æ”¯æŒä¿¯ä»°è§’
+ åœ¨ç±»BMKMapViewä¸­æ–°å¢å±æ€§@property(nonatomic, getter=isRotateEnabled) BOOL rotateEnabled;æ¥è®¾å®šåœ°å›¾Viewèƒ½å¦æ”¯æŒæ—‹è½¬
  
  
- ĞŞ¸´£º
- 1.  ĞŞ¸´ÒÅÁôzip¿â³åÍ»ÎÊÌâ
- 2.  ½â¾öDocumentsÏÂµÄ·ÇÓÃ»§Êı¾İÉÏ´«iCloudµÄÎÊÌâ
- 3.  ĞŞ¸´BMKMapViewDelegateÖĞregionDidChangeAnimated / regionWillChangeAnimatedÍ¼Çø±ä»¯ÎÊÌâ
-
+ ä¿®å¤ï¼š
+ 1.  ä¿®å¤é—ç•™zipåº“å†²çªé—®é¢˜
+ 2.  è§£å†³Documentsä¸‹çš„éç”¨æˆ·æ•°æ®ä¸Šä¼ iCloudçš„é—®é¢˜
+ 3.  ä¿®å¤BMKMapViewDelegateä¸­regionDidChangeAnimated / regionWillChangeAnimatedå›¾åŒºå˜åŒ–é—®é¢˜
+ --------------------
+ v2.2.1
+ ä¿®å¤ï¼š
+ 1.  ä¿®å¤v2.2.0ç‰ˆæœ¬è¦†ç›–å®‰è£…åï¼Œåœ°å›¾æ— æ³•æ­£å¸¸æ˜¾ç¤ºçš„é—®é¢˜
+ 2.  ä¿®å¤åœ°å›¾é«˜çº§åˆ«ä¸‹ï¼Œé“è·¯åç§°ä¸æ˜¾ç¤ºçš„é—®é¢˜
+ 3.  ä¿®å¤BMKMapManageçš„stopæ–¹æ³•ä¸å¯ç”¨çš„é—®é¢˜
+ 4.  ä¿®å¤setMapStatusä¸­è®¾ç½®åœ°å›¾ç­‰çº§å¼‚å¸¸çš„é—®é¢˜
+ 5.  ä¿®å¤åœ°å›¾ä¸­å¿ƒç‚¹åç§»æ—¶ï¼Œæ‹–åŠ¨åœ°å›¾è¦†ç›–ç‰©å¼‚å¸¸çš„é—®é¢˜
+ 6.  ä¿®å¤BMKMapViewä¸­æ‰‹åŠ¿æ§åˆ¶ç›¸å…³çš„enableå±æ€§è·å–ä¸æ­£ç¡®çš„é—®é¢˜
+ 7.  ä¿®å¤ä¸XMLåº“å†²çªçš„é—®é¢˜
+ --------------------
+ v2.3.0
+ æ–°å¢ï¼š
+ å¯æ ¹æ®å¼€å‘è€…çš„å®é™…éœ€æ±‚ï¼Œä¸‹è½½æ»¡è¶³éœ€æ±‚çš„å®šåˆ¶åŠŸèƒ½å¼€å‘åŒ…
+ 1.  åŸºç¡€åœ°å›¾:åŒ…æ‹¬åŸºæœ¬çŸ¢é‡åœ°å›¾ã€å«æ˜Ÿå›¾ã€å®æ—¶è·¯å†µå›¾ã€ç¦»çº¿åœ°å›¾åŠå„ç§åœ°å›¾è¦†ç›–ç‰©ï¼Œæ­¤å¤–è¿˜åŒ…æ‹¬å„ç§ä¸åœ°å›¾ç›¸å…³çš„æ“ä½œå’Œäº‹ä»¶ç›‘å¬
+ 2.  æ£€ç´¢åŠŸèƒ½:åŒ…æ‹¬POIæ£€ç´¢ã€å…¬äº¤ä¿¡æ¯æŸ¥è¯¢ã€è·¯çº¿è§„åˆ’ã€æ­£å‘/åå‘åœ°ç†ç¼–ç ã€åœ¨çº¿å»ºè®®æŸ¥è¯¢ã€çŸ­ä¸²åˆ†äº«ç­‰åŠŸèƒ½
+ é’ˆå¯¹æ£€ç´¢ä¸šåŠ¡è®¾è®¡äº†å…¨æ–°æ›´æ˜“ç”¨ã€å­¦ä¹ æˆæœ¬æ›´ä½çš„ç¨‹åºåŠŸèƒ½æ¥å£
+ 3.  LBSäº‘æ£€ç´¢:æä¾›å‘¨è¾¹ã€åŒºåŸŸã€åŸå¸‚å†…ã€è¯¦æƒ…å¤šç§æ–¹å¼æ£€ç´¢ç”¨æˆ·å­˜å‚¨åœ¨LBSäº‘å†…çš„è‡ªæœ‰æ•°æ®
+ 4.  å®šä½åŠŸèƒ½:æä¾›ä¾¿æ·çš„æ¥å£ï¼Œå¸®åŠ©ç”¨æˆ·å¿«æ·è·å–å½“å‰ä½ç½®ä¿¡æ¯
+ å®ç°å…¨é¢å‡çº§ä¼˜åŒ–ï¼Œå®šä½åŠŸèƒ½å¯è„±ç¦»åœ°å›¾å•ç‹¬ä½¿ç”¨
+ 5.  è®¡ç®—å·¥å…·:åŒ…æ‹¬æµ‹è·ï¼ˆä¸¤ç‚¹ä¹‹é—´åœ°ç†è·ç¦»ï¼‰ã€åæ ‡è½¬æ¢ã€è°ƒèµ·ç™¾åº¦åœ°å›¾å¯¼èˆªç­‰åŠŸèƒ½
+ --------------------
+ v2.4.0
+ æ–°å¢ï¼š
+ åŸºç¡€åœ°å›¾
+ 1. å¼€æ”¾çƒ­åŠ›å›¾ç»˜åˆ¶èƒ½åŠ›ï¼Œå¸®åŠ©ç”¨æˆ·ç»˜åˆ¶è‡ªæœ‰æ•°æ®çƒ­åŠ›å›¾ï¼›
+ åœ¨æ–‡ä»¶BMKHeatMap.hä¸­æ–°å¢ç±»BMKHeatMapNodeæ¥è¡¨ç¤ºçƒ­åŠ›å›¾æ•°æ®çš„å•ä¸ªæ•°æ®èŠ‚ç‚¹
+ åœ¨ç±»BMKHeatMapNodeä¸­æ–°å¢å±æ€§@property (nonatomic) CLLocationCoordinate2D pt;å®šä¹‰ç‚¹çš„ä½ç½®åæ ‡
+ åœ¨ç±»BMKHeatMapNodeä¸­æ–°å¢å±æ€§@property (nonatomic) double intensity;å®šä¹‰ç‚¹çš„å¼ºåº¦æƒå€¼
+ åœ¨BMKHeatMapä¸­æ–°å¢ç±»BMKHeatMapæ¥å­˜å‚¨çƒ­åŠ›å›¾çš„ç»˜åˆ¶æ•°æ®å’Œè‡ªå®šä¹‰çƒ­åŠ›å›¾çš„æ˜¾ç¤ºæ ·å¼
+ åœ¨ç±»BMKHeatMapä¸­æ–°å¢å±æ€§@property (nonatomic, assign) int mRadius; è®¾ç½®çƒ­åŠ›å›¾çš„æŸ”åŒ–åŠå¾„
+ åœ¨ç±»BMKHeatMapä¸­æ–°å¢å±æ€§@property (nonatomic, retain) BMKGradient* mGradient; è®¾ç½®çƒ­åŠ›å›¾çš„æ¸å˜è‰²
+ åœ¨ç±»BMKHeatMapä¸­æ–°å¢å±æ€§@property (nonatomic, assign) double mOpacity; è®¾ç½®çƒ­åŠ›å›¾çš„é€æ˜åº¦
+ åœ¨ç±»BMKHeatMapä¸­æ–°å¢å±æ€§@property (nonatomic, retain) NSMutableArray* mData; è®¾ç½®çƒ­åŠ›å›¾æ•°æ®
+ åœ¨ç±»BMKMapViewä¸­æ–°å¢æ–¹æ³•- (void)addHeatMap:;æ¥æ·»åŠ çƒ­åŠ›å›¾
+ åœ¨ç±»BMKMapViewä¸­æ–°å¢æ–¹æ³•- (void)removeHeatMap;æ¥åˆ é™¤çƒ­åŠ›å›¾
+ 
+ æ£€ç´¢åŠŸèƒ½
+ 1. å¼€æ”¾POIçš„Placeè¯¦æƒ…ä¿¡æ¯æ£€ç´¢èƒ½åŠ›ï¼›
+ åœ¨BMKPoiSearchOption.hæ–‡ä»¶ä¸­æ–°å¢poiè¯¦æƒ…æ£€ç´¢ä¿¡æ¯ç±»BMKPoiDetailSearchOption
+ åœ¨ç±» BMKPoiDetailSearchOptionä¸­æ–°å¢å±æ€§@property (nonatomic, retain) NSString* poiUid; poiçš„uid
+ åœ¨BMKPoiSearchType.hæ–‡ä»¶ä¸­æ–°å¢poiè¯¦æƒ…æ£€ç´¢ç»“æœç±»BMKPoiDetailResult
+ åœ¨ç±»BMKPoiSearchä¸­æ–°å¢æ–¹æ³•- (BOOL)poiDetailSearch:;æ¥æ ¹æ®poi uid å‘èµ·poiè¯¦æƒ…æ£€ç´¢
+ åœ¨BMKPoiSearchDelegateä¸­æ–°å¢å›è°ƒ- (void)onGetPoiDetailResult: result: errorCode:;æ¥è¿”å›POIè¯¦æƒ…æœç´¢ç»“æœ
+ 
+ å®šä½åŠŸèƒ½
+ 1. æ–°å¢å®šä½å¤šå®ä¾‹ï¼Œæ»¡è¶³å¼€å‘è€…åœ¨å¤šä¸ªé¡µé¢åˆ†åˆ«ä½¿ç”¨å®šä½çš„éœ€æ±‚ï¼›
+ ä¼˜åŒ–ï¼š
+ 1. é«˜çº§åˆ«åœ°å›¾ä¸‹åšå¹³ç§»æ“ä½œæ—¶ï¼Œæ ‡æ³¨è¦†ç›–ç‰©ç§»åŠ¨æµç•…æ€§ä¼˜åŒ–ï¼›
+ ä¿®å¤ï¼š
+ 1. ä¿®å¤ç›¸é‚»åœ°å½¢å›¾å›¾å±‚æ‹¼æ¥æ—¶ï¼Œæ¥ç¼è¿‡å¤§çš„é—®é¢˜ï¼›
+ 2. ä¿®å¤æ£€ç´¢å†…å­˜æ³„éœ²çš„é—®é¢˜ï¼›
+ 3. ä¿®å¤å®šä½å›¾å±‚å†…å­˜æ³„éœ²çš„é—®é¢˜ï¼›
  *********************/
-
-
 /**
- *»ñÈ¡µ±Ç°µØÍ¼APIµÄ°æ±¾ºÅ
- *return  ·µ»Øµ±Ç°APIµÄ°æ±¾ºÅ
+ *è·å–å½“å‰åœ°å›¾APIçš„ç‰ˆæœ¬å·
+ *return  è¿”å›å½“å‰APIçš„ç‰ˆæœ¬å·
  */
 UIKIT_STATIC_INLINE NSString* BMKGetMapApiVersion()
 {
-	return @"2.2.0";
+	return @"2.4.0";
 }

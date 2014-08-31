@@ -7,8 +7,6 @@
  */
 
 #import "BMKAnnotationView.h"
-
-
 enum {
     BMKPinAnnotationColorRed = 0,
     BMKPinAnnotationColorGreen,

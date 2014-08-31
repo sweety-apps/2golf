@@ -26,8 +26,8 @@
 
 #import <CoreLocation/CoreLocation.h>
 #import "AppDelegate.h"
-#import "AppBoard_iPad.h"
-#import "AppBoard_iPhone.h"
+//#import "AppBoard_iPad.h"
+//#import "AppBoard_iPhone.h"
 #import "XGPush.h"
 
 #import <ShareSDK/ShareSDK.h>
@@ -36,7 +36,7 @@
 
 #import "BMapKit.h"
 
-#import "model.h"
+//#import "model.h"
 
 
 #import "AlixPayResult.h"
@@ -108,7 +108,7 @@ static BMKMapManager* _mapManager = nil;
     
 	if ( [BeeSystemInfo isDevicePad] )
 	{
-		self.window.rootViewController = [AppBoard_iPhone sharedInstance];
+//		self.window.rootViewController = [AppBoard_iPhone sharedInstance];
 	}
 	else
 	{

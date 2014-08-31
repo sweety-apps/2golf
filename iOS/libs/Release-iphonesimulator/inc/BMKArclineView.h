@@ -1,5 +1,5 @@
 /*
- *  BMKPolylineView.h
+ *  BMKArclineView.h
  *  BMapKit
  *
  *  Copyright 2011 Baidu Inc. All rights reserved.

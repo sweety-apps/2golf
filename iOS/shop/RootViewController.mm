@@ -28,7 +28,7 @@
 //	<merchantOrderAmt>1</merchantOrderAmt>\
 //	<sign>SznBRkvLCAziexRbfaBm7GMv4WPNUevEuPlw6vG+jxbG9PKfNBkdchTUWjFoYlgc4fcG/YNMj+JTYDjW8gyczaQWj5+pYiAkOtCDnEwnGxNUIrqZ47Xk6jbtr1b9d3rQLp8tlBYgcPa6Kzwmyv+IJgjTHxEqIw4f72fzRq5pRvY=</sign>\
 //	</upomp>";
-	order = @"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<upomp application=\"LanchPay.Req\" version=\"1.0.0\"><merchantId>898000000000002</merchantId><merchantOrderId>178-000001018</merchantOrderId><merchantOrderTime>20140829113105</merchantOrderTime><sign>LyCWD8LIVxL0T9kuiZbZYTjLsT5HnOZZtjgo9B+myWAQlwn1lBflwfLVv+eBBumwO50KojqG3tgTd7tmeiEp9DWjgUXqSRoVFibCihbxL7bsgz8uHjp3UYR4GZ7Q1JtFK0Fpa4s1Znr0QWYoRnUQ/dBLbtomfueL/OCtPcwjPjw=</sign></upomp>";
+	order = @"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<upomp application=\"LanchPay.Req\" version=\"1.0.0\"><merchantId>898000000000002</merchantId><merchantOrderId>187-000001032</merchantOrderId><merchantOrderTime>20140831225331</merchantOrderTime><sign>dFMnj7ji1uO+WOEGbxz6cMOalejHKlgLxGCjxB82dMYQfirU4cpqtDbqRpqA4kRmcjqEa5In0p9wneWvgLEv8CVqCEcP4aEF1YWm6JD3WbBIBEtZmhdOzWor0DjS5ASMhDcs8dXEXpVTiV2KWT+lT+XMrrbOnQNYRUwdl3o8m3Q=</sign></upomp>\n";
 	viewCtrl = [LTInterface getHomeViewControllerWithType:1 strOrder:order andDelegate:self];
 	[self.navigationController pushViewController:viewCtrl animated:YES];
 	//[viewCtrl release];		

@@ -8,7 +8,6 @@
 
 #import "BMKAnnotation.h"
 #import "BMKTypes.h"
-#import "BMKGeometry.h"
 
 /// 该类是地图覆盖物的基类，所有地图的覆盖物需要继承自此类
 @protocol BMKOverlay <BMKAnnotation>

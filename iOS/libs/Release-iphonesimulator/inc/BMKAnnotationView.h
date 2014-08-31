@@ -35,6 +35,7 @@ typedef NSUInteger BMKAnnotationViewDragState;
 @private
     BMKAnnotationViewInternal *_internal;
     BOOL _enabled3D;
+    CGPoint _originPt;
 }
 
 /**
@@ -48,7 +49,7 @@ typedef NSUInteger BMKAnnotationViewDragState;
 
 ///复用标志
 @property (nonatomic, readonly) NSString *reuseIdentifier;
-
+///paopaoView
 @property (nonatomic, retain)BMKActionPaopaoView* paopaoView;
 
 /**

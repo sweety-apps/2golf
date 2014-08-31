@@ -1,66 +1,16 @@
-/*! \file BMKGeometry.h
+/*  BMKGeometry.h
  *  BMapKit
  *
  *  Copyright 2011 Baidu Inc. All rights reserved.
  *
  */
 
+#import "BMKTypes.h"
 #import <CoreGraphics/CoreGraphics.h>
 #import <CoreLocation/CoreLocation.h>
-
 #import <UIKit/UIKit.h>
 
-///表示一个经纬度范围
-typedef struct {
-    CLLocationDegrees latitudeDelta;	///< 纬度范围
-    CLLocationDegrees longitudeDelta;	///< 经度范围
-} BMKCoordinateSpan;
 
-///表示一个经纬度区域
-typedef struct {
-    CLLocationCoordinate2D northEast;	///< 东北角点经纬度坐标
-    CLLocationCoordinate2D southWest;	///< 西南角点经纬度坐标
-} BMKCoordinateBounds;
-
-///表示一个经纬度区域
-typedef struct {
-	CLLocationCoordinate2D center;	///< 中心点经纬度坐标
-	BMKCoordinateSpan span;		///< 经纬度范围
-} BMKCoordinateRegion;
-
-///表示一个经纬度坐标点
-typedef struct {
-	int latitudeE6;		///< 纬度，乘以1e6之后的值
-	int longitudeE6;	///< 经度，乘以1e6之后的值
-} BMKGeoPoint;
-
-///地理坐标点，用直角地理坐标表示
-typedef struct {
-    double x;	///< 横坐标
-    double y;	///< 纵坐标
-} BMKMapPoint;
-
-///矩形大小，用直角地理坐标表示
-typedef struct {
-    double width;	///< 宽度
-    double height;	///< 高度
-} BMKMapSize;
-
-///矩形，用直角地理坐标表示
-typedef struct {
-    BMKMapPoint origin; ///< 屏幕左上点对应的直角地理坐标
-    BMKMapSize size;	///< 坐标范围
-} BMKMapRect;
-
-///地图缩放比例
-typedef CGFloat BMKZoomScale;
-
-/// 经过投影后的世界范围大小，与经纬度（-85，180）投影后的坐标值对应
-UIKIT_EXTERN const BMKMapSize BMKMapSizeWorld;
-/// 经过投影后的世界矩形范围
-UIKIT_EXTERN const BMKMapRect BMKMapRectWorld;
-/// 空的直角坐标矩形
-UIKIT_EXTERN const BMKMapRect BMKMapRectNull;
 /**
  *构造BMKCoordinateSpan对象
  *@param latitudeDelta 纬度方向的变化量
@@ -405,19 +355,12 @@ UIKIT_EXTERN BOOL BMKMapRectSpans180thMeridian(BMKMapRect rect);
 UIKIT_EXTERN BMKMapRect BMKMapRectRemainder(BMKMapRect rect);
 
 /**
- *坐标转换函数，从原始GPS坐标，mapbar坐标转换成百度坐标
- *@param coorWgs84 待转换的原始GPS坐标，或者mapbar的坐标
+ *坐标转换函数，从原始GPS坐标，mapbar坐标,google坐标，51地图坐标，mapabc坐标转换为百度坐标（51地图坐标需要显出10000）
+ *@param coordinate 待转换的坐标
+ *@param type 待转换的坐标系类型，GPS为原始GPS坐标，COMMON为google坐标，51地图坐标，mapabc坐标
  *@return 返回的NSDictionry中包含“x”，“y”字段，各自对应经过base64加密之后的x，y坐标
  */
-UIKIT_EXTERN NSDictionary* BMKBaiduCoorForWgs84(CLLocationCoordinate2D coorWgs84);
-
-/**
- *坐标转换函数，从google坐标，51地图坐标，mapabc坐标转换为百度坐标（51地图坐标需要显出10000）
- *@param coorGcj 待转换的google坐标，51地图坐标，mapabc坐标
- *@return 返回的NSDictionry中包含“x”，“y”字段，各自对应经过base64加密之后的x，y坐标
- */
-UIKIT_EXTERN NSDictionary* BMKBaiduCoorForGcj(CLLocationCoordinate2D coorGcj);
-
+UIKIT_EXTERN NSDictionary* BMKConvertBaiduCoorFrom(CLLocationCoordinate2D coordinate,BMK_COORD_TYPE type);
 /**
  *base64加密后的坐标字典解密函数
  *@param dictionary 带解密的NSDictionry，该NSDictionry中应包含“x”，“y”字段，各自对应经过base64加密之后的x，y坐标
@@ -425,5 +368,3 @@ UIKIT_EXTERN NSDictionary* BMKBaiduCoorForGcj(CLLocationCoordinate2D coorGcj);
  */
 UIKIT_EXTERN CLLocationCoordinate2D BMKCoorDictionaryDecode(NSDictionary* dictionary);
 
-
-//UIKIT_EXTERN CLLocationCoordinate2D BMKCoordinateForLocation();

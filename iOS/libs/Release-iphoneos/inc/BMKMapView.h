@@ -1,12 +1,3 @@
-//
-//  BMKMapView.h
-//  MapPlatform
-//
-//  Created by BaiduMapAPI on 13-3-25.
-//  Copyright (c) 2013年 baidu. All rights reserved.
-//
-
-
 /*
  *  BMKMapView.h
  *	BMapKit
@@ -14,15 +5,15 @@
  *  Copyright 2011 Baidu Inc. All rights reserved.
  *
  */
+#import "BMKBaseComponent.h"
 #import "BMKTypes.h"
-#import "BMKGeometry.h"
 #import "BMKAnnotation.h"
 #import "BMKAnnotationView.h"
 #import "BMKOverlayView.h"
-#import "BMKUserLocation.h"
 #import "UIKit/UIKit.h"
 #import "BMKMapStatus.h"
 #import "BMKLocationViewDisplayParam.h"
+#import "BMKHeatMap.h"
 
 @protocol BMKMapViewDelegate;
 
@@ -56,22 +47,10 @@ typedef enum {
 /// 指南针的位置，设定坐标以BMKMapView左上角为原点，向右向下增长
 @property (nonatomic) CGPoint compassPosition;
 
-/**
- *设定当前地图的显示范围
- *@param region 要设定的地图范围，用经纬度的方式表示
- *@param animated 是否采用动画效果
- */
-- (void)setRegion:(BMKCoordinateRegion)region animated:(BOOL)animated;
+
 
 /// 当前地图的中心点，改变该值时，地图的比例尺级别不会发生变化
 @property (nonatomic) CLLocationCoordinate2D centerCoordinate;
-
-/**
- *设定地图中心点坐标
- *@param coordinate 要设定的地图中心点坐标，用经纬度表示
- *@param animated 是否采用动画效果
- */
-- (void)setCenterCoordinate:(CLLocationCoordinate2D)coordinate animated:(BOOL)animated;
 
 /// 地图比例尺级别，在手机上当前可使用的级别为3-19级
 @property (nonatomic) float zoomLevel;
@@ -86,11 +65,17 @@ typedef enum {
 /// 地图俯视角度，在手机上当前可使用的范围为－45～0度
 @property (nonatomic) int overlooking;
 
-/// 设定是否显示定位图层
-@property (nonatomic) BOOL showsUserLocation;
+///设定地图View能否支持用户多点缩放(双指)
+@property(nonatomic, getter=isZoomEnabled) BOOL zoomEnabled;
+///设定地图View能否支持用户缩放(双击或双指单击)
+@property(nonatomic, getter=isZoomEnabledWithTap) BOOL zoomEnabledWithTap;
+///设定地图View能否支持用户移动地图
+@property(nonatomic, getter=isScrollEnabled) BOOL scrollEnabled;
+///设定地图View能否支持俯仰角
+@property(nonatomic, getter=isOverlookEnabled) BOOL overlookEnabled;
+///设定地图View能否支持旋转
+@property(nonatomic, getter=isRotateEnabled) BOOL rotateEnabled;
 
-/// 设定定位模式，取值为：BMKUserTrackingMode
-@property (nonatomic) BMKUserTrackingMode userTrackingMode;
 
 /// 设定是否显式比例尺
 @property (nonatomic) BOOL showMapScaleBar;
@@ -98,11 +83,11 @@ typedef enum {
 /// 比例尺的位置，设定坐标以BMKMapView左上角为原点，向右向下增长
 @property (nonatomic) CGPoint mapScaleBarPosition;
 
-/// 当前用户位置，返回坐标为百度坐标
-@property (nonatomic, readonly) BMKUserLocation *userLocation;
+///当前地图范围，采用直角坐标系表示，向右向下增长
+@property (nonatomic) BMKMapRect visibleMapRect;
 
-/// 返回定位坐标点是否在当前地图可视区域内
-@property (nonatomic, readonly, getter=isUserLocationVisible) BOOL userLocationVisible;
+///设定地图View能否支持以手势中心点为轴进行旋转和缩放
+@property(nonatomic, getter=isChangeWithTouchPointCenterEnabled) BOOL ChangeWithTouchPointCenterEnabled;
 
 /**
  *当mapview即将被显式的时候调用，恢复之前存储的mapview状态。
@@ -133,8 +118,19 @@ typedef enum {
  */
 - (BMKCoordinateRegion)regionThatFits:(BMKCoordinateRegion)region;
 
-///当前地图范围，采用直角坐标系表示，向右向下增长
-@property (nonatomic) BMKMapRect visibleMapRect;
+/**
+ *设定当前地图的显示范围
+ *@param region 要设定的地图范围，用经纬度的方式表示
+ *@param animated 是否采用动画效果
+ */
+- (void)setRegion:(BMKCoordinateRegion)region animated:(BOOL)animated;
+
+/**
+ *设定地图中心点坐标
+ *@param coordinate 要设定的地图中心点坐标，用经纬度表示
+ *@param animated 是否采用动画效果
+ */
+- (void)setCenterCoordinate:(CLLocationCoordinate2D)coordinate animated:(BOOL)animated;
 
 /**
  *获得地图当前可视区域截图
@@ -220,76 +216,7 @@ typedef enum {
  */
 - (BMKMapRect)convertRect:(CGRect)rect toMapRectFromView:(UIView *)view;
 
-///设定地图View能否支持用户多点缩放(双指)
-@property(nonatomic, getter=isZoomEnabled) BOOL zoomEnabled;
-///设定地图View能否支持用户缩放(双击或双指单击)
-@property(nonatomic, getter=isZoomEnabledWithTap) BOOL zoomEnabledWithTap;
-///设定地图View能否支持用户移动地图
-@property(nonatomic, getter=isScrollEnabled) BOOL scrollEnabled;
-///设定地图View能否支持俯仰角
-@property(nonatomic, getter=isOverlookEnabled) BOOL overlookEnabled;
-///设定地图View能否支持旋转
-@property(nonatomic, getter=isRotateEnabled) BOOL rotateEnabled;
 
-/**
- *向地图窗口添加标注，需要实现BMKMapViewDelegate的-mapView:viewForAnnotation:函数来生成标注对应的View
- *@param annotation 要添加的标注
- */
-- (void)addAnnotation:(id <BMKAnnotation>)annotation;
-
-/**
- *向地图窗口添加一组标注，需要实现BMKMapViewDelegate的-mapView:viewForAnnotation:函数来生成标注对应的View
- *@param annotations 要添加的标注数组
- */
-- (void)addAnnotations:(NSArray *)annotations;
-
-/**
- *移除标注
- *@param annotation 要移除的标注
- */
-- (void)removeAnnotation:(id <BMKAnnotation>)annotation;
-
-/**
- *移除一组标注
- *@param annotation 要移除的标注数组
- */
-- (void)removeAnnotations:(NSArray *)annotations;
-
-/// 当前地图View的已经添加的标注数组
-@property (nonatomic, readonly) NSArray *annotations;
-
-/**
- *查找指定标注对应的View，如果该标注尚未显示，返回nil
- *@param annotation 指定的标注
- *@return 指定标注对应的View
- */
-- (BMKAnnotationView *)viewForAnnotation:(id <BMKAnnotation>)annotation;
-
-/**
- *根据指定标识查找一个可被复用的标注View，一般在delegate中使用，用此函数来代替新申请一个View
- *@param identifier 指定标识
- *@return 返回可被复用的标注View
- */
-- (BMKAnnotationView *)dequeueReusableAnnotationViewWithIdentifier:(NSString *)identifier;
-
-//设定是否总让选中的annotaion置于最前面
-@property (nonatomic, assign) BOOL isSelectedAnnotationViewFront;
-/**
- *选中指定的标注，本版暂不支持animate效果
- *@param annotation 指定的标注
- *@param animated 本版暂不支持
- */
-- (void)selectAnnotation:(id <BMKAnnotation>)annotation animated:(BOOL)animated;
-
-/**
- *取消指定的标注的选中状态，本版暂不支持animate效果
- *@param annotation 指定的标注
- *@param animated 本版暂不支持
- */
-- (void)deselectAnnotation:(id <BMKAnnotation>)annotation animated:(BOOL)animated;
-
-///设定地图View能否支持以手势中心点为轴进行旋转和缩放
-@property(nonatomic, getter=isChangeWithTouchPointCenterEnabled) BOOL ChangeWithTouchPointCenterEnabled;
 /**
  * 设置地图中心点在地图中的屏幕坐标位置
  * @param ptInScreen 要设定的地图中心点位置，为屏幕坐标，设置的中心点不能超过屏幕范围，否则无效
@@ -323,14 +250,96 @@ typedef enum {
  */
 - (void)setMapStatus:(BMKMapStatus*)mapStatus withAnimation:(BOOL)bAnimation withAnimationTime:(int)ulDuration;
 
+@end
+
+@interface BMKMapView (LocationViewAPI)
+
+/// 设定是否显示定位图层
+@property (nonatomic) BOOL showsUserLocation;
+
+/// 设定定位模式，取值为：BMKUserTrackingMode
+@property (nonatomic) BMKUserTrackingMode userTrackingMode;
+
+/// 返回定位坐标点是否在当前地图可视区域内
+@property (nonatomic, readonly, getter=isUserLocationVisible) BOOL userLocationVisible;
+
+
 /**
  *动态定制我的位置样式
  *	@param	[in]	locationViewDisplayParam	样式参数
  */
 - (void)updateLocationViewWithParam:(BMKLocationViewDisplayParam*)locationViewDisplayParam;
 
+/**
+ *动态更新我的位置数据
+ *	@param	[in]	userLocation	定位数据
+ */
+-(void)updateLocationData:(BMKUserLocation*)userLocation;
 @end
 
+@interface BMKMapView (AnnotationAPI)
+
+/// 当前地图View的已经添加的标注数组
+@property (nonatomic, readonly) NSArray *annotations;
+
+//设定是否总让选中的annotaion置于最前面
+@property (nonatomic, assign) BOOL isSelectedAnnotationViewFront;
+
+/**
+ *向地图窗口添加标注，需要实现BMKMapViewDelegate的-mapView:viewForAnnotation:函数来生成标注对应的View
+ *@param annotation 要添加的标注
+ */
+- (void)addAnnotation:(id <BMKAnnotation>)annotation;
+
+/**
+ *向地图窗口添加一组标注，需要实现BMKMapViewDelegate的-mapView:viewForAnnotation:函数来生成标注对应的View
+ *@param annotations 要添加的标注数组
+ */
+- (void)addAnnotations:(NSArray *)annotations;
+
+/**
+ *移除标注
+ *@param annotation 要移除的标注
+ */
+- (void)removeAnnotation:(id <BMKAnnotation>)annotation;
+
+/**
+ *移除一组标注
+ *@param annotation 要移除的标注数组
+ */
+- (void)removeAnnotations:(NSArray *)annotations;
+
+
+/**
+ *查找指定标注对应的View，如果该标注尚未显示，返回nil
+ *@param annotation 指定的标注
+ *@return 指定标注对应的View
+ */
+- (BMKAnnotationView *)viewForAnnotation:(id <BMKAnnotation>)annotation;
+
+/**
+ *根据指定标识查找一个可被复用的标注View，一般在delegate中使用，用此函数来代替新申请一个View
+ *@param identifier 指定标识
+ *@return 返回可被复用的标注View
+ */
+- (BMKAnnotationView *)dequeueReusableAnnotationViewWithIdentifier:(NSString *)identifier;
+
+
+/**
+ *选中指定的标注，本版暂不支持animate效果
+ *@param annotation 指定的标注
+ *@param animated 本版暂不支持
+ */
+- (void)selectAnnotation:(id <BMKAnnotation>)annotation animated:(BOOL)animated;
+
+/**
+ *取消指定的标注的选中状态，本版暂不支持animate效果
+ *@param annotation 指定的标注
+ *@param animated 本版暂不支持
+ */
+- (void)deselectAnnotation:(id <BMKAnnotation>)annotation animated:(BOOL)animated;
+
+@end
 ///地图View类(和Overlay操作相关的接口)
 @interface BMKMapView (OverlaysAPI)
 
@@ -395,6 +404,20 @@ typedef enum {
  *@return 指定overlay对应的View
  */
 - (BMKOverlayView *)viewForOverlay:(id <BMKOverlay>)overlay;
+
+@end
+@interface BMKMapView (HeatMapAPI)
+
+/**
+ *添加热力图
+ *	@param	[BMKHeatMap*]	heatMap	热力图绘制和显示数据
+ */
+- (void)addHeatMap:(BMKHeatMap*)heatMap;
+
+/**
+ *移除热力图
+ */
+- (void)removeHeatMap;
 
 @end
 
@@ -505,32 +528,6 @@ typedef enum {
  *@param coordinate 返回长按事件坐标点的经纬度
  */
 - (void)mapview:(BMKMapView *)mapView onLongClick:(CLLocationCoordinate2D)coordinate;
-
-/**
- *在地图View将要启动定位时，会调用此函数
- *@param mapView 地图View
- */
-- (void)mapViewWillStartLocatingUser:(BMKMapView *)mapView;
-
-/**
- *在地图View停止定位后，会调用此函数
- *@param mapView 地图View
- */
-- (void)mapViewDidStopLocatingUser:(BMKMapView *)mapView;
-
-/**
- *用户位置更新后，会调用此函数
- *@param mapView 地图View
- *@param userLocation 新的用户位置
- */
-- (void)mapView:(BMKMapView *)mapView didUpdateUserLocation:(BMKUserLocation *)userLocation;
-
-/**
- *定位失败后，会调用此函数
- *@param mapView 地图View
- *@param error 错误号，参考CLError.h中定义的错误号
- */
-- (void)mapView:(BMKMapView *)mapView didFailToLocateUserWithError:(NSError *)error;
 
 /**
  *地图状态改变完成后会调用此接口
