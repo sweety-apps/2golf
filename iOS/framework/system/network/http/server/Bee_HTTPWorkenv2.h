@@ -50,6 +50,6 @@ extern NSMutableString *		_echoBuffer;
 
 #pragma mark -
 
-extern void echo( NSString * text, ... );
+//extern void echo( NSString * text, ... );
 extern void line( NSString * text, ... );
 extern void header( NSString * header );

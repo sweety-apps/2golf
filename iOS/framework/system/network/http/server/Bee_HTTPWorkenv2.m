@@ -47,22 +47,22 @@ NSMutableString *		_echoBuffer = nil;
 
 #pragma mark -
 
-void echo( NSString * text, ... )
-{
-	if ( nil == _echoBuffer )
-		return;
-
-	va_list args;
-	va_start( args, text );
-	
-	NSString * content = [[[NSString alloc] initWithFormat:(NSString *)text arguments:args] autorelease];
-	if ( content && content.length )
-	{
-		[_echoBuffer appendString:content];
-	}
-	
-	va_end( args );
-}
+//void echo( NSString * text, ... )
+//{
+//	if ( nil == _echoBuffer )
+//		return;
+//
+//	va_list args;
+//	va_start( args, text );
+//	
+//	NSString * content = [[[NSString alloc] initWithFormat:(NSString *)text arguments:args] autorelease];
+//	if ( content && content.length )
+//	{
+//		[_echoBuffer appendString:content];
+//	}
+//	
+//	va_end( args );
+//}
 
 extern void header( NSString * header )
 {
