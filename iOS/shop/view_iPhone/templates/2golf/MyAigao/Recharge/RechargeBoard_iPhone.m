@@ -30,10 +30,12 @@
 #import "RechargeViewUICell.h"
 #import "ExtractViewUICell.h"
 #import "NibLoader.h"
+#import "LTInterface.h"
+#import "RegionPickBoard_iPhone.h"
 
 #pragma mark -
 
-@interface RechargeBoard_iPhone() <RechargeViewUICellDelegate,ExtractViewUICellDelegate,UIActionSheetDelegate,UITextFieldDelegate>
+@interface RechargeBoard_iPhone() <RechargeViewUICellDelegate,ExtractViewUICellDelegate,UIActionSheetDelegate,UITextFieldDelegate,LTInterfaceDelegate>
 {
 	BeeUIScrollView* _scroll;
     
@@ -259,6 +261,22 @@ ON_SIGNAL2( BeeUIAlertView, signal)
     .TIMEOUT(30);
 }
 
+- (void)requestUnionPayXML
+{
+    NSDictionary* paramDict = @{
+                                @"money":self.rechargeMoneyValue,
+                                @"session":[UserModel sharedInstance].session.objectToDictionary,
+                                @"payid":[self.dataDict[@"pay_id"] stringValue],
+                                @"rechargeid":self.dataDict[@"id"],
+                                @"method":@"submitService"
+                                
+                                };
+    [self presentLoadingTips:@"正在加载"];
+    self.HTTP_POST([[ServerConfig sharedInstance].url stringByAppendingString:@"order/unionpay"])
+    .PARAM(@"json",[paramDict JSONString])
+    .TIMEOUT(30);
+}
+
 - (void)requestWithdrawData
 {
     NSString* note = [NSString stringWithFormat:@"%@ %@ %@"
@@ -318,6 +336,29 @@ ON_SIGNAL2( BeeUIAlertView, signal)
                 [self presentFailureTips:dict[@"status"][@"error_desc"]];
             }
         }
+        else if ([[req.url absoluteString] rangeOfString:@"order/unionpay"].length > 0)
+        {
+            if ([(dict[@"status"])[@"succeed"] intValue] == 1)
+            {
+                self.dataDict = [NSMutableDictionary dictionaryWithDictionary:(dict[@"data"])];
+                
+                NSString* xml = self.dataDict[@"xml"];
+                UIViewController *viewCtrl = nil;
+                self.hidesBottomBarWhenPushed = YES;
+                
+                viewCtrl = [LTInterface getHomeViewControllerWithType:1 strOrder:xml andDelegate:self];
+                [self.stack pushViewController:viewCtrl animated:YES];
+//                [viewCtrl release];
+//                RegionPickBoard_iPhone * board = [[[RegionPickBoard_iPhone alloc] init] autorelease];
+//                board.rootBoard = self;
+//                board.regions = [RegionModel sharedInstance].regions;
+//                [self.stack pushBoard:board animated:YES];
+            }
+            else
+            {
+                [self presentFailureTips:dict[@"status"][@"error_desc"]];
+            }
+        }
     }
 }
 
@@ -328,6 +369,8 @@ ON_SIGNAL2( BeeUIAlertView, signal)
     switch (buttonIndex)
     {
         case 0:
+        case 1:
+            
         {
             if (self.rechargeMoneyValue)
             {
@@ -337,7 +380,6 @@ ON_SIGNAL2( BeeUIAlertView, signal)
             
         }
             break;
-            
         default:
             break;
     }
@@ -426,7 +468,18 @@ ON_SIGNAL2( BeeUIAlertView, signal)
             
         }
             break;
-            
+        case 1:
+            if (self.rechargeMoneyValue)
+            {
+                //银联支付
+                NSLog(@"银联支付");
+                if (self.rechargeMoneyValue
+                    && (self.dataDict[@"is_paid"] && ![self.dataDict[@"is_paid"] boolValue]))
+                {
+                    [self requestUnionPayXML];
+                }
+            }
+            break;
         default:
             break;
     }
@@ -459,7 +512,7 @@ ON_SIGNAL2( BeeUIAlertView, signal)
             confirmedValue:(NSNumber*)value
 {
     self.rechargeMoneyValue = value;
-    UIActionSheet* as = [[[UIActionSheet alloc] initWithTitle:@"选择充值方式" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"支付宝充值", nil] autorelease];
+    UIActionSheet* as = [[[UIActionSheet alloc] initWithTitle:@"选择充值方式" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"支付宝充值",@"银联充值",nil] autorelease];
     [as showInView:[[UIApplication sharedApplication] keyWindow]];
 }
 
@@ -596,4 +649,14 @@ ON_SIGNAL2( BeeUIAlertView, signal)
     return YES;
 }
 
+#pragma mark LTInterfaceDelegate
+/*交易插件退出回调方法，需要商户客户端实现
+ *参数：
+ strResult：交易结果，若为空则用户未进行交易。
+ 返回值：无
+ */
+- (void) returnWithResult:(NSString *)strResult
+{
+    
+}
 @end

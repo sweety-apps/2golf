@@ -340,7 +340,7 @@ ON_SIGNAL2( AwaitPayCell_iPhone, signal )
 				return;
 			}
 		}
-
+        
 		PayBoard_iPhone * board = [PayBoard_iPhone board];
 		board.orderID = order.order_id;
         board.orderSN = order.order_sn;
