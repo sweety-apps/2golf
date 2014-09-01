@@ -73,9 +73,9 @@ ON_SIGNAL2( BeeUIBoard, signal )
 	
 	if ( [signal is:BeeUIBoard.CREATE_VIEWS] )
 	{
-        [self showNavigationBarAnimated:NO];
-        [self setTitleViewWithIcon:__IMAGE(@"titleicon") andTitleString:__TEXT(@"pay")];
-        [self showBarButton:BeeUINavigationBar.LEFT image:[UIImage imageNamed:@"nav-back.png"]];
+        [self hideNavigationBarAnimated:NO];
+//        [self setTitleViewWithIcon:__IMAGE(@"titleicon") andTitleString:__TEXT(@"pay")];
+//        [self showBarButton:BeeUINavigationBar.LEFT image:[UIImage imageNamed:@"nav-back.png"]];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(succeedPaid) name:@"moneyPaid" object:nil];
         
@@ -263,7 +263,7 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
                     self.hidesBottomBarWhenPushed = YES;
                     
                     viewCtrl = [LTInterface getHomeViewControllerWithType:0 strOrder:xml andDelegate:self];
-                    [self.stack pushViewController:viewCtrl animated:YES];
+                    [self.stack pushViewController:viewCtrl animated:NO];
 
                 }
             }

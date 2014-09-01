@@ -15,23 +15,25 @@ SUPPORT_RESOURCE_LOADING( YES )
 - (void)dataDidChanged
 {
     NSDictionary* order = self.data;
-    
-    $(@"#contact").TEXT( [NSString stringWithFormat:@"%@人%@",[order[@"persons"] stringValue],[order[@"players"] stringValue]] );
-    $(@"#time").TEXT( [self tsStringToDateString:[order[@"playtime"] stringValue]] );
+    NSNumber* persons = order[@"persons"];
+    NSString* players = order[@"players"];
+    NSString* contact = [NSString stringWithFormat:@"%d人%@",[persons intValue],players];
+    $(@"#contact").TEXT( contact );
+    $(@"#time").TEXT( [self tsStringToDateString:order[@"playtime"]] );
     NSString* priceString = @"";
     if ([order[@"type"] intValue] == 1)//courseorder
     {
-        switch ([order[@"normalprice"][@"payway"] intValue]) {
+        switch ([order[@"price"][@"payway"] intValue]) {
             case 3://全額預付
-                priceString = [NSString stringWithFormat:@"￥%d",order[@"normalprice"][@"teetimeprice"] == nil?[order[@"normalprice"][@"price"] intValue]:[order[@"normalprice"][@"teetimeprice"][@"price"] intValue]];
+                priceString = [NSString stringWithFormat:@"￥%d",(order[@"price"][@"teetimeprice"] == nil?[order[@"price"][@"price"] intValue]:[order[@"price"][@"teetimeprice"][@"price"] intValue])*[persons intValue]];
                 break;
             case 4://部分預付
-                priceString = [NSString stringWithFormat:@"￥%d",([order[@"normalprice"][@"deposit"] intValue]*[order[@"persons"] intValue])];
+                priceString = [NSString stringWithFormat:@"￥%d",([order[@"price"][@"deposit"] intValue]*[order[@"persons"] intValue])];
                 break;
             case 2://前臺現付
-                if([order[@"normalprice"][@"deposit"] intValue] > 0)
+                if([order[@"price"][@"deposit"] intValue] > 0)
                 {
-                    priceString = [NSString stringWithFormat:@"￥%d",[order[@"normalprice"][@"deposit"] intValue]];
+                    priceString = [NSString stringWithFormat:@"￥%d",[order[@"price"][@"deposit"] intValue]];
                 }
                 else
                 {
@@ -44,7 +46,16 @@ SUPPORT_RESOURCE_LOADING( YES )
     }
     else //套餐訂單
     {
-        dsadas
+        switch ([order[@"payway"] intValue]) {
+            case 3:
+                priceString = [NSString stringWithFormat:@"￥%d",([order[@"price"] intValue]*[order[@"persons"] intValue])];
+                break;
+            case 2:
+                priceString = @"线上免付";
+                break;
+            default:
+                break;
+        }
     }
     $(@"#price").TEXT( priceString );
 }
@@ -74,6 +85,18 @@ SUPPORT_RESOURCE_LOADING( YES )
 
 SUPPORT_RESOURCE_LOADING( YES )
 
+ON_SIGNAL3( CourseOrderCellHeader_iPhone, orderstatus, signal )
+{
+    if ( [signal is:BeeUIButton.TOUCH_UP_INSIDE] )
+    {
+        NSDictionary * order = self.data;
+        if ([order[@"status"] intValue] == 1) {
+            //立即支付
+            
+        }
+    }
+}
+
 - (void)dataDidChanged
 {
     if ( self.data )
@@ -82,6 +105,10 @@ SUPPORT_RESOURCE_LOADING( YES )
         
         $(@"#coursename").TEXT( order[@"coursename"] );
         $(@"#orderstatus").TEXT( [self status2string] );
+        
+        if ([order[@"status"] intValue] == 1) {
+            $(@"#orderstatus").TEXT( @"立即支付" );
+        }
     }
 }
 
@@ -233,10 +260,6 @@ ON_SIGNAL3( AwaitPayCellFooter_iPhone, pay, signal )
     {
         CourseOrderCellInfo_iPhone * cell = [scrollView dequeueWithContentClass:[CourseOrderCellInfo_iPhone class]];
         cell.data = self.courseorder;
-//        cell.formated_integral_money = self.order.formated_integral_money;
-//        cell.formated_bonus = self.order.formated_bonus;
-//        cell.formated_shipping_fee = self.order.formated_shipping_fee;
-        cell.data = nil;
         return cell;
     }
     else

@@ -34,7 +34,7 @@
         <image class="order-wrapper-bg"/>
         <linear orientation="h" class="order-info-item">
             <label class="coursename" id="coursename">深圳九龍山高爾夫</label>
-            <label class="orderstatus" id="orderstatus">已取消</label>
+            <button class="orderstatus" id="orderstatus">已取消</button>
         </linear>
     </linear>
     
@@ -60,10 +60,14 @@
         }
         
         .order-info-item {
-        margin-top: 10px;
-        margin-left: 15px;
-        width: 280px;
-        height: 13px;
+            margin-top: 10px;
+            margin-left: 15px;
+            width: 280px;
+            height: 13px;
+        }
+        
+        .orderstatus{
+            font-size: 24px;
         }
     </style>
 </ui>
