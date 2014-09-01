@@ -29,7 +29,14 @@ SUPPORT_RESOURCE_LOADING( YES )
                 priceString = [NSString stringWithFormat:@"￥%d",([order[@"normalprice"][@"deposit"] intValue]*[order[@"persons"] intValue])];
                 break;
             case 2://前臺現付
-                if
+                if([order[@"normalprice"][@"deposit"] intValue] > 0)
+                {
+                    priceString = [NSString stringWithFormat:@"￥%d",[order[@"normalprice"][@"deposit"] intValue]];
+                }
+                else
+                {
+                    priceString = @"线上免付";
+                }
                 break;
             default:
                 break;
@@ -37,7 +44,7 @@ SUPPORT_RESOURCE_LOADING( YES )
     }
     else //套餐訂單
     {
-        
+        dsadas
     }
     $(@"#price").TEXT( priceString );
 }
