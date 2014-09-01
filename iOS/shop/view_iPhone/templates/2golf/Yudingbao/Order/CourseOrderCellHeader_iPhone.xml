@@ -32,7 +32,10 @@
     <linear orientation="v" class="order-wrapper">
 
         <image class="order-wrapper-bg"/>
-        
+        <linear orientation="h" class="order-info-item">
+            <label class="coursename" id="coursename">深圳九龍山高爾夫</label>
+            <label class="orderstatus" id="orderstatus">已取消</label>
+        </linear>
     </linear>
     
     <style type="text/css">
@@ -54,6 +57,13 @@
             image-mode: stretch;
             image-insets: 20px;
             image: url(shopping-checkout-body-bg.png);
+        }
+        
+        .order-info-item {
+        margin-top: 10px;
+        margin-left: 15px;
+        width: 280px;
+        height: 13px;
         }
     </style>
 </ui>

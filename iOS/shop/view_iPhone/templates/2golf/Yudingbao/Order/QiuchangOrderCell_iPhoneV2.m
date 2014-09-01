@@ -14,9 +14,41 @@ SUPPORT_RESOURCE_LOADING( YES )
 
 - (void)dataDidChanged
 {
-//    $(@"#ship").TEXT( self.formated_shipping_fee );
-//    $(@"#bonus").TEXT( [NSString stringWithFormat:@"- %@", self.formated_bonus] );
-//    $(@"#integral").TEXT( [NSString stringWithFormat:@"- %@", self.formated_integral_money] );
+    NSDictionary* order = self.data;
+    
+    $(@"#contact").TEXT( [NSString stringWithFormat:@"%@人%@",[order[@"persons"] stringValue],[order[@"players"] stringValue]] );
+    $(@"#time").TEXT( [self tsStringToDateString:[order[@"playtime"] stringValue]] );
+    NSString* priceString = @"";
+    if ([order[@"type"] intValue] == 1)//courseorder
+    {
+        switch ([order[@"normalprice"][@"payway"] intValue]) {
+            case 3://全額預付
+                priceString = [NSString stringWithFormat:@"￥%d",order[@"normalprice"][@"teetimeprice"] == nil?[order[@"normalprice"][@"price"] intValue]:[order[@"normalprice"][@"teetimeprice"][@"price"] intValue]];
+                break;
+            case 4://部分預付
+                priceString = [NSString stringWithFormat:@"￥%d",([order[@"normalprice"][@"deposit"] intValue]*[order[@"persons"] intValue])];
+                break;
+            case 2://前臺現付
+                if
+                break;
+            default:
+                break;
+        }
+    }
+    else //套餐訂單
+    {
+        
+    }
+    $(@"#price").TEXT( priceString );
+}
+
+- (NSString*)tsStringToDateString:(NSString*)tsStr
+{
+    NSTimeInterval iterval = [tsStr doubleValue];
+    NSDate* date = [NSDate dateWithTimeIntervalSince1970:iterval];
+    
+    NSString* ret = [NSString stringWithFormat:@"%02d月%02d日 %02d:%02d\n%@",[date month],[date day],[date hour],[date minute],[date weekdayChinese]];
+    return ret;
 }
 
 @end
@@ -39,40 +71,38 @@ SUPPORT_RESOURCE_LOADING( YES )
 {
     if ( self.data )
     {
-//        ORDER * order = self.data;
-//        
-//        if ( order.order_time )
-//        {
-//            $(@"#order-date-label").SHOW();
-//            $(@"#order-date").SHOW();
-//            
-//            NSDate * date = [order.order_time asNSDate];
-//            
-//            $(@"#order-date-label").TEXT( __TEXT(@"tradeitem_time") );
-//            $(@"#order-date").TEXT( [date stringWithDateFormat:@"yyyy-MM-dd HH:mm"] );
-//        }
-//        else
-//        {
-//            $(@"#order-date-label").HIDE();
-//            $(@"#order-date").HIDE();
-//        }
-//        
-//        if ( order.order_sn )
-//        {
-//            $(@"#order-number-label").SHOW();
-//            $(@"#order-number").SHOW();
-//            
-//            $(@"#order-number-label").TEXT( __TEXT(@"tradeitem_number") );
-//            $(@"#order-number").TEXT( order.order_sn );
-//        }
-//        else
-//        {
-//            $(@"#order-number-label").HIDE();
-//            $(@"#order-number").HIDE();
-//        }
+        NSDictionary * order = self.data;
+        
+        $(@"#coursename").TEXT( order[@"coursename"] );
+        $(@"#orderstatus").TEXT( [self status2string] );
     }
 }
 
+-(NSString*)status2string
+{
+    NSDictionary * order = self.data;
+    switch ([order[@"status"] intValue]) {
+        case 0:
+            return @"待确认";
+        case 1:
+            return @"待付款";
+        case 2:
+            return @"已付款";
+        case 3:
+            return @"已成功";
+        case 4:
+            return @"已申请撤销";
+        case 5:
+            return @"已撤销";
+        case 6:
+            return @"已取消";
+        case 7:
+            return @"未到场";
+            
+        default:
+            break;
+    }
+}
 @end
 
 @implementation CourseOrderCellBody_iPhone
@@ -183,21 +213,19 @@ ON_SIGNAL3( AwaitPayCellFooter_iPhone, pay, signal )
     if ( 0 == index )
     {
         CourseOrderCellHeader_iPhone * cell = [scrollView dequeueWithContentClass:[CourseOrderCellHeader_iPhone class]];
-        [cell setBackgroundColor:[UIColor redColor]];
         cell.data = self.courseorder;
         return cell;
     }
     else if( (count - 1) == index )
     {
         CourseOrderCellFooter_iPhone * cell = [scrollView dequeueWithContentClass:[CourseOrderCellFooter_iPhone class]];
-        [cell setBackgroundColor:[UIColor greenColor]];
-//        cell.data = self.order.total_fee;
+        cell.data = self.courseorder;
         return cell;
     }
     else if( (count - 2) == index )
     {
         CourseOrderCellInfo_iPhone * cell = [scrollView dequeueWithContentClass:[CourseOrderCellInfo_iPhone class]];
-        [cell setBackgroundColor:[UIColor blueColor]];
+        cell.data = self.courseorder;
 //        cell.formated_integral_money = self.order.formated_integral_money;
 //        cell.formated_bonus = self.order.formated_bonus;
 //        cell.formated_shipping_fee = self.order.formated_shipping_fee;
@@ -243,6 +271,4 @@ ON_SIGNAL3( AwaitPayCellFooter_iPhone, pay, signal )
     
 	return size;
 }
-
-
 @end

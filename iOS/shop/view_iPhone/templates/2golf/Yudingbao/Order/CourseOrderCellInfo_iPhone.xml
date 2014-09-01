@@ -34,19 +34,12 @@
         <image class="order-cell-wrapper-bg"/>
         
         <linear orientation="h" class="order-info-item">
-            <label class="order-info-title" id="ship-title">@{balance_transportation}</label>
-            <label class="order-info-content" id="ship"></label>
+            <label class="contact" id="contact">2人 張三;李四</label>
         </linear>
-        
-        <!--linear orientation="h" class="order-info-item">
-            <label class="order-info-title" id="bonus-title">@{balance_redpocket}</label>
-            <label class="order-info-content" id="bonus"></label>
-        </linear>
-        
         <linear orientation="h" class="order-info-item">
-            <label class="order-info-title" id="integral-title">@{balance_exp}</label>
-            <label class="order-info-content" id="integral"></label>
-        </linear-->
+            <label class="time" id="time">2014-09-02 09:00</label>
+            <label class="price" id="price">¥1140</label>
+        </linear>
     </linear>
     
     <style type="text/css">
