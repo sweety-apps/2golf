@@ -33,10 +33,12 @@
 #import "AlixPayResult.h"
 #import "DataVerifier.h"
 #import "AlixPayOrder.h"
+#import "LTInterface.h"
 
 #pragma mark -
 
 @interface PayBoard_iPhone ()
+<LTInterfaceDelegate>
 
 @property (nonatomic, retain) NSMutableDictionary* dataDict;
 
@@ -77,6 +79,36 @@ ON_SIGNAL2( BeeUIBoard, signal )
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(succeedPaid) name:@"moneyPaid" object:nil];
         
+        [[AppBoard_iPhone sharedInstance] setTabbarHidden:YES];
+        
+        if ( NSOrderedSame == [self.order.pay_code compare:@"upop" options:NSCaseInsensitiveSearch] )
+        {
+            if ( self.orderID )
+            {
+                ORDER * order = [[[ORDER alloc] init] autorelease];
+                order.order_id = self.orderID;
+                [self.orderModel pay:order];
+                
+                [self requestXML];
+            }
+        }
+        else if ( NSOrderedSame == [self.order.pay_code compare:@"alipay" options:NSCaseInsensitiveSearch] )
+        {
+            if ( self.orderID )
+            {
+                ORDER * order = [[[ORDER alloc] init] autorelease];
+                order.order_id = self.orderID;
+                [self.orderModel pay:order];
+                
+                [self requestPaylog:[self.orderID stringValue]];
+            }
+        }
+        else if ( NSOrderedSame == [self.order.pay_code compare:@"balance" options:NSCaseInsensitiveSearch] )
+        {
+            
+        }
+
+        
 	}
 	else if ( [signal is:BeeUIBoard.DELETE_VIEWS] )
 	{
@@ -94,16 +126,9 @@ ON_SIGNAL2( BeeUIBoard, signal )
     }
     else if ( [signal is:BeeUIBoard.WILL_APPEAR] )
     {
-		[[AppBoard_iPhone sharedInstance] setTabbarHidden:YES];
-        
-        if ( self.orderID )
-        {
-            ORDER * order = [[[ORDER alloc] init] autorelease];
-            order.order_id = self.orderID;
-            [self.orderModel pay:order];
-            
-            [self requestPaylog:[self.orderID stringValue]];
-        }
+		      
+     
+
     }
     else if ( [signal is:BeeUIBoard.DID_APPEAR] )
     {
@@ -166,6 +191,17 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
 }
 
 #pragma mark - Network
+-(void)requestXML
+{
+    NSDictionary* paramDict = @{
+                                @"session":[UserModel sharedInstance].session.objectToDictionary,
+                                @"orderid":self.order.order_id,
+                                @"method":@"submitService"
+                                };
+    self.HTTP_POST([[ServerConfig sharedInstance].url stringByAppendingString:@"order/unionpay"])
+    .PARAM(@"json",[paramDict JSONString])
+    .TIMEOUT(30);
+}
 
 - (void)requestPaylog:(NSString*)orderId
 {
@@ -210,6 +246,31 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
             else
             {
                 [self presentFailureTips:dict[@"status"][@"error_desc"]];
+                [self.stack popBoardAnimated:YES];
+            }
+        }
+        else if([[req.url absoluteString] rangeOfString:@"order/unionpay"].length >0 )
+        {
+            //正确逻辑
+            if ([(dict[@"status"])[@"succeed"] intValue] == 1)
+            {
+                //拉订单
+                self.dataDict = [NSMutableDictionary dictionaryWithDictionary:(dict[@"data"])];
+                if (self.dataDict)
+                {
+                    NSString* xml = self.dataDict[@"xml"];
+                    UIViewController *viewCtrl = nil;
+                    self.hidesBottomBarWhenPushed = YES;
+                    
+                    viewCtrl = [LTInterface getHomeViewControllerWithType:0 strOrder:xml andDelegate:self];
+                    [self.stack pushViewController:viewCtrl animated:YES];
+
+                }
+            }
+            else
+            {
+                [self presentFailureTips:dict[@"status"][@"error_desc"]];
+                [self.stack popBoardAnimated:YES];
             }
         }
     }
@@ -256,6 +317,41 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
         //失败
     }
     [self succeedPaid];
+}
+
+#pragma mark LTInterfaceDelegate
+/*交易插件退出回调方法，需要商户客户端实现
+ *参数：
+ strResult：交易结果，若为空则用户未进行交易。
+ 返回值：无
+ */
+- (void) returnWithResult:(NSString *)strResult
+{
+    //    strResult = @"<?xml version=\"1.0\" encoding=\"UTF-8\" ?> <upomp application=\"LanchPay.Rsp\" version=\"1.0.0 \"><merchantId>商户代码（15-24位数字）</merchantId><merchantOrderId>商户订单号</merchantOrderId><merchantOrderTime>商户订单时间</merchantOrderTime><respCode>应答码(0000为成功，其他为失败)</respCode><respDesc>应答码描述</respDesc></upomp>";
+    if(strResult == nil)
+    {
+        [self presentFailureTips:@"用戶取消交易"];
+    }
+    else
+    {
+        CXMLDocument *document = [[CXMLDocument alloc] initWithXMLString:strResult options:0 error:nil];
+        if (document != nil) {
+            CXMLElement* rootelement = document.rootElement;
+            if (rootelement != nil) {
+                NSArray* elements = [rootelement elementsForName:@"respCode"];
+                CXMLElement* elementcode = [elements objectAtIndex:0];
+                NSString* stringvalue = [elementcode stringValue];
+                if ([stringvalue isEqualToString:@"0000"]) {
+                    [self presentSuccessTips:@"交易成功"];
+                    [self succeedPaid];
+                    return;
+                }
+            }
+        }
+        [self presentFailureTips:@"交易失敗"];
+        
+    }
+    [self.stack popBoardAnimated:YES];
 }
 
 @end

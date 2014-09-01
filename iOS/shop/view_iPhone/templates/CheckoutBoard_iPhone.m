@@ -458,6 +458,7 @@ ON_SIGNAL2( CheckoutBoard_iPhone , signal )
 		board.orderID = self.flowModel.order_id;
         board.orderSN = order_info.order_sn;
         board.totalFee = order_info.order_amount;
+        board.order = order_info;
 		[self.stack pushBoard:board animated:YES];
     }
     else if ( [signal is:self.ACTION_BACK] )

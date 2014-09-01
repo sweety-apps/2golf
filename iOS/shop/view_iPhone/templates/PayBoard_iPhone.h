@@ -35,4 +35,5 @@
 @property (nonatomic, retain) NSString * totalFee;
 @property (nonatomic, retain) OrderModel * orderModel;
 @property (nonatomic, assign) BOOL isFromCheckoutBoard;
+@property (nonatomic, retain) ORDER_INFO* order;
 @end

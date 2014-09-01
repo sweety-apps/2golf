@@ -348,11 +348,6 @@ ON_SIGNAL2( BeeUIAlertView, signal)
                 
                 viewCtrl = [LTInterface getHomeViewControllerWithType:0 strOrder:xml andDelegate:self];
                 [self.stack pushViewController:viewCtrl animated:YES];
-//                [viewCtrl release];
-//                RegionPickBoard_iPhone * board = [[[RegionPickBoard_iPhone alloc] init] autorelease];
-//                board.rootBoard = self;
-//                board.regions = [RegionModel sharedInstance].regions;
-//                [self.stack pushBoard:board animated:YES];
             }
             else
             {
@@ -657,6 +652,31 @@ ON_SIGNAL2( BeeUIAlertView, signal)
  */
 - (void) returnWithResult:(NSString *)strResult
 {
-    
+//    strResult = @"<?xml version=\"1.0\" encoding=\"UTF-8\" ?> <upomp application=\"LanchPay.Rsp\" version=\"1.0.0 \"><merchantId>商户代码（15-24位数字）</merchantId><merchantOrderId>商户订单号</merchantOrderId><merchantOrderTime>商户订单时间</merchantOrderTime><respCode>应答码(0000为成功，其他为失败)</respCode><respDesc>应答码描述</respDesc></upomp>";
+    if(strResult == nil)
+    {
+        [self presentFailureTips:@"用戶取消交易"];
+    }
+    else
+    {
+        CXMLDocument *document = [[CXMLDocument alloc] initWithXMLString:strResult options:0 error:nil];
+        if (document != nil) {
+            CXMLElement* rootelement = document.rootElement;
+            if (rootelement != nil) {
+                NSArray* elements = [rootelement elementsForName:@"respCode"];
+                CXMLElement* elementcode = [elements objectAtIndex:0];
+                NSString* stringvalue = [elementcode stringValue];
+                if ([stringvalue isEqualToString:@"0000"]) {
+                    [self presentSuccessTips:@"交易成功"];
+                    return;
+                }
+            }
+        }
+        [self presentFailureTips:@"交易失敗"];
+        
+    }
 }
+
+
+
 @end

@@ -346,6 +346,7 @@ ON_SIGNAL2( AwaitPayCell_iPhone, signal )
         board.orderSN = order.order_sn;
         board.totalFee = [order.total_fee substringFromIndex:1];
 		board.titleString = __TEXT(@"pay");
+        board.order = order.order_info;
 		[self.stack pushBoard:board animated:YES];
     }
 }
