@@ -157,7 +157,7 @@
     //初始化调启导航时的参数管理类
     BMKNaviPara* para = [[BMKNaviPara alloc]init];
     //指定导航类型
-    para.naviType = NAVI_TYPE_WEB;
+    para.naviType = BMK_NAVI_TYPE_WEB;
     
     //初始化起点节点
     BMKPlanNode* start = [[[BMKPlanNode alloc]init] autorelease];

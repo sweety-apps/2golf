@@ -346,7 +346,7 @@ ON_SIGNAL2( BeeUIAlertView, signal)
                 UIViewController *viewCtrl = nil;
                 self.hidesBottomBarWhenPushed = YES;
                 
-                viewCtrl = [LTInterface getHomeViewControllerWithType:1 strOrder:xml andDelegate:self];
+                viewCtrl = [LTInterface getHomeViewControllerWithType:0 strOrder:xml andDelegate:self];
                 [self.stack pushViewController:viewCtrl animated:YES];
 //                [viewCtrl release];
 //                RegionPickBoard_iPhone * board = [[[RegionPickBoard_iPhone alloc] init] autorelease];

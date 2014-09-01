@@ -27,7 +27,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "AppDelegate.h"
 //#import "AppBoard_iPad.h"
-//#import "AppBoard_iPhone.h"
+#import "AppBoard_iPhone.h"
 #import "XGPush.h"
 
 #import <ShareSDK/ShareSDK.h>
@@ -42,7 +42,6 @@
 #import "AlixPayResult.h"
 #import "PartnerConfig.h"
 #import "DataVerifier.h"
-#import "RootViewController.h"
 
 #pragma mark -
 
@@ -108,14 +107,14 @@ static BMKMapManager* _mapManager = nil;
     
 	if ( [BeeSystemInfo isDevicePad] )
 	{
-//		self.window.rootViewController = [AppBoard_iPhone sharedInstance];
+		self.window.rootViewController = [AppBoard_iPhone sharedInstance];
 	}
 	else
 	{
-        RootViewController* ctrl = [[RootViewController alloc] init];
-        UINavigationController* controller = [[UINavigationController alloc] initWithRootViewController:ctrl];
-        self.window.rootViewController = controller;
-//		self.window.rootViewController = [AppBoard_iPhone sharedInstance];
+//        RootViewController* ctrl = [[RootViewController alloc] init];
+//        UINavigationController* controller = [[UINavigationController alloc] initWithRootViewController:ctrl];
+//        self.window.rootViewController = controller;
+		self.window.rootViewController = [AppBoard_iPhone sharedInstance];
 //		self.window.rootViewController = [TestBoard_iPhone sharedInstance];
 	}
     
