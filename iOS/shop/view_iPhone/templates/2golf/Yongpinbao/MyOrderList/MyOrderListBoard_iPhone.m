@@ -329,8 +329,8 @@ ON_SIGNAL( signal )
                            @-1,
                              @0,
                              @1,
-                             @3,
                              @2,
+                             @3,
                              @6
                            ];
     NSDictionary* paramDict = @{
