@@ -31,6 +31,7 @@
 #import "CommonWaterMark.h"
 #import "QiuchangOrderCell_iPhoneV2.h"
 #import "LTInterface.h"
+#import "QuichangDetailBoard_iPhone.h"
 
 #pragma mark -
 
@@ -469,7 +470,33 @@ ON_SIGNAL( signal )
 
 -(void)onPressOrderAgain:(NSDictionary *)courseorder
 {
+    NSDate* date = [CommonUtility getDateFromZeroPerDay:[NSDate dateWithTimeIntervalSinceNow:3600*24 ]];
+    [[NSUserDefaults standardUserDefaults] setObject:date forKey:@"search_date"];
+    NSDate* time = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_time"];
+    NSArray* array = [CommonUtility getCanSelectHourMin];
+    if (date.istoday) {
+        if (array.count == 0) {
+            //超出范围,得到当前时间的最近的半个钟
+            time = [NSDate dateWithTimeInterval:3600*2 sinceDate:[CommonUtility getNearestHalfTime:[NSDate now]] ];
+        }
+        else
+        {
+            time = array[0];
+        }
+    }
+    else
+    {
+        time = array[5];//9點開始
+        
+    }
+    [[NSUserDefaults standardUserDefaults] setObject:time forKey:@"search_time"];
     
+    QuichangDetailBoard_iPhone* board = [QuichangDetailBoard_iPhone boardWithNibName:@"QuichangDetailBoard_iPhone"];
+    if (courseorder)
+    {
+        [board setCourseId:courseorder[@"price"][@"courseid"]];
+    }
+    [self.stack pushBoard:board animated:YES];
 }
 
 - (void)onPressPay:(NSDictionary *)courseorder
