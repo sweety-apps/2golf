@@ -30,9 +30,11 @@
 #import "RechargeBoard_iPhone.h"
 #import "CommonWaterMark.h"
 #import "QiuchangOrderCell_iPhoneV2.h"
+#import "LTInterface.h"
+
 #pragma mark -
 
-@interface MyOrderListBoard_iPhone() <QiuchangOrderCell_iPhoneDelegate,UIActionSheetDelegate>
+@interface MyOrderListBoard_iPhone() <QiuchangOrderCell_iPhoneV2Delegate,UIActionSheetDelegate,LTInterfaceDelegate>
 {
 	BeeUIScrollView* _scroll;
 }
@@ -69,6 +71,11 @@
 }
 
 #pragma mark Signal
+ON_SIGNAL2( QiuchangOrderCell_iPhoneV2, signal )
+{
+    [super handleUISignal:signal];
+}
+
 
 ON_SIGNAL2( BeeUIBoard, signal )
 {
@@ -279,7 +286,7 @@ ON_SIGNAL( signal )
     QiuchangOrderCell_iPhoneV2* cell = [scrollView dequeueWithContentClass:[QiuchangOrderCell_iPhoneV2 class]];
     
     cell.tag = index;
-//    cell.delegate = self;
+    cell.delegate = self;
     cell.data = self.currentArray[index];
     
 //    QiuchangOrderCell_iPhoneLayout* lo = self.currentLayoutArray[index];
@@ -303,6 +310,17 @@ ON_SIGNAL( signal )
 
 #pragma mark - Network
 
+-(void)requestXML
+{
+    NSDictionary* paramDict = @{
+                                @"session":[UserModel sharedInstance].session.objectToDictionary,
+                                @"orderid":self.payingData[@"id"],
+                                @"method":@"submitService"
+                                };
+    self.HTTP_POST([[ServerConfig sharedInstance].url stringByAppendingString:@"order/unionpay"])
+    .PARAM(@"json",[paramDict JSONString])
+    .TIMEOUT(30);
+}
 
 - (void)fetchData
 {
@@ -403,6 +421,31 @@ ON_SIGNAL( signal )
                 [self presentFailureTips:dict[@"status"][@"error_desc"]];
             }
         }
+        else if([[req.url absoluteString] rangeOfString:@"order/unionpay"].length >0 )
+        {
+            //正确逻辑
+            if ([(dict[@"status"])[@"succeed"] intValue] == 1)
+            {
+                //拉订单
+                self.dataDict = [NSMutableDictionary dictionaryWithDictionary:(dict[@"data"])];
+                if (self.dataDict)
+                {
+                    NSString* xml = self.dataDict[@"xml"];
+                    UIViewController *viewCtrl = nil;
+                    self.hidesBottomBarWhenPushed = YES;
+                    
+                    viewCtrl = [LTInterface getHomeViewControllerWithType:0 strOrder:xml andDelegate:self];
+                    [self.stack pushViewController:viewCtrl animated:NO];
+                    
+                }
+            }
+            else
+            {
+                [self presentFailureTips:dict[@"status"][@"error_desc"]];
+                [self.stack popBoardAnimated:YES];
+            }
+        }
+
     }
 }
 
@@ -410,33 +453,37 @@ ON_SIGNAL( signal )
 
 
 
-#pragma mark <QiuchangOrderCell_iPhoneDelegate>
+#pragma mark <QiuchangOrderCell_iPhoneV2Delegate>
 
-- (void)QiuchangOrderCell_iPhone:(QiuchangOrderCell_iPhone*)cell
-                 onPressedCancel:(NSDictionary*)data
-{
-    [self requestCancelCourse:data[@"id"]];
-}
+//- (void)QiuchangOrderCell_iPhoneV2:(QiuchangOrderCell_iPhoneV2*)cell
+//                 onPressedCancel:(NSDictionary*)data
+//{
+//    [self requestCancelCourse:data[@"id"]];
+//}
+//
+//- (void)QiuchangOrderCell_iPhoneV2:(QiuchangOrderCell_iPhoneV2*)cell
+//                  onPressedShare:(NSDictionary*)data
+//{
+//    [cell shareOrder:data];
+//}
 
-- (void)QiuchangOrderCell_iPhone:(QiuchangOrderCell_iPhone*)cell
-                  onPressedShare:(NSDictionary*)data
-{
-    [cell shareOrder:data];
-}
-
-- (void)QiuchangOrderCell_iPhone:(QiuchangOrderCell_iPhone*)cell
-                    onPressedPay:(NSDictionary*)data
-{
-    self.payingData = data;
-    UIActionSheet* as = [[[UIActionSheet alloc] initWithTitle:@"选择支付方式" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"支付宝支付",@"余额支付", nil] autorelease];
-    [as showInView:[[UIApplication sharedApplication] keyWindow]];
-}
-
-- (void)QiuchangOrderCell_iPhone:(QiuchangOrderCell_iPhone*)cell
-               onPressedQiuchang:(NSDictionary*)data
+-(void)onPressOrderAgain:(NSDictionary *)courseorder
 {
     
 }
+
+- (void)onPressPay:(NSDictionary *)courseorder
+{
+    self.payingData = courseorder;
+    UIActionSheet* as = [[[UIActionSheet alloc] initWithTitle:@"选择支付方式" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"银联支付",@"支付宝支付",@"余额支付", nil] autorelease];
+    [as showInView:[[UIApplication sharedApplication] keyWindow]];
+}
+
+//- (void)QiuchangOrderCell_iPhoneV2:(QiuchangOrderCell_iPhoneV2*)cell
+//               onPressedQiuchang:(NSDictionary*)data
+//{
+//    
+//}
 
 #pragma mark <UIActionSheetDelegate>
 
@@ -447,6 +494,9 @@ ON_SIGNAL( signal )
     switch (buttonIndex)
     {
         case 0:
+            [self requestXML];
+            break;
+        case 1:
         {
             //支付宝支付
             NSLog(@"支付宝支付");
@@ -463,7 +513,7 @@ ON_SIGNAL( signal )
         }
             break;
         
-        case 1:
+        case 2:
         {
             //余额支付
             NSLog(@"余额支付");
@@ -515,7 +565,9 @@ ON_SIGNAL( signal )
 			if ([verifier verifyString:result.resultString withSign:result.signString])
             {
                 //验证签名成功，交易结果无篡改
-                [self _presentAertView];
+                //                [self _presentAertView];
+                [self presentSuccessTips:@"交易成功"];
+                self.hasRefreshed = NO;
 			}
         }
         else
@@ -623,5 +675,40 @@ ON_SIGNAL( signal )
     }
     
     [self fetchData];
+}
+
+#pragma mark LTInterfaceDelegate
+/*交易插件退出回调方法，需要商户客户端实现
+ *参数：
+ strResult：交易结果，若为空则用户未进行交易。
+ 返回值：无
+ */
+- (void) returnWithResult:(NSString *)strResult
+{
+    //    strResult = @"<?xml version=\"1.0\" encoding=\"UTF-8\" ?> <upomp application=\"LanchPay.Rsp\" version=\"1.0.0 \"><merchantId>商户代码（15-24位数字）</merchantId><merchantOrderId>商户订单号</merchantOrderId><merchantOrderTime>商户订单时间</merchantOrderTime><respCode>应答码(0000为成功，其他为失败)</respCode><respDesc>应答码描述</respDesc></upomp>";
+    if(strResult == nil)
+    {
+        [self presentFailureTips:@"用戶取消交易"];
+    }
+    else
+    {
+        CXMLDocument *document = [[CXMLDocument alloc] initWithXMLString:strResult options:0 error:nil];
+        if (document != nil) {
+            CXMLElement* rootelement = document.rootElement;
+            if (rootelement != nil) {
+                NSArray* elements = [rootelement elementsForName:@"respCode"];
+                CXMLElement* elementcode = [elements objectAtIndex:0];
+                NSString* stringvalue = [elementcode stringValue];
+                if ([stringvalue isEqualToString:@"0000"]) {
+                    self.hasRefreshed = NO;
+                    [self presentSuccessTips:@"交易成功"];
+//                    [self succeedPaid];
+                    return;
+                }
+            }
+        }
+        [self presentFailureTips:@"交易失敗"];
+        
+    }
 }
 @end

@@ -11,30 +11,55 @@
 #import "model.h"
 #import "BaseBoard_iPhone.h"
 
+@class QiuchangOrderCell_iPhoneV2;
+
+@protocol QiuchangOrderCell_iPhoneV2Delegate <NSObject>
+
+-(void)onPressPay:(NSDictionary*)courseorder;
+-(void)onPressOrderAgain:(NSDictionary*)courseorder;
+@end
+
+@protocol CourseOrderCellInfo_iPhoneDelegate <NSObject>
+
+@end
+
 @interface CourseOrderCellInfo_iPhone : BeeUICell
-@property (nonatomic, retain) NSString * formated_integral_money;
-@property (nonatomic, retain) NSString * formated_shipping_fee;
-@property (nonatomic, retain) NSString * formated_bonus;
+@property (nonatomic, assign) id<CourseOrderCellInfo_iPhoneDelegate> delegate;
+@end
+
+@protocol CourseOrderCellHeader_iPhoneDelegate <NSObject>
+-(void)onPressPay:(NSDictionary*)courseorder;
 @end
 
 @interface CourseOrderCellHeader_iPhone : BeeUICell
+@property (nonatomic, assign) id<CourseOrderCellHeader_iPhoneDelegate> delegate;
+@end
+
+@protocol CourseOrderCellFooter_iPhoneDelegate <NSObject>
+-(void)onPressOrderAgain:(NSDictionary*)courseorder;
 @end
 
 @interface CourseOrderCellFooter_iPhone : BeeUICell
+@property (nonatomic, assign) id<CourseOrderCellFooter_iPhoneDelegate> delegate;
+@end
+
+@protocol CourseOrderCellBody_iPhoneDelegate <NSObject>
+
 @end
 
 @interface CourseOrderCellBody_iPhone : BeeUICell
+@property (nonatomic, assign) id<CourseOrderCellBody_iPhoneDelegate> delegate;
 @end
 
 @interface QiuchangOrderCell_iPhoneV2 : BeeUICell
+<CourseOrderCellHeader_iPhoneDelegate,CourseOrderCellBody_iPhoneDelegate,CourseOrderCellFooter_iPhoneDelegate,CourseOrderCellInfo_iPhoneDelegate>
 
 {
     BeeUIScrollView * _scroll;
 }
 
-AS_SIGNAL( ORDER_CANCEL )
-AS_SIGNAL( ORDER_PAY )
+AS_SIGNAL( TOUCHED )
 
 @property (nonatomic, retain) NSDictionary* courseorder;
-
+@property (nonatomic, assign) id<QiuchangOrderCell_iPhoneV2Delegate> delegate;
 @end

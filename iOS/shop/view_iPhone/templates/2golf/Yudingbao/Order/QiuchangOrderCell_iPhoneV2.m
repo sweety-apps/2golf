@@ -18,6 +18,7 @@ SUPPORT_RESOURCE_LOADING( YES )
     NSNumber* persons = order[@"persons"];
     NSString* players = order[@"players"];
     NSString* contact = [NSString stringWithFormat:@"%d人%@",[persons intValue],players];
+    NSObject* teetimeprice = order[@"price"][@"teetimeprice"];
     $(@"#contact").TEXT( contact );
     $(@"#time").TEXT( [self tsStringToDateString:order[@"playtime"]] );
     NSString* priceString = @"";
@@ -25,7 +26,7 @@ SUPPORT_RESOURCE_LOADING( YES )
     {
         switch ([order[@"price"][@"payway"] intValue]) {
             case 3://全額預付
-                priceString = [NSString stringWithFormat:@"￥%d",(order[@"price"][@"teetimeprice"] == nil?[order[@"price"][@"price"] intValue]:[order[@"price"][@"teetimeprice"][@"price"] intValue])*[persons intValue]];
+                priceString = [NSString stringWithFormat:@"￥%d",(teetimeprice == nil || ![teetimeprice isKindOfClass:[NSDictionary class]]?[order[@"price"][@"price"] intValue]:[order[@"price"][@"teetimeprice"][@"price"] intValue])*[persons intValue]];
                 break;
             case 4://部分預付
                 priceString = [NSString stringWithFormat:@"￥%d",([order[@"price"][@"deposit"] intValue]*[order[@"persons"] intValue])];
@@ -75,6 +76,17 @@ SUPPORT_RESOURCE_LOADING( YES )
 
 SUPPORT_RESOURCE_LOADING( YES )
 
+ON_SIGNAL3( CourseOrderCellFooter_iPhone, orderagain, signal )
+{
+    if ( [signal is:BeeUIButton.TOUCH_UP_INSIDE] )
+    {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(onPressOrderAgain:)])
+        {
+            [self.delegate onPressOrderAgain:self.data];
+        }
+    }
+}
+
 - (void)dataDidChanged
 {
 }
@@ -92,7 +104,10 @@ ON_SIGNAL3( CourseOrderCellHeader_iPhone, orderstatus, signal )
         NSDictionary * order = self.data;
         if ([order[@"status"] intValue] == 1) {
             //立即支付
-            
+            if (self.delegate && [self.delegate respondsToSelector:@selector(onPressPay:)])
+            {
+                [self.delegate onPressPay:self.data];
+            }
         }
     }
 }
@@ -136,7 +151,9 @@ ON_SIGNAL3( CourseOrderCellHeader_iPhone, orderstatus, signal )
         default:
             break;
     }
+    return @"";
 }
+
 @end
 
 @implementation CourseOrderCellBody_iPhone
@@ -145,7 +162,7 @@ SUPPORT_RESOURCE_LOADING( YES )
 
 - (void)dataDidChanged
 {
-    ORDER_GOODS * goods = self.data;
+//    ORDER_GOODS * goods = self.data;
     
 //    $(@"#order-goods-count").TEXT( [NSString stringWithFormat:@"X %@", goods.goods_number] );
 //    $(@"#order-goods-price").TEXT( goods.formated_shop_price );
@@ -158,8 +175,7 @@ SUPPORT_RESOURCE_LOADING( YES )
 
 @implementation QiuchangOrderCell_iPhoneV2
 
-DEF_SIGNAL( ORDER_CANCEL )
-DEF_SIGNAL( ORDER_PAY )
+DEF_SIGNAL( TOUCHED )
 
 + (CGSize)estimateUISizeByWidth:(CGFloat)width forData:(id)data
 {
@@ -177,6 +193,8 @@ DEF_SIGNAL( ORDER_PAY )
 {
     [super load];
     
+    self.tappable = YES;
+	self.tapSignal = self.TOUCHED;
     _scroll = [[BeeUIScrollView alloc] init];
     _scroll.scrollEnabled = NO;
     _scroll.dataSource = self;
@@ -197,22 +215,6 @@ DEF_SIGNAL( ORDER_PAY )
         self.courseorder = self.data;
         
         [_scroll reloadData];
-    }
-}
-
-ON_SIGNAL3( AwaitPayCellFooter_iPhone, cancel, signal )
-{
-    if ( [signal is:BeeUIButton.TOUCH_UP_INSIDE] )
-    {
-        [self sendUISignal:self.ORDER_CANCEL];
-    }
-}
-
-ON_SIGNAL3( AwaitPayCellFooter_iPhone, pay, signal )
-{
-    if ( [signal is:BeeUIButton.TOUCH_UP_INSIDE] )
-    {
-        [self sendUISignal:self.ORDER_PAY];
     }
 }
 
@@ -248,18 +250,21 @@ ON_SIGNAL3( AwaitPayCellFooter_iPhone, pay, signal )
     {
         CourseOrderCellHeader_iPhone * cell = [scrollView dequeueWithContentClass:[CourseOrderCellHeader_iPhone class]];
         cell.data = self.courseorder;
+        cell.delegate = self;
         return cell;
     }
     else if( (count - 1) == index )
     {
         CourseOrderCellFooter_iPhone * cell = [scrollView dequeueWithContentClass:[CourseOrderCellFooter_iPhone class]];
         cell.data = self.courseorder;
+        cell.delegate = self;
         return cell;
     }
     else if( (count - 2) == index )
     {
         CourseOrderCellInfo_iPhone * cell = [scrollView dequeueWithContentClass:[CourseOrderCellInfo_iPhone class]];
         cell.data = self.courseorder;
+        cell.delegate = self;
         return cell;
     }
     else
@@ -267,6 +272,7 @@ ON_SIGNAL3( AwaitPayCellFooter_iPhone, pay, signal )
         CourseOrderCellBody_iPhone * cell = [scrollView dequeueWithContentClass:[CourseOrderCellBody_iPhone class]];
         [cell setBackgroundColor:[UIColor clearColor]];
         cell.data = self.courseorder;
+        cell.delegate = self;
         return cell;
     }
 }
@@ -300,5 +306,23 @@ ON_SIGNAL3( AwaitPayCellFooter_iPhone, pay, signal )
     }
     
 	return size;
+}
+
+#pragma mark CourseOrderCellHeader_iPhoneDelegate
+-(void)onPressPay:(NSDictionary*)courseorder
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(onPressPay:)])
+    {
+        [self.delegate onPressPay:self.courseorder];
+    }
+}
+
+#pragma mark CourseOrderCellFooter_iPhoneDelegate
+-(void)onPressOrderAgain:(NSDictionary*)courseorder
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(onPressOrderAgain:)])
+    {
+        [self.delegate onPressOrderAgain:self.courseorder];
+    }
 }
 @end
