@@ -530,6 +530,7 @@
 		4F27345719B4100A0022EF21 /* ValidateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F27324E19B4100A0022EF21 /* ValidateModel.m */; };
 		4F27345D19B41FDC0022EF21 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F27345C19B41FDC0022EF21 /* libcrypto.a */; };
 		4F27345F19B4412E0022EF21 /* libUnionPayLib11 -Device.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F27345E19B4412E0022EF21 /* libUnionPayLib11 -Device.a */; };
+		4F47A26919B731250070C8B1 /* QiuChangOrderDetailBoard_iPhoneV2.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F47A26819B731250070C8B1 /* QiuChangOrderDetailBoard_iPhoneV2.m */; };
 		4FB952E6190122D300EE0CF7 /* libXG-SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FB952E3190122D300EE0CF7 /* libXG-SDK.a */; };
 		4FB952E7190122D300EE0CF7 /* ReleaseNotes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4FB952E4190122D300EE0CF7 /* ReleaseNotes.txt */; };
 		4FB952E91901232900EE0CF7 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FB952E81901232900EE0CF7 /* CoreTelephony.framework */; };
@@ -1617,6 +1618,8 @@
 		4F27324E19B4100A0022EF21 /* ValidateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValidateModel.m; sourceTree = "<group>"; };
 		4F27345C19B41FDC0022EF21 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
 		4F27345E19B4412E0022EF21 /* libUnionPayLib11 -Device.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libUnionPayLib11 -Device.a"; sourceTree = "<group>"; };
+		4F47A26719B731250070C8B1 /* QiuChangOrderDetailBoard_iPhoneV2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuChangOrderDetailBoard_iPhoneV2.h; sourceTree = "<group>"; };
+		4F47A26819B731250070C8B1 /* QiuChangOrderDetailBoard_iPhoneV2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiuChangOrderDetailBoard_iPhoneV2.m; sourceTree = "<group>"; };
 		4FB952E3190122D300EE0CF7 /* libXG-SDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libXG-SDK.a"; sourceTree = "<group>"; };
 		4FB952E4190122D300EE0CF7 /* ReleaseNotes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReleaseNotes.txt; sourceTree = "<group>"; };
 		4FB952E5190122D300EE0CF7 /* XGPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGPush.h; sourceTree = "<group>"; };
@@ -3295,6 +3298,8 @@
 				4F27311719B410090022EF21 /* TaocanOrderEditBoard_iPhone.h */,
 				4F27311819B410090022EF21 /* TaocanOrderEditBoard_iPhone.m */,
 				4F27311919B410090022EF21 /* TaocanOrderEditBoard_iPhone.xib */,
+				4F47A26719B731250070C8B1 /* QiuChangOrderDetailBoard_iPhoneV2.h */,
+				4F47A26819B731250070C8B1 /* QiuChangOrderDetailBoard_iPhoneV2.m */,
 			);
 			path = Order;
 			sourceTree = "<group>";
@@ -5537,6 +5542,7 @@
 				6302390C177C1676004C052D /* AppDelegate.m in Sources */,
 				E970D69F182CE4E200146363 /* Bee_UIRouter.m in Sources */,
 				E970D783182CE4E200146363 /* Bee_HTTPServer2.m in Sources */,
+				4F47A26919B731250070C8B1 /* QiuChangOrderDetailBoard_iPhoneV2.m in Sources */,
 				4F2733F419B4100A0022EF21 /* CommonWaterMark.m in Sources */,
 				E970D7A1182CE4E200146363 /* CXMLElement.m in Sources */,
 				E970D792182CE4E200146363 /* ASIInputStream.m in Sources */,
