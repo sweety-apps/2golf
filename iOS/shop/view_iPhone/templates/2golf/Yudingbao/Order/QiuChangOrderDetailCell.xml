@@ -1,0 +1,129 @@
+<!--
+ /*
+ *
+ *       _/_/_/                      _/        _/_/_/_/_/
+ *    _/          _/_/      _/_/    _/  _/          _/      _/_/      _/_/
+ *   _/  _/_/  _/_/_/_/  _/_/_/_/  _/_/          _/      _/    _/  _/    _/
+ *  _/    _/  _/        _/        _/  _/      _/        _/    _/  _/    _/
+ *   _/_/_/    _/_/_/    _/_/_/  _/    _/  _/_/_/_/_/    _/_/      _/_/
+ *
+ *
+ *  Copyright 2013-2014, Geek Zoo Studio
+ *  http://www.ecmobile.cn/license.html
+ *
+ *  HQ China:
+ *    2319 Est.Tower Van Palace
+ *    No.2 Guandongdian South Street
+ *    Beijing , China
+ *
+ *  U.S. Office:
+ *    One Park Place, Elmira College, NY, 14901, USA
+ *
+ *  QQ Group:   329673575
+ *  BBS:        bbs.ecmobile.cn
+ *  Fax:        +86-10-6561-5510
+ *  Mail:       info@geek-zoo.com
+ */
+ -->
+
+<?xml version="1.0" encoding="utf-8" ?>
+<ui namespace="QiuChangOrderDetailCell">
+    
+    <linear orientation="v" class="order-wrapper">
+        
+        <linear orientation="h" class="order-info-item">
+            <label class="tips" >订单状态</label>
+            <label class="content" id="status">已取消</label>
+        </linear>
+        
+        <linear orientation="h" class="order-info-item">
+            <label class="tips" >订单总额</label>
+            <label class="content" id="price">¥2000</label>
+        </linear>
+        
+        <linear orientation="h" class="order-info-item">
+            <label class="tips" >球场名称</label>
+            <label class="content" id="coursename">九龙山高尔夫</label>
+        </linear>
+        
+        <linear orientation="h" class="order-info-item">
+            <label class="tips" >打球时间</label>
+            <label class="content" id="playtime">09月04日 09:00 周期四</label>
+        </linear>
+        
+        <linear orientation="h" class="order-info-item">
+            <label class="tips" >打球人</label>
+            <label class="content" id="contact">張三</label>
+        </linear>
+        
+        <linear orientation="h" class="order-info-item">
+            <label class="tips" >服务商</label>
+            <label class="content" id="distributor">中顺高尔夫</label>
+        </linear>
+        
+        <linear orientation="h" class="order-info-item">
+            <label class="tips" >预定日期</label>
+            <label class="content" id="ordertime">09月03日 01:07 星期三</label>
+        </linear>
+        
+        <linear orientation="h" class="order-info-item">
+            <label class="tips" >订单说明</label>
+            <label class="content" id="orderdescription">这里是订单说明这里是订单说明这里是订单说明这里是订单说明这里是订单说明这里是订单说明这里是订单说明这里是订单说明</label>
+        </linear>
+        
+        <linear orientation="h" class="order-info-item">
+            <button class="orderagain" id="orderagain">再次预定</button>
+            <button class="ordercancel" id="ordercancel">取消订单</button>
+        </linear>
+    </linear>
+    
+    <style type="text/css">
+        
+        .tips{
+        width:30%;
+        height: auto;
+        }
+        
+        .content{
+        width:70%;
+        height: auto;
+        }
+        
+        .order-wrapper {
+        margin-left: 3px;
+        margin-top: 3px;
+        width: 314px;
+        height: auto;
+        }
+        
+        .order-wrapper-bg {
+        width: 100%;
+        height: 100%;
+        position: absolute !important;
+        top: 0;
+        left: 0;
+        image-mode: stretch;
+        image-insets: 20px;
+        image: url(shopping-checkout-body-bg.png);
+        }
+        
+        .order-info-item {
+        margin-top: 10px;
+        margin-left: 15px;
+        width: 280px;
+        height: auto;
+        }
+        
+        .ordercancel{
+        height: 30px;
+        width: 50%;
+        font-size: 24px;
+        }
+        
+        .orderagain{
+        height: 30px;
+        width: 50%;
+        font-size: 24px;
+        }
+    </style>
+</ui>

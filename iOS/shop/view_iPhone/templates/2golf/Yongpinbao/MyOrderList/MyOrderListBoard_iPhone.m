@@ -32,7 +32,7 @@
 #import "QiuchangOrderCell_iPhoneV2.h"
 #import "LTInterface.h"
 #import "QuichangDetailBoard_iPhone.h"
-
+#import "QiuChangOrderDetailBoard_iPhone.h"
 #pragma mark -
 
 @interface MyOrderListBoard_iPhone() <QiuchangOrderCell_iPhoneV2Delegate,UIActionSheetDelegate,LTInterfaceDelegate>
@@ -74,7 +74,11 @@
 #pragma mark Signal
 ON_SIGNAL2( QiuchangOrderCell_iPhoneV2, signal )
 {
-    [super handleUISignal:signal];
+    QiuChangOrderDetailBoard_iPhone * board = [QiuChangOrderDetailBoard_iPhone board];
+    CourseOrderCellInfo_iPhone* cell = (CourseOrderCellInfo_iPhone*)signal.source;
+    board.order = cell.data;
+    [self.stack pushBoard:board animated:YES];
+    
 }
 
 
@@ -304,7 +308,7 @@ ON_SIGNAL( signal )
 		return self.size;
 	}
     
-	int height = 195 + 90;
+	int height = 195;
 	return CGSizeMake(scrollView.width, height);
     
 }
