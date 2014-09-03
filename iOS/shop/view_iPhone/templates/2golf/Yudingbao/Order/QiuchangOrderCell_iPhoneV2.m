@@ -18,12 +18,12 @@ SUPPORT_RESOURCE_LOADING( YES )
     NSNumber* persons = order[@"persons"];
     NSString* players = order[@"players"];
     NSString* contact = [NSString stringWithFormat:@"%d人%@",[persons intValue],players];
-    NSObject* teetimeprice = order[@"price"][@"teetimeprice"];
     $(@"#contact").TEXT( contact );
     $(@"#time").TEXT( [self tsStringToDateString:order[@"playtime"]] );
     NSString* priceString = @"";
     if ([order[@"type"] intValue] == 1)//courseorder
     {
+        NSObject* teetimeprice = order[@"price"][@"teetimeprice"];
         switch ([order[@"price"][@"payway"] intValue]) {
             case 3://全額預付
                 priceString = [NSString stringWithFormat:@"￥%d",(teetimeprice == nil || ![teetimeprice isKindOfClass:[NSDictionary class]]?[order[@"price"][@"price"] intValue]:[order[@"price"][@"teetimeprice"][@"price"] intValue])*[persons intValue]];

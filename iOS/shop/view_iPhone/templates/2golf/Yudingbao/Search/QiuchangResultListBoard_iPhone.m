@@ -315,13 +315,13 @@ ON_SIGNAL2( BeeUIBoard, signal )
     if ([dic[@"international"] integerValue] > 0)
     {
         req.PARAM(@"isinternational",@"true")
-        .PARAM(@"scope",@"50");
+        .PARAM(@"scope",@"100");
     }
     else
     {
         req.PARAM(@"longitude",lng)
         .PARAM(@"latitude",lat)
-        .PARAM(@"scope",@"50");
+        .PARAM(@"scope",@"100");
     }
     
     if ([cityid intValue] > 0)

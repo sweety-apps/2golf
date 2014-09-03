@@ -209,7 +209,7 @@ ON_SIGNAL2( SirendingzhiListCell_iPhone, signal )
     self.HTTP_POST([[ServerConfig sharedInstance].url stringByAppendingString:@"privatecustomlist"])
     .PARAM(@"longitude",dic[@"longitude"])
     .PARAM(@"latitude",dic[@"latitude"])
-    .PARAM(@"scope",@"50")
+    .PARAM(@"scope",@"100")
     .TIMEOUT(30);
 }
 
