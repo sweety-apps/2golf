@@ -34,11 +34,11 @@ ON_SIGNAL3( QiuChangOrderDetailCell, orderagain, signal )
     }
 }
 
-+ (CGSize)estimateUISizeByWidth:(CGFloat)width forData:(id)data
-{
-    CGSize size = CGSizeMake( width, 640 );
-    return size;
-}
+//+ (CGSize)estimateUISizeByWidth:(CGFloat)width forData:(id)data
+//{
+//    CGSize size = CGSizeMake( width, 960 );
+//    return size;
+//}
 
 - (void)layoutDidFinish
 {
@@ -113,14 +113,18 @@ ON_SIGNAL3( QiuChangOrderDetailCell, orderagain, signal )
         $(@"ordertime").TEXT([self tsStringToDateString:order[@"createtime"]]);
         
 
-        UIButton* cancelbtn = (UIButton*)[self findSubViewByID:@"ordercancel"];
-        cancelbtn.hidden = ([order[@"status"] intValue] == 6 || [order[@"status"] intValue] == 3 || [order[@"status"] intValue]);
+        UIView* twobtns = (UIView*)[self findSubViewByID:@"twobuttons"];
+        twobtns.hidden = ([order[@"status"] intValue] == 6 || [order[@"status"] intValue] == 3);
         
-        BeeUIQuery* lblarray = $(@"#orderdescription");
-        UILabel* lbl = (UILabel*)[lblarray.views objectAtIndex:0];
-        lbl.numberOfLines = 0;
-        lbl.lineBreakMode = UILineBreakModeWordWrap;
-        [lbl setText:[NSString stringWithFormat:@"%@\n%@",order[@"description"],order[@"cancel_desc"] == nil?@"":order[@"cancel_desc"]]];
+        UIView* onebtn = (UIView*)[self findSubViewByID:@"onebutton"];
+        onebtn.hidden = !twobtns.hidden;
+//        BeeUIQuery* lblarray = $(@"#orderdescription");
+//        UILabel* lbl = (UILabel*)[lblarray.views objectAtIndex:0];
+//        lbl.numberOfLines = 0;
+//        lbl.lineBreakMode = UILineBreakModeWordWrap;
+//        [lbl setText:[NSString stringWithFormat:@"%@\n%@",order[@"description"],order[@"cancel_desc"] == nil?@"":order[@"cancel_desc"]]];
+        $(@"orderdescription").TEXT([NSString stringWithFormat:@"%@\n%@",order[@"description"],order[@"cancel_desc"] == nil?@"":order[@"cancel_desc"]]);
+        
     }
 }
 

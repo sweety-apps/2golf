@@ -133,7 +133,7 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
 	section += 1;
 	if ( index < section )
 	{
-        return [QiuChangOrderDetailCell estimateUISizeByWidth:scrollView.width forData:nil];
+        return [QiuChangOrderDetailCell estimateUISizeByWidth:scrollView.width forData:self.order];
 	}
     
     return CGSizeZero;

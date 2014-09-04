@@ -294,7 +294,7 @@ DEF_SIGNAL( TOUCHED )
     }
     else if( (count - 1) == index )
     {
-        size = CGSizeMake(320, 90);
+        size = CGSizeMake(320, 70);
     }
     else if( (count - 2) == index )
     {
@@ -302,7 +302,7 @@ DEF_SIGNAL( TOUCHED )
     }
     else
     {
-        size = CGSizeMake(320, 90);
+        size = CGSizeMake(320, 50);
     }
     
 	return size;

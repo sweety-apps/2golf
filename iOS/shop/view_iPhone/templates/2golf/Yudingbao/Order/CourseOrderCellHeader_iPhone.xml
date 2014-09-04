@@ -1,19 +1,19 @@
 <!--
-/*
- *                                                                          
- *       _/_/_/                      _/        _/_/_/_/_/                     
- *    _/          _/_/      _/_/    _/  _/          _/      _/_/      _/_/    
- *   _/  _/_/  _/_/_/_/  _/_/_/_/  _/_/          _/      _/    _/  _/    _/   
- *  _/    _/  _/        _/        _/  _/      _/        _/    _/  _/    _/    
- *   _/_/_/    _/_/_/    _/_/_/  _/    _/  _/_/_/_/_/    _/_/      _/_/       
- *                                                                          
+ /*
+ *
+ *       _/_/_/                      _/        _/_/_/_/_/
+ *    _/          _/_/      _/_/    _/  _/          _/      _/_/      _/_/
+ *   _/  _/_/  _/_/_/_/  _/_/_/_/  _/_/          _/      _/    _/  _/    _/
+ *  _/    _/  _/        _/        _/  _/      _/        _/    _/  _/    _/
+ *   _/_/_/    _/_/_/    _/_/_/  _/    _/  _/_/_/_/_/    _/_/      _/_/
+ *
  *
  *  Copyright 2013-2014, Geek Zoo Studio
  *  http://www.ecmobile.cn/license.html
  *
  *  HQ China:
- *    2319 Est.Tower Van Palace 
- *    No.2 Guandongdian South Street 
+ *    2319 Est.Tower Van Palace
+ *    No.2 Guandongdian South Street
  *    Beijing , China
  *
  *  U.S. Office:
@@ -29,45 +29,60 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ui namespace="CourseOrderCellHeader_iPhone">
     
-    <linear orientation="v" class="order-wrapper">
-
+    <linear orientation="v" class="order-wrapper" >
         <image class="order-wrapper-bg"/>
         <linear orientation="h" class="order-info-item">
-            <label class="coursename" id="coursename">深圳九龍山高爾夫</label>
-            <button class="orderstatus" id="orderstatus">已取消</button>
+            <label class="coursename" id="coursename">深圳九龍山高爾夫深圳九龍山高爾夫</label>
+            <button class="orderstatus" id="orderstatus" >已支付</button>
         </linear>
     </linear>
     
     <style type="text/css">
-    
-    
         .order-wrapper {
-            margin-left: 3px;
-			margin-top: 3px;
-            width: 314px;
-            height: 70px;
+        margin-left: 3px;
+        width: 314px;
+        height: 70px;
         }
-
-        .order-wrapper-bg {
-            width: 100%;
-            height: 100%;
-            position: absolute !important;
-            top: 0;
-            left: 0;
-            image-mode: stretch;
-            image-insets: 20px;
-            image: url(shopping-checkout-body-bg.png);
+        
+        .coursename{
+        line-num: 2;
+        left:10;
+        width:200px;
+        height: 100%;
+        font-weight:bold;
+        font-size:16;
+        text-align:left;
+        text-valign:center;
+        }
+        
+        .orderstatus
+        {
+        width:80px;
+        right:10;
+        height:100%;
+        font-size:16;
+        color:#49675d;
+        text-align:right;
+        text-valign:center;
+        font-size:16;
         }
         
         .order-info-item {
-            margin-top: 10px;
-            margin-left: 15px;
-            width: 280px;
-            height: 13px;
+        margin-top: 10px;
+        margin-left: 15px;
+        width: 280px;
+        height: 40px;
         }
         
-        .orderstatus{
-            font-size: 24px;
+        .order-wrapper-bg {
+        width: 100%;
+        height: 100%;
+        position: absolute !important;
+        top: 0;
+        left: 0;
+        image-mode: stretch;
+        image-insets: 20px;
+        image: url(shopping-checkout-body-bg.png);
         }
     </style>
 </ui>

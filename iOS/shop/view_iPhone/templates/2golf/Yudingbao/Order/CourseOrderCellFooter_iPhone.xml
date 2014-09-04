@@ -1,19 +1,19 @@
 <!--
-/*
- *                                                                          
- *       _/_/_/                      _/        _/_/_/_/_/                     
- *    _/          _/_/      _/_/    _/  _/          _/      _/_/      _/_/    
- *   _/  _/_/  _/_/_/_/  _/_/_/_/  _/_/          _/      _/    _/  _/    _/   
- *  _/    _/  _/        _/        _/  _/      _/        _/    _/  _/    _/    
- *   _/_/_/    _/_/_/    _/_/_/  _/    _/  _/_/_/_/_/    _/_/      _/_/       
- *                                                                          
+ /*
+ *
+ *       _/_/_/                      _/        _/_/_/_/_/
+ *    _/          _/_/      _/_/    _/  _/          _/      _/_/      _/_/
+ *   _/  _/_/  _/_/_/_/  _/_/_/_/  _/_/          _/      _/    _/  _/    _/
+ *  _/    _/  _/        _/        _/  _/      _/        _/    _/  _/    _/
+ *   _/_/_/    _/_/_/    _/_/_/  _/    _/  _/_/_/_/_/    _/_/      _/_/
+ *
  *
  *  Copyright 2013-2014, Geek Zoo Studio
  *  http://www.ecmobile.cn/license.html
  *
  *  HQ China:
- *    2319 Est.Tower Van Palace 
- *    No.2 Guandongdian South Street 
+ *    2319 Est.Tower Van Palace
+ *    No.2 Guandongdian South Street
  *    Beijing , China
  *
  *  U.S. Office:
@@ -42,31 +42,32 @@
     <style type="text/css">
         
         .cart-cell-wrapper-bg {
-            width: 100%;
-            height: 100%;
-            position: absolute !important;
-            top: 0;
-            left: 0;
-            image-mode: stretch;
-            image-insets: 40px;
-            image: url(shopping-cart-body-bg-02.png);
+        width: 100%;
+        height: 100%;
+        position: absolute !important;
+        top: 0;
+        left: 0;
+        image-mode: stretch;
+        image-insets: 40px;
+        image: url(shopping-cart-body-bg-02.png);
         }
         
         .cart-cell-wrapper {
-            margin-left: 3px;
-            width: 314px;
-            height: 80px;
+        margin-left: 3px;
+        width: 314px;
+        height: 80px;
         }
         
         .cart-cell-info {
-            width: 130px;
-            height: 40px;
-            margin-left: 20px;
-            margin-top: 20px;
+        width: 130px;
+        height: 40px;
+        margin-left: 25px;
+        margin-top: 15px;
         }
         
         .orderagain {
         background-image: url(button-blue.png);
+        color:#FFFFFF;
         }
-        </style>
+    </style>
 </ui>

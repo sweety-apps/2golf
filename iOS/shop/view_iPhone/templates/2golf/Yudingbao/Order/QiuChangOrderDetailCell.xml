@@ -32,49 +32,54 @@
     <linear orientation="v" class="order-wrapper">
         
         <linear orientation="h" class="order-info-item">
-            <label class="tips" >订单状态</label>
+            <label class="tips" >订单状态：</label>
             <label class="content" id="status">已取消</label>
         </linear>
         
         <linear orientation="h" class="order-info-item">
-            <label class="tips" >订单总额</label>
+            <label class="tips" >订单总额：</label>
             <label class="content" id="price">¥2000</label>
         </linear>
         
         <linear orientation="h" class="order-info-item">
-            <label class="tips" >球场名称</label>
+            <label class="tips" >球场名称：</label>
             <label class="content" id="coursename">九龙山高尔夫</label>
         </linear>
         
         <linear orientation="h" class="order-info-item">
-            <label class="tips" id="playtimetips">打球时间</label>
+            <label class="tips" id="playtimetips">打球时间：</label>
             <label class="content" id="playtime">09月04日 09:00 周期四</label>
         </linear>
         
         <linear orientation="h" class="order-info-item">
-            <label class="tips" >打球人</label>
+            <label class="tips" >打球人：</label>
             <label class="content" id="contact">張三</label>
         </linear>
         
         <linear orientation="h" class="order-info-item" >
-            <label class="tips" id="distributortips">服务商</label>
+            <label class="tips" id="distributortips">服务商：</label>
             <label class="content" id="distributor">中顺高尔夫</label>
         </linear>
         
         <linear orientation="h" class="order-info-item">
-            <label class="tips" >预定日期</label>
+            <label class="tips" >预定日期：</label>
             <label class="content" id="ordertime">09月03日 01:07 星期三</label>
         </linear>
         
         <linear orientation="h" class="order-info-item">
-            <label class="tips" >订单说明</label>
+            <label class="tips" >订单说明：</label>
             <label class="content" id="orderdescription">这里是订单说明这里是订单说明这里是订单说明这里是订单说明这里是订单说明这里是订单说明这里是订单说明这里是订单说明</label>
         </linear>
         
-        <linear orientation="h" class="order-info-item">
+        <linear orientation="h" class="order-info-item" id="twobuttons">
             <button class="orderagain" id="orderagain">再次预定</button>
             <button class="ordercancel" id="ordercancel">取消订单</button>
         </linear>
+        
+        <linear orientation="h" class="order-info-item-one" id="onebutton">
+            <button class="orderagain" id="orderagain">再次预定</button>
+        </linear>
+        
     </linear>
     
     <style type="text/css">
@@ -82,11 +87,17 @@
         .tips{
         width:30%;
         height: auto;
+        color:#707070;
+        text-align:right;
+        font-size:13;
         }
         
         .content{
+        line-num: 999;
         width:70%;
         height: auto;
+        text-align:left;
+        font-size:13;
         }
         
         .order-wrapper {
@@ -114,16 +125,28 @@
         height: auto;
         }
         
+        .order-info-item-one {
+        margin-top: 10px;
+        margin-left: 15px;
+        width: 280px;
+        height: auto;
+        align:center;
+        }
+        
         .ordercancel{
         height: 30px;
-        width: 50%;
-        font-size: 24px;
+        width: 25%;
+        background-image: url(orderdetailbutton-red.png);
+        left:10%;
+        color:#FFFFFF;
         }
         
         .orderagain{
         height: 30px;
-        width: 50%;
-        font-size: 24px;
+        width: 25%;
+        background-image: url(orderdetailbutton-yellow.png);
+        left:20%;
+        color:#FFFFFF;
         }
     </style>
 </ui>

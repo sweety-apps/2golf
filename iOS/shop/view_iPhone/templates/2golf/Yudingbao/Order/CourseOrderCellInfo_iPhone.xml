@@ -1,19 +1,19 @@
 <!--
-/*
- *                                                                          
- *       _/_/_/                      _/        _/_/_/_/_/                     
- *    _/          _/_/      _/_/    _/  _/          _/      _/_/      _/_/    
- *   _/  _/_/  _/_/_/_/  _/_/_/_/  _/_/          _/      _/    _/  _/    _/   
- *  _/    _/  _/        _/        _/  _/      _/        _/    _/  _/    _/    
- *   _/_/_/    _/_/_/    _/_/_/  _/    _/  _/_/_/_/_/    _/_/      _/_/       
- *                                                                          
+ /*
+ *
+ *       _/_/_/                      _/        _/_/_/_/_/
+ *    _/          _/_/      _/_/    _/  _/          _/      _/_/      _/_/
+ *   _/  _/_/  _/_/_/_/  _/_/_/_/  _/_/          _/      _/    _/  _/    _/
+ *  _/    _/  _/        _/        _/  _/      _/        _/    _/  _/    _/
+ *   _/_/_/    _/_/_/    _/_/_/  _/    _/  _/_/_/_/_/    _/_/      _/_/
+ *
  *
  *  Copyright 2013-2014, Geek Zoo Studio
  *  http://www.ecmobile.cn/license.html
  *
  *  HQ China:
- *    2319 Est.Tower Van Palace 
- *    No.2 Guandongdian South Street 
+ *    2319 Est.Tower Van Palace
+ *    No.2 Guandongdian South Street
  *    Beijing , China
  *
  *  U.S. Office:
@@ -32,17 +32,39 @@
     <linear orientation="v" class="order-cell-wrapper">
         
         <image class="order-cell-wrapper-bg"/>
-        
-        <linear orientation="h" class="order-info-item">
-            <label class="contact" id="contact">2人 張三;李四</label>
-        </linear>
-        <linear orientation="h" class="order-info-item">
+        <label class="contact" id="contact">2人 張三;張三;張三;張三;張三;張三;張三;張三;張三;張三;張三;張三;張三;</label>
+        <linear orientation="h" class="order-info-item" id="123">
             <label class="time" id="time">2014-09-02 09:00</label>
             <label class="price" id="price">¥1140</label>
         </linear>
     </linear>
     
     <style type="text/css">
+        
+        .time
+        {
+        width:70%;
+        left:10;
+        }
+        
+        .price
+        {
+        width:30%;
+        right:0;
+        text-align:right;
+        }
+        
+        .contact
+        {
+        top:5px;
+        line-num: 2;
+        left:25;
+        width:265px;
+        height: auto;
+        font-size:12;
+        text-align:left;
+        text-valign:center;
+        }
         
         .order-cell-wrapper {
         margin-left: 3px;
@@ -62,39 +84,12 @@
         }
         
         .order-info-item {
-        margin-top: 10px;
         margin-left: 15px;
-        width: 280px;
-        height: 10px;
+        margin-right:2px;
+        width: 261px;
+        height: 20px;
         }
         
-        .order-info-title {
-        width: 100px;
-        height: 18px;
-        color: #333;
-        font: 16px;
-        text-align: left;
-        }
-        
-        .order-info-content {
-        text: ￥0.00;
-        width: 185px;
-        height: 18px;
-        font: 16px;
-        text-align: right;
-        }
-        
-        #bonus {
-        color: #090;
-        }
-        
-        #integral {
-        color: #090;
-        }
-        
-        #ship {
-        color: #f00;
-        }
         
     </style>
 </ui>
