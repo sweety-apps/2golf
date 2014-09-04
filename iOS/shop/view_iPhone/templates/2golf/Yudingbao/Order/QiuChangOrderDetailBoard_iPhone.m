@@ -366,7 +366,7 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
 {
     if (order)
     {
-        [self requestCancelCourse:order[@"price"][@"courseid"]];
+        [self requestCancelCourse:order[@"id"]];
     }
 }
 
