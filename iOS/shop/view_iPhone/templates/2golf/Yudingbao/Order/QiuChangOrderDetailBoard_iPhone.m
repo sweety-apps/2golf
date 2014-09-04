@@ -9,6 +9,9 @@
 #import "QiuChangOrderDetailBoard_iPhone.h"
 #import <ShareSDK/ShareSDK.h>
 #import "QiuChangOrderDetailCell.h"
+#import "CommonUtility.h"
+#import "QuichangDetailBoard_iPhone.h"
+#import "ServerConfig.h"
 
 @interface QiuChangOrderDetailBoard_iPhone ()
 <QiuChangOrderDetailCellDelegate>
@@ -307,14 +310,74 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
                             }];
 }
 
+-(void)handleRequest:(BeeHTTPRequest *)req
+{
+    NSDictionary* dict = [self commonCheckRequest:req];
+    if ([[req.url absoluteString] rangeOfString:@"courseorder/cancel"].length > 0)
+    {
+        //正确逻辑
+        if ([(dict[@"status"])[@"succeed"] intValue] == 1)
+        {
+            //取消订单
+            self.order = [NSMutableDictionary dictionaryWithDictionary:(dict[@"data"])];
+            [self presentMessageTips:@"取消成功"];
+            [_scroll asyncReloadData];
+        }
+        else
+        {
+            [self presentFailureTips:dict[@"status"][@"error_desc"]];
+        }
+    }
+
+}
 #pragma mark QiuChangOrderDetailCellDelegate
 -(void)orderagain:(NSDictionary*)order
 {
+    NSDate* date = [CommonUtility getDateFromZeroPerDay:[NSDate dateWithTimeIntervalSinceNow:3600*24 ]];
+    [[NSUserDefaults standardUserDefaults] setObject:date forKey:@"search_date"];
+    NSDate* time = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_time"];
+    NSArray* array = [CommonUtility getCanSelectHourMin];
+    if (date.istoday) {
+        if (array.count == 0) {
+            //超出范围,得到当前时间的最近的半个钟
+            time = [NSDate dateWithTimeInterval:3600*2 sinceDate:[CommonUtility getNearestHalfTime:[NSDate now]] ];
+        }
+        else
+        {
+            time = array[0];
+        }
+    }
+    else
+    {
+        time = array[5];//9點開始
+        
+    }
+    [[NSUserDefaults standardUserDefaults] setObject:time forKey:@"search_time"];
     
+    QuichangDetailBoard_iPhone* board = [QuichangDetailBoard_iPhone boardWithNibName:@"QuichangDetailBoard_iPhone"];
+    if (order)
+    {
+        [board setCourseId:order[@"price"][@"courseid"]];
+    }
+    [self.stack pushBoard:board animated:YES];
 }
 
 -(void)cancelorder:(NSDictionary*)order
 {
-    
+    if (order)
+    {
+        [self requestCancelCourse:order[@"price"][@"courseid"]];
+    }
+}
+
+- (void)requestCancelCourse:(NSString*)orderId
+{
+    NSDictionary* paramDict = @{
+                                @"session":[UserModel sharedInstance].session.objectToDictionary,
+                                @"order_id":orderId
+                                };
+    self.HTTP_POST([[ServerConfig sharedInstance].url stringByAppendingString:@"courseorder/cancel"])
+    .PARAM(@"json",[paramDict JSONString])
+    .TIMEOUT(30);
 }
 @end

@@ -27,10 +27,10 @@ ON_SIGNAL3( QiuChangOrderDetailCell, orderagainone, signal )
 {
     if ( [signal is:BeeUIButton.TOUCH_UP_INSIDE] )
     {
-//        if (self.delegate && [self.delegate respondsToSelector:@selector(onPressOrderAgain:)])
-//        {
-//            [self.delegate onPressOrderAgain:self.data];
-//        }
+        if (self.delegate && [self.delegate respondsToSelector:@selector(orderagain:)])
+        {
+            [self.delegate orderagain:self.data];
+        }
     }
 }
 
@@ -38,10 +38,21 @@ ON_SIGNAL3( QiuChangOrderDetailCell, orderagaintwo, signal )
 {
     if ( [signal is:BeeUIButton.TOUCH_UP_INSIDE] )
     {
-        //        if (self.delegate && [self.delegate respondsToSelector:@selector(onPressOrderAgain:)])
-        //        {
-        //            [self.delegate onPressOrderAgain:self.data];
-        //        }
+        if (self.delegate && [self.delegate respondsToSelector:@selector(orderagain:)])
+        {
+            [self.delegate orderagain:self.data];
+        }
+    }
+}
+
+ON_SIGNAL3( QiuChangOrderDetailCell, ordercancel, signal )
+{
+    if ( [signal is:BeeUIButton.TOUCH_UP_INSIDE] )
+    {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(cancelorder:)])
+        {
+            [self.delegate cancelorder:self.data];
+        }
     }
 }
 //+ (CGSize)estimateUISizeByWidth:(CGFloat)width forData:(id)data
