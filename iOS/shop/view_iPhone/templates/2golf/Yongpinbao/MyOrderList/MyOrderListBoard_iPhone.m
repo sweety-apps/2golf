@@ -77,7 +77,7 @@ ON_SIGNAL2( QiuchangOrderCell_iPhoneV2, signal )
     QiuChangOrderDetailBoard_iPhone * board = [QiuChangOrderDetailBoard_iPhone board];
     CourseOrderCellInfo_iPhone* cell = (CourseOrderCellInfo_iPhone*)signal.source;
     board.order = cell.data;
-    [self.stack pushBoard:board animated:YES];
+    [self.stack pushBoard:board animated:NO];
     
 }
 

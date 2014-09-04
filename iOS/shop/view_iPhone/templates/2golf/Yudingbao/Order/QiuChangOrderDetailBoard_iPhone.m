@@ -87,7 +87,7 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
     
     if ( [signal is:BeeUINavigationBar.LEFT_TOUCHED] )
     {
-        [self.stack popBoardAnimated:YES];
+        [self.stack popBoardAnimated:NO];
     }
     else if ( [signal is:BeeUINavigationBar.RIGHT_TOUCHED] )
     {

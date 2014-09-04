@@ -47,7 +47,7 @@
         </linear>
         
         <linear orientation="h" class="order-info-item">
-            <label class="tips" >打球时间</label>
+            <label class="tips" id="playtimetips">打球时间</label>
             <label class="content" id="playtime">09月04日 09:00 周期四</label>
         </linear>
         
@@ -56,8 +56,8 @@
             <label class="content" id="contact">張三</label>
         </linear>
         
-        <linear orientation="h" class="order-info-item">
-            <label class="tips" >服务商</label>
+        <linear orientation="h" class="order-info-item" >
+            <label class="tips" id="distributortips">服务商</label>
             <label class="content" id="distributor">中顺高尔夫</label>
         </linear>
         
