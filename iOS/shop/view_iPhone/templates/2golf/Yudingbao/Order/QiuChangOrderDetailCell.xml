@@ -71,14 +71,12 @@
             <label class="content" id="orderdescription">这里是订单说明这里是订单说明这里是订单说明这里是订单说明这里是订单说明这里是订单说明这里是订单说明这里是订单说明</label>
         </linear>
         
-        <linear orientation="h" class="order-info-item" id="twobuttons">
-            <button class="orderagain" id="orderagain">再次预定</button>
+        <linear orientation="h" class="order-info-item">
+            <button class="orderagaintwo" id="orderagaintwo">再次预定</button>
             <button class="ordercancel" id="ordercancel">取消订单</button>
+            <button class="orderagainone" id="orderagainone">再次预定</button>
         </linear>
         
-        <linear orientation="h" class="order-info-item-one" id="onebutton">
-            <button class="orderagain" id="orderagain">再次预定</button>
-        </linear>
         
     </linear>
     
@@ -141,12 +139,21 @@
         color:#FFFFFF;
         }
         
-        .orderagain{
+        .orderagaintwo{
         height: 30px;
         width: 25%;
         background-image: url(orderdetailbutton-yellow.png);
         left:20%;
         color:#FFFFFF;
+        }
+        
+        .orderagainone{
+        height: 30px;
+        width: 25%;
+        background-image: url(orderdetailbutton-yellow.png);
+        left:20%;
+        color:#FFFFFF;
+        float:center;
         }
     </style>
 </ui>

@@ -23,7 +23,7 @@ SUPPORT_RESOURCE_LOADING( YES )
 	[super unload];
 }
 
-ON_SIGNAL3( QiuChangOrderDetailCell, orderagain, signal )
+ON_SIGNAL3( QiuChangOrderDetailCell, orderagainone, signal )
 {
     if ( [signal is:BeeUIButton.TOUCH_UP_INSIDE] )
     {
@@ -34,6 +34,16 @@ ON_SIGNAL3( QiuChangOrderDetailCell, orderagain, signal )
     }
 }
 
+ON_SIGNAL3( QiuChangOrderDetailCell, orderagaintwo, signal )
+{
+    if ( [signal is:BeeUIButton.TOUCH_UP_INSIDE] )
+    {
+        //        if (self.delegate && [self.delegate respondsToSelector:@selector(onPressOrderAgain:)])
+        //        {
+        //            [self.delegate onPressOrderAgain:self.data];
+        //        }
+    }
+}
 //+ (CGSize)estimateUISizeByWidth:(CGFloat)width forData:(id)data
 //{
 //    CGSize size = CGSizeMake( width, 960 );
@@ -111,13 +121,25 @@ ON_SIGNAL3( QiuChangOrderDetailCell, orderagain, signal )
         
         
         $(@"ordertime").TEXT([self tsStringToDateString:order[@"createtime"]]);
-        
+        if([order[@"status"] intValue] == 6 || [order[@"status"] intValue] == 3)
+        {
+            $(@"orderagaintwo").HIDE();
+            $(@"ordercancel").HIDE();
+            $(@"orderagainone").SHOW();
+        }
+        else
+        {
+            $(@"orderagaintwo").SHOW();
+            $(@"ordercancel").SHOW();
+            
+            $(@"orderagainone").HIDE();
+        }
 
-        UIView* twobtns = (UIView*)[self findSubViewByID:@"twobuttons"];
-        twobtns.hidden = ([order[@"status"] intValue] == 6 || [order[@"status"] intValue] == 3);
-        
-        UIView* onebtn = (UIView*)[self findSubViewByID:@"onebutton"];
-        onebtn.hidden = !twobtns.hidden;
+//        UIView* twobtns = (UIView*)[self findSubViewByID:@"twobuttons"];
+//        twobtns.hidden = ([order[@"status"] intValue] == 6 || [order[@"status"] intValue] == 3);
+//        
+//        UIView* onebtn = (UIView*)[self findSubViewByID:@"onebutton"];
+//        onebtn.hidden = !twobtns.hidden;
 //        BeeUIQuery* lblarray = $(@"#orderdescription");
 //        UILabel* lbl = (UILabel*)[lblarray.views objectAtIndex:0];
 //        lbl.numberOfLines = 0;
