@@ -327,6 +327,18 @@ ON_SIGNAL( signal )
     .TIMEOUT(30);
 }
 
+- (void)requestUnionPayQuery
+{
+    NSDictionary* paramDict = @{
+                                @"session":[UserModel sharedInstance].session.objectToDictionary,
+                                @"orderid":self.payingData[@"id"],
+                                };
+    [self presentLoadingTips:@"正在加载"];
+    self.HTTP_POST([[ServerConfig sharedInstance].url stringByAppendingString:@"order/unionpayQuery"])
+    .PARAM(@"json",[paramDict JSONString])
+    .TIMEOUT(30);
+}
+
 - (void)fetchData
 {
     NSArray* statusArr = @[
@@ -733,7 +745,7 @@ ON_SIGNAL( signal )
                 if ([stringvalue isEqualToString:@"0000"]) {
                     self.hasRefreshed = NO;
                     [self presentSuccessTips:@"交易成功"];
-//                    [self succeedPaid];
+                    [self requestUnionPayQuery];
                     return;
                 }
             }

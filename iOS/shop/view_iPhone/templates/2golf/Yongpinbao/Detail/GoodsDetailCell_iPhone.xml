@@ -64,29 +64,30 @@
         
         <linear orientation="v" class="list-group">
             
-            <linear orientation="h" class="list-row">
+            <!--<linear orientation="h" class="list-row">
                 <image class="bg list-group-header"/>
                 <label class="list-title">@{gooddetail_parameter}</label>
                 <label class="list-subtitle" id="info-1"></label>
                 <image class="list-indictor"/>
                 <button id="property" class="fill"></button>
-            </linear>
+            </linear>-->
             
             <linear orientation="h" class="list-row">
-                <image class="bg list-group-body"/>
+                <!--<image class="bg list-group-body"/>-->
+                <image class="list-group-signle-bg"/>
                 <label class="list-title">@{gooddetail_product}</label>
                 <label class="list-subtitle" id="info-2"></label>
                 <image class="list-indictor"/>
                 <button id="detail" class="fill"></button>
             </linear>
 
-            <linear orientation="h" class="list-row">
+           <!-- <linear orientation="h" class="list-row">
                 <image class="bg list-group-footer"/>
                 <label class="list-title">@{gooddetail_commit}</label>
                 <label class="list-subtitle" id="info-3"></label>
                 <image class="list-indictor"/>
                 <button id="comment" class="fill"></button>
-            </linear>
+            </linear>-->
             
         </linear>
         

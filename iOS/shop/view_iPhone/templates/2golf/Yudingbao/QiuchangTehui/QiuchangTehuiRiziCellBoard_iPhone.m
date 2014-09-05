@@ -81,7 +81,7 @@ DEF_SIGNAL( TOUCHED )
         self.ctrl.xianImg.hidden = YES;
         if (dict[@"payway"] != [NSNull null] && [dict[@"payway"] intValue] == 1)
         {
-            self.ctrl.xianImg.hidden = NO;
+            self.ctrl.xianImg.hidden = YES;
         }
         else
         {
@@ -91,7 +91,7 @@ DEF_SIGNAL( TOUCHED )
         self.ctrl.huiImg.hidden = YES;
         if (dict[@"distributortype"] != [NSNull null] && [dict[@"distributortype"] intValue] == 1)
         {
-            self.ctrl.huiImg.hidden = NO;
+            self.ctrl.huiImg.hidden = YES;
         }
         else
         {

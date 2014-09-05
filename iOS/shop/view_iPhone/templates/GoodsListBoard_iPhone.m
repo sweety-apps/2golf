@@ -69,6 +69,7 @@ SUPPORT_RESOURCE_LOADING( YES )
     bg.backgroundColor = [UIColor clearColor];
 }
 
+//hot
 - (void)selectTab1
 {
 	$(@"#item-popular").CSS( @"color: #ffffff" );
@@ -76,8 +77,8 @@ SUPPORT_RESOURCE_LOADING( YES )
 	$(@"#item-expensive").CSS( @"color: #ffffff" );
     
     $(@"item-popular-arrow").CSS( @"image-src: url(item-grid-filter-down-active-arrow.png)" );
-    $(@"item-cheap-arrow").CSS( @"image-src: url(item-grid-filter-down-active-arrow.png)" );
-    $(@"item-expensive-arrow").CSS( @"image-src: url(item-grid-filter-down-arrow.png)" );
+//    $(@"item-cheap-arrow").CSS( @"image-src: url(item-grid-filter-down-active-arrow.png)" );
+//    $(@"item-expensive-arrow").CSS( @"image-src: url(item-grid-filter-down-arrow.png)" );
     
     $(@"item-popular-indicator").SHOW();
     $(@"item-cheap-indicator").HIDE();
@@ -97,15 +98,16 @@ SUPPORT_RESOURCE_LOADING( YES )
     $(@"#item-popular").view.layer.borderWidth = 1;
 }
 
+//cheap
 - (void)selectTab2
 {
 	$(@"#item-popular").CSS( @"color: #ffffff" );
 	$(@"#item-cheap").CSS( @"color: #ffffff" );
 	$(@"#item-expensive").CSS( @"color: #ffffff" );
     
-    $(@"item-popular-arrow").CSS( @"image-src: url(item-grid-filter-down-active-arrow.png)" );
-    $(@"item-cheap-arrow").CSS( @"image-src: url(item-grid-filter-down-active-arrow.png)" );
-    $(@"item-expensive-arrow").CSS( @"image-src: url(item-grid-filter-down-arrow.png)" );
+//    $(@"item-popular-arrow").CSS( @"image-src: url(item-grid-filter-up-active-arrow.png)" );
+    $(@"item-cheap-arrow").CSS( @"image-src: url(item-grid-filter-up-active-arrow.png)" );
+//    $(@"item-expensive-arrow").CSS( @"image-src: url(item-grid-filter-up-arrow.png)" );
     
     $(@"item-popular-indicator").HIDE();
     $(@"item-cheap-indicator").SHOW();
@@ -123,19 +125,60 @@ SUPPORT_RESOURCE_LOADING( YES )
     $(@"#item-popular").view.layer.borderWidth = 1;
 }
 
+//expensive
 - (void)selectTab3
 {
-	$(@"#item-popular").CSS( @"color: #999999" );
-	$(@"#item-cheap").CSS( @"color: #999999" );
+	$(@"#item-popular").CSS( @"color: #ffffff" );
+	$(@"#item-cheap").CSS( @"color: #ffffff" );
 	$(@"#item-expensive").CSS( @"color: #ffffff" );
     
-    $(@"item-popular-arrow").CSS( @"image-src: url(item-grid-filter-down-arrow.png)" );
-    $(@"item-cheap-arrow").CSS( @"image-src: url(item-grid-filter-down-arrow.png)" );
-    $(@"item-expensive-arrow").CSS( @"image-src: url(item-grid-filter-down-active-arrow.png)" );
+//    $(@"item-popular-arrow").CSS( @"image-src: url(item-grid-filter-down-active-arrow.png)" );
+    $(@"item-cheap-arrow").CSS( @"image-src: url(item-grid-filter-down-active-arrow.png)" );
+//    $(@"item-expensive-arrow").CSS( @"image-src: url(item-grid-filter-down-arrow.png)" );
     
     $(@"item-popular-indicator").HIDE();
+    $(@"item-cheap-indicator").SHOW();
+    $(@"item-expensive-indicator").HIDE();
+    
+    $(@"#item-cheap").view.backgroundColor = [UIColor colorWithRed:0.125 green:0.619 blue:0.171 alpha:1.000];
+    $(@"#item-popular").view.backgroundColor = [UIColor colorWithRed:0.676 green:0.769 blue:0.835 alpha:1.000];
+    
+    $(@"#item-cheap").view.layer.masksToBounds = YES;
+    $(@"#item-cheap").view.layer.borderColor = [UIColor whiteColor].CGColor;
+    $(@"#item-cheap").view.layer.borderWidth = 1;
+    
+    $(@"#item-popular").view.layer.masksToBounds = YES;
+    $(@"#item-popular").view.layer.borderColor = [UIColor whiteColor].CGColor;
+    $(@"#item-popular").view.layer.borderWidth = 1;
+}
+
+//cool
+- (void)selectTab4
+{
+	$(@"#item-popular").CSS( @"color: #ffffff" );
+	$(@"#item-cheap").CSS( @"color: #ffffff" );
+	$(@"#item-expensive").CSS( @"color: #ffffff" );
+    
+    $(@"item-popular-arrow").CSS( @"image-src: url(item-grid-filter-up-active-arrow.png)" );
+//    $(@"item-cheap-arrow").CSS( @"image-src: url(item-grid-filter-up-active-arrow.png)" );
+//    $(@"item-expensive-arrow").CSS( @"image-src: url(item-grid-filter-up-arrow.png)" );
+    
+    $(@"item-popular-indicator").SHOW();
     $(@"item-cheap-indicator").HIDE();
-    $(@"item-expensive-indicator").SHOW();
+    $(@"item-expensive-indicator").HIDE();
+    
+    $(@"item-popular-indicator").SHOW();
+    
+    $(@"#item-cheap").view.backgroundColor = [UIColor colorWithRed:0.676 green:0.769 blue:0.835 alpha:1.000];
+    $(@"#item-popular").view.backgroundColor = [UIColor colorWithRed:0.125 green:0.619 blue:0.171 alpha:1.000];
+    
+    $(@"#item-cheap").view.layer.masksToBounds = YES;
+    $(@"#item-cheap").view.layer.borderColor = [UIColor whiteColor].CGColor;
+    $(@"#item-cheap").view.layer.borderWidth = 1;
+    
+    $(@"#item-popular").view.layer.masksToBounds = YES;
+    $(@"#item-popular").view.layer.borderColor = [UIColor whiteColor].CGColor;
+    $(@"#item-popular").view.layer.borderWidth = 1;
 }
 
 @end
@@ -265,6 +308,7 @@ SUPPORT_RESOURCE_LOADING( YES );
 
 @implementation GoodsListBoard_iPhone
 
+DEF_INT( TAB_COOL,		-1 )
 DEF_INT( TAB_HOT,		0 )
 DEF_INT( TAB_CHEAPEST,	1 )
 DEF_INT( TAB_EXPENSIVE,	2 )
@@ -272,13 +316,15 @@ DEF_INT( TAB_EXPENSIVE,	2 )
 DEF_INT( MODE_GRID, 0 )
 DEF_INT( MODE_LARGE, 1 )
 
-@synthesize tabIndex = _tabIndex;
+@synthesize last1tabIndex = _last1tabIndex;
+@synthesize last2tabIndex = _last2tabIndex;
 @synthesize currentMode = _currentMode;
 @synthesize category = _category;
 
 @synthesize model1 = _model1;
 @synthesize model2 = _model2;
 @synthesize model3 = _model3;
+@synthesize model4 = _model4;
 
 - (void)load
 {
@@ -294,6 +340,9 @@ DEF_INT( MODE_LARGE, 1 )
 
 	self.model3 = [[[SearchByExpensiveModel alloc] init] autorelease];
 	[self.model3 addObserver:self];
+    
+    self.model4 = [[[SearchByCoolModel alloc] init] autorelease];
+	[self.model4 addObserver:self];
 }
 
 - (void)unload
@@ -307,6 +356,9 @@ DEF_INT( MODE_LARGE, 1 )
 	[self.model3 removeObserver:self];
 	self.model3 = nil;
 	
+	[self.model4 removeObserver:self];
+	self.model4 = nil;
+    
 	self.category = nil;
 
 	[super unload];
@@ -372,6 +424,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
 		[self.model1 loadCache];
 		[self.model2 loadCache];
 		[self.model3 loadCache];
+		[self.model4 loadCache];
     }
     else if ( [signal is:BeeUIBoard.FREE_DATAS] )
     {
@@ -487,8 +540,19 @@ ON_SIGNAL3( GoodsListFilter_iPhone, item_popular_button, signal )
 	
 	if ( [signal is:BeeUIButton.TOUCH_UP_INSIDE] )
 	{
-		self.tabIndex = self.TAB_HOT;
-		
+        if (self.tabIndex == self.TAB_HOT) {
+            self.tabIndex = self.TAB_COOL;
+        }
+        else if(self.tabIndex == self.TAB_COOL)
+        {
+            self.tabIndex = self.TAB_HOT;
+        }
+		else
+        {
+            self.tabIndex = self.last2tabIndex;
+        }
+        
+        self.last2tabIndex = self.tabIndex;
 		[self updateViews];
 		[self updateDatas];
 	}
@@ -500,8 +564,18 @@ ON_SIGNAL3( GoodsListFilter_iPhone, item_cheap_button, signal )
 	
 	if ( [signal is:BeeUIButton.TOUCH_UP_INSIDE] )
 	{
-		self.tabIndex = self.TAB_CHEAPEST;
-		
+        if (self.tabIndex == self.TAB_CHEAPEST) {
+            self.tabIndex = self.TAB_EXPENSIVE;
+        }
+        else if (self.tabIndex == self.TAB_EXPENSIVE)
+        {
+            self.tabIndex = self.TAB_CHEAPEST;
+        }
+		else
+        {
+            self.tabIndex = self.last1tabIndex;
+        }
+        self.last1tabIndex = self.tabIndex;
 		[self updateViews];
 		[self updateDatas];
 	}
@@ -542,6 +616,7 @@ ON_SIGNAL3( GoodsListCart_iPhone, cart, signal )
     self.model1.filter.keywords = keyword;
     self.model2.filter.keywords = keyword;
     self.model3.filter.keywords = keyword;
+    self.model4.filter.keywords = keyword;
 
     [self updateDatas];
 }
@@ -577,6 +652,10 @@ ON_SIGNAL3( GoodsListCart_iPhone, cart, signal )
 	else if ( self.TAB_EXPENSIVE == self.tabIndex )
 	{
 		[_filter selectTab3];
+	}
+    else if ( self.TAB_COOL == self.tabIndex )
+	{
+		[_filter selectTab4];
 	}
     
     NSString* brandName = [self currentModel].filter.brand_name;
@@ -631,7 +710,10 @@ ON_SIGNAL3( GoodsListCart_iPhone, cart, signal )
 	{
 		return self.model3;
 	}
-	
+    else if ( self.TAB_COOL == self.tabIndex )
+	{
+		return self.model4;
+	}
 	return self.model1;
 }
 

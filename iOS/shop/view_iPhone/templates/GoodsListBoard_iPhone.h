@@ -51,10 +51,13 @@ AS_SIGNAL( TAPPED )
 
 @interface GoodsListBoard_iPhone : BaseBoard_iPhone
 
+AS_INT( TAB_COOL )
 AS_INT( TAB_HOT )
 AS_INT( TAB_CHEAPEST )
 AS_INT( TAB_EXPENSIVE )
 
+@property (nonatomic, assign) NSInteger					last1tabIndex;
+@property (nonatomic, assign) NSInteger					last2tabIndex;
 @property (nonatomic, assign) NSInteger					tabIndex;
 @property (nonatomic, assign) NSInteger					currentMode;
 @property (nonatomic, retain) NSString *				category;
@@ -62,5 +65,6 @@ AS_INT( TAB_EXPENSIVE )
 @property (nonatomic, retain) SearchByHotModel *		model1;
 @property (nonatomic, retain) SearchByCheapestModel *	model2;
 @property (nonatomic, retain) SearchByExpensiveModel *	model3;
+@property (nonatomic, retain) SearchByCoolModel *	model4;
 
 @end

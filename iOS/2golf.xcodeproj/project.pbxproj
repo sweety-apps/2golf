@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F1B2AA919B9CBDE00D3C5B9 /* SMS_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F1B2AA819B9CBDE00D3C5B9 /* SMS_SDK.framework */; };
 		4F27324F19B4100A0022EF21 /* AppBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F272F7E19B410080022EF21 /* AppBoard_iPhone.m */; };
 		4F27325019B4100A0022EF21 /* AppTab_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F272F8019B410080022EF21 /* AppTab_iPhone.m */; };
 		4F27325119B4100A0022EF21 /* AppTab_iPhone.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4F272F8119B410080022EF21 /* AppTab_iPhone.xml */; };
@@ -946,6 +947,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4F1B2AA819B9CBDE00D3C5B9 /* SMS_SDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SMS_SDK.framework; sourceTree = "<group>"; };
 		4F272F7D19B410080022EF21 /* AppBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppBoard_iPhone.h; sourceTree = "<group>"; };
 		4F272F7E19B410080022EF21 /* AppBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppBoard_iPhone.m; sourceTree = "<group>"; };
 		4F272F7F19B410080022EF21 /* AppTab_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppTab_iPhone.h; sourceTree = "<group>"; };
@@ -2435,6 +2437,7 @@
 				F3B53978190138CC004E72D4 /* libz.dylib in Frameworks */,
 				F3F0EF4519358214004613DA /* GooglePlus.framework in Frameworks */,
 				F3F0EF5D19358216004613DA /* ShareSDKShareActionSheet.framework in Frameworks */,
+				4F1B2AA919B9CBDE00D3C5B9 /* SMS_SDK.framework in Frameworks */,
 				F3F0EF4C19358215004613DA /* libSinaWeiboSDK.a in Frameworks */,
 				F3F0EF4E19358215004613DA /* libTCWeiboSDK.a in Frameworks */,
 				F3B5397719013899004E72D4 /* libsqlite3.dylib in Frameworks */,
@@ -4782,6 +4785,7 @@
 		F3B5377F18FE9629004E72D4 /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				4F1B2AA819B9CBDE00D3C5B9 /* SMS_SDK.framework */,
 				4FFB1F3519AF5150007F179B /* upomp_lthj */,
 				F3D14E1C1957257B00A0DA3E /* alipay */,
 				F3F0EECC19358212004613DA /* ShareSDK */,
@@ -6105,6 +6109,7 @@
 					"$(PROJECT_DIR)/libs/ShareSDK/Extend/RenRenSDK",
 					"$(PROJECT_DIR)/libs/ShareSDK",
 					"$(PROJECT_DIR)/libs/ShareSDK/UI",
+					"$(PROJECT_DIR)/libs",
 				);
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -6168,6 +6173,7 @@
 					"$(PROJECT_DIR)/libs/ShareSDK/Extend/RenRenSDK",
 					"$(PROJECT_DIR)/libs/ShareSDK",
 					"$(PROJECT_DIR)/libs/ShareSDK/UI",
+					"$(PROJECT_DIR)/libs",
 				);
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -6259,6 +6265,7 @@
 					"$(PROJECT_DIR)/libs/ShareSDK/Extend/RenRenSDK",
 					"$(PROJECT_DIR)/libs/ShareSDK",
 					"$(PROJECT_DIR)/libs/ShareSDK/UI",
+					"$(PROJECT_DIR)/libs",
 				);
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

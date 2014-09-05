@@ -197,3 +197,13 @@ DEF_SINGLETON( SearchModel )
 }
 
 @end
+
+#pragma mark -
+@implementation SearchByCoolModel
+- (void)load
+{
+	[super load];
+	
+	self.filter.sort_by = SEARCH_ORDER_BY_HOT;
+}
+@end

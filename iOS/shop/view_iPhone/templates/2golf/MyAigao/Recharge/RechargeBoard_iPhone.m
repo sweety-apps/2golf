@@ -277,6 +277,19 @@ ON_SIGNAL2( BeeUIAlertView, signal)
     .TIMEOUT(30);
 }
 
+- (void)requestUnionPayQuery
+{
+    NSDictionary* paramDict = @{
+                                @"session":[UserModel sharedInstance].session.objectToDictionary,
+                                @"payid":[self.dataDict[@"pay_id"] stringValue],
+                                @"rechargeid":self.dataDict[@"id"],
+                                };
+    [self presentLoadingTips:@"正在加载"];
+    self.HTTP_POST([[ServerConfig sharedInstance].url stringByAppendingString:@"order/unionpayQuery"])
+    .PARAM(@"json",[paramDict JSONString])
+    .TIMEOUT(30);
+}
+
 - (void)requestWithdrawData
 {
     NSString* note = [NSString stringWithFormat:@"%@ %@ %@"
@@ -668,6 +681,7 @@ ON_SIGNAL2( BeeUIAlertView, signal)
                 NSString* stringvalue = [elementcode stringValue];
                 if ([stringvalue isEqualToString:@"0000"]) {
                     [self presentSuccessTips:@"交易成功"];
+                    [self requestUnionPayQuery];
                     return;
                 }
             }

@@ -31,6 +31,7 @@
 #import "XGPush.h"
 
 #import <ShareSDK/ShareSDK.h>
+
 #import "WXApi.h"
 #import "WeiboApi.h"
 

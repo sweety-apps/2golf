@@ -55,3 +55,6 @@ AS_SINGLETON( SearchModel )
 
 @interface SearchByHotModel : SearchModel
 @end
+
+@interface SearchByCoolModel : SearchModel
+@end

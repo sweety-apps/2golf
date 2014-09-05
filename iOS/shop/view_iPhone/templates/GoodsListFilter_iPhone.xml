@@ -33,14 +33,14 @@
         <image class="filter-bg"/>
         
         <linear orientation="h" class="filter-item">
-            <label id="item-cheap" class="filter-title">价格排序↑</label>
-            <!--image id="item-cheap-arrow" class="filter-icon arrow-down"/-->
+            <label id="item-cheap" class="filter-title">价格排序</label>
+            <image id="item-cheap-arrow" class="filter-icon arrow-down"/>
 			<button id="item-cheap-button" class="filter-button"/>
         </linear>
 
         <linear orientation="h" class="filter-item">
-                <label id="item-popular" class="filter-title">热门排序↓</label>
-                <!--image id="item-popular-arrow" class="filter-icon arrow-down"/-->
+                <label id="item-popular" class="filter-title">热门排序</label>
+                <image id="item-popular-arrow" class="filter-icon arrow-down"/>
                 <button id="item-popular-button" class="filter-button"/>
         </linear>
 
