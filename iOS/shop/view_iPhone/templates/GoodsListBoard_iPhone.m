@@ -34,6 +34,7 @@
 #import "GoodsTagHeaderCell.h"
 #import "NibLoader.h"
 #import "SearchBoard_iPhone.h"
+#import "BrandListBoard_iPhone.h"
 
 @implementation GoodsListCart_iPhone
 
@@ -858,8 +859,9 @@ ON_SIGNAL3( GoodsListCart_iPhone, cart, signal )
 
 - (void)_pressedBrandBtn:(UIButton*)btn
 {
-    AdvancedSearchBoard_iPhone * board = [AdvancedSearchBoard_iPhone board];
-    board.filter = self.model1.filter;
+//    AdvancedSearchBoard_iPhone * board = [AdvancedSearchBoard_iPhone board];
+//    board.filter = self.model1.filter;
+    BrandListBoard_iPhone* board = [BrandListBoard_iPhone board];
     [self.stack pushBoard:board animated:YES];
 }
 

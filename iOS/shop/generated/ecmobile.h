@@ -162,6 +162,7 @@ enum RANK_LEVEL
 @property (nonatomic, retain) NSString *		url;
 @property (nonatomic, retain) NSNumber *		brand_id;
 @property (nonatomic, retain) NSString *		brand_name;
+@property (nonatomic, retain) PHOTO* photo;
 @end
 
 @interface CART_GOODS : NSObject

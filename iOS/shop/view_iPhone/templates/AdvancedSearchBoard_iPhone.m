@@ -282,6 +282,7 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
         [board.model1 setValueWithFilter:_tempFilter];
         [board.model2 setValueWithFilter:_tempFilter];
         [board.model3 setValueWithFilter:_tempFilter];
+        [board.model4 setValueWithFilter:_tempFilter];
         
         if ([self.previousBoard isKindOfClass:[GoodsListBoard_iPhone class]])
         {

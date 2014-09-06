@@ -33,6 +33,7 @@
 #import "ecmobile.h"
 #import "UserModel.h"
 #import "ServerConfig.h"
+#import "NSObject+BeeJSON.h"
 
 #pragma mark - models
 
@@ -94,6 +95,7 @@ CONVERT_PROPERTY_CLASS( article, ARTICLE );
 @synthesize url = _url;
 @synthesize brand_id = _brand_id;
 @synthesize brand_name = _brand_name;
+@synthesize photo = _photo;
 @end
 
 @implementation CART_GOODS
@@ -2441,6 +2443,7 @@ DEF_MESSAGE_( brand, msg )
             brand.brand_id = dict[@"id"];//[NSNumber numberWithLong:[dict[@"id"] longValue]];
             brand.brand_name = dict[@"brand_name"];
             brand.url = dict[@"url"];
+            brand.photo = [PHOTO unserializeObject:dict[@"photo"]];
             [data addObject:brand];
         }
         

@@ -39,7 +39,7 @@
                 <image class="list-indictor normal" id="indictor"/>
                 <button id="toggle" class="fill"/>
             </linear>
-            <view type="UITagList" id="taglist" class="taglist"/>
+            <!--view type="UITagList" id="taglist" class="taglist"/-->
         </linear>
         
     </linear>
