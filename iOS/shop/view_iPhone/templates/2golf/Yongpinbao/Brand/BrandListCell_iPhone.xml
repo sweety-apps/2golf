@@ -29,20 +29,44 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ui namespace="BrandListCell_iPhone">
     
-    <linear orientation="v" class="order-wrapper">
-        <image class="icon" id="img0"/>
-        <image class="icon" id="img1"/>
-        <image class="icon" id="img2"/>
-        
+    <linear orientation="h" class="order-wrapper">
+        <linear orientation="v" class="item">
+            <image class="icon" id="img0"/>
+            <button class = "btn" id="btn0"/>
+        </linear>
+        <linear orientation="v" class="item">
+            <image class="icon" id="img1"/>
+            <button class = "btn" id="btn1"/>
+        </linear>
+        <linear orientation="v" class="item">
+            <image class="icon" id="img2"/>
+            <button class = "btn" id="btn2"/>
+        </linear>
     </linear>
     
     <style type="text/css">
         .icon {
+        width: 100%;
+        height: 100%;
+        border-radius: 0px;
+        margin-left: 0px;
+        v-float: center;
+        image-mode: fit;
+        image-src: url(placeholder-image.png);
+        image-loading: gray;
+        }
+        
+        .btn
+        {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        
+        }
+        .item
+        {
         width: 106px;
         height: 100%;
-        image-mode: fit;
-        margin-left: 0px;
-        margin-right: 0px;
         }
     </style>
 </ui>
