@@ -43,6 +43,7 @@
 #import "AlixPayResult.h"
 #import "PartnerConfig.h"
 #import "DataVerifier.h"
+#import "MobClick.h"
 
 #pragma mark -
 
@@ -90,6 +91,8 @@ static BMKMapManager* _mapManager = nil;
     [ShareSDK addNotificationWithName:SSN_USER_INFO_UPDATE
                                target:self
                                action:@selector(userInfoUpdateHandler:)];
+    
+    [MobClick startWithAppkey:@"540c3e4afd98c565a202df5f" reportPolicy:BATCH   channelId:@"alpha"];
     
     return YES;
 }

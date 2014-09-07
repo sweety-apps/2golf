@@ -60,6 +60,7 @@
 
 #import "Bee_UICapability.h"
 #import "NSObject+UIPropertyMapping.h"
+#import "MobClick.h"
 
 #pragma mark -
 
@@ -534,6 +535,8 @@ static NSMutableArray *		__allBoards = nil;
 	[self changeStateActivating];
 	
 	_lastWeekup = [NSDate timeIntervalSinceReferenceDate];
+    
+    [MobClick beginLogPageView:NSStringFromClass([self class]) ];
 }
 
 // Called when the view has been fully transitioned onto the screen. Default does nothing
@@ -547,7 +550,8 @@ static NSMutableArray *		__allBoards = nil;
 	[self enableUserInteraction];
 	[self changeStateActivated];
 	
-	_firstEnter = NO;	
+	_firstEnter = NO;
+    [MobClick endLogPageView:NSStringFromClass([self class])];
 }
 
 // Called when the view is dismissed, covered or otherwise hidden. Default does nothing

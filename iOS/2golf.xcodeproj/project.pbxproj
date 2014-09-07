@@ -531,6 +531,7 @@
 		4F27345719B4100A0022EF21 /* ValidateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F27324E19B4100A0022EF21 /* ValidateModel.m */; };
 		4F27345D19B41FDC0022EF21 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F27345C19B41FDC0022EF21 /* libcrypto.a */; };
 		4F27345F19B4412E0022EF21 /* libUnionPayLib11 -Device.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F27345E19B4412E0022EF21 /* libUnionPayLib11 -Device.a */; };
+		4F2786B419BC76C600CF083B /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2786B119BC76C600CF083B /* libMobClickLibrary.a */; };
 		4F47A26919B731250070C8B1 /* QiuChangOrderDetailBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F47A26819B731250070C8B1 /* QiuChangOrderDetailBoard_iPhone.m */; };
 		4F47A28019B748DA0070C8B1 /* QiuChangOrderDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F47A27F19B748DA0070C8B1 /* QiuChangOrderDetailCell.m */; };
 		4F47A28219B74D7F0070C8B1 /* QiuChangOrderDetailCell.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4F47A28119B74D7F0070C8B1 /* QiuChangOrderDetailCell.xml */; };
@@ -1629,6 +1630,9 @@
 		4F27324E19B4100A0022EF21 /* ValidateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValidateModel.m; sourceTree = "<group>"; };
 		4F27345C19B41FDC0022EF21 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
 		4F27345E19B4412E0022EF21 /* libUnionPayLib11 -Device.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libUnionPayLib11 -Device.a"; sourceTree = "<group>"; };
+		4F2786B119BC76C600CF083B /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
+		4F2786B219BC76C600CF083B /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
+		4F2786B319BC76C600CF083B /* MobClickSocialAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClickSocialAnalytics.h; sourceTree = "<group>"; };
 		4F47A26719B731250070C8B1 /* QiuChangOrderDetailBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuChangOrderDetailBoard_iPhone.h; sourceTree = "<group>"; };
 		4F47A26819B731250070C8B1 /* QiuChangOrderDetailBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiuChangOrderDetailBoard_iPhone.m; sourceTree = "<group>"; };
 		4F47A27E19B748DA0070C8B1 /* QiuChangOrderDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuChangOrderDetailCell.h; sourceTree = "<group>"; };
@@ -2448,6 +2452,7 @@
 				F3F0EF4519358214004613DA /* GooglePlus.framework in Frameworks */,
 				F3F0EF5D19358216004613DA /* ShareSDKShareActionSheet.framework in Frameworks */,
 				4F1B2AA919B9CBDE00D3C5B9 /* SMS_SDK.framework in Frameworks */,
+				4F2786B419BC76C600CF083B /* libMobClickLibrary.a in Frameworks */,
 				F3F0EF4C19358215004613DA /* libSinaWeiboSDK.a in Frameworks */,
 				F3F0EF4E19358215004613DA /* libTCWeiboSDK.a in Frameworks */,
 				F3B5397719013899004E72D4 /* libsqlite3.dylib in Frameworks */,
@@ -3577,6 +3582,16 @@
 				4F27324E19B4100A0022EF21 /* ValidateModel.m */,
 			);
 			path = model;
+			sourceTree = "<group>";
+		};
+		4F2786B019BC76C600CF083B /* UMAnalytics_Sdk_3.1.2 */ = {
+			isa = PBXGroup;
+			children = (
+				4F2786B119BC76C600CF083B /* libMobClickLibrary.a */,
+				4F2786B219BC76C600CF083B /* MobClick.h */,
+				4F2786B319BC76C600CF083B /* MobClickSocialAnalytics.h */,
+			);
+			path = UMAnalytics_Sdk_3.1.2;
 			sourceTree = "<group>";
 		};
 		4F74674D19BB2C40006F3F39 /* Brand */ = {
@@ -4809,6 +4824,7 @@
 		F3B5377F18FE9629004E72D4 /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				4F2786B019BC76C600CF083B /* UMAnalytics_Sdk_3.1.2 */,
 				4F1B2AA819B9CBDE00D3C5B9 /* SMS_SDK.framework */,
 				4FFB1F3519AF5150007F179B /* upomp_lthj */,
 				F3D14E1C1957257B00A0DA3E /* alipay */,
@@ -6165,6 +6181,7 @@
 					"$(PROJECT_DIR)/libs/upomp_lthj",
 					"$(PROJECT_DIR)/services/bee.services.alipay/vendor/AlipaySDK/openssl/lib",
 					"$(PROJECT_DIR)/services/bee.services.share.weixin/vendor/WeixinSDK",
+					"$(PROJECT_DIR)/libs/UMAnalytics_Sdk_3.1.2",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = 2golf;
@@ -6229,6 +6246,7 @@
 					"$(PROJECT_DIR)/libs/upomp_lthj",
 					"$(PROJECT_DIR)/services/bee.services.alipay/vendor/AlipaySDK/openssl/lib",
 					"$(PROJECT_DIR)/services/bee.services.share.weixin/vendor/WeixinSDK",
+					"$(PROJECT_DIR)/libs/UMAnalytics_Sdk_3.1.2",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = 2golf;
@@ -6321,6 +6339,7 @@
 					"$(PROJECT_DIR)/libs/upomp_lthj",
 					"$(PROJECT_DIR)/services/bee.services.alipay/vendor/AlipaySDK/openssl/lib",
 					"$(PROJECT_DIR)/services/bee.services.share.weixin/vendor/WeixinSDK",
+					"$(PROJECT_DIR)/libs/UMAnalytics_Sdk_3.1.2",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = 2golf;
