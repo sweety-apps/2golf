@@ -34,6 +34,7 @@
 }
 
 @property (nonatomic,retain) NSMutableArray* cellArray;
+@property (nonatomic,retain) NSMutableArray* cellDataArray;
 @property (nonatomic,retain) NSMutableDictionary* courseDict;
 @property (nonatomic,retain) NSMutableDictionary* priceDict;
 @property (nonatomic,retain) UITextField* phoneTextField;
@@ -303,6 +304,9 @@ ON_SIGNAL( signal )
     self.cellArray = nil;
     self.cellArray = [NSMutableArray array];
     
+    [self _buildCellData];
+    
+    
     NSString* str = nil;
     int pcount = 0;
     
@@ -316,14 +320,14 @@ ON_SIGNAL( signal )
     [cell setLeftText:@"服务商"];
     [cell setRightText:self.priceDict[@"distributorname"] color:[UIColor blackColor]];
     cell.delegate = self;
-    [self.cellArray addObject:cell];
+//    [self.cellArray addObject:cell];
     
     cell = [QiuchangOrderEditCell_iPhone cell];
     [cell setNormalM];
     [cell setLeftText:@"球场"];
     [cell setRightText:self.courseDict[@"coursename"] color:[UIColor blackColor]];
     cell.delegate = self;
-    [self.cellArray addObject:cell];
+//    [self.cellArray addObject:cell];
     
     //日期
     NSDate* date = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_date"];
@@ -338,7 +342,7 @@ ON_SIGNAL( signal )
     [cell setLeftText:@"日期"];
     [cell setRightText:str color:[UIColor blackColor]];
     cell.delegate = self;
-    [self.cellArray addObject:cell];
+//    [self.cellArray addObject:cell];
     
     
     //时间
@@ -355,7 +359,7 @@ ON_SIGNAL( signal )
     [cell setLeftText:@"时间"];
     [cell setRightText:str color:[UIColor blackColor]];
     cell.delegate = self;
-    [self.cellArray addObject:cell];
+//    [self.cellArray addObject:cell];
     
     //2
     str = [[CommonSharedData sharedInstance] getContactListNamesString];
@@ -365,7 +369,7 @@ ON_SIGNAL( signal )
     [cell setRightText:str color:[UIColor blackColor]];
     cell.ctrl.contactBtn.hidden = NO;
     cell.delegate = self;
-    [self.cellArray addObject:cell];
+//    [self.cellArray addObject:cell];
     
     cell = [QiuchangOrderEditCell_iPhone cell];
     [cell setPhoneNum];
@@ -375,7 +379,7 @@ ON_SIGNAL( signal )
     [cell setLeftText:@"电话"];
     //[cell setRightText:self.dataDict[@""] color:[UIColor blackColor]];
     cell.delegate = self;
-    [self.cellArray addObject:cell];
+//    [self.cellArray addObject:cell];
     
     //5
     cell = [QiuchangOrderEditCell_iPhone cell];
@@ -389,7 +393,7 @@ ON_SIGNAL( signal )
     self.descriptionTextField = cell.ctrl.phoneTextField;
     //self.descriptionTextField.text = self.description;
     cell.delegate = self;
-    [self.cellArray addObject:cell];
+//    [self.cellArray addObject:cell];
     
     str = [NSString stringWithFormat:@"%d",(int)self.numPeople];
     cell = [QiuchangOrderEditCell_iPhone cell];
@@ -397,7 +401,7 @@ ON_SIGNAL( signal )
     [cell setLeftText:@"打球人数"];
     [cell setRightText:str color:[UIColor blackColor]];
     cell.delegate = self;
-    [self.cellArray addObject:cell];
+//    [self.cellArray addObject:cell];
     
     //3
     if (self.priceDict[@"deposit"] == [NSNull null])
@@ -414,7 +418,7 @@ ON_SIGNAL( signal )
     [cell setLeftText:@"押金"];
     [cell setRightText:str color:[UIColor redColor]];
     cell.delegate = self;
-    [self.cellArray addObject:cell];
+//    [self.cellArray addObject:cell];
     
     str = @"";
     NSDictionary* pdict = @{
@@ -444,7 +448,7 @@ ON_SIGNAL( signal )
     [cell setLeftText:@"费用包含"];
     [cell setRightText:str color:[UIColor blackColor]];
     cell.delegate = self;
-    [self.cellArray addObject:cell];
+//    [self.cellArray addObject:cell];
     
     self.priceAll = [self.priceDict[@"price"] doubleValue]*self.numPeople;
     str = [NSString stringWithFormat:@"￥%@",[NSNumber numberWithDouble:self.priceAll]];
@@ -453,7 +457,7 @@ ON_SIGNAL( signal )
     [cell setLeftText:@"订单总价"];
     [cell setRightText:str color:[UIColor redColor]];
     cell.delegate = self;
-    [self.cellArray addObject:cell];
+//    [self.cellArray addObject:cell];
     
     cell = [QiuchangOrderEditCell_iPhone cell];
     [cell setNormalM];
@@ -461,7 +465,7 @@ ON_SIGNAL( signal )
     [cell setRightText:self.priceDict[@"description"] color:[UIColor blackColor]];
     cell.delegate = self;
     [cell resizeSelfWithRightText];
-    [self.cellArray addObject:cell];
+//    [self.cellArray addObject:cell];
     
     cell = [QiuchangOrderEditCell_iPhone cell];
     [cell setNormalM];
@@ -469,17 +473,24 @@ ON_SIGNAL( signal )
     [cell setRightText:self.priceDict[@"cancel_desc"] color:[UIColor blackColor]];
     [cell resizeSelfWithRightText];
     cell.delegate = self;
-    [self.cellArray addObject:cell];
+//    [self.cellArray addObject:cell];
     
     cell = [QiuchangOrderEditCell_iPhone cell];
     [cell setConfirm];
     [cell setLeftText:@"打球人数"];
     [cell setRightText:self.priceDict[@""] color:[UIColor blackColor]];
     cell.delegate = self;
-    [self.cellArray addObject:cell];
+//    [self.cellArray addObject:cell];
     
     
     [_scroll reloadData];
+}
+
+-(void)_buildCellData
+{
+    self.cellDataArray = nil;
+    self.cellDataArray = [NSMutableArray array];
+    self.cellDataArray addObject:[NSDictionary dictionaryWithObjects:{@"服务商",self.priceDict[@"distributorname"],} forKeys:<#(NSArray *)#>]
 }
 
 -(double)getRealMoney

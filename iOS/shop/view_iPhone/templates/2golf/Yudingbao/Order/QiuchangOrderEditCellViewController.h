@@ -51,6 +51,15 @@
 
 #pragma mark -
 
+typedef enum QiuchangOrderEditCellType {
+    QiuchangOrderEditCellNormal,
+    QiuchangOrderEditCellContact,
+    QiuchangOrderEditCellPhoneNum,
+    QiuchangOrderEditCellPeopleNum,
+    QiuchangOrderEditCellConfirm,
+    
+} QiuchangOrderEditCellType;
+
 @interface QiuchangOrderEditCell_iPhone : BeeUICell
 
 AS_SIGNAL( TOUCHED )
