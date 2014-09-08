@@ -49,7 +49,6 @@
 @property (nonatomic,retain) MyOrderListTopSwitchViewController* switchCtrl;
 @property (nonatomic,retain) NSDictionary* payingData;
 @property (nonatomic,assign) NSInteger currentSelectBtnIndex;
-@property (nonatomic,assign) BOOL hasRefreshed;
 @property (nonatomic, assign) BOOL	loaded;
 
 @end
@@ -77,6 +76,7 @@ ON_SIGNAL2( QiuchangOrderCell_iPhoneV2, signal )
     QiuChangOrderDetailBoard_iPhone * board = [QiuChangOrderDetailBoard_iPhone board];
     CourseOrderCellInfo_iPhone* cell = (CourseOrderCellInfo_iPhone*)signal.source;
     board.order = cell.data;
+    board.isResult = NO;
     [self.stack pushBoard:board animated:NO];
     
 }
@@ -116,8 +116,9 @@ ON_SIGNAL2( BeeUIBoard, signal )
 		_scroll.dataSource = self;
 		_scroll.vertical = YES;
         //_scroll.bounces = NO;
-		[_scroll showHeaderLoader:NO animated:NO];
+        [_scroll showHeaderLoader:YES animated:YES];
 		[self.view addSubview:_scroll];
+        [self pressedSwitchBtn:self.btnsel0];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fetchData) name:@"moneyPaid" object:nil];
     }
@@ -145,8 +146,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
         
         if (!self.hasRefreshed)
         {
-            self.hasRefreshed = YES;
-            [self pressedSwitchBtn:self.btnsel0];
+            [self fetchData];
         }
     }
     else if ( [signal is:BeeUIBoard.DID_APPEAR] )
@@ -188,6 +188,16 @@ ON_SIGNAL( signal )
         RechargeBoard_iPhone* board = [RechargeBoard_iPhone boardWithNibName:@"RechargeBoard_iPhone"];
         [self.stack pushBoard:board animated:YES];
     }
+}
+
+ON_SIGNAL2( BeeUIScrollView, signal )
+{
+	[super handleUISignal:signal];
+	
+	if ( [signal is:BeeUIScrollView.HEADER_REFRESH] )
+	{
+		[self fetchData];
+	}
 }
 
 #pragma mark -
@@ -391,6 +401,7 @@ ON_SIGNAL( signal )
     NSDictionary* dict = [self commonCheckRequest:req];
     if (dict)
     {
+        self.hasRefreshed = YES;
         //订单列表
         if ([[req.url absoluteString] rangeOfString:@"courseorder/list"].length > 0)
         {
@@ -400,6 +411,7 @@ ON_SIGNAL( signal )
                 //拉订单
                 self.dataDict = [NSMutableDictionary dictionaryWithDictionary:(dict[@"data"])];
                 [self resetCells];
+                [_scroll setHeaderLoading:NO];
                 [_scroll reloadData];
             }
             else
@@ -716,7 +728,6 @@ ON_SIGNAL( signal )
             b.selected = YES;
         }
     }
-    
     [self fetchData];
 }
 

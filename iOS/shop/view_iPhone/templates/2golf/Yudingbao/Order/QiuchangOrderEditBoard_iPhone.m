@@ -24,6 +24,7 @@
 #import "CommonSharedData.h"
 #import "CommonUtility.h"
 #import "UserModel.h"
+#import "QiuChangOrderDetailBoard_iPhone.h"
 
 #pragma mark -
 
@@ -481,6 +482,12 @@ ON_SIGNAL( signal )
     [_scroll reloadData];
 }
 
+-(double)getRealMoney
+{
+    double ret = 0.0;
+    
+    return ret;
+}
 #pragma mark -
 
 - (NSInteger)numberOfViewsInScrollView:(BeeUIScrollView *)scrollView
@@ -576,10 +583,14 @@ ON_SIGNAL( signal )
 
 - (void)showOrderResult:(NSDictionary*)resultDict
 {
-    QiuchangOrderResultBoard_iPhone* board = [QiuchangOrderResultBoard_iPhone boardWithNibName:@"QiuchangOrderResultBoard_iPhone"];
-    board.priceDict = [NSMutableDictionary dictionaryWithDictionary:self.priceDict];
-    board.dataDict = [NSMutableDictionary dictionaryWithDictionary:resultDict];
-    [self.stack pushBoard:board animated:YES];
+//    QiuchangOrderResultBoard_iPhone* board = [QiuchangOrderResultBoard_iPhone boardWithNibName:@"QiuchangOrderResultBoard_iPhone"];
+////    board.priceDict = [NSMutableDictionary dictionaryWithDictionary:self.priceDict];
+//    board.dataDict = [NSMutableDictionary dictionaryWithDictionary:resultDict];
+//    [self.stack pushBoard:board animated:YES];
+    QiuChangOrderDetailBoard_iPhone * board = [QiuChangOrderDetailBoard_iPhone board];
+    board.order = [NSMutableDictionary dictionaryWithDictionary:resultDict];
+    board.isResult = YES;
+    [self.stack pushBoard:board animated:NO];
 }
 
 - (void)generateOrder

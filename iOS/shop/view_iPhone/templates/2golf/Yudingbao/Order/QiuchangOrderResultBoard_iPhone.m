@@ -22,12 +22,12 @@
 #import "AppBoard_iPhone.h"
 #import "QuichangDetailBoard_iPhone.h"
 #import "SirendingzhiDetailBoard_iPhone.h"
-
+#import "QiuChangOrderDetailCell.h"
 #pragma mark -
 
-@interface QiuchangOrderResultBoard_iPhone() <QiuchangOrderCell_iPhoneDelegate,UIActionSheetDelegate>
+@interface QiuchangOrderResultBoard_iPhone() <UIActionSheetDelegate,QiuChangOrderDetailCellDelegate>
 {
-	QiuchangOrderCell_iPhone* _cell;
+	QiuChangOrderDetailCell* _cell;
     BOOL _popedInfoBox;
     BeeUIScrollView *	_scroll;
     BeeUICell* _containerCell;
@@ -58,14 +58,13 @@ ON_SIGNAL2( BeeUIBoard, signal )
         [self setTitleViewWithIcon:__IMAGE(@"titleicon") andTitleString:@"预订结果"];
         [self showBarButton:BeeUINavigationBar.LEFT image:[UIImage imageNamed:@"nav-back.png"]];
         
-        _cell = [[QiuchangOrderCell_iPhone cell] retain];
+        _cell = [[QiuChangOrderDetailCell cell] retain];
         [self _manuData];
         _cell.data = _dataDict;
         _cell.delegate = self;
-        QiuchangOrderCell_iPhoneLayout* lo = [QiuchangOrderCell_iPhoneLayout layoutWithDict:self.dataDict];
-        [_cell setCellLayout:lo];
         
-        CGRect rect = _cell.frame;
+        CGSize size = [QiuChangOrderDetailCell estimateUISizeByWidth:self.view.frame.size.width forData:self.dataDict];
+        CGRect rect = CGRectMake(0, 64, 320, size.height);
         rect.size.height += 80 + self.backToHomeButton.frame.size.height;
         _containerCell = [[BeeUICell cell] retain];
         _containerCell.backgroundColor = [UIColor clearColor];
@@ -131,12 +130,12 @@ ON_SIGNAL2( BeeUIBoard, signal )
                 {
                     //"待确认";
                     NSString* tabName = nil;
-                    switch (_cell.orderCellType)
+                    switch ([self.dataDict[@"type"] intValue])
                     {
-                        case EOrderCellTypeCourse:
+                        case 1:
                             tabName = @"球场";
                             break;
-                        case EOrderCellTypeTaocan:
+                        case 2:
                             tabName = @"套餐";
                             break;
                             
@@ -245,64 +244,64 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
 
 - (void)_manuData
 {
-    if (self.dataDict)
-    {
-        NSDictionary* dict = @{};
-        if ([self.dataDict[@"type"] intValue] == 1)
-        {
-            //球场订单
-            dict = @{
-                     @"id": self.dataDict[@"id"],
-                     @"order_sn": self.dataDict[@"order_sn"],
-                     @"courseid": self.dataDict[@"courseid"],
-                     @"coursename": self.dataDict[@"coursename"],
-                     @"createtime": [self.dataDict[@"createtime"] stringValue],
-                     @"playtime": self.dataDict[@"playtime"],
-                     @"status": [self.dataDict[@"status"] stringValue],
-                     @"description": self.dataDict[@"description"],
-                     @"players": self.dataDict[@"players"],
-                     @"tel": [self.dataDict[@"tel"] stringValue],
-                     @"price": @{
-                             @"courseid": self.dataDict[@"courseid"],
-                             @"caddie": @NO,
-                             @"holecount": @0,
-                             @"green": @NO,
-                             @"cabinet": @NO,
-                             @"car": @YES,
-                             @"insurance": @NO,
-                             @"meal": @NO,
-                             @"tips": @NO,
-                             @"deposit": @0,
-                             @"distributorname": self.priceDict[@"distributorname"],
-                             @"distributortype": @"1",
-                             @"payway": @"3",
-                             @"price": self.dataDict[@"price"],
-                             @"teetimeprice": @[ ],
-                             @"date": @"",
-                             },
-                     @"type": [self.dataDict[@"type"] stringValue]
-                     };
-        }
-        else if ([self.dataDict[@"type"] intValue] == 2)
-        {
-            //套餐订单
-            dict = @{
-                     @"id": self.dataDict[@"id"],
-                     @"order_sn": self.dataDict[@"order_sn"],
-                     @"courseid": self.dataDict[@"courseid"],
-                     @"coursename": self.dataDict[@"coursename"],
-                     @"createtime": [self.dataDict[@"createtime"] stringValue],
-                     @"playtime": self.dataDict[@"playtime"],
-                     @"status": [self.dataDict[@"status"] stringValue],
-                     @"description": self.dataDict[@"description"],
-                     @"players": self.dataDict[@"players"],
-                     @"tel": [self.dataDict[@"tel"] stringValue],
-                     @"price": self.dataDict[@"price"],
-                     @"type": [self.dataDict[@"type"] stringValue]
-                     };
-        }
-        self.dataDict = [[NSMutableDictionary dictionaryWithDictionary:dict] retain];
-    }
+//    if (self.dataDict)
+//    {
+//        NSDictionary* dict = @{};
+//        if ([self.dataDict[@"type"] intValue] == 1)
+//        {
+//            //球场订单
+//            dict = @{
+//                     @"id": self.dataDict[@"id"],
+//                     @"order_sn": self.dataDict[@"order_sn"],
+//                     @"courseid": self.dataDict[@"courseid"],
+//                     @"coursename": self.dataDict[@"coursename"],
+//                     @"createtime": [self.dataDict[@"createtime"] stringValue],
+//                     @"playtime": self.dataDict[@"playtime"],
+//                     @"status": [self.dataDict[@"status"] stringValue],
+//                     @"description": self.dataDict[@"description"],
+//                     @"players": self.dataDict[@"players"],
+//                     @"tel": [self.dataDict[@"tel"] stringValue],
+//                     @"price": @{
+//                             @"courseid": self.dataDict[@"courseid"],
+//                             @"caddie": @NO,
+//                             @"holecount": @0,
+//                             @"green": @NO,
+//                             @"cabinet": @NO,
+//                             @"car": @YES,
+//                             @"insurance": @NO,
+//                             @"meal": @NO,
+//                             @"tips": @NO,
+//                             @"deposit": @0,
+//                             @"distributorname": self.priceDict[@"distributorname"],
+//                             @"distributortype": @"1",
+//                             @"payway": @"3",
+//                             @"price": self.dataDict[@"price"],
+//                             @"teetimeprice": @[ ],
+//                             @"date": @"",
+//                             },
+//                     @"type": [self.dataDict[@"type"] stringValue]
+//                     };
+//        }
+//        else if ([self.dataDict[@"type"] intValue] == 2)
+//        {
+//            //套餐订单
+//            dict = @{
+//                     @"id": self.dataDict[@"id"],
+//                     @"order_sn": self.dataDict[@"order_sn"],
+//                     @"courseid": self.dataDict[@"courseid"],
+//                     @"coursename": self.dataDict[@"coursename"],
+//                     @"createtime": [self.dataDict[@"createtime"] stringValue],
+//                     @"playtime": self.dataDict[@"playtime"],
+//                     @"status": [self.dataDict[@"status"] stringValue],
+//                     @"description": self.dataDict[@"description"],
+//                     @"players": self.dataDict[@"players"],
+//                     @"tel": [self.dataDict[@"tel"] stringValue],
+//                     @"price": self.dataDict[@"price"],
+//                     @"type": [self.dataDict[@"type"] stringValue]
+//                     };
+//        }
+//        self.dataDict = [[NSMutableDictionary dictionaryWithDictionary:dict] retain];
+//    }
 }
 
 #pragma mark -
@@ -365,32 +364,43 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
 }
 
 
-#pragma mark <QiuchangOrderCell_iPhoneDelegate>
+#pragma mark <QiuChangOrderDetailCellDelegate>
 
-- (void)QiuchangOrderCell_iPhone:(QiuchangOrderCell_iPhone*)cell
-                 onPressedCancel:(NSDictionary*)data
-{
-    [self requestCancelCourse:data[@"id"]];
-}
 
-- (void)QiuchangOrderCell_iPhone:(QiuchangOrderCell_iPhone*)cell
-                  onPressedShare:(NSDictionary*)data
-{
-    [cell shareOrder:data];
-}
-
-- (void)QiuchangOrderCell_iPhone:(QiuchangOrderCell_iPhone*)cell
-                    onPressedPay:(NSDictionary*)data
-{
-    UIActionSheet* as = [[UIActionSheet alloc] initWithTitle:@"选择支付方式" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"支付宝支付", nil];
-    [as showInView:[[UIApplication sharedApplication] keyWindow]];
-}
-
-- (void)QiuchangOrderCell_iPhone:(QiuchangOrderCell_iPhone*)cell
-               onPressedQiuchang:(NSDictionary*)data
+-(void)orderagain:(NSDictionary*)order
 {
     
 }
+
+-(void)cancelorder:(NSDictionary*)order
+{
+    [self requestCancelCourse:order[@"id"]];
+}
+
+//- (void)QiuchangOrderCell_iPhone:(QiuchangOrderCell_iPhone*)cell
+//                 onPressedCancel:(NSDictionary*)data
+//{
+//    [self requestCancelCourse:data[@"id"]];
+//}
+//
+//- (void)QiuchangOrderCell_iPhone:(QiuchangOrderCell_iPhone*)cell
+//                  onPressedShare:(NSDictionary*)data
+//{
+//    [cell shareOrder:data];
+//}
+//
+//- (void)QiuchangOrderCell_iPhone:(QiuchangOrderCell_iPhone*)cell
+//                    onPressedPay:(NSDictionary*)data
+//{
+//    UIActionSheet* as = [[UIActionSheet alloc] initWithTitle:@"选择支付方式" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"支付宝支付", nil];
+//    [as showInView:[[UIApplication sharedApplication] keyWindow]];
+//}
+//
+//- (void)QiuchangOrderCell_iPhone:(QiuchangOrderCell_iPhone*)cell
+//               onPressedQiuchang:(NSDictionary*)data
+//{
+//    
+//}
 
 #pragma mark <UIActionSheetDelegate>
 

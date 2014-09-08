@@ -24,7 +24,7 @@
 #import "CommonSharedData.h"
 #import "CommonUtility.h"
 #import "UserModel.h"
-
+#import "QiuChangOrderDetailBoard_iPhone.h"
 #define kCellTagUserDescription (5)
 
 #pragma mark -
@@ -321,9 +321,14 @@ ON_SIGNAL2( BeeUIScrollView, signal )
 
 - (void)showOrderResult:(NSDictionary*)resultDict
 {
-    QiuchangOrderResultBoard_iPhone* board = [QiuchangOrderResultBoard_iPhone boardWithNibName:@"QiuchangOrderResultBoard_iPhone"];
-    board.dataDict = [NSMutableDictionary dictionaryWithDictionary:resultDict];
-    [self.stack pushBoard:board animated:YES];
+//    QiuchangOrderResultBoard_iPhone* board = [QiuchangOrderResultBoard_iPhone boardWithNibName:@"QiuchangOrderResultBoard_iPhone"];
+//    board.dataDict = [NSMutableDictionary dictionaryWithDictionary:resultDict];
+//    [self.stack pushBoard:board animated:YES];
+    
+    QiuChangOrderDetailBoard_iPhone * board = [QiuChangOrderDetailBoard_iPhone board];
+    board.order = [NSMutableDictionary dictionaryWithDictionary:resultDict];
+    board.isResult = YES;
+    [self.stack pushBoard:board animated:NO];
 }
 
 - (void)generateOrder

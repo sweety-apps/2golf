@@ -55,6 +55,18 @@ ON_SIGNAL3( QiuChangOrderDetailCell, ordercancel, signal )
         }
     }
 }
+
+ON_SIGNAL3( QiuChangOrderDetailCell, back2home, signal )
+{
+    if ( [signal is:BeeUIButton.TOUCH_UP_INSIDE] )
+    {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(gobackhome:)])
+        {
+            [self.delegate gobackhome:self.data];
+        }
+    }
+}
+
 //+ (CGSize)estimateUISizeByWidth:(CGFloat)width forData:(id)data
 //{
 //    CGSize size = CGSizeMake( width, 960 );
@@ -132,19 +144,30 @@ ON_SIGNAL3( QiuChangOrderDetailCell, ordercancel, signal )
         
         
         $(@"ordertime").TEXT([self tsStringToDateString:order[@"createtime"]]);
-        if([order[@"status"] intValue] == 6 || [order[@"status"] intValue] == 3)
-        {
+        if (self.isResult) {
             $(@"orderagaintwo").HIDE();
             $(@"ordercancel").HIDE();
-            $(@"orderagainone").SHOW();
+            $(@"orderagainone").HIDE();
+            $(@"back2home").SHOW();
         }
         else
         {
-            $(@"orderagaintwo").SHOW();
-            $(@"ordercancel").SHOW();
-            
-            $(@"orderagainone").HIDE();
+            if([order[@"status"] intValue] == 6 || [order[@"status"] intValue] == 3 || [order[@"status"] intValue] == 2)
+            {
+                $(@"orderagaintwo").HIDE();
+                $(@"ordercancel").HIDE();
+                $(@"orderagainone").SHOW();
+                $(@"back2home").HIDE();
+            }
+            else
+            {
+                $(@"orderagaintwo").SHOW();
+                $(@"ordercancel").SHOW();
+                $(@"orderagainone").HIDE();
+                $(@"back2home").HIDE();
+            }
         }
+
 
 //        UIView* twobtns = (UIView*)[self findSubViewByID:@"twobuttons"];
 //        twobtns.hidden = ([order[@"status"] intValue] == 6 || [order[@"status"] intValue] == 3);

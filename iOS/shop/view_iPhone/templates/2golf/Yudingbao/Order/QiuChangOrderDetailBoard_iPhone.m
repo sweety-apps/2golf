@@ -12,11 +12,13 @@
 #import "CommonUtility.h"
 #import "QuichangDetailBoard_iPhone.h"
 #import "ServerConfig.h"
+#import "SirendingzhiDetailBoard_iPhone.h"
+#import "MyOrderListBoard_iPhone.h"
 
 @interface QiuChangOrderDetailBoard_iPhone ()
 <QiuChangOrderDetailCellDelegate>
 {
-    
+    BOOL _isNeedToRefresh;
 }
 @end
 
@@ -42,6 +44,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
 		[_scroll showHeaderLoader:NO animated:NO];
 		[_scroll showFooterLoader:NO animated:NO];
         [self.view addSubview:_scroll];
+        _isNeedToRefresh = NO;
     }
     else if ( [signal is:BeeUIBoard.DELETE_VIEWS] )
     {
@@ -90,12 +93,41 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
     
     if ( [signal is:BeeUINavigationBar.LEFT_TOUCHED] )
     {
-        [self.stack popBoardAnimated:NO];
+        BeeUIBoard* destBoard = nil;
+        for (BeeUIBoard* board in [self.stack boards])
+        {
+            if ([board isKindOfClass:[QuichangDetailBoard_iPhone class]]
+                || [board isKindOfClass:[SirendingzhiDetailBoard_iPhone class]] || [board isKindOfClass:[MyOrderListBoard_iPhone class]])
+            {
+                destBoard = board;
+                break;
+            }
+        }
+        if (destBoard)
+        {
+            if ([destBoard isKindOfClass:[MyOrderListBoard_iPhone class]]) {
+                ((MyOrderListBoard_iPhone*)destBoard).hasRefreshed = !_isNeedToRefresh;
+            }
+            [self.stack popToBoard:destBoard animated:YES];
+        }
+        else
+        {
+            [self.stack popBoardAnimated:NO];
+        }
+
     }
     else if ( [signal is:BeeUINavigationBar.RIGHT_TOUCHED] )
     {
 		[self shareOrder:self.order];
     }
+    
+    if ( [signal is:BeeUINavigationBar.LEFT_TOUCHED] )
+	{
+        	}
+	else if ( [signal is:BeeUINavigationBar.RIGHT_TOUCHED] )
+	{
+	}
+
 }
 
 
@@ -125,6 +157,7 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
 {
     QiuChangOrderDetailCell* cell = [scrollView dequeueWithContentClass:[QiuChangOrderDetailCell class]];
     cell.delegate = self;
+    cell.isResult = self.isResult;
     cell.data = self.order;
     return cell;
 }
@@ -319,9 +352,14 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
         if ([(dict[@"status"])[@"succeed"] intValue] == 1)
         {
             //取消订单
-            self.order = [NSMutableDictionary dictionaryWithDictionary:(dict[@"data"])];
-            [self presentMessageTips:@"取消成功"];
-            [_scroll asyncReloadData];
+//            self.order = [NSMutableDictionary dictionaryWithDictionary:(dict[@"data"])];
+            int order_id = [dict[@"order_id"] intValue];
+			if (order_id == [self.order[@"id"] intValue]) {
+				[self.order setObject:[NSNumber numberWithInt:6] forKey:@"status" ];
+                [self presentMessageTips:@"取消成功"];
+                [_scroll asyncReloadData];
+                _isNeedToRefresh = YES;
+			}
         }
         else
         {
@@ -368,6 +406,11 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
     {
         [self requestCancelCourse:order[@"id"]];
     }
+}
+
+-(void)gobackhome:(NSDictionary *)order
+{
+    [self.stack popToRootViewControllerAnimated:YES];
 }
 
 - (void)requestCancelCourse:(NSString*)orderId

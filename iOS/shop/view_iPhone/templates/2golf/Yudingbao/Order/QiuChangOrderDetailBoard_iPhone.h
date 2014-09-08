@@ -13,5 +13,6 @@
 {
     BeeUIScrollView *		_scroll;
 }
-@property (nonatomic,retain) NSDictionary* order;
+@property (nonatomic,retain) NSMutableDictionary* order;
+@property (nonatomic,assign) BOOL isResult;
 @end

@@ -75,6 +75,7 @@
             <button class="orderagaintwo" id="orderagaintwo">再次预定</button>
             <button class="ordercancel" id="ordercancel">取消订单</button>
             <button class="orderagainone" id="orderagainone">再次预定</button>
+            <button class="back2home" id="back2home"></button>
         </linear>
         
         
@@ -154,6 +155,18 @@
         left:20%;
         color:#FFFFFF;
         float:center;
+        }
+        
+        
+        .back2home
+        {
+        background-image:url(searcher_new_btn_green.png);
+        height: 30px;
+        width: 80px;
+        color:#FFFFFF;
+        button-title:"返回首页";
+        insets:10 0 0 0;
+        float:center
         }
     </style>
 </ui>

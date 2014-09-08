@@ -27,6 +27,7 @@
 @property (retain, nonatomic) IBOutlet UIButton *btnsel3;
 @property (retain, nonatomic) IBOutlet UIButton *btnsel4;
 @property (retain, nonatomic) IBOutlet UIButton *btnsel5;
+@property (nonatomic,assign) BOOL hasRefreshed;
 
 - (IBAction)pressedSwitchBtn:(UIButton *)sender;
 
