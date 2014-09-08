@@ -88,6 +88,8 @@ ON_SIGNAL2( BeeUIBoard, signal )
         //_scroll.bounces = NO;
 		[_scroll showHeaderLoader:NO animated:NO];
 		[self.view addSubview:_scroll];
+        
+        [self _buildCellData];
     }
     else if ( [signal is:BeeUIBoard.DELETE_VIEWS] )
     {
@@ -176,6 +178,7 @@ ON_SIGNAL( signal )
 
 - (void)resetData
 {
+    return;
     if (self.priceDict==nil || self.courseDict == nil)
     {
         return;
@@ -303,9 +306,6 @@ ON_SIGNAL( signal )
     }
     self.cellArray = nil;
     self.cellArray = [NSMutableArray array];
-    
-    [self _buildCellData];
-    
     
     NSString* str = nil;
     int pcount = 0;
@@ -482,7 +482,6 @@ ON_SIGNAL( signal )
     cell.delegate = self;
 //    [self.cellArray addObject:cell];
     
-    
     [_scroll reloadData];
 }
 
@@ -490,7 +489,34 @@ ON_SIGNAL( signal )
 {
     self.cellDataArray = nil;
     self.cellDataArray = [NSMutableArray array];
-    self.cellDataArray addObject:[NSDictionary dictionaryWithObjects:{@"服务商",self.priceDict[@"distributorname"],} forKeys:<#(NSArray *)#>]
+    [self.cellDataArray addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"服务商",self.priceDict[@"distributorname"],[NSNumber numberWithInt:QiuchangOrderEditCellNormal],[NSNumber numberWithInt:QiuchangOrderEditCellBkgTypeTop],nil] forKeys:[NSArray arrayWithObjects:@"left",@"right",@"celltype",@"cellbkgtype",nil]]];
+    
+    //section0
+    [self.cellDataArray addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"球场",self.courseDict[@"coursename"],[NSNumber numberWithInt:QiuchangOrderEditCellNormal],[NSNumber numberWithInt:QiuchangOrderEditCellBkgTypeMiddle],nil] forKeys:[NSArray arrayWithObjects:@"left",@"right",@"celltype",@"cellbkgtype",nil]]];
+    
+    [self.cellDataArray addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"日期",self.courseDict[@"coursename"],[NSNumber numberWithInt:QiuchangOrderEditCellNormal],[NSNumber numberWithInt:QiuchangOrderEditCellBkgTypeMiddle],nil] forKeys:[NSArray arrayWithObjects:@"left",@"right",@"celltype",@"cellbkgtype",nil]]];
+    
+    [self.cellDataArray addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"时间",self.courseDict[@"coursename"],[NSNumber numberWithInt:QiuchangOrderEditCellNormal],[NSNumber numberWithInt:QiuchangOrderEditCellBkgTypeBottom],nil] forKeys:[NSArray arrayWithObjects:@"left",@"right",@"celltype",@"cellbkgtype",nil]]];
+    
+    
+    //section1
+    [self.cellDataArray addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"姓名",self.courseDict[@"coursename"],[NSNumber numberWithInt:QiuchangOrderEditCellContact],[NSNumber numberWithInt:QiuchangOrderEditCellBkgTypeTop],nil] forKeys:[NSArray arrayWithObjects:@"left",@"right",@"celltype",@"cellbkgtype",nil]]];
+    
+    [self.cellDataArray addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"电话",self.courseDict[@"coursename"],[NSNumber numberWithInt:QiuchangOrderEditCellPhoneNum],[NSNumber numberWithInt:QiuchangOrderEditCellBkgTypeMiddle],nil] forKeys:[NSArray arrayWithObjects:@"left",@"right",@"celltype",@"cellbkgtype",nil]]];
+    
+    [self.cellDataArray addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"打球人数",self.courseDict[@"coursename"],[NSNumber numberWithInt:QiuchangOrderEditCellPeopleNum],[NSNumber numberWithInt:QiuchangOrderEditCellBkgTypeBottom],nil] forKeys:[NSArray arrayWithObjects:@"left",@"right",@"celltype",@"cellbkgtype",nil]]];
+    
+    //section2
+    
+    [self.cellDataArray addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"在线预付",self.courseDict[@"coursename"],[NSNumber numberWithInt:QiuchangOrderEditCellNormal],[NSNumber numberWithInt:QiuchangOrderEditCellBkgTypeTop],nil] forKeys:[NSArray arrayWithObjects:@"left",@"right",@"celltype",@"cellbkgtype",nil]]];
+    
+    [self.cellDataArray addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"球场现付",self.courseDict[@"coursename"],[NSNumber numberWithInt:QiuchangOrderEditCellNormal],[NSNumber numberWithInt:QiuchangOrderEditCellBkgTypeMiddle],nil] forKeys:[NSArray arrayWithObjects:@"left",@"right",@"celltype",@"cellbkgtype",nil]]];
+    
+    [self.cellDataArray addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"订单总额",self.courseDict[@"coursename"],[NSNumber numberWithInt:QiuchangOrderEditCellNormal],[NSNumber numberWithInt:QiuchangOrderEditCellBkgTypeMiddle],nil] forKeys:[NSArray arrayWithObjects:@"left",@"right",@"celltype",@"cellbkgtype",nil]]];
+    
+    [self.cellDataArray addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"说明",self.courseDict[@"coursename"],[NSNumber numberWithInt:QiuchangOrderEditCellNormal],[NSNumber numberWithInt:QiuchangOrderEditCellBkgTypeMiddle],nil] forKeys:[NSArray arrayWithObjects:@"left",@"right",@"celltype",@"cellbkgtype",nil]]];
+    
+    [self.cellDataArray addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"",@"",[NSNumber numberWithInt:QiuchangOrderEditCellConfirm],[NSNumber numberWithInt:QiuchangOrderEditCellBkgTypeBottom],nil] forKeys:[NSArray arrayWithObjects:@"left",@"right",@"celltype",@"cellbkgtype",nil]]];
 }
 
 -(double)getRealMoney
@@ -505,9 +531,9 @@ ON_SIGNAL( signal )
 {
     //self.view.backgroundColor = RGBA(255, 0, 0, 0.5f);
     NSUInteger row = 0;
-    if (self.cellArray)
+    if (self.cellDataArray)
     {
-        row = [self.cellArray count];
+        row = [self.cellDataArray count];
     }
     
 	return row;
@@ -515,13 +541,18 @@ ON_SIGNAL( signal )
 
 - (UIView *)scrollView:(BeeUIScrollView *)scrollView viewForIndex:(NSInteger)index scale:(CGFloat)scale
 {
-    return self.cellArray[index];
+//    return self.cellArray[index];
+    QiuchangOrderEditCell_iPhone* cell = [scrollView dequeueWithContentClass:[QiuchangOrderEditCell_iPhone class]];
+    cell.delegate = self;
+    cell.data = [self.cellDataArray objectAtIndex:index];
+    return cell;
 }
 
 - (CGSize)scrollView:(BeeUIScrollView *)scrollView sizeForIndex:(NSInteger)index
 {
-    BeeUICell* cell = self.cellArray[index];
-	return cell.frame.size;
+    return [QiuchangOrderEditCell_iPhone estimateUISizeByWidth:self.view.width forData:[self.cellDataArray objectAtIndex:index]];
+//    BeeUICell* cell = self.cellArray[index];
+//	return cell.frame.size;
 }
 
 #pragma mark - <QiuchangOrderEditCell_iPhoneDelegate>

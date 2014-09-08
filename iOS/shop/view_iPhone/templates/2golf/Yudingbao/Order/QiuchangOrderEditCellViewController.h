@@ -57,8 +57,14 @@ typedef enum QiuchangOrderEditCellType {
     QiuchangOrderEditCellPhoneNum,
     QiuchangOrderEditCellPeopleNum,
     QiuchangOrderEditCellConfirm,
-    
 } QiuchangOrderEditCellType;
+
+typedef enum QiuchangOrderEditCellBkgType
+{
+    QiuchangOrderEditCellBkgTypeTop,//顶部的背景
+    QiuchangOrderEditCellBkgTypeMiddle,//中间的背景
+    QiuchangOrderEditCellBkgTypeBottom//底部的背景
+}QiuchangOrderEditCellBkgType;
 
 @interface QiuchangOrderEditCell_iPhone : BeeUICell
 
