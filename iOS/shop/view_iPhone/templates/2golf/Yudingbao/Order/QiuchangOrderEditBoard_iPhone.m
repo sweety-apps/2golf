@@ -427,7 +427,7 @@ ON_SIGNAL( signal )
     switch ([self.priceDict[@"payway"] intValue]) {
 		case 3:// 全额预付
             lefttext = @"在线预付";
-            righttext = [NSString stringWithFormat:@"¥%d",[(self.priceDict[@"teetimeprice"] == nil?self.priceDict[@"price"]:self.priceDict[@"teetimeprice"][@"price"]) intValue] * (int)self.numPeople];
+            righttext = [NSString stringWithFormat:@"¥%d",[((self.priceDict[@"teetimeprice"] == nil || ![self.priceDict[@"teetimeprice"]  isKindOfClass:[NSDictionary class]])?self.priceDict[@"price"]:self.priceDict[@"teetimeprice"][@"price"]) intValue] * (int)self.numPeople];
 			break;
 		case 4:// 部分现付
             lefttext = @"在线预付";
@@ -448,7 +448,7 @@ ON_SIGNAL( signal )
             righttext = [NSString stringWithFormat:@"¥%d",0 * (int)self.numPeople];
 			break;
 		case 4:// 部分现付
-            righttext = [NSString stringWithFormat:@"¥%d",([(self.priceDict[@"teetimeprice"] == nil?self.priceDict[@"price"]:self.priceDict[@"teetimeprice"][@"price"]) intValue] - [self.priceDict[@"deposit"] intValue]) * (int)self.numPeople];
+            righttext = [NSString stringWithFormat:@"¥%d",([((self.priceDict[@"teetimeprice"] == nil || ![self.priceDict[@"teetimeprice"]  isKindOfClass:[NSDictionary class]])?self.priceDict[@"price"]:self.priceDict[@"teetimeprice"][@"price"]) intValue] - [self.priceDict[@"deposit"] intValue]) * (int)self.numPeople];
 			break;
 		case 2:// 全额现付
             righttext = [NSString stringWithFormat:@"¥%d",[self.priceDict[@"deposit"] intValue] * (int)self.numPeople];
@@ -462,10 +462,10 @@ ON_SIGNAL( signal )
     lefttext = @"订单总额";
     switch ([self.priceDict[@"payway"] intValue]) {
 		case 3:// 全额预付
-            righttext = [NSString stringWithFormat:@"¥%d",[(self.priceDict[@"teetimeprice"] == nil?self.priceDict[@"price"]:self.priceDict[@"teetimeprice"][@"price"]) intValue] * (int)self.numPeople];
+            righttext = [NSString stringWithFormat:@"¥%d",[((self.priceDict[@"teetimeprice"] == nil || ![self.priceDict[@"teetimeprice"]  isKindOfClass:[NSDictionary class]])?self.priceDict[@"price"]:self.priceDict[@"teetimeprice"][@"price"]) intValue] * (int)self.numPeople];
 			break;
 		case 4:// 部分现付
-            righttext = [NSString stringWithFormat:@"¥%d",[(self.priceDict[@"teetimeprice"] == nil?self.priceDict[@"price"]:self.priceDict[@"teetimeprice"][@"price"]) intValue] * (int)self.numPeople];
+            righttext = [NSString stringWithFormat:@"¥%d",[((self.priceDict[@"teetimeprice"] == nil || ![self.priceDict[@"teetimeprice"]  isKindOfClass:[NSDictionary class]])?self.priceDict[@"price"]:self.priceDict[@"teetimeprice"][@"price"]) intValue] * (int)self.numPeople];
 			break;
 		case 2:// 全额现付
             righttext = [NSString stringWithFormat:@"¥%d",[self.priceDict[@"deposit"] intValue] * (int)self.numPeople];
