@@ -169,6 +169,7 @@
         .scroll-wrapper {
             height: auto;
             margin-top: 10px;
+            margin-bottom: 20px;
             align: center;
         }
         
