@@ -88,8 +88,8 @@ ON_SIGNAL2( BeeUIBoard, signal )
         //_scroll.bounces = NO;
 		[_scroll showHeaderLoader:NO animated:NO];
 		[self.view addSubview:_scroll];
-        
         [self _buildCellData];
+        [_scroll reloadData];
     }
     else if ( [signal is:BeeUIBoard.DELETE_VIEWS] )
     {
@@ -111,8 +111,8 @@ ON_SIGNAL2( BeeUIBoard, signal )
         rect.origin.y+=6;
         rect.size.height-=6;
         _scroll.frame =rect;
-        
         [self resetData];
+        
     }
     else if ( [signal is:BeeUIBoard.DID_APPEAR] )
     {
@@ -165,137 +165,26 @@ ON_SIGNAL( signal )
 - (void)setUpCourseData:(NSDictionary*)courseDict
 {
     self.courseDict = [NSMutableDictionary dictionaryWithDictionary:courseDict];
-    [self resetCell];
+//    [self resetCell];
 }
 
 - (void)setUpPriceData:(NSDictionary *)priceDict
 {
     self.priceDict = [NSMutableDictionary dictionaryWithDictionary:priceDict];
-    [self resetCell];
+//    [self resetCell];
 }
 
 #pragma mark -
 
 - (void)resetData
 {
-    return;
     if (self.priceDict==nil || self.courseDict == nil)
     {
         return;
     }
     
-    NSString* str = nil;
-    int pcount = 0;
-    
-    self.priceAll = [self.priceDict[@"price"] doubleValue]*self.numPeople;
-    
-    for (QiuchangOrderEditCell_iPhone* cell in self.cellArray)
-    {
-        str = @"";
-        if ([cell.ctrl.cellTitle.text isEqualToString:@"服务商"])
-        {
-            [cell setRightText:self.priceDict[@"distributorname"] color:[UIColor blackColor]];
-        }
-        else if ([cell.ctrl.cellTitle.text isEqualToString:@"球场"])
-        {
-            [cell setRightText:self.courseDict[@"coursename"] color:[UIColor blackColor]];
-        }
-        else if ([cell.ctrl.cellTitle.text isEqualToString:@"日期"])
-        {
-            NSDate* date = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_date"];
-            str = [NSString stringWithFormat:@"%d月%d日 %@",[date month],[date day],[date weekdayChinese]];
-            if ([str length] == 0)
-            {
-                str = @"02月21日 星期五";
-            }
-            [cell setRightText:str color:[UIColor blackColor]];
-        }
-        else if ([cell.ctrl.cellTitle.text isEqualToString:@"时间"])
-        {
-            NSDate* time = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_time"];
-            str = [NSString stringWithFormat:@"%02d:%02d",[time hour],[time minute]];
-            if ([str length] == 0)
-            {
-                str = @"08:30";
-            }
-            [cell setRightText:str color:[UIColor blackColor]];
-        }
-        else if ([cell.ctrl.cellTitle.text isEqualToString:@"姓名"])
-        {
-            str = [[CommonSharedData sharedInstance] getContactListNamesString];
-            [cell setRightText:str color:[UIColor blackColor]];
-        }
-        else if ([cell.ctrl.cellTitle.text isEqualToString:@"打球人数"])
-        {
-            str = [NSString stringWithFormat:@"%d",(int)self.numPeople];
-            [cell setRightText:str color:[UIColor blackColor]];
-        }
-        else if ([cell.ctrl.cellTitle.text isEqualToString:@"押金"])
-        {
-            if (self.priceDict[@"deposit"] == [NSNull null])
-            {
-                str = @"0";
-            }
-            else
-            {
-                double val = [((NSNumber*)self.priceDict[@"deposit"]) doubleValue] *self.numPeople;
-                str = [NSString stringWithFormat:@"￥%@",[NSNumber numberWithDouble:val]];
-            }
-            [cell setRightText:str color:[UIColor redColor]];
-        }
-        else if ([cell.ctrl.cellTitle.text isEqualToString:@"费用包含"])
-        {
-            NSDictionary* pdict = @{
-                                    @"green":@"果岭",
-                                    @"cabinet":@"衣柜",
-                                    @"insurance":@"保险",
-                                    @"car":@"球车",
-                                    @"meal":@"午餐",
-                                    @"tips":@"小费",
-                                    @"caddie":@"球童",
-                                    };
-            pcount = 0;
-            for (NSString* key in pdict)
-            {
-                if ([self.priceDict[key] boolValue])
-                {
-                    if (pcount > 0)
-                    {
-                        str = [str stringByAppendingString:@","];
-                    }
-                    str = [str stringByAppendingString:pdict[key]];
-                    pcount++;
-                }
-            }
-            [cell setRightText:str color:[UIColor blackColor]];
-        }
-        else if ([cell.ctrl.cellTitle.text isEqualToString:@"订单总价"])
-        {
-            self.priceAll = [self.priceDict[@"price"] doubleValue]*self.numPeople;
-            str = [NSString stringWithFormat:@"￥%.2f",self.priceAll];
-            [cell setRightText:str color:[UIColor redColor]];
-        }
-        else if ([cell.ctrl.cellTitle.text isEqualToString:@"说明"])
-        {
-            self.priceAll = [self.priceDict[@"price"] doubleValue]*self.numPeople;
-            str = [NSString stringWithFormat:@"￥%@",[NSNumber numberWithDouble:self.priceAll]];
-            [cell setRightText:self.priceDict[@"description"] color:[UIColor blackColor]];
-        }
-        else if ([cell.ctrl.cellTitle.text isEqualToString:@"退订说明"])
-        {
-            self.priceAll = [self.priceDict[@"price"] doubleValue]*self.numPeople;
-            str = [NSString stringWithFormat:@"￥%@",[NSNumber numberWithDouble:self.priceAll]];
-            [cell setRightText:self.priceDict[@"cancel_desc"] color:[UIColor blackColor]];
-        }
-        else if ([cell.ctrl.cellTitle.text isEqualToString:@"退订说明"])
-        {
-            self.priceAll = [self.priceDict[@"price"] doubleValue]*self.numPeople;
-            str = [NSString stringWithFormat:@"￥%@",[NSNumber numberWithDouble:self.priceAll]];
-            [cell setRightText:self.priceDict[@"cancel_desc"] color:[UIColor blackColor]];
-        }
-    }
-    
-    //[_scroll reloadData];
+    [self _buildCellData];
+    [_scroll reloadData];
 }
 
 - (void)resetCell
@@ -489,34 +378,108 @@ ON_SIGNAL( signal )
 {
     self.cellDataArray = nil;
     self.cellDataArray = [NSMutableArray array];
-    [self.cellDataArray addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"服务商",self.priceDict[@"distributorname"],[NSNumber numberWithInt:QiuchangOrderEditCellNormal],[NSNumber numberWithInt:QiuchangOrderEditCellBkgTypeTop],nil] forKeys:[NSArray arrayWithObjects:@"left",@"right",@"celltype",@"cellbkgtype",nil]]];
+    NSString* lefttext = @"服务商";
+    NSString* righttext = self.priceDict[@"distributorname"];
+    if (righttext == nil  || righttext.length == 0) {
+        righttext = @"球会官方提供";
+    }
+    [self.cellDataArray addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:lefttext,righttext,[NSNumber numberWithInt:QiuchangOrderEditCellNormal],[NSNumber numberWithInt:QiuchangOrderEditCellBkgTypeTop],[UIColor blackColor],nil] forKeys:[NSArray arrayWithObjects:@"left",@"right",@"celltype",@"cellbkgtype",@"rightcolor",nil]]];
     
+    lefttext = @"球场";
+    righttext = self.courseDict[@"coursename"];
     //section0
-    [self.cellDataArray addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"球场",self.courseDict[@"coursename"],[NSNumber numberWithInt:QiuchangOrderEditCellNormal],[NSNumber numberWithInt:QiuchangOrderEditCellBkgTypeMiddle],nil] forKeys:[NSArray arrayWithObjects:@"left",@"right",@"celltype",@"cellbkgtype",nil]]];
+    [self.cellDataArray addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:lefttext,righttext,[NSNumber numberWithInt:QiuchangOrderEditCellNormal],[NSNumber numberWithInt:QiuchangOrderEditCellBkgTypeMiddle],[UIColor blackColor],nil] forKeys:[NSArray arrayWithObjects:@"left",@"right",@"celltype",@"cellbkgtype",@"rightcolor",nil]]];
     
-    [self.cellDataArray addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"日期",self.courseDict[@"coursename"],[NSNumber numberWithInt:QiuchangOrderEditCellNormal],[NSNumber numberWithInt:QiuchangOrderEditCellBkgTypeMiddle],nil] forKeys:[NSArray arrayWithObjects:@"left",@"right",@"celltype",@"cellbkgtype",nil]]];
+    NSDate* date = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_date"];
+    righttext = [NSString stringWithFormat:@"%d月%d日 %@",[date month],[date day],[date weekdayChinese]];
+    if ([righttext length] == 0)
+    {
+        righttext = @"02月21日 星期五";
+    }
+    lefttext = @"日期";
+    [self.cellDataArray addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:lefttext,righttext,[NSNumber numberWithInt:QiuchangOrderEditCellNormal],[NSNumber numberWithInt:QiuchangOrderEditCellBkgTypeMiddle],[UIColor blackColor],nil] forKeys:[NSArray arrayWithObjects:@"left",@"right",@"celltype",@"cellbkgtype",@"rightcolor",nil]]];
     
-    [self.cellDataArray addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"时间",self.courseDict[@"coursename"],[NSNumber numberWithInt:QiuchangOrderEditCellNormal],[NSNumber numberWithInt:QiuchangOrderEditCellBkgTypeBottom],nil] forKeys:[NSArray arrayWithObjects:@"left",@"right",@"celltype",@"cellbkgtype",nil]]];
+    NSDate* time = [[NSUserDefaults standardUserDefaults] objectForKey:@"search_time"];
+    righttext = [NSString stringWithFormat:@"%02d:%02d",[time hour],[time minute]];
+    if ([righttext length] == 0)
+    {
+        righttext = @"08:30";
+    }
+    
+    lefttext = @"时间";
+    [self.cellDataArray addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:lefttext,righttext,[NSNumber numberWithInt:QiuchangOrderEditCellNormal],[NSNumber numberWithInt:QiuchangOrderEditCellBkgTypeBottom],[UIColor blackColor],nil] forKeys:[NSArray arrayWithObjects:@"left",@"right",@"celltype",@"cellbkgtype",@"rightcolor",nil]]];
     
     
     //section1
-    [self.cellDataArray addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"姓名",self.courseDict[@"coursename"],[NSNumber numberWithInt:QiuchangOrderEditCellContact],[NSNumber numberWithInt:QiuchangOrderEditCellBkgTypeTop],nil] forKeys:[NSArray arrayWithObjects:@"left",@"right",@"celltype",@"cellbkgtype",nil]]];
+    lefttext = @"姓名";
+    righttext = [[CommonSharedData sharedInstance] getContactListNamesString];
+    [self.cellDataArray addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:lefttext,righttext,[NSNumber numberWithInt:QiuchangOrderEditCellContact],[NSNumber numberWithInt:QiuchangOrderEditCellBkgTypeTop],[UIColor blackColor],nil] forKeys:[NSArray arrayWithObjects:@"left",@"right",@"celltype",@"cellbkgtype",@"rightcolor",nil]]];
     
-    [self.cellDataArray addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"电话",self.courseDict[@"coursename"],[NSNumber numberWithInt:QiuchangOrderEditCellPhoneNum],[NSNumber numberWithInt:QiuchangOrderEditCellBkgTypeMiddle],nil] forKeys:[NSArray arrayWithObjects:@"left",@"right",@"celltype",@"cellbkgtype",nil]]];
+    lefttext = @"电话";
+    righttext = [[CommonSharedData sharedInstance] getContactPhoneNum];
+    [self.cellDataArray addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:lefttext,righttext,[NSNumber numberWithInt:QiuchangOrderEditCellPhoneNum],[NSNumber numberWithInt:QiuchangOrderEditCellBkgTypeMiddle],[UIColor blackColor],nil] forKeys:[NSArray arrayWithObjects:@"left",@"right",@"celltype",@"cellbkgtype",@"rightcolor",nil]]];
     
-    [self.cellDataArray addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"打球人数",self.courseDict[@"coursename"],[NSNumber numberWithInt:QiuchangOrderEditCellPeopleNum],[NSNumber numberWithInt:QiuchangOrderEditCellBkgTypeBottom],nil] forKeys:[NSArray arrayWithObjects:@"left",@"right",@"celltype",@"cellbkgtype",nil]]];
+    lefttext = @"打球人数";
+    righttext = [NSString stringWithFormat:@"%d",(int)self.numPeople];
+    [self.cellDataArray addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:lefttext,righttext,[NSNumber numberWithInt:QiuchangOrderEditCellPeopleNum],[NSNumber numberWithInt:QiuchangOrderEditCellBkgTypeBottom],[UIColor blackColor],nil] forKeys:[NSArray arrayWithObjects:@"left",@"right",@"celltype",@"cellbkgtype",@"rightcolor",nil]]];
     
     //section2
+    switch ([self.priceDict[@"payway"] intValue]) {
+		case 3:// 全额预付
+            lefttext = @"在线预付";
+            righttext = [NSString stringWithFormat:@"¥%d",[(self.priceDict[@"teetimeprice"] == nil?self.priceDict[@"price"]:self.priceDict[@"teetimeprice"][@"price"]) intValue] * (int)self.numPeople];
+			break;
+		case 4:// 部分现付
+            lefttext = @"在线预付";
+            righttext = [NSString stringWithFormat:@"¥%d",[self.priceDict[@"deposit"] intValue] * (int)self.numPeople];
+			break;
+		case 2:// 全额现付
+            lefttext = @"押金";
+            righttext = [NSString stringWithFormat:@"¥%d",[self.priceDict[@"deposit"] intValue] * (int)self.numPeople];
+			break;
+		default:
+			break;
+    }
+    [self.cellDataArray addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:lefttext,righttext,[NSNumber numberWithInt:QiuchangOrderEditCellNormal],[NSNumber numberWithInt:QiuchangOrderEditCellBkgTypeTop],[UIColor blackColor],nil] forKeys:[NSArray arrayWithObjects:@"left",@"right",@"celltype",@"cellbkgtype",@"rightcolor",nil]]];
     
-    [self.cellDataArray addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"在线预付",self.courseDict[@"coursename"],[NSNumber numberWithInt:QiuchangOrderEditCellNormal],[NSNumber numberWithInt:QiuchangOrderEditCellBkgTypeTop],nil] forKeys:[NSArray arrayWithObjects:@"left",@"right",@"celltype",@"cellbkgtype",nil]]];
+    lefttext = @"球场现付";
+    switch ([self.priceDict[@"payway"] intValue]) {
+		case 3:// 全额预付
+            righttext = [NSString stringWithFormat:@"¥%d",0 * (int)self.numPeople];
+			break;
+		case 4:// 部分现付
+            righttext = [NSString stringWithFormat:@"¥%d",([(self.priceDict[@"teetimeprice"] == nil?self.priceDict[@"price"]:self.priceDict[@"teetimeprice"][@"price"]) intValue] - [self.priceDict[@"deposit"] intValue]) * (int)self.numPeople];
+			break;
+		case 2:// 全额现付
+            righttext = [NSString stringWithFormat:@"¥%d",[self.priceDict[@"deposit"] intValue] * (int)self.numPeople];
+			break;
+		default:
+			break;
+    }
     
-    [self.cellDataArray addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"球场现付",self.courseDict[@"coursename"],[NSNumber numberWithInt:QiuchangOrderEditCellNormal],[NSNumber numberWithInt:QiuchangOrderEditCellBkgTypeMiddle],nil] forKeys:[NSArray arrayWithObjects:@"left",@"right",@"celltype",@"cellbkgtype",nil]]];
+    [self.cellDataArray addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:lefttext,righttext,[NSNumber numberWithInt:QiuchangOrderEditCellNormal],[NSNumber numberWithInt:QiuchangOrderEditCellBkgTypeMiddle],[UIColor redColor],nil] forKeys:[NSArray arrayWithObjects:@"left",@"right",@"celltype",@"cellbkgtype",@"rightcolor",nil]]];
     
-    [self.cellDataArray addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"订单总额",self.courseDict[@"coursename"],[NSNumber numberWithInt:QiuchangOrderEditCellNormal],[NSNumber numberWithInt:QiuchangOrderEditCellBkgTypeMiddle],nil] forKeys:[NSArray arrayWithObjects:@"left",@"right",@"celltype",@"cellbkgtype",nil]]];
+    lefttext = @"订单总额";
+    switch ([self.priceDict[@"payway"] intValue]) {
+		case 3:// 全额预付
+            righttext = [NSString stringWithFormat:@"¥%d",[(self.priceDict[@"teetimeprice"] == nil?self.priceDict[@"price"]:self.priceDict[@"teetimeprice"][@"price"]) intValue] * (int)self.numPeople];
+			break;
+		case 4:// 部分现付
+            righttext = [NSString stringWithFormat:@"¥%d",[(self.priceDict[@"teetimeprice"] == nil?self.priceDict[@"price"]:self.priceDict[@"teetimeprice"][@"price"]) intValue] * (int)self.numPeople];
+			break;
+		case 2:// 全额现付
+            righttext = [NSString stringWithFormat:@"¥%d",[self.priceDict[@"deposit"] intValue] * (int)self.numPeople];
+			break;
+		default:
+			break;
+    }
+    [self.cellDataArray addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:lefttext,righttext,[NSNumber numberWithInt:QiuchangOrderEditCellNormal],[NSNumber numberWithInt:QiuchangOrderEditCellBkgTypeMiddle],[UIColor redColor],nil] forKeys:[NSArray arrayWithObjects:@"left",@"right",@"celltype",@"cellbkgtype",@"rightcolor",nil]]];
     
-    [self.cellDataArray addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"说明",self.courseDict[@"coursename"],[NSNumber numberWithInt:QiuchangOrderEditCellNormal],[NSNumber numberWithInt:QiuchangOrderEditCellBkgTypeMiddle],nil] forKeys:[NSArray arrayWithObjects:@"left",@"right",@"celltype",@"cellbkgtype",nil]]];
+    lefttext = @"说明";
+    righttext = [NSString stringWithFormat:@"%@\n%@",self.priceDict[@"description"],self.priceDict[@"cancel_desc"]];
+    [self.cellDataArray addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:lefttext,righttext,[NSNumber numberWithInt:QiuchangOrderEditCellNormal],[NSNumber numberWithInt:QiuchangOrderEditCellBkgTypeMiddle],[UIColor blackColor],nil] forKeys:[NSArray arrayWithObjects:@"left",@"right",@"celltype",@"cellbkgtype",@"rightcolor",nil]]];
     
-    [self.cellDataArray addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"",@"",[NSNumber numberWithInt:QiuchangOrderEditCellConfirm],[NSNumber numberWithInt:QiuchangOrderEditCellBkgTypeBottom],nil] forKeys:[NSArray arrayWithObjects:@"left",@"right",@"celltype",@"cellbkgtype",nil]]];
+    [self.cellDataArray addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"",@"",[NSNumber numberWithInt:QiuchangOrderEditCellConfirm],[NSNumber numberWithInt:QiuchangOrderEditCellBkgTypeBottom],[UIColor blackColor],nil] forKeys:[NSArray arrayWithObjects:@"left",@"right",@"celltype",@"cellbkgtype",@"rightcolor",nil]]];
 }
 
 -(double)getRealMoney
@@ -550,7 +513,8 @@ ON_SIGNAL( signal )
 
 - (CGSize)scrollView:(BeeUIScrollView *)scrollView sizeForIndex:(NSInteger)index
 {
-    return [QiuchangOrderEditCell_iPhone estimateUISizeByWidth:self.view.width forData:[self.cellDataArray objectAtIndex:index]];
+    CGSize size = [QiuchangOrderEditCell_iPhone estimateUISizeByWidth:self.view.width forData:[self.cellDataArray objectAtIndex:index]];
+    return size;
 //    BeeUICell* cell = self.cellArray[index];
 //	return cell.frame.size;
 }
@@ -576,7 +540,7 @@ ON_SIGNAL( signal )
         return;
     }
     
-    if ([self.phoneTextField.text length] <= 0)
+    if ([[[CommonSharedData sharedInstance] getContactPhoneNum] length] <= 0)
     {
         [self presentFailureTips:@"请填写联系电话"];
         return;
@@ -647,7 +611,7 @@ ON_SIGNAL( signal )
                                 @"session":[UserModel sharedInstance].session.objectToDictionary,
                                 @"players":[NSString stringWithFormat:@"%d",(int)self.numPeople],
                                 @"contacts":[[CommonSharedData sharedInstance] getContactListNamesString],
-                                @"tel":self.phoneTextField.text,
+                                @"tel":[[CommonSharedData sharedInstance] getContactPhoneNum],
                                 @"price":[NSString stringWithFormat:@"%@",[NSNumber numberWithDouble:self.priceAll]],
                                 @"id":self.courseDict[@"course_id"],
                                 @"type":@"1",

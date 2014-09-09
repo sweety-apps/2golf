@@ -58,7 +58,11 @@ DEF_SINGLETON( CommonSharedData )
 
 - (NSString*)getContactPhoneNum
 {
-    return [[NSUserDefaults standardUserDefaults] objectForKey:@"contact_phone_num"];
+    NSString* ret = [[NSUserDefaults standardUserDefaults] objectForKey:@"contact_phone_num"];
+    if (ret == nil) {
+        ret = @"";
+    }
+    return ret;
 }
 
 - (void)setCheckedSelectedSaveUserNameAndPassword:(BOOL)checked

@@ -686,9 +686,9 @@ ON_SIGNAL2( QiuchangBannerPhotoCell_iPhone, signal )
 - (void)onPressedPriceButton:(QiuchangDetailPriceContentCell_iPhone*)cell
 {
     QiuchangOrderEditBoard_iPhone* board = [QiuchangOrderEditBoard_iPhone boardWithNibName:@"QiuchangOrderEditBoard_iPhone"];
-    [self.stack pushBoard:board animated:YES];
     [board setUpCourseData:self.dataDict];
     [board setUpPriceData:cell.data];
+    [self.stack pushBoard:board animated:YES];
 }
 
 #pragma mark <QiuchangDetailCollectCellBoard_iPhoneDelegate>

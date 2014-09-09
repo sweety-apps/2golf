@@ -7,6 +7,7 @@
 //
 
 #import "QiuchangOrderEditCellViewController.h"
+#import "CommonSharedData.h"
 
 #pragma mark -
 
@@ -34,7 +35,7 @@ DEF_SIGNAL( TOUCHED )
     [self.ctrl.numIncreaseBtn addTarget:self action:@selector(onPressedIncreasePeople:) forControlEvents:UIControlEventTouchUpInside];
     [self.ctrl.confirmBtn addTarget:self action:@selector(onPressedConfirm:) forControlEvents:UIControlEventTouchUpInside];
     
-    //self.ctrl.phoneTextField.delegate = self;
+    self.ctrl.phoneTextField.delegate = self;
 }
 
 - (void)unload
@@ -42,6 +43,18 @@ DEF_SIGNAL( TOUCHED )
     self.ctrl = nil;
     
 	[super unload];
+}
+
++ (CGSize)estimateUISizeByWidth:(CGFloat)width forData:(id)data
+{
+    QiuchangOrderEditCell_iPhone * cell = [self temporary];
+	if ( cell )
+	{
+		cell.data = data;
+		return cell.frame.size;
+	}
+	
+	return [super estimateUISizeByWidth:width forData:data];
 }
 
 - (void)layoutDidFinish
@@ -53,7 +66,151 @@ DEF_SIGNAL( TOUCHED )
 {
     if (self.data)
     {
+        QiuchangOrderEditCellViewController* ctrl = self.ctrl;
         NSDictionary* dict = self.data;
+        CGFloat moveDown = 0;
+        CGRect rect;
+        switch ([dict[@"celltype"] intValue]) {
+            case QiuchangOrderEditCellNormal:
+                
+                ctrl.cellTitle.hidden = NO;
+                ctrl.normalRightTitle.hidden = NO;
+                
+                ctrl.contactArrow.hidden = YES;
+                ctrl.contactBtn.hidden = YES;
+                ctrl.contactRightTitle.hidden = YES;
+                
+                ctrl.numIncreaseBtn.hidden = YES;
+                ctrl.numDecreaseBtn.hidden = YES;
+                ctrl.numLabel.hidden = YES;
+                
+                ctrl.phoneTextField.hidden = YES;
+                
+                ctrl.confirmBtn.hidden = YES;
+                break;
+            case QiuchangOrderEditCellConfirm:
+                
+                ctrl.cellTitle.hidden = YES;
+                ctrl.normalRightTitle.hidden = YES;
+                
+                ctrl.contactArrow.hidden = YES;
+                ctrl.contactBtn.hidden = YES;
+                ctrl.contactRightTitle.hidden = YES;
+                
+                ctrl.numIncreaseBtn.hidden = YES;
+                ctrl.numDecreaseBtn.hidden = YES;
+                ctrl.numLabel.hidden = YES;
+                
+                ctrl.phoneTextField.hidden = YES;
+                
+                ctrl.confirmBtn.hidden = NO;
+                break;
+            case QiuchangOrderEditCellContact:
+                
+                ctrl.cellTitle.hidden = NO;
+                ctrl.normalRightTitle.hidden = YES;
+                
+                ctrl.contactArrow.hidden = NO;
+                ctrl.contactBtn.hidden = NO;
+                ctrl.contactRightTitle.hidden = NO;
+                
+                ctrl.numIncreaseBtn.hidden = YES;
+                ctrl.numDecreaseBtn.hidden = YES;
+                ctrl.numLabel.hidden = YES;
+                
+                ctrl.phoneTextField.hidden = YES;
+                
+                ctrl.confirmBtn.hidden = YES;
+                break;
+            case QiuchangOrderEditCellPeopleNum:
+                
+                ctrl.cellTitle.hidden = NO;
+                ctrl.normalRightTitle.hidden = YES;
+                
+                ctrl.contactArrow.hidden = YES;
+                ctrl.contactBtn.hidden = YES;
+                ctrl.contactRightTitle.hidden = YES;
+                
+                ctrl.numIncreaseBtn.hidden = NO;
+                ctrl.numDecreaseBtn.hidden = NO;
+                ctrl.numLabel.hidden = NO;
+                
+                ctrl.phoneTextField.hidden = YES;
+                
+                ctrl.confirmBtn.hidden = YES;
+                break;
+            case QiuchangOrderEditCellPhoneNum:
+                
+                ctrl.cellTitle.hidden = NO;
+                ctrl.normalRightTitle.hidden = YES;
+                
+                ctrl.contactArrow.hidden = YES;
+                ctrl.contactBtn.hidden = YES;
+                ctrl.contactRightTitle.hidden = YES;
+                
+                ctrl.numIncreaseBtn.hidden = YES;
+                ctrl.numDecreaseBtn.hidden = YES;
+                ctrl.numLabel.hidden = YES;
+                
+                ctrl.phoneTextField.hidden = NO;
+                ctrl.phoneTextField.text = dict[@"right"];
+                ctrl.confirmBtn.hidden = YES;
+                break;
+            default:
+                break;
+        }
+        
+        switch ([dict[@"cellbkgtype"] intValue]) {
+            case QiuchangOrderEditCellBkgTypeTop:
+                moveDown = 8;
+                rect = CGRectMake(0, 0, 320, 40);
+                rect.origin = CGPointZero;
+                rect.size.height += moveDown;
+//                ctrl.view.frame = rect;
+                self.frame = rect;
+                
+                rect.size.height -= moveDown;
+                rect.origin.y +=moveDown;
+//                ctrl.baseView.frame = rect;
+                ctrl.view.frame = rect;
+                
+                ctrl.cellBg.image = [__IMAGE(@"normallist_content_bg_h") stretchableImageWithLeftCapWidth:25.f topCapHeight:10.f];
+                break;
+                
+            case QiuchangOrderEditCellBkgTypeMiddle:
+                moveDown = 0;
+                rect = CGRectMake(0, 0, 320, 40);
+                rect.origin = CGPointZero;
+                rect.size.height += moveDown;
+                ctrl.view.frame = rect;
+                self.frame = rect;
+                
+                rect.size.height -= moveDown;
+                rect.origin.y +=moveDown;
+                //ctrl.baseView.frame = rect;
+                ctrl.view.frame = rect;
+                ctrl.cellBg.image = [__IMAGE(@"normallist_content_bg_m") stretchableImageWithLeftCapWidth:25.f topCapHeight:10.f];
+                break;
+            case QiuchangOrderEditCellBkgTypeBottom:
+                moveDown = 0;
+                rect = CGRectMake(0, 0, 320, 40);
+                rect.origin = CGPointZero;
+                rect.size.height += moveDown;
+                ctrl.view.frame = rect;
+                self.frame = rect;
+                
+                rect.size.height -= moveDown;
+                rect.origin.y +=moveDown;
+                //ctrl.baseView.frame = rect;
+                ctrl.view.frame = rect;
+                ctrl.cellBg.image = [__IMAGE(@"normallist_content_bg_t") stretchableImageWithLeftCapWidth:25.f topCapHeight:10.f];
+                break;
+            default:
+                break;
+        }
+        
+        [self setLeftText:dict[@"left"]];
+        [self setRightText:dict[@"right"] color:dict[@"rightcolor"]];
     }
 }
 
@@ -456,8 +613,16 @@ DEF_SIGNAL( TOUCHED )
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
+    [self.ctrl.normalRightTitle setText:textField.text];
     [self.ctrl.phoneTextField resignFirstResponder];
     return YES;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    if (textField.text.length != 0) {
+        [[CommonSharedData sharedInstance] setContactPhoneNum:self.ctrl.phoneTextField.text];
+    }
 }
 
 @end
