@@ -2106,7 +2106,7 @@ DEF_MESSAGE_( user_info, msg )
 		NSDictionary * response = msg.responseJSONDictionary;
 		STATUS * status = [STATUS objectFromDictionary:[response dictAtPath:@"status"]];
 		USER * data = [USER objectFromDictionary:[response dictAtPath:@"data"]];
-
+        data.is_vip = [[response dictAtPath:@"data"] boolAtPath:@"is_vip"];
 		if ( nil == status || NO == [status isKindOfClass:[STATUS class]] )
 		{
 			msg.failed = YES;
