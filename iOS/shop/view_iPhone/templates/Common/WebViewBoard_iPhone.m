@@ -127,6 +127,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
 		{
             CGRect rect = self.view.frame;
             rect.origin = CGPointZero;
+            rect.origin.y += 4;
 			_webView.frame = rect;
 		}
 		else

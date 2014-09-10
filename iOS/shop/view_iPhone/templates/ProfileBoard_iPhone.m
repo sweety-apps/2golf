@@ -44,6 +44,7 @@
 #import "HelpMainBoard_iPhone.h"
 #import "HelpArticlesBoard_iPhone.h"
 #import "CommonUtility.h"
+#import "WebViewBoard_iPhone.h"
 
 #pragma mark -
 
@@ -244,6 +245,14 @@ SUPPORT_RESOURCE_LOADING(YES);
             }
             
             $(@"#header_score_value").DATA( [userModel.user.points stringValue]);
+            
+            if (userModel.user.is_vip) {
+                $(@"#lblenterofhighmember").TEXT(@"爱高会员详情>");
+            }
+            else
+            {
+                $(@"#lblenterofhighmember").TEXT(@"成为爱高会员>");
+            }
 		}
 		else
 		{
@@ -709,7 +718,7 @@ ON_SIGNAL3( ProfileCell_iPhone, new_version, signal )
     }
 }
 
-ON_SIGNAL3( ProfileCell_iPhone, header_money_button, signal )
+ON_SIGNAL3( ProfileCell_iPhone, recharge, signal )
 {
     if ( [signal is:BeeUIButton.TOUCH_UP_INSIDE] )
     {
@@ -727,6 +736,20 @@ ON_SIGNAL3( ProfileCell_iPhone, header_score_button, signal )
     }
 }
 
+ON_SIGNAL3( ProfileCell_iPhone, pay, signal )
+{
+    if ( [signal is:BeeUIButton.TOUCH_UP_INSIDE] )
+    {
+        if ( NO == [UserModel online] )
+		{
+			[[AppBoard_iPhone sharedInstance] showLogin];
+			return;
+		}
+        
+        [self.stack pushBoard:[AwaitShipBoard_iPhone board] animated:YES];
+    }
+}
+
 ON_SIGNAL3( ProfileCell_iPhone, logout, signal )
 {
     if ( [signal is:BeeUIButton.TOUCH_UP_INSIDE] )
@@ -740,7 +763,18 @@ ON_SIGNAL3( ProfileCell_iPhone, logout, signal )
         [self signout];
     }
 }
-
+ON_SIGNAL3( ProfileCell_iPhone, btnenterofhighmember, signal )
+{
+    if ( [signal is:BeeUIButton.TOUCH_UP_INSIDE] )
+    {
+        WebViewBoard_iPhone * board = [WebViewBoard_iPhone board];
+        board.defaultTitle = @"会员权益";
+        UserModel* userModel = _profile.data;
+        board.htmlString = userModel.user.vip_info;
+        board.isToolbarHiden = YES;
+        [self.stack pushBoard:board animated:YES];
+    }
+}
 
 ON_SIGNAL3( ProfileCell_iPhone, carema, signal )
 {
