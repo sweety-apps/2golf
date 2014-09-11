@@ -770,7 +770,13 @@ ON_SIGNAL3( ProfileCell_iPhone, btnenterofhighmember, signal )
         WebViewBoard_iPhone * board = [WebViewBoard_iPhone board];
         board.defaultTitle = @"会员权益";
         UserModel* userModel = _profile.data;
-        board.htmlString = userModel.user.vip_info;
+        if (userModel.user.is_vip) {
+            board.htmlString = userModel.user.vip_info;
+        }
+        else
+        {
+            board.urlString = @"http://2golf.cn/article.php?id=258";
+        }
         board.isToolbarHiden = YES;
         [self.stack pushBoard:board animated:YES];
     }
