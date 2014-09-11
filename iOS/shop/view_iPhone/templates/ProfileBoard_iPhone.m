@@ -107,7 +107,7 @@ SUPPORT_RESOURCE_LOADING(YES);
 		if ( [UserModel online] )
 		{
             NSString* namestr = @"";
-            if (userModel.user.is_vip) {
+            if ([userModel.user.is_vip intValue] == 1) {
                 namestr = [NSString stringWithFormat:@"%@\n%@",userModel.user.name,userModel.user.vip_number];
             } else {
                 if (userModel.user.name.length != 0) {
@@ -246,7 +246,7 @@ SUPPORT_RESOURCE_LOADING(YES);
             
             $(@"#header_score_value").DATA( [userModel.user.points stringValue]);
             
-            if (userModel.user.is_vip) {
+            if ([userModel.user.is_vip intValue] == 1) {
                 $(@"#lblenterofhighmember").TEXT(@"爱高会员详情>");
             }
             else
@@ -770,7 +770,7 @@ ON_SIGNAL3( ProfileCell_iPhone, btnenterofhighmember, signal )
         WebViewBoard_iPhone * board = [WebViewBoard_iPhone board];
         board.defaultTitle = @"会员权益";
         UserModel* userModel = _profile.data;
-        if (userModel.user.is_vip) {
+        if ([userModel.user.is_vip intValue] == 1) {
             board.htmlString = userModel.user.vip_info;
         }
         else

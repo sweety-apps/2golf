@@ -34,7 +34,7 @@ SUPPORT_RESOURCE_LOADING( YES )
             case 2://前臺現付
                 if([order[@"price"][@"deposit"] intValue] > 0)
                 {
-                    priceString = [NSString stringWithFormat:@"￥%d",[order[@"price"][@"deposit"] intValue]];
+                    priceString = [NSString stringWithFormat:@"￥%d",([order[@"price"][@"deposit"] intValue])*[persons intValue]];
                 }
                 else
                 {

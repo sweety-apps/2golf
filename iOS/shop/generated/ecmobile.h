@@ -439,7 +439,7 @@ enum RANK_LEVEL
 @property (nonatomic, retain) NSString* vip_number;
 @property (nonatomic, retain) NSString* vip_card_url;
 @property (nonatomic, retain) NSString* privilege;
-@property (nonatomic, assign) BOOL is_vip;
+@property (nonatomic, assign) NSNumber* is_vip;
 @property (nonatomic, retain) NSString* vip_info;
 @end
 

@@ -85,24 +85,36 @@ ON_SIGNAL3( QiuChangOrderDetailCell, back2home, signal )
         NSDictionary * order = self.data;
         NSString* priceString = @"";
         NSNumber* persons = order[@"persons"];
+        NSObject* price = order[@"price"];
         if ([order[@"type"] intValue] == 1)//courseorder
         {
-            NSObject* teetimeprice = order[@"price"][@"teetimeprice"];
-            switch ([order[@"price"][@"payway"] intValue]) {
+            NSObject* teetimeprice = ((NSDictionary*)price)[@"teetimeprice"];
+            switch ([((NSDictionary*)price)[@"payway"] intValue]) {
                 case 3://全額預付
-                    priceString = [NSString stringWithFormat:@"￥%d",(teetimeprice == nil || ![teetimeprice isKindOfClass:[NSDictionary class]]?[order[@"price"][@"price"] intValue]:[order[@"price"][@"teetimeprice"][@"price"] intValue])*[persons intValue]];
+                    priceString = [NSString stringWithFormat:@"￥%d",(teetimeprice == nil || ![teetimeprice isKindOfClass:[NSDictionary class]]?[((NSDictionary*)price)[@"price"] intValue]:[((NSDictionary*)price)[@"teetimeprice"][@"price"] intValue])*[persons intValue]];
                     break;
                 case 4://部分預付
-                    priceString = [NSString stringWithFormat:@"￥%d",([order[@"price"][@"deposit"] intValue]*[order[@"persons"] intValue])];
+                    priceString = [NSString stringWithFormat:@"￥%d",([((NSDictionary*)price)[@"deposit"] intValue]*[persons intValue])];
                     break;
                 case 2://前臺現付
-                    if([order[@"price"][@"deposit"] intValue] > 0)
+                    if([((NSDictionary*)price)[@"deposit"] intValue] > 0)
                     {
-                        priceString = [NSString stringWithFormat:@"￥%d",[order[@"price"][@"deposit"] intValue]];
+                        priceString = [NSString stringWithFormat:@"线上支付保证金%d元，前台支付订单总额%d，保证金打球完毕后会退还给您的账号",
+                                ([((NSDictionary*)price)[@"deposit"] intValue]
+                                * [persons intValue]),
+                                ((((NSDictionary*)price)[@"teetimeprice"] == nil || ![((NSDictionary*)price)[@"teetimeprice"] isKindOfClass:[NSDictionary class]]) ? [((NSDictionary*)price)[@"price"] intValue]
+                                       : [((NSDictionary*)price)[@"teetimeprice"][@"price"] intValue])
+                                * [persons intValue]];
+                        
+//                        priceString = [NSString stringWithFormat:@"￥%d",[order[@"price"][@"deposit"] intValue]];
                     }
                     else
                     {
-                        priceString = @"线上免付";
+//                        priceString = @"线上免付";
+                        priceString = [NSString stringWithFormat:@"线上无需付款，前台支付订单总额%d",
+                                ((((NSDictionary*)price)[@"teetimeprice"] == nil || ![((NSDictionary*)price)[@"teetimeprice"] isKindOfClass:[NSDictionary class]]) ? [((NSDictionary*)price)[@"price"] intValue]
+                                 : [((NSDictionary*)price)[@"teetimeprice"][@"price"] intValue])
+                                * [persons intValue]];
                     }
                     break;
                 default:

@@ -105,7 +105,7 @@ DEF_NOTIFICATION( UPDATED )
 	self.session = [SESSION objectFromDictionary:[[self userDefaultsRead:@"session"] objectFromJSONString]];
 	self.fields = [SIGNUP_FIELD objectsFromArray:[[self userDefaultsRead:@"fields"] objectFromJSONString]];
 	self.user = [USER objectFromDictionary:[[self userDefaultsRead:@"user"] objectFromJSONString]];
-
+//    self.user.is_vip = [[[self userDefaultsRead:@"user"] objectFromJSONString][@"is_vip"] boolValue];
 	if ( self.session )
 	{
 		[self setOnline:YES];
@@ -120,6 +120,8 @@ DEF_NOTIFICATION( UPDATED )
 {
 	[self userDefaultsWrite:[self.session objectToString] forKey:@"session"];
 	[self userDefaultsWrite:[self.fields objectToString] forKey:@"fields"];
+    NSMutableString* string = [self.user objectToString];
+    
 	[self userDefaultsWrite:[self.user objectToString] forKey:@"user"];
 }
 
