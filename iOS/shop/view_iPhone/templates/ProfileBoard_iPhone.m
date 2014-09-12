@@ -373,7 +373,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
 		[self.view addSubview:_scroll];
         
         _profile = [[ProfileCell_iPhone alloc] initWithFrame:CGRectZero];
-        [_scroll showHeaderLoader:NO animated:NO];
+        [_scroll showHeaderLoader:YES animated:YES];
         _scroll.headerShown = NO;
         _scroll.footerShown = NO;
 		
@@ -877,13 +877,13 @@ ON_SIGNAL2( signout_yes, signal )
 			[[UserModel sharedInstance] updateProfile];
 		}
 		
-		[_scroll showHeaderLoader:NO animated:NO];
+		[_scroll showHeaderLoader:YES animated:YES];
 	}
 	else
 	{
 //		[[AppBoard_iPhone sharedInstance] showLogin];
 		
-		[_scroll showHeaderLoader:NO animated:NO];
+		[_scroll showHeaderLoader:YES animated:YES];
 	}
     
     [_profile release];
