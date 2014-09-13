@@ -451,7 +451,7 @@ ON_SIGNAL( signal )
             righttext = [NSString stringWithFormat:@"¥%d",([((self.priceDict[@"teetimeprice"] == nil || ![self.priceDict[@"teetimeprice"]  isKindOfClass:[NSDictionary class]])?self.priceDict[@"price"]:self.priceDict[@"teetimeprice"][@"price"]) intValue] - [self.priceDict[@"deposit"] intValue]) * (int)self.numPeople];
 			break;
 		case 2:// 全额现付
-            righttext = [NSString stringWithFormat:@"¥%d",[self.priceDict[@"deposit"] intValue] * (int)self.numPeople];
+            righttext = [NSString stringWithFormat:@"¥%d",[((self.priceDict[@"teetimeprice"] == nil || ![self.priceDict[@"teetimeprice"]  isKindOfClass:[NSDictionary class]])?self.priceDict[@"price"]:self.priceDict[@"teetimeprice"][@"price"]) intValue] * (int)self.numPeople];
 			break;
 		default:
 			break;
@@ -468,7 +468,7 @@ ON_SIGNAL( signal )
             righttext = [NSString stringWithFormat:@"¥%d",[((self.priceDict[@"teetimeprice"] == nil || ![self.priceDict[@"teetimeprice"]  isKindOfClass:[NSDictionary class]])?self.priceDict[@"price"]:self.priceDict[@"teetimeprice"][@"price"]) intValue] * (int)self.numPeople];
 			break;
 		case 2:// 全额现付
-            righttext = [NSString stringWithFormat:@"¥%d",[self.priceDict[@"deposit"] intValue] * (int)self.numPeople];
+            righttext = [NSString stringWithFormat:@"¥%d",[((self.priceDict[@"teetimeprice"] == nil || ![self.priceDict[@"teetimeprice"]  isKindOfClass:[NSDictionary class]])?self.priceDict[@"price"]:self.priceDict[@"teetimeprice"][@"price"]) intValue] * (int)self.numPeople];
 			break;
 		default:
 			break;
