@@ -237,7 +237,7 @@ SUPPORT_RESOURCE_LOADING( YES )
         [string appendFormat:@"%@: %@\n", spec_value.spec.name, spec_value.value.label];
     }
     
-    [string appendFormat:@"%@: %@", __TEXT(@"amount"), count];
+//    [string appendFormat:@"%@: %@", __TEXT(@"amount"), count];
     
     if ( [string notEmpty] )
     {
@@ -885,7 +885,7 @@ ON_SIGNAL3( GoodsDetailTab_iPhone, cart, signal)
         
         if ( 0 == self.specs.count )
         {
-            specs = nil; // [self specsFromGoods:self.goodsModel.goods];
+            specs = [self specsFromGoods:self.goodsModel.goods];
         }
         else
         {
