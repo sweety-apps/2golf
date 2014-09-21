@@ -43,7 +43,7 @@
         
         <linear orientation="h" class="order-info-item">
             <label class="tips" >球场名称：</label>
-            <label class="content" id="coursename">九龙山高尔夫</label>
+            <label class="content" id="coursename"></label>
         </linear>
         
         <linear orientation="h" class="order-info-item">

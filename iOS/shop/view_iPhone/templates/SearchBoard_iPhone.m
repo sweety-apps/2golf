@@ -134,6 +134,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
 		_scroll.dataSource = self;
 		_scroll.vertical = YES;
 		[self.view addSubview:_scroll];
+        [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"search_keywords"];
 
 	}
 	else if ( [signal is:BeeUIBoard.DELETE_VIEWS] )

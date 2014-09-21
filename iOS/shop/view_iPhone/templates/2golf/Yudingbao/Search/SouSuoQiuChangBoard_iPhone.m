@@ -135,7 +135,8 @@ ON_SIGNAL2( BeeUIBoard, signal )
         [cancelBtn addTarget:self action:@selector(_onCancelTimeSelect) forControlEvents:UIControlEventTouchUpInside];
         [_pickerBg addSubview:cancelBtn];
         [_pickerBg addSubview:_picker];
-
+        
+        [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"search_keywords"];
         
     }
     else if ( [signal is:BeeUIBoard.DELETE_VIEWS] )
