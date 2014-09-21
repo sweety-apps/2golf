@@ -469,8 +469,9 @@ ON_SIGNAL2( CheckoutBoard_iPhone , signal )
 //        }
 //        else
 //        {
-            [self.stack popBoardAnimated:YES];
+//            [self.stack popBoardAnimated:YES];
 //        }
+        [self.stack popToRootViewControllerAnimated:YES];
     }
 }
 

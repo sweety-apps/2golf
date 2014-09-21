@@ -946,15 +946,6 @@ ON_SIGNAL3( GoodsDetailTab_iPhone, cart, signal)
 
 - (void)shareAllButtonClickHandler:(UIButton *)sender
 {
-    /*
-     PayBoard_iPhone * board = [PayBoard_iPhone board];
-     board.title = __TEXT(@"pay");
-     board.isFromCheckoutBoard = YES;
-     board.orderID = @12345;
-     [self.stack pushBoard:board animated:YES];
-     return;
-     */
-    
     GoodsModel * goodsModel = self.goodsModel;
     
     NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"" ofType:@"jpg"];

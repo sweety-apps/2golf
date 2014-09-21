@@ -147,21 +147,6 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
     
 	if ( [signal is:BeeUINavigationBar.LEFT_TOUCHED] )
 	{
-        if ( self.isFromCheckoutBoard )
-        {
-            if ( self.previousBoard.previousBoard.previousBoard )
-            {
-                [self.stack popToBoard:self.previousBoard.previousBoard.previousBoard animated:YES];
-            }
-            else
-            {
-                [self.stack popBoardAnimated:YES];
-            }
-        }
-        else
-        {
-            [self.stack popBoardAnimated:YES];
-        }
 	}
 }
 
@@ -258,7 +243,15 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
             else
             {
                 [self presentFailureTips:dict[@"status"][@"error_desc"]];
-                [self.stack popBoardAnimated:YES];
+                if ( self.isFromCheckoutBoard )
+                {
+                    [self.stack popToRootViewControllerAnimated:YES];
+                }
+                else
+                {
+                    [self.stack popBoardAnimated:YES];
+                }
+
             }
         }
         else if([[req.url absoluteString] rangeOfString:@"order/unionpay"].length >0 )
@@ -282,7 +275,15 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
             else
             {
                 [self presentFailureTips:dict[@"status"][@"error_desc"]];
-                [self.stack popBoardAnimated:YES];
+                if ( self.isFromCheckoutBoard )
+                {
+                    [self.stack popToRootViewControllerAnimated:YES];
+                }
+                else
+                {
+                    [self.stack popBoardAnimated:YES];
+                }
+
             }
         }
     }
@@ -291,7 +292,15 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
 - (void) succeedPaid
 {
     [[UserModel sharedInstance] updateProfile];
-    [self.stack popBoardAnimated:YES];
+    if ( self.isFromCheckoutBoard )
+    {
+        [self.stack popToRootViewControllerAnimated:YES];
+    }
+    else
+    {
+        [self.stack popBoardAnimated:YES];
+    }
+
 }
 
 //wap回调函数
@@ -342,7 +351,7 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
     //    strResult = @"<?xml version=\"1.0\" encoding=\"UTF-8\" ?> <upomp application=\"LanchPay.Rsp\" version=\"1.0.0 \"><merchantId>商户代码（15-24位数字）</merchantId><merchantOrderId>商户订单号</merchantOrderId><merchantOrderTime>商户订单时间</merchantOrderTime><respCode>应答码(0000为成功，其他为失败)</respCode><respDesc>应答码描述</respDesc></upomp>";
     if(strResult == nil)
     {
-        [self presentFailureTips:@"用戶取消交易"];
+        [[[UIApplication sharedApplication] keyWindow] presentFailureTips:@"用戶取消交易"];
     }
     else
     {
@@ -354,17 +363,33 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
                 CXMLElement* elementcode = [elements objectAtIndex:0];
                 NSString* stringvalue = [elementcode stringValue];
                 if ([stringvalue isEqualToString:@"0000"]) {
-                    [self presentSuccessTips:@"交易成功"];
+                    [[[UIApplication sharedApplication] keyWindow] presentFailureTips:@"交易成功"];
                     [self requestUnionPayQuery];
                     [self succeedPaid];
                     return;
                 }
             }
         }
-        [self presentFailureTips:@"交易失敗"];
+        [[[UIApplication sharedApplication] keyWindow] presentFailureTips:@"交易失败"];
         
     }
-    [self.stack popBoardAnimated:YES];
+    if ( self.isFromCheckoutBoard )
+    {
+        [self.stack popToRootViewControllerAnimated:YES];
+//        if ( self.previousBoard.previousBoard.previousBoard )
+//        {
+//            [self.stack popToBoard:self.previousBoard.previousBoard.previousBoard animated:YES];
+//        }
+//        else
+//        {
+//            [self.stack popBoardAnimated:YES];
+//        }
+    }
+    else
+    {
+        [self.stack popBoardAnimated:YES];
+    }
+
 }
 
 @end
