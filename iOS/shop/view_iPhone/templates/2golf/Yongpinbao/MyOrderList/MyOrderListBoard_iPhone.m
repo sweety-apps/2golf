@@ -656,30 +656,47 @@ ON_SIGNAL2( BeeUIScrollView, signal )
 
 - (NSString*)_getPayingPrice
 {
-    NSObject* price = nil;
     NSString* realPrice = nil;
-    
+    NSDictionary* pricedict = self.payingData[@"price"];
     if (self.payingData)
     {
-        price = self.payingData[@"price"];
-        if ([price isKindOfClass:[NSString class]])
-        {
-            realPrice = (NSString*)price;
-        }
-        else if([price isKindOfClass:[NSNumber class]])
-        {
-            realPrice = [NSString stringWithFormat:@"%@",price];
-        }
-        else if([price isKindOfClass:[NSDictionary class]])
-        {
-            if ([((NSDictionary*)price)[@"price"] isKindOfClass:[NSDictionary class]])
-            {
-                realPrice = ((NSDictionary*)price)[@"price"][@"price"];
+        if ([self.payingData[@"type"] intValue] == 1) {
+            //球场订单
+            switch ([pricedict[@"payway"] intValue]) {
+                case 3:
+                    //全额预付
+                    if (pricedict[@"teetimeprice"] != nil && [pricedict[@"teetimeprice"] isKindOfClass:[NSDictionary class]]) {
+                        realPrice = [NSString stringWithFormat:@"%d",([pricedict[@"teetimeprice"][@"price"] intValue] * [self.payingData[@"persons"] intValue])];
+                    }
+                    else{
+                        realPrice = [NSString stringWithFormat:@"%d",([pricedict[@"price"] intValue] * [self.payingData[@"persons"] intValue])];
+                    }
+                    break;
+                case 4:
+                    //部分预付
+                    realPrice = [NSString stringWithFormat:@"%d",([pricedict[@"deposit"] intValue] * [self.payingData[@"persons"] intValue])];
+                    break;
+                case 2:
+                    //前台现付
+                    realPrice = [NSString stringWithFormat:@"%d",([pricedict[@"deposit"] intValue] * [self.payingData[@"persons"] intValue])];
+                    break;
+                default:
+                    break;
             }
-            else
-            {
-                realPrice = ((NSDictionary*)price)[@"price"];
-            }
+        }
+        else
+        {
+            //套餐订单
+            switch ([pricedict[@"payway"] intValue]) {
+                case 3:// 全额预付
+                    realPrice = [NSString stringWithFormat:@"%d",([pricedict[@"price"] intValue] * [self.payingData[@"persons"] intValue])];
+                    break;
+                case 2:// 前台现付
+                    realPrice = @"0";
+                    break;
+                default:
+                    break;
+			}
             
         }
     }
