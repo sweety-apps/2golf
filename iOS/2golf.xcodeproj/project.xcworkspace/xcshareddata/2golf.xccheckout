@@ -10,29 +10,29 @@
 	<string>2golf</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>554299EA-252E-47EF-A9F5-28D635A11A14</key>
+		<key>8B0B36DB7A585FD03E1548E5BFD3DBB72DEE7BBF</key>
 		<string>https://github.com/sweety-apps/2golf.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>iOS/2golf.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>554299EA-252E-47EF-A9F5-28D635A11A14</key>
+		<key>8B0B36DB7A585FD03E1548E5BFD3DBB72DEE7BBF</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/sweety-apps/2golf.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>554299EA-252E-47EF-A9F5-28D635A11A14</string>
+	<string>8B0B36DB7A585FD03E1548E5BFD3DBB72DEE7BBF</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>554299EA-252E-47EF-A9F5-28D635A11A14</string>
+			<string>8B0B36DB7A585FD03E1548E5BFD3DBB72DEE7BBF</string>
 			<key>IDESourceControlWCCName</key>
 			<string>2golf</string>
 		</dict>

@@ -287,7 +287,7 @@ DEF_SINGLETON( SharedLocaleDelegate )
 	 *由于demo的局限性，采用了将私钥放在本地签名的方法，商户可以根据自身情况选择签名方法(为安全起见，在条件允许的前提下，我们推荐从商户服务器获取完整的订单信息)
 	 */
     
-    NSString *appScheme = @"2golfAlipay";
+    NSString *appScheme = @"aigolfAlipay";
     
     //ordersn = @"2014062200265";
     //payId = @"43";

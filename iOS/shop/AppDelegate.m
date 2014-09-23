@@ -103,7 +103,7 @@ static BMKMapManager* _mapManager = nil;
     // 要使用百度地图，请先启动BaiduMapManager
     
 	_mapManager = [[[BMKMapManager alloc] init] retain];
-	BOOL ret = [_mapManager start:@"1WYKjnr3bCwVPQbpTr1tGuXU" generalDelegate:self];
+	BOOL ret = [_mapManager start:@"LMGDSLwKfLGR4KhgYktsg5ux" generalDelegate:self];
     if (!ret) {
 		NSLog(@"manager start failed!");
 	}
@@ -122,8 +122,8 @@ static BMKMapManager* _mapManager = nil;
 //		self.window.rootViewController = [TestBoard_iPhone sharedInstance];
 	}
     
-    _longitude = 114.02597365731999f;
-    _latitude = 22.546053546204998f;
+    _longitude = 114.1134120000;//114.02597365731999f;
+    _latitude = 22.5515650000;//22.546053546204998f;
 }
 
 - (void)unload

@@ -530,8 +530,8 @@
 		4F27345619B4100A0022EF21 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F27324C19B4100A0022EF21 /* UserModel.m */; };
 		4F27345719B4100A0022EF21 /* ValidateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F27324E19B4100A0022EF21 /* ValidateModel.m */; };
 		4F27345D19B41FDC0022EF21 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F27345C19B41FDC0022EF21 /* libcrypto.a */; };
-		4F27345F19B4412E0022EF21 /* libUnionPayLib11 -Device.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F27345E19B4412E0022EF21 /* libUnionPayLib11 -Device.a */; };
 		4F2786B419BC76C600CF083B /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2786B119BC76C600CF083B /* libMobClickLibrary.a */; };
+		4F2EF6ED19D1928500C2D02C /* libUnionPayLib11 -Device.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2EF6EC19D1928500C2D02C /* libUnionPayLib11 -Device.a */; };
 		4F47A26919B731250070C8B1 /* QiuChangOrderDetailBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F47A26819B731250070C8B1 /* QiuChangOrderDetailBoard_iPhone.m */; };
 		4F47A28019B748DA0070C8B1 /* QiuChangOrderDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F47A27F19B748DA0070C8B1 /* QiuChangOrderDetailCell.m */; };
 		4F47A28219B74D7F0070C8B1 /* QiuChangOrderDetailCell.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4F47A28119B74D7F0070C8B1 /* QiuChangOrderDetailCell.xml */; };
@@ -1629,10 +1629,10 @@
 		4F27324D19B4100A0022EF21 /* ValidateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValidateModel.h; sourceTree = "<group>"; };
 		4F27324E19B4100A0022EF21 /* ValidateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValidateModel.m; sourceTree = "<group>"; };
 		4F27345C19B41FDC0022EF21 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
-		4F27345E19B4412E0022EF21 /* libUnionPayLib11 -Device.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libUnionPayLib11 -Device.a"; sourceTree = "<group>"; };
 		4F2786B119BC76C600CF083B /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
 		4F2786B219BC76C600CF083B /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
 		4F2786B319BC76C600CF083B /* MobClickSocialAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClickSocialAnalytics.h; sourceTree = "<group>"; };
+		4F2EF6EC19D1928500C2D02C /* libUnionPayLib11 -Device.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libUnionPayLib11 -Device.a"; sourceTree = "<group>"; };
 		4F47A26719B731250070C8B1 /* QiuChangOrderDetailBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuChangOrderDetailBoard_iPhone.h; sourceTree = "<group>"; };
 		4F47A26819B731250070C8B1 /* QiuChangOrderDetailBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiuChangOrderDetailBoard_iPhone.m; sourceTree = "<group>"; };
 		4F47A27E19B748DA0070C8B1 /* QiuChangOrderDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuChangOrderDetailCell.h; sourceTree = "<group>"; };
@@ -2502,6 +2502,7 @@
 				F3F0EF5119358216004613DA /* ShareSDK.framework in Frameworks */,
 				F3F0EF2B19358213004613DA /* LinkedInConnection.framework in Frameworks */,
 				6324A41F1754FC7700372FD7 /* Foundation.framework in Frameworks */,
+				4F2EF6ED19D1928500C2D02C /* libUnionPayLib11 -Device.a in Frameworks */,
 				6324A4201754FC7700372FD7 /* MobileCoreServices.framework in Frameworks */,
 				F3F0EF5819358216004613DA /* ShareSDKiPhoneAppRecommendShareViewUI.framework in Frameworks */,
 				6324A4211754FC7700372FD7 /* QuartzCore.framework in Frameworks */,
@@ -2513,7 +2514,6 @@
 				6324A91E1755AA8300372FD7 /* AudioToolbox.framework in Frameworks */,
 				F3D14E2B1957257B00A0DA3E /* AlipayRsaLib.a in Frameworks */,
 				F3D14E2D1957257B00A0DA3E /* AlixPaylib.a in Frameworks */,
-				4F27345F19B4412E0022EF21 /* libUnionPayLib11 -Device.a in Frameworks */,
 				F3D14E321957257B00A0DA3E /* libssl.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4734,7 +4734,7 @@
 		4FFB1F3519AF5150007F179B /* upomp_lthj */ = {
 			isa = PBXGroup;
 			children = (
-				4F27345E19B4412E0022EF21 /* libUnionPayLib11 -Device.a */,
+				4F2EF6EC19D1928500C2D02C /* libUnionPayLib11 -Device.a */,
 				4FFB1F3719AF5150007F179B /* LTInterface.h */,
 				4FFB1F3819AF5150007F179B /* ResourceBundle11.bundle */,
 			);
@@ -5143,7 +5143,7 @@
 				ORGANIZATIONNAME = "geek-zoo studio";
 				TargetAttributes = {
 					63249C9A1754E07900372FD7 = {
-						DevelopmentTeam = 2B5V3KE6U9;
+						DevelopmentTeam = 7CSFS4L29X;
 					};
 				};
 			};
@@ -6096,7 +6096,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "2AF5D92E-7FFB-4705-9B92-26712D756B99";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2AF5D92E-7FFB-4705-9B92-26712D756B99";
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos7.1;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -6124,7 +6124,7 @@
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "2AF5D92E-7FFB-4705-9B92-26712D756B99";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2AF5D92E-7FFB-4705-9B92-26712D756B99";
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos7.1;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -6141,8 +6141,8 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: JINXIN LI (DJJ4XT349N)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: ai gao (4K3Y6HQLSK)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/libs/ShareSDK/Connection",
@@ -6283,7 +6283,7 @@
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "3A918729-AA33-47D2-B165-BF05ED5BBCB2";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3A918729-AA33-47D2-B165-BF05ED5BBCB2";
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos7.1;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -6300,8 +6300,8 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Angoo Studio";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Angoo Studio";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_NS_ASSERTIONS = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6345,8 +6345,8 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = 2golf;
-				PROVISIONING_PROFILE = "3A918729-AA33-47D2-B165-BF05ED5BBCB2";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3A918729-AA33-47D2-B165-BF05ED5BBCB2";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos7.1;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s";
