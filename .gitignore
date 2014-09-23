@@ -32,3 +32,9 @@ iOS/2golf.xcodeproj/xcuserdata/*
 iOS/2golf.xcodeproj/project.xcworkspace/xcuserdata/*
 
 *.xcuserdatad
+
+*.xccheckout
+
+*.xccheckout
+
+iOS/2golf.xcodeproj/project.xcworkspace/xcshareddata/2golf.xccheckout

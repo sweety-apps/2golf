@@ -144,6 +144,10 @@ ON_SIGNAL2( HelpCell_iPhone, signal )
       @"name":@"关于我们",
       @"url":@"http://115.29.144.237/ECMobile/help/%E5%85%B3%E4%BA%8E%E6%88%91%E4%BB%AC.htm"
       },
+  @{
+      @"name":@"操作指引",
+      @"url":@"http://115.29.144.237/ECMobile/help/%E6%93%8D%E4%BD%9C%E6%8C%87%E5%BC%95.htm"
+      },
   
                      ];
 }
