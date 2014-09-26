@@ -531,7 +531,6 @@
 		4F27345719B4100A0022EF21 /* ValidateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F27324E19B4100A0022EF21 /* ValidateModel.m */; };
 		4F27345D19B41FDC0022EF21 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F27345C19B41FDC0022EF21 /* libcrypto.a */; };
 		4F2786B419BC76C600CF083B /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2786B119BC76C600CF083B /* libMobClickLibrary.a */; };
-		4F2EF6ED19D1928500C2D02C /* libUnionPayLib11 -Device.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2EF6EC19D1928500C2D02C /* libUnionPayLib11 -Device.a */; };
 		4F47A26919B731250070C8B1 /* QiuChangOrderDetailBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F47A26819B731250070C8B1 /* QiuChangOrderDetailBoard_iPhone.m */; };
 		4F47A28019B748DA0070C8B1 /* QiuChangOrderDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F47A27F19B748DA0070C8B1 /* QiuChangOrderDetailCell.m */; };
 		4F47A28219B74D7F0070C8B1 /* QiuChangOrderDetailCell.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4F47A28119B74D7F0070C8B1 /* QiuChangOrderDetailCell.xml */; };
@@ -841,6 +840,10 @@
 		4FBAEE0619B85201003A695D /* ZipArchive.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4FBAECDD19B85200003A695D /* ZipArchive.mm */; };
 		4FBAEEE719B8AB9F003A695D /* orderdetailbutton-red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FBAEEE519B8AB9F003A695D /* orderdetailbutton-red@2x.png */; };
 		4FBAEEE819B8AB9F003A695D /* orderdetailbutton-yellow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FBAEEE619B8AB9F003A695D /* orderdetailbutton-yellow@2x.png */; };
+		4FCE5E3A19D58683003ABAE7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FCE5E3919D58683003ABAE7 /* Images.xcassets */; };
+		4FCE5E3C19D58916003ABAE7 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FCE5E3B19D58916003ABAE7 /* Icon@2x.png */; };
+		4FCE5E3E19D58927003ABAE7 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FCE5E3D19D58927003ABAE7 /* icon.png */; };
+		4FCE5E4C19D5A959003ABAE7 /* libUnionPayLib11 -Device.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FCE5E4B19D5A959003ABAE7 /* libUnionPayLib11 -Device.a */; };
 		4FFB1F3A19AF5150007F179B /* ResourceBundle11.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4FFB1F3819AF5150007F179B /* ResourceBundle11.bundle */; };
 		6302390C177C1676004C052D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 630236B1177C1675004C052D /* AppDelegate.m */; };
 		6302390F177C1676004C052D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 630236B7177C1675004C052D /* Default-568h@2x.png */; };
@@ -861,7 +864,6 @@
 		6324A4231754FC7700372FD7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6324A4151754FC7700372FD7 /* SystemConfiguration.framework */; };
 		6324A4241754FC7700372FD7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6324A4161754FC7700372FD7 /* UIKit.framework */; };
 		6324A91E1755AA8300372FD7 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6324A91D1755AA8300372FD7 /* AudioToolbox.framework */; };
-		CB60E56A179E2B100094F91C /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CB60E569179E2B100094F91C /* icon.png */; };
 		CB60E56C179E2B360094F91C /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB60E56B179E2B360094F91C /* icon@2x.png */; };
 		F319AD991929EAE500D64FA2 /* ShenzhenLocation.gpx in Resources */ = {isa = PBXBuildFile; fileRef = F319AD981929EAE500D64FA2 /* ShenzhenLocation.gpx */; };
 		F319AE11192E1D1500D64FA2 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F319AE10192E1D1500D64FA2 /* AddressBook.framework */; };
@@ -1632,7 +1634,6 @@
 		4F2786B119BC76C600CF083B /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
 		4F2786B219BC76C600CF083B /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
 		4F2786B319BC76C600CF083B /* MobClickSocialAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClickSocialAnalytics.h; sourceTree = "<group>"; };
-		4F2EF6EC19D1928500C2D02C /* libUnionPayLib11 -Device.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libUnionPayLib11 -Device.a"; sourceTree = "<group>"; };
 		4F47A26719B731250070C8B1 /* QiuChangOrderDetailBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuChangOrderDetailBoard_iPhone.h; sourceTree = "<group>"; };
 		4F47A26819B731250070C8B1 /* QiuChangOrderDetailBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiuChangOrderDetailBoard_iPhone.m; sourceTree = "<group>"; };
 		4F47A27E19B748DA0070C8B1 /* QiuChangOrderDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuChangOrderDetailCell.h; sourceTree = "<group>"; };
@@ -2253,6 +2254,10 @@
 		4FBAECDD19B85200003A695D /* ZipArchive.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ZipArchive.mm; sourceTree = "<group>"; };
 		4FBAEEE519B8AB9F003A695D /* orderdetailbutton-red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "orderdetailbutton-red@2x.png"; sourceTree = "<group>"; };
 		4FBAEEE619B8AB9F003A695D /* orderdetailbutton-yellow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "orderdetailbutton-yellow@2x.png"; sourceTree = "<group>"; };
+		4FCE5E3919D58683003ABAE7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = 2golf/Images.xcassets; sourceTree = "<group>"; };
+		4FCE5E3B19D58916003ABAE7 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		4FCE5E3D19D58927003ABAE7 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		4FCE5E4B19D5A959003ABAE7 /* libUnionPayLib11 -Device.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libUnionPayLib11 -Device.a"; sourceTree = "<group>"; };
 		4FFB1F3719AF5150007F179B /* LTInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTInterface.h; sourceTree = "<group>"; };
 		4FFB1F3819AF5150007F179B /* ResourceBundle11.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ResourceBundle11.bundle; sourceTree = "<group>"; };
 		630236B0177C1675004C052D /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -2279,7 +2284,6 @@
 		6324A4151754FC7700372FD7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		6324A4161754FC7700372FD7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6324A91D1755AA8300372FD7 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		CB60E569179E2B100094F91C /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		CB60E56B179E2B360094F91C /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		F319AD981929EAE500D64FA2 /* ShenzhenLocation.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ShenzhenLocation.gpx; sourceTree = "<group>"; };
 		F319AE10192E1D1500D64FA2 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
@@ -2502,7 +2506,7 @@
 				F3F0EF5119358216004613DA /* ShareSDK.framework in Frameworks */,
 				F3F0EF2B19358213004613DA /* LinkedInConnection.framework in Frameworks */,
 				6324A41F1754FC7700372FD7 /* Foundation.framework in Frameworks */,
-				4F2EF6ED19D1928500C2D02C /* libUnionPayLib11 -Device.a in Frameworks */,
+				4FCE5E4C19D5A959003ABAE7 /* libUnionPayLib11 -Device.a in Frameworks */,
 				6324A4201754FC7700372FD7 /* MobileCoreServices.framework in Frameworks */,
 				F3F0EF5819358216004613DA /* ShareSDKiPhoneAppRecommendShareViewUI.framework in Frameworks */,
 				6324A4211754FC7700372FD7 /* QuartzCore.framework in Frameworks */,
@@ -4734,7 +4738,7 @@
 		4FFB1F3519AF5150007F179B /* upomp_lthj */ = {
 			isa = PBXGroup;
 			children = (
-				4F2EF6EC19D1928500C2D02C /* libUnionPayLib11 -Device.a */,
+				4FCE5E4B19D5A959003ABAE7 /* libUnionPayLib11 -Device.a */,
 				4FFB1F3719AF5150007F179B /* LTInterface.h */,
 				4FFB1F3819AF5150007F179B /* ResourceBundle11.bundle */,
 			);
@@ -4756,9 +4760,11 @@
 		63249C921754E07900372FD7 = {
 			isa = PBXGroup;
 			children = (
+				4FCE5E3D19D58927003ABAE7 /* icon.png */,
+				4FCE5E3B19D58916003ABAE7 /* Icon@2x.png */,
+				4FCE5E3919D58683003ABAE7 /* Images.xcassets */,
 				4FBAEA4319B851FF003A695D /* framework */,
 				F3B5377F18FE9629004E72D4 /* libs */,
-				CB60E569179E2B100094F91C /* icon.png */,
 				630236AF177C1675004C052D /* shop */,
 				63249C9D1754E07900372FD7 /* Frameworks */,
 				63249C9C1754E07900372FD7 /* Products */,
@@ -5220,6 +5226,7 @@
 				4F27339919B4100A0022EF21 /* TaocanOrderEditBoard_iPhone.xib in Resources */,
 				4F2732A519B4100A0022EF21 /* brandbtnborder@2x.png in Resources */,
 				4F27337519B4100A0022EF21 /* RechargeViewUICell.xib in Resources */,
+				4FCE5E3E19D58927003ABAE7 /* icon.png in Resources */,
 				4F2732F419B4100A0022EF21 /* item-info-header-share-icon@2x.png in Resources */,
 				4F27336F19B4100A0022EF21 /* ChargeValueView.xib in Resources */,
 				4F2733C019B4100A0022EF21 /* SouSuoQiuchangBottomViewController.xib in Resources */,
@@ -5308,7 +5315,6 @@
 				4F27331D19B4100A0022EF21 /* searcher-new-cont-btn-red@2x.png in Resources */,
 				4F27327219B4100A0022EF21 /* topbarselectbtn@2x.png in Resources */,
 				4F2732D019B4100A0022EF21 /* icon-necessary@2x.png in Resources */,
-				CB60E56A179E2B100094F91C /* icon.png in Resources */,
 				4F27334519B4100A0022EF21 /* trade-info-stream-body-bg-03@2x.png in Resources */,
 				4F2732BC19B4100A0022EF21 /* cell-bg-content@2x.png in Resources */,
 				4F27338819B4100A0022EF21 /* MyOrderListBoard_iPhone.xib in Resources */,
@@ -5463,6 +5469,7 @@
 				4F27334719B4100A0022EF21 /* trade-info-stream-cont-dotted-line@2x.png in Resources */,
 				4F2732DE19B4100A0022EF21 /* item-grid-filter-bg@2x.png in Resources */,
 				4F2733EB19B4100A0022EF21 /* CheckoutOrderCellGoods_iPhone.xml in Resources */,
+				4FCE5E3A19D58683003ABAE7 /* Images.xcassets in Resources */,
 				4F2732B519B4100A0022EF21 /* button-blue@2x.png in Resources */,
 				4F27330819B4100A0022EF21 /* normallist_head_content_bg_m@2x.png in Resources */,
 				4F27337B19B4100A0022EF21 /* SendVerifyCodeBoard_iPhone.xib in Resources */,
@@ -5473,6 +5480,7 @@
 				4F2732D619B4100A0022EF21 /* index-new-full-rec-bg@2x.png in Resources */,
 				F3F0EF5219358216004613DA /* ShareSDKFlatShareViewUI.bundle in Resources */,
 				4F27330419B4100A0022EF21 /* normallist_content_bg_s@2x.png in Resources */,
+				4FCE5E3C19D58916003ABAE7 /* Icon@2x.png in Resources */,
 				4F27329619B4100A0022EF21 /* tabmyaigolfn@2x.png in Resources */,
 				4F27341D19B4100A0022EF21 /* OrderCellGoods_iPhone.xml in Resources */,
 				4F27329119B4100A0022EF21 /* send_other_trip_btn@2x.png in Resources */,
@@ -6138,10 +6146,12 @@
 					armv7s,
 					armv7,
 				);
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: ai gao (4K3Y6HQLSK)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6203,6 +6213,8 @@
 					armv7s,
 					armv7,
 				);
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -6297,6 +6309,8 @@
 					armv7s,
 					armv7,
 				);
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CLANG_ENABLE_MODULES = YES;

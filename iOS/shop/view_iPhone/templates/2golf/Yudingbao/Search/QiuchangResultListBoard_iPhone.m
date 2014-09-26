@@ -312,7 +312,8 @@ ON_SIGNAL2( BeeUIBoard, signal )
     .PARAM(@"coursename",keywords)
     .PARAM(@"timestamp", timestamp);
     
-    if ([dic[@"international"] integerValue] > 0)
+//    if ([dic[@"international"] integerValue] > 0)
+    if ([dic[@"city_id"] integerValue] != -1)
     {
         req.PARAM(@"isinternational",@"true")
         .PARAM(@"scope",@"100");
