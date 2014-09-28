@@ -78,7 +78,7 @@ static BMKMapManager* _mapManager = nil;
      注册SDK应用，此应用请到http://www.sharesdk.cn中进行注册申请。
      此方法必须在启动时调用，否则会限制SDK的使用。
      **/
-    [ShareSDK registerApp:@"1e7533f59639" useAppTrusteeship:NO];
+    [ShareSDK registerApp:@"1e7d64041cc0" useAppTrusteeship:NO];
     
     //如果使用服务中配置的app信息，请把初始化代码改为下面的初始化方法。
     //    [ShareSDK registerApp:@"iosv1101" useAppTrusteeship:YES];
@@ -223,9 +223,9 @@ static BMKMapManager* _mapManager = nil;
      
      如果需要实现SSO，需要导入libWeiboSDK.a，并引入WBApi.h，将WBApi类型传入接口
      **/
-    [ShareSDK connectTencentWeiboWithAppKey:@"801307650"
-                                  appSecret:@"ae36f4ee3946e1cbb98d6965b0b2ff5c"
-                                redirectUri:@"http://www.sharesdk.cn"
+    [ShareSDK connectTencentWeiboWithAppKey:@"801513895"
+                                  appSecret:@"99dab3c5ca43a97cfbf3e5b8a8e1d7ba"
+                                redirectUri:@"http://www.2golf.cn"
                                    wbApiCls:[WeiboApi class]];
     
     //连接短信分享
@@ -235,7 +235,11 @@ static BMKMapManager* _mapManager = nil;
      连接微信应用以使用相关功能，此应用需要引用WeChatConnection.framework和微信官方SDK
      http://open.weixin.qq.com上注册应用，并将相关信息填写以下字段
      **/
-    [ShareSDK connectWeChatWithAppId:@"wxa51ce6f1188bc44d" wechatCls:[WXApi class]];
+//    [ShareSDK connectWeChatWithAppId:@"wxa51ce6f1188bc44d" wechatCls:[WXApi class]];
+    
+    [ShareSDK connectWeChatWithAppId:@"wxa51ce6f1188bc44d"
+                           appSecret:@"fef9e2573246ad1faf8ffad710d9f6a2"
+                           wechatCls:[WXApi class]];
     
 }
 

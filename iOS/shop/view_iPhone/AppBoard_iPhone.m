@@ -169,8 +169,8 @@ ON_SIGNAL2( BeeUIBoard, signal )
                 )
             {
                 //默认设为深圳
-                mdict[@"longitude"] = @114.02597365731999;
-                mdict[@"latitude"] = @22.546053546204998;
+                mdict[@"longitude"] = @114.1134120000;
+                mdict[@"latitude"] = @22.5515650000;
             }
             [[NSUserDefaults standardUserDefaults] setObject:mdict forKey:@"search_local"];
             [[NSUserDefaults standardUserDefaults] synchronize];

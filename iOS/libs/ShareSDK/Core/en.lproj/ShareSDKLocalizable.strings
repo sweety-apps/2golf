@@ -4,7 +4,7 @@
 
 
   Created by ShareSDK.cn on 13-1-14.
-  官网地址:http://www.ShareSDK.cn
+  官网地址:http://www.mob.com
   技术支持邮箱:support@sharesdk.cn
   官方微信:ShareSDK   （如果发布新版本的话，我们将会第一时间通过微信将版本更新内容推送给您。如果使用过程中有任何问题，也可以通过微信与我们取得联系，我们将会在24小时内给予回复）
   商务QQ:4006852216
@@ -54,8 +54,19 @@
 "ERROR_DESC_YIXIN_API_IS_NOT_SUPPORT" = "The current version does not support this api of YiXin";
 "ERROR_DESC_YIXIN_SEND_REQUEST_ERROR" = "YiXin OpenApi Request failed";
 "ERROR_DESC_YIXIN_NOT_SET_URL_SCHEME" = "YiXin's URL Scheme has not been set";
+"ERROR_DESC_INVALID_PLATFORM" = "Invalid platform or the platform is not initialized!";
+"ERROR_DESC_LINE_NOT_INSTALL" = "Line is not installed";
+"ERROR_DESC_LINE_SEND_FAIL" = "Failed to send";
+"ERROR_DESC_LINE_NOT_SUPPORTED_FOR_IOS7_PLUS" = "Line platforms do not support sharing pictures over the iOS7";
+"ERROR_CODE_LINE_INVALID_UIPASTBOARD" = "Invalid UIPasteboard object";
+"ERROR_DESC_WHATSAPP_NOT_INSTALL" = "WhatsApp is not installed";
+"ERROR_DESC_WHATSAPP_SEND_FAIL" = "Failed to send";
+"ERROR_DESC_KAKAOTALK_NOT_INSTALL" = "KakaoTalk is not installed";
+"ERROR_DESC_KAKAOTALK_SEND_FAIL" = "Failed to send";
+"ERROR_DESC_KAKAOSTORY_NOT_INSTALL" = "KakaoStory is not installed";
+"ERROR_DESC_KAKAOSTORY_SEND_FAIL" = "Failed to send";
 
-"ShareType_1" = "新浪微博";
+"ShareType_1" = "Sina Weibo";
 "ShareType_2" = "腾讯微博";
 "ShareType_3" = "搜狐微博";
 "ShareType_4" = "网易微博";
@@ -90,6 +101,12 @@
 "ShareType_37" = "微信收藏";
 "ShareType_38" = "易信好友";
 "ShareType_39" = "易信朋友圈";
+"ShareType_41" = "明道";
+"ShareType_42" = "Line";
+"ShareType_43" = "WhatsApp";
+"ShareType_44" = "KakaoTalk";
+"ShareType_45" = "KakaoStory";
+
 
 "ALTER_VIEW_TITLE" = "Message";
 "ALTER_VIEW_I_KNOWN_BUTTON" = "I know";
@@ -139,7 +156,7 @@
 "ACCOUNT_VIEW_TIPS_SECTION_TITLE" = "Authorization fails, please re-authorization";
 
 "AUTH_VIEW_CANCEL_BUTTON" = "Cancel";
-"AUTH_VIEW_TITLE_1" = "新浪微博";
+"AUTH_VIEW_TITLE_1" = "Sina Weibo";
 "AUTH_VIEW_TITLE_2" = "腾讯微博";
 "AUTH_VIEW_TITLE_3" = "搜狐微博";
 "AUTH_VIEW_TITLE_4" = "网易微博";
@@ -154,6 +171,7 @@
 "AUTH_VIEW_TITLE_15" = "Instagram";
 "AUTH_VIEW_TITLE_16" = "LinkedIn";
 "AUTH_VIEW_TITLE_17" = "Tumblr";
+"AUTH_VIEW_TITLE_22" = "WeChat";
 "AUTH_VIEW_TITLE_25" = "Instapaper";
 "AUTH_VIEW_TITLE_26" = "Pocket";
 "AUTH_VIEW_TITLE_27" = "有道云笔记";
@@ -161,6 +179,7 @@
 "AUTH_VIEW_TITLE_34" = "Flickr";
 "AUTH_VIEW_TITLE_35" = "Dropbox";
 "AUTH_VIEW_TITLE_36" = "VKontakte";
+"AUTH_VIEW_TITLE_41" = "明道";
 "AUTH_VIEW_FOLLOW_ME" = "Follow Us";
 
 "AWARD_BACK_ITEM_TITLE" = "Close";

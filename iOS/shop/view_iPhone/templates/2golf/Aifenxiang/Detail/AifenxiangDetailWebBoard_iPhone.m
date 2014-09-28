@@ -350,11 +350,21 @@ ON_SIGNAL2( BeeUIWebView, signal )
                                                   url:url
                                           description:summary
                                             mediaType:SSPublishContentMediaTypeNews];
-    
+
     ///////////////////////
     //以下信息为特定平台需要定义分享内容，如果不需要可省略下面的添加方法
-    
+
     //定制微信好友信息
+//    [publishContent addWeixinSessionUnitWithType:[NSNumber numberWithInteger:SSPublishContentMediaTypeNews]
+//                                         content:summary
+//                                           title:title
+//                                             url:url
+//                                      thumbImage:[ShareSDK imageWithUrl:imageUrl]
+//                                           image:[ShareSDK imageWithUrl:imageUrl]
+//                                    musicFileUrl:nil
+//                                         extInfo:nil
+//                                        fileData:nil
+//                                    emoticonData:nil];
     [publishContent addWeixinSessionUnitWithType:[NSNumber numberWithInteger:SSPublishContentMediaTypeNews]
                                          content:summary
                                            title:title
@@ -365,7 +375,6 @@ ON_SIGNAL2( BeeUIWebView, signal )
                                          extInfo:nil
                                         fileData:nil
                                     emoticonData:nil];
-    
     //定制微信朋友圈信息
     [publishContent addWeixinTimelineUnitWithType:[NSNumber numberWithInteger:SSPublishContentMediaTypeNews]
                                           content:summary
