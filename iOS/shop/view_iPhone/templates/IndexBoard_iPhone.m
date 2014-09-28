@@ -742,8 +742,8 @@ ON_SIGNAL2( BeeUIBoard, signal )
     {
         [_scroll setBaseInsets:UIEdgeInsetsMake(0, 0, [AppBoard_iPhone sharedInstance].tabbar.height, 0)];
 		CGRect rect = self.viewBound;
-        rect.origin.y+=6;
-        rect.size.height-=6;
+//        rect.origin.y+=6;
+//        rect.size.height-=6;
         _scroll.frame =rect;
     }
     else if ( [signal is:BeeUIBoard.LOAD_DATAS] )
@@ -1090,20 +1090,31 @@ ON_SIGNAL2( BeeUIAlertView, signal)
 {
 	if ( index == 0 )
 	{
-        if ([UIApplication sharedApplication].keyWindow.frame.size.height > 480)
-        {
-            return CGSizeMake( scrollView.width, 150.0f );
-        }
-		return CGSizeMake( scrollView.width, 115.0f );
+//        if ([UIApplication sharedApplication].keyWindow.frame.size.height > 480)
+//        {
+//            return CGSizeMake( scrollView.width, 150.0f );
+//        }
+//		return CGSizeMake( scrollView.width, 115.0f );
+       return CGSizeMake( scrollView.width, [UIScreen mainScreen].bounds.size.height*24.0f/100.0f );
 	}
 
 	if ( index == 1 )
 	{
-        if ([UIApplication sharedApplication].keyWindow.frame.size.height > 480)
+//        if ([UIApplication sharedApplication].keyWindow.frame.size.height > 480)
+//        {
+//            return CGSizeMake( scrollView.width, scrollView.height -  -[AppBoard_iPhone sharedInstance].tabbar.height);
+//        }
+//		return CGSizeMake( scrollView.width, scrollView.height - 115.0f-[AppBoard_iPhone sharedInstance].tabbar.height);
+        float statusbarheight = 0;
+        if (IOS7_OR_LATER)
         {
-            return CGSizeMake( scrollView.width, scrollView.height - 150.0f-[AppBoard_iPhone sharedInstance].tabbar.height);
+            statusbarheight = 0;
         }
-		return CGSizeMake( scrollView.width, scrollView.height - 115.0f-[AppBoard_iPhone sharedInstance].tabbar.height);
+        else
+        {
+            statusbarheight = 20;
+        }
+        return CGSizeMake(scrollView.width, scrollView.height - [UIScreen mainScreen].bounds.size.height*27.0f/100.0f - [AppBoard_iPhone sharedInstance].tabbar.height + statusbarheight);
 	}
 	
     return CGSizeZero;

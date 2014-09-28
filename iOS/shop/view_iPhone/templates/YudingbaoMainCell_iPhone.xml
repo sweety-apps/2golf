@@ -41,42 +41,41 @@
 		.left-up-wrapper {
         position: absolute;
         width: 41%;
-        height: 47%;
+        height: 45%;
         left: 8.2%;
-        top: -3px;
+        top:5%;
 		}
         .right-up-wrapper {
         position: absolute;
         width: 41%;
-        height: 47%;
+        height: 45%;
         left: 50.8%;
-        top: -3px;
+        top:5%;
 		}
         .left-down-wrapper {
         position: absolute;
         width: 41%;
-        height: 47%;
+        height: 45%;
         left: 8.2%;
-        top: 47%;
+        top: 50%;
 		}
         .right-down-wrapper {
         position: absolute;
         width: 41%;
-        height: 47%;
+        height: 45%;
         left: 50.8%;
-        top: 47%;
+        top: 50%;
 		}
         .align-to-bottom {
         position: absolute;
         width:133px;
-        height:111px;
-        bottom:0px;
+        height:100%;
         }
         .align-to-bottom-icon {
         position: absolute;
         width:133px;
-        height:111px;
-        bottom:12px;
+        height:100%;
+        bottom:14px;
         }
         .align-to-bottom-label {
         position: absolute;
@@ -85,18 +84,17 @@
         font-weight: lighter;
         color: #ffffffff;
         text-align: center;
-        bottom:5px;
+        top:88px;
         }
         .align-to-top {
         position: absolute;
         width:133px;
-        height:111px;
-        top:0px;
+        height:100%;
         }
         .align-to-top-icon {
         position: absolute;
         width:133px;
-        height:111px;
+        height:100%;
         top:-15px;
         }
         .align-to-top-label {
@@ -106,7 +104,7 @@
         font-weight: lighter;
         color: #ffffffff;
         text-align: center;
-        top:80px;
+        top:88px;
         }
 		.background {
         width: 100%;
@@ -130,15 +128,22 @@
         
         #icon-out-1 {
         image-src: url(coursefragmentsearchbkg.png);
+<!--            background-color:#ff0000;-->
 		}
 		#icon-out-2 {
         image-src: url(coursefragmentfavorablebkg.png);
+
+<!--background-color:#00ff00;-->
 		}
 		#icon-out-3 {
         image-src: url(coursefragmenthotsellbkg.png);
+
+<!--background-color:#0000ff;-->
 		}
         #icon-out-4 {
         image-src: url(coursefragmentcustomizationbkg.png);
+
+<!--background-color:#f0000f;-->
 		}
         
         #icon-in-1 {

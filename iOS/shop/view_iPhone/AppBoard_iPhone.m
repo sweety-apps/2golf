@@ -50,8 +50,8 @@
 #pragma mark -
 
 #undef	TAB_HEIGHT
-#define TAB_HEIGHT	66.0f
-
+//#define TAB_HEIGHT	66.0f
+#define TAB_HEIGHT ([UIScreen mainScreen].bounds.size.height*11.0f/100.0f)
 #pragma mark -
 
 @interface AppBoard_iPhone()
