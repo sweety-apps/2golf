@@ -732,7 +732,7 @@ ON_SIGNAL3( ProfileCell_iPhone, header_score_button, signal )
     if ( [signal is:BeeUIButton.TOUCH_UP_INSIDE] )
     {
         MyPointsBoard_iPhone* board = [MyPointsBoard_iPhone boardWithNibName:@"MyPointsBoard_iPhone"];
-        [self.stack pushBoard:board animated:YES];
+//        [self.stack pushBoard:board animated:YES];
     }
 }
 

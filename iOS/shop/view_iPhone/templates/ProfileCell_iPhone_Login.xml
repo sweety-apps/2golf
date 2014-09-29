@@ -6,108 +6,110 @@
         
         <linear orientation="v" class="header-wrapper">
             <image id="bg" class="bg"/>
-			<linear orientation="v" class="header-box">
+            <linear orientation="h" class="header-box" id="12345">
                 <linear orientation="v" class="header-avatar-box">
                     <image id="header-avatar" class="header-avatar"/>
                     <image id="header-avatar-head-icon" class="header-avatar-head-icon"/>
                     
-					<button id="carema"/>
-                    <label id="name" class="header-name"></label>
+                    <button id="carema"/>
+                    <label id="name" class="header-name">徐波\n17327376787</label>
                 </linear>
                 <!--
-                <label id="header_money_bg"></label>
-                <label id="header_money_name">余额</label>
-                <label id="header_money_value">￥0</label>
-                <button id="header_money_button"></button>
-                
-                <label id="header_score_bg"></label>
-                <label id="header_score_name">积分</label>
-                <label id="header_score_value">0</label>
-                <button id="header_score_button"></button>
+                 <label id="header_money_bg"></label>
+                 <label id="header_money_name">余额</label>
+                 <label id="header_money_value">￥0</label>
+                 <button id="header_money_button"></button>
+                 
+                 <label id="header_score_bg"></label>
+                 <label id="header_score_name">积分</label>
+                 <label id="header_score_value">0</label>
+                 <button id="header_score_button"></button>
                  -->
-                <label id="lblenterofhighmember" class="lblenterofhighmember">成为爱高会员></label>
-                <button id="btnenterofhighmember" class="lblenterofhighmember"></button>
+                
+                <linear orientation="h" class="goto-vip-box" id="1234">
+                    <image id="imgbkg" class="moneybkg"></image>
+                    <label id="lblenterofhighmember" class="lblenterofhighmember">成为爱高会员></label>
+                    <button id="btnenterofhighmember" class="lblenterofhighmember"></button>
+                </linear>
                 
                 <linear orientation="h" class="header-level-box">
                     <image id="header-level-icon"/>
                     <label id="header-level-name"/>
                 </linear>
             </linear>
-			<button id="signin"></button>
+            <button id="signin"></button>
         </linear>
         
         <linear orientation="v" class="scroll-wrapper">
             
-            <linear orientation="h" class="bar-wrapper">
-                <image class="list-large-bg"/>
-                <linear orientation="v" class="bar-item" id="123">
+            <linear orientation="h" class="list-item">
+                <image class="list-bg"/>
+                <linear orientation="v" class="money_bar-item" id="123">
+                    <label id="header_money_name" class="balancetitle">余额:</label>
                     <label id="header_money_value" class="balancevalue">￥0</label>
-                    <label id="header_money_name" class="balancetitle">余额</label>
-                    <!--<button id="header_money_button" class="fill"/>-->
+                    <button id="header_money_button" class="fill"/>
                 </linear>
                 
-                <linear orientation="v" class="bar-item" id="321">
+                <image class="filter-seprator"/>
+                <linear orientation="v" class="money_bar-item" id="321">
+                    <label id="header_score_name" class="jifentitle">积分:</label>
                     <label id="header_score_value" class="jifenvalue">5000</label>
-                    <label id="header_score_name" class="jifentitle">积分</label>
-                    <!--<button id="header_score_button" class="fill"/>-->
+                    <button id="header_score_button" class="fill"/>
                 </linear>
                 
-                <linear orientation="v" class="bar-item">
+                <image class="filter-seprator"/>
+                
+                <linear orientation="h" class="money_bar-item">
                     <label class="bar-item-info recharge">充值</label>
                     <button id="recharge" class="fill"/>
                 </linear>
+            </linear>
+            
+            
+            
+            
+            <linear orientation="h" class="bar-wrapper">
+                <image class="list-large-bg"/>
+                <linear orientation="v" class="bar-item">
+                    <image class="bar-item-icon payment"/>
+                    <label class="bar-item-info" id="await_pay_label">待付款 商品</label>
+                    <linear orientation="v" class="badge-wrapper">
+                        <image id="await_pay-bg" class="badge-wrapper-bg"/>
+                        <label id="await_pay" class="bar-item-badge"></label>
+                    </linear>
+                    <button id="order_await_pay" class="fill"/>
+                </linear>
                 
                 <linear orientation="v" class="bar-item">
-                    <label class="bar-item-info pay">支付</label>
-                    <button id="pay" class="fill"/>
+                    <image class="bar-item-icon ship" />
+                    <label class="bar-item-info" id="await_ship_label">待发货 商品</label>
+                    <linear orientation="v" class="badge-wrapper">
+                        <image id="await_ship-bg" class="badge-wrapper-bg"/>
+                        <label id="await_ship" class="bar-item-badge"></label>
+                    </linear>
+                    <button id="order_await_ship" class="fill"/>
+                </linear>
+                
+                <linear orientation="v" class="bar-item">
+                    <image class="bar-item-icon receipt"/>
+                    <label class="bar-item-info" id="shipped_label">待收货 商品</label>
+                    <linear orientation="v" class="badge-wrapper">
+                        <image id="shipped-bg" class="badge-wrapper-bg"/>
+                        <label id="shipped" class="bar-item-badge"></label>
+                    </linear>
+                    <button id="order_shipped" class="fill"/>
+                </linear>
+                
+                <linear orientation="v" class="bar-item">
+                    <image class="bar-item-icon history"/>
+                    <label class="bar-item-info" id="finished_label">购物历史</label>
+                    <linear orientation="v" class="badge-wrapper">
+                        <image id="finished-bg" class="badge-wrapper-bg"/>
+                        <label id="finished" class="bar-item-badge"></label>
+                    </linear>
+                    <button id="order_finished" class="fill"/>
                 </linear>
             </linear>
-
-
-
-
-                        <linear orientation="h" class="bar-wrapper">
-                            <image class="list-large-bg"/>
-                            <linear orientation="v" class="bar-item">
-                                <image class="bar-item-icon payment"/>
-                                <label class="bar-item-info" id="await_pay_label">待付款 商品</label>
-                                <linear orientation="v" class="badge-wrapper">
-                                    <image id="await_pay-bg" class="badge-wrapper-bg"/>
-                                    <label id="await_pay" class="bar-item-badge"></label>
-                                </linear>
-                                <button id="order_await_pay" class="fill"/>
-                            </linear>
-                            
-                            <linear orientation="v" class="bar-item">
-                                <image class="bar-item-icon ship" />
-                                <label class="bar-item-info" id="await_ship_label">待发货 商品</label>
-                                <linear orientation="v" class="badge-wrapper">
-                                    <image id="await_ship-bg" class="badge-wrapper-bg"/>
-                                    <label id="await_ship" class="bar-item-badge"></label>
-                                </linear>
-                                <button id="order_await_ship" class="fill"/>
-                            </linear>
-                            
-                            <linear orientation="v" class="bar-item">
-                                <image class="bar-item-icon receipt"/>
-                                <label class="bar-item-info" id="shipped_label">待收货 商品</label>
-                                <linear orientation="v" class="badge-wrapper">
-                                    <image id="shipped-bg" class="badge-wrapper-bg"/>
-                                    <label id="shipped" class="bar-item-badge"></label>
-                                </linear>
-                                <button id="order_shipped" class="fill"/>
-                            </linear>
-                            
-                            <linear orientation="v" class="bar-item">
-                                <image class="bar-item-icon history"/>
-                                <label class="bar-item-info" id="finished_label">购物历史</label>
-                                <linear orientation="v" class="badge-wrapper">
-                                    <image id="finished-bg" class="badge-wrapper-bg"/>
-                                    <label id="finished" class="bar-item-badge"></label>
-                                </linear>
-                                <button id="order_finished" class="fill"/>
-                            </linear>
-                        </linear>
             
             <linear orientation="v" class="list-wrapper">
                 
@@ -184,7 +186,23 @@
     
     <style type="text/css">
         
+        .goto-vip-box
+        {
+        width:100px;
+        height:50px;
+        
+        left:150px;
+        top:0px;
+        }
+        
+        .filter-seprator {
+        height: 44px;
+        width: 2px;
+        image-src: url(item-grid-filter-bg-line.png);
+        }
+        
         .lblenterofhighmember {
+        background-color:#00000;
         color: #FF0000;
         width: 120px;
         height: 25px;
@@ -192,16 +210,21 @@
         font-size: 18px;
         text-align: left;
         font-weight: bold;
-        top:100px;
-        left:150px;
         }
         
+        .moneybkg
+        {
+        height: 100%;
+        width: 100%;
+        image-src:url(profile_head_money_bkg.png);
+        }
         
         .recharge
         {
-        margin-top:10px;
+        margin-top:3px;
         font-size: 16px;
         font-weight: bold;
+        margin-right:5px;
         }
         
         .pay
@@ -214,102 +237,110 @@
         .balancetitle
         {
         height:auto;
+        width:auto;
         line-num:1;
         text-align:center;
         font-size: 16px;
         font-weight: bold;
+        color:#0e5e08;
+        margin-top:2px;
         }
         
         .balancevalue
         {
-        margin-top:15px;
+        width:auto;
         text-align:center;
         height:auto;
         line-num:1;
-        color:#FF0000;
+        color:#d38405;
         font-size: 16px;
         font-weight: bold;
         }
         
         .jifentitle
         {
+        margin-top:2px;
+        width:auto;
         font-size: 16px;
         font-weight: bold;
         height:auto;
         line-num:1;
         text-align:center;
+        color:#0e5e08;
         }
         
         .jifenvalue
         {
+        width:auto;
+        color:#d38405;
         font-size: 16px;
         font-weight: bold;
-        margin-top:15px;
+        margin-top:0px;
         text-align:center;
         height:auto;
         line-num:1;
         }
-
-
+        
+        
         .fill {
-            width: 100%;
-            height: 100%;
-            position: absolute !important;
-            top: 0;
-            left: 0;
+        width: 100%;
+        height: 100%;
+        position: absolute !important;
+        top: 0;
+        left: 0;
         }
         
         .wrapper {
-            height: auto;
-            width: 100%;
+        height: auto;
+        width: 100%;
         }
         
         .scroll-wrapper {
-            height: auto;
-            margin-bottom: 20px;
-            align: center;
+        height: auto;
+        margin-bottom: 20px;
+        align: center;
         }
         
         .list-wrapper {
-            align: center;
-            height: auto;
+        align: center;
+        height: auto;
         }
         
         .unlogin {
-            align: center;
-            height: auto;
+        align: center;
+        height: auto;
         }
         
         .login {
-            align: center;
-            height: auto;
+        align: center;
+        height: auto;
         }
         
         .list-item {
-            margin-top: 10px;
-            width: 300px;
-            height: 44px;
-            v-align: center;
+        margin-top: 10px;
+        width: 300px;
+        height: 44px;
+        v-align: center;
         }
         
         .list-title {
-            margin-left: 14px;
-            font-size: 20px;
-			font-weight: bold;
-            color: #333;
-            width: 146px;
-            text-align: left;
-            height: 20px;
+        margin-left: 14px;
+        font-size: 20px;
+        font-weight: bold;
+        color: #333;
+        width: 146px;
+        text-align: left;
+        height: 20px;
         }
         
         .list-subtitle {
-            font-size: 20px;
-			font-weight: lighter;
-            color: #333;
-            margin: 0 10px;
-            width: 100px;
-            text-align: right;
-            height: 20px;
+        font-size: 20px;
+        font-weight: lighter;
+        color: #333;
+        margin: 0 10px;
+        width: 100px;
+        text-align: right;
+        height: 20px;
         }
         
         
@@ -330,126 +361,133 @@
         }
         
         .list-indictor {
-            width: auto;
-            height: 100%;
-            image: url(accsessory-arrow-right.png);
+        width: auto;
+        height: 100%;
+        image: url(accsessory-arrow-right.png);
         }
         
         .bar-wrapper {
-            width: 300px;
-            height: 70px;
-            v-align: center;
-            margin-top: 10px;
-            padding-left:10px;
+        width: 300px;
+        height: 70px;
+        v-align: center;
+        margin-top: 10px;
+        padding-left:10px;
+        }
+        
+        
+        .money_bar-item {
+        width: 100px;
+        align:center;
+        height: 44px;
+        background-color:#00000000;
         }
         
         .bar-item {
-            width: 60px;
-            height: 60px;
-            align: center;
-            margin-left: 10px;
-            background-color:#000000;
+        width: 60px;
+        height: 60px;
+        align: center;
+        margin-left: 10px;
+        background-color:#000000;
         }
         
         .badge-wrapper {
-            width: auto;
-            height: 15px;
-            position: absolute;
-			left: 36px;
-			top: 0px;
+        width: auto;
+        height: 15px;
+        position: absolute;
+        left: 36px;
+        top: 0px;
         }
-
+        
         .badge-wrapper-bg {
-            width: 100%;
-            height: 100%;
-            position: absolute !important;
-            top: 0;
-            left: 0;
-            image-mode: stretch;
-            image-src: url(search-new-shopping-cart-num-bg.png);
+        width: 100%;
+        height: 100%;
+        position: absolute !important;
+        top: 0;
+        left: 0;
+        image-mode: stretch;
+        image-src: url(search-new-shopping-cart-num-bg.png);
         }
         
         .bar-item-badge {
-            color: white;
-            width: auto;
-            height: 100%;
-            text-align: center;
-            line-height: 13px;
-            font-size: 10px;
-			font-weight: bold;
-			margin-left: 5px;
-			margin-right: 5px;
+        color: white;
+        width: auto;
+        height: 100%;
+        text-align: center;
+        line-height: 13px;
+        font-size: 10px;
+        font-weight: bold;
+        margin-left: 5px;
+        margin-right: 5px;
         }
         
         .bar-item-icon {
-            width: 20px;
-            height: 20px;
+        width: 20px;
+        height: 20px;
         }
         
         .payment {
-            background-image: url(profile-refresh-payment-icon.png);
+        background-image: url(profile-refresh-payment-icon.png);
         }
         
         .ship {
-            background-image: url(profile-refresh-ship-icon.png);
+        background-image: url(profile-refresh-ship-icon.png);
         }
         
         .receipt {
-            background-image: url(profile-refresh-receipt-icon.png);
+        background-image: url(profile-refresh-receipt-icon.png);
         }
         
         .history {
-            background-image: url(profile-refresh-history-icon.png);
+        background-image: url(profile-refresh-history-icon.png);
         }
         
         .bar-item-info {
-            text-align: center;
-			font-size: 16px;
-			font-weight: bold;
-            color: #333;
-            width: 100%;
-            height: 40px;
-            line-num: 2;
+        text-align: center;
+        font-size: 16px;
+        font-weight: bold;
+        color: #333;
+        width: 100%;
+        height: 40px;
+        line-num: 2;
         }
         
         .header-wrapper {
-            width: 100%;
-            height: 134px;
-            v-align: center;
+        width: 100%;
+        height: 134px;
+        v-align: center;
         }
         
         .header-box {
-            margin-left: 20px;
-            width: 280px;
-            height: 150px;
-            align: center;
+        margin-left: 20px;
+        width: 280px;
+        height: 150px;
         }
         
         .header-setting {
-            width: 21px;
-            height: 21px;
-            background-image: url(profile-refresh-site-icon.png);
-            float: right;
-            margin-right: 20px;
+        width: 21px;
+        height: 21px;
+        background-image: url(profile-refresh-site-icon.png);
+        float: right;
+        margin-right: 20px;
         }
         
         .header-avatar-box {
         left:20px
-            width: 135px;
-            height: 100px;
-            v-align: bottom;
-            margin-top: 30px;
+        width: 135px;
+        height: 100px;
+        v-align: bottom;
+        margin-top: 30px;
         }
-
+        
         .header-avatar {
-            width: 135px;
-            height: 100px;
-            position: absolute !important;
-            top: 0;
-            left: 0;
-            image-mode: fill;
-			image-style: round;
-            border: 5px solid #ffffff;
+        width: 135px;
+        height: 100px;
+        position: absolute !important;
+        top: 0;
+        left: 0;
+        image-mode: fill;
+        image-style: round;
+        border: 5px solid #ffffff;
         }
         
         .header-avatar-head-icon {
@@ -463,117 +501,117 @@
         image-style: round;
         border: 5px solid #ffffff;
         }
-
+        
         .header-level-box {
-			width: auto;
-			height: 24px;
+        width: auto;
+        height: 24px;
         }
-
+        
         #header-level-icon {
-			margin-top: 8px;
-			height: 14px;
-			width: 11px;
-			margin-right: 5px;
+        margin-top: 8px;
+        height: 14px;
+        width: 11px;
+        margin-right: 5px;
         }
-
+        
         #header-level-name {
-			background-color: #333 0.6;
-			border-radius: 3px;
-			color: #ccc;
-			width:auto;
-			height: 16px;
-			font-size: 13px;
-			font-weight: bold;
-			margin-top: 5px;
+        background-color: #333 0.6;
+        border-radius: 3px;
+        color: #ccc;
+        width:auto;
+        height: 16px;
+        font-size: 13px;
+        font-weight: bold;
+        margin-top: 5px;
         }
-
+        
         .header-carema {
-            width: 24px;
-            height: 24px;
-            float: right;
-            background-image: url(profile-refresh-camera-icon.png);
+        width: 24px;
+        height: 24px;
+        float: right;
+        background-image: url(profile-refresh-camera-icon.png);
         }
-
+        
         .header-name {
         position: absolute !important;
-            font-size: 18px;
-            font-weight: bold;
-            color: #222222;
-            
-            width: auto;
-            height: auto;
-            text-align: center;
-            left: 15px;
-            margin: 0px;
-            top : 65px;
-            align : center;
-            v-align: top;
-            line-num: 2;
+        font-size: 18px;
+        font-weight: bold;
+        color: #222222;
+        
+        width: auto;
+        height: auto;
+        text-align: center;
+        left: 15px;
+        margin: 0px;
+        top : 65px;
+        align : center;
+        v-align: top;
+        line-num: 2;
         }
-
-		#signin {
-			position: absolute;
-			left: 0px;
-			top: 0px;
-            width: 100%;
-            height: 100%;
-		}
-
+        
+        #signin {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        }
+        
         .body-bg {
-            width: 100%;
-            height: 100%;
-            position: absolute !important;
-            top: 0;
-            left: 0;
-            background-color: #999999;
-            background-mode: stretch;
-            background-insets: 10px;
-            background-image: url(body-bg.png);
+        width: 100%;
+        height: 100%;
+        position: absolute !important;
+        top: 0;
+        left: 0;
+        background-color: #999999;
+        background-mode: stretch;
+        background-insets: 10px;
+        background-image: url(body-bg.png);
         }
         
         .list-bg {
-            width: 100%;
-            height: 100%;
-            position: absolute !important;
-            top: 0;
-            left: 0;
-            image: url(item-graph-cont-box-bg.png) !important;
-            image-insets: 10;
-            image-mode: fit;
+        width: 100%;
+        height: 100%;
+        position: absolute !important;
+        top: 0;
+        left: 0;
+        image: url(item-graph-cont-box-bg.png) !important;
+        image-insets: 10;
+        image-mode: fit;
         }
-
+        
         .list-large-bg {
-            width: 100%;
-            height: 100%;
-            position: absolute !important;
-            top: 0;
-            left: 0;
-            image: url(body-cont-bg.png) !important;
-            image-insets: 10 25;
-            image-mode: fit;
+        width: 100%;
+        height: 100%;
+        position: absolute !important;
+        top: 0;
+        left: 0;
+        image: url(body-cont-bg.png) !important;
+        image-insets: 10 25;
+        image-mode: fit;
         }
-
+        
         .bg {
-            width: 100%;
-            height: 100%;
-            position: absolute !important;
-            top: 0;
-            left: 0;
-            background-color: #eeeeee;
-            image-src:url(profile_img_bg.png);
+        width: 100%;
+        height: 100%;
+        position: absolute !important;
+        top: 0;
+        left: 0;
+        background-color: #eeeeee;
+        image-src:url(profile_img_bg.png);
         }
         
         .container {
-            background-color: #aaa;
+        background-color: #aaa;
         }
-
-		#carema {
-			width: 100%;
-			height: 100%;
-            position: absolute !important;
-            top: 0;
-            left: 0;
-		}
         
-        </style>
+        #carema {
+        width: 100%;
+        height: 100%;
+        position: absolute !important;
+        top: 0;
+        left: 0;
+        }
+        
+    </style>
 </ui>

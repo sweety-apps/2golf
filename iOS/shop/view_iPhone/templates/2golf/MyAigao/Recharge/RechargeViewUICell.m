@@ -39,7 +39,7 @@
 
 - (void)awakeFromNib
 {
-    self.chargeValues = @[@0.01,@1000,@2000,@5000,@10000,@20000,@50000];
+    self.chargeValues = @[@1000,@2000,@5000,@10000,@20000,@50000];
     
     CGFloat startY = 38;
     
