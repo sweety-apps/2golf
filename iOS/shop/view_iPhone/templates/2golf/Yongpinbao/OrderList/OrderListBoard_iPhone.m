@@ -15,6 +15,7 @@
 #import "FinishedBoard_iPhone.h"
 #import "ErrorMsg.h"
 #import "AppBoard_iPhone.h"
+#import "PayBoard_iPhone.h"
 
 @interface OrderListBoard_iPhone()
 {
@@ -155,6 +156,38 @@ ON_SIGNAL2( BeeUIScrollView, signal )
         [self.orderModel nextPageFromServer];
     }
 }
+
+ON_SIGNAL2( AwaitPayCell_iPhone, signal )
+{
+    AwaitPayCell_iPhone * cell = (AwaitPayCell_iPhone *)signal.source;
+    
+    if ( [signal is:AwaitPayCell_iPhone.ORDER_CANCEL] )
+    {
+        [self.orderModel cancel:cell.order];
+    }
+    else if ( [signal is:AwaitPayCell_iPhone.ORDER_PAY] )
+    {
+        ORDER * order = cell.order;
+        
+        if ( order.order_info )
+        {
+            if ( NSOrderedSame == [order.order_info.pay_code compare:@"cod" options:NSCaseInsensitiveSearch] )
+            {
+                [[BeeUIApplication sharedInstance] presentMessageTips:__TEXT(@"pay_noneed")];
+                return;
+            }
+        }
+        
+        PayBoard_iPhone * board = [PayBoard_iPhone board];
+        board.orderID = order.order_id;
+        board.orderSN = order.order_sn;
+        board.totalFee = [order.total_fee substringFromIndex:1];
+        board.titleString = __TEXT(@"pay");
+        board.order = order.order_info;
+        [self.stack pushBoard:board animated:NO];
+    }
+}
+
 
 #pragma mark -
 
