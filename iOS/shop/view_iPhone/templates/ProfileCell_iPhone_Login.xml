@@ -55,15 +55,15 @@
                 <linear id="orders_list_item" orientation="h" class="list-item">
                     <image class="list-bg"/>
                     <label class="list-title">球场订单</label>
-                    <label id="order-count" class="list-subtitle">0</label>
+                    <label id="order-count" class="list-subtitle">10</label>
                     <image class="list-indictor"/>
                     <button id="orders_list" class="fill"/>
                 </linear>
                 
-                <linear id="orders_list_item" orientation="h" class="list-item">
+                <linear id="goods_orders_list_item" orientation="h" class="list-item">
                     <image class="list-bg"/>
                     <label class="list-title">用品订单</label>
-                    <label id="order-count" class="list-subtitle">0</label>
+                    <label id="goods_order-count" class="list-subtitle">10</label>
                     <image class="list-indictor"/>
                     <button id="goods_orders_list" class="fill"/>
                 </linear>
@@ -72,7 +72,7 @@
                 <linear id="collection_list_item" orientation="h" class="list-item">
                     <image class="list-bg"/>
                     <label class="list-title">我的收藏</label>
-                    <label id="fav-count" class="list-subtitle">0</label>
+                    <label id="fav-count" class="list-subtitle">10</label>
                     <image class="list-indictor"/>
                     <button id="collection" class="fill"/>
                 </linear>
