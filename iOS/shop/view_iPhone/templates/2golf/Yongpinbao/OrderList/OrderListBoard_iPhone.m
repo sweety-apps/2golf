@@ -10,6 +10,9 @@
 #import "OrderModel.h"
 #import "CommonWaterMark.h"
 #import "AwaitPayBoard_iPhone.h"
+#import "AwaitShipBoard_iPhone.h"
+#import "ShippedBoard_iPhone.h"
+#import "FinishedBoard_iPhone.h"
 #import "ErrorMsg.h"
 #import "AppBoard_iPhone.h"
 
@@ -261,8 +264,26 @@ ON_NOTIFICATION3( ServiceAlipay, FAILED, notification )
     {
         return [scrollView dequeueWithContentClass:[NoResultCell class]];
     }
-    
-    AwaitPayCell_iPhone * cell = [scrollView dequeueWithContentClass:[AwaitPayCell_iPhone class]];
+    BeeUICell* cell = nil;
+    switch (_currentSelectBtnIndex) {
+        case 0:
+            cell = [scrollView dequeueWithContentClass:[AwaitPayCell_iPhone class]];
+            break;
+        case 1:
+            cell = [scrollView dequeueWithContentClass:[AwaitShipCell_iPhone class]];
+            break;
+        case 2:
+            cell = [scrollView dequeueWithContentClass:[ShippedCell_iPhone class]];
+            break;
+        case 3:
+            cell = [scrollView dequeueWithContentClass:[FinishedCell_iPhone class]];
+            break;
+        case 4:
+            cell = [scrollView dequeueWithContentClass:[FinishedCell_iPhone class]];
+            break;
+        default:
+            break;
+    }
     cell.data = [self.orderModel.orders objectAtIndex:index];
     return cell;
 }
@@ -275,7 +296,26 @@ ON_NOTIFICATION3( ServiceAlipay, FAILED, notification )
     }
     
     ORDER * order = [self.orderModel.orders objectAtIndex:index];
-    int height = [AwaitPayCell_iPhone heightByCount:order.goods_list.count];
+    int height = 0;
+    switch (_currentSelectBtnIndex) {
+        case 0:
+            height = [AwaitPayCell_iPhone heightByCount:order.goods_list.count];
+            break;
+        case 1:
+            height = [AwaitShipCell_iPhone heightByCount:order.goods_list.count];
+            break;
+        case 2:
+            height = [ShippedCell_iPhone heightByCount:order.goods_list.count];
+            break;
+        case 3:
+            height = [FinishedCell_iPhone heightByCount:order.goods_list.count];
+            break;
+        case 4:
+            height = [FinishedCell_iPhone heightByCount:order.goods_list.count];
+            break;
+        default:
+            break;
+    }
     return CGSizeMake(scrollView.width, height);
 }
 
