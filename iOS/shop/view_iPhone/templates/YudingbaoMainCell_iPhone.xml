@@ -82,7 +82,7 @@
         height:24px;
         font-size: 22px;
         font-weight: lighter;
-        color: #ffffffff;
+        color: #ffffff;
         text-align: center;
         top:88px;
         }
@@ -102,7 +102,7 @@
         height:24px;
         font-size: 22px;
         font-weight: lighter;
-        color: #ffffffff;
+        color: #ffffff;
         text-align: center;
         top:88px;
         }

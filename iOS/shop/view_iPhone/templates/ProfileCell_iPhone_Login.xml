@@ -4,43 +4,28 @@
     
     <linear orientation="v" class="wrapper">
         
-        <linear orientation="v" class="header-wrapper">
+        <linear orientation="h" class="header-wrapper">
             <image id="bg" class="bg"/>
-            <linear orientation="h" class="header-box" id="12345">
-                <linear orientation="v" class="header-avatar-box">
-                    <image id="header-avatar" class="header-avatar"/>
-                    <image id="header-avatar-head-icon" class="header-avatar-head-icon"/>
-                    
-                    <button id="carema"/>
-                    <label id="name" class="header-name">徐波\n17327376787</label>
-                </linear>
-                <!--
-                 <label id="header_money_bg"></label>
-                 <label id="header_money_name">余额</label>
-                 <label id="header_money_value">￥0</label>
-                 <button id="header_money_button"></button>
-                 
-                 <label id="header_score_bg"></label>
-                 <label id="header_score_name">积分</label>
-                 <label id="header_score_value">0</label>
-                 <button id="header_score_button"></button>
-                 -->
+            <linear id="5" orientation="h" class="header-avatar-box" >
+                <image id="header-avatar" class="header-avatar"/>
+                <image id="header-avatar-head-icon" class="header-avatar-head-icon"/>
                 
-                <linear orientation="h" class="goto-vip-box" id="1234">
-                    <image id="imgbkg" class="moneybkg"></image>
-                    <label id="lblenterofhighmember" class="lblenterofhighmember">成为爱高会员></label>
-                    <button id="btnenterofhighmember" class="lblenterofhighmember"></button>
-                </linear>
-                
-                <linear orientation="h" class="header-level-box">
-                    <image id="header-level-icon"/>
-                    <label id="header-level-name"/>
-                </linear>
+                <button id="carema"/>
+                <label id="name" class="header-name">123</label>
             </linear>
-            <button id="signin"></button>
+            
+            <linear orientation="h" class="goto-vip-box" id="1234">
+                <image id="imgbkg" class="moneybkg"></image>
+                <label id="lblenterofhighmember" class="lblenterofhighmember">成为爱高会员</label>
+                <button id="btnenterofhighmember" class="lblenterofhighmember"></button>
+            </linear>
+            
         </linear>
         
         <linear orientation="v" class="scroll-wrapper">
+            
+            
+            
             
             <linear orientation="h" class="list-item">
                 <image class="list-bg"/>
@@ -64,9 +49,6 @@
                     <button id="recharge" class="fill"/>
                 </linear>
             </linear>
-            
-            
-            
             
             <linear orientation="h" class="bar-wrapper">
                 <image class="list-large-bg"/>
@@ -188,11 +170,11 @@
         
         .goto-vip-box
         {
-        width:100px;
+        width:160px;
         height:50px;
-        
-        left:150px;
-        top:0px;
+        left:0px;
+        top:50%px;
+        align:center;
         }
         
         .filter-seprator {
@@ -204,18 +186,18 @@
         .lblenterofhighmember {
         background-color:#00000;
         color: #FF0000;
-        width: 120px;
-        height: 25px;
+        width: 100%;
+        height: 40px;
         position: absolute !important;
-        font-size: 18px;
-        text-align: left;
+        font-size: 16px;
+        text-align: center;
         font-weight: bold;
         }
         
         .moneybkg
         {
-        height: 100%;
-        width: 100%;
+        height: 43px;
+        width: 124.5px;
         image-src:url(profile_head_money_bkg.png);
         }
         
@@ -454,7 +436,6 @@
         .header-wrapper {
         width: 100%;
         height: 134px;
-        v-align: center;
         }
         
         .header-box {
@@ -471,23 +452,31 @@
         margin-right: 20px;
         }
         
-        .header-avatar-box {
-        left:20px
-        width: 135px;
+        .camera
+        {
+        width:123px;
         height: 100px;
+        background-color:#0000ff;
         v-align: bottom;
-        margin-top: 30px;
+        }
+        
+        .header-avatar-box {
+        width:160px;
+        height: 100%;
+        v-align: bottom;
+        background-color:#00ff0088;
         }
         
         .header-avatar {
-        width: 135px;
-        height: 100px;
+        width: 100%;
+        height: 120px;
         position: absolute !important;
-        top: 0;
+        top: 10px;
         left: 0;
         image-mode: fill;
         image-style: round;
         border: 5px solid #ffffff;
+        image-src: url(profile-has-avatar-icon.png);
         }
         
         .header-avatar-head-icon {
@@ -537,13 +526,12 @@
         font-size: 18px;
         font-weight: bold;
         color: #222222;
-        
         width: auto;
         height: auto;
         text-align: center;
         left: 15px;
         margin: 0px;
-        top : 65px;
+        top : 78px;
         align : center;
         v-align: top;
         line-num: 2;
@@ -614,4 +602,5 @@
         }
         
     </style>
+    
 </ui>
