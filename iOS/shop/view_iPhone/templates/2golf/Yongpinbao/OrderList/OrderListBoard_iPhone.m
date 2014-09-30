@@ -8,6 +8,17 @@
 
 #import "OrderListBoard_iPhone.h"
 
+@interface OrderListBoard_iPhone()
+{
+    BeeUIScrollView* _scroll;
+}
+
+@property (nonatomic,assign) NSInteger currentSelectBtnIndex;
+@property (nonatomic, assign) BOOL	loaded;
+
+@end
+
+
 @implementation OrderListBoard_iPhone
 
 - (void)load
@@ -103,25 +114,24 @@ ON_SIGNAL2( BeeUIBoard, signal )
 
 - (IBAction)pressedSwitchBtn:(UIButton *)sender
 {
-//    NSArray* btnArr = @[
-//                        self.btnsel0,
-//                        self.btnsel1,
-//                        self.btnsel2,
-//                        self.btnsel3,
-//                        self.btnsel4,
-//                        self.btnsel5
-//                        ];
-//    
-//    for (int i = 0; i < btnArr.count; ++i)
-//    {
-//        UIButton* b = btnArr[i];
-//        b.selected = NO;
-//        if (b == sender)
-//        {
-//            self.currentSelectBtnIndex = i;
-//            b.selected = YES;
-//        }
-//    }
+    NSArray* btnArr = @[
+                        self.btnsel0,
+                        self.btnsel1,
+                        self.btnsel2,
+                        self.btnsel3,
+                        self.btnsel4,
+                        ];
+    
+    for (int i = 0; i < btnArr.count; ++i)
+    {
+        UIButton* b = btnArr[i];
+        b.selected = NO;
+        if (b == sender)
+        {
+            self.currentSelectBtnIndex = i;
+            b.selected = YES;
+        }
+    }
 //    [self fetchData];
 }
 
