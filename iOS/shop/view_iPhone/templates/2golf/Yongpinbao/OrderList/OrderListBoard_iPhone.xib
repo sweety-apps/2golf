@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment defaultVersion="1552" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OrderListBoard_iPhone">
+            <connections>
+                <outlet property="btnsel0" destination="aep-A4-ens" id="sWZ-7m-WPZ"/>
+                <outlet property="btnsel1" destination="6X5-93-jL6" id="XtL-Qj-xKB"/>
+                <outlet property="btnsel2" destination="kVG-Wf-sjP" id="iAs-E2-DQT"/>
+                <outlet property="btnsel3" destination="Wlq-2j-dcS" id="ykW-Ib-0i4"/>
+                <outlet property="btnsel4" destination="tda-F0-FQ7" id="O0S-hy-nPw"/>
+                <outlet property="view" destination="iN0-l3-epB" id="q6d-Zi-gHy"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Smi-xn-6Xx">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aep-A4-ens">
+                            <rect key="frame" x="0.0" y="3" width="63" height="34"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" title="待支付" backgroundImage="aifenxiangmenubtnn.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="selected" backgroundImage="list_order_btn_bga.png"/>
+                            <state key="highlighted" backgroundImage="list_order_btn_bga.png"/>
+                            <connections>
+                                <action selector="pressedSwitchBtn:" destination="-1" eventType="touchUpInside" id="ZmE-wH-2O9"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kVG-Wf-sjP">
+                            <rect key="frame" x="128" y="3" width="63" height="34"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" title="已发货" backgroundImage="aifenxiangmenubtnn.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="selected" backgroundImage="list_order_btn_bga.png"/>
+                            <state key="highlighted" backgroundImage="list_order_btn_bga.png"/>
+                            <connections>
+                                <action selector="pressedSwitchBtn:" destination="-1" eventType="touchUpInside" id="BC7-M5-pLy"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wlq-2j-dcS">
+                            <rect key="frame" x="192" y="3" width="63" height="34"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" title="已取消" backgroundImage="aifenxiangmenubtnn.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="selected" backgroundImage="list_order_btn_bga.png"/>
+                            <state key="highlighted" backgroundImage="list_order_btn_bga.png"/>
+                            <connections>
+                                <action selector="pressedSwitchBtn:" destination="-1" eventType="touchUpInside" id="h4y-64-C6X"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tda-F0-FQ7">
+                            <rect key="frame" x="256" y="3" width="63" height="34"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" title="已完成" backgroundImage="aifenxiangmenubtnn.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="selected" backgroundImage="list_order_btn_bga.png"/>
+                            <state key="highlighted" backgroundImage="list_order_btn_bga.png"/>
+                            <connections>
+                                <action selector="pressedSwitchBtn:" destination="-1" eventType="touchUpInside" id="0l2-bd-TOu"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6X5-93-jL6">
+                            <rect key="frame" x="64" y="3" width="63" height="34"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" title="待发货" backgroundImage="aifenxiangmenubtnn.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="selected" backgroundImage="list_order_btn_bga.png"/>
+                            <state key="highlighted" backgroundImage="list_order_btn_bga.png"/>
+                            <connections>
+                                <action selector="pressedSwitchBtn:" destination="-1" eventType="touchUpInside" id="bFt-5l-Q7K"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.93333339691162109" green="0.92941182851791382" blue="0.93333339691162109" alpha="1" colorSpace="deviceRGB"/>
+            <point key="canvasLocation" x="150" y="156"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="aifenxiangmenubtnn.png" width="7" height="7"/>
+        <image name="list_order_btn_bga.png" width="14" height="17"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

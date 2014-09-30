@@ -532,6 +532,8 @@
 		4F359B3019DA919200952F9C /* MyOrderListBoard_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F359B2B19DA919200952F9C /* MyOrderListBoard_iPhone.xib */; };
 		4F359B3119DA919200952F9C /* MyOrderListTopSwitchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F359B2D19DA919200952F9C /* MyOrderListTopSwitchViewController.m */; };
 		4F359B3219DA919200952F9C /* MyOrderListTopSwitchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F359B2E19DA919200952F9C /* MyOrderListTopSwitchViewController.xib */; };
+		4F359B3619DA98FE00952F9C /* OrderListBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F359B3519DA98FE00952F9C /* OrderListBoard_iPhone.m */; };
+		4F359B3819DA993500952F9C /* OrderListBoard_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F359B3719DA993500952F9C /* OrderListBoard_iPhone.xib */; };
 		4F47A26919B731250070C8B1 /* QiuChangOrderDetailBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F47A26819B731250070C8B1 /* QiuChangOrderDetailBoard_iPhone.m */; };
 		4F47A28019B748DA0070C8B1 /* QiuChangOrderDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F47A27F19B748DA0070C8B1 /* QiuChangOrderDetailCell.m */; };
 		4F47A28219B74D7F0070C8B1 /* QiuChangOrderDetailCell.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4F47A28119B74D7F0070C8B1 /* QiuChangOrderDetailCell.xml */; };
@@ -1642,6 +1644,9 @@
 		4F359B2C19DA919200952F9C /* MyOrderListTopSwitchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrderListTopSwitchViewController.h; sourceTree = "<group>"; };
 		4F359B2D19DA919200952F9C /* MyOrderListTopSwitchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrderListTopSwitchViewController.m; sourceTree = "<group>"; };
 		4F359B2E19DA919200952F9C /* MyOrderListTopSwitchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyOrderListTopSwitchViewController.xib; sourceTree = "<group>"; };
+		4F359B3419DA98FE00952F9C /* OrderListBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderListBoard_iPhone.h; path = OrderList/OrderListBoard_iPhone.h; sourceTree = "<group>"; };
+		4F359B3519DA98FE00952F9C /* OrderListBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderListBoard_iPhone.m; path = OrderList/OrderListBoard_iPhone.m; sourceTree = "<group>"; };
+		4F359B3719DA993500952F9C /* OrderListBoard_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderListBoard_iPhone.xib; path = OrderList/OrderListBoard_iPhone.xib; sourceTree = "<group>"; };
 		4F47A26719B731250070C8B1 /* QiuChangOrderDetailBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuChangOrderDetailBoard_iPhone.h; sourceTree = "<group>"; };
 		4F47A26819B731250070C8B1 /* QiuChangOrderDetailBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiuChangOrderDetailBoard_iPhone.m; sourceTree = "<group>"; };
 		4F47A27E19B748DA0070C8B1 /* QiuChangOrderDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuChangOrderDetailCell.h; sourceTree = "<group>"; };
@@ -3261,6 +3266,7 @@
 		4F2730EA19B410090022EF21 /* Yongpinbao */ = {
 			isa = PBXGroup;
 			children = (
+				4F359B3319DA978F00952F9C /* OrderList */,
 				4F74674D19BB2C40006F3F39 /* Brand */,
 				4F2730EB19B410090022EF21 /* Detail */,
 				4F2730F119B410090022EF21 /* List */,
@@ -3616,6 +3622,16 @@
 				4F359B2E19DA919200952F9C /* MyOrderListTopSwitchViewController.xib */,
 			);
 			path = MyOrderList;
+			sourceTree = "<group>";
+		};
+		4F359B3319DA978F00952F9C /* OrderList */ = {
+			isa = PBXGroup;
+			children = (
+				4F359B3719DA993500952F9C /* OrderListBoard_iPhone.xib */,
+				4F359B3419DA98FE00952F9C /* OrderListBoard_iPhone.h */,
+				4F359B3519DA98FE00952F9C /* OrderListBoard_iPhone.m */,
+			);
+			name = OrderList;
 			sourceTree = "<group>";
 		};
 		4F74674D19BB2C40006F3F39 /* Brand */ = {
@@ -5514,6 +5530,7 @@
 				4F27329619B4100A0022EF21 /* tabmyaigolfn@2x.png in Resources */,
 				4F27341D19B4100A0022EF21 /* OrderCellGoods_iPhone.xml in Resources */,
 				4F27329119B4100A0022EF21 /* send_other_trip_btn@2x.png in Resources */,
+				4F359B3819DA993500952F9C /* OrderListBoard_iPhone.xib in Resources */,
 				4F359B3219DA919200952F9C /* MyOrderListTopSwitchViewController.xib in Resources */,
 				4F27334B19B4100A0022EF21 /* trade-info-stream-logistics-time-line@2x.png in Resources */,
 				4F27330B19B4100A0022EF21 /* placeholder-image@2x.png in Resources */,
@@ -5651,6 +5668,7 @@
 				4FBAED2819B85201003A695D /* UINavigationBar+BeeExtension.m in Sources */,
 				4FBAEDA719B85201003A695D /* Bee_ActiveBuilder.m in Sources */,
 				4F27340F19B4100A0022EF21 /* HelpCell_iPhone.m in Sources */,
+				4F359B3619DA98FE00952F9C /* OrderListBoard_iPhone.m in Sources */,
 				4FBAED4B19B85201003A695D /* UIView+LifeCycle.m in Sources */,
 				4F27343219B4100A0022EF21 /* SigninBoard_iPhone.m in Sources */,
 				4FBAEDC119B85201003A695D /* NSDate+BeeExtension.mm in Sources */,

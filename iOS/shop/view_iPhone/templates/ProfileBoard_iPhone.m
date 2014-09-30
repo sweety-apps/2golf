@@ -38,6 +38,7 @@
 #import "HelpBoard_iPhone.h"
 #import "Placeholder.h"
 #import "MyOrderListBoard_iPhone.h"
+#import "OrderListBoard_iPhone.h"
 #import "ChangePasswordBoard_iPhone.h"
 #import "RechargeBoard_iPhone.h"
 #import "MyPointsBoard_iPhone.h"
@@ -201,6 +202,15 @@ SUPPORT_RESOURCE_LOADING(YES);
 			$(@"#finished").HIDE();
 		}
 		
+        if ( 0 == ([num1 intValue] + [num2 intValue] + [num3 intValue] + [num4 intValue]) )
+        {
+            $(@"#goods_order-count").TEXT( @"无" );
+        }
+        else
+        {
+            $(@"#goods_order-count").TEXT( [NSString stringWithFormat:@"%d%@", ([num1 intValue] + [num2 intValue] + [num3 intValue] + [num4 intValue]), @""] );
+        }
+        
 		if ( [UserModel online] )
 		{
 			if ( [UserModel sharedInstance].avatar )
@@ -710,7 +720,7 @@ ON_SIGNAL3( ProfileCell_iPhone, orders_list, signal )
     }
 }
 
-ON_SIGNAL3( ProfileCell_iPhone, course_orders_list, signal )
+ON_SIGNAL3( ProfileCell_iPhone, goods_orders_list, signal )
 {
     if ( [signal is:BeeUIButton.TOUCH_UP_INSIDE] )
     {
@@ -720,7 +730,8 @@ ON_SIGNAL3( ProfileCell_iPhone, course_orders_list, signal )
             return;
         }
         
-
+        OrderListBoard_iPhone* board = [OrderListBoard_iPhone boardWithNibName:@"OrderListBoard_iPhone"];
+        [self.stack pushBoard:board animated:YES];
     }
 }
 
