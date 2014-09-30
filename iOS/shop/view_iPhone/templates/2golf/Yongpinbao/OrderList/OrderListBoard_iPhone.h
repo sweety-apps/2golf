@@ -8,15 +8,13 @@
 
 #import "BaseBoard_iPhone.h"
 
-@interface OrderListBoard_iPhone : BeeUIBoard
+@interface OrderListBoard_iPhone : BaseBoard_iPhone
 
 @property (retain, nonatomic) IBOutlet UIButton *btnsel0;
 @property (retain, nonatomic) IBOutlet UIButton *btnsel1;
 @property (retain, nonatomic) IBOutlet UIButton *btnsel2;
 @property (retain, nonatomic) IBOutlet UIButton *btnsel3;
 @property (retain, nonatomic) IBOutlet UIButton *btnsel4;
-
-@property (nonatomic,assign) BOOL hasRefreshed;
 
 - (IBAction)pressedSwitchBtn:(UIButton *)sender;
 @end

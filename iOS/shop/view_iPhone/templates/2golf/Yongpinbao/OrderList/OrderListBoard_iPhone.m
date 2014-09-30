@@ -7,6 +7,11 @@
 //
 
 #import "OrderListBoard_iPhone.h"
+#import "OrderModel.h"
+#import "CommonWaterMark.h"
+#import "AwaitPayBoard_iPhone.h"
+#import "ErrorMsg.h"
+#import "AppBoard_iPhone.h"
 
 @interface OrderListBoard_iPhone()
 {
@@ -14,7 +19,7 @@
 }
 
 @property (nonatomic,assign) NSInteger currentSelectBtnIndex;
-@property (nonatomic, assign) BOOL	loaded;
+@property (nonatomic, retain) OrderModel * orderModel;
 
 @end
 
@@ -24,15 +29,14 @@
 - (void)load
 {
     [super load];
-//    self.switchCtrl = [[MyOrderListTopSwitchViewController alloc] initWithNibName:@"MyOrderListTopSwitchViewController" bundle:nil];
-//    self.currentLayoutArray = [NSMutableArray array];
-//    self.loaded = false;
+    self.orderModel = [[[OrderModel alloc] init] autorelease];
+    [self.orderModel addObserver:self];
 }
 
 - (void)unload
 {
-//    self.dataDict = nil;
-//    self.currentLayoutArray = nil;
+    [self.orderModel removeObserver:self];
+    self.orderModel = nil;
     [super unload];
 }
 
@@ -47,26 +51,16 @@ ON_SIGNAL2( BeeUIBoard, signal )
         [self setTitleViewWithIcon:__IMAGE(@"titleicon") andTitleString:@"用品订单"];
         [self showBarButton:BeeUINavigationBar.LEFT image:[UIImage imageNamed:@"nav-back.png"]];
         
+        CGRect rect;
         
-//        [self setTitleView:self.switchCtrl.view];
-//        
-//        [self.switchCtrl selectButtonCourse];
-//        self.isTaocan = NO;
-//        [self.switchCtrl.buttonCourse addTarget:self action:@selector(_selectCourse) forControlEvents:UIControlEventTouchUpInside];
-//        [self.switchCtrl.buttonTaocan addTarget:self action:@selector(_selectTaocan) forControlEvents:UIControlEventTouchUpInside];
-//        
-//        CGRect rect;
-//        
-//        ////
-//        rect = self.viewBound;
-//        rect.origin.y+=40;
-//        rect.size.height-=40;
-//        _scroll = [[BeeUIScrollView alloc] initWithFrame:rect];
-//        _scroll.dataSource = self;
-//        _scroll.vertical = YES;
-//        //_scroll.bounces = NO;
-//        [_scroll showHeaderLoader:YES animated:YES];
-//        [self.view addSubview:_scroll];
+        rect = self.viewBound;
+        rect.origin.y+=40;
+        rect.size.height-=40;
+        _scroll = [[BeeUIScrollView alloc] initWithFrame:rect];
+        _scroll.dataSource = self;
+        _scroll.vertical = YES;
+        [_scroll showHeaderLoader:YES animated:YES];
+        [self.view addSubview:_scroll];
         [self pressedSwitchBtn:self.btnsel0];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fetchData) name:@"moneyPaid" object:nil];
@@ -74,7 +68,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
     else if ( [signal is:BeeUIBoard.DELETE_VIEWS] )
     {
         [[NSNotificationCenter defaultCenter] removeObserver:self];
-//        SAFE_RELEASE_SUBVIEW( _scroll );
+        SAFE_RELEASE_SUBVIEW( _scroll );
     }
     else if ( [signal is:BeeUIBoard.LAYOUT_VIEWS] )
     {
@@ -87,26 +81,22 @@ ON_SIGNAL2( BeeUIBoard, signal )
     }
     else if ( [signal is:BeeUIBoard.WILL_APPEAR] )
     {
-//        [_scroll setBaseInsets:UIEdgeInsetsMake(0, 0, [AppBoard_iPhone sharedInstance].tabbar.height, 0)];
+        [_scroll setBaseInsets:UIEdgeInsetsMake(0, 0, [AppBoard_iPhone sharedInstance].tabbar.height, 0)];
         CGRect rect = self.viewBound;
         rect.origin.y+=40;
         rect.size.height-=40;
-//        _scroll.frame =rect;
-        
-        if (!self.hasRefreshed)
-        {
-//            [self fetchData];
-        }
+        _scroll.frame =rect;
     }
     else if ( [signal is:BeeUIBoard.DID_APPEAR] )
     {
-//        [[AppBoard_iPhone sharedInstance] setTabbarHidden:YES animated:NO];
+
     }
     else if ( [signal is:BeeUIBoard.WILL_DISAPPEAR] )
     {
     }
     else if ( [signal is:BeeUIBoard.DID_DISAPPEAR] )
     {
+        
     }
 }
 
@@ -132,7 +122,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
             b.selected = YES;
         }
     }
-//    [self fetchData];
+    [self fetchData];
 }
 
 ON_SIGNAL2( BeeUINavigationBar, signal )
@@ -148,5 +138,160 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
     }
 }
 
+ON_SIGNAL2( BeeUIScrollView, signal )
+{
+    [super handleUISignal:signal];
+    
+    if ( [signal is:BeeUIScrollView.HEADER_REFRESH] )
+    {
+        [self.orderModel prevPageFromServer];
+    }
+    else if ( [signal is:BeeUIScrollView.REACH_BOTTOM] ||
+             [signal is:BeeUIScrollView.FOOTER_REFRESH] )
+    {
+        [self.orderModel nextPageFromServer];
+    }
+}
 
+#pragma mark -
+
+- (void)handleMessage:(BeeMessage *)msg
+{
+    [super handleMessage:msg];
+    
+    if ( [msg is:API.order_list] )
+    {
+        if ( msg.sending )
+        {
+            if ( self.orderModel.loaded )
+            {
+                [_scroll setHeaderLoading:YES];
+                [_scroll setFooterLoading:YES];
+            }
+            else
+            {
+                [self presentLoadingTips:__TEXT(@"tips_loading")];
+            }
+        }
+        else
+        {
+            [self dismissTips];
+            
+            [_scroll setHeaderLoading:NO];
+            [_scroll setFooterLoading:NO];
+        }
+    }
+    else
+    {
+        [_scroll setHeaderLoading:msg.sending];
+        [_scroll setFooterLoading:msg.sending];
+    }
+    
+    if ( [msg is:API.order_list] )
+    {
+        if ( msg.succeed && ((STATUS *)msg.GET_OUTPUT(@"status")).succeed.boolValue )
+        {
+            [_scroll setFooterMore:self.orderModel.more];
+            [_scroll syncReloadData];
+        }
+        else if ( msg.failed )
+        {
+            //            [self presentFailureTips:@"加载失败"];
+            [ErrorMsg presentErrorMsg:msg inBoard:self];
+        }
+    }
+    else if ( [msg is:API.order_cancel] )
+    {
+        if ( msg.succeed && ((STATUS *)msg.GET_OUTPUT(@"status")).succeed.boolValue )
+        {
+            [self presentSuccessTips:__TEXT(@"successful_operation")];
+            
+            [self.orderModel prevPageFromServer];
+
+        }
+    }
+}
+
+#pragma mark -
+
+- (void)handleNotification:(NSNotification *)notification
+{
+    [super handleNotification:notification];
+}
+
+ON_NOTIFICATION3( ServiceAlipay, WAITING, notification )
+{
+}
+
+ON_NOTIFICATION3( ServiceAlipay, SUCCEED, notification )
+{
+    [[BeeUIApplication sharedInstance] presentMessageTips:__TEXT(@"pay_succeed")];
+    
+    if ( [UserModel online] )
+    {
+        [self.orderModel prevPageFromServer];
+    }
+}
+
+ON_NOTIFICATION3( ServiceAlipay, FAILED, notification )
+{
+    //[[BeeUIApplication sharedInstance] presentMessageTips:__TEXT(@"pay_failed")];
+}
+
+#pragma mark -
+
+- (NSInteger)numberOfLinesInScrollView:(BeeUIScrollView *)scrollView
+{
+    return 1;
+}
+
+- (NSInteger)numberOfViewsInScrollView:(BeeUIScrollView *)scrollView
+{
+    if ( self.orderModel.loaded && 0 == self.orderModel.orders.count )
+    {
+        return 1;
+    }
+    
+    return self.orderModel.orders.count;
+}
+
+- (UIView *)scrollView:(BeeUIScrollView *)scrollView viewForIndex:(NSInteger)index scale:(CGFloat)scale
+{
+    if ( self.orderModel.loaded && 0 == self.orderModel.orders.count )
+    {
+        return [scrollView dequeueWithContentClass:[NoResultCell class]];
+    }
+    
+    AwaitPayCell_iPhone * cell = [scrollView dequeueWithContentClass:[AwaitPayCell_iPhone class]];
+    cell.data = [self.orderModel.orders objectAtIndex:index];
+    return cell;
+}
+
+- (CGSize)scrollView:(BeeUIScrollView *)scrollView sizeForIndex:(NSInteger)index
+{
+    if ( self.orderModel.loaded && 0 == self.orderModel.orders.count )
+    {
+        return self.size;
+    }
+    
+    ORDER * order = [self.orderModel.orders objectAtIndex:index];
+    int height = [AwaitPayCell_iPhone heightByCount:order.goods_list.count];
+    return CGSizeMake(scrollView.width, height);
+}
+
+
+-(void)fetchData
+{
+    NSArray* statusArr = @[
+                           @"await_pay",
+                             @"await_ship",
+                             @"shipped",
+                             @"cancelled",
+                             @"finished"
+                             ];
+
+    [self presentLoadingTips:@"正在加载"];
+    self.orderModel.type = [statusArr objectAtIndex:_currentSelectBtnIndex];
+    [self.orderModel prevPageFromServer];
+}
 @end

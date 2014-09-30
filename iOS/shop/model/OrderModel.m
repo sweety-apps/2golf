@@ -309,3 +309,16 @@ DEF_SINGLETON( OrderFinishedModel )
 }
 
 @end
+
+#pragma mark -
+
+@implementation OrderCanceledModel
+
+DEF_SINGLETON( OrderCanceledModel )
+
+- (void)load
+{
+    self.type = ORDER_LIST_CANCELLED;
+}
+
+@end

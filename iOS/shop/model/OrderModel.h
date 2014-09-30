@@ -65,3 +65,7 @@ AS_SINGLETON( OrderShippedModel )
 @interface OrderFinishedModel : OrderModel
 AS_SINGLETON( OrderFinishedModel )
 @end
+
+@interface OrderCanceledModel : OrderModel
+AS_SINGLETON( OrderCanceledModel )
+@end

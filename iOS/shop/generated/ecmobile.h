@@ -62,6 +62,7 @@ enum RANK_LEVEL
 #define ORDER_LIST_SHIPPED	@"shipped"
 #define ORDER_LIST_AWAIT_PAY	@"await_pay"
 #define ORDER_LIST_AWAIT_SHIP	@"await_ship"
+#define ORDER_LIST_CANCELLED	@"cancelled"
 
 #define SEARCH_ORDER_BY_CHEAPEST	@"price_asc"
 #define SEARCH_ORDER_BY_HOT	@"is_hot"
