@@ -50,58 +50,24 @@
                 </linear>
             </linear>
             
-            <linear orientation="h" class="bar-wrapper">
-                <image class="list-large-bg"/>
-                <linear orientation="v" class="bar-item">
-                    <image class="bar-item-icon payment"/>
-                    <label class="bar-item-info" id="await_pay_label">待付款 商品</label>
-                    <linear orientation="v" class="badge-wrapper">
-                        <image id="await_pay-bg" class="badge-wrapper-bg"/>
-                        <label id="await_pay" class="bar-item-badge"></label>
-                    </linear>
-                    <button id="order_await_pay" class="fill"/>
-                </linear>
-                
-                <linear orientation="v" class="bar-item">
-                    <image class="bar-item-icon ship" />
-                    <label class="bar-item-info" id="await_ship_label">待发货 商品</label>
-                    <linear orientation="v" class="badge-wrapper">
-                        <image id="await_ship-bg" class="badge-wrapper-bg"/>
-                        <label id="await_ship" class="bar-item-badge"></label>
-                    </linear>
-                    <button id="order_await_ship" class="fill"/>
-                </linear>
-                
-                <linear orientation="v" class="bar-item">
-                    <image class="bar-item-icon receipt"/>
-                    <label class="bar-item-info" id="shipped_label">待收货 商品</label>
-                    <linear orientation="v" class="badge-wrapper">
-                        <image id="shipped-bg" class="badge-wrapper-bg"/>
-                        <label id="shipped" class="bar-item-badge"></label>
-                    </linear>
-                    <button id="order_shipped" class="fill"/>
-                </linear>
-                
-                <linear orientation="v" class="bar-item">
-                    <image class="bar-item-icon history"/>
-                    <label class="bar-item-info" id="finished_label">购物历史</label>
-                    <linear orientation="v" class="badge-wrapper">
-                        <image id="finished-bg" class="badge-wrapper-bg"/>
-                        <label id="finished" class="bar-item-badge"></label>
-                    </linear>
-                    <button id="order_finished" class="fill"/>
-                </linear>
-            </linear>
-            
             <linear orientation="v" class="list-wrapper">
                 
                 <linear id="orders_list_item" orientation="h" class="list-item">
                     <image class="list-bg"/>
-                    <label class="list-title">历史订场</label>
+                    <label class="list-title">球场订单</label>
                     <label id="order-count" class="list-subtitle">0</label>
                     <image class="list-indictor"/>
                     <button id="orders_list" class="fill"/>
                 </linear>
+                
+                <linear id="orders_list_item" orientation="h" class="list-item">
+                    <image class="list-bg"/>
+                    <label class="list-title">用品订单</label>
+                    <label id="order-count" class="list-subtitle">0</label>
+                    <image class="list-indictor"/>
+                    <button id="goods_orders_list" class="fill"/>
+                </linear>
+                
                 
                 <linear id="collection_list_item" orientation="h" class="list-item">
                     <image class="list-bg"/>

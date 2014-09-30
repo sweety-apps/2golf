@@ -710,6 +710,20 @@ ON_SIGNAL3( ProfileCell_iPhone, orders_list, signal )
     }
 }
 
+ON_SIGNAL3( ProfileCell_iPhone, course_orders_list, signal )
+{
+    if ( [signal is:BeeUIButton.TOUCH_UP_INSIDE] )
+    {
+        if ( NO == [UserModel online] )
+        {
+            [[AppBoard_iPhone sharedInstance] showLogin];
+            return;
+        }
+        
+
+    }
+}
+
 ON_SIGNAL3( ProfileCell_iPhone, new_version, signal )
 {
     if ( [signal is:BeeUIButton.TOUCH_UP_INSIDE] )
