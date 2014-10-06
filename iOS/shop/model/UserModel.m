@@ -211,6 +211,21 @@ DEF_NOTIFICATION( UPDATED )
 	.INPUT( @"field", fields );
 }
 
+- (void)updateUser:(NSString*)name
+             phone:(NSString*)phone
+             email:(NSString*)email
+            sexval:(int)sexval
+          birthday:(NSString*)birthday
+{
+    self.CANCEL_MSG( API.user_update );
+	self.MSG( API.user_update )
+    .INPUT(@"name",name)
+    .INPUT(@"phone",phone)
+    .INPUT(@"email",email)
+    .INPUT(@"sexval",sexval)
+    .INPUT(@"birthday",birthday);
+}
+
 - (void)signout
 {
 	self.CANCEL_MSG( API.user_signin );

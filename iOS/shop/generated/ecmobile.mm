@@ -2079,6 +2079,63 @@ DEF_MESSAGE_( user_collect_list, msg )
 	}
 }
 
+#pragma mark - POST user/updateinfo
+
+DEF_MESSAGE_( user_update, msg)
+{
+    if ( msg.sending )
+	{
+		SESSION * session = msg.GET_INPUT( @"session" );
+        NSString * name = msg.GET_INPUT( @"name" );
+		NSString * phone = msg.GET_INPUT( @"phone" );
+		NSString * email = msg.GET_INPUT( @"email" );
+		NSInteger sex = [msg.GET_INPUT( @"sex" ) intValue];
+		NSString * birthday = msg.GET_INPUT( @"birthday" );
+        
+		if ( nil == session || NO == [session isKindOfClass:[SESSION class]] )
+		{
+			msg.failed = YES;
+			return;
+		}
+        
+		NSMutableDictionary * requestBody = [NSMutableDictionary dictionary];
+		requestBody.APPEND( @"session", session );
+        NSMutableDictionary * updatedict = [NSMutableDictionary dictionary];
+        updatedict.APPEND( @"name",name);
+        updatedict.APPEND(@"phone",phone);
+        updatedict.APPEND(@"email",email);
+        updatedict.APPEND(@"sex",[NSNumber numberWithInt:sex]);
+        updatedict.APPEND(@"birthday",birthday);
+        requestBody.APPEND(@"update",updatedict);
+        //		NSString * requestURI = @"http://shop.ecmobile.me/ecmobile/?url=user/info";
+		NSString * requestURI = [NSString stringWithFormat:@"%@user/updateinfo", [ServerConfig sharedInstance].url];
+		
+		msg.HTTP_POST( requestURI ).PARAM( @"json", requestBody.objectToString );
+	}
+	else if ( msg.succeed )
+	{
+		NSDictionary * response = msg.responseJSONDictionary;
+		STATUS * status = [STATUS objectFromDictionary:[response dictAtPath:@"status"]];
+		USER * data = [USER objectFromDictionary:[response dictAtPath:@"data"]];
+		if ( nil == status || NO == [status isKindOfClass:[STATUS class]] )
+		{
+			msg.failed = YES;
+			return;
+		}
+        
+		msg.OUTPUT( @"status", status );
+		msg.OUTPUT( @"data", data );
+        
+	}
+	else if ( msg.failed )
+	{
+	}
+	else if ( msg.cancelled )
+	{
+	}
+
+}
+
 #pragma mark - POST user/info
 
 DEF_MESSAGE_( user_info, msg )
@@ -2123,6 +2180,7 @@ DEF_MESSAGE_( user_info, msg )
 	{
 	}
 }
+
 
 #pragma mark - POST user/signin
 

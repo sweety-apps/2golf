@@ -46,6 +46,7 @@
 #import "HelpArticlesBoard_iPhone.h"
 #import "CommonUtility.h"
 #import "WebViewBoard_iPhone.h"
+#import "UserDetailBoard_iPhone.h"
 
 #pragma mark -
 
@@ -816,30 +817,31 @@ ON_SIGNAL3( ProfileCell_iPhone, carema, signal )
 			[[AppBoard_iPhone sharedInstance] showLogin];
 			return;
 		}
-
-		if ( [UserModel sharedInstance].avatar )
-		{
-			BeeUIActionSheet * confirm = [BeeUIActionSheet spawn];
-			[confirm addDestructiveTitle:__TEXT(@"delete_photo") signal:self.PHOTO_REMOVE];
-			[confirm addCancelTitle:__TEXT(@"button_cancel")];
-			[confirm showInViewController:self];
-		}
-		else
-		{
-			BeeUIActionSheet * confirm = [BeeUIActionSheet spawn];
-			
-			if ( [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera] )
-            {
-				[confirm addButtonTitle:__TEXT(@"from_camera") signal:self.PHOTO_FROM_CAMERA];
-			}
-			if ( [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeSavedPhotosAlbum] )
-			{
-				[confirm addButtonTitle:__TEXT(@"from_album") signal:self.PHOTO_FROM_LIBRARY];
-			}
-
-			[confirm addCancelTitle:__TEXT(@"button_cancel")];
-			[confirm showInViewController:self];
-		}
+        
+        [self.stack pushBoard:[UserDetailBoard_iPhone board] animated:YES];
+//		if ( [UserModel sharedInstance].avatar )
+//		{
+//			BeeUIActionSheet * confirm = [BeeUIActionSheet spawn];
+//			[confirm addDestructiveTitle:__TEXT(@"delete_photo") signal:self.PHOTO_REMOVE];
+//			[confirm addCancelTitle:__TEXT(@"button_cancel")];
+//			[confirm showInViewController:self];
+//		}
+//		else
+//		{
+//			BeeUIActionSheet * confirm = [BeeUIActionSheet spawn];
+//			
+//			if ( [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera] )
+//            {
+//				[confirm addButtonTitle:__TEXT(@"from_camera") signal:self.PHOTO_FROM_CAMERA];
+//			}
+//			if ( [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeSavedPhotosAlbum] )
+//			{
+//				[confirm addButtonTitle:__TEXT(@"from_album") signal:self.PHOTO_FROM_LIBRARY];
+//			}
+//
+//			[confirm addCancelTitle:__TEXT(@"button_cancel")];
+//			[confirm showInViewController:self];
+//		}
 	}
 }
 

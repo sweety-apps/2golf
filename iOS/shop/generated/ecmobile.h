@@ -558,6 +558,9 @@ AS_MESSAGE( user_collect_list );
 // POST user/info
 AS_MESSAGE( user_info );
 
+// POST user/updateinfo
+AS_MESSAGE( user_update );
+
 // POST user/signin
 AS_MESSAGE( user_signin );
 

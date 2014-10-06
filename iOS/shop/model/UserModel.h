@@ -57,6 +57,12 @@ AS_NOTIFICATION( UPDATED )
 				 email:(NSString *)email
 				fields:(NSArray *)fields;
 
+- (void)updateUser:(NSString*)name
+             phone:(NSString*)phone
+             email:(NSString*)email
+            sexval:(int)sexval
+          birthday:(NSString*)birthday;
+
 - (void)signout;
 - (void)kickout;
 
