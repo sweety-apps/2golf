@@ -139,10 +139,10 @@ ON_SIGNAL2( BeeUIBoard, signal )
      
         if (IOS7_OR_EARLIER)
         {
-            CGRect rect = self.menuScroll.frame;
-            rect.size.height = 35;
-            self.menuScroll.frame = rect;
-            self.menuScroll.bounds = rect;
+//            CGRect rect = self.menuScroll.frame;
+//            rect.size.height = 35;
+//            self.menuScroll.frame = rect;
+//            self.menuScroll.bounds = rect;
         }
         
         if (!_fetchedTabs)
