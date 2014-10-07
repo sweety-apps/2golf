@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ui namespace="UserDetailCell_iPhone">
+    
+	<linear orientation="v" class="outter-wrapper" >
+		<linear orientation="h" class ="listitem" >
+            <label class="title">爱高会员:</label>
+            <label class="value" id="vipnumber">AG13760340767</label>
+        </linear>
+        
+        <linear orientation="h" class ="listitem">
+            <label class="title">姓名:</label>
+            <label class="value" id="name">徐波</label>
+            <input class="input nameinput" id="nameinput">徐波</input>
+        </linear>
+        
+        <linear orientation="h" class ="listitem">
+            <label class="title">电话:</label>
+            <label class="value" id="tel">13760340767</label>
+            <input class="input telinput" id="telinput">13760340767</input>
+        </linear>
+        
+        <linear orientation="h" class ="listitem">
+            <label class="title">生日:</label>
+            <label class="value" id="birthday">1984-05-29</label>
+            <button class="btn" id="birthdaybtn">1984-05-29</button>
+        </linear>
+        
+        <linear orientation="h" class ="listitem">
+            <label class="title">性别:</label>
+            <label class="value" id="sex">男</label>
+            <button class="check" id="sexmalechk">男</button>
+            <button class="check" id="sexfemalechk">女</button>
+            <button class="check" id="sexsecretchk">保密</button>
+        </linear>
+        
+        <linear orientation="h" class ="listitem">
+            <label class="title">邮箱:</label>
+            <label class="value" id="email">bobo__x@126.com</label>
+            <input class="input emailinput" id="emailinput">bobo__x@126.com</input>
+        </linear>
+        
+	</linear>
+    
+	<style type="text/css">
+		.listitem
+        {
+        width: 100%;
+        height: 44px;
+        }
+        
+        .title
+        {
+        width: 100px;
+        height: 100%;
+        color: #333;
+        font-size: 16px;
+        font-weight: lighter;
+        text-align:right;
+        }
+        
+        .value
+        {
+        margin-left: 10px;
+        height: 100%;
+        width: 285px;
+        line-height: 100%;
+        font-size: 16px;
+        input-clear: editing;
+        display:inline;
+        }
+        
+        .input
+        {
+        margin-left: 10px;
+        height: 100%;
+        width: 285px;
+        line-height: 100%;
+        font-size: 16px;
+        input-clear: editing;
+        display:none;
+        
+        }
+        
+		.outter-wrapper {
+        width: 100%;
+        height: auto;
+		}
+        
+        .nameinput
+        {
+        input-return-key: done;
+        }
+        
+        .emailinput
+        {
+        input-keyboard:email;
+        input-return-key: done;
+        }
+        
+        .telinput
+        {
+        input-keyboard:phone;
+        input-return-key: done;
+        }
+        
+        .check
+        {
+        width:50px;
+        margin-left:10px;
+        height:100%;
+        color:#000000;
+        display:none;
+        font-size: 14px;
+        image: url(btn_radio_off.png);
+        image-highlighted: url(btn_radio_on.png);
+        image-selected: url(btn_radio_on.png);
+        text-insets:0 40 0 0;
+        image-insets:3 0 0 30;
+        }
+        
+        .btn
+        {
+        margin-left: -90px;
+        height: 100%;
+        width: 280px;
+        font-size: 18px;
+        color:#000000;
+        display:none;
+        background-color:#00000000;
+        align:left;
+        }
+	</style>
+	
+</ui>

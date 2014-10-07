@@ -222,7 +222,7 @@ DEF_NOTIFICATION( UPDATED )
     .INPUT(@"name",name)
     .INPUT(@"phone",phone)
     .INPUT(@"email",email)
-    .INPUT(@"sexval",sexval)
+    .INPUT(@"sexval",[NSNumber numberWithInt:sexval])
     .INPUT(@"birthday",birthday);
 }
 

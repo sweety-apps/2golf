@@ -11,31 +11,124 @@
 
 @implementation UserDetailCell_iPhone
 
-+ (CGSize)estimateUISizeByWidth:(CGFloat)width forData:(id)data expaned:(BOOL)expaned
+SUPPORT_AUTOMATIC_LAYOUT( YES )
+SUPPORT_RESOURCE_LOADING( YES )
+
++ (CGSize)estimateUISizeByWidth:(CGFloat)width forData:(id)data
 {
-    return CGSizeMake( width, 60.0f );
+    return CGSizeMake( width, 524.0f );
 }
 
 - (void)load
 {
     [super load];
-    self.titleview = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, 90, 60)];
-    [self.titleview setTextAlignment:NSTextAlignmentRight];
-    self.valueview = [[UILabel alloc] initWithFrame:CGRectMake(110, 0, 190, 60)];
-    self.editvalueview = [[UITextField alloc] initWithFrame:CGRectMake(110, 1, 190, 59)];
-    self.editvalueview.backgroundColor = [UIColor clearColor];
-    self.editvalueview.returnKeyType = UIReturnKeyDone;
-    [self addSubview:self.titleview];
-    [self addSubview:self.valueview];
-    [self addSubview:self.editvalueview];
     
+    
+}
+
+ON_SIGNAL3( UserDetailCell_iPhone, birthdaybtn, signal )
+{
+    if ( [signal is:BeeUIButton.TOUCH_UP_INSIDE] )
+    {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(onClickBirthday:)]) {
+            [self.delegate onClickBirthday:nil];
+        }
+        [self endEditing:YES];
+    }
+}
+
+ON_SIGNAL3(UserDetailCell_iPhone, sexmalechk, signal)
+{
+    $(@"#sexmalechk").SELECT();
+    $(@"#sexfemalechk").UNSELECT();
+    $(@"#sexsecretchk").UNSELECT();
+    [self endEditing:YES];
+}
+
+
+ON_SIGNAL3(UserDetailCell_iPhone, sexfemalechk, signal)
+{
+    $(@"#sexmalechk").UNSELECT();
+    $(@"#sexfemalechk").SELECT();
+    $(@"#sexsecretchk").UNSELECT();
+    [self endEditing:YES];
+}
+
+
+ON_SIGNAL3(UserDetailCell_iPhone, sexsecretchk, signal)
+{
+    
+    $(@"#sexmalechk").UNSELECT();
+    $(@"#sexfemalechk").UNSELECT();
+    $(@"#sexsecretchk").SELECT();
+    [self endEditing:YES];
+    
+}
+
+ON_SIGNAL2( BeeUITextField, signal )
+{
+	[super handleUISignal:signal];
+    
+    if ( [signal is:BeeUITextField.RETURN] )
+    {
+        NSArray * inputs = $(self).FIND(@".input").views;
+        
+        BeeUITextField * input = (BeeUITextField *)signal.source;
+        
+        NSInteger index = [inputs indexOfObject:input];
+        
+        if ( UIReturnKeyNext == input.returnKeyType )
+        {
+            BeeUITextField * next = [inputs objectAtIndex:(index + 1)];
+            [next becomeFirstResponder];
+        }
+        else if ( UIReturnKeyDone == input.returnKeyType )
+        {
+            [self endEditing:YES];
+        }
+    }
+    
+    NSLog(@"%@",$(@"#nameinput").text);
 }
 
 - (void)dataDidChanged
 {
     if ( self.data )
     {
-
+        USER* user = self.data;
+        $(@"#vipnumber").TEXT(user.vip_number);
+        $(@"#name").TEXT(user.name);
+        $(@"#nameinput").TEXT(user.name);
+        $(@"#tel").TEXT(user.user_name);
+        $(@"#telinput").TEXT(user.user_name);
+        $(@"#birthday").TEXT(user.birthday);
+        $(@"#birthdaybtn").TEXT(user.birthday);
+        $(@"#email").TEXT(user.email);
+        $(@"#emailinput").TEXT(user.email);
+        
+        switch (user.sex_val) {
+            case 0:
+                $(@"#sex").TEXT(@"保密");
+                $(@"#sexmalechk").UNSELECT();
+                $(@"#sexfemalechk").UNSELECT();
+                $(@"#sexsecretchk").SELECT();
+                break;
+            case 1:
+                $(@"#sex").TEXT(@"男");
+                $(@"#sexmalechk").SELECT();
+                $(@"#sexfemalechk").UNSELECT();
+                $(@"#sexsecretchk").UNSELECT();
+                break;
+            case 2:
+                $(@"#sex").TEXT(@"女");
+                $(@"#sexmalechk").UNSELECT();
+                $(@"#sexfemalechk").SELECT();
+                $(@"#sexsecretchk").UNSELECT();
+                break;
+                
+            default:
+                break;
+        }
     }
     else
     {
@@ -47,23 +140,87 @@
 {
     _isEditing = isEditing;
     if (_isEditing) {
-        [self.valueview setHidden:YES];
-        [self.editvalueview setHidden:NO];
+        $(@"#name").HIDE();
+        $(@"#nameinput").SHOW();
+        
+        $(@"#tel").HIDE();
+        $(@"#telinput").SHOW();
+        
+        $(@"#birthday").HIDE();
+        $(@"#birthdaybtn").SHOW();
+        
+        $(@"#sex").HIDE();
+        $(@"#sexmalechk").SHOW();
+        $(@"#sexfemalechk").SHOW();
+        $(@"#sexsecretchk").SHOW();
+        
+        
+        $(@"#email").HIDE();
+        $(@"#emailinput").SHOW();
+        
     }
     else
     {
-        [self.valueview setHidden:NO];
-        [self.editvalueview setHidden:YES];
+        $(@"#name").SHOW();
+        $(@"#nameinput").HIDE();
+        
+        $(@"#tel").SHOW();
+        $(@"#telinput").HIDE();
+        
+        $(@"#birthday").SHOW();
+        $(@"#birthdaybtn").HIDE();
+        
+        $(@"#sex").SHOW();
+        $(@"#sexmalechk").HIDE();
+        $(@"#sexfemalechk").HIDE();
+        $(@"#sexsecretchk").HIDE();
+        
+        
+        $(@"#email").SHOW();
+        $(@"#emailinput").HIDE();
     }
+}
+
+-(void)setBirthdayString:(NSString *)birthdayString
+{
+    _birthdayString = birthdayString;
+    $(@"#birthday").TEXT(_birthdayString);
+    $(@"#birthdaybtn").TEXT(_birthdayString);
+}
+
+-(USER*)getCurrentUserInfo
+{
+    USER* ret = self.data;
+    ret.name = $(@"#nameinput").text;
+    ret.user_name = $(@"#telinput").text;
+    ret.birthday = $(@"#birthdaybtn").text;
+    
+    if($(@"#sexmalechk").selected)
+    {
+        ret.sex_val = 1;
+    }
+    else if($(@"#sexfemalechk").selected)
+    {
+        ret.sex_val = 2;
+    }
+    else if($(@"#sexsecretchk").selected)
+    {
+        ret.sex_val = 0;
+    }
+    
+    ret.email = $(@"#emailinput").text;
+    return ret;
 }
 @end
 
 @interface UserDetailBoard_iPhone ()
+<UserDetailCell_iPhoneDelegate,UIActionSheetDelegate>
 {
     BeeUIScrollView* _scroll;
-    NSMutableArray* _titlearray;
-    NSMutableArray* _valuearray;
-    CGSize privilegesize;
+    UIDatePicker* _datepicker;
+    UIButton* _confirm;
+    USER* user ;
+    UserDetailCell_iPhone* _cell;
 }
 @end
 
@@ -73,16 +230,15 @@
 {
 	[super load];
 	[[UserModel sharedInstance] addObserver:self];
-    _titlearray = [[NSMutableArray alloc] initWithObjects:@"爱高会员：",@"姓       名：",@"电       话：",@"生       日：",@"性       别：",@"邮       箱：",nil];
-    _valuearray = [[NSMutableArray alloc] init];
-    privilegesize = CGSizeZero;
+    
+    [user release];
+    user = nil;
+    user = [[UserModel sharedInstance].user retain];
 }
 
 - (void)unload
 {
     [[UserModel sharedInstance] removeObserver:self];
-    [_titlearray release];
-    [_valuearray release];
 	[super unload];
 }
 
@@ -108,6 +264,19 @@ ON_SIGNAL2( BeeUIBoard, signal )
 		[self.view addSubview:_scroll];
         [_scroll setBackgroundColor:[UIColor clearColor]];
         [self.view setBackgroundColor:[UIColor colorWithRed:238/255.0 green:238/255.0 blue:238/255.0f alpha:1.0]];
+        
+        _datepicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height - 216, 320, 216)];
+        [self.view addSubview:_datepicker];
+        [_datepicker setHidden:YES];
+        _datepicker.datePickerMode = UIDatePickerModeDate;
+        _confirm = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_confirm setTitle:@"确定" forState:UIControlStateNormal];
+        [_confirm setFrame:CGRectMake(270, _datepicker.frame.origin.y - 30, 50, 30)];
+        [_confirm setBackgroundColor:[UIColor clearColor]];
+        [_confirm addTarget:self action:@selector(onClickConfirm:) forControlEvents:UIControlEventTouchUpInside];
+        [_confirm setHidden:YES];
+        [_confirm setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        [self.view addSubview:_confirm];
     }
     else if ( [signal is:BeeUIBoard.DELETE_VIEWS] )
     {
@@ -129,7 +298,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
     {
 		[[AppBoard_iPhone sharedInstance] setTabbarHidden:YES];
 		
-		[self updateViews];
+//		[self updateViews];
     }
     else if ( [signal is:BeeUIBoard.DID_APPEAR] )
     {
@@ -156,9 +325,17 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
 	}
 	else if ( [signal is:BeeUINavigationBar.RIGHT_TOUCHED] )
 	{
-        self.isEditing = !self.isEditing;
-        
-        [self updateViews];
+        if ( self.isEditing )
+        {
+            USER* tmpuser = [_cell getCurrentUserInfo];
+            [[UserModel sharedInstance] updateUser:tmpuser.name phone:tmpuser.user_name email:tmpuser.email sexval:tmpuser.sex_val birthday:tmpuser.birthday];
+        }
+        else
+        {
+            self.isEditing = YES;
+            [self updateViews];
+        }
+
 	}
 }
 
@@ -183,13 +360,13 @@ ON_SIGNAL2( BeeUIScrollView, signal )
     {
         [self showBarButton:BeeUINavigationBar.RIGHT title:__TEXT(@"collect_done") image:[UIImage imageNamed:@"nav-right.png"]];
         [_scroll reloadData];
+        [_scroll setHeaderShown:NO];
+        
     }
     else
     {
-        [self showBarButton:BeeUINavigationBar.RIGHT title:__TEXT(@"collect_compile") image:[UIImage imageNamed:@"nav-right.png"]];
-//        [UserModel sharedInstance] updateUser:<#(NSString *)#> phone:<#(NSString *)#> email:<#(NSString *)#> sexval:<#(int)#> birthday:<#(NSString *)#>
+
     }
-    
 }
 
 #pragma mark -
@@ -201,34 +378,43 @@ ON_SIGNAL2( BeeUIScrollView, signal )
 
 - (NSInteger)numberOfViewsInScrollView:(BeeUIScrollView *)scrollView
 {
-    if (_valuearray.count != 0) {
-        return [_valuearray count] + 4;
-    }
-    else
-    {
-        return 0;
-    }
+    return 1;
 }
 
 - (UIView *)scrollView:(BeeUIScrollView *)scrollView viewForIndex:(NSInteger)index scale:(CGFloat)scale
 {
     if (index < 6) {
-        UserDetailCell_iPhone * cell = [scrollView dequeueWithContentClass:[UserDetailCell_iPhone class]];
-        if(index != 0)
-        {
-            cell.isEditing = self.isEditing;
-            if (self.isEditing && index == 1) {
-                [cell.editvalueview becomeFirstResponder];
-            }
-        }
-        else
-        {
-            cell.isEditing = NO;
-        }
-        cell.titleview.text = [_titlearray objectAtIndex:index];
-        cell.valueview.text = [_valuearray objectAtIndex:index] ;
-        cell.editvalueview.text = [_valuearray objectAtIndex:index];
-        return cell;
+        _cell = [scrollView dequeueWithContentClass:[UserDetailCell_iPhone class]];
+        _cell.data = user;
+        _cell.isEditing = self.isEditing;
+        _cell.delegate = self;
+//        if(index != 0)
+//        {
+//            cell.isEditing = self.isEditing;
+//            if (self.isEditing && index == 1) {
+////                [cell.editvalueview becomeFirstResponder];
+//            }
+//        }
+//        else
+//        {
+//            cell.isEditing = NO;
+//        }
+//        cell.titleview.text = [_titlearray objectAtIndex:index];
+//        cell.valueview.text = [_valuearray objectAtIndex:index] ;
+//        cell.editvalueview.text = [_valuearray objectAtIndex:index];
+//        cell.valueview.tag = index;
+//        if (index == 2) {
+//            cell.editvalueview.keyboardType = UIKeyboardTypePhonePad;
+//        }
+//        else if(index == 5)
+//        {
+//            cell.editvalueview.keyboardType = UIKeyboardTypeEmailAddress;
+//        }
+//        else
+//        {
+//            cell.editvalueview.delegate = self;
+//        }
+        return _cell;
     }
     else if(index == 6)
     {
@@ -258,14 +444,14 @@ ON_SIGNAL2( BeeUIScrollView, signal )
     }
     else if (index == 9)
     {
-        UITableViewCell* cell = [[UITableViewCell alloc] initWithFrame:CGRectMake(20, 0, privilegesize.width, privilegesize.height)];
-        UITextView* lbl = [[UITextView alloc] initWithFrame:CGRectMake(20, 0, privilegesize.width, privilegesize.height)];
-        [lbl setText:[UserModel sharedInstance].user.privilege];
-        [cell addSubview:lbl];
-        [lbl setFont:[UIFont systemFontOfSize:16]];
-        [lbl setBackgroundColor:[UIColor clearColor]];
-        [lbl setEditable:NO];
-        return cell;
+//        UITableViewCell* cell = [[UITableViewCell alloc] initWithFrame:CGRectMake(20, 0, privilegesize.width, privilegesize.height)];
+//        UITextView* lbl = [[UITextView alloc] initWithFrame:CGRectMake(20, 0, privilegesize.width, privilegesize.height)];
+//        [lbl setText:[UserModel sharedInstance].user.privilege];
+//        [cell addSubview:lbl];
+//        [lbl setFont:[UIFont systemFontOfSize:16]];
+//        [lbl setBackgroundColor:[UIColor clearColor]];
+//        [lbl setEditable:NO];
+//        return cell;
     }
     else
     {
@@ -275,24 +461,7 @@ ON_SIGNAL2( BeeUIScrollView, signal )
 
 - (CGSize)scrollView:(BeeUIScrollView *)scrollView sizeForIndex:(NSInteger)index
 {
-    if(index < 7)
-        return CGSizeMake( (scrollView.width), 40.0f );
-    else if(index == 7)
-    {
-        return CGSizeMake(scrollView.width, 120);
-    }
-    else if (index == 8)
-    {
-        return  CGSizeMake( (scrollView.width), 40.0f );
-    }
-    else if(index == 9)
-    {
-        return privilegesize;
-    }
-    else
-    {
-        return CGSizeZero;
-    }
+    return [UserDetailCell_iPhone estimateUISizeByWidth:scrollView.width forData:user];
 }
 
 - (void)handleMessage:(BeeMessage *)msg
@@ -307,21 +476,74 @@ ON_SIGNAL2( BeeUIScrollView, signal )
         
         if ( msg.succeed )
         {
-            [self _resetData];
+            [user release];
+            user = nil;
+            user = [[UserModel sharedInstance].user retain];
             [_scroll reloadData];
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init] ;
+            [formatter setDateFormat:@"yyyy-MM-dd"];
+            NSDate *date=[formatter dateFromString:user.birthday];
+            
+            _datepicker.date = date;
+            
+            [self showBarButton:BeeUINavigationBar.RIGHT title:__TEXT(@"collect_compile") image:[UIImage imageNamed:@"nav-right.png"]];
+        }
+    }
+    else if([msg is:API.user_update])
+    {
+        {
+            [_scroll setHeaderLoading:msg.sending];
+        }
+        
+        if ( msg.succeed )
+        {
+            [self presentMessageTips:@"更新个人资料成功"];
+            [self showBarButton:BeeUINavigationBar.RIGHT title:__TEXT(@"collect_compile") image:[UIImage imageNamed:@"nav-right.png"]];
+            self.isEditing = NO;
+            [user release];
+            user = nil;
+            user = [[UserModel sharedInstance].user retain];
+            [_scroll reloadData];
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init] ;
+            [formatter setDateFormat:@"yyyy-MM-dd"];
+            NSDate *date=[formatter dateFromString:user.birthday];
+            
+            _datepicker.date = date;
+
         }
     }
 }
 
 -(void)_resetData
 {
-    [_valuearray removeAllObjects];
-    [_valuearray addObject:[UserModel sharedInstance].user.vip_number];
-    [_valuearray addObject:[UserModel sharedInstance].user.name];
-    [_valuearray addObject:[UserModel sharedInstance].user.user_name];
-    [_valuearray addObject:[UserModel sharedInstance].user.birthday];
-    [_valuearray addObject:[UserModel sharedInstance].user.sex];
-    [_valuearray addObject:[UserModel sharedInstance].user.email];
-    privilegesize = [[UserModel sharedInstance].user.privilege sizeWithFont:[UIFont systemFontOfSize:18] byWidth:280];
+//    [_valuearray removeAllObjects];
+//    [_valuearray addObject:[UserModel sharedInstance].user.vip_number];
+//    [_valuearray addObject:[UserModel sharedInstance].user.name];
+//    [_valuearray addObject:[UserModel sharedInstance].user.user_name];
+//    [_valuearray addObject:[UserModel sharedInstance].user.birthday];
+//    [_valuearray addObject:[UserModel sharedInstance].user.sex];
+//    [_valuearray addObject:[UserModel sharedInstance].user.email];
+//    privilegesize = [[UserModel sharedInstance].user.privilege sizeWithFont:[UIFont systemFontOfSize:18] byWidth:280];
+    
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    return YES;
+}
+
+-(void)onClickBirthday:(id)sender
+{
+    [_datepicker setHidden:NO];
+    [_confirm setHidden:NO];
+}
+
+-(void)onClickConfirm:(id)sender
+{
+    [_datepicker setHidden:YES];
+    [_confirm setHidden:YES];
+    user.birthday = [NSString stringWithFormat:@"%04d-%02d-%02d",[_datepicker.date year],[_datepicker.date month],[_datepicker.date day]];
+    [_scroll reloadData];
+    
 }
 @end

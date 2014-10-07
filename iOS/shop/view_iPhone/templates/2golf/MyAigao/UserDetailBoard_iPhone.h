@@ -9,11 +9,18 @@
 #import "Bee.h"
 #import "UserModel.h"
 
+@protocol UserDetailCell_iPhoneDelegate <NSObject>
+
+-(void)onClickBirthday:(id)sender;
+
+@end
+
 @interface UserDetailCell_iPhone : BeeUICell
 @property (nonatomic, assign) BOOL isEditing;
-@property (nonatomic, retain) UILabel* titleview;
-@property (nonatomic, retain) UILabel* valueview;
-@property (nonatomic, retain) UITextField* editvalueview;
+@property (nonatomic,assign) id<UserDetailCell_iPhoneDelegate> delegate;
+@property (nonatomic,retain) NSString* birthdayString;
+
+-(USER*)getCurrentUserInfo;
 @end
 
 @interface UserDetailBoard_iPhone : BeeUIBoard

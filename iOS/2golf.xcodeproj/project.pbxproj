@@ -536,15 +536,14 @@
 		4F47A26919B731250070C8B1 /* QiuChangOrderDetailBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F47A26819B731250070C8B1 /* QiuChangOrderDetailBoard_iPhone.m */; };
 		4F47A28019B748DA0070C8B1 /* QiuChangOrderDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F47A27F19B748DA0070C8B1 /* QiuChangOrderDetailCell.m */; };
 		4F47A28219B74D7F0070C8B1 /* QiuChangOrderDetailCell.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4F47A28119B74D7F0070C8B1 /* QiuChangOrderDetailCell.xml */; };
-		4F4ACC1D19E23DEA0076EB36 /* libUnionPayLib11 - simulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F4ACC1C19E23DEA0076EB36 /* libUnionPayLib11 - simulator.a */; };
 		4F4ACC2119E240200076EB36 /* UserDetailBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4ACC1F19E240200076EB36 /* UserDetailBoard_iPhone.m */; };
-		4F4ACC2219E240200076EB36 /* UserDetailBoard_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F4ACC2019E240200076EB36 /* UserDetailBoard_iPhone.xib */; };
 		4F4ACC2F19E29E840076EB36 /* btn_radio_on_pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F4ACC2919E29E840076EB36 /* btn_radio_on_pressed@2x.png */; };
 		4F4ACC3019E29E840076EB36 /* btn_radio_off_pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F4ACC2A19E29E840076EB36 /* btn_radio_off_pressed@2x.png */; };
 		4F4ACC3119E29E840076EB36 /* btn_radio_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F4ACC2B19E29E840076EB36 /* btn_radio_off@2x.png */; };
 		4F4ACC3219E29E840076EB36 /* btn_radio_off_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F4ACC2C19E29E840076EB36 /* btn_radio_off_selected@2x.png */; };
 		4F4ACC3319E29E840076EB36 /* btn_radio_on_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F4ACC2D19E29E840076EB36 /* btn_radio_on_selected@2x.png */; };
 		4F4ACC3419E29E840076EB36 /* btn_radio_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F4ACC2E19E29E840076EB36 /* btn_radio_on@2x.png */; };
+		4F5D349919E3F47500A83882 /* libUnionPayLib11 -Device.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F5D349819E3F47500A83882 /* libUnionPayLib11 -Device.a */; };
 		4F74675419BB2C8B006F3F39 /* BrandListBoard_iPhone.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4F74674F19BB2C8B006F3F39 /* BrandListBoard_iPhone.xml */; };
 		4F74675519BB2C8B006F3F39 /* BrandListCell_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F74675019BB2C8B006F3F39 /* BrandListCell_iPhone.m */; };
 		4F74675619BB2C8B006F3F39 /* BrandListCell_iPhone.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4F74675119BB2C8B006F3F39 /* BrandListCell_iPhone.xml */; };
@@ -854,6 +853,7 @@
 		4FCE5E3A19D58683003ABAE7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FCE5E3919D58683003ABAE7 /* Images.xcassets */; };
 		4FCE5E3C19D58916003ABAE7 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FCE5E3B19D58916003ABAE7 /* Icon@2x.png */; };
 		4FCE5E3E19D58927003ABAE7 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FCE5E3D19D58927003ABAE7 /* icon.png */; };
+		4FD7A3D719E3B534001FB5F8 /* UserDetailCell_iPhone.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4FD7A3D619E3AB83001FB5F8 /* UserDetailCell_iPhone.xml */; };
 		4FDDA8AE19D6A179000FBE95 /* CopyConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FDDA85719D6A179000FBE95 /* CopyConnection.framework */; };
 		4FDDA8AF19D6A179000FBE95 /* DouBanConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FDDA85819D6A179000FBE95 /* DouBanConnection.framework */; };
 		4FDDA8B019D6A179000FBE95 /* DropboxConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FDDA85919D6A179000FBE95 /* DropboxConnection.framework */; };
@@ -1658,16 +1658,15 @@
 		4F47A27E19B748DA0070C8B1 /* QiuChangOrderDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuChangOrderDetailCell.h; sourceTree = "<group>"; };
 		4F47A27F19B748DA0070C8B1 /* QiuChangOrderDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiuChangOrderDetailCell.m; sourceTree = "<group>"; };
 		4F47A28119B74D7F0070C8B1 /* QiuChangOrderDetailCell.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = QiuChangOrderDetailCell.xml; sourceTree = "<group>"; };
-		4F4ACC1C19E23DEA0076EB36 /* libUnionPayLib11 - simulator.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libUnionPayLib11 - simulator.a"; sourceTree = "<group>"; };
 		4F4ACC1E19E240200076EB36 /* UserDetailBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDetailBoard_iPhone.h; sourceTree = "<group>"; };
 		4F4ACC1F19E240200076EB36 /* UserDetailBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDetailBoard_iPhone.m; sourceTree = "<group>"; };
-		4F4ACC2019E240200076EB36 /* UserDetailBoard_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserDetailBoard_iPhone.xib; sourceTree = "<group>"; };
 		4F4ACC2919E29E840076EB36 /* btn_radio_on_pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_radio_on_pressed@2x.png"; sourceTree = "<group>"; };
 		4F4ACC2A19E29E840076EB36 /* btn_radio_off_pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_radio_off_pressed@2x.png"; sourceTree = "<group>"; };
 		4F4ACC2B19E29E840076EB36 /* btn_radio_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_radio_off@2x.png"; sourceTree = "<group>"; };
 		4F4ACC2C19E29E840076EB36 /* btn_radio_off_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_radio_off_selected@2x.png"; sourceTree = "<group>"; };
 		4F4ACC2D19E29E840076EB36 /* btn_radio_on_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_radio_on_selected@2x.png"; sourceTree = "<group>"; };
 		4F4ACC2E19E29E840076EB36 /* btn_radio_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_radio_on@2x.png"; sourceTree = "<group>"; };
+		4F5D349819E3F47500A83882 /* libUnionPayLib11 -Device.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libUnionPayLib11 -Device.a"; sourceTree = "<group>"; };
 		4F74674E19BB2C8B006F3F39 /* BrandListCell_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BrandListCell_iPhone.h; path = Brand/BrandListCell_iPhone.h; sourceTree = "<group>"; };
 		4F74674F19BB2C8B006F3F39 /* BrandListBoard_iPhone.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = BrandListBoard_iPhone.xml; path = Brand/BrandListBoard_iPhone.xml; sourceTree = "<group>"; };
 		4F74675019BB2C8B006F3F39 /* BrandListCell_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BrandListCell_iPhone.m; path = Brand/BrandListCell_iPhone.m; sourceTree = "<group>"; };
@@ -2286,6 +2285,7 @@
 		4FCE5E3919D58683003ABAE7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = 2golf/Images.xcassets; sourceTree = "<group>"; };
 		4FCE5E3B19D58916003ABAE7 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		4FCE5E3D19D58927003ABAE7 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		4FD7A3D619E3AB83001FB5F8 /* UserDetailCell_iPhone.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = UserDetailCell_iPhone.xml; sourceTree = "<group>"; };
 		4FDDA85719D6A179000FBE95 /* CopyConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CopyConnection.framework; sourceTree = "<group>"; };
 		4FDDA85819D6A179000FBE95 /* DouBanConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DouBanConnection.framework; sourceTree = "<group>"; };
 		4FDDA85919D6A179000FBE95 /* DropboxConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DropboxConnection.framework; sourceTree = "<group>"; };
@@ -2536,7 +2536,6 @@
 				4FDDA8E219D6A17A000FBE95 /* libWeChatSDK.a in Frameworks */,
 				4FDDA8E319D6A17A000FBE95 /* libYixinSDK.a in Frameworks */,
 				4FDDA8B319D6A179000FBE95 /* FlickrConnection.framework in Frameworks */,
-				4F4ACC1D19E23DEA0076EB36 /* libUnionPayLib11 - simulator.a in Frameworks */,
 				4FDDA8D519D6A179000FBE95 /* ShareSDKCoreService.framework in Frameworks */,
 				4FDDA8C219D6A179000FBE95 /* QQConnection.framework in Frameworks */,
 				4FDDA8C819D6A179000FBE95 /* SohuWeiboConnection.framework in Frameworks */,
@@ -2558,6 +2557,7 @@
 				4FDDA8BA19D6A179000FBE95 /* KakaoTalkConnection.framework in Frameworks */,
 				F3D14E2D1957257B00A0DA3E /* AlixPaylib.a in Frameworks */,
 				F3D14E321957257B00A0DA3E /* libssl.a in Frameworks */,
+				4F5D349919E3F47500A83882 /* libUnionPayLib11 -Device.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3222,7 +3222,7 @@
 				4F2730E119B410090022EF21 /* ResetPassword */,
 				4F4ACC1E19E240200076EB36 /* UserDetailBoard_iPhone.h */,
 				4F4ACC1F19E240200076EB36 /* UserDetailBoard_iPhone.m */,
-				4F4ACC2019E240200076EB36 /* UserDetailBoard_iPhone.xib */,
+				4FD7A3D619E3AB83001FB5F8 /* UserDetailCell_iPhone.xml */,
 			);
 			path = MyAigao;
 			sourceTree = "<group>";
@@ -4981,7 +4981,7 @@
 		4FFB1F3519AF5150007F179B /* upomp_lthj */ = {
 			isa = PBXGroup;
 			children = (
-				4F4ACC1C19E23DEA0076EB36 /* libUnionPayLib11 - simulator.a */,
+				4F5D349819E3F47500A83882 /* libUnionPayLib11 -Device.a */,
 				4FFB1F3719AF5150007F179B /* LTInterface.h */,
 				4FFB1F3819AF5150007F179B /* ResourceBundle11.bundle */,
 			);
@@ -5240,6 +5240,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FD7A3D719E3B534001FB5F8 /* UserDetailCell_iPhone.xml in Resources */,
 				4F2733D119B4100A0022EF21 /* SirendingzhiListCellBoard_iPhone.xib in Resources */,
 				4F27327519B4100A0022EF21 /* privilegelisticonxian@2x.png in Resources */,
 				4F2733B519B4100A0022EF21 /* QiuchangBannerPhotoCell_iPhone.xml in Resources */,
@@ -5573,7 +5574,6 @@
 				4F27336B19B4100A0022EF21 /* MyPointsBoard_iPhone.xib in Resources */,
 				4F2732A819B4100A0022EF21 /* accsessory-arrow-down@2x.png in Resources */,
 				4F2732BF19B4100A0022EF21 /* cell-bg-header-small@2x.png in Resources */,
-				4F4ACC2219E240200076EB36 /* UserDetailBoard_iPhone.xib in Resources */,
 				4F2733C619B4100A0022EF21 /* SirendingzhiDetailBoard_iPhone.xib in Resources */,
 				4F27325A19B4100A0022EF21 /* coursefragmentcustomizationbkg@2x.png in Resources */,
 				4F27341C19B4100A0022EF21 /* OrderCellFooter_iPhone.xml in Resources */,

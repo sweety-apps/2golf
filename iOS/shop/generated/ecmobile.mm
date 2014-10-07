@@ -2099,7 +2099,10 @@ DEF_MESSAGE_( user_update, msg)
 		}
         
 		NSMutableDictionary * requestBody = [NSMutableDictionary dictionary];
-		requestBody.APPEND( @"session", session );
+        NSMutableDictionary* sessiondict = [NSMutableDictionary dictionary];
+        sessiondict.APPEND(@"sid",session.sid);
+        sessiondict.APPEND(@"uid",session.uid);
+		requestBody.APPEND( @"session", sessiondict );
         NSMutableDictionary * updatedict = [NSMutableDictionary dictionary];
         updatedict.APPEND( @"name",name);
         updatedict.APPEND(@"phone",phone);
@@ -2110,7 +2113,7 @@ DEF_MESSAGE_( user_update, msg)
         //		NSString * requestURI = @"http://shop.ecmobile.me/ecmobile/?url=user/info";
 		NSString * requestURI = [NSString stringWithFormat:@"%@user/updateinfo", [ServerConfig sharedInstance].url];
 		
-		msg.HTTP_POST( requestURI ).PARAM( @"json", requestBody.objectToString );
+		msg.HTTP_POST( requestURI ).PARAM( @"json", [requestBody JSONString] );
 	}
 	else if ( msg.succeed )
 	{
