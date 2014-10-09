@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4F1B2AA919B9CBDE00D3C5B9 /* SMS_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F1B2AA819B9CBDE00D3C5B9 /* SMS_SDK.framework */; };
+		4F2516AA19E4DFAE006B961D /* libUnionPayLib11 -Device.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2516A919E4DFAE006B961D /* libUnionPayLib11 -Device.a */; };
 		4F27324F19B4100A0022EF21 /* AppBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F272F7E19B410080022EF21 /* AppBoard_iPhone.m */; };
 		4F27325019B4100A0022EF21 /* AppTab_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F272F8019B410080022EF21 /* AppTab_iPhone.m */; };
 		4F27325119B4100A0022EF21 /* AppTab_iPhone.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4F272F8119B410080022EF21 /* AppTab_iPhone.xml */; };
@@ -543,11 +544,11 @@
 		4F4ACC3219E29E840076EB36 /* btn_radio_off_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F4ACC2C19E29E840076EB36 /* btn_radio_off_selected@2x.png */; };
 		4F4ACC3319E29E840076EB36 /* btn_radio_on_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F4ACC2D19E29E840076EB36 /* btn_radio_on_selected@2x.png */; };
 		4F4ACC3419E29E840076EB36 /* btn_radio_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F4ACC2E19E29E840076EB36 /* btn_radio_on@2x.png */; };
-		4F5D349919E3F47500A83882 /* libUnionPayLib11 -Device.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F5D349819E3F47500A83882 /* libUnionPayLib11 -Device.a */; };
 		4F74675419BB2C8B006F3F39 /* BrandListBoard_iPhone.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4F74674F19BB2C8B006F3F39 /* BrandListBoard_iPhone.xml */; };
 		4F74675519BB2C8B006F3F39 /* BrandListCell_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F74675019BB2C8B006F3F39 /* BrandListCell_iPhone.m */; };
 		4F74675619BB2C8B006F3F39 /* BrandListCell_iPhone.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4F74675119BB2C8B006F3F39 /* BrandListCell_iPhone.xml */; };
 		4F74675719BB2C8B006F3F39 /* BrandListBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F74675319BB2C8B006F3F39 /* BrandListBoard_iPhone.m */; };
+		4F89625719E62D6F002B482C /* YudingbaoMainCell_iPhone-568h.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4F89625619E62D6F002B482C /* YudingbaoMainCell_iPhone-568h.xml */; };
 		4FB952E6190122D300EE0CF7 /* libXG-SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FB952E3190122D300EE0CF7 /* libXG-SDK.a */; };
 		4FB952E7190122D300EE0CF7 /* ReleaseNotes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4FB952E4190122D300EE0CF7 /* ReleaseNotes.txt */; };
 		4FB952E91901232900EE0CF7 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FB952E81901232900EE0CF7 /* CoreTelephony.framework */; };
@@ -894,9 +895,6 @@
 		4FDDA8D319D6A179000FBE95 /* ShareSDKLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4FDDA87D19D6A179000FBE95 /* ShareSDKLocalizable.strings */; };
 		4FDDA8D419D6A179000FBE95 /* Resource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4FDDA87F19D6A179000FBE95 /* Resource.bundle */; };
 		4FDDA8D519D6A179000FBE95 /* ShareSDKCoreService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FDDA88019D6A179000FBE95 /* ShareSDKCoreService.framework */; };
-		4FDDA8D619D6A179000FBE95 /* GoogleOpenSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FDDA88419D6A179000FBE95 /* GoogleOpenSource.framework */; };
-		4FDDA8D719D6A179000FBE95 /* GooglePlus.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4FDDA88519D6A179000FBE95 /* GooglePlus.bundle */; };
-		4FDDA8D819D6A179000FBE95 /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FDDA88619D6A179000FBE95 /* GooglePlus.framework */; };
 		4FDDA8D919D6A179000FBE95 /* Pinterest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FDDA88819D6A179000FBE95 /* Pinterest.framework */; };
 		4FDDA8DA19D6A179000FBE95 /* PinterestSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4FDDA88A19D6A179000FBE95 /* PinterestSDKResources.bundle */; };
 		4FDDA8DB19D6A179000FBE95 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FDDA88C19D6A179000FBE95 /* TencentOpenAPI.framework */; };
@@ -971,6 +969,7 @@
 
 /* Begin PBXFileReference section */
 		4F1B2AA819B9CBDE00D3C5B9 /* SMS_SDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SMS_SDK.framework; sourceTree = "<group>"; };
+		4F2516A919E4DFAE006B961D /* libUnionPayLib11 -Device.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libUnionPayLib11 -Device.a"; sourceTree = "<group>"; };
 		4F272F7D19B410080022EF21 /* AppBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppBoard_iPhone.h; sourceTree = "<group>"; };
 		4F272F7E19B410080022EF21 /* AppBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppBoard_iPhone.m; sourceTree = "<group>"; };
 		4F272F7F19B410080022EF21 /* AppTab_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppTab_iPhone.h; sourceTree = "<group>"; };
@@ -1666,13 +1665,13 @@
 		4F4ACC2C19E29E840076EB36 /* btn_radio_off_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_radio_off_selected@2x.png"; sourceTree = "<group>"; };
 		4F4ACC2D19E29E840076EB36 /* btn_radio_on_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_radio_on_selected@2x.png"; sourceTree = "<group>"; };
 		4F4ACC2E19E29E840076EB36 /* btn_radio_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_radio_on@2x.png"; sourceTree = "<group>"; };
-		4F5D349819E3F47500A83882 /* libUnionPayLib11 -Device.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libUnionPayLib11 -Device.a"; sourceTree = "<group>"; };
 		4F74674E19BB2C8B006F3F39 /* BrandListCell_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BrandListCell_iPhone.h; path = Brand/BrandListCell_iPhone.h; sourceTree = "<group>"; };
 		4F74674F19BB2C8B006F3F39 /* BrandListBoard_iPhone.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = BrandListBoard_iPhone.xml; path = Brand/BrandListBoard_iPhone.xml; sourceTree = "<group>"; };
 		4F74675019BB2C8B006F3F39 /* BrandListCell_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BrandListCell_iPhone.m; path = Brand/BrandListCell_iPhone.m; sourceTree = "<group>"; };
 		4F74675119BB2C8B006F3F39 /* BrandListCell_iPhone.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = BrandListCell_iPhone.xml; path = Brand/BrandListCell_iPhone.xml; sourceTree = "<group>"; };
 		4F74675219BB2C8B006F3F39 /* BrandListBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BrandListBoard_iPhone.h; path = Brand/BrandListBoard_iPhone.h; sourceTree = "<group>"; };
 		4F74675319BB2C8B006F3F39 /* BrandListBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BrandListBoard_iPhone.m; path = Brand/BrandListBoard_iPhone.m; sourceTree = "<group>"; };
+		4F89625619E62D6F002B482C /* YudingbaoMainCell_iPhone-568h.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "YudingbaoMainCell_iPhone-568h.xml"; sourceTree = "<group>"; };
 		4FB952E3190122D300EE0CF7 /* libXG-SDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libXG-SDK.a"; sourceTree = "<group>"; };
 		4FB952E4190122D300EE0CF7 /* ReleaseNotes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReleaseNotes.txt; sourceTree = "<group>"; };
 		4FB952E5190122D300EE0CF7 /* XGPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGPush.h; sourceTree = "<group>"; };
@@ -2327,9 +2326,6 @@
 		4FDDA87F19D6A179000FBE95 /* Resource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Resource.bundle; sourceTree = "<group>"; };
 		4FDDA88019D6A179000FBE95 /* ShareSDKCoreService.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKCoreService.framework; sourceTree = "<group>"; };
 		4FDDA88119D6A179000FBE95 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ShareSDKLocalizable.strings"; sourceTree = "<group>"; };
-		4FDDA88419D6A179000FBE95 /* GoogleOpenSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleOpenSource.framework; sourceTree = "<group>"; };
-		4FDDA88519D6A179000FBE95 /* GooglePlus.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GooglePlus.bundle; sourceTree = "<group>"; };
-		4FDDA88619D6A179000FBE95 /* GooglePlus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GooglePlus.framework; sourceTree = "<group>"; };
 		4FDDA88819D6A179000FBE95 /* Pinterest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Pinterest.framework; sourceTree = "<group>"; };
 		4FDDA88A19D6A179000FBE95 /* PinterestSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PinterestSDKResources.bundle; sourceTree = "<group>"; };
 		4FDDA88C19D6A179000FBE95 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
@@ -2505,8 +2501,6 @@
 				4FDDA8B819D6A179000FBE95 /* KaiXinConnection.framework in Frameworks */,
 				4FDDA8CF19D6A179000FBE95 /* WhatsAppConnection.framework in Frameworks */,
 				4FDDA8E619D6A17A000FBE95 /* ShareSDKFlatShareViewUI.framework in Frameworks */,
-				4FDDA8D819D6A179000FBE95 /* GooglePlus.framework in Frameworks */,
-				4FDDA8D619D6A179000FBE95 /* GoogleOpenSource.framework in Frameworks */,
 				4FDDA8B119D6A179000FBE95 /* EverNoteConnection.framework in Frameworks */,
 				4FDDA8CC19D6A179000FBE95 /* TwitterConnection.framework in Frameworks */,
 				F3B538BA18FEA69C004E72D4 /* libbaidumapapi.a in Frameworks */,
@@ -2557,7 +2551,7 @@
 				4FDDA8BA19D6A179000FBE95 /* KakaoTalkConnection.framework in Frameworks */,
 				F3D14E2D1957257B00A0DA3E /* AlixPaylib.a in Frameworks */,
 				F3D14E321957257B00A0DA3E /* libssl.a in Frameworks */,
-				4F5D349919E3F47500A83882 /* libUnionPayLib11 -Device.a in Frameworks */,
+				4F2516AA19E4DFAE006B961D /* libUnionPayLib11 -Device.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3109,6 +3103,7 @@
 				4F27321119B410090022EF21 /* TimeSquareBoard_iPhone.h */,
 				4F27321219B410090022EF21 /* TimeSquareBoard_iPhone.m */,
 				4F27321319B410090022EF21 /* YudingbaoMainCell_iPhone.xml */,
+				4F89625619E62D6F002B482C /* YudingbaoMainCell_iPhone-568h.xml */,
 			);
 			path = templates;
 			sourceTree = "<group>";
@@ -4863,7 +4858,6 @@
 		4FDDA88219D6A179000FBE95 /* Extend */ = {
 			isa = PBXGroup;
 			children = (
-				4FDDA88319D6A179000FBE95 /* GooglePlusSDK */,
 				4FDDA88719D6A179000FBE95 /* Pinterest.embeddedframework */,
 				4FDDA88B19D6A179000FBE95 /* QQConnectSDK */,
 				4FDDA88E19D6A179000FBE95 /* RenRenSDK */,
@@ -4873,16 +4867,6 @@
 				4FDDA89C19D6A179000FBE95 /* YiXinSDK */,
 			);
 			path = Extend;
-			sourceTree = "<group>";
-		};
-		4FDDA88319D6A179000FBE95 /* GooglePlusSDK */ = {
-			isa = PBXGroup;
-			children = (
-				4FDDA88419D6A179000FBE95 /* GoogleOpenSource.framework */,
-				4FDDA88519D6A179000FBE95 /* GooglePlus.bundle */,
-				4FDDA88619D6A179000FBE95 /* GooglePlus.framework */,
-			);
-			path = GooglePlusSDK;
 			sourceTree = "<group>";
 		};
 		4FDDA88719D6A179000FBE95 /* Pinterest.embeddedframework */ = {
@@ -4981,7 +4965,7 @@
 		4FFB1F3519AF5150007F179B /* upomp_lthj */ = {
 			isa = PBXGroup;
 			children = (
-				4F5D349819E3F47500A83882 /* libUnionPayLib11 -Device.a */,
+				4F2516A919E4DFAE006B961D /* libUnionPayLib11 -Device.a */,
 				4FFB1F3719AF5150007F179B /* LTInterface.h */,
 				4FFB1F3819AF5150007F179B /* ResourceBundle11.bundle */,
 			);
@@ -5415,7 +5399,7 @@
 				4F4ACC3319E29E840076EB36 /* btn_radio_on_selected@2x.png in Resources */,
 				4F27342B19B4100A0022EF21 /* SearchInput_iPhone.xml in Resources */,
 				4F27326619B4100A0022EF21 /* coursesearchmorecourseicon@2x.png in Resources */,
-				4FDDA8D719D6A179000FBE95 /* GooglePlus.bundle in Resources */,
+				4F89625719E62D6F002B482C /* YudingbaoMainCell_iPhone-568h.xml in Resources */,
 				4F27337F19B4100A0022EF21 /* GoodsDetailSlide_iPhone.xml in Resources */,
 				4F2732DD19B4100A0022EF21 /* item-grid-filter-bg-line@2x.png in Resources */,
 				4F2732CC19B4100A0022EF21 /* footer-shopping-cart-icon@2x.png in Resources */,
@@ -6225,8 +6209,8 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: ai gao (4K3Y6HQLSK)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ai gao (4K3Y6HQLSK)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/libs/ShareSDK/Connection",
@@ -6269,8 +6253,8 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = 2golf;
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "0101ce1d-e254-43ff-adc1-1bc92724e6eb";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0101ce1d-e254-43ff-adc1-1bc92724e6eb";
 				SDKROOT = iphoneos;
 				STRIP_INSTALLED_PRODUCT = YES;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -6292,8 +6276,8 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: ai gao (7CSFS4L29X)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ai gao (7CSFS4L29X)";
 				ENABLE_NS_ASSERTIONS = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6337,8 +6321,8 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = 2golf;
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "6848dfb3-3a17-41dc-98a2-c7d60ea166e7";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6848dfb3-3a17-41dc-98a2-c7d60ea166e7";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s";
@@ -6388,8 +6372,8 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: ai gao (7CSFS4L29X)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ai gao (7CSFS4L29X)";
 				ENABLE_NS_ASSERTIONS = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6433,8 +6417,8 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = 2golf;
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "04ccb562-2316-4380-9a90-20ddb63a0e35";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "04ccb562-2316-4380-9a90-20ddb63a0e35";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s";

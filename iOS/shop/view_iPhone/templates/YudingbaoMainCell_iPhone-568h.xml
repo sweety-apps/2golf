@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ui namespace="WelcomeBoard">
+    <linear orientation="h" class="wrapper">
+		<image class="background" />
+		
+        <linear orientation="h" class="left-up-wrapper">
+            <image id="icon-out-1" class="align-to-bottom" />
+            <image id="icon-in-1" class="align-to-bottom-icon" />
+            <label id="" class="align-to-bottom-label">球场搜索</label>
+            <button id="icon-1" class="align-to-bottom-icon" />
+        </linear>
+        
+        <linear orientation="h" class="right-up-wrapper">
+            <image id="icon-out-2" class="align-to-bottom" />
+            <image id="icon-in-2" class="align-to-bottom-icon" />
+            <label id="" class="align-to-bottom-label">球场特惠</label>
+            <button id="icon-2" class="align-to-bottom-icon" />
+        </linear>
+        
+        <linear orientation="h" class="left-down-wrapper">
+            <image id="icon-out-3" class="align-to-top" />
+            <image id="icon-in-3" class="align-to-top-icon" />
+            <label id="" class="align-to-top-label">热销推荐</label>
+            <button id="icon-3" class="align-to-top-icon" />
+        </linear>
+        
+        <linear orientation="h" class="right-down-wrapper">
+            <image id="icon-out-4" class="align-to-top" />
+            <image id="icon-in-4" class="align-to-top-icon" />
+            <label id="" class="align-to-top-label">私人订制</label>
+            <button id="icon-4" class="align-to-top-icon" />
+        </linear>
+		
+	</linear>
+	<style type="text/css">
+		.wrapper {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+		}
+		.left-up-wrapper {
+        position: absolute;
+        width: 41%;
+        height: 50%;
+        left: 8.2%;
+        top:2%;
+		}
+        .right-up-wrapper {
+        position: absolute;
+        width: 41%;
+        height: 50%;
+        left: 50.8%;
+        top:2%;
+		}
+        .left-down-wrapper {
+        position: absolute;
+        width: 41%;
+        height: 50%;
+        left: 8.2%;
+        top: 50%;
+		}
+        .right-down-wrapper {
+        position: absolute;
+        width: 41%;
+        height: 50%;
+        left: 50.8%;
+        top: 50%;
+		}
+        .align-to-bottom {
+        position: absolute;
+        width:133px;
+        height:90%;
+        image-mode: stretch;
+        top:5%;
+        }
+        .align-to-bottom-icon {
+        position: absolute;
+        width:133px;
+        height:100%;
+        bottom:14px;
+        }
+        .align-to-bottom-label {
+        position: absolute;
+        height:24px;
+        font-size: 22px;
+        font-weight: lighter;
+        color: #ffffff;
+        text-align: center;
+        top:100px;
+        }
+        .align-to-top {
+        position: absolute;
+        width:133px;
+        height:90%;
+        image-mode: stretch;
+        top:5%;
+        }
+        .align-to-top-icon {
+        position: absolute;
+        width:133px;
+        height:100%;
+        top:-15px;
+        }
+        .align-to-top-label {
+        position: absolute;
+        height:24px;
+        font-size: 22px;
+        font-weight: lighter;
+        color: #ffffff;
+        text-align: center;
+        top:100px;
+        }
+		.background {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background-color: #e3eff7;
+		}
+		
+		#icon-1 {
+        opacity: 0;
+		}
+		#icon-2 {
+        opacity: 0;
+		}
+		#icon-3 {
+        opacity: 0;
+		}
+        #icon-4 {
+        opacity: 0;
+		}
+        
+        #icon-out-1 {
+        image-src: url(coursefragmentsearchbkg.png);
+            <!--background-color:#ff0000;-->
+		}
+		#icon-out-2 {
+        image-src: url(coursefragmentfavorablebkg.png);
+
+<!--background-color:#00ff00;-->
+		}
+		#icon-out-3 {
+        image-src: url(coursefragmenthotsellbkg.png);
+
+<!--background-color:#0000ff;-->
+		}
+        #icon-out-4 {
+        image-src: url(coursefragmentcustomizationbkg.png);
+
+<!--background-color:#f0000f;-->
+		}
+        
+        #icon-in-1 {
+        image-src: url(coursefragmentsearchicon.png);
+		}
+		#icon-in-2 {
+        image-src: url(coursefragmentfavorablecon.png);
+		}
+		#icon-in-3 {
+        image-src: url(coursefragmenthotsellicon.png);
+		}
+        #icon-in-4 {
+        image-src: url(coursefragmentcustomizationicon.png);
+		}
+		
+		
+	</style>
+</ui>
