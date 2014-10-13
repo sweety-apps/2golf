@@ -77,12 +77,12 @@
                     <button id="collection" class="fill"/>
                 </linear>
                 
-                <linear id="notification_list_item" orientation="h" class="list-item">
+               <!-- <linear id="notification_list_item" orientation="h" class="list-item">
                     <image class="list-bg"/>
                     <label class="list-title">消息列表</label>
                     <label class="list-subtitle"></label>
                     <image class="list-indictor"/>
-                    <button id="notification" class="fill"/>
+                    <button id="notification" class="fill"/>-->
                 </linear>
                 
                 <linear id="change_password_list_item" orientation="h" class="list-item">

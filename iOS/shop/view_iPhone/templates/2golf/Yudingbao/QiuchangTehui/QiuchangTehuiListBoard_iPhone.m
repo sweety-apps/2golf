@@ -546,7 +546,7 @@ ON_SIGNAL2( QiuchangTehuiShiduanCell_iPhone, signal )
         self.HTTP_POST([[ServerConfig sharedInstance].url stringByAppendingString:@"searchteetime"])
         .PARAM(@"longitude",dic[@"longitude"])
         .PARAM(@"latitude",dic[@"latitude"])
-        .PARAM(@"scope",@"100")
+        .PARAM(@"scope",@"100000")
         .PARAM(@"timestamp", [NSNumber numberWithLongLong:[CommonUtility getSearchTimeStamp]])
         .TIMEOUT(30);
     }
@@ -556,7 +556,7 @@ ON_SIGNAL2( QiuchangTehuiShiduanCell_iPhone, signal )
         self.HTTP_POST([[ServerConfig sharedInstance].url stringByAppendingString:@"searchspecialday"])
         .PARAM(@"longitude",dic[@"longitude"])
         .PARAM(@"latitude",dic[@"latitude"])
-        .PARAM(@"scope",@"100")
+        .PARAM(@"scope",@"100000")
         .PARAM(@"timestamp", [NSNumber numberWithLongLong:[CommonUtility getSearchTimeStamp]])
         .TIMEOUT(30);
     }
