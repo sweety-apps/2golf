@@ -11,19 +11,19 @@
 					<key>kind</key>
 					<string>software-package</string>
 					<key>url</key>
-					<string>http://115.29.144.237/app/2golf.ipa</string>
+					<string>http://www.2golf.cn/app/2golf_1.ipa</string>
 				</dict>
 			</array>
 			<key>metadata</key>
 			<dict>
 				<key>title</key>
-				<string>爱高高尔夫</string>
+				<string>爱高</string>
 				<key>bundle-version</key>
-				<string>1.8</string>
+				<string>25</string>
 				<key>kind</key>
 				<string>software</string>
 				<key>bundle-identifier</key>
-				<string>1528studio.wangcai</string>
+				<string>com.yshstudio.aigolfinhouse</string>
 			</dict>
 		</dict>
 	</array>
