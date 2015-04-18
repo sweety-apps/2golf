@@ -1,3 +1,4 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
@@ -16,14 +17,14 @@
 			</array>
 			<key>metadata</key>
 			<dict>
-				<key>title</key>
-				<string>爱高</string>
+				<key>bundle-identifier</key>
+				<string>com.yshstudio.aigolfinhouse</string>
 				<key>bundle-version</key>
 				<string>25</string>
 				<key>kind</key>
 				<string>software</string>
-				<key>bundle-identifier</key>
-				<string>com.yshstudio.aigolfinhouse</string>
+				<key>title</key>
+				<string>爱高</string>
 			</dict>
 		</dict>
 	</array>
