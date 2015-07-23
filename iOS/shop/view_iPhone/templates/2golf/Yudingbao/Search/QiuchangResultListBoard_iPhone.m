@@ -205,12 +205,15 @@ ON_SIGNAL2( BeeUIBoard, signal )
     }
     else if ( [signal is:BeeUIBoard.DID_APPEAR] )
     {
+        
     }
     else if ( [signal is:BeeUIBoard.WILL_DISAPPEAR] )
     {
+        
     }
     else if ( [signal is:BeeUIBoard.DID_DISAPPEAR] )
     {
+        
     }
 }
 
@@ -305,6 +308,8 @@ ON_SIGNAL2( BeeUIBoard, signal )
     NSNumber* lat = dic[@"latitude"];
     //lng = @114.02597365732;
     //lat = @22.546053546205;
+    //球场搜索解析方式
+    
     BeeHTTPRequest* req = self.HTTP_POST([[ServerConfig sharedInstance].url stringByAppendingString:@"searcharound"])
     .PARAM(@"coursename",keywords)
     .PARAM(@"timestamp", [NSString stringWithFormat:@"%ld",[CommonUtility getSearchTimeStamp]]);

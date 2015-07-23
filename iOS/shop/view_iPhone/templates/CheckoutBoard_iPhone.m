@@ -115,6 +115,7 @@ SUPPORT_RESOURCE_LOADING( YES )
         $(@"#order-goods-count").TEXT( [NSString stringWithFormat:@"X %@", goods.goods_number] );
         $(@"#order-goods-price").TEXT( goods.formated_goods_price );
         $(@"#order-goods-title").TEXT( goods.goods_name );
+        
     }
 }
 

@@ -578,8 +578,8 @@ ON_SIGNAL2( BeeUIAlertView, signal)
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    if (textField == _extractCell.tixianjineTextField)
-    {
+   if (textField == _extractCell.tixianjineTextField)
+   {
         NSString* newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
         double value = [newString doubleValue];
         if (value + 5.0 < [[UserModel sharedInstance].user.user_money doubleValue])
@@ -590,6 +590,9 @@ ON_SIGNAL2( BeeUIAlertView, signal)
         }
         return NO;
     }
+//    else {
+//
+//    }
     return YES;
 }
 

@@ -85,7 +85,7 @@
         font-weight: lighter;
         color: #ffffffff;
         text-align: center;
-        bottom:5px;
+        bottom:8px;
         }
         .align-to-top {
         position: absolute;
@@ -106,7 +106,7 @@
         font-weight: lighter;
         color: #ffffffff;
         text-align: center;
-        top:80px;
+        top:77px;
         }
 		.background {
         width: 100%;

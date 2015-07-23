@@ -44,8 +44,8 @@ DEF_SINGLETON( ServerConfig )
         //self.baseUrl = @"http://shop.ecmobile.me";
         //self.url = @"http://localhost/~leejustin/ecshop/upload/ECMobile/?url=";
         
-        self.url = @"http://115.29.144.237/ECMobile/?url=";
-        self.baseUrl = @"http://115.29.144.237";
+        self.url = @"http://115.29.144.237/ECMobile/?url=";//接口的前缀
+        self.baseUrl = @"http://115.29.144.237";//IP地址
 	}
 	return self;
 }
